@@ -1,0 +1,434 @@
+{
+ "LiH": {
+  "calc": {
+   "name": "mattersim",
+   "model": "MatterSim-v1.0.0-5M.pth",
+   "package": "mattersim",
+   "version": "1.2.5",
+   "device": "cuda"
+  },
+  "relax": {
+   "converged": true,
+   "steps": 9,
+   "energy": -6.104084014892578,
+   "volume": 16.07708043514064,
+   "fmax_final": 1.5366822481155396e-07
+  },
+  "fc_meta": {
+   "supercell": [
+    5,
+    5,
+    5
+   ],
+   "n_displacements": 2,
+   "displacement": 0.01,
+   "natoms_cell": 2,
+   "natoms_supercell": 250,
+   "energy_eV": -6.104084014892578,
+   "volume_A3": 16.07708043514064
+  },
+  "fc_cached": false,
+  "mesh": [
+   12,
+   12,
+   12
+  ],
+  "timing": {
+   "relax_s": 1.3599052429199219,
+   "fc_s": 2.7602217197418213
+  },
+  "n_atoms": 2,
+  "formula": "HLi",
+  "variants": {
+   "H": {
+    "zpe_eV_cell": 0.21734998586056328,
+    "F_eV_cell": [
+     0.19264416352261782
+    ],
+    "imag": {
+     "min_freq_THz": -4.697935879892113e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   },
+   "D": {
+    "zpe_eV_cell": 0.1706031787655975,
+    "F_eV_cell": [
+     0.14248808054498252
+    ],
+    "imag": {
+     "min_freq_THz": -4.528907283826741e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   }
+  },
+  "gpu_peak_mem_MB": 3342.130859375,
+  "temps": [
+   300.0
+  ],
+  "wall_s": 27.08413577079773
+ },
+ "brucite": {
+  "calc": {
+   "name": "mattersim",
+   "model": "MatterSim-v1.0.0-5M.pth",
+   "package": "mattersim",
+   "version": "1.2.5",
+   "device": "cuda"
+  },
+  "relax": {
+   "converged": true,
+   "steps": 181,
+   "energy": -26.87057876586914,
+   "volume": 42.453160043855405,
+   "fmax_final": 0.000818789005279541
+  },
+  "fc_meta": {
+   "supercell": [
+    4,
+    4,
+    3
+   ],
+   "n_displacements": 5,
+   "displacement": 0.01,
+   "natoms_cell": 5,
+   "natoms_supercell": 240,
+   "energy_eV": -26.87057876586914,
+   "volume_A3": 42.453160043855405
+  },
+  "fc_cached": false,
+  "mesh": [
+   12,
+   12,
+   8
+  ],
+  "timing": {
+   "relax_s": 10.748792886734009,
+   "fc_s": 2.0281717777252197
+  },
+  "n_atoms": 5,
+  "formula": "H2MgO2",
+  "variants": {
+   "H": {
+    "zpe_eV_cell": 0.7952744606323738,
+    "F_eV_cell": [
+     0.7116812311586637
+    ],
+    "imag": {
+     "min_freq_THz": -1.412660816142897,
+     "has_imaginary": true,
+     "n_imag_modes": 16,
+     "imag_fraction": 0.000925925925925926
+    }
+   },
+   "D": {
+    "zpe_eV_cell": 0.623756446664316,
+    "F_eV_cell": [
+     0.5302194577593478
+    ],
+    "imag": {
+     "min_freq_THz": -1.3882353113415566,
+     "has_imaginary": true,
+     "n_imag_modes": 16,
+     "imag_fraction": 0.000925925925925926
+    }
+   }
+  },
+  "gpu_peak_mem_MB": 2546.54443359375,
+  "temps": [
+   300.0
+  ],
+  "wall_s": 21.484877347946167
+ },
+ "MgH2_rutile": {
+  "calc": {
+   "name": "mattersim",
+   "model": "MatterSim-v1.0.0-5M.pth",
+   "package": "mattersim",
+   "version": "1.2.5",
+   "device": "cuda"
+  },
+  "relax": {
+   "converged": true,
+   "steps": 35,
+   "energy": -17.596050262451172,
+   "volume": 61.51478213326638,
+   "fmax_final": 1.7254147678613663e-05
+  },
+  "fc_meta": {
+   "supercell": [
+    3,
+    3,
+    4
+   ],
+   "n_displacements": 3,
+   "displacement": 0.01,
+   "natoms_cell": 6,
+   "natoms_supercell": 216,
+   "energy_eV": -17.596050262451172,
+   "volume_A3": 61.51478213326638
+  },
+  "fc_cached": false,
+  "mesh": [
+   9,
+   9,
+   12
+  ],
+  "timing": {
+   "relax_s": 2.543105125427246,
+   "fc_s": 1.183354377746582
+  },
+  "n_atoms": 6,
+  "formula": "H4Mg2",
+  "variants": {
+   "H": {
+    "zpe_eV_cell": 0.8179240641474764,
+    "F_eV_cell": [
+     0.7312007655058979
+    ],
+    "imag": {
+     "min_freq_THz": -4.150593050890887e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   },
+   "D": {
+    "zpe_eV_cell": 0.6036166029866779,
+    "F_eV_cell": [
+     0.5043675601710862
+    ],
+    "imag": {
+     "min_freq_THz": -3.385229025835546e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   }
+  },
+  "gpu_peak_mem_MB": 1901.98681640625,
+  "temps": [
+   300.0
+  ],
+  "wall_s": 12.567929983139038
+ },
+ "MgH2_gamma": {
+  "calc": {
+   "name": "mattersim",
+   "model": "MatterSim-v1.0.0-5M.pth",
+   "package": "mattersim",
+   "version": "1.2.5",
+   "device": "cuda"
+  },
+  "relax": {
+   "converged": true,
+   "steps": 38,
+   "energy": -35.20269012451172,
+   "volume": 121.30528058713939,
+   "fmax_final": 0.0002520661801099777
+  },
+  "fc_meta": {
+   "supercell": [
+    3,
+    3,
+    2
+   ],
+   "n_displacements": 9,
+   "displacement": 0.01,
+   "natoms_cell": 12,
+   "natoms_supercell": 216,
+   "energy_eV": -35.20269012451172,
+   "volume_A3": 121.30528058713939
+  },
+  "fc_cached": false,
+  "mesh": [
+   9,
+   8,
+   7
+  ],
+  "timing": {
+   "relax_s": 2.69193696975708,
+   "fc_s": 1.9260272979736328
+  },
+  "n_atoms": 12,
+  "formula": "H8Mg4",
+  "variants": {
+   "H": {
+    "zpe_eV_cell": 1.651639252188498,
+    "F_eV_cell": [
+     1.4808110593083073
+    ],
+    "imag": {
+     "min_freq_THz": -0.21450107099461596,
+     "has_imaginary": true,
+     "n_imag_modes": 2,
+     "imag_fraction": 0.00011022927689594356
+    }
+   },
+   "D": {
+    "zpe_eV_cell": 1.2185899457601757,
+    "F_eV_cell": [
+     1.0243222719449376
+    ],
+    "imag": {
+     "min_freq_THz": -0.20717725009731144,
+     "has_imaginary": true,
+     "n_imag_modes": 2,
+     "imag_fraction": 0.00011022927689594356
+    }
+   }
+  },
+  "gpu_peak_mem_MB": 2121.5888671875,
+  "temps": [
+   300.0
+  ],
+  "wall_s": 13.26161241531372
+ },
+ "AlOOH_diaspore": {
+  "calc": {
+   "name": "mattersim",
+   "model": "MatterSim-v1.0.0-5M.pth",
+   "package": "mattersim",
+   "version": "1.2.5",
+   "device": "cuda"
+  },
+  "relax": {
+   "converged": true,
+   "steps": 49,
+   "energy": -104.80195617675781,
+   "volume": 120.27927782403965,
+   "fmax_final": 0.0005383342504501343
+  },
+  "fc_meta": {
+   "supercell": [
+    4,
+    3,
+    1
+   ],
+   "n_displacements": 16,
+   "displacement": 0.01,
+   "natoms_cell": 16,
+   "natoms_supercell": 192,
+   "energy_eV": -104.80197143554688,
+   "volume_A3": 120.27927782403965
+  },
+  "fc_cached": false,
+  "mesh": [
+   12,
+   9,
+   4
+  ],
+  "timing": {
+   "relax_s": 3.60713529586792,
+   "fc_s": 3.513167142868042
+  },
+  "n_atoms": 16,
+  "formula": "H4Al4O8",
+  "variants": {
+   "H": {
+    "zpe_eV_cell": 2.263175672869163,
+    "F_eV_cell": [
+     2.1008248777040643
+    ],
+    "imag": {
+     "min_freq_THz": -1.0985693450441036,
+     "has_imaginary": true,
+     "n_imag_modes": 2,
+     "imag_fraction": 9.645061728395061e-05
+    }
+   },
+   "D": {
+    "zpe_eV_cell": 1.9131371234347674,
+    "F_eV_cell": [
+     1.7444734287915382
+    ],
+    "imag": {
+     "min_freq_THz": -1.0889662281999553,
+     "has_imaginary": true,
+     "n_imag_modes": 2,
+     "imag_fraction": 9.645061728395061e-05
+    }
+   }
+  },
+  "gpu_peak_mem_MB": 2398.4765625,
+  "temps": [
+   300.0
+  ],
+  "wall_s": 15.746422052383423
+ },
+ "AlOOH_boehmite": {
+  "calc": {
+   "name": "mattersim",
+   "model": "MatterSim-v1.0.0-5M.pth",
+   "package": "mattersim",
+   "version": "1.2.5",
+   "device": "cuda"
+  },
+  "relax": {
+   "converged": true,
+   "steps": 55,
+   "energy": -52.508182525634766,
+   "volume": 65.47714881358208,
+   "fmax_final": 0.000812530517578125
+  },
+  "fc_meta": {
+   "supercell": [
+    3,
+    3,
+    3
+   ],
+   "n_displacements": 16,
+   "displacement": 0.01,
+   "natoms_cell": 8,
+   "natoms_supercell": 216,
+   "energy_eV": -52.508182525634766,
+   "volume_A3": 65.47714881358208
+  },
+  "fc_cached": false,
+  "mesh": [
+   6,
+   6,
+   11
+  ],
+  "timing": {
+   "relax_s": 3.603548765182495,
+   "fc_s": 3.5103015899658203
+  },
+  "n_atoms": 8,
+  "formula": "H2Al2O4",
+  "variants": {
+   "H": {
+    "zpe_eV_cell": 1.1348823139731092,
+    "F_eV_cell": [
+     1.0469237739400405
+    ],
+    "imag": {
+     "min_freq_THz": -7.226801910175255e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   },
+   "D": {
+    "zpe_eV_cell": 0.9571200472361905,
+    "F_eV_cell": [
+     0.8653650576012472
+    ],
+    "imag": {
+     "min_freq_THz": 3.4977469211955845e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   }
+  },
+  "gpu_peak_mem_MB": 2565.3251953125,
+  "temps": [
+   300.0
+  ],
+  "wall_s": 15.72048568725586
+ }
+}

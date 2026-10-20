@@ -1,0 +1,434 @@
+{
+ "LiH": {
+  "calc": {
+   "name": "sevenn",
+   "model": "7net-mf-ompa",
+   "package": "sevenn",
+   "version": "0.13.0",
+   "device": "cuda"
+  },
+  "relax": {
+   "converged": true,
+   "steps": 20,
+   "energy": -6.110395431518555,
+   "volume": 15.710855012053939,
+   "fmax_final": 9.117502486333251e-08
+  },
+  "fc_meta": {
+   "supercell": [
+    3,
+    3,
+    3
+   ],
+   "n_displacements": 2,
+   "displacement": 0.01,
+   "natoms_cell": 2,
+   "natoms_supercell": 54,
+   "energy_eV": -6.110396385192871,
+   "volume_A3": 15.71085538234038
+  },
+  "fc_cached": true,
+  "mesh": [
+   12,
+   12,
+   12
+  ],
+  "timing": {
+   "relax_s": 5.822149038314819,
+   "fc_s": 0.7799839973449707
+  },
+  "n_atoms": 2,
+  "formula": "HLi",
+  "variants": {
+   "H": {
+    "zpe_eV_cell": 0.23348276738295726,
+    "F_eV_cell": [
+     0.2129870259762781
+    ],
+    "imag": {
+     "min_freq_THz": -6.612184293280972e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   },
+   "D": {
+    "zpe_eV_cell": 0.18373718029882657,
+    "F_eV_cell": [
+     0.16040455089134886
+    ],
+    "imag": {
+     "min_freq_THz": -6.557671475188126e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   }
+  },
+  "gpu_peak_mem_MB": 291.14794921875,
+  "temps": [
+   300.0
+  ],
+  "wall_s": 21.574517250061035
+ },
+ "brucite": {
+  "calc": {
+   "name": "sevenn",
+   "model": "7net-mf-ompa",
+   "package": "sevenn",
+   "version": "0.13.0",
+   "device": "cuda"
+  },
+  "relax": {
+   "converged": true,
+   "steps": 153,
+   "energy": -26.944438934326172,
+   "volume": 42.23286575304755,
+   "fmax_final": 0.0005840957164764404
+  },
+  "fc_meta": {
+   "supercell": [
+    3,
+    3,
+    2
+   ],
+   "n_displacements": 5,
+   "displacement": 0.01,
+   "natoms_cell": 5,
+   "natoms_supercell": 90,
+   "energy_eV": -26.94443702697754,
+   "volume_A3": 42.23286575304755
+  },
+  "fc_cached": false,
+  "mesh": [
+   12,
+   12,
+   8
+  ],
+  "timing": {
+   "relax_s": 25.035746097564697,
+   "fc_s": 4.240399122238159
+  },
+  "n_atoms": 5,
+  "formula": "H2MgO2",
+  "variants": {
+   "H": {
+    "zpe_eV_cell": 0.7888637978005473,
+    "F_eV_cell": [
+     0.7006824662532442
+    ],
+    "imag": {
+     "min_freq_THz": -2.6120023545575384,
+     "has_imaginary": true,
+     "n_imag_modes": 18,
+     "imag_fraction": 0.0010416666666666667
+    }
+   },
+   "D": {
+    "zpe_eV_cell": 0.618239074535897,
+    "F_eV_cell": [
+     0.5194833510881555
+    ],
+    "imag": {
+     "min_freq_THz": -2.110636600696723,
+     "has_imaginary": true,
+     "n_imag_modes": 18,
+     "imag_fraction": 0.0010416666666666667
+    }
+   }
+  },
+  "gpu_peak_mem_MB": 4233.71923828125,
+  "temps": [
+   300.0
+  ],
+  "wall_s": 42.64734172821045
+ },
+ "MgH2_rutile": {
+  "calc": {
+   "name": "sevenn",
+   "model": "7net-mf-ompa",
+   "package": "sevenn",
+   "version": "0.13.0",
+   "device": "cuda"
+  },
+  "relax": {
+   "converged": true,
+   "steps": 35,
+   "energy": -17.796518325805664,
+   "volume": 61.17832864450851,
+   "fmax_final": 0.00014339759945869446
+  },
+  "fc_meta": {
+   "supercell": [
+    2,
+    2,
+    4
+   ],
+   "n_displacements": 3,
+   "displacement": 0.01,
+   "natoms_cell": 6,
+   "natoms_supercell": 96,
+   "energy_eV": -17.796520233154297,
+   "volume_A3": 61.17832864450851
+  },
+  "fc_cached": false,
+  "mesh": [
+   9,
+   9,
+   12
+  ],
+  "timing": {
+   "relax_s": 6.965903043746948,
+   "fc_s": 2.8995473384857178
+  },
+  "n_atoms": 6,
+  "formula": "H4Mg2",
+  "variants": {
+   "H": {
+    "zpe_eV_cell": 0.8020959761309727,
+    "F_eV_cell": [
+     0.7132758830179959
+    ],
+    "imag": {
+     "min_freq_THz": -2.5441776125357154e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   },
+   "D": {
+    "zpe_eV_cell": 0.5918893907065423,
+    "F_eV_cell": [
+     0.48988015368235394
+    ],
+    "imag": {
+     "min_freq_THz": -2.8179166499606044e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   }
+  },
+  "gpu_peak_mem_MB": 3666.42919921875,
+  "temps": [
+   300.0
+  ],
+  "wall_s": 22.081523180007935
+ },
+ "MgH2_gamma": {
+  "calc": {
+   "name": "sevenn",
+   "model": "7net-mf-ompa",
+   "package": "sevenn",
+   "version": "0.13.0",
+   "device": "cuda"
+  },
+  "relax": {
+   "converged": true,
+   "steps": 49,
+   "energy": -35.60373306274414,
+   "volume": 119.51233784580506,
+   "fmax_final": 0.000669531524181366
+  },
+  "fc_meta": {
+   "supercell": [
+    2,
+    2,
+    2
+   ],
+   "n_displacements": 9,
+   "displacement": 0.01,
+   "natoms_cell": 12,
+   "natoms_supercell": 96,
+   "energy_eV": -35.60373306274414,
+   "volume_A3": 119.51233784580506
+  },
+  "fc_cached": false,
+  "mesh": [
+   9,
+   8,
+   7
+  ],
+  "timing": {
+   "relax_s": 9.1585054397583,
+   "fc_s": 5.257709741592407
+  },
+  "n_atoms": 12,
+  "formula": "H8Mg4",
+  "variants": {
+   "H": {
+    "zpe_eV_cell": 1.6220328945447706,
+    "F_eV_cell": [
+     1.4498326742850527
+    ],
+    "imag": {
+     "min_freq_THz": -5.328173954989686e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   },
+   "D": {
+    "zpe_eV_cell": 1.1970410015252146,
+    "F_eV_cell": [
+     0.9993316652082025
+    ],
+    "imag": {
+     "min_freq_THz": -2.6191125832186247e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   }
+  },
+  "gpu_peak_mem_MB": 3542.998046875,
+  "temps": [
+   300.0
+  ],
+  "wall_s": 26.56354832649231
+ },
+ "AlOOH_diaspore": {
+  "calc": {
+   "name": "sevenn",
+   "model": "7net-mf-ompa",
+   "package": "sevenn",
+   "version": "0.13.0",
+   "device": "cuda"
+  },
+  "relax": {
+   "converged": true,
+   "steps": 58,
+   "energy": -104.85240173339844,
+   "volume": 121.32561181035796,
+   "fmax_final": 0.0008762776851654053
+  },
+  "fc_meta": {
+   "supercell": [
+    3,
+    2,
+    1
+   ],
+   "n_displacements": 16,
+   "displacement": 0.01,
+   "natoms_cell": 16,
+   "natoms_supercell": 96,
+   "energy_eV": -104.8523941040039,
+   "volume_A3": 121.32561181035796
+  },
+  "fc_cached": false,
+  "mesh": [
+   12,
+   9,
+   4
+  ],
+  "timing": {
+   "relax_s": 11.75454592704773,
+   "fc_s": 13.059816122055054
+  },
+  "n_atoms": 16,
+  "formula": "H4Al4O8",
+  "variants": {
+   "H": {
+    "zpe_eV_cell": 2.252267716453355,
+    "F_eV_cell": [
+     2.084281346374815
+    ],
+    "imag": {
+     "min_freq_THz": -0.9743643423878168,
+     "has_imaginary": true,
+     "n_imag_modes": 2,
+     "imag_fraction": 9.645061728395061e-05
+    }
+   },
+   "D": {
+    "zpe_eV_cell": 1.8997344680927786,
+    "F_eV_cell": [
+     1.7254222018307825
+    ],
+    "imag": {
+     "min_freq_THz": -0.9659102754646743,
+     "has_imaginary": true,
+     "n_imag_modes": 2,
+     "imag_fraction": 9.645061728395061e-05
+    }
+   }
+  },
+  "gpu_peak_mem_MB": 4783.24267578125,
+  "temps": [
+   300.0
+  ],
+  "wall_s": 37.08625912666321
+ },
+ "AlOOH_boehmite": {
+  "calc": {
+   "name": "sevenn",
+   "model": "7net-mf-ompa",
+   "package": "sevenn",
+   "version": "0.13.0",
+   "device": "cuda"
+  },
+  "relax": {
+   "converged": true,
+   "steps": 73,
+   "energy": -52.478233337402344,
+   "volume": 65.84091192945108,
+   "fmax_final": 0.0005357861518859863
+  },
+  "fc_meta": {
+   "supercell": [
+    2,
+    2,
+    2
+   ],
+   "n_displacements": 16,
+   "displacement": 0.01,
+   "natoms_cell": 8,
+   "natoms_supercell": 64,
+   "energy_eV": -52.478233337402344,
+   "volume_A3": 65.84091192945108
+  },
+  "fc_cached": false,
+  "mesh": [
+   6,
+   6,
+   11
+  ],
+  "timing": {
+   "relax_s": 12.216846466064453,
+   "fc_s": 9.234747886657715
+  },
+  "n_atoms": 8,
+  "formula": "H2Al2O4",
+  "variants": {
+   "H": {
+    "zpe_eV_cell": 1.126329265979766,
+    "F_eV_cell": [
+     1.034513619186583
+    ],
+    "imag": {
+     "min_freq_THz": -6.146025639897898e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   },
+   "D": {
+    "zpe_eV_cell": 0.9480782240619302,
+    "F_eV_cell": [
+     0.8524489411949614
+    ],
+    "imag": {
+     "min_freq_THz": -2.777804090534697e-07,
+     "has_imaginary": false,
+     "n_imag_modes": 0,
+     "imag_fraction": 0.0
+    }
+   }
+  },
+  "gpu_peak_mem_MB": 7071.02783203125,
+  "temps": [
+   300.0
+  ],
+  "wall_s": 33.77595019340515
+ }
+}
