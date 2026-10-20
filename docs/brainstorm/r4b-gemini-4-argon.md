@@ -1,0 +1,33 @@
+### Idea 1: IsoFlip (Quantum Isotope Polymorph Inversion)
+
+* **Headline:** Synthesize in heavy water, get a different crystal structure: exact first principles discovery of inorganic polymorphs that flip their thermodynamic ground state solely by swapping stable isotopes.
+* **Steps with hours:**
+  1. Hours 0 to 6: Download exact density functional perturbation theory (DFPT) force constant matrices from Togo PhononDB (10,034 crystals) and the Materials Project phonon dataset via `mp_api`, filtering for compositionally identical polymorph pairs containing light elements with stable isotopes (H/D, $^{6}\text{Li}/{}^{7}\text{Li}$, $^{10}\text{B}/{}^{11}\text{B}$, $^{16}\text{O}/{}^{18}\text{O}$).
+  2. Hours 6 to 16: Because Born Oppenheimer interatomic force constants $\Phi_{ij}$ are strictly independent of nuclear mass, re-diagonalize the dynamical matrices $D_{ij}(\mathbf{q}) = \Phi_{ij}(\mathbf{q}) / \sqrt{M_i M_j}$ across all isotopic substitutions using `phonopy` to get exact DFPT harmonic free energies $F(T, M)$ in milliseconds per crystal.
+  3. Hours 16 to 26: Screen broader light element polymorph pairs in Materials Project using `MACE MP 0` on the RTX 4060 to identify additional candidate inversions, then compute quasi harmonic thermal expansion corrections for the top 30 pairs.
+  4. Hours 26 to 34: Benchmark against experimental isotope phase shifts and compile a ranked recipe list of ambient polymorph flips testable by crystallizing in $\text{D}_2\text{O}$ or enriched $^{6}\text{Li}$ and $^{10}\text{B}$ precursors.
+* **Real open data and tools:** Togo Kyoto PhononDB (`FORCE_SETS`), Materials Project DFPT phonons (`mp_api`), `phonopy`, `pymatgen`, `MACE MP 0`.
+* **The hard checkable result:** A table of inorganic polymorph pairs where $\Delta G(\text{light isotope}, T)$ and $\Delta G(\text{heavy isotope}, T)$ have opposite signs at ambient pressure, plus predicted transition temperature shifts $\Delta T_c > 25\text{ K}$ in meV per atom.
+* **Why it is new with closest prior work:** Isotopomeric polymorphism is known experimentally in a few hydrogen bonded organic solids (pyridine, ice VIII) and studied for single systems like $\text{LiH}/\text{LiD}$ (Stishov 2005). Nobody has exploited the exact mass invariance of DFPT force constant databases to systematically discover inorganic crystal structure inversions driven purely by nuclear mass.
+* **Verification:** Reproduce experimentally measured H/D transition temperature shifts in $\text{KH}_2\text{PO}_4$, ice VII/VIII, and vanadium hydrides within 15 percent error, and verify that predicted $\Delta G$ crossovers exceed numerical integration convergence thresholds by 5x.
+* **Main risk:** Many light element polymorphs have electronic energy gaps $\Delta E_{\text{elec}}$ larger than the 5 to 25 meV per atom isotopic zero point energy difference, leaving only a small number of true ground state flips near phase boundaries.
+* **First place odds:** 38%
+
+### Idea 2: HabitZero (Refuting the Zero Volume Change Myth via Exact Invariant Plane Elasticity)
+
+* **Headline:** Zero volume change does not prevent crystal cracking: exact nonlinear continuum mechanics over 4,400 battery electrodes and phase change solids discovers stress free phase transitions hiding at large volume changes.
+* **Steps with hours:**
+  1. Hours 0 to 8: Pull all 4,400 intercalation electrode pairs (charged and discharged structures) and 3,000 polymorphic transitions from Materials Project via `mp_api`.
+  2. Hours 8 to 18: Implement the Chen and James lattice correspondence algorithm in `numpy` and `scipy` to find the minimal strain deformation gradient $\mathbf{F}$ and ordered Biot stretch eigenvalues $\lambda_1 \le \lambda_2 \le \lambda_3$ for every pair. By Ball and James martensitic theory, an exact zero elastic energy phase boundary (habit plane) exists if and only if $\lambda_2 = 1$, regardless of scalar volume change $\Delta V / V = \lambda_1 \lambda_2 \lambda_3 - 1$.
+  3. Hours 18 to 28: Test $|\lambda_2 - 1|$ versus $|\Delta V / V|$ against compiled experimental voltage hysteresis and cycling retention data, then use `MACE MP 0` on the RTX 4060 to find substitutional dopants $x$ that tune commercial cathodes precisely to $\lambda_2(x) = 1.0000$.
+  4. Hours 28 to 34: Validate the top 15 doped $\lambda_2 = 1$ candidates with full cell relaxations and acoustic phonon stability checks.
+* **Real open data and tools:** Materials Project Battery Explorer (`mp_api`), `pymatgen`, `scipy`, `MACE MP 0`, published hysteresis tables.
+* **The hard checkable result:** Statistical proof that $|\lambda_2 - 1|$ outperforms $|\Delta V / V|$ in predicting experimental hysteresis, a catalog of overlooked high $\Delta V$ electrodes with $\lambda_2 \approx 1.000$, and exact dopant stoichiometries that zero out interfacial elastic energy.
+* **Why it is new with closest prior work:** James and coworkers (*Nature* 2013, *Science* 2011) proved $\lambda_2 = 1$ eliminates hysteresis in shape memory alloys and ceramics, while battery research has relied for 30 years on scalar $|\Delta V / V| \to 0$. Applying exact invariant plane kinematics across topotactic intercalation databases to overturn the scalar zero strain paradigm is new.
+* **Verification:** Confirm recovery of known cofactor shape memory alloys ($\text{ZnAuCu}$, $\text{TiNiCuPd}$) with $|\lambda_2 - 1| < 10^{-3}$ and out of sample correlation on experimental battery voltage hysteresis.
+* **Main risk:** Multiple competing sublattice correspondences or staging intermediates in layered hosts can obscure which two phases form the rate limiting interface.
+* **First place odds:** 42%
+
+### Single Boldest Feasible Idea: IsoFlip
+
+**IsoFlip** is the single boldest idea from all rounds because its central claim ("crystallize in heavy water or $^{6}\text{Li}$ to get a different crystal structure") sounds impossible to a generalist yet rests on an exact theorem of quantum mechanics: Born Oppenheimer force constants are strictly independent of nuclear mass, so recomputing free energies across isotopes from existing DFPT force constant matrices introduces zero machine learning approximation error and runs in minutes on a laptop. An experimental chemist can verify the top prediction on Monday morning for ten dollars by running a standard synthesis in $\text{D}_2\text{O}$. I estimate a 75% to 85% probability of completing the full DFPT screen and identifying statistically significant transition temperature shifts $\Delta T_c$ within 34 hours, and a 35% to 45% probability of finding at least three ambient pressure polymorph pairs whose 300 K ground state order flips outright upon isotopic substitution.

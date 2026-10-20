@@ -1,0 +1,263 @@
+OpenAI Codex v0.160.0
+--------
+workdir: C:\Users\can02\Projects\osi-hackathon-2026\docs\brainstorm
+model: gpt-6-astra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 01a15b10-7bb7-7461-9173-1b9195fd89c7
+--------
+user
+# Brainstorm round 4: wide-scope brief (no tools, no file edits, answer from your own knowledge)
+
+## Event facts
+4th Open Scientific Intelligence Hackathon (organizer MDRI, Ben Blaiszik). Virtual. Work window is about 34 hours (Wed 21 Oct 17:00 to Fri 23 Oct 03:00 Turkey time). Submission: public video (max 4 min), one-page summary with a figure, public code, and a form asking what existed before versus what was built during the event.
+Four official judging criteria: impact, innovativeness, scalability, relevance to materials science and chemistry.
+Organizer framing: "is two days to a real discovery possible?"
+Pattern of 2025 winners: usable, validated tools that produce a concrete result. Plain RAG or chat wrappers did not win.
+Sponsor tracks (optional): Valency MCP Bond (literature search over 44.5M papers), Marimo notebooks, Adaption.
+
+## Team and resources
+One solo participant (materials engineer, AI trainer). 34 hours total including video. Laptop with RTX 4060 8GB, Python. Subscription CLI access to three frontier LLMs (Opus 5.5, GPT-6 Astra, Gemini 4 Argon), usable as agents. No wet lab, no paid compute, no API keys for gated databases. Only open data and free tools (Materials Project dumps via public mirrors, OQMD, JARVIS, AFLOW, COD, NOMAD, Alexandria, PubChem, ChEMBL, NIST, arXiv, OpenAlex, etc., ML potentials such as MACE, CHGNet, ORB, pymatgen, ASE, RDKit, xtb, LAMMPS are fine).
+
+## Ideas ALREADY considered (do not repeat, do not lightly rephrase)
+1. Agentic discovery benchmark with oracle budget (exists: MADE, ICML 2026).
+2. EigenDrop: MLIP imaginary-mode scanning to find lower-energy polymorphs (exists: VibroML).
+3. Hidden auxetics or negative linear compressibility mined from elastic databases (exists: Dagdelen 2017 and follow-ups).
+4. SinkBreaker: reaction network thermodynamic sink analysis (exists: Ceder/Persson networks, A-Lab).
+5. GNoME reality check: how many GNoME predicted materials were later synthesized.
+6. DataDoctor: agent audit of experimental datasets (matbench expt_gap, Kingsbury formation enthalpies), source tracing, correction ledger.
+7. Unified hull reconciliation across GNoME, Alexandria and MP.
+8. COD inorganic structure chemical consistency audit.
+9. SpinGhost (MP metals that are experimentally AFM insulators), ThermoGhost (doped samples labeled pure in thermoelectric data), HydrateTrap (wrong polymorph or hydrate matching in formation enthalpy).
+10. Adsorption temperature rank reversal in NIST data, solute diffusion compensation effect, literature contradiction court.
+Common pattern so far: "find systematic errors in data everyone uses". You may propose that type again only if it is clearly different from the list.
+
+## Your task
+Propose 6 NEW ideas spanning the whole scope: materials, chemistry, physics, mathematics, and also datasets, benchmarks and scientific software. At least 3 must be outside plain "audit a materials dataset". Each idea must produce a concrete, checkable, discovery-type result within 34 hours using real open data (a list, a number, a law, a counterexample, a validated tool plus a finding).
+
+For each idea give:
+1. Headline (one line)
+2. Steps (4 to 6 short steps, with rough hours)
+3. Data and tools (name real, openly accessible resources)
+4. The hard result (what exactly is produced and what a judge can check)
+5. Why it is new (what you believe has not been done, and the closest prior work you know)
+6. Verification (how we know the result is real, not an artifact)
+7. Risk (the main way it fails)
+8. Your own estimate of 1st-place odds in percent
+
+Then answer: "What single idea would make an expert judge say wow, and is it feasible solo in 34 hours?" Give one idea, one paragraph, honest feasibility.
+
+Be critical. Prefer ideas where a surprising result is likely and a null result is still publishable. Avoid anything needing synthesis, gated data, or more than 8GB of GPU memory. No filler, no dashes as punctuation. Limit 1300 words.
+
+warning: Codex is ignoring 1 unrecognized configuration setting. Check for typos or deprecated settings.
+  user (C:\Users\can02\.codex\config.toml): `computer_use.windows.always_allowed_app_ids` is ignored.
+warning: Codex is ignoring 1 unrecognized configuration setting. Check for typos or deprecated settings.
+  user (C:\Users\can02\.codex\config.toml): `computer_use.windows.always_allowed_app_ids` is ignored.
+warning: Under-development features enabled: local_thread_store_compression. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in C:\Users\can02\.codex\config.toml.
+warning: clamping SessionEnd hook timeout to 3s in C:\Users\can02\.codex\plugins\cache\openai-codex\codex\1.0.6\hooks\hooks.json
+2026-10-20T20:46:12.479457Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://codex-app.tldraw.xyz/.well-known/oauth-protected-resource/mcp\", scope=\"openid profile email offline_access\"" })
+2026-10-20T20:46:12.758434Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.consensus.app/.well-known/oauth-protected-resource\", scope=\"search\"" })
+codex
+Aşağıdaki yenilik iddiaları **literatür taramasıyla doğrulanmış değil**. Yüzdeler de rakipleri bilmeden verdiğim öznel birincilik tahminleri. Her plan, teslim hazırlığı dahil 34 saat; hesaplanan bulguyu deneysel keşif olarak sunmamak temel sınır.
+
+### 1. XRD İkizleri: Farklı kristallerin ayırt edilemediği koşulları kanıtla
+
+**Adımlar:** ① Açık yapılardan aynı bileşimli polimorfları seç, 4 saat. ② Toz desenlerini üret; genişleme, tercihli yönelim ve gürültüyü modelle, 6 saat. ③ Benzer çiftleri bul ve hangi ölçüm koşullarında ayrılabildiklerini hesapla, 10 saat. ④ İkinci hesaplayıcıyla doğrula, 8 saat. ⑤ Demo ve teslim, 6 saat.
+
+**Veri ve araçlar:** COD, pymatgen, Gemmi, SciPy. Başlangıçta birkaç bin inorganik yapı yeterli.
+
+**Sert sonuç:** Yapısal olarak farklı fakat belirtilen cihaz çözünürlüğünde istatistiksel olarak ayırt edilemeyen çiftler; her çift için gerekli çözünürlük veya ek ölçüm önerisi. Jüri CIF dosyalarından sonucu yeniden üretebilir.
+
+**Yenilik:** Homometri ve toz kırınımının tekillik sorunları biliniyor. Önerilen katkı, gerçek kristaller üzerinde ölçüm koşullarına bağlı, yeniden üretilebilir bir ayırt edilebilirlik atlası.
+
+**Doğrulama:** Eşdeğer hücreleri ve yinelenen yapıları ele; ikinci simülatör kullan; farklı gürültü ve genişleme modellerinde sonucu koru. Simülasyon benzerliği deneysel özdeşlik değildir.
+
+**Risk:** Bulunan çiftler yalnızca kötü cihaz koşullarında benzer çıkar veya bilinen örneklerden oluşur.
+
+**Birincilik:** %6.
+
+### 2. Hidrojenin Kinetik İkizleri: Aynı deneyleri açıklayan iki mekanizma, farklı gelecek
+
+**Adımlar:** ① Küçük bir hidrojen yanma mekanizması ve açık deney serisi seç, 4 saat. ② Duyarlı birkaç reaksiyon hızını belirle, 6 saat. ③ Deneyleri aynı hata sınırında açıklayan iki parametre kümesini ara, 10 saat. ④ Ayrışmayı bağımsız koşullarda sınayıp en ayırt edici deneyi seç, 8 saat. ⑤ Teslim, 6 saat.
+
+**Veri ve araçlar:** Cantera’nın `h2o2.yaml` mekanizması, ReSpecTh açık yanma verileri, SciPy.
+
+**Sert sonuç:** Aynı tutuşma gecikmelerini açıklayan, fakat başka bir sıcaklık veya basınçta belirgin biçimde ayrışan iki açık mekanizma dosyası. Yanlarında bu belirsizliği en ucuza azaltacak ölçüm koşulu.
+
+**Yenilik:** Kinetik belirsizlik, özdeşlenebilirlik ve deney tasarımı yerleşik alanlar. Katkı, belirli gerçek veri üzerinde açık bir karşıörnek ve bağımsız verilerle sınanmış ayrıştırma önerisi.
+
+**Doğrulama:** Ters hızları termodinamik tutarlılıkla hesapla; parametreleri gerekçeli sınırlarla kısıtla; kullanılmayan deneyleri sakla; çözücü toleranslarını daralt.
+
+**Risk:** Büyük ayrışma yalnızca deneylerin çok dışındaki koşullarda veya fiziksel açıdan savunulamaz hızlarla bulunur.
+
+**Birincilik:** %8.
+
+### 3. Kaç Mesaj Yeter? Moleküler grafik modellerine hesaplanabilir hata tabanı
+
+**Adımlar:** ① QM9’u ve hedef özellikleri hazırla, 4 saat. ② Farklı mesajlaşma derinliklerinde ayırt edilemeyen grafik sınıflarını çıkar, 6 saat. ③ Her sınıfın hedef farklarından zorunlu hata tabanını hesapla, 10 saat. ④ Grafik eşitliğini ve karşıörnekleri bağımsız doğrula, 8 saat. ⑤ Teslim, 6 saat.
+
+**Veri ve araçlar:** QM9; gerekirse Alchemy; RDKit, NetworkX, PyTorch Geometric.
+
+**Sert sonuç:** Belirtilen atom ve bağ özelliklerini kullanan, belirli derinlikteki standart mesajlaşmalı modeller için veri üzerindeki minimum mümkün hata. Yanında özelliği farklı ama modelin ayıramayacağı gerçek molekül çiftleri.
+
+**Yenilik:** Weisfeiler–Lehman sınırları ve GNN ifade gücü zaten biliniyor. Katkı, kimyasal hedeflere göre sayısal hata sertifikası ve derinliğin sağladığı kazanımın açık haritası.
+
+**Doğrulama:** Hash çakışmasını gerçek yapısal eşdeğerlikten ayır; toplam yüklere, stereokimyaya ve hidrojen gösterimine dikkat et. İddia yalnızca tanımlanan model sınıfına uygulanır.
+
+**Risk:** İki veya üç katmandan sonra anlamlı çakışma kalmaz. Bu da yararlı bir sınır sonucu olabilir; tek başına güçlü yayın garantisi değildir.
+
+**Birincilik:** %4.
+
+### 4. Aynı Malzeme, Farklı Sıra: Cam kaplamalarında sağlam optimumu bul
+
+**Adımlar:** ① Optik sabitleri ve tasarım uzayını sabitle, 4 saat. ② Altı SiO₂ ve altı TiO₂ tabakasının 924 sıralamasını hesapla, 6 saat. ③ Görünür geçirgenlik kısıtı altında yakın kızılötesi yansımayı karşılaştır, 10 saat. ④ Kalınlık hatası ve geliş açısıyla optimumun dayanıklılığını sına, 8 saat. ⑤ Teslim, 6 saat.
+
+**Veri ve araçlar:** refractiveindex.info, açık ASTM G173 güneş spektrumu, `tmm`, NumPy.
+
+**Sert sonuç:** Sabit malzeme miktarı, tabaka kalınlıkları ve altlık için bütün sıralamaların performans haritası. İdeal koşullarda kazananın üretim toleranslarında kaybedip kaybetmediği ve en sağlam alternatif.
+
+**Yenilik:** Çok katmanlı filtre tasarımı ve sağlam optimizasyon yeni değil. Değer, küçük fakat tamamen taranmış bir uzayda açık optimum sertifikası ve varsa şaşırtıcı sıralama değişimi.
+
+**Doğrulama:** Bağımsız transfer matrisi hesabı, enerji korunumu, farklı optik sabit kaynakları, açı ve polarizasyon taraması.
+
+**Risk:** Kazanç küçük kalır veya sonuç standart Bragg tasarımının yeniden bulunması olur. En güvenilir teslimlerden biri, yenilik bakımından en zayıflardan biri.
+
+**Birincilik:** %2.
+
+### 5. Tek Konformer Yanılsaması: Molekül içi hidrojen bağı gerçekten baskın mı?
+
+**Adımlar:** ① GEOM’dan yönetilebilir bir molekül altkümesi seç, 4 saat. ② Konformerlerde molekül içi hidrojen bağlarını çıkar, 6 saat. ③ Minimum enerjili yapı ile ağırlıklı topluluğun kararlarını karşılaştır, 10 saat. ④ Enerji ve geometrik eşik belirsizliğini uygula, 8 saat. ⑤ Teslim, 6 saat.
+
+**Veri ve araçlar:** Açık GEOM konformerleri ve xTB enerjileri, RDKit, NumPy.
+
+**Sert sonuç:** En düşük enerjili yapısı hidrojen bağı gösterdiği halde örneklenmiş topluluğunda bu durumun azınlıkta kaldığı moleküller ve tersi. Her örnek için belirsizlik altında korunabilen popülasyon aralığı.
+
+**Yenilik:** Konformer toplulukları ve molekül içi hidrojen bağları yoğun çalışılmış konular. Katkı, tek yapıdan verilen kararların hangi moleküllerde sağlam biçimde tersine döndüğünü gösteren açık bir test kümesi.
+
+**Doğrulama:** Yinelenen konformerleri ele; enerji türlerini karıştırma; farklı geometrik eşikler kullan; seçili örnekleri yeniden optimize et. Sonuç, çözelti popülasyonu değil, kullanılan enerji modeli ve örneklenmiş topluluk içindir.
+
+**Risk:** Enerji belirsizliği karşıörnekleri siler veya konformer örneklemesi yetersiz kalır.
+
+**Birincilik:** %3.
+
+### 6. Aynı Kristal, Farklı Cevap: Atomistik yazılımlara matematiksel eşdeğerlik testi
+
+**Adımlar:** ① Küçük, çeşitli bir kristal kümesi ve iki potansiyel kur, 4 saat. ② Eşdeğer hücre, atom sırası, öteleme ve dönme dönüşümleri üret, 6 saat. ③ Enerji, kuvvet ve gerilme uyuşmazlıklarını tara, 10 saat. ④ En küçük karşıörnekleri çıkar ve sayısal yakınsamayı doğrula, 8 saat. ⑤ Teslim, 6 saat.
+
+**Veri ve araçlar:** COD veya JARVIS yapıları; ASE, pymatgen, MACE, CHGNet. Modeller sırayla çalıştırılır.
+
+**Sert sonuç:** Fiziksel olarak aynı sistemi farklı gösterdiğinde sonuç değiştiren doğrulanmış yazılım veya model durumları; her biri için kısa yeniden üretim betiği. Sorun bulunmazsa tolerans ve kapsamı açık bir uyumluluk tablosu.
+
+**Yenilik:** Metamorfik test ve fiziksel değişmezlik testleri biliniyor. Katkı ancak yaygın bir araçta yeni, etkili ve açıklanabilir bir karşıörnek bulunursa güçlü olur.
+
+**Doğrulama:** Atom eşleştirmesi, kuvvet ve gerilme dönüşümleri, süperhücre normalizasyonu, hassasiyet ve kesim yarıçapı kontrolleri. Beklenen yuvarlama hatası bulgu sayılmaz.
+
+**Risk:** Araçlar düzgün çalışır; geriye yararlı ama keşif etkisi düşük bir test paketi kalır.
+
+**Birincilik:** %5.
+
+**Uzman jüriye “vay” dedirtecek tek seçimim kinetik ikizler.** Aynı gerçek deneyleri açıklayan iki makul mekanizmanın başka bir koşulda ayrışması, ardından saklanan deneyin bunları ayırması güçlü bir bilimsel hikâye olur: yalnızca belirsizlik göstermiyorsun, hangi ölçümün bilgi sağlayacağını buluyorsun. Küçük hidrojen mekanizması, birkaç serbest parametre ve tek deney ailesiyle solo 34 saatte uygulanabilir. Ancak büyük ayrışma garanti değil; ilk 8 saatte makul sınırlar içinde umut verici bir çift çıkmazsa iddiayı daraltmak gerekir.
+tokens used
+33.603
+Aşağıdaki yenilik iddiaları **literatür taramasıyla doğrulanmış değil**. Yüzdeler de rakipleri bilmeden verdiğim öznel birincilik tahminleri. Her plan, teslim hazırlığı dahil 34 saat; hesaplanan bulguyu deneysel keşif olarak sunmamak temel sınır.
+
+### 1. XRD İkizleri: Farklı kristallerin ayırt edilemediği koşulları kanıtla
+
+**Adımlar:** ① Açık yapılardan aynı bileşimli polimorfları seç, 4 saat. ② Toz desenlerini üret; genişleme, tercihli yönelim ve gürültüyü modelle, 6 saat. ③ Benzer çiftleri bul ve hangi ölçüm koşullarında ayrılabildiklerini hesapla, 10 saat. ④ İkinci hesaplayıcıyla doğrula, 8 saat. ⑤ Demo ve teslim, 6 saat.
+
+**Veri ve araçlar:** COD, pymatgen, Gemmi, SciPy. Başlangıçta birkaç bin inorganik yapı yeterli.
+
+**Sert sonuç:** Yapısal olarak farklı fakat belirtilen cihaz çözünürlüğünde istatistiksel olarak ayırt edilemeyen çiftler; her çift için gerekli çözünürlük veya ek ölçüm önerisi. Jüri CIF dosyalarından sonucu yeniden üretebilir.
+
+**Yenilik:** Homometri ve toz kırınımının tekillik sorunları biliniyor. Önerilen katkı, gerçek kristaller üzerinde ölçüm koşullarına bağlı, yeniden üretilebilir bir ayırt edilebilirlik atlası.
+
+**Doğrulama:** Eşdeğer hücreleri ve yinelenen yapıları ele; ikinci simülatör kullan; farklı gürültü ve genişleme modellerinde sonucu koru. Simülasyon benzerliği deneysel özdeşlik değildir.
+
+**Risk:** Bulunan çiftler yalnızca kötü cihaz koşullarında benzer çıkar veya bilinen örneklerden oluşur.
+
+**Birincilik:** %6.
+
+### 2. Hidrojenin Kinetik İkizleri: Aynı deneyleri açıklayan iki mekanizma, farklı gelecek
+
+**Adımlar:** ① Küçük bir hidrojen yanma mekanizması ve açık deney serisi seç, 4 saat. ② Duyarlı birkaç reaksiyon hızını belirle, 6 saat. ③ Deneyleri aynı hata sınırında açıklayan iki parametre kümesini ara, 10 saat. ④ Ayrışmayı bağımsız koşullarda sınayıp en ayırt edici deneyi seç, 8 saat. ⑤ Teslim, 6 saat.
+
+**Veri ve araçlar:** Cantera’nın `h2o2.yaml` mekanizması, ReSpecTh açık yanma verileri, SciPy.
+
+**Sert sonuç:** Aynı tutuşma gecikmelerini açıklayan, fakat başka bir sıcaklık veya basınçta belirgin biçimde ayrışan iki açık mekanizma dosyası. Yanlarında bu belirsizliği en ucuza azaltacak ölçüm koşulu.
+
+**Yenilik:** Kinetik belirsizlik, özdeşlenebilirlik ve deney tasarımı yerleşik alanlar. Katkı, belirli gerçek veri üzerinde açık bir karşıörnek ve bağımsız verilerle sınanmış ayrıştırma önerisi.
+
+**Doğrulama:** Ters hızları termodinamik tutarlılıkla hesapla; parametreleri gerekçeli sınırlarla kısıtla; kullanılmayan deneyleri sakla; çözücü toleranslarını daralt.
+
+**Risk:** Büyük ayrışma yalnızca deneylerin çok dışındaki koşullarda veya fiziksel açıdan savunulamaz hızlarla bulunur.
+
+**Birincilik:** %8.
+
+### 3. Kaç Mesaj Yeter? Moleküler grafik modellerine hesaplanabilir hata tabanı
+
+**Adımlar:** ① QM9’u ve hedef özellikleri hazırla, 4 saat. ② Farklı mesajlaşma derinliklerinde ayırt edilemeyen grafik sınıflarını çıkar, 6 saat. ③ Her sınıfın hedef farklarından zorunlu hata tabanını hesapla, 10 saat. ④ Grafik eşitliğini ve karşıörnekleri bağımsız doğrula, 8 saat. ⑤ Teslim, 6 saat.
+
+**Veri ve araçlar:** QM9; gerekirse Alchemy; RDKit, NetworkX, PyTorch Geometric.
+
+**Sert sonuç:** Belirtilen atom ve bağ özelliklerini kullanan, belirli derinlikteki standart mesajlaşmalı modeller için veri üzerindeki minimum mümkün hata. Yanında özelliği farklı ama modelin ayıramayacağı gerçek molekül çiftleri.
+
+**Yenilik:** Weisfeiler–Lehman sınırları ve GNN ifade gücü zaten biliniyor. Katkı, kimyasal hedeflere göre sayısal hata sertifikası ve derinliğin sağladığı kazanımın açık haritası.
+
+**Doğrulama:** Hash çakışmasını gerçek yapısal eşdeğerlikten ayır; toplam yüklere, stereokimyaya ve hidrojen gösterimine dikkat et. İddia yalnızca tanımlanan model sınıfına uygulanır.
+
+**Risk:** İki veya üç katmandan sonra anlamlı çakışma kalmaz. Bu da yararlı bir sınır sonucu olabilir; tek başına güçlü yayın garantisi değildir.
+
+**Birincilik:** %4.
+
+### 4. Aynı Malzeme, Farklı Sıra: Cam kaplamalarında sağlam optimumu bul
+
+**Adımlar:** ① Optik sabitleri ve tasarım uzayını sabitle, 4 saat. ② Altı SiO₂ ve altı TiO₂ tabakasının 924 sıralamasını hesapla, 6 saat. ③ Görünür geçirgenlik kısıtı altında yakın kızılötesi yansımayı karşılaştır, 10 saat. ④ Kalınlık hatası ve geliş açısıyla optimumun dayanıklılığını sına, 8 saat. ⑤ Teslim, 6 saat.
+
+**Veri ve araçlar:** refractiveindex.info, açık ASTM G173 güneş spektrumu, `tmm`, NumPy.
+
+**Sert sonuç:** Sabit malzeme miktarı, tabaka kalınlıkları ve altlık için bütün sıralamaların performans haritası. İdeal koşullarda kazananın üretim toleranslarında kaybedip kaybetmediği ve en sağlam alternatif.
+
+**Yenilik:** Çok katmanlı filtre tasarımı ve sağlam optimizasyon yeni değil. Değer, küçük fakat tamamen taranmış bir uzayda açık optimum sertifikası ve varsa şaşırtıcı sıralama değişimi.
+
+**Doğrulama:** Bağımsız transfer matrisi hesabı, enerji korunumu, farklı optik sabit kaynakları, açı ve polarizasyon taraması.
+
+**Risk:** Kazanç küçük kalır veya sonuç standart Bragg tasarımının yeniden bulunması olur. En güvenilir teslimlerden biri, yenilik bakımından en zayıflardan biri.
+
+**Birincilik:** %2.
+
+### 5. Tek Konformer Yanılsaması: Molekül içi hidrojen bağı gerçekten baskın mı?
+
+**Adımlar:** ① GEOM’dan yönetilebilir bir molekül altkümesi seç, 4 saat. ② Konformerlerde molekül içi hidrojen bağlarını çıkar, 6 saat. ③ Minimum enerjili yapı ile ağırlıklı topluluğun kararlarını karşılaştır, 10 saat. ④ Enerji ve geometrik eşik belirsizliğini uygula, 8 saat. ⑤ Teslim, 6 saat.
+
+**Veri ve araçlar:** Açık GEOM konformerleri ve xTB enerjileri, RDKit, NumPy.
+
+**Sert sonuç:** En düşük enerjili yapısı hidrojen bağı gösterdiği halde örneklenmiş topluluğunda bu durumun azınlıkta kaldığı moleküller ve tersi. Her örnek için belirsizlik altında korunabilen popülasyon aralığı.
+
+**Yenilik:** Konformer toplulukları ve molekül içi hidrojen bağları yoğun çalışılmış konular. Katkı, tek yapıdan verilen kararların hangi moleküllerde sağlam biçimde tersine döndüğünü gösteren açık bir test kümesi.
+
+**Doğrulama:** Yinelenen konformerleri ele; enerji türlerini karıştırma; farklı geometrik eşikler kullan; seçili örnekleri yeniden optimize et. Sonuç, çözelti popülasyonu değil, kullanılan enerji modeli ve örneklenmiş topluluk içindir.
+
+**Risk:** Enerji belirsizliği karşıörnekleri siler veya konformer örneklemesi yetersiz kalır.
+
+**Birincilik:** %3.
+
+### 6. Aynı Kristal, Farklı Cevap: Atomistik yazılımlara matematiksel eşdeğerlik testi
+
+**Adımlar:** ① Küçük, çeşitli bir kristal kümesi ve iki potansiyel kur, 4 saat. ② Eşdeğer hücre, atom sırası, öteleme ve dönme dönüşümleri üret, 6 saat. ③ Enerji, kuvvet ve gerilme uyuşmazlıklarını tara, 10 saat. ④ En küçük karşıörnekleri çıkar ve sayısal yakınsamayı doğrula, 8 saat. ⑤ Teslim, 6 saat.
+
+**Veri ve araçlar:** COD veya JARVIS yapıları; ASE, pymatgen, MACE, CHGNet. Modeller sırayla çalıştırılır.
+
+**Sert sonuç:** Fiziksel olarak aynı sistemi farklı gösterdiğinde sonuç değiştiren doğrulanmış yazılım veya model durumları; her biri için kısa yeniden üretim betiği. Sorun bulunmazsa tolerans ve kapsamı açık bir uyumluluk tablosu.
+
+**Yenilik:** Metamorfik test ve fiziksel değişmezlik testleri biliniyor. Katkı ancak yaygın bir araçta yeni, etkili ve açıklanabilir bir karşıörnek bulunursa güçlü olur.
+
+**Doğrulama:** Atom eşleştirmesi, kuvvet ve gerilme dönüşümleri, süperhücre normalizasyonu, hassasiyet ve kesim yarıçapı kontrolleri. Beklenen yuvarlama hatası bulgu sayılmaz.
+
+**Risk:** Araçlar düzgün çalışır; geriye yararlı ama keşif etkisi düşük bir test paketi kalır.
+
+**Birincilik:** %5.
+
+**Uzman jüriye “vay” dedirtecek tek seçimim kinetik ikizler.** Aynı gerçek deneyleri açıklayan iki makul mekanizmanın başka bir koşulda ayrışması, ardından saklanan deneyin bunları ayırması güçlü bir bilimsel hikâye olur: yalnızca belirsizlik göstermiyorsun, hangi ölçümün bilgi sağlayacağını buluyorsun. Küçük hidrojen mekanizması, birkaç serbest parametre ve tek deney ailesiyle solo 34 saatte uygulanabilir. Ancak büyük ayrışma garanti değil; ilk 8 saatte makul sınırlar içinde umut verici bir çift çıkmazsa iddiayı daraltmak gerekir.
