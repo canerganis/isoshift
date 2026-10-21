@@ -1,6 +1,8 @@
 # IsoShift
 
-IsoShift computes how swapping hydrogen for deuterium changes the vibrational free energy of a crystal, and uses that to look for hydrogen-containing polymorph pairs whose relative stability could shift on deuteration.
+IsoShift computes how swapping hydrogen for deuterium changes the vibrational free energy of a crystal, and uses that to ask which polymorph deuteration favours.
+
+**Main finding (F01).** Deuteration favours the polymorph with the shorter O-H bonds once hydrogen bonds are moderate to strong. In three universal ML potentials over 197 hydrogen-compound polymorph pairs, an O-H stretch term is about half cancelled by bend and libration, and the stretch ingredient reproduces the measured O-H frequency vs O...O correlation. One concrete prediction: deuteration raises the diaspore to delta-AlOOH transition pressure by a few tenths of a GPa.
 
 ## Why
 
@@ -24,7 +26,7 @@ Sign convention: ddF_iso = [F_D(beta) - F_D(alpha)] - [F_H(beta) - F_H(alpha)]. 
 
 Each step of the loop is logged so it can be checked.
 
-1. A Valency Bond literature agent extracts the experimental validation numbers (value, unit, temperature, pressure, DOI). Bond was queried 34 times. Every query, its purpose and what was kept are in `logs/bond_queries.jsonl`.
+1. A Valency Bond literature agent extracts the experimental validation numbers (value, unit, temperature, pressure, DOI). Bond queries are counted in the log. Every query, its purpose and what was kept are in `logs/bond_queries.jsonl`.
 2. A second model cross-checks every extracted row against its source (`data/isoshift/validation.csv`).
 3. Every formula in the code went through `mathcheck`: two independent derivations by two models, a numerical comparison, then reconciliation (`docs/math/M01-isotope-formulas.md`).
 4. The MLIP ensemble computes the free energies (`src/isoshift_event/`).
@@ -46,17 +48,35 @@ Volume isotope effect VIE = 100 (V_H / V_D - 1), quasi-harmonic, four models and
 
 Implementation checks (equal masses give zero shift, H/D swap flips the sign, classical-limit decay, LiH Gamma TO frequency) are in `results/validation/tier_a.csv`. SevenNet's LiH TO(H) is 15.3% off experiment, so it is excluded from quantitative claims and kept in sign votes and model spread.
 
-Main figure:
+### F01: an isotope rule for polymorph stability (`docs/findings/F01-xh-length-rule.md`)
 
-<!-- RESULTS: filled after analysis -->
+![F01](figures/fig4_xh_rule.png)
 
-Candidate table:
+* The isotope double difference per H is linear in the change of mean X-H bond length between the polymorphs: slope 0.12 (MACE), 0.12 (ORB), 0.15 (MatterSim) meV/H per mA; r 0.78 to 0.89.
+* Mechanism, from a mode-resolved mass integral: the X-H stretch term (+0.24 to +0.26 meV/H per mA, same in all models) is about half cancelled by bending and libration (-0.11 to -0.13).
+* Domain: when at least one polymorph has a moderate or strong H bond (mean model O-H at least 0.99 A, O...O below about 2.92 A), the sign of the bond-length change predicts which polymorph deuteration favours in 128 of 134 model evaluations (baseline 84/134; leave-one-formula-out 95.5% vs 62.7%). With weak H bonds on both sides the rule has no skill (1 of 16). The threshold was chosen after looking at the data; the full scan is in `results/F01_cv.json`.
 
-<!-- RESULTS: filled after analysis -->
+### F03: the stretch ingredient matches measured spectra (`docs/findings/F03-stretch-vs-experiment.md`)
+
+![F03](figures/fig5_stretch_check.png)
+
+Model O-H stretch frequencies follow the empirical correlation of Libowitzky (1999) from measured mineral spectra: slope ratio 0.91 to 0.95 for O...O 2.50 to 2.80 A, mean offset -8 to -56 cm-1 over all donors.
+
+### F02: prediction-first volume isotope test (`docs/findings/F02-blind-test.md`)
+
+Predictions committed before the measured values were read (`docs/predictions/P01_volume_isotope_blind.csv`, commit 0fffc54). Mixed: alpha-AlH3 right sign but 1.3 to 1.5x too large; GaOOH and beta-CrOOH wrong sign against low-quality references; brucite and LiH right. The misses are in the strong-H-bond regime, where harmonic quasi-harmonic physics omits Ubbelohde-type proton anharmonicity. F02 does not test F01.
+
+### Candidate card: diaspore to delta-AlOOH (`docs/findings/CARD-AlOOH.md`)
+
+Deuteration destabilises delta-AlOOH relative to diaspore by +0.5 to +0.8 meV/atom (three models) and raises the transition pressure by about +0.3 to +0.4 GPa at the 0 GPa geometry. A predeclared spectroscopy test of the bend/libration term (`docs/predictions/P02_differential_spectroscopy.md`) is in progress.
+
+### Benchmark
+
+MACE vs DFT phonons (PBEsol, 40 MDR phonondb entries): isotope ZPE difference MAE 1.5 meV, F(300 K) difference MAE 1.1 meV, X-H stretch MAE 45 cm-1 (`results/benchmark/summary.csv`).
 
 ## Novelty
 
-Bourgeois et al. (2018, J. Phys.: Condens. Matter, doi 10.1088/1361-648X/aad259) modelled H, D and T effects on gas-solid hydride formation with DFT. That effect is dominated by the zero-point energy of the H2 or D2 gas. IsoShift maps solid-solid polymorph free-energy differences, where the gas terms cancel, across hydroxides, borohydrides, alanates and hydrides with an MLIP ensemble, validated against measured volume and lattice isotope effects. The claim is this demonstrated extension, not exhaustive novelty.
+The stretch-versus-bend competition behind F01 was derived for hydrogen-bond isotope fractionation in molecules and proteins by McKenzie et al. (J. Chem. Phys. 140, 174508 (2014); 143, 044309 (2015)). F01 is its solid-state, polymorph-stability counterpart, measured over hundreds of crystal pairs with three independent ML potentials. Bourgeois et al. (2018, J. Phys.: Condens. Matter, doi 10.1088/1361-648X/aad259) modelled H, D and T effects on gas-solid hydride formation with DFT. That effect is dominated by the zero-point energy of the H2 or D2 gas. IsoShift maps solid-solid polymorph free-energy differences, where the gas terms cancel, across hydroxides, borohydrides, alanates and hydrides with an MLIP ensemble, validated against measured volume and lattice isotope effects. The claim is this demonstrated extension, not exhaustive novelty.
 
 ## Limitations
 
