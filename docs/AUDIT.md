@@ -18,7 +18,7 @@ Scope: gaps, inconsistencies and loose ends a judge or a fresh reader would hit.
 | c70d8b5 | `validate.py`: `python -m src.isoshift_event.validate --help`, which README documents, raised `KeyError`; it now prints the module usage. |
 | 0722a64 | Status line at the top of F02, F04, F04 source audit, F05, F06. F02: ice overestimate "4 to 10x" corrected to "4 to 11x" (current CSV: -0.29 to -0.80% against -0.075%, ratio 3.8 to 10.7; decision 01 also says 4 to 11). F05: discloses that the P04 comparison rule was first committed together with the result (90ad4cd), so its precedence rests on the ledger, not on a separate commit. |
 | 3427eb4 | Tracked the two logs the docs cite (`results/replicate_f01.log` for F06, `results/validation_run.log` for decision 01). Ignored regenerable outputs nothing reads (`results/screen_structures_extended.csv` 13 MB, `results/refined_structures.csv`) and local run logs. |
-| this commit | `docs/INDEX.md` (reading order, findings with status, predictions with commit hash and time, decisions, math notes) and this file. |
+| 345d80c | `docs/INDEX.md` (reading order, findings with status, predictions with commit hash and time, decisions, math notes) and this file. |
 
 Test result after the fixes: 161 passed, 1 deselected with `-m "not live"`. The one live test (`test_openalex_live`) fails with HTTP 429 from OpenAlex when run; that is the network, not the code.
 
