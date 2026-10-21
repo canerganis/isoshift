@@ -74,3 +74,4 @@ Conductor: Opus (orchestrating session). Started Wed 21 Oct 14:20 TRT, about 2.5
 - Wording changes go back to the council chair only if the O-H strong-regime sign accuracy falls below 85%, or is less than 20 points above its baseline, or any unique-pair model majority becomes wrong.
 - The AlOOH temperature line enters the card only if it is finished by 11:30 and its 300 K value reproduces the card within 0.05 GPa.
 - Goethite card stays in the repo, not in the video. Cut: overnight literature sweeps, NaBH4, 56-atom gibbsite, McKenzie lookup, 4-panel composite.
+- Can, 21 Oct ~23:00: clock times are flexible; what matters is the right order of work and finishing everything before the deadline. Ice sprint (F07) runs until the 11:00 freeze, protocol order unchanged.
