@@ -17,3 +17,5 @@ __pycache__/
 .cache/
 logs/*.jsonl
 .venv-sevenn/
+
+!logs/bond_queries.jsonl
