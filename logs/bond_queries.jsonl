@@ -1,1 +1,34 @@
 {"ts": "2026-10-21T14:20:24+0300", "agent": "claude-opus", "tool": "semantic_search_papers", "query": "deuteration shifts phase transition temperature of inorganic hydroxide or hydride polymorphs, isotope effect on polymorph stability computed with phonons", "purpose": "WF0 connector check + validation/negative-control discovery", "n_results": 15, "kept": ["10.1103/PhysRevLett.131.126101 NaOH/NaOD isotope-induced transition (quantum paraelectric, negative control)", "10.1021/acs.jpcc.1c06953 KOH/KOD order-disorder (negative control)", "10.1088/1361-648X/aad259 Bourgeois 2018 (prior art)", "10.1103/PhysRevLett.108.193003 Pamuk ice volume isotope effect", "10.1103/PhysRevLett.115.173005 Umemoto ice volume isotope effect", "10.1039/c8cp02490a Mg(OH)2 anharmonic stabilization (brucite imaginary modes)", "10.1088/0953-8984/24/43/435402 LiH/LiD isotope effects", "10.1039/d5cp02885j K3H(SO4)2 H/D Tc shift"]}
+{"sweep":"validation-lit","query":"brucite Mg(OH)2 Mg(OD)2 isotope effect lattice parameters neutron diffraction","n_results":20}
+{"sweep":"validation-lit","query":"brucite deuterated Mg(OD)2 high pressure compression hydrogen bond","n_results":10}
+{"sweep":"validation-lit","query":"LiH LiD lattice constant isotope effect neutron diffraction","n_results":20}
+{"sweep":"validation-lit","query":"LiH LiD phonon TO frequency zero-point energy isotope","n_results":20}
+{"sweep":"validation-lit","query":"NaOH NaOD isotope-induced phase transition quantum paraelectric hydrogen bonding","n_results":10}
+{"sweep":"validation-lit","query":"sodium hydroxide NaOH NaOD phase transition","n_results":10}
+{"sweep":"validation-lit","query":"NH4Cl ND4Cl order-disorder phase transition isotope effect lattice parameter neutron diffraction","n_results":20}
+{"sweep":"validation-lit","query":"ammonium chloride deuterated transition temperature isotope effect","n_results":10}
+{"sweep":"validation-lit","query":"MgH2 MgD2 neutron diffraction lattice parameters rutile to gamma phase transition isotope effect","n_results":10}
+{"sweep":"validation-lit","query":"MgD2 high pressure","n_results":10}
+{"sweep":"validation-lit","query":"MgH2 Raman isotope deuteride","n_results":10}
+{"sweep":"validation-lit","query":"KDP KH2PO4 deuteration isotope effect ferroelectric transition temperature Tc DKDP neutron","n_results":10}
+{"sweep":"validation-lit","query":"KH2PO4 deuterated Tc isotope effect","n_results":10}
+{"sweep":"validation-lit","query":"isotope effect on phase transition temperature hydride deuteride LiBH4 LiBD4 orthorhombic hexagonal","n_results":20}
+{"sweep":"validation-lit","query":"hydroxide deuteroxide high-pressure phase transition H/D isotope shift neutron diffraction","n_results":20}
+{"sweep":"validation-lit","query":"NaBH4 NaBD4 tetragonal to cubic order-disorder transition temperature isotope lattice parameters neutron","n_results":20}
+{"sweep":"validation-lit","query":"Mg(OH)2 Mg(OD)2 brucite or Ca(OH)2 Raman OH OD stretch frequency lattice parameters isotope","n_results":20}
+{"sweep":"validation-lit","query":"δ-AlOOH AlOOD isotope effect transition pressure neutron","n_results":10}
+{"sweep":"validation-lit","query":"KOH KOD order-disorder phase transition temperature neutron diffraction","n_results":20}
+{"sweep":"validation-lit","query":"potassium hydroxide deuteroxide hydrogen ordering phase transition","n_results":10}
+{"sweep":"validation-lit","query":"anomalous volume isotope effect in ice Ih, H2O versus D2O lattice parameters neutron diffraction","n_results":10}
+{"sweep":"validation-lit","query":"ice Ih D2O H2O molar volume isotope effect","n_results":10}
+{"sweep":"validation-lit","query":"ice XI ordering transition temperature KOH-doped H2O versus D2O ice Ih isotope shift","n_results":10}
+{"sweep":"validation-lit","query":"AlOOH diaspore boehmite deuterated AlOOD lattice parameters neutron diffraction high pressure","n_results":20}
+{"sweep":"validation-lit","query":"delta-AlOOH hydrogen bond symmetrization pressure deuterated","n_results":20}
+{"sweep":"validation-lit","query":"portlandite Ca(OH)2 Ca(OD)2 neutron diffraction lattice parameters deuterated isotope effect","n_results":10}
+{"sweep":"validation-lit","query":"portlandite Ca(OD)2 neutron","n_results":10}
+{"ts": "2026-10-21T14:43:45+0300", "agent": "sonnet-validation-followup", "tool": "semantic_search_papers", "query": "brucite Mg(OH)2 Mg(OD)2 neutron diffraction lattice parameters isotope effect", "purpose": "brucite H/D lattice", "n_results": 10, "kept": ["10.1021/acs.inorgchem.4c02676", "10.1107/S2052520618002159 Fortes ice (side hit)"]}
+{"ts": "2026-10-21T14:43:45+0300", "agent": "sonnet-validation-followup", "tool": "semantic_search_papers", "query": "LiH LiD lattice constant isotope effect X-ray low temperature", "purpose": "LiH/LiD primary lattice", "n_results": 10, "kept": ["10.1088/0953-8984/24/43/435402", "10.1103/PhysRevB.51.8874"]}
+{"ts": "2026-10-21T14:43:45+0300", "agent": "sonnet-validation-followup", "tool": "semantic_search_papers", "query": "ice Ih D2O H2O lattice parameters thermal expansion neutron diffraction", "purpose": "ice Ih paired lattice", "n_results": 10, "kept": ["10.1107/S2052520618002159", "10.1107/S0108768111046908", "10.1103/PhysRevLett.121.185505"]}
+{"ts": "2026-10-21T14:43:45+0300", "agent": "sonnet-validation-followup", "tool": "semantic_search_papers", "query": "MgH2 MgD2 rutile lattice parameters neutron diffraction deuteride hydride isotope", "purpose": "MgH2/MgD2 lattice", "n_results": 10, "kept": ["10.1088/0953-8984/23/30/305403 Moser (abstract only, no lattice numbers)"]}
+{"ts": "2026-10-21T14:43:45+0300", "agent": "sonnet-validation-followup", "tool": "search_by_abstract", "query": "Ca(OH)2 Ca(OD)2 portlandite isotope effect lattice", "purpose": "portlandite paired lattice", "n_results": 10, "kept": []}
+{"ts": "2026-10-21T14:43:45+0300", "agent": "sonnet-validation-followup", "tool": "search_by_abstract", "query": "LiH LiD Raman infrared TO phonon frequency crystals", "purpose": "LiH TO frequency primary", "n_results": 10, "kept": ["10.1103/PhysRevB.51.8874"]}
