@@ -14,7 +14,7 @@ Submit by Fri 23 Oct 00:30 TRT (hard stop 02:00). Every work decision is checked
 | S4 | Blind test against measured H/D data, predictions committed first | F02: hydrides and brucite right sign, strong-H-bond oxyhydroxides wrong (low-quality data); F03: stretch-geometry relation matches measured spectra (Libowitzky) in all 3 MLIPs | done, mixed; does not test F01 (decision 04) |
 | S5 | Mechanism explained and tied to prior theory | stretch +0.25 vs bend -0.12 meV/H per mA; McKenzie 2014/2015 | done |
 | S5b | Stretch ingredient anchored in experiment | F03: model nu(OH) vs O...O slope within 10% of Libowitzky (f 0.91/0.92/0.95) | done |
-| S5c | Compensation (bend/libration) term tested against experiment | F04 predeclared differential spectroscopy, AlOOH and FeOOH pairs | in progress |
+| S5c | Compensation (bend/libration) term tested against experiment | F04: goethite -> epsilon-FeOOH SUPPORT (stretch -261 vs -273 predicted, bend +290 vs +195), diaspore -> delta-AlOOH INCONCLUSIVE (no IR stretch in delta-AlOOH) | done, partial support |
 | S6 | Survives a multi-model red team (final-claims board) | docs/decisions/05-final-claims.md | todo |
 | S7 | One concrete experimental prediction on a real material | best real-phase pair (candidate card, P24) or NaBH4 pressure shift | todo |
 

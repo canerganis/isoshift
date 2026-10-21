@@ -68,7 +68,7 @@ Predictions committed before the measured values were read (`docs/predictions/P0
 
 ### Candidate card: diaspore to delta-AlOOH (`docs/findings/CARD-AlOOH.md`)
 
-Deuteration destabilises delta-AlOOH relative to diaspore by +0.5 to +0.8 meV/atom (three models) and raises the transition pressure by about +0.3 to +0.4 GPa at the 0 GPa geometry. A predeclared spectroscopy test of the bend/libration term (`docs/predictions/P02_differential_spectroscopy.md`) is in progress.
+Deuteration destabilises delta-AlOOH relative to diaspore by +0.5 to +0.8 meV/atom (three models) and raises the transition pressure by about +0.3 to +0.4 GPa at the 0 GPa geometry. A predeclared spectroscopy test of the bend/libration term (`docs/findings/F04-differential-spectroscopy.md`) gave partial support: for goethite to epsilon-FeOOH the measured O-H stretch drops by 261 cm-1 (predicted 273) while the O-H bend rises by 290 cm-1 (predicted 195); the AlOOH pair was inconclusive under the predeclared rules.
 
 ### Benchmark
 
