@@ -45,7 +45,7 @@ Conductor: Opus (orchestrating session). Started Wed 21 Oct 14:20 TRT, about 2.5
 | 5.2 | README, PROVENANCE, LICENSE, CITATION, DATA_SOURCES | Sonnet | done | 18e663f, results placeholders |
 | 4.1b | decision 02 soft-mode tier + P13 gap cut | Opus | done | d88e1d8; clean 4, bracketed 29 eligible (interim) |
 | 4.3 | Bond literature + accessibility for 11 candidate families | sweep | running | state/sweeps/candidate-lit.jsonl |
-| 4.2b | P11 eigenvector following, 5 experimental-family pairs | GPU | running | stabilize.py; GaOOH mace both stable, ddF 2.56 |
+| 4.2b | P11 eigenvector following, 5 experimental-family pairs | GPU | done (mace, orb) | GaOOH +2.56/+1.98, AlOOH +2.06/+2.08, FeOOH +1.95/+1.39 and -1.29/-0.71 survive at true minima; AlH3 cubic member collapses (-10.5 meV/atom, mace), signal drops 3x -> out of headline |
 | 4.4 | reproduce_figures.py (main, funnel, benchmark) | Sonnet | running | |
 | 6.2 | video script draft v1 | Opus | done | 31e984a, placeholders |
 | 2.3b | DFT benchmark run (G5) | GPU | queued after mace drains | |
