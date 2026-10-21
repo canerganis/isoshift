@@ -1,5 +1,7 @@
 # Topic decision (Claude, 2026-10-21 ~01:00, delegated by Can)
 
+**Approved by Can on 2026-10-21 morning: go with IsoShift.**
+
 ## Chosen: IsoShift — where does heavy water move phase boundaries?
 
 **Headline:** First systematic map of isotope-tunable polymorphism in inorganic hydrogen compounds, and of where harmonic physics provably cannot explain it.
