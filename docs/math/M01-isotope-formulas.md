@@ -26,7 +26,9 @@ Both independent derivations (Astra xhigh, Opus high) agree on every numerically
 
 ### (1) Harmonic thermodynamics per variant X in {H, D}
 
-Eigenvalues omega_{q,nu}^2 come from D_X(q). Drop the 3 acoustic Gamma modes (E <= 1e-6 meV). Abort if any imaginary mode exceeds tolerance.
+Eigenvalues omega_{q,nu}^2 come from D_X(q). Keep spectra as (nq, nband) and apply the q-weight w_q to every band at that q. Default weights are 1/nq; supplied weights (phonopy multiplicities) are renormalised to sum 1. A flattened spectrum with unknown nq is not accepted.
+
+Acoustic modes: locate the Gamma row explicitly (or state that the mesh has none). At Gamma drop exactly the 3 modes of smallest |E| (the translations), in both isotopes, and require them to lie within the acoustic tolerance (0.5 meV default). Keep every other positive mode, however small: a soft mode at E = 1e-6 meV still contributes kB T ln(x) to F and its H/D ratio gives the correct classical kB T ln(E_D/E_H). An energy cut such as E <= 1e-6 meV is wrong here, because it can drop the D copy of a soft mode and keep the H copy. Any non-acoustic mode with E <= 0 (imaginary beyond tolerance, or exactly zero) stops the calculation.
 
 ZPE_X = sum_q w_q sum_nu E/2
 
@@ -60,7 +62,7 @@ Static energy difference dE = E_b - E_a (static, cell basis). Free energy differ
 
 Entropy difference: dS^X = S_X(b) - S_X(a) = -d(dF^X)/dT.
 
-Primary result: the exact roots of dG^H and dG^D, found by brentq on a temperature grid. Report every sign change. If one variant has no root in [Tmin, Tmax], report "no transition" and never a number.
+Primary result: the exact roots of dG^H and dG^D, found by brentq on a temperature grid. Report every sign change with its direction (dG going + to - on heating is a -> b, - to + is b -> a). Never pair the first H root with the first D root: with re-entrant behaviour the first H transition can vanish in D, and the first D root is then the partner of the second, opposite H transition. Pair roots by tracking them along the mass path from m_H to m_D (re-diagonalised spectra when force constants are available, otherwise band-wise interpolation of the H and D spectra), allowing only same-direction, order-preserving links and refining the mass step where the root set changes. Report each H transition separately. A transition whose root leaves [Tmin, Tmax] or annihilates with a neighbour along the path has no D partner: dT_exact is null, never a number. D roots without an H partner are reported as unmatched.
 
 Linear estimate. Linearise dG^H about T_c^H, using dG^D = dG^H + ddF:
 
@@ -72,7 +74,14 @@ Better first order: one Newton step on the D curve, dT ~ ddF(T_c^H) / dS^D(T_c^H
 
 Validity conditions: |dT| * |d(dS)/dT| << |dS| and |ddS| << |dS|. Relative error is about |ddS/dS| + |dT (d dS/dT)| / (2 |dS|).
 
-Slope guard: require |dS^H| and |dS^D| >= 0.01 meV/atom/K at T_c^H. The linear result is reported only when the guard passes. Also require the predicted T_c^D to be nonnegative.
+Slope guard: require |dS^H| and |dS^D| >= 0.01 meV/atom/K at T_c^H, checked before any division. The guard is necessary, not sufficient: it does not replace the validity conditions. Each estimate is checked on its own and reported only when all of these hold:
+
+* the slope guard passes;
+* its estimated relative error is at most 0.2: |ddS/dS^H| + |dT d(dS^H)/dT| / (2 |dS^H|) for the linear estimate, |dT d(dS^D)/dT| / (2 |dS^D|) for the Newton step (curvatures by central difference at T_c^H);
+* its predicted T_c^D = T_c^H + dT is positive;
+* the H transition has a matched D transition.
+
+Otherwise the estimate is null and the failed conditions are listed.
 
 Model spread: for each model k, compute (dE_k, dF^H_k, dF^D_k) from the same Phi, then dT_k. Report the median and min/max. Do not propagate independent errors for ddF and dS, because they are strongly correlated within a model.
 
@@ -134,7 +143,7 @@ A cheap endpoint-only proxy (trapezoid with weights from H and D only) is accept
 2. Harmonic phonons on a converged uniform q-mesh with weights summing to 1. Imaginary modes beyond tolerance abort the structure. The 3 acoustic Gamma modes are dropped.
 3. Polymorphs a and b are normalised to identical composition before any difference. Per-atom and per-H values divide by N_atom and N_H of that common cell.
 4. Sign conventions: ddF = [F_D - F_H]_b - [F_D - F_H]_a. dE = E_b - E_a. dV = V_b - V_a. dS = S_b - S_a.
-5. Transition linearisation assumes |dT| is small against the curvature scale and |ddS| << |dS|. Enforced by the slope guard |dS| >= 0.01 meV/atom/K on both variants. Exact roots are primary.
+5. Transition linearisation assumes |dT| is small against the curvature scale and |ddS| << |dS|. Enforced by the estimated relative error (<= 0.2) together with the slope guard |dS| >= 0.01 meV/atom/K on both variants, a positive predicted T_c^D and a matched D transition. Exact roots, paired by mass tracking, are primary.
 6. Pressure shift assumes dV does not depend on isotope or pressure over the shift (first order in dP).
 7. The linear QHA estimate takes B_T at V_H and gamma from finite differences of Phi(V) per variant. It is harmonic within each volume. No explicit anharmonicity and no nuclear quantum anharmonic corrections. These matter for H-bond stretches, which is what the 70% flag warns about.
 8. The classical high-T limit uses the full classical partition function. Mass enters only through the kinetic term, so it is structure independent.
@@ -235,67 +244,164 @@ Mass-integral check, single H mode, 8-point Gauss-Legendre in ln m: at 1 K, -14.
 
 ## Python function
 
-Standard library plus numpy and scipy. Units: energies in meV, temperatures in K. Pass q-flattened spectra. The function returns per-cell, per-atom and per-H values, the transition block with the slope guard, and the pressure shift.
+Standard library plus numpy and scipy. Units: energies in meV, temperatures in K. Spectra are (nq, nband) arrays, one row per q-point, so the q-point count is always known; a flattened multi-q list is rejected. The function returns per-cell, per-atom and per-H values, one record per H transition with its matched D transition and guarded estimates, and the pressure shift.
 
 ```python
 def isoshift(Ea_H, Ea_D, Eb_H, Eb_D, T, dE=None, natom=1, nH=1, dV_A3=None,
-             wa=None, wb=None, Tgrid=(1.0, 3000.0, 600), guard=0.01):
+             wa=None, wb=None, gamma_a=None, gamma_b=None, acoustic_tol=0.5,
+             Tgrid=(1.0, 3000.0, 600), guard=0.01, valid_tol=0.2,
+             path=None, n_lam=16, jump_tol=None, max_depth=8):
     """Harmonic H/D isotope quantities for polymorphs a,b of identical composition.
     E*_X: phonon energies hbar*omega in meV (THz -> meV: *4.135667696, cm^-1 -> meV: /8.065543937),
-    flattened over the q-mesh; wa/wb: matching q-weights normalised to 1 (-> per cell). Modes
-    with E<=1e-6 meV (acoustic Gamma) are dropped. Cells a,b hold the same number of formula units.
+    shape (nq, nband), one row per q-point; a single q-point is [[...]]. Imaginary modes are
+    negative numbers (phonopy convention). wa/wb: one weight per q-point (phonopy multiplicities
+    are fine), renormalised to sum 1; default 1/nq. gamma_a/gamma_b: row index of Gamma in each
+    mesh, or None if the mesh has no Gamma point. At Gamma exactly the 3 modes of smallest |E|
+    are dropped (acoustic translations) in both isotopes and must lie within acoustic_tol meV.
+    Any other mode with E <= 0 raises. Cells a,b hold the same number of formula units.
+    path(lam) -> (Ea, Eb) raw spectra at an intermediate H mass (lam=0 is H, lam=1 is D) is used
+    to match H and D roots; the default is linear interpolation between the H and D spectra.
     Returns dict: energies meV/cell (+ per atom, per H), S meV/K/cell, T K, P GPa."""
     import numpy as np
     from scipy.optimize import brentq
     KB = 0.08617333262  # meV/K
+
+    def prep(E, w, g, tag):
+        E = np.array(E, float)
+        if E.ndim != 2:
+            raise ValueError(f"{tag}: pass spectra as (nq, nband); a single q-point is [[...]]")
+        nq = E.shape[0]
+        w = np.full(nq, 1.0 / nq) if w is None else np.asarray(w, float).ravel()
+        if w.shape != (nq,) or np.any(w <= 0):
+            raise ValueError(f"{tag}: need one positive weight per q-point ({nq} rows)")
+        w = w / w.sum()
+        keep = np.ones(E.shape, bool)
+        if g is not None:
+            ac = np.argsort(np.abs(E[g]))[:3]
+            if len(ac) < 3 or np.any(np.abs(E[g, ac]) > acoustic_tol):
+                raise ValueError(f"{tag}: Gamma row {g} lacks 3 acoustic modes within {acoustic_tol} meV")
+            keep[g, ac] = False
+        if np.any(E[keep] <= 0):
+            raise ValueError(f"{tag}: imaginary or zero mode outside the Gamma acoustic set "
+                             f"(min {E[keep].min():.4g} meV); stop, or pass gamma_a/gamma_b")
+        Ek = np.concatenate([np.sort(E[i][keep[i]]) for i in range(nq)])
+        wk = np.concatenate([np.full(keep[i].sum(), w[i]) for i in range(nq)])
+        return Ek, wk
+
+    aH, wa_ = prep(Ea_H, wa, gamma_a, "a,H"); aD, _ = prep(Ea_D, wa, gamma_a, "a,D")
+    bH, wb_ = prep(Eb_H, wb, gamma_b, "b,H"); bD, _ = prep(Eb_D, wb, gamma_b, "b,D")
+    if aH.shape != aD.shape or bH.shape != bD.shape:
+        raise ValueError("H and D spectra of one structure must have the same shape")
+    wa_in, wb_in, wa, wb = wa, wb, wa_, wb_
+
     def th(E, T, w):
-        E = np.asarray(E, float).ravel()
-        w = np.ones_like(E) if w is None else np.broadcast_to(np.asarray(w, float), np.shape(E)).ravel()
-        m = E > 1e-6; E, w = E[m], w[m]
         zpe = float(np.sum(w * 0.5 * E))
         if T <= 0: return zpe, zpe, 0.0
-        x = np.minimum(E / (KB * T), 700.0)
-        F = zpe + KB * T * float(np.sum(w * np.log1p(-np.exp(-x))))
-        S = KB * float(np.sum(w * (x / np.expm1(x) - np.log1p(-np.exp(-x)))))
+        x = E / (KB * T)
+        L = np.log(-np.expm1(-x))            # ln(1 - exp(-x)), accurate for small and large x
+        xs = np.minimum(x, 700.0)
+        F = zpe + KB * T * float(np.sum(w * L))
+        S = KB * float(np.sum(w * (xs / np.expm1(xs) - L)))
         return F, zpe, S
     F = lambda E, w, t: th(E, t, w)[0]
     S = lambda E, w, t: th(E, t, w)[2]
-    dd = lambda t: (F(Eb_D, wb, t) - F(Eb_H, wb, t)) - (F(Ea_D, wa, t) - F(Ea_H, wa, t))
+    dd = lambda t: (F(bD, wb, t) - F(bH, wb, t)) - (F(aD, wa, t) - F(aH, wa, t))
     out = {}
-    for X, Ea, Eb in (("H", Ea_H, Eb_H), ("D", Ea_D, Eb_D)):
+    for X, Ea, Eb in (("H", aH, bH), ("D", aD, bD)):
         for s, E, w in (("a", Ea, wa), ("b", Eb, wb)):
             out[f"F_{X}{s}"], out[f"ZPE_{X}{s}"], out[f"S_{X}{s}"] = th(E, T, w)
     d = dd(T)
     out.update(ddF_cell=d, ddF_atom=d / natom, ddF_H=d / nH)
     if dV_A3:
         out["dP_iso_GPa"] = -d / dV_A3 * 0.1602176634   # P_t^D - P_t^H
-    if dE is not None:
-        g = lambda t, Ea, Eb, wa_, wb_: dE + F(Eb, wb_, t) - F(Ea, wa_, t)
-        Ts = np.linspace(*Tgrid)
-        def roots(Ea, Eb):
-            v = [g(t, Ea, Eb, wa, wb) for t in Ts]
-            return [brentq(g, Ts[i], Ts[i + 1], args=(Ea, Eb, wa, wb))
-                    for i in range(len(Ts) - 1) if np.sign(v[i]) != np.sign(v[i + 1])]
-        tH, tD = roots(Ea_H, Eb_H), roots(Ea_D, Eb_D)
-        out.update(Tc_H=tH, Tc_D=tD, dT_exact=(tD[0] - tH[0]) if tH and tD else None)
-        # physical roots only (T > 0); the slope guard is applied BEFORE any division
-        tH = [t for t in tH if t > 0]; tD = [t for t in tD if t > 0]
-        out.update(Tc_H=tH, Tc_D=tD, dT_exact=(tD[0] - tH[0]) if tH and tD else None)
-        if tH:
-            T0 = tH[0]; ddc = dd(T0)
-            sH = S(Eb_H, wb, T0) - S(Ea_H, wa, T0)
-            sD = S(Eb_D, wb, T0) - S(Ea_D, wa, T0)
-            ok = abs(sH / natom) >= guard and abs(sD / natom) >= guard
-            out.update(ddF_TcH=ddc, dS_H_atom=sH / natom, dS_D_atom=sD / natom, guard_ok=ok,
-                       dT_linear=ddc / sH if ok else None, dT_newtonD=ddc / sD if ok else None)
+    if dE is None:
+        return out
+
+    # transitions: roots of dG = dE + F_b - F_a, each with its direction
+    Ts = np.linspace(*Tgrid)
+    P = jump_tol if jump_tol is not None else 0.05 * (Ts[-1] - Ts[0])
+    g = lambda t, Ea, Eb: dE + F(Eb, wb, t) - F(Ea, wa, t)
+    def roots(Ea, Eb):
+        s = np.where(np.array([g(t, Ea, Eb) for t in Ts]) >= 0, 1, -1)
+        return [(brentq(g, Ts[i], Ts[i + 1], args=(Ea, Eb), xtol=1e-10), int(s[i + 1]))
+                for i in range(len(Ts) - 1) if s[i] != s[i + 1]]
+    def spec(lam):
+        if lam == 0.0: return aH, bH
+        if lam == 1.0: return aD, bD
+        if path is None: return aH + lam * (aD - aH), bH + lam * (bD - bH)
+        Ea, Eb = path(lam)
+        return prep(Ea, wa_in, gamma_a, "a,path")[0], prep(Eb, wb_in, gamma_b, "b,path")[0]
+    def align(A, B):
+        # order-preserving, same-direction matching of root lists; skipping a root costs P
+        n, m = len(A), len(B)
+        ok = lambda i, j: A[i][1] == B[j][1] and abs(A[i][0] - B[j][0]) <= P
+        C = np.zeros((n + 1, m + 1)); C[0, :] = P * np.arange(m + 1); C[:, 0] = P * np.arange(n + 1)
+        for i in range(1, n + 1):
+            for j in range(1, m + 1):
+                c = min(C[i - 1, j], C[i, j - 1]) + P
+                if ok(i - 1, j - 1): c = min(c, C[i - 1, j - 1] + abs(A[i - 1][0] - B[j - 1][0]))
+                C[i, j] = c
+        pairs, i, j = {}, n, m
+        while i and j:
+            if ok(i - 1, j - 1) and np.isclose(C[i, j], C[i - 1, j - 1] + abs(A[i - 1][0] - B[j - 1][0])):
+                pairs[i - 1] = j - 1; i -= 1; j -= 1
+            elif np.isclose(C[i, j], C[i - 1, j] + P): i -= 1
+            else: j -= 1
+        return pairs
+    def track(l0, R0, l1, R1, depth):
+        # follow roots from l0 to l1; refine where the root set changes or a root jumps
+        m = align(R0, R1)
+        smooth = len(m) == len(R0) == len(R1) and all(abs(R0[i][0] - R1[j][0]) <= P / 4 for i, j in m.items())
+        if smooth or depth == 0: return m
+        lm = 0.5 * (l0 + l1); Rm = roots(*spec(lm))
+        m1, m2 = track(l0, R0, lm, Rm, depth - 1), track(lm, Rm, l1, R1, depth - 1)
+        return {i: m2[j] for i, j in m1.items() if j in m2}
+    lams = np.linspace(0.0, 1.0, n_lam + 1)
+    R = [roots(*spec(float(l))) for l in lams]
+    link = {i: i for i in range(len(R[0]))}
+    for k in range(n_lam):
+        m = track(float(lams[k]), R[k], float(lams[k + 1]), R[k + 1], max_depth)
+        link = {i: m[j] for i, j in link.items() if j in m}
+    RH, RD = R[0], R[-1]
+    out.update(Tc_H=[t for t, _ in RH], Tc_D=[t for t, _ in RD],
+               Tc_D_unmatched=[RD[j][0] for j in range(len(RD)) if j not in link.values()])
+
+    dSX = lambda Ea, Eb, t: S(Eb, wb, t) - S(Ea, wa, t)
+    trans = []
+    for i, (T0, sgn) in enumerate(RH):
+        tD = RD[link[i]][0] if i in link else None
+        rec = dict(Tc_H=T0, direction="b->a on heating" if sgn > 0 else "a->b on heating",
+                   Tc_D=tD, dT_exact=(tD - T0) if tD is not None else None,
+                   dT_linear=None, dT_newtonD=None, reasons=[])
+        ddc = dd(T0); sH = dSX(aH, bH, T0); sD = dSX(aD, bD, T0)
+        h = 1e-3 * max(T0, 1.0)
+        cH = (dSX(aH, bH, T0 + h) - dSX(aH, bH, T0 - h)) / (2 * h)   # d(dS^H)/dT
+        cD = (dSX(aD, bD, T0 + h) - dSX(aD, bD, T0 - h)) / (2 * h)   # d(dS^D)/dT
+        guard_ok = abs(sH / natom) >= guard and abs(sD / natom) >= guard
+        rec.update(ddF_TcH=ddc, dS_H_atom=sH / natom, dS_D_atom=sD / natom, ddS_atom=(sD - sH) / natom,
+                   guard_ok=guard_ok)
+        if tD is None: rec["reasons"].append("no matched D transition")
+        if not guard_ok: rec["reasons"].append("slope guard")
+        else:   # guard precedes every division; each estimate is checked on its own
+            dTl, dTn = ddc / sH, ddc / sD
+            for key, dT, err in (("dT_linear", dTl, abs((sD - sH) / sH) + abs(dTl * cH) / (2 * abs(sH))),
+                                 ("dT_newtonD", dTn, abs(dTn * cD) / (2 * abs(sD)))):
+                rec[key + "_relerr"] = err
+                bad = [why for why, b in (("validity", err > valid_tol),
+                                          ("Tc_D <= 0", T0 + dT <= 0),
+                                          ("no matched D transition", tD is None)) if b]
+                if bad: rec["reasons"] += [f"{key}: {why}" for why in bad]
+                else: rec[key] = dT
+        trans.append(rec)
+    out["transitions"] = trans
     return out
 
 # Toy usage
 # r = (1.008/2.014)**0.5
-# isoshift([100,20],[100*r,20],[90,25],[90*r,25], 300.0, dE=2.0, natom=2, nH=1)
+# isoshift([[100,20]],[[100*r,20]],[[90,25]],[[90*r,25]], 300.0, dE=2.0, natom=2, nH=1)
 ```
 
-Known limits of this reference: it does not check for imaginary modes (the caller must), it does not renormalise weights, and it scans a 600-point grid, so it can miss tangent or double roots. The mass-integral helper (mode-resolved decomposition) and the QHA minimiser are separate and are not included here.
+Known limits of this reference: the 600-point grid can miss tangent or double roots. The default root tracking interpolates the H and D spectra linearly band by band, which approximates the mass path; pass `path` with spectra re-diagonalised at intermediate H masses (as in (6)) when force constants are at hand. The mass-integral helper (mode-resolved decomposition) and the QHA minimiser are separate and are not included here.
 
 ## Differences between the two derivations
 
@@ -320,3 +426,14 @@ Accepted. No escalation to the board was needed. Both derivations agree on every
 
 ## Post-review corrections (Opus, 21 Oct)
 Three blocking points from the screen build's Astra review were applied: (1) slope guard now precedes division, zero or tiny slopes give null, non-positive roots dropped; (2) dE + dF_vib is a fixed-volume Helmholtz difference, constant-pressure T_c needs per-isotope QHA; (3) positive Gruneisen parameters are a tendency for V_H > V_D, not a guarantee, so the sign is computed.
+
+## Post-review corrections, second round (Opus, 21 Oct)
+Four blocking points on the reference function were fixed and checked numerically with the function above.
+
+1. q-weights. Spectra are (nq, nband); weights default to 1/nq and are renormalised. The same [10, 20] meV spectrum on two q-points gives ZPE 15 meV/cell, not 30. A flattened list is rejected.
+2. Acoustic modes. Gamma is named explicitly and its 3 lowest |E| modes are dropped in both isotopes; other positive modes are kept and non-acoustic E <= 0 stops the run. A soft non-Gamma mode at 1.1e-6 meV (H) and 1.1e-6 r meV (D) now gives F_D - F_H = kB T ln r = -8.9468 meV at 300 K for that mode, the classical value, instead of the spurious +438.8 meV.
+3. Root pairing. Toy a: H [100, 20], D [100 r, 20]; b: H [300, 12], D [300 r, 12]; dE = -90 meV. H roots 216.33 K (a -> b) and 1175.74 K (b -> a); one D root 1535.16 K (b -> a). The a -> b transition has no D partner (dT_exact null); the b -> a pair gives dT_exact = +359.42 K. First-root pairing would have reported +1318.8 K for a transition that does not exist in D.
+4. Estimate checks. Main toy, dE = +2 meV, guard lowered to 1e-4 so both slopes pass: linear and Newton estimates are both null (relative error 0.50 and 0.43, predicted T_c^D negative, no matched D root). The doc toy values (ddF at 0, 300, 3000 K; T_c^H = 108.2739 K; dE = +1 meV dT_exact = -125.8390 K) are unchanged.
+
+## Production check of the Gamma acoustic treatment (Opus, 21 Oct)
+The screen uses isoshift.phonons.MeshFreqs (Gamma-centred mesh, modes below GAMMA_TOL_THZ dropped). `src/isoshift_event/refine.py` recomputes every pair on a denser Gamma-free shifted mesh from the same cached force constants. Measured |ddF_refined - ddF_screen| over 0/300/600 K on the first 21 identity-checked pair-model rows: median 2e-4, max 0.064 meV/atom. This difference is carried as `numerical_error_meV_atom` and enters the ranking threshold, so the finite-mesh Gamma term cannot create a candidate.
