@@ -1,33 +1,129 @@
-case,model,T_K,V_H_A3,V_D_A3,VIE_pct,in_range,exp_VIE_pct,source
-brucite,mace,0,43.72098814043496,43.5519425404618,0.38814709542773773,True,,
-brucite,mace,295,43.7984342993538,43.68723274892407,0.2545401560882121,True,0.31,10.2138/am.2013.4202
-brucite,orb,0,42.874304873308326,42.72424379189858,0.35123168508415237,True,,
-brucite,orb,295,43.08472314594423,42.98288271995654,0.23693251718643893,True,0.31,10.2138/am.2013.4202
-brucite,mattersim,0,43.167550315228375,43.06191767619983,0.24530407545442223,True,,
-brucite,mattersim,295,43.35474099013324,43.26151444606991,0.2154953317215602,True,0.31,10.2138/am.2013.4202
-brucite,sevenn,0,43.187451065954704,42.988790730634,0.4621212458975732,True,,
-brucite,sevenn,295,43.392914079614336,43.24687054635763,0.337697344135357,True,0.31,10.2138/am.2013.4202
-portlandite,mace,0,57.95470786552527,58.078546457124624,-0.21322605187920063,True,,
-portlandite,mace,295,57.60695501185775,57.6707504440366,-0.11062008329639772,True,,no same-condition pair (cross-lab estimate +0.67%)
-portlandite,orb,0,57.54202813794612,57.49961044458327,0.07377040128599965,True,,
-portlandite,orb,295,57.600442294865225,57.55526302007488,0.07849720845614083,True,,no same-condition pair (cross-lab estimate +0.67%)
-portlandite,mattersim,0,56.7144279410004,56.68235577274793,0.05658227823319706,True,,
-portlandite,mattersim,295,57.30025655503444,57.3020035720058,-0.0030487886329644276,True,,no same-condition pair (cross-lab estimate +0.67%)
-portlandite,sevenn,0,57.63605108317083,57.529370662588455,0.18543644638153722,True,,
-portlandite,sevenn,295,57.75100039505465,57.58048308924101,0.2961373310282456,True,,no same-condition pair (cross-lab estimate +0.67%)
-LiH,mace,0,17.0311949261993,16.803270603151656,1.3564283313088676,True,,
-LiH,mace,300,17.238994438631625,17.048172458150383,1.1193104771181073,True,0.81,via 10.1088/0953-8984/24/43/435402
-LiH,orb,0,16.95391662491487,16.760664810261385,1.1530080509406293,True,,
-LiH,orb,300,17.23683266540832,17.04225797865228,1.1417189377121773,True,0.81,via 10.1088/0953-8984/24/43/435402
-LiH,mattersim,0,17.251645303735224,17.017851932287897,1.373812466917479,True,,
-LiH,mattersim,300,17.734531135959227,17.521999262446087,1.2129430570668287,True,0.81,via 10.1088/0953-8984/24/43/435402
-LiH,sevenn,0,17.05220510723213,16.76891207232867,1.689394241448361,True,,
-LiH,sevenn,300,17.24186354609502,17.060090874636042,1.0654847784499433,True,0.81,via 10.1088/0953-8984/24/43/435402
-iceXI,mace,0,118.6604333440264,119.43289960953706,-0.6467784572224966,True,,
-iceXI,mace,100,118.85226279415016,119.6526270586399,-0.6689065540512407,True,-0.15,"10.1103/PhysRevLett.108.193003 (ice Ih, -0.09 to -0.21%)"
-iceXI,orb,0,118.96142687182379,119.7778899075169,-0.6816475363888186,True,,
-iceXI,orb,100,119.03603215106827,119.92730805660345,-0.7431801146695616,True,-0.15,"10.1103/PhysRevLett.108.193003 (ice Ih, -0.09 to -0.21%)"
-iceXI,mattersim,0,119.66748813917914,120.02623805871679,-0.2988929131996443,True,,
-iceXI,mattersim,100,119.85284419611378,120.23561559351126,-0.31835109381528337,True,-0.15,"10.1103/PhysRevLett.108.193003 (ice Ih, -0.09 to -0.21%)"
-iceXI,sevenn,0,118.08557764835122,119.00736912174233,-0.7745667181736748,True,,
-iceXI,sevenn,100,118.06237001481732,119.00676078681958,-0.7935606059339628,True,-0.15,"10.1103/PhysRevLett.108.193003 (ice Ih, -0.09 to -0.21%)"
+case,model,T_K,treatment,VIE_pct,in_range,exp_VIE_pct,exp_note,imag_frac_min_pct,imag_frac_max_pct,min_freq_THz,gamma_acoustic_max_THz,n_atoms_supercell,VIE_stored_pct
+brucite,mace,0,omit,0.38849,True,,,0.3588,0.8275,-4.657,0.0,160,0.38815
+brucite,mace,0,abs,0.40269,True,,,0.3588,0.8275,-4.657,0.0,160,0.38815
+brucite,mace,0,2abs,0.41703,True,,,0.3588,0.8275,-4.657,0.0,160,0.38815
+brucite,mace,0,fix3THz,0.39498,True,,,0.3588,0.8275,-4.657,0.0,160,0.38815
+brucite,mace,290,omit,0.29179,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.3588,0.8275,-4.657,0.0,160,0.25454
+brucite,mace,290,abs,0.32109,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.3588,0.8275,-4.657,0.0,160,0.25454
+brucite,mace,290,2abs,0.3348,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.3588,0.8275,-4.657,0.0,160,0.25454
+brucite,mace,290,fix3THz,0.28041,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.3588,0.8275,-4.657,0.0,160,0.25454
+brucite,orb,0,omit,0.34937,True,,,0.2431,0.6829,-4.649,0.0,160,0.35123
+brucite,orb,0,abs,0.3514,True,,,0.2431,0.6829,-4.649,0.0,160,0.35123
+brucite,orb,0,2abs,0.3534,True,,,0.2431,0.6829,-4.649,0.0,160,0.35123
+brucite,orb,0,fix3THz,0.34498,True,,,0.2431,0.6829,-4.649,0.0,160,0.35123
+brucite,orb,290,omit,0.27758,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.2431,0.6829,-4.649,0.0,160,0.23693
+brucite,orb,290,abs,0.30972,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.2431,0.6829,-4.649,0.0,160,0.23693
+brucite,orb,290,2abs,0.3061,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.2431,0.6829,-4.649,0.0,160,0.23693
+brucite,orb,290,fix3THz,0.28295,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.2431,0.6829,-4.649,0.0,160,0.23693
+brucite,mattersim,0,omit,0.24529,True,,,0.1273,0.2894,-2.18,0.0,160,0.2453
+brucite,mattersim,0,abs,0.24503,True,,,0.1273,0.2894,-2.18,0.0,160,0.2453
+brucite,mattersim,0,2abs,0.24478,True,,,0.1273,0.2894,-2.18,0.0,160,0.2453
+brucite,mattersim,0,fix3THz,0.24468,True,,,0.1273,0.2894,-2.18,0.0,160,0.2453
+brucite,mattersim,290,omit,0.19171,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.1273,0.2894,-2.18,0.0,160,0.2155
+brucite,mattersim,290,abs,0.19386,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.1273,0.2894,-2.18,0.0,160,0.2155
+brucite,mattersim,290,2abs,0.19272,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.1273,0.2894,-2.18,0.0,160,0.2155
+brucite,mattersim,290,fix3THz,0.19284,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.1273,0.2894,-2.18,0.0,160,0.2155
+brucite,sevenn,0,omit,0.46212,True,,,0.0,0.8218,-5.259,0.0,90,0.46212
+brucite,sevenn,0,abs,0.45879,True,,,0.0,0.8218,-5.259,0.0,90,0.46212
+brucite,sevenn,0,2abs,0.45507,True,,,0.0,0.8218,-5.259,0.0,90,0.46212
+brucite,sevenn,0,fix3THz,0.45299,True,,,0.0,0.8218,-5.259,0.0,90,0.46212
+brucite,sevenn,290,omit,0.39394,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.0,0.8218,-5.259,0.0,90,0.3377
+brucite,sevenn,290,abs,0.43782,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.0,0.8218,-5.259,0.0,90,0.3377
+brucite,sevenn,290,2abs,0.41276,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.0,0.8218,-5.259,0.0,90,0.3377
+brucite,sevenn,290,fix3THz,0.4135,True,0.31,"Chakoumakos 2013 abstract, 10.2138/am.2013.4202; room T, 295 K from COD 1557014; sign also Horita 2010",0.0,0.8218,-5.259,0.0,90,0.3377
+portlandite,mace,0,omit,-0.2138,True,,,0.5096,0.9642,-3.321,0.0,90/160,-0.21323
+portlandite,mace,0,abs,-0.20034,True,,,0.5096,0.9642,-3.321,0.0,90/160,-0.21323
+portlandite,mace,0,2abs,-0.18808,True,,,0.5096,0.9642,-3.321,0.0,90/160,-0.21323
+portlandite,mace,0,fix3THz,-0.19982,True,,,0.5096,0.9642,-3.321,0.0,90/160,-0.21323
+portlandite,mace,290,omit,-0.02698,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.5096,0.9642,-3.321,0.0,90/160,-0.11062
+portlandite,mace,290,abs,0.00036,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.5096,0.9642,-3.321,0.0,90/160,-0.11062
+portlandite,mace,290,2abs,0.01759,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.5096,0.9642,-3.321,0.0,90/160,-0.11062
+portlandite,mace,290,fix3THz,-0.05219,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.5096,0.9642,-3.321,0.0,90/160,-0.11062
+portlandite,orb,0,omit,0.07366,True,,,0.5992,0.9229,-5.841,0.0,90/160,0.07377
+portlandite,orb,0,abs,0.07459,True,,,0.5992,0.9229,-5.841,0.0,90/160,0.07377
+portlandite,orb,0,2abs,0.0755,True,,,0.5992,0.9229,-5.841,0.0,90/160,0.07377
+portlandite,orb,0,fix3THz,0.07475,True,,,0.5992,0.9229,-5.841,0.0,90/160,0.07377
+portlandite,orb,290,omit,0.08178,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.5992,0.9229,-5.841,0.0,90/160,0.0785
+portlandite,orb,290,abs,0.07982,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.5992,0.9229,-5.841,0.0,90/160,0.0785
+portlandite,orb,290,2abs,0.08212,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.5992,0.9229,-5.841,0.0,90/160,0.0785
+portlandite,orb,290,fix3THz,0.07941,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.5992,0.9229,-5.841,0.0,90/160,0.0785
+portlandite,mattersim,0,omit,0.05658,True,,,0.2755,0.6749,-1.495,0.0,90/160,0.05658
+portlandite,mattersim,0,abs,0.05646,True,,,0.2755,0.6749,-1.495,0.0,90/160,0.05658
+portlandite,mattersim,0,2abs,0.05634,True,,,0.2755,0.6749,-1.495,0.0,90/160,0.05658
+portlandite,mattersim,0,fix3THz,0.05633,True,,,0.2755,0.6749,-1.495,0.0,90/160,0.05658
+portlandite,mattersim,290,omit,0.04122,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.2755,0.6749,-1.495,0.0,90/160,-0.00305
+portlandite,mattersim,290,abs,0.04084,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.2755,0.6749,-1.495,0.0,90/160,-0.00305
+portlandite,mattersim,290,2abs,0.04042,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.2755,0.6749,-1.495,0.0,90/160,-0.00305
+portlandite,mattersim,290,fix3THz,0.04154,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.2755,0.6749,-1.495,0.0,90/160,-0.00305
+portlandite,sevenn,0,omit,0.18608,True,,,0.1515,0.5372,-2.087,0.0,90,0.18544
+portlandite,sevenn,0,abs,0.18639,True,,,0.1515,0.5372,-2.087,0.0,90,0.18544
+portlandite,sevenn,0,2abs,0.18671,True,,,0.1515,0.5372,-2.087,0.0,90,0.18544
+portlandite,sevenn,0,fix3THz,0.18559,True,,,0.1515,0.5372,-2.087,0.0,90,0.18544
+portlandite,sevenn,290,omit,0.23181,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.1515,0.5372,-2.087,0.0,90,0.29614
+portlandite,sevenn,290,abs,0.24063,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.1515,0.5372,-2.087,0.0,90,0.29614
+portlandite,sevenn,290,2abs,0.23918,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.1515,0.5372,-2.087,0.0,90,0.29614
+portlandite,sevenn,290,fix3THz,0.23373,True,,no clean experimental pair; null check per PLAN P12 (cross-lab +0.67% is not a target),0.1515,0.5372,-2.087,0.0,90,0.29614
+LiH,mace,0,omit,1.35643,True,,,0.0,0.0,2.041,0.0,128,1.35643
+LiH,mace,0,abs,1.35643,True,,,0.0,0.0,2.041,0.0,128,1.35643
+LiH,mace,0,2abs,1.35643,True,,,0.0,0.0,2.041,0.0,128,1.35643
+LiH,mace,0,fix3THz,1.35643,True,,,0.0,0.0,2.041,0.0,128,1.35643
+LiH,mace,300,omit,1.08395,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,2.041,0.0,128,1.11931
+LiH,mace,300,abs,1.08395,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,2.041,0.0,128,1.11931
+LiH,mace,300,2abs,1.08395,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,2.041,0.0,128,1.11931
+LiH,mace,300,fix3THz,1.08395,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,2.041,0.0,128,1.11931
+LiH,orb,0,omit,1.153,True,,,0.0,0.0,2.063,0.0,128,1.15301
+LiH,orb,0,abs,1.153,True,,,0.0,0.0,2.063,0.0,128,1.15301
+LiH,orb,0,2abs,1.153,True,,,0.0,0.0,2.063,0.0,128,1.15301
+LiH,orb,0,fix3THz,1.153,True,,,0.0,0.0,2.063,0.0,128,1.15301
+LiH,orb,300,omit,1.03458,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,2.063,0.0,128,1.14172
+LiH,orb,300,abs,1.03458,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,2.063,0.0,128,1.14172
+LiH,orb,300,2abs,1.03458,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,2.063,0.0,128,1.14172
+LiH,orb,300,fix3THz,1.03458,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,2.063,0.0,128,1.14172
+LiH,mattersim,0,omit,1.37381,True,,,0.0,0.0,1.754,0.0,128,1.37381
+LiH,mattersim,0,abs,1.37381,True,,,0.0,0.0,1.754,0.0,128,1.37381
+LiH,mattersim,0,2abs,1.37381,True,,,0.0,0.0,1.754,0.0,128,1.37381
+LiH,mattersim,0,fix3THz,1.37381,True,,,0.0,0.0,1.754,0.0,128,1.37381
+LiH,mattersim,300,omit,1.26828,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,1.754,0.0,128,1.21294
+LiH,mattersim,300,abs,1.26828,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,1.754,0.0,128,1.21294
+LiH,mattersim,300,2abs,1.26828,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,1.754,0.0,128,1.21294
+LiH,mattersim,300,fix3THz,1.26828,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,1.754,0.0,128,1.21294
+LiH,sevenn,0,omit,1.68939,True,,,0.0,0.0,2.423,0.0,54,1.68939
+LiH,sevenn,0,abs,1.68939,True,,,0.0,0.0,2.423,0.0,54,1.68939
+LiH,sevenn,0,2abs,1.68939,True,,,0.0,0.0,2.423,0.0,54,1.68939
+LiH,sevenn,0,fix3THz,1.68939,True,,,0.0,0.0,2.423,0.0,54,1.68939
+LiH,sevenn,300,omit,1.02414,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,2.423,0.0,54,1.06548
+LiH,sevenn,300,abs,1.02414,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,2.423,0.0,54,1.06548
+LiH,sevenn,300,2abs,1.02414,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,2.423,0.0,54,1.06548
+LiH,sevenn,300,fix3THz,1.02414,True,0.81,"Loubeyre 1998 a(300 K) via Dammak 2012 Table 2, 10.1088/0953-8984/24/43/435402; Smith-Leider 0.014 A shift in the same source gives +1.04% (inferred)",0.0,0.0,2.423,0.0,54,1.06548
+iceXI,mace,0,omit,-0.64678,True,,,0.0572,0.423,-1.72,0.0,48/96,-0.64678
+iceXI,mace,0,abs,-0.65505,True,,,0.0572,0.423,-1.72,0.0,48/96,-0.64678
+iceXI,mace,0,2abs,-0.6635,True,,,0.0572,0.423,-1.72,0.0,48/96,-0.64678
+iceXI,mace,0,fix3THz,-0.67073,True,,,0.0572,0.423,-1.72,0.0,48/96,-0.64678
+iceXI,mace,100,omit,-0.62242,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0572,0.423,-1.72,0.0,48/96,-0.66891
+iceXI,mace,100,abs,-0.59957,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0572,0.423,-1.72,0.0,48/96,-0.66891
+iceXI,mace,100,2abs,-0.61977,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0572,0.423,-1.72,0.0,48/96,-0.66891
+iceXI,mace,100,fix3THz,-0.63556,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0572,0.423,-1.72,0.0,48/96,-0.66891
+iceXI,orb,0,omit,-0.68179,True,,,0.0229,0.2743,-1.431,0.0,96/144,-0.68165
+iceXI,orb,0,abs,-0.67383,True,,,0.0229,0.2743,-1.431,0.0,96/144,-0.68165
+iceXI,orb,0,2abs,-0.66585,True,,,0.0229,0.2743,-1.431,0.0,96/144,-0.68165
+iceXI,orb,0,fix3THz,-0.65768,True,,,0.0229,0.2743,-1.431,0.0,96/144,-0.68165
+iceXI,orb,100,omit,-0.76055,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0229,0.2743,-1.431,0.0,96/144,-0.74318
+iceXI,orb,100,abs,-0.8004,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0229,0.2743,-1.431,0.0,96/144,-0.74318
+iceXI,orb,100,2abs,-0.76745,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0229,0.2743,-1.431,0.0,96/144,-0.74318
+iceXI,orb,100,fix3THz,-0.74299,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0229,0.2743,-1.431,0.0,96/144,-0.74318
+iceXI,mattersim,0,omit,-0.29889,True,,,0.0343,0.2743,-1.189,0.0,48/96/144,-0.29889
+iceXI,mattersim,0,abs,-0.29912,True,,,0.0343,0.2743,-1.189,0.0,48/96/144,-0.29889
+iceXI,mattersim,0,2abs,-0.29934,True,,,0.0343,0.2743,-1.189,0.0,48/96/144,-0.29889
+iceXI,mattersim,0,fix3THz,-0.30228,True,,,0.0343,0.2743,-1.189,0.0,48/96/144,-0.29889
+iceXI,mattersim,100,omit,-0.29488,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0343,0.2743,-1.189,0.0,48/96/144,-0.31835
+iceXI,mattersim,100,abs,-0.28688,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0343,0.2743,-1.189,0.0,48/96/144,-0.31835
+iceXI,mattersim,100,2abs,-0.28981,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0343,0.2743,-1.189,0.0,48/96/144,-0.31835
+iceXI,mattersim,100,fix3THz,-0.29677,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0343,0.2743,-1.189,0.0,48/96/144,-0.31835
+iceXI,sevenn,0,omit,-0.77457,True,,,0.0,0.16,-1.027,0.0,48/96,-0.77457
+iceXI,sevenn,0,abs,-0.77404,True,,,0.0,0.16,-1.027,0.0,48/96,-0.77457
+iceXI,sevenn,0,2abs,-0.7735,True,,,0.0,0.16,-1.027,0.0,48/96,-0.77457
+iceXI,sevenn,0,fix3THz,-0.77043,True,,,0.0,0.16,-1.027,0.0,48/96,-0.77457
+iceXI,sevenn,100,omit,-0.78444,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0,0.16,-1.027,0.0,48/96,-0.79356
+iceXI,sevenn,100,abs,-0.8039,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0,0.16,-1.027,0.0,48/96,-0.79356
+iceXI,sevenn,100,2abs,-0.79971,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0,0.16,-1.027,0.0,48/96,-0.79356
+iceXI,sevenn,100,fix3THz,-0.78159,True,-0.075,"reported only (P12); Pamuk 2012 Table I 100 K, 10.1103/PhysRevLett.108.193003: this work -0.075%, Rottger 1994 row -0.078%; ice Ih measurement vs ordered ice XI proxy",0.0,0.16,-1.027,0.0,48/96,-0.79356
