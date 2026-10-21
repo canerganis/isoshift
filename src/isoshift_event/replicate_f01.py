@@ -309,15 +309,21 @@ def compare_at_end(result, np):
             outliers.append({"pair_id": row["pair_id"], "model": row["model"],
                              "differences": row["absolute_difference_meV_atom"],
                              "diagnosis": issues, "diagnosis_status": "hypotheses; reference implementation not inspected"})
-    summary = {k: {"max_abs_difference_meV_atom": float(np.max(v)),
-                   "median_abs_difference_meV_atom": float(np.median(v)),
+    summary = {k: {"max_abs_difference_meV_atom": float(np.max(v)) if v else None,
+                   "median_abs_difference_meV_atom": float(np.median(v)) if v else None,
                    "sign_agreement_count": sum(signs[k]), "count": len(v),
-                   "sign_agreement_fraction": sum(signs[k]) / len(v)}
+                   "sign_agreement_fraction": sum(signs[k]) / len(v) if v else None}
                for k, v in differences.items()}
-    direct = [r["absolute_difference_meV_atom"]["ddF_direct"] for r in result["rows"]]
-    summary["ddF_direct"] = {"max_abs_difference_meV_atom": float(np.max(direct)),
-                              "median_abs_difference_meV_atom": float(np.median(direct))}
+    direct = [r["absolute_difference_meV_atom"]["ddF_direct"] for r in result["rows"]
+              if r.get("reference") is not None]
+    summary["ddF_direct"] = {"max_abs_difference_meV_atom": float(np.max(direct)) if direct else None,
+                              "median_abs_difference_meV_atom": float(np.median(direct)) if direct else None,
+                              "count": len(direct)}
+    no_ref = [{"pair_id": r["pair_id"], "model": r["model"]} for r in result["rows"]
+              if r.get("reference") is None]
     result["comparison"] = {"reference_sha256": digest(path), "statistics": summary,
+                            "rows_without_reference": no_ref,
+                            "n_rows_computed": len(result["rows"]), "n_rows_with_reference": len(result["rows"]) - len(no_ref),
                             "outliers_above_0_05_meV_atom": outliers,
                             "sign_policy": "strict sign, including zero; no tolerance relabeling"}
 
