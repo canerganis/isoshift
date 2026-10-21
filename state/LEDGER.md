@@ -75,3 +75,4 @@ Conductor: Opus (orchestrating session). Started Wed 21 Oct 14:20 TRT, about 2.5
 - The AlOOH temperature line enters the card only if it is finished by 11:30 and its 300 K value reproduces the card within 0.05 GPa.
 - Goethite card stays in the repo, not in the video. Cut: overnight literature sweeps, NaBH4, 56-atom gibbsite, McKenzie lookup, 4-panel composite.
 - Can, 21 Oct ~23:00: clock times are flexible; what matters is the right order of work and finishing everything before the deadline. Ice sprint (F07) runs until the 11:00 freeze, protocol order unchanged.
+- 22 Oct ~00:30 ice sprint F07 (2eb6b8a): predictions P05 committed before data (bec68d7). Ih-II CHALLENGE (sign wrong in 3/3 models), II-III SUPPORT, Ih-III CHALLENGE; all failures involve Ih via the ordered ice XI proxy and the known ice H-bond overbinding (F02). Reported as a failed prediction; not in the headline. SevenNet screen started 23:42 (192 jobs).
