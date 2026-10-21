@@ -51,3 +51,5 @@ File times are from the local filesystem. Source details and licences are in `DA
 Fetched during the event: Materials Project H compounds (`data/isoshift/mp_h.json`, `mp_h.csv`, 4421 entries) at 14:20, by `src/isoshift_event/fetch_mp.py`.
 
 Ignored by git (see `.gitignore`): `data/isoshift/*` except small curated files, raw downloads, `.venv`, `.venv-sevenn`, queues.
+
+* Event-time change (21 Oct 22:10, Can's approval): `harness/llm.py` passes `--add-dir <repo>` to the headless agy call so Gemini 4 Argon can read repository files during councils (read-only in headless mode).

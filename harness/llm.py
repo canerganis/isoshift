@@ -104,7 +104,10 @@ def _run_agy(model: str, text: str, timeout: int) -> str:
         prompt_arg = (f"Read the file {pf} in full and follow the instructions inside it exactly. "
                       "Reply with only the answer the file asks for, nothing else.")
     try:
-        cmd = [AGY, f"-p={prompt_arg}", "--model", AGY_MODELS[model], "--output-format", "text"]
+        # Headless agy auto-denies reads outside the workspace; adding the repo makes its
+        # files readable (workspace reads are auto-granted, writes still need approval).
+        cmd = [AGY, f"-p={prompt_arg}", "--model", AGY_MODELS[model], "--output-format", "text",
+               "--add-dir", str(ROOT)]
         p = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8",
                            errors="replace", timeout=timeout, cwd=cwd)
         if p.returncode != 0:
