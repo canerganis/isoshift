@@ -1,0 +1,72 @@
+# F05. Blind harmonic D/H prediction against measured mineral fractionation
+
+Status: comparison run once, after the rule in `docs/predictions/P04_comparison_rule.md` was saved. Code: `src/isoshift_event/fractionation_compare.py`, numbers in `results/P04_comparison.json`. Predictions are `docs/predictions/P04_fractionation_blind.csv` (committed before the data were read). One typo in the rule file was corrected after the numbers were computed (goethite 1000 ln 0.905 written as -99.9, the value is -99.8); nothing else in the rule changed.
+
+## Result in one paragraph
+
+The harmonic ensemble gets the sign of every mineral pair and the order brucite > goethite > manganite right, but it gets the size wrong for the pair that has a proper calibrated equation. For brucite minus goethite it predicts 190 to 300 permil where the measured difference is 22 to 46 permil, and the predicted difference falls with temperature while the measured one rises. Against the thresholds fixed in advance (slope 0.5 to 2 and r above 0.9 for "quantitative"), the outcome is "ordering only". The two pairs that include manganite are closer in size (ratio 1.6 and 0.7) but rest on one weak point and one extrapolated point.
+
+## Structure mapping and gibbsite
+
+Brucite is mp-30247, goethite mp-605437, manganite mp-29159, as given. Gibbsite is excluded. I looked for a gibbsite structure in the blind set and there is none. Gibbsite is P2_1/n with Z = 8, so its primitive cell has 56 atoms and two octahedral layers (reduced cell about a 8.68, b 5.08, c 9.74 A, beta 94.5 deg, 53.5 A^3 per formula unit). The Materials Project entry that is gibbsite is mp-27540 (Al(HO)3, P2_1/c setting, 56 atoms, not theoretical): its Niggli-reduced cell is 5.113, 8.751, 9.695 A with an angle of 92.0 deg and 54.2 A^3 per formula unit, i.e. within about 1 percent in lengths and volume, 2.5 deg off in the monoclinic angle (a relaxed PBE-type cell against the ICSD cell). mp-27540 was dropped by the 32-atom cut of the screen and is not in `structures.csv` or in the blind predictions. The candidate mp-560196 (P2_1/c, 28 atoms, reduced cell 4.839, 5.105, 8.767 A, gamma 101.4 deg) is not gibbsite: it has Z = 4 and one layer per cell (its 4.84 A axis is the layer repeat, about 4.7 A layer spacing), while gibbsite needs two layers and 56 atoms. It has a similar volume per formula unit (53.1 A^3), which is why volume alone cannot identify gibbsite. Computing mp-27540 now would not be a blind prediction, so I did not do it. The measured gibbsite factor (alpha 0.998 +/- 0.006 at 9 to 51 C, Vitali 2001, about -2 permil) is therefore not tested here.
+
+## Table
+
+Measured Delta uses the equations and values in the data file (goethite 1000 ln alpha = -99.8 for 25 to 145 C; brucite -4.88e6/T^2 - 22.5, which gives -77.4, -69.2, -62.8, -57.5, -54.1 at 25, 50, 75, 100, 120 C; manganite -236.4, -228.4, -213.4 at 150, 200, 250 C; brucite at 250 C from the NaCl-solution record, 1000 ln(0.968) = -32.5). Predicted Delta is the median over MACE, ORB and MatterSim of the difference of 1000 ln beta, with the min-max over the three per-model differences. All values in permil.
+
+| pair | T (C) | measured | predicted median | predicted min to max | use |
+|---|---|---|---|---|---|
+| brucite minus goethite | 25 | 22.4 | 223 | 192 to 300 | scored |
+| brucite minus goethite | 50 | 30.6 | 219 | 192 to 287 | scored |
+| brucite minus goethite | 75 | 37.1 | 216 | 192 to 278 | scored |
+| brucite minus goethite | 100 | 42.3 | 213 | 191 to 270 | scored |
+| brucite minus goethite | 120 | 45.7 | 209 | 189 to 261 | scored |
+| brucite minus manganite | 250 | 180.9 | 282 | 243 to 309 | scored, weak provenance |
+| goethite minus manganite | 150 | 136.7 | 99 | 80 to 112 | sensitivity only, not scored |
+| brucite minus goethite, Sultan value for goethite | 70 | 51.8 | 216 | 192 to 280 | sensitivity only |
+
+Absolute 1000 ln beta (MACE, ORB, MatterSim) at 25 C: brucite 2481, 2509, 2494; goethite 2182, 2285, 2302; manganite 2064, 2140, 2198. At 250 C: brucite 1196, 1205, 1199; goethite 975, 1018, 1024; manganite 887, 923, 956.
+
+## Scores
+
+(i) Sign. Predicted and measured Delta have the same sign in 6 of 6 scored points, i.e. 2 of 2 scored pairs (brucite minus goethite, brucite minus manganite), and in the one sensitivity pair (goethite minus manganite). All three models agree on every sign. No measured Delta is within its stated uncertainty of zero (the goethite uncertainty is +/- 4.4 permil, the smallest measured Delta is 22). This is a weak test: with three minerals only a handful of signs exist, and the sign follows from the ordering below.
+
+(ii) Rank order. In all three models and at all temperatures 1000 ln beta is ordered brucite > goethite > manganite. Measured, brucite (-77 to -54 over 25 to 120 C) is above goethite (-99.8), which is above manganite (-236 to -213 over 150 to 250 C). The orders agree. The three-mineral order is transitive over two different temperature windows because no temperature has all three minerals admissible (brucite equation valid to 120 C, manganite measured from 150 C), so it is not an independent test beyond the two pair signs. The 1 in 6 chance of guessing a three-way order is not a significance level here, because the predicted order follows from a monotonic trend with O-H length that was not fitted to these minerals but is not independent of the three chosen compounds either.
+
+(iii) Slope and r. Pooled over the six scored points: OLS slope of predicted on measured 0.44 (intercept +201 permil), r = 0.95, through-origin ratio 2.27. The slope is below the 0.5 threshold, so the verdict fixed in advance is "ordering only". The r is not a significance test: five of the six points are the nearly collinear brucite-goethite series and the pooled r is produced by the contrast between that cluster and the single 250 C point. Within brucite minus goethite alone the slope is -0.59 and r = -0.99, because the measured Delta rises with temperature (22 to 46) while the predicted Delta falls (223 to 209). Adding the extrapolated goethite minus manganite point gives slope -0.03 and r = -0.03, so the pooled correlation does not survive one more point. The predicted-over-measured ratio is 10.0, 7.2, 5.8, 5.0, 4.6 for brucite minus goethite from 25 to 120 C, 1.6 for brucite minus manganite at 250 C and 0.7 for goethite minus manganite at 150 C.
+
+Constant offsets. The harmonic bias argument allows a constant offset per mineral. The residual (predicted minus measured) for brucite minus goethite is 201, 189, 179, 171, 163 permil from 25 to 120 C, so it is not constant: it drifts by 38 permil over 95 K. Offsets that remove the pairs would also have to differ between pairs. I did not fit offsets, because with three minerals and three pair points the fit is exact and tests nothing.
+
+## What the temperature trend says
+
+The measured goethite factor is temperature independent over 25 to 145 C. A harmonic beta of a stiff O-H mineral falls roughly as 1/T^2 and so does water's, so a flat mineral-water factor needs water's and goethite's beta to fall at the same rate. The brucite equation (a 1/T^2 form) falls in magnitude with temperature as expected. The mismatch within the brucite-goethite pair therefore sits mostly on the goethite side: either the flat goethite line is an empirical convenience over a limited and partly natural dataset (Yapp's fit is from natural goethites plus synthesis), or the harmonic goethite beta is wrong in its temperature dependence. This comparison cannot separate the two.
+
+## Caveats on the measurements
+
+Provenance. Every row has a flag in the data file and none was checked against the primary paper. Goethite 0.905 +/- 0.004 is quoted from a 2017 Chemical Geology paper citing Yapp 1987 and 2001; the Yapp 2001 DOI was not retrieved and 1000 ln alpha is inferred by me (the file says so). The brucite equation is from a search snippet attributed to Xu and Zheng 1999; the file says to verify coefficients and sign. Its 15 to 120 C validity comes from the file. The manganite alpha values at 150, 200 and 250 C were read from an abstract via a search summary and the 1000 ln alpha values are my conversion. The brucite 250 C value is a DeltaD against a 0.5 kb, 3.2 wt% NaCl solution from a record whose authors are not stated, at a pressure where Horita and coworkers report up to 12 permil of pressure effect at higher pressure and temperature, plus a salt effect of up to 4 permil; I used +/- 5 permil and it is the weakest number in the table.
+
+Natural against synthetic. The goethite factor mixes natural goethites and syntheses; the file also holds a natural Colorado goethite at 0.968 to 0.971 with a postulated source water, which is 30 permil different from 0.905 and was not used. The brucite equation is from low-temperature precipitation (synthetic). The file does not record the manganite sample origin beyond "experiment". The Sultan 2015 goethite value (-115.8 at 70 C, a search snippet from a low-quality synthesis paper that disagrees with Yapp) was used as a sensitivity only: replacing goethite by it changes the 70 C Delta from about 36 to 52 permil and leaves the conclusions unchanged.
+
+Experiments against theory. Only experimental rows were used as measurements. All theory rows (Asaduzzaman and Ganguly 2021, Meheut et al. 2010, Reynard and Caracas 2009, Gao and Liu 2025 and others) were excluded, as were pressure-effect rows, which are differences and not factors. Asaduzzaman and Ganguly find their DFT brucite-water ln alpha 5 to 13 permil below the experimental trend. That is small compared with the 150 to 200 permil gap above, but I did not use it.
+
+Temperature windows. The only goethite and manganite overlap is not admissible (goethite valid to 145 C, manganite from 150 C), so goethite minus manganite is a 5 C extrapolation of goethite's validity and is outside the scores. The scored points are therefore one calibrated-equation pair (brucite and goethite, whose two 25 to 120 C sources are both low-temperature and partly natural) and one weak 250 C point.
+
+Prediction side. Harmonic only, the |w| treatment for imaginary modes (imaginary fractions of the used structures are at most 0.7 percent), no anharmonic or tunnelling correction, 0 K relaxed geometry, no pressure. The three potentials are not independent validations. Brucite with two H per cell has the largest spread between models (MACE is 76 to 107 permil above MatterSim and ORB in the brucite-goethite difference, mostly from a lower goethite beta).
+
+## Relation to F01
+
+Mean model O-H length (nearest-heavy-atom distance in the relaxed cells used for the predictions, same method as `decompose.py`; goethite and manganite values match `results/decompose_structures.csv`), in angstrom for MACE, ORB, MatterSim:
+
+| mineral | O-H length | predicted 1000 ln beta at 25 C | measured 1000 ln alpha |
+|---|---|---|---|
+| brucite | 0.9707, 0.9711, 0.9709 | 2481, 2509, 2494 | -77 to -54 (25 to 120 C, equation) |
+| goethite | 1.0079, 1.0130, 1.0157 | 2182, 2285, 2302 | -99.8 (25 to 145 C) |
+| manganite | 1.0335, 1.0365, 1.0307 | 2064, 2140, 2198 | -236 to -213 (150 to 250 C) |
+
+The mineral with the longer O-H, i.e. the stronger hydrogen bond, has the lower predicted beta and the lower measured mineral-water factor, in all three models and in the measurements: manganite below goethite below brucite. The direction is the one F01 gives (deuteration favours the structure with the shorter O-H bonds, so the shorter O-H mineral concentrates deuterium more). Two cautions. First, F01 is a statement about polymorphs of one composition and its strong-hydrogen-bond regime starts at a mean O-H of 0.99 A. Brucite (0.971 A, no real hydrogen bond) is in the weak regime where F01 reports 1 of 16 evaluations right; goethite and manganite are in the strong regime. So the F01-specific content of this comparison is the goethite and manganite pair, whose measured difference (137 permil at an extrapolated 150 C) has the predicted sign, and the prediction is about 0.7 of the measured size, with a weak-provenance temperature extrapolation. The brucite ordering is consistent with the general trend of O-H frequency with hydrogen bonding but is not covered by F01. Second, three minerals with different cations are not a controlled O-H length series: cation mass, coordination and the whole lattice change with the O-H length, so the ordering supports the rule's direction without isolating the O-H length. With three points the rank correlation is 1 for both predicted and measured, which has a one-sided probability of 1/6 under no relation.
+
+The size is a separate matter. F01 puts the H/D free energy slope at 0.14 meV per H per mA of O-H length in the strong regime, and the 25 C brucite minus goethite predictions (3 models, 37 to 45 mA of O-H length difference, 4.9 to 7.7 meV per H) are of that order, which turns into 190 to 300 permil. The measured 22 to 46 permil is 5 to 10 times smaller. If that discrepancy is a harmonic artefact of the free (non-hydrogen-bonded) brucite O-H, the F01 rule is not affected, since brucite is outside its regime. If it is not, a stretch-dominated D/H contrast between O-H lengths is much weaker in real minerals than the three MLIPs make it. The data here cannot decide, and the other two pairs (ratios 1.6 and 0.7) do not show the same overestimate.
+
+## What this does and does not support
+
+It supports: the ordering of D/H affinity of these three oxyhydroxides and hydroxides follows O-H length in both the harmonic models and the measurements. It does not support: absolute or differential magnitudes of the harmonic beta for brucite against goethite, the temperature dependence within that pair, or any claim based on gibbsite. The next measurement-side step would be to verify the three primary sources (Xu and Zheng 1999, Yapp 2001, Hariya and Tsutsumi 1981) and to find overlapping-temperature data for goethite and manganite or for brucite and manganite. On the prediction side, the next step is a gibbsite run with the 56-atom mp-27540, labelled as non-blind.

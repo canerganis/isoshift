@@ -70,6 +70,14 @@ Predictions committed before the measured values were read (`docs/predictions/P0
 
 Deuteration destabilises delta-AlOOH relative to diaspore by +0.5 to +0.8 meV/atom (three models) and, in an exploratory QHA prediction at 300 K, raises the transition pressure by +1.13 GPa (ORB) and +1.33 GPa (MACE) (+0.3 to +0.4 GPa from 0 GPa geometries). The two models place the boundary 4.2 GPa apart but agree on the shift; the sign is the prediction, and proton disorder in delta-AlOOH lies outside harmonic physics. In one predeclared literature pair (goethite to ε-FeOOH) the O-H stretch falls and the assigned O-H bend rises, as predicted: nominal shifts are about -260 cm⁻¹ (from the midpoint of a 2600 to 3100 cm⁻¹ band, so anywhere from -511 to -11 cm⁻¹) against -273 predicted, and +290 against +195 cm⁻¹. The diaspore to δ-AlOOH pair was inconclusive. This is consistent with the sign of the compensating bend shift at the zone centre, not a measurement of its size or of the compensation fraction; the measured bend/stretch shift ratio (about 1.1) exceeds the model median (0.7) (`docs/findings/F04-differential-spectroscopy.md`).
 
+### F05: blind test against measured mineral D/H fractionation (`docs/findings/F05-fractionation-test.md`)
+
+The same H/D free energies give reduced partition function ratios, so mineral-mineral differences of measured mineral-water D/H fractionation test them without any water model. Predictions for 118 structures were committed before the data were read (`docs/predictions/P04_fractionation_blind.csv`, f3ac0ac) and the comparison rule before the comparison (`docs/predictions/P04_comparison_rule.md`). Result: the sign of every scored difference (6 of 6) and the order brucite > goethite > manganite are right in all three models, and the mineral with the longer O-H bonds takes up less deuterium, as F01 implies. The magnitudes are 5 to 10 times too large and the brucite-goethite temperature trend has the wrong sign, so the preset verdict is "ordering only": harmonic partition functions of O-H minerals are known to be biased by stretch anharmonicity.
+
+### F06: independent reimplementation (`docs/findings/F06-independent-replication.md`)
+
+A second model (Codex) reimplemented the isotope double difference and its stretch/bend split from the cached force constants without reading our code, using a different quadrature and q-mesh. It reproduces our numbers to 1e-9 meV/atom with 9 of 9 signs: the implementation is checked; the force fields are not.
+
 ### Benchmark
 
 MACE vs DFT phonons (PBEsol, 40 MDR phonondb entries): isotope ZPE difference MAE 1.5 meV, F(300 K) difference MAE 1.1 meV, X-H stretch MAE 45 cm-1 (`results/benchmark/summary.csv`).
