@@ -14,26 +14,33 @@
   },
   "in_range": true,
   "Pt_H_extrapolated": true,
+  "n_points_H": 3,
   "Pt_H_GPa": 8.76,
-  "Pt_D_GPa": 10.206,
-  "dP_iso_GPa": 1.446
+  "Pt_D_extrapolated": false,
+  "n_points_D": 3,
+  "Pt_D_GPa": 10.093,
+  "dP_iso_GPa": 1.333
  },
  "orb": {
   "dG_meV_atom": {
    "H": [
     5.9165,
     -4.1575,
-    NaN
+    -13.2554
    ],
    "D": [
     7.7791,
     -1.8553,
-    NaN
+    -10.7547
    ]
   },
   "in_range": true,
-  "Pt_H_GPa": 12.937,
-  "Pt_D_GPa": 14.037,
-  "dP_iso_GPa": 1.1
+  "Pt_H_extrapolated": false,
+  "n_points_H": 3,
+  "Pt_H_GPa": 13.001,
+  "Pt_D_extrapolated": false,
+  "n_points_D": 3,
+  "Pt_D_GPa": 14.131,
+  "dP_iso_GPa": 1.13
  }
 }

@@ -47,13 +47,11 @@ def main():
             x, y = np.array(PRESSURES, float), np.array(dg)
             ok = np.isfinite(y)
             root = None
-            for k in range(len(x) - 1):
-                if ok[k] and ok[k + 1] and np.sign(y[k]) != np.sign(y[k + 1]):
-                    root = float(x[k] - y[k] * (x[k + 1] - x[k]) / (y[k + 1] - y[k]))
-            if root is None and ok.sum() >= 2:  # extrapolate linearly from the fit, flagged
+            if ok.sum() >= 2:  # one estimator for H and D (council 05): linear fit over all pressures run
                 k, b = np.polyfit(x[ok], y[ok], 1)
                 root = float(-b / k)
-                res[f"Pt_{iso}_extrapolated"] = True
+                res[f"Pt_{iso}_extrapolated"] = not (x[ok].min() <= root <= x[ok].max())
+                res[f"n_points_{iso}"] = int(ok.sum())
             res[f"Pt_{iso}_GPa"] = None if root is None else round(root, 3)
         if res.get("Pt_H_GPa") is not None and res.get("Pt_D_GPa") is not None:
             res["dP_iso_GPa"] = round(res["Pt_D_GPa"] - res["Pt_H_GPa"], 3)
