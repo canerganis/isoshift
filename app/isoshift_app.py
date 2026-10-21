@@ -47,7 +47,47 @@ with app.setup:
             meta_pairs=_csv(root / "data" / "isoshift" / "pairs.csv"),
             meta_structs=_csv(root / "data" / "isoshift" / "structures.csv"),
             validation=_csv(root / "results" / "validation" / "volume_isotope.csv"),
+            dec_pairs=_csv(root / "results" / "decompose_pairs.csv"),
+            dec_structs=_csv(root / "results" / "decompose_structures.csv"),
+            refined=_csv(root / "results" / "screen_pairs_refined.csv"),
+            bench=_csv(root / "results" / "benchmark" / "summary.csv"),
+            stretch=read_json(root / "results" / "stretch_check_summary.json"),
         )
+
+    def read_json(path):
+        try:
+            return json.loads(Path(path).read_text(encoding="utf-8"))
+        except Exception:
+            return {}
+
+    def f01_frame(data):
+        """Clean covalent rows with per-H x (mA), y (meV/H) and the max X-H length of the pair's two structures."""
+        dp, ds, rf, mp = data["dec_pairs"], data["dec_structs"], data["refined"], data["meta_pairs"]
+        if not len(dp) or not len(ds) or not len(rf):
+            return pd.DataFrame()
+        ok = dp["clean"].astype(str).str.lower().eq("true") & dp["covalent_XH"].astype(str).str.lower().eq("true")
+        d = dp[ok].drop(columns=["formula"], errors="ignore")
+        d = d.merge(rf[["pair_id", "model", "struct_a", "struct_b"]].drop_duplicates(["pair_id", "model"]),
+                    on=["pair_id", "model"], how="inner")
+        xh = ds.drop_duplicates(["model", "struct_id"]).set_index(["model", "struct_id"])["XH_mean_A"].to_dict()
+        d["XH_a"] = [xh.get((m, a), np.nan) for m, a in zip(d.model, d.struct_a)]
+        d["XH_b"] = [xh.get((m, b), np.nan) for m, b in zip(d.model, d.struct_b)]
+        d["XH_max"] = d[["XH_a", "XH_b"]].max(axis=1)
+        d["x_mA"] = d["dXH_mean_A"] * 1000.0
+        d["y_total"] = d["ddF_total"] / d["H_per_atom"]
+        d["y_str"] = d["ddF_str"] / d["H_per_atom"]
+        d["y_perp"] = d["ddF_perp"] / d["H_per_atom"]
+        fm = mp.drop_duplicates("pair_id").set_index("pair_id")["formula"].to_dict() if len(mp) else {}
+        d["formula"] = d.pair_id.map(fm).fillna("?")
+        return d.dropna(subset=["x_mA", "y_total", "XH_max"]).reset_index(drop=True)
+
+    def sign_rule(d, threshold, x_min=5.0, y_min=0.1):
+        """(right, n, baseline) in the strong regime with |x|>=x_min, |y|>y_min. Rule: sign(y) == sign(x)."""
+        if not len(d):
+            return 0, 0, 0
+        g = d[(d.XH_max >= threshold) & (d.x_mA.abs() >= x_min) & (d.y_total.abs() > y_min)]
+        right = int((np.sign(g.y_total) == np.sign(g.x_mA)).sum())
+        return right, len(g), max(int((g.y_total > 0).sum()), int((g.y_total < 0).sum()))
 
     def structure_curves(data, struct_id, model):
         """(F_H, F_D) in meV/atom on TEMPS, or None. CSV JSON columns first, raw JSON second."""
@@ -285,6 +325,108 @@ def _(mo):
 def _(data, mo):
     _t = candidate_table(data["pairs"], data["meta_pairs"], data["meta_structs"])
     mo.ui.table(_t, selection=None, page_size=15)
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md("## Extra views (all numbers here are **precomputed** from cached results)")
+    return
+
+
+@app.cell
+def _(data, mo):
+    f01 = f01_frame(data)
+    thr = mo.ui.slider(0.97, 1.03, step=0.005, value=0.99, label="Strong-regime threshold, max X-H (A)", show_value=True)
+    f01_models = mo.ui.multiselect(options=MODELS, value=MODELS, label="Models")
+    _fl = sorted(f01.formula.unique()) if len(f01) else []
+    hl = mo.ui.dropdown(options=["(none)"] + _fl, value="(none)", label="Highlight formula")
+    return f01, f01_models, hl, thr
+
+
+@app.cell
+def _(f01, f01_models, hl, mo, thr):
+    if not len(f01):
+        f01_tab = mo.md("_No decomposition data found._")
+    else:
+        _d = f01[f01.model.isin(f01_models.value)].copy()
+        _d["strong"] = _d.XH_max >= thr.value
+        _k, _n, _b = sign_rule(_d, thr.value)
+        _fig, (_a1, _a2) = plt.subplots(1, 2, figsize=(11, 4.2))
+        for _flag, _col, _lab in ((False, "tab:blue", "weak"), (True, "tab:red", "strong")):
+            _g = _d[_d.strong == _flag]
+            _a1.scatter(_g.x_mA, _g.y_total, s=14, c=_col, alpha=0.6, label=f"{_lab} regime (n={len(_g)})")
+        _a2.scatter(_d.x_mA, _d.y_str, s=12, c="tab:orange", alpha=0.6, label="stretch ddF_str/H")
+        _a2.scatter(_d.x_mA, _d.y_perp, s=12, c="tab:green", alpha=0.6, label="bend/libration ddF_perp/H")
+        if hl.value != "(none)":
+            _h = _d[_d.formula == hl.value]
+            _a1.scatter(_h.x_mA, _h.y_total, s=90, facecolors="none", edgecolors="k", lw=1.5, label=hl.value)
+            _a2.scatter(_h.x_mA, _h.y_str, s=90, facecolors="none", edgecolors="k", lw=1.5, label=hl.value)
+            _a2.scatter(_h.x_mA, _h.y_perp, s=90, facecolors="none", edgecolors="k", lw=1.5)
+        for _a, _yl in ((_a1, "ddF_total / H  (meV per H)"), (_a2, "contribution per H (meV)")):
+            _a.axhline(0, color="k", lw=0.6)
+            _a.axvline(0, color="k", lw=0.6)
+            _a.set_xlabel("d(X-H) mean, b minus a (mA)")
+            _a.set_ylabel(_yl)
+            _a.grid(alpha=0.3)
+            _a.legend(fontsize=8)
+        _a1.set_title("F01: isotope shift vs bond-length change (precomputed)")
+        _a2.set_title("stretch vs bend/libration (precomputed)")
+        _fig.tight_layout()
+        f01_tab = mo.vstack([
+            mo.vstack([thr, f01_models, hl]),
+            mo.md(f"**Sign rule right: {_k} of {_n}** (strong regime, |x| >= 5 mA, |y| > 0.1) "
+                  f"| constant-sign baseline: {_b} of {_n} _(precomputed)_"),
+            _fig,
+            mo.md("Deuteration favours the polymorph with the shorter O-H bonds once H bonds are moderate to strong. "
+                  "The stretch term is about half cancelled by bend/libration "
+                  "(see `docs/findings/F01-xh-length-rule.md`)."),
+        ])
+    return (f01_tab,)
+
+
+@app.cell
+def _(data, mo):
+    _b = data["bench"]
+    if not len(_b):
+        _bench = mo.md("_No benchmark summary found._")
+    else:
+        _cols = [c for c in ("dzpe_MAE_meV", "dF300_MAE_meV", "stretch_MAE_cm1") if c in _b]
+        _lab = _b.model.astype(str) + "\n" + _b.setting.astype(str)
+        _fig, _axes = plt.subplots(1, len(_cols), figsize=(4.2 * len(_cols), 3.8), squeeze=False)
+        for _ax, _c in zip(_axes[0], _cols):
+            _ax.bar(range(len(_b)), _b[_c])
+            _ax.set_xticks(range(len(_b)))
+            _ax.set_xticklabels(_lab, rotation=60, ha="right", fontsize=7)
+            _ax.set_title(_c + " (precomputed)")
+            _ax.grid(alpha=0.3, axis="y")
+        _fig.tight_layout()
+        _bench = mo.vstack([mo.md("### Benchmark summary (precomputed)"), mo.ui.table(_b, selection=None), _fig])
+    _st = data["stretch"]
+    _rows = []
+    for _m, _v in (_st.get("windowed", {}).get("main_2.50-2.80", {}) or {}).items():
+        if isinstance(_v, dict):
+            _rows.append({"model": _m, "n_donors": _v.get("n_donors"), "f_OLS (2.50-2.80 A)": _v.get("f_OLS"),
+                          "f_TheilSen": _v.get("f_TheilSen"), "f_OLS_boot95": str(_v.get("f_OLS_boot95"))})
+    if not _rows:
+        for _m, _v in _st.items():
+            if isinstance(_v, dict) and "n" in _v:
+                _rows.append({"model": _m, **{k: v for k, v in _v.items()}})
+    _items = [_bench]
+    if _rows:
+        _items += [mo.md("### Stretch check (precomputed)"), mo.ui.table(pd.DataFrame(_rows), selection=None)]
+    _img = Path(data["root"]) / "figures" / "fig5_stretch_check.png"
+    if not _img.exists():
+        _img = REPO / "figures" / "fig5_stretch_check.png"
+    if _img.exists():
+        _items.append(mo.image(src=_img.read_bytes()))
+    bench_tab = mo.vstack(_items)
+    return (bench_tab,)
+
+
+@app.cell
+def _(bench_tab, f01_tab, mo):
+    mo.ui.tabs({"F01 isotope rule": f01_tab, "Benchmark & atlas": bench_tab})
     return
 
 
