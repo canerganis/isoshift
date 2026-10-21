@@ -1,0 +1,26 @@
+{
+ "mace": {
+  "V_diaspore": 7.6127,
+  "V_delta": 7.2936,
+  "dV_A3_atom": -0.3191,
+  "ddF300": 0.7685,
+  "dP_iso_GPa": 0.386,
+  "Pt_static_GPa": 13.2
+ },
+ "orb": {
+  "V_diaspore": 7.5629,
+  "V_delta": 7.2457,
+  "dV_A3_atom": -0.3172,
+  "ddF300": 0.8336,
+  "dP_iso_GPa": 0.421,
+  "Pt_static_GPa": 15.1
+ },
+ "mattersim": {
+  "V_diaspore": 7.5169,
+  "V_delta": 7.2205,
+  "dV_A3_atom": -0.2964,
+  "ddF300": 0.5186,
+  "dP_iso_GPa": 0.28,
+  "Pt_static_GPa": 16.5
+ }
+}
