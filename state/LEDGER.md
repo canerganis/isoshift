@@ -57,3 +57,11 @@ Conductor: Opus (orchestrating session). Started Wed 21 Oct 14:20 TRT, about 2.5
 - Planning session (other Claude) stood down 15:45; this session is the only writer. Its pool fix 62f1fde is post-baseline (event-time).
 - Double-well isotope-ordering idea tested on NaOH and dropped (see docs/decisions/00).
 - Bond found NaOH/NaOD isotope-induced transition (PRL 131, 126101, 2023): quantum paraelectric, add as negative control.
+
+## Status 21:45 Wed (conductor checkpoint; read with state/GOAL.md)
+- Findings: F01 (rule, regime-limited; 123/130 O-H, decision 05 wording), F02 (blind volume test mixed), F03 (stretch vs Libowitzky), F04 (P02 sign-level consistency, 1 pair; P03 inconclusive), CARD-AlOOH (+1.13 ORB / +1.33 MACE GPa, exploratory) + card 2 goethite to epsilon-FeOOH (+0.40 / +0.46 GPa, extrapolated).
+- Decisions: 04-discovery-claim, 05-final-claims (S6 passed; "discovery" removed from submission headings).
+- Blind predictions committed: P01 (0fffc54), P02 (6a3064b, da560cf), P03 (c990f11), P04 fractionation (f3ac0ac).
+- Running agents: F06 independent replication (Codex script, compare fix), F05 fractionation comparison (rule file first), F04 rewrite + card caveat (Sano-Furukawa: proton disorder 9.0 AlOOH / 13.4 GPa AlOOD).
+- GPU: main queue mattersim ~300, orb ~40, then sevenn 192 (auto-chain bwna4a5e0); qha_top: mattersim AlOOH pressure QHA (6 jobs, mem 0.35). Workers run with 2-4 threads (thermal).
+- Next: integrate F05/F06, final figures after Thu 12:00 freeze, write-up, video script v3, Can: public repo + video Thu 19:00.
