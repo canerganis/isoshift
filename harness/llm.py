@@ -72,11 +72,14 @@ def _full_prompt(prompt: str, system: str | None, json_schema: dict | None) -> s
 _ANSI = re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
 
 
-def _run_codex(model: str, text: str, timeout: int) -> str:
+def _run_codex(model: str, text: str, timeout: int, effort: str | None = None) -> str:
     with tempfile.TemporaryDirectory() as td:
         out = Path(td) / "out.txt"
         cmd = [CODEX, "exec", "--skip-git-repo-check", "-s", "read-only",
-               "-m", CODEX_MODELS[model], "-o", str(out), "-"]
+               "-m", CODEX_MODELS[model], "-o", str(out)]
+        if effort:
+            cmd += ["-c", f"model_reasoning_effort={effort}"]
+        cmd.append("-")
         p = subprocess.run(cmd, input=text, capture_output=True, text=True,
                            encoding="utf-8", errors="replace", timeout=timeout,
                            shell=(os.name == "nt" and CODEX == "codex"), cwd=td)
@@ -116,12 +119,17 @@ def _run_agy(model: str, text: str, timeout: int) -> str:
 
 
 def ask(model: str, prompt: str, *, system: str | None = None,
-        json_schema: dict | None = None, timeout: int = 600, cache: bool = True) -> Result:
+        json_schema: dict | None = None, timeout: int = 600, cache: bool = True,
+        effort: str | None = None) -> Result:
+    """effort: codex reasoning effort (low/medium/high/xhigh); ignored for agy models."""
     if model not in MODELS:
         raise ValueError(f"unknown model {model!r}; choose from {MODELS}")
     full = _full_prompt(prompt, system, json_schema)
+    if model not in CODEX_MODELS:
+        effort = None
     key = sha256_hex(model, system or "", prompt,
-                     json.dumps(json_schema, sort_keys=True) if json_schema else "")
+                     json.dumps(json_schema, sort_keys=True) if json_schema else "",
+                     *([effort] if effort else []))
     store = DiskCache(CACHE_DIR)
     if cache:
         hit = store.get(key)
@@ -132,7 +140,10 @@ def ask(model: str, prompt: str, *, system: str | None = None,
     t0 = time.time()
     text, err = "", None
     try:
-        text = (_run_codex if model in CODEX_MODELS else _run_agy)(model, full, timeout)
+        if model in CODEX_MODELS:
+            text = _run_codex(model, full, timeout, effort)
+        else:
+            text = _run_agy(model, full, timeout)
     except subprocess.TimeoutExpired:
         err = f"timeout after {timeout}s"
     except Exception as e:  # noqa: BLE001
@@ -211,7 +222,8 @@ def _validate(obj: Any, schema):
 
 
 def ask_json(model: str, prompt: str, schema=None, *, system: str | None = None,
-             timeout: int = 600, cache: bool = True, repair: bool = True):
+             timeout: int = 600, cache: bool = True, repair: bool = True,
+             effort: str | None = None):
     """ask() + extract + validate; on failure re-ask once with the error. Returns (obj, Result).
     `schema` may be a pydantic model class or a JSON-schema dict. Raises ValueError on failure."""
     js = None
@@ -219,7 +231,7 @@ def ask_json(model: str, prompt: str, schema=None, *, system: str | None = None,
         js = schema
     elif schema is not None:
         js = schema.model_json_schema()
-    r = ask(model, prompt, system=system, json_schema=js, timeout=timeout, cache=cache)
+    r = ask(model, prompt, system=system, json_schema=js, timeout=timeout, cache=cache, effort=effort)
     if r.error:
         raise ValueError(f"LLM call failed: {r.error}")
     try:
@@ -229,7 +241,7 @@ def ask_json(model: str, prompt: str, schema=None, *, system: str | None = None,
             raise ValueError(f"bad JSON: {e}") from e
         fix = (f"{prompt}\n\nYour previous reply was not valid ({type(e).__name__}: {str(e)[:500]}).\n"
                f"Previous reply:\n{r.text[:4000]}\n\nReply again with ONLY the corrected JSON.")
-        r2 = ask(model, fix, system=system, json_schema=js, timeout=timeout, cache=cache)
+        r2 = ask(model, fix, system=system, json_schema=js, timeout=timeout, cache=cache, effort=effort)
         if r2.error:
             raise ValueError(f"repair call failed: {r2.error}")
         try:

@@ -27,6 +27,9 @@ obj, r = ask_json("gpt-6-astra", "Classify ...", Verdict)          # pydantic cl
 ```
 
 Models: `gpt-6-astra` (codex exec, prompt on stdin), `gemini-4-argon` and `opus-5.5` (agy, high effort).
+`ask(..., effort="xhigh")` sets codex reasoning effort (low/medium/high/xhigh); ignored for agy models.
+
+Shell entry for agents: `python -m harness.cli --model gpt-6-astra --effort xhigh --prompt-file p.md --out reply.md`.
 
 * `ask` never raises on CLI failure: check `r.error`. Errors are not cached.
 * Cache: `.cache/llm/<sha256(model, system, prompt, schema)>.json` (holds the full prompt and reply). Call log: `logs/llm_calls.jsonl` (model, hash, latency, ok, cached, error, timestamp). Both are gitignored.
