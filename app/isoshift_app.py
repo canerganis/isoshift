@@ -52,6 +52,8 @@ with app.setup:
             refined=_csv(root / "results" / "screen_pairs_refined.csv"),
             bench=_csv(root / "results" / "benchmark" / "summary.csv"),
             stretch=read_json(root / "results" / "stretch_check_summary.json"),
+            stretch_check=_csv(root / "results" / "stretch_check.csv"),
+            f01_cv=read_json(root / "results" / "F01_cv.json"),
         )
 
     def read_json(path):
@@ -79,15 +81,42 @@ with app.setup:
         d["y_perp"] = d["ddF_perp"] / d["H_per_atom"]
         fm = mp.drop_duplicates("pair_id").set_index("pair_id")["formula"].to_dict() if len(mp) else {}
         d["formula"] = d.pair_id.map(fm).fillna("?")
+        sc = data.get("stretch_check")
+        if sc is not None and len(sc) and "struct_id" in sc:
+            oh = set(sc["struct_id"].astype(str))
+            d["OH"] = [(a in oh) or (b in oh) for a, b in zip(d.struct_a, d.struct_b)]
+        else:
+            d["OH"] = np.nan  # O-H population not available (results/stretch_check.csv missing)
         return d.dropna(subset=["x_mA", "y_total", "XH_max"]).reset_index(drop=True)
 
-    def sign_rule(d, threshold, x_min=5.0, y_min=0.1):
-        """(right, n, baseline) in the strong regime with |x|>=x_min, |y|>y_min. Rule: sign(y) == sign(x)."""
+    def _fold_majority(y, family):
+        """Leave-one-formula-out constant-sign baseline: for each row, the majority sign of y over the other formulas."""
+        y = np.asarray(y, float)
+        family = np.asarray(family)
+        out = np.zeros(len(y))
+        for fam in np.unique(family):
+            te = family == fam
+            out[te] = 1.0 if np.sign(y[~te]).sum() >= 0 else -1.0
+        return out
+
+    def sign_rule(d, threshold, x_min=5.0, y_min=None, oh_only=False, weak=False):
+        """(right, n, baseline) on one side of the regime threshold (max X-H of the pair, strong = >=).
+        Eligible rows have |x| >= x_min mA; y_min cuts on |ddF| (meV/H, the all-covalent signal cut) and oh_only keeps
+        O-H pairs. Rule: sign(y) == sign(x). Baseline: leave-one-formula-out majority sign of y over the same side."""
         if not len(d):
             return 0, 0, 0
-        g = d[(d.XH_max >= threshold) & (d.x_mA.abs() >= x_min) & (d.y_total.abs() > y_min)]
+        fit = d[(d.XH_max < threshold) if weak else (d.XH_max >= threshold)]
+        if oh_only:
+            fit = fit[fit["OH"].astype(bool)]
+        if y_min is not None:
+            fit = fit[fit.y_total.abs() > y_min]
+        if not len(fit):
+            return 0, 0, 0
+        base = _fold_majority(fit.y_total, fit.formula)
+        el = (fit.x_mA.abs() >= x_min).values
+        g = fit[el]
         right = int((np.sign(g.y_total) == np.sign(g.x_mA)).sum())
-        return right, len(g), max(int((g.y_total > 0).sum()), int((g.y_total < 0).sum()))
+        return right, len(g), int((base[el] == np.sign(g.y_total.values)).sum())
 
     def structure_curves(data, struct_id, model):
         """(F_H, F_D) in meV/atom on TEMPS, or None. CSV JSON columns first, raw JSON second."""
@@ -278,7 +307,8 @@ def _(data, mo, model_ms, offset, pair_dd):
             _fb = structure_curves(data, _r["struct_b"], _r["model"])
             _fl = split_flags(_r.get("flags"))
             if _fa is None or _fb is None or pd.isna(_r.get("dE_static_meV_atom")):
-                _txt.append(f"**{_r['model']}**: no curves ({'; '.join(_fl) or 'missing'})")
+                _txt.append(f"**{_r['model']}**: no curves in the published CSVs and no `results/raw` cache in this "
+                            f"checkout ({'; '.join(_fl) or 'missing'})")
                 continue
             _dE = float(_r["dE_static_meV_atom"]) + offset.value
             _gh, _gd = dG_curves(_dE, _fa, _fb)
@@ -339,19 +369,31 @@ def _(data, mo):
     f01 = f01_frame(data)
     thr = mo.ui.slider(0.97, 1.03, step=0.005, value=0.99, label="Strong-regime threshold, max X-H (A)", show_value=True)
     f01_models = mo.ui.multiselect(options=MODELS, value=MODELS, label="Models")
+    _pops = {"O-H pairs, no cut on ddF (headline)": "oh",
+             "All covalent X-H, signal cut |ddF| > 0.1 meV/H": "cov"}
+    pop = mo.ui.dropdown(options=_pops, value="O-H pairs, no cut on ddF (headline)", label="Population")
     _fl = sorted(f01.formula.unique()) if len(f01) else []
     hl = mo.ui.dropdown(options=["(none)"] + _fl, value="(none)", label="Highlight formula")
-    return f01, f01_models, hl, thr
+    return f01, f01_models, hl, pop, thr
 
 
 @app.cell
-def _(f01, f01_models, hl, mo, thr):
+def _(f01, f01_models, hl, mo, pop, thr):
     if not len(f01):
         f01_tab = mo.md("_No decomposition data found._")
     else:
         _d = f01[f01.model.isin(f01_models.value)].copy()
         _d["strong"] = _d.XH_max >= thr.value
-        _k, _n, _b = sign_rule(_d, thr.value)
+        _oh = pop.value == "oh" and bool(f01["OH"].notna().all())
+        if pop.value == "oh" and not _oh:
+            _pop_note = " _(O-H flags unavailable here, showing all covalent with signal cut)_"
+        else:
+            _pop_note = ""
+        _kw = dict(oh_only=True) if _oh else dict(y_min=0.1)
+        _k, _n, _b = sign_rule(_d, thr.value, **_kw)
+        _kw_, _nw, _bw = sign_rule(_d, thr.value, weak=True, **_kw)
+        _label = ("O-H pairs, |dX-H| >= 5 mA, no cut on ddF" if _oh
+                  else "all covalent X-H, |dX-H| >= 5 mA, |ddF| > 0.1 meV/H (signal cut)")
         _fig, (_a1, _a2) = plt.subplots(1, 2, figsize=(11, 4.2))
         for _flag, _col, _lab in ((False, "tab:blue", "weak"), (True, "tab:red", "strong")):
             _g = _d[_d.strong == _flag]
@@ -366,7 +408,7 @@ def _(f01, f01_models, hl, mo, thr):
         for _a, _yl in ((_a1, "ddF_total / H  (meV per H)"), (_a2, "contribution per H (meV)")):
             _a.axhline(0, color="k", lw=0.6)
             _a.axvline(0, color="k", lw=0.6)
-            _a.set_xlabel("d(X-H) mean, b minus a (mA)")
+            _a.set_xlabel("d(X-H) mean, b minus a (mÅ)")
             _a.set_ylabel(_yl)
             _a.grid(alpha=0.3)
             _a.legend(fontsize=8)
@@ -374,11 +416,14 @@ def _(f01, f01_models, hl, mo, thr):
         _a2.set_title("stretch vs bend/libration (precomputed)")
         _fig.tight_layout()
         f01_tab = mo.vstack([
-            mo.vstack([thr, f01_models, hl]),
-            mo.md(f"**Sign rule right: {_k} of {_n}** (strong regime, |x| >= 5 mA, |y| > 0.1) "
-                  f"| constant-sign baseline: {_b} of {_n} _(precomputed)_"),
+            mo.vstack([thr, f01_models, pop, hl]),
+            mo.md(f"**Sign rule right: {_k} of {_n}** (strong regime, {_label}) "
+                  f"| leave-one-formula-out constant-sign baseline: {_b} of {_n} "
+                  f"| weak side: {_kw_} of {_nw} _(precomputed)_{_pop_note}"),
             _fig,
-            mo.md("Deuteration favours the polymorph with the shorter O-H bonds once H bonds are moderate to strong. "
+            mo.md("Default: 123 of 130 O-H model evaluations (baseline 82 of 130) at the 0.99 Å model-derived threshold with all three models; "
+                  "the all-covalent signal-cut population is a labelled alternative. "
+                  "Deuteration favours the polymorph with the shorter O-H bonds once H bonds are moderate to strong. "
                   "The stretch term is about half cancelled by bend/libration "
                   "(see `docs/findings/F01-xh-length-rule.md`)."),
         ])

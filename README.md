@@ -2,7 +2,7 @@
 
 IsoShift computes how swapping hydrogen for deuterium changes the vibrational free energy of a crystal, and uses that to ask which polymorph deuteration favours.
 
-**Main finding (F01).** Across 197 hydrogen-compound polymorph pairs screened with three universal ML potentials, the harmonic H/D free-energy difference at 300 K changes by 0.12 to 0.15 meV per H for each mÅ difference in mean X-H length, a stretch term about half cancelled by bend and libration. When at least one polymorph has a mean model O-H length of 0.99 Å or more (moderate to strong hydrogen bonds), deuteration favours the polymorph with the shorter O-H bonds in 123 of 130 O-H model evaluations (67 pairs, 23 formulas), against 82 of 130 for a constant-sign baseline fitted on leave-one-formula-out training folds. One exploratory prediction: deuteration raises the diaspore to delta-AlOOH transition pressure by about 1 GPa.
+**Main finding (F01).** Across 197 hydrogen-compound polymorph pairs screened with three universal ML potentials, the harmonic H/D free-energy difference at 300 K changes by 0.12 to 0.15 meV per H for each mÅ difference in mean X-H length, a stretch term about half cancelled by bend and libration. When at least one polymorph has a mean model O-H length of 0.99 Å or more (a model-derived boundary for moderate to strong hydrogen bonds), deuteration favours the polymorph with the shorter O-H bonds in 123 of 130 O-H model evaluations with |Δ mean O-H| ≥ 5 mÅ (67 pairs, 23 formulas), against 82 of 130 for a constant-sign baseline fitted on leave-one-formula-out training folds. One exploratory prediction: deuteration raises the diaspore to delta-AlOOH transition pressure by about 1 GPa.
 
 ## Why
 
@@ -54,7 +54,7 @@ Implementation checks (equal masses give zero shift, H/D swap flips the sign, cl
 
 * The isotope double difference per H is linear in the change of mean X-H bond length between the polymorphs: slope 0.12 (MACE), 0.12 (ORB), 0.15 (MatterSim) meV/H per mA; r 0.78 to 0.89.
 * Mechanism, from a mode-resolved mass integral: the X-H stretch term (+0.24 to +0.26 meV/H per mA, same in all models) is about half cancelled by bending and libration (-0.11 to -0.13).
-* Domain: when at least one polymorph has a moderate or strong H bond (mean model O-H at least 0.99 A, O...O below about 2.92 A), the sign of the bond-length change predicts which polymorph deuteration favours in 123 of 130 O-H model evaluations (67 pairs, 23 formulas; baseline 82/130 from leave-one-formula-out training folds). Re-choosing the threshold inside each fold picks 0.99 A every time; without any threshold the rule holds in 129 of 150 evaluations (all covalent pairs, signal cut, baseline 100/150). With weak H bonds on both sides the rule has no skill (1 of 16). The threshold was found after looking at the data; the full scan is in `results/F01_cv.json`.
+* Domain: when at least one polymorph has a moderate or strong H bond (mean model O-H at least 0.99 A, O...O below about 2.92 A), the sign of the bond-length change predicts which polymorph deuteration favours in 123 of 130 O-H model evaluations with |Δ mean O-H| ≥ 5 mÅ (67 pairs, 23 formulas; baseline 82/130 from leave-one-formula-out training folds). Re-choosing the threshold inside each fold picks 0.99 A every time; without any threshold the rule holds in 124 of 146 O-H evaluations (85%, same O-H, no-cut population; the weak side is 1 of 16). On all covalent pairs with a signal cut it is 129 of 150 (baseline 100/150). With weak H bonds on both sides the rule has no skill (1 of 16). The threshold was found after looking at the data; the full scan is in `results/F01_cv.json`.
 
 ### F03: the stretch ingredient matches measured spectra (`docs/findings/F03-stretch-vs-experiment.md`)
 
@@ -84,7 +84,7 @@ MACE vs DFT phonons (PBEsol, 40 MDR phonondb entries): isotope ZPE difference MA
 
 ## Prior work
 
-The competition between O-H stretch and bend zero-point energies that underlies F01 is known: McKenzie et al. derived it for hydrogen-bond isotope fractionation (J. Chem. Phys. 140, 174508 (2014), 10.1063/1.4873352; J. Chem. Phys. 143, 044309 (2015), 10.1063/1.4927391), Li, Walker and Michaelides showed competing quantum effects whose net sign depends on H-bond strength (PNAS 108, 6369 (2011)), and Zhou, Kye and Harbison explained isotopomeric polymorphism in molecular crystals by zero-point energy differences (2004, 2006). The Ubbelohde geometric isotope effect is a related geometry effect. Bourgeois et al. (2018, 10.1088/1361-648X/aad259) modelled H/D/T effects on gas-solid hydride formation. IsoShift's contribution is the solid-state polymorph-stability version of the stretch-bend competition, quantified with three ML potentials over 197 crystal pairs, with a measured regime boundary (mean O-H 0.99 A, O...O about 2.92 A) and a separate O...O sign predictor (83% vs 64% baseline).
+The competition between O-H stretch and bend zero-point energies that underlies F01 is known: McKenzie et al. derived it for hydrogen-bond isotope fractionation (J. Chem. Phys. 140, 174508 (2014), 10.1063/1.4873352; J. Chem. Phys. 143, 044309 (2015), 10.1063/1.4927391), Li, Walker and Michaelides showed competing quantum effects whose net sign depends on H-bond strength (PNAS 108, 6369 (2011)), and Zhou, Kye and Harbison explained isotopomeric polymorphism in molecular crystals by zero-point energy differences (2004, 2006). The Ubbelohde geometric isotope effect is a related geometry effect. Bourgeois et al. (2018, 10.1088/1361-648X/aad259) modelled H/D/T effects on gas-solid hydride formation. IsoShift's contribution is the solid-state polymorph-stability version of the stretch-bend competition, quantified with three ML potentials over 197 crystal pairs, with a model-derived regime boundary (mean O-H 0.99 A, O...O about 2.92 A) and a separate O...O sign predictor (83% vs 64% baseline).
 
 ## Novelty
 
@@ -142,7 +142,7 @@ During the event (21 Oct onward):
 
 * Everything in `src/isoshift_event/` and `app/`: pair builder, screen driver, validation and QHA runs, sanity checks, benchmark against DFT phonons, analysis, refinement, provenance, convergence checks, Bond log.
 * `data/isoshift/validation.csv`, pairs, structures, `results/`, decision records, math checks and the ledger.
-* One event-time fix to pre-event code: `isoshift/pool.py`, commit 62f1fde, which handles Windows file-replace collisions.
+* Two event-time changes to pre-event code: `isoshift/pool.py`, commit 62f1fde, which handles Windows file-replace collisions; and `harness/llm.py`, commit d250b20, which gives the headless Gemini council call read-only repo access (`--add-dir`; Can approved, 21 Oct 22:10).
 
 ## License and citation
 

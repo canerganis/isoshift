@@ -21,7 +21,7 @@ Note on the boundary: the baseline commit was made on 21 Oct at 14:19, after pla
 | artifact | commit | time |
 |---|---|---|
 | `src/isoshift_event/` scaffold, MP H-compound fetch, Bond query log, ledger | cfb3152 | 14:22 |
-| Fix to pre-event code: `isoshift/pool.py` and `tests/test_pool.py`, Windows file-replace collisions (the only event-time change to pre-event code) | 62f1fde | 14:41 |
+| Fix to pre-event code: `isoshift/pool.py` and `tests/test_pool.py`, Windows file-replace collisions (first of two event-time changes to pre-event code; the second is `harness/llm.py`, d250b20, below) | 62f1fde | 14:41 |
 | M01 isotope formulas (mathcheck), validation table | 0eb8954 | 14:51 |
 | Brucite imaginary-mode decision, validation QHA runner | c734d5f | after 14:51 |
 | DFT isotope benchmark (`benchmark.py`) | aa1f6a0 | after c734d5f |
