@@ -1,5 +1,7 @@
 # F04. Predeclared differential spectroscopy test of the compensation term: sign-level consistency, one pair
 
+**Status: tested (predeclared in P02/P03 before band lookup). Sign-level consistency on one pair, two pairs inconclusive (decision 05).**
+
 Protocol: model predictions and decision rules committed and pushed before any band was looked up (`docs/predictions/P02_differential_spectroscopy.md`, v1 6a3064b 20:50, v2 after Astra review da560cf 20:52). Bands were sourced by a literature agent afterwards (`data/isoshift/oh_bands.csv`, Bond queries logged) and audited in `docs/findings/F04-source-audit.md`. Verdicts apply the v2 rules.
 
 ## Conclusion (decision 05 sentence)

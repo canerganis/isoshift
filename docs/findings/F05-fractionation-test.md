@@ -1,6 +1,6 @@
 # F05. Blind harmonic D/H prediction against measured mineral fractionation
 
-Status: comparison run once, after the rule in `docs/predictions/P04_comparison_rule.md` was saved. Code: `src/isoshift_event/fractionation_compare.py`, numbers in `results/P04_comparison.json`. Predictions are `docs/predictions/P04_fractionation_blind.csv` (committed before the data were read). One typo in the rule file was corrected after the numbers were computed (goethite 1000 ln 0.905 written as -99.9, the value is -99.8); nothing else in the rule changed.
+**Status: tested (blind; preset verdict "ordering only").** The comparison was run once, after the rule in `docs/predictions/P04_comparison_rule.md` was saved. Timing disclosure: the predictions were committed before the data were read (f3ac0ac, 21:36; data committed unread in e7ee2d5, 21:43), but the rule file was first committed together with this result (90ad4cd, 21:49), so its precedence over the comparison rests on the run order recorded in `state/LEDGER.md` ("rule file first"), not on a separate commit. Code: `src/isoshift_event/fractionation_compare.py`, numbers in `results/P04_comparison.json`. Predictions are `docs/predictions/P04_fractionation_blind.csv` (committed before the data were read). One typo in the rule file was corrected after the numbers were computed (goethite 1000 ln 0.905 written as -99.9, the value is -99.8); nothing else in the rule changed.
 
 ## Result in one paragraph
 

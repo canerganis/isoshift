@@ -1,5 +1,7 @@
 # F02. Blind test of volume isotope predictions (P01) against measured H/D crystal data
 
+**Status: tested (prediction-first, P01 committed in 0fffc54 before the measured rows were read). Result mixed; F02 does not test F01 (decision 04).**
+
 Protocol: predictions in `docs/predictions/P01_volume_isotope_blind.csv` were committed and pushed at 2026-10-21 20:27:19 +0300 (0fffc54) before the conductor opened the measured rows that two literature agents had written to `data/isoshift/validation.csv` (agents were told to give no numbers in their replies; data committed unread in 3bb0ea4). Prediction method = gate validation method (Gamma-free QHA, four imaginary-mode treatments), mace and orb, 300 K.
 
 Measured values come from CIF cell volumes of H and D compounds. None of the new pairs has a confirmed common temperature, several are cross-lab; the agents flagged them "NOT COMPUTED" for that reason. The comparison below computes V_H/V_D - 1 anyway and states the data quality.
@@ -11,12 +13,12 @@ Measured values come from CIF cell volumes of H and D compounds. None of the new
 | beta-CrOOH (P2_1nm, mp-24040) | +0.06% (10.1016/0022-4596(76)90180-8) | -0.27 / n.a. | wrong | same paper, T not stated; very short near-symmetric H bond, axis effects cancel |
 | alpha-CrOOH (R-3m, H disordered; our R3m mp-23910) | -1.21% (10.1016/0022-4596(77)90130-x) | -0.27 / n.a. | right | H disordered in experiment, outside harmonic model |
 | Be(OH)2 (P2_12_12_1) | -0.03% | not yet computed | | difference within experimental error |
-Earlier, gate-quality targets: brucite +0.31% (pred +0.19 to +0.44, 4/4 sign right), LiH +0.81 or +1.04% (pred +1.02 to +1.27, 4/4), ice XI -0.075% (pred -0.29 to -0.80, sign right, 4 to 10x too large).
+Earlier, gate-quality targets: brucite +0.31% (pred +0.19 to +0.44, 4/4 sign right), LiH +0.81 or +1.04% (pred +1.02 to +1.27, 4/4), ice XI -0.075% (pred -0.29 to -0.80, sign right, 4 to 11x too large).
 
 ## Pattern
 * Hydrides without H bonds (LiH, alpha-AlH3): sign right, magnitude about 1.3 to 1.5x too large in every model.
 * Weak H bonds (brucite): right sign and magnitude.
-* Strong, short H bonds (diaspore-type GaOOH, beta-CrOOH): the models predict a negative, ice-like volume isotope effect; the measurements are positive (low-quality data). Ice: right sign, 4 to 10x too large.
+* Strong, short H bonds (diaspore-type GaOOH, beta-CrOOH): the models predict a negative, ice-like volume isotope effect; the measurements are positive (low-quality data). Ice: right sign, 4 to 11x too large.
 * Reading: the universal MLIPs over-weight the negative-Gruneisen O-H stretch contribution in H-bonded crystals (consistent with the 7% H-bond overbinding seen for ice XI in decision 01).
 
 ## Why this matters for F01

@@ -1,5 +1,7 @@
 # F04 source audit and P03 band lookup (council 05 actions 2 and 4)
 
+**Status: tested (literature audit of the F04 comparators and the card caveat; no new computation).**
+
 Auditor: sonnet-audit-05, 21 Oct. Bond queries are logged in `logs/bond_queries.jsonl`. New band rows are appended to `data/isoshift/oh_bands.csv`. Full texts were read for Sano-Furukawa 2018 (Europe PMC PMC6195538), Thompson 2020 (NSF PAR copy) and Mashino 2026 (open access PDF and SI). Liu 2013, Kohler 1997 and Chukanov 2021 could not be read in full (paywall or bot gate, not bypassed), so those parts are marked secondary.
 
 ## Action 2: what 9.0, 13.4 and 18.1 GPa mean in Sano-Furukawa et al. 2018

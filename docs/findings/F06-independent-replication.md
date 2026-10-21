@@ -1,5 +1,7 @@
 # F06: Independent replication of F01
 
+**Status: computed (second implementation of the same harmonic quantity from the same cached force constants; checks code and bookkeeping, not the potentials or the physics).**
+
 Script: src/isoshift_event/replicate_f01.py, written by a separate model (Codex) without access to our decomposition code. It recomputes ddF_iso and its stretch/perpendicular split from cached force constants (own q-mesh convergence, Gauss-Legendre integration over ln(m_H), same-mask imaginary-mode policy, nearest non-H atom as stretch direction, per-primitive-atom normalisation). The reference file results/decompose_pairs.csv was opened only after all independent numbers were written. Output: results/replicate_f01.json and results/replicate_f01.log.
 
 Only the final comparison and summary code was patched (rows without a reference are listed separately and skipped in the statistics). The physics and numerics were not changed.
