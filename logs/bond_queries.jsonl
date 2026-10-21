@@ -32,3 +32,61 @@
 {"ts": "2026-10-21T14:43:45+0300", "agent": "sonnet-validation-followup", "tool": "semantic_search_papers", "query": "MgH2 MgD2 rutile lattice parameters neutron diffraction deuteride hydride isotope", "purpose": "MgH2/MgD2 lattice", "n_results": 10, "kept": ["10.1088/0953-8984/23/30/305403 Moser (abstract only, no lattice numbers)"]}
 {"ts": "2026-10-21T14:43:45+0300", "agent": "sonnet-validation-followup", "tool": "search_by_abstract", "query": "Ca(OH)2 Ca(OD)2 portlandite isotope effect lattice", "purpose": "portlandite paired lattice", "n_results": 10, "kept": []}
 {"ts": "2026-10-21T14:43:45+0300", "agent": "sonnet-validation-followup", "tool": "search_by_abstract", "query": "LiH LiD Raman infrared TO phonon frequency crystals", "purpose": "LiH TO frequency primary", "n_results": 10, "kept": ["10.1103/PhysRevB.51.8874"]}
+{"sweep":"candidate-lit","query":"titanium hydride Ti2H subhydride structure phase stability","n_results":10}
+{"sweep":"candidate-lit","query":"titanium deuteride neutron diffraction","n_results":10}
+{"sweep":"candidate-lit","query":"titanium hydride isotope effect deuterium","n_results":10}
+{"sweep":"candidate-lit","query":"semantic: zirconium hydride gamma delta zeta phase stability first-principles","n_results":10}
+{"sweep":"candidate-lit","query":"abstract: zirconium deuteride neutron diffraction","n_results":10}
+{"sweep":"candidate-lit","query":"title: zirconium hydride isotope effect deuterium phase","n_results":10}
+{"sweep":"candidate-lit","query":"title: The preparation of Zr-deuteride and phase stability studies of the Zr-D system","n_results":1}
+{"sweep":"candidate-lit","query":"title: New zirconium hydrides predicted by structure search method","n_results":1}
+{"sweep":"candidate-lit","query":"title: Structure and Thermodynamical Properties of Zirconium hydrides from first-principle","n_results":1}
+{"sweep":"candidate-lit","query":"semantic: barium monohydride BaH polymorphs high pressure hydride structure","n_results":8}
+{"sweep":"candidate-lit","query":"abstract: barium hydride deuteride BaD2 BaH2 isotope","n_results":8}
+{"sweep":"candidate-lit","query":"title: barium hydride","n_results":8}
+{"sweep":"candidate-lit","query":"semantic: BaH rocksalt or P4/nmm monohydride predicted stable under pressure alkaline earth monohydride crystal","n_results":6}
+{"sweep":"candidate-lit","query":"semantic: BaD2 deuteride neutron diffraction structure phase transition pressure temperature isotope effect barium hydride","n_results":6}
+{"sweep":"candidate-lit","query":"deuteration changes polymorph stability or shifts solid-solid phase transition temperature in hydroxide or oxyhydroxide, H/D isotope effect","n_results":10}
+{"sweep":"candidate-lit","query":"isotope effect phase transition temperature deuterated ammonium","n_results":10}
+{"sweep":"candidate-lit","query":"AlH3 polymorphs alpha beta gamma stability (semantic)","n_results":10}
+{"sweep":"candidate-lit","query":"AlD3 aluminum deuteride (abstract)","n_results":10}
+{"sweep":"candidate-lit","query":"alane AlH3 pressure phase transition (title)","n_results":10}
+{"sweep":"candidate-lit","query":"Pressure-induced hydrogen-dominant metallic state in aluminum hydride (semantic)","n_results":2}
+{"sweep":"candidate-lit","query":"Mechanochemical synthesis and crystal structure of alpha'-AlD3 and alpha-AlD3 (semantic)","n_results":2}
+{"sweep":"candidate-lit","query":"AlH3 ReO3-type cubic Pm-3m hypothetical structure (abstract)","n_results":6}
+{"sweep":"candidate-lit","query":"isotope effect hydrogen deuterium phase stability aluminum hydride zero-point energy (semantic)","n_results":8}
+{"sweep":"candidate-lit","query":"Heat capacity of alpha-AlH3 and alpha-AlD3 up to 1000 K (semantic)","n_results":1}
+{"sweep":"candidate-lit","query":"Strong Anharmonic and Quantum Effects in Pm-3n AlH3 Under High Pressure (semantic)","n_results":1}
+{"sweep":"candidate-lit","query":"Decomposition kinetics of the AlH3 polymorphs (semantic)","n_results":1}
+{"sweep":"candidate-lit","query":"semantic: LaHO lanthanum oxyhydride hydride ion conductor structure","n_results":10}
+{"sweep":"candidate-lit","query":"abstract: LaHO oxyhydride","n_results":10}
+{"sweep":"candidate-lit","query":"title: lanthanum oxyhydride LaHO","n_results":10}
+{"sweep":"candidate-lit","query":"abstract: lanthanum oxyhydride deuteride neutron diffraction isotope","n_results":8}
+{"sweep":"candidate-lit","query":"semantic: hydrogen versus deuterium isotope effect on relative stability of oxyhydride polymorphs anion order","n_results":8}
+{"sweep":"candidate-lit","query":"AlOOH polymorphs diaspore boehmite delta-AlOOH hydrogen bond symmetrization isotope effect deuterated","n_results":10}
+{"sweep":"candidate-lit","query":"delta-AlOOH deuterated hydrogen bond symmetrization","n_results":10}
+{"sweep":"candidate-lit","query":"AlOOH (title)","n_results":15}
+{"sweep":"candidate-lit","query":"isotope effect H/D on relative stability of AlOOH polymorphs diaspore boehmite phase transition pressure deuterium","n_results":8}
+{"sweep":"candidate-lit","query":"diaspore to delta-AlOOH phase boundary hydrothermal synthesis stability, deuterated diaspore neutron diffraction","n_results":8}
+{"sweep":"candidate-lit","query":"Stability of the different AlOOH phases under pressure (title)","n_results":2}
+{"sweep": "candidate-lit", "query": "deuterated goethite alpha-FeOOH neutron diffraction structure", "n_results": 10}
+{"sweep": "candidate-lit", "query": "isotope effect H/D FeOOH phase transition pressure epsilon-FeOOH hydrogen bond symmetrization", "n_results": 10}
+{"sweep": "candidate-lit", "query": "FeOOH (title)", "n_results": 15}
+{"sweep": "candidate-lit", "query": "lepidocrocite deuterated gamma-FeOOD neutron diffraction hydrogen bond", "n_results": 8}
+{"sweep": "candidate-lit", "query": "hydrothermal synthesis epsilon-FeOOH from goethite high pressure stability phase boundary", "n_results": 8}
+{"sweep": "candidate-lit", "query": "deuterated goethite OR FeOOD OR goethite deuterium isotope (abstract)", "n_results": 10}
+{"sweep": "candidate-lit", "query": "first-principles relative stability of FeOOH polymorphs goethite lepidocrocite akaganeite DFT energy", "n_results": 6}
+{"sweep":"candidate-lit","query":"semantic: barium hydroxide monohydrate Ba(OH)2·H2O crystal structure neutron diffraction deuterated","n_results":10}
+{"sweep":"candidate-lit","query":"title: barium hydroxide monohydrate","n_results":10}
+{"sweep":"candidate-lit","query":"abstract: Ba(OH)2 H2O hydrogen bonding polymorph","n_results":10}
+{"sweep":"candidate-lit","query":"abstract: barium hydroxide monohydrate dehydration Ba(OH)2 phase transition deuteration","n_results":8}
+{"sweep":"candidate-lit","query":"semantic: NH4Br ND4Br phase transition isotope effect ammonium bromide order-disorder","n_results":10}
+{"sweep":"candidate-lit","query":"abstract: ammonium bromide deuterated","n_results":10}
+{"sweep":"candidate-lit","query":"title: ammonium bromide","n_results":10}
+{"sweep":"candidate-lit","query":"semantic: isotope effect on relative stability of polymorphs, deuteration ammonium halide phase III IV tetragonal ordered, first-principles","n_results":8}
+{"sweep":"candidate-lit","query":"abstract: NH4Br phase III tetragonal ordered phase IV pressure temperature","n_results":8}
+{"sweep": "candidate-lit", "query": "GaOOH polymorphs diaspore Pmn2_1 Fdd2 deuterated neutron diffraction (semantic)", "n_results": 10}
+{"sweep": "candidate-lit", "query": "GaOOH (abstract)", "n_results": 10}
+{"sweep": "candidate-lit", "query": "gallium oxyhydroxide (title)", "n_results": 10}
+{"sweep": "candidate-lit", "query": "GaOOH high-pressure phase transition diaspore InOOH-type delta-AlOOH H-bond symmetrization (semantic)", "n_results": 8}
+{"sweep": "candidate-lit", "query": "epsilon-FeOOH InOOH-type P21nm high pressure GaOOH hydroxide (abstract)", "n_results": 6}
