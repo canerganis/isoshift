@@ -48,6 +48,10 @@ def _queue(queue_dir):
     return queue
 
 
+REPLACE_RETRIES = 20
+REPLACE_BACKOFF_S = 0.05
+
+
 def _write_json(path, data):
     """Same numerical serialization as worker.main, published by atomic replace."""
     path = Path(path)
@@ -56,7 +60,16 @@ def _write_json(path, data):
     try:
         tmp.write_text(json.dumps(data, default=lambda o: o.tolist() if hasattr(o, "tolist") else float(o)),
                        encoding="utf-8")
-        os.replace(tmp, path)
+        # Windows refuses to replace a file another process has open (status() and
+        # requeue_stale() read these files); the reader closes quickly, so retry.
+        for attempt in range(REPLACE_RETRIES):
+            try:
+                os.replace(tmp, path)
+                break
+            except PermissionError:
+                if attempt == REPLACE_RETRIES - 1:
+                    raise
+                time.sleep(REPLACE_BACKOFF_S)
     finally:
         tmp.unlink(missing_ok=True)
 
@@ -159,9 +172,13 @@ def serve(calc_name, queue_dir, device="cuda", idle_exit_s=600.0, poll_s=2.0, me
     def publish(**updates):
         # Serialize the writer too: the main loop and heartbeat thread share a
         # PID and therefore the same atomic-write temporary filename.
+        # A failed heartbeat write must never fail a job or kill the worker.
         with lock:
             heartbeat.update(updates, updated_at=time.time())
-            _write_json(heartbeat_path, heartbeat)
+            try:
+                _write_json(heartbeat_path, heartbeat)
+            except OSError as exc:
+                print(f"HEARTBEAT_WRITE_FAILED {type(exc).__name__}: {exc}", file=sys.stderr, flush=True)
 
     def pulse():
         while not stopped.wait(HEARTBEAT_S):

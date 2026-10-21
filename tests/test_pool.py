@@ -466,3 +466,22 @@ def test_atomic_write_preserves_destination_on_failure(pool, tmp_path, monkeypat
     with pytest.raises(OSError, match="interrupted write"):
         pool._write_json(out, {"new": np.array([2.0])})
     assert read(out) == {"old": True} and not list(tmp_path.glob("*.tmp.*"))
+
+
+def test_write_json_retries_transient_permission_error(pool, tmp_path, monkeypatch):
+    real_replace = pool.os.replace
+    calls = {"n": 0}
+
+    def flaky(src, dst):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            raise PermissionError(5, "Access is denied")
+        return real_replace(src, dst)
+
+    monkeypatch.setattr(pool.os, "replace", flaky)
+    monkeypatch.setattr(pool, "REPLACE_BACKOFF_S", 0.0)
+    target = tmp_path / "hb.json"
+    pool._write_json(target, {"a": 1})
+    assert calls["n"] == 2
+    assert pool._read_json(target) == {"a": 1}
+    assert not list(tmp_path.glob("*.tmp.*"))
