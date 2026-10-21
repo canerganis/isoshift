@@ -37,7 +37,10 @@ Conductor: Opus (orchestrating session). Started Wed 21 Oct 14:20 TRT, about 2.5
 | 2.1 | validation QHA 4 models | GPU queue | done | brucite 4/4 (+0.22..+0.34 vs +0.31%), LiH 4/4 sign, ice 4/4 negative, portlandite 2/4 (no exp pair) |
 | 2.0 | tier A sanity | Opus | done (3/4 models) | equal mass, swap, classical decay, LiH TO within 15%; sevenn pending GPU slot |
 | 3.1 | screen tier16 mace+orb | GPU | running | started 15:27, ~1 h |
-| 5.1 | marimo app skeleton | Sonnet | running | app/isoshift_app.py |
+| 5.1 | marimo app skeleton | Sonnet | done | 47def1b |
+| 4.1 | analysis + refine | build + Opus | done | 7f8bc45; refine supplies identity + numerical error (median 2e-4 meV/atom) |
+| 4.0 | experimental provenance | Opus | done | 192/965 pairs both observed, 126 of them tier32 -> prioritise tier32 experimental pairs overnight |
+| 2.G | gate board | board workflow | running | docs/decisions/01-gate.md |
 | 2.3 | DFT isotope benchmark | Sonnet | module done (aa1f6a0), GPU run queued after screen tier16 | |
 
 ## Notes
