@@ -15,17 +15,81 @@ Extra platform credits are listed in Slack #resources.
 - Code must be enough to show the work is real (Ben in #random); reusability is a bonus.
 - Valency prize: use Bond in the project; help in #valency.
 
-## Blocks
-| Block | Time | Work | Exit check |
+## Execution plan (v3, agreed with Can 21 Oct afternoon, work starts Wed 21 Oct 17:00)
+
+Planning and accounts before 17:00 (0.3, 0.4); event work from 17:00 (hour 0). Gate at **Thu 00:00** (hour 7, pulled in from hour 10 so the overnight screen starts before Can sleeps). Submit by **Fri 02:00**, hard deadline 03:00.
+
+Owners: **C** = Claude (orchestration, physics code in `src/`, gates). **X** = Codex gpt-6-astra (bulk code, Bond literature queries, code review; via `codex exec` or `harness.ask`). **G** = Gemini 4 Argon (consultation and review only, via `harness.ask`). **S** = Sonnet subagent (mechanical work: scripts, tables, formatting). **Can** = decisions, domain sanity, accounts, video, submission.
+Claude budget (Can, 21 Oct): up to 95% of Can's Claude limit may go to this hackathon. **Opus (high effort) is the architecture decision maker**: design of `src/` modules, physics choices, gate and scope calls, final review of every workflow's output. Opus subagents also take hard code (pairs/screen core, QHA fixes) when Codex output fails review. Codex stays the main bulk coder, Gemini 4 Argon consultation only, Sonnet/Haiku for mechanical work. Budget check at the gate and at 13:00 Thursday; if usage is ahead of schedule, shift reviews back to Codex+Gemini.
+Effort policy (Claude assigns, per task): **max** for physics/architecture decisions with no easy check (gate call, ΔT_iso method, brucite imaginary-mode diagnosis, red team of final claims); **high** for core code and reviews (pairs, screen, QHA, analysis, app); **medium/low** for mechanical work (fetching, formatting, README, fresh-clone test). Codex effort via `-c model_reasoning_effort=xhigh|high|medium`, Opus/Sonnet via the agent `effort` setting.
+**Minimal human in the loop (Can, 21 Oct):** Claude runs blocks autonomously with workflows (Workflow tool, Sonnet/Codex workers, Codex+Gemini reviewers) and orchestra skills. Can is needed only for: public repo go-ahead, video recording, Moment submission, and any account login. Gate and scope decisions follow the written criteria; Can gets a short status note at the gate and in the morning.
+Hardware: RTX 4060 laptop. Overnight: plugged in, Windows sleep off, lid-close action "do nothing".
+
+### Block 0. Setup (before 17:00: 0.3, 0.4 only; 17:00–17:30: 0.1, 0.2)
+| # | Task | Owner | Done when |
 |---|---|---|---|
-| 0. Kickoff | 17:00–18:00 | Read kickoff, confirm rules, lock scope, create `src/` for event code. | Rules OK |
-| 1. Candidate pool | 18:00–21:00 | Agent builds H-polymorph pairs (MP + JARVIS), filters disorder/proton transfer, near-degenerate pairs (<25 meV/atom). Agent compiles validation set via Bond. | ≥30 pairs, ≥5 validation cases |
-| 2. Validation first | 21:00–03:00 | Harmonic + QHA H/D for validation cases with 3 MLIPs. Compare isotope shifts to experiment, negative controls behave. MLIP vs DFT H-phonon spot checks. | **Gate (hour 10, ~03:00): sign/magnitude agree on harmonic-tractable cases → continue; else fallback framing** |
-| 3. Overnight screen | 03:00–10:00 | Batch QHA over candidate pairs on GPU (runs unattended). Sleep. | Results cached |
-| 4. Analysis | 10:00–15:00 | Ensemble agreement filter, ΔT_iso ranking, uncertainty, novelty check of top 10 via Bond, figure. | Top-10 table + main figure |
-| 5. Tool + app | 15:00–19:00 | marimo app: CIF in → H/D free-energy crossing map; README; reproducible run script. | Fresh-clone run works |
-| 6. Write-up | 19:00–23:00 | One-page summary with figure; record 4-min video; public repo; LinkedIn/X thread. | All links public, no login |
-| 7. Submit | 23:00–02:00 | Form (prior work vs built during event stated honestly), buffer. | Submitted |
+| 0.1 | Create `src/isoshift_event/` package, `results/`, `figures/`; disclosure line in README stub | C | committed |
+| 0.2 | Pull MP H-compound structures with the API key (all H entries without C, E_hull ≤ 50 meV/atom) to `data/isoshift/mp_h.json` | X | file + count logged |
+| 0.3 | Bond: Can enables the Valency connector for Claude on claude.ai, Claude reconnects and runs `list_sources`. Bulk Bond queries still go through Codex (`valency` MCP) to save Claude quota. Log every Bond query to `logs/bond_queries.jsonl` (Valency prize story) | Can, C, X | `list_sources` OK in Claude + one test query logged |
+| 0.4 | Laptop power settings for overnight runs | Can | done |
+
+### Block 1. Pools in parallel (17:30–20:00)
+| # | Task | Owner | Done when |
+|---|---|---|---|
+| 1.1 | Validation set: for brucite, ice Ih, LiH/LiD, portlandite Ca(OH)2, AlOOH, KOH, KDP, NH4Cl collect experimental H vs D numbers (lattice/volume isotope effect, transition T/P shifts) with DOIs via Bond + OpenAlex → `data/isoshift/validation.csv` (value, unit, T, P, DOI, harmonic-tractable yes/no) | X (Bond), C reviews | ≥6 cases with DOIs |
+| 1.2 | Independent cross-check of every validation row against its DOI (value, unit, sign); disagreements resolved by Claude. Can only sees the final table | G + X via `harness.ask` | all rows confirmed or dropped |
+| 1.3 | Pair builder `src/isoshift_event/pairs.py`: merge MP + JARVIS, same composition, different structure (StructureMatcher), ΔE ≤ 25 meV/atom, ≤ 16 atoms (≤ 32 second tier), drop partial occupancy, flag proton-transfer/H-bond-disordered families → `data/isoshift/pairs.csv` | X writes, C reviews | ≥ 100 pairs |
+| 1.4 | Fix brucite imaginary modes before trusting QHA: symmetry-constrained relax (FixSymmetry), tighter fmax, check supercell size; same for AlOOH | C | brucite min freq > -0.5 THz in ≥3 models |
+| 1.5 | Batch runner `src/isoshift_event/screen.py`: job queue over pairs × models, resumable, per-job JSON in `results/`, OOM retry, writes ΔF_H, ΔF_D, ΔΔF_iso(T), min freq | X writes, C reviews | dry run on 3 pairs |
+
+### Block 2. Validation first (20:00–00:00) → GATE
+| # | Task | Owner | Done when |
+|---|---|---|---|
+| 2.1 | QHA H and D for brucite, portlandite, ice Ih (proton-ordered XI proxy), LiH with 4 MLIPs; volume isotope effect at 0 and 300 K | C runs, GPU | numbers in `results/validation/` |
+| 2.2 | Harmonic ΔΔF_iso for negative controls (KDP, KOH, δ-AlOOH, NH4Cl): expect failure or model disagreement; label "outside harmonic validity" | C | table |
+| 2.3 | X–H stretch benchmark: MLIP Γ-point H stretch / phonon DOS vs DFT phonons (Togo PhononDB / MDR) for 10 to 20 H compounds | X fetches DFT data, S compares | parity table |
+| 2.4 | Review of validation logic and numbers (independent read) | G + X via `harness.ask` | no blocking issue |
+| **GATE Thu 00:00** | **Pass:** volume isotope sign right for brucite + ice in ≥3/4 models and LiH ZPE ratio within 0.78 to 0.80 → IsoShift framing. **Fail:** fallback framing (X–H benchmark + isotope free-energy atlas), screen still runs. Claude decides by these written criteria, Can is informed (not blocking) | C | decision written in DECISION.md |
+
+### Block 3. Overnight screen (00:00–08:00, Can sleeps)
+| # | Task | Owner | Done when |
+|---|---|---|---|
+| 3.1 | Harmonic H/D screen, mace + orb, all pairs (~300 pairs, ~5 h) | GPU, unattended | results cached |
+| 3.2 | Queue sevenn + mattersim on pairs where mace and orb agree on sign (auto-chained) | GPU | done by ~08:00 |
+| 3.3 | Watchdog: one `ScheduleWakeup`/check every ~60 min that restarts the runner if it died (no other work) | C (cheap) | log clean |
+
+### Block 4. Analysis (08:00–13:00)
+| # | Task | Owner | Done when |
+|---|---|---|---|
+| 4.1 | Ensemble filter: 4/4 sign agreement and |ΔΔF_iso| > ensemble spread; ΔT_iso ≈ ΔΔF_iso / ΔS for pairs with a crossing below 1000 K; rank | C | ranked table |
+| 4.2 | QHA on top 10 to 20 | GPU | done |
+| 4.3 | Novelty + experimental context for top 10 via Bond (is the polymorph pair known, any deuteride data, feasible D2O/D2 synthesis) | X (Bond) | table with DOIs |
+| 4.4 | Main figure (left validation parity, right candidate map) + benchmark figure | S drafts, C checks | PNG/SVG in `figures/` |
+| 4.5 | Red team of the claims (overclaim, physics errors) | G + X | fixes applied |
+
+### Block 5. Tool + repo (13:00–17:00)
+| # | Task | Owner | Done when |
+|---|---|---|---|
+| 5.1 | marimo app `app/isoshift_app.py`: CIF/MP id in → H/D free energy vs T for a pair, crossing, ΔT_iso, ensemble band; cached demo pairs so it runs without GPU | X writes, C checks | runs locally |
+| 5.2 | README: what/why/results/how to run, prior work vs event work section, Bond and marimo usage | S drafts, C edits | done |
+| 5.3 | Create public GitHub repo (Can's go-ahead), push, fresh-clone test | Can approves, S tests | clone runs app |
+
+### Block 6. Write-up + video (17:00–23:00)
+| # | Task | Owner | Done when |
+|---|---|---|---|
+| 6.1 | One-page summary with main figure | C drafts, G reviews, Can approves | final |
+| 6.2 | Video script (TR draft + EN final, ≤ 4 min), 5 slides, demo steps | C | Can reads it |
+| 6.3 | Rehearse once, record with OBS, captions, upload unlisted YouTube | Can | public link, no login |
+| 6.4 | Social post text (if Can wants one) | C | ready |
+
+### Block 7. Submit (23:00–02:00)
+| # | Task | Owner | Done when |
+|---|---|---|---|
+| 7.1 | Moment form: post/video link, write-up + figure, repo link, tick Valency Bond and marimo, prior-work disclosure | Can submits, C prepares text | submitted |
+| 7.2 | Final check: links open in incognito, repo README renders | Can | done by 02:00 |
+
+### Cut list if behind (in order)
+1. QHA on top candidates → harmonic only with stated caveat. 2. mattersim from the screen. 3. ≤ 32-atom second tier. 4. App upload widget → cached demo only. Never cut: validation table, negative controls, honest disclosure.
 
 ## Main figure (draft)
 Left: validation (computed vs measured isotope shift for known cases, negative controls marked). Right: candidate map (polymorph gap vs ΔΔF_iso, ensemble error bars, top candidates labelled).
