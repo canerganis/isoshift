@@ -33,6 +33,7 @@ Effort policy (Claude assigns, per task): **max** for physics/architecture decis
 * Story track: video script, slides and figure layout drafted overnight and Thursday morning, not left to Block 6.
 * Literature track: Bond novelty checks run on candidates as they enter the ranking, not only for the final top 10.
 Opus re-plans at every result checkpoint and moves work forward whenever a track is idle.
+**Orchestration:** see `docs/WORKFLOW.md` (phase workflows WF0 to WF6, building blocks board / mathcheck / build / sweep, state ledger, GPU queue, never-half-done rules).
 **Minimal human in the loop (Can, 21 Oct):** Claude runs blocks autonomously with workflows (Workflow tool, Sonnet/Codex workers, Codex+Gemini reviewers) and orchestra skills. Can is needed only for: public repo go-ahead, video recording, Moment submission, and any account login. Gate and scope decisions follow the written criteria; Can gets a short status note at the gate and in the morning.
 Hardware: RTX 4060 laptop. Overnight: plugged in, Windows sleep off, lid-close action "do nothing".
 
