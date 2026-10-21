@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use IsoShift, please cite it as below."
+title: "IsoShift"
+type: software
+authors:
+  - family-names: "Erganis"
+    given-names: "Can"
+version: "0.1.0"
+date-released: "2026-10-22"
+license: MIT
+repository-code: "https://github.com/canerganis/isoshift"
+abstract: "Harmonic and quasi-harmonic H/D isotope free energies of hydrogen-containing polymorphs from an ensemble of universal machine-learned interatomic potentials."
