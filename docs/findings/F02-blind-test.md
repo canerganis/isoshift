@@ -21,3 +21,6 @@ Earlier, gate-quality targets: brucite +0.31% (pred +0.19 to +0.44, 4/4 sign rig
 
 ## Why this matters for F01
 F01's slope is carried by the X-H stretch term in H-bonded compounds. If the MLIPs overbind H bonds, the stretch frequency versus X-H length slope (and therefore the F01 slope) could be exaggerated. The test is to compare the ensemble's stretch-frequency versus O-H length relation with the empirical spectroscopic correlation for real hydroxides (e.g. Libowitzky 1999, Mineral. Mag./Monatsh. Chem.) and to check whether the F01 sign rule depends on stretch magnitude or only on its direction.
+
+## Statement adopted (decision 04)
+Prediction-first volume-isotope comparisons show mixed transferability: alpha-AlH3 has the correct sign with a 1.3 to 1.5x overestimated magnitude; GaOOH and beta-CrOOH disagree in sign with references of limited comparability. Earlier brucite and LiH checks reproduce the measured sign, while ice shows a large quantitative error. The misses lie in the strong-H-bond regime, where harmonic quasi-harmonic treatment omits Ubbelohde-type proton anharmonicity. These results do not identify a unique failure mechanism. F02 does not test F01: it passed where F01 has no skill and missed where F01 applies.
