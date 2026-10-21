@@ -296,4 +296,8 @@ def collect(workers: int | None = None):
 
 
 if __name__ == "__main__":
-    {"submit": submit, "run": run, "collect": collect}[sys.argv[1]]()
+    commands = {"submit": submit, "run": run, "collect": collect}
+    if len(sys.argv) < 2 or sys.argv[1] not in commands:
+        print(__doc__)
+        sys.exit(0 if len(sys.argv) > 1 and sys.argv[1] in ("-h", "--help") else 2)
+    commands[sys.argv[1]]()
