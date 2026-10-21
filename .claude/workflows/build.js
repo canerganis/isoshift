@@ -28,7 +28,7 @@ Goal: ${a.goal}
 Owned files (the only files the implementer may create or edit): ${owned}
 Context files to read first: ${ctx}, plus isoshift/ (pre-event harness: calculators, relax, phonons with mass override, qha, worker, cache) and docs/math/ (accepted formulas: use them, do not re-derive).
 Acceptance command: ${a.acceptance}
-Spec must contain: public interface (signatures), data formats (file paths, JSON/CSV columns with units), algorithm steps, error handling, what to cache, the unit tests to write, and how acceptance is judged. Keep it under 150 lines. Prefer reusing isoshift/ functions over new physics code.`,
+The implementer is a strong model (Astra). Describe the problem, not the method: goal and why it matters, hard constraints and limits (interfaces other code depends on, data formats with units, files it may touch, memory/time limits, physics rules from PLAN.md P1 to P6), known pitfalls, what is already done (progress so far), and how acceptance is judged. Do NOT prescribe algorithm steps or implementation details; leave the how to the implementer. Keep it under 100 lines. Point to isoshift/ functions that already exist.`,
     { label: 'spec', phase: 'Spec', model: 'opus', effort: 'high' })
 }
 

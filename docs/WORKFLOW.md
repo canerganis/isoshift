@@ -51,6 +51,9 @@ Haiku for fetching and file/log scanning, Sonnet for literature and Bond batches
 * Can (21 Oct): Opus (this session) holds final decision authority and full control over all agents; Can is not in the loop for technical decisions.
 * Gemini 4 Argon is consulted at every phase exit (WF1 to WF5): a short "what is wrong or missing here" read of the phase output, in addition to its board seat. Findings go through the same verify step as other reviews.
 
+## Delegation between strong models (Can, 21 Oct)
+When Opus and Astra give each other work, the brief states the problem, why it matters, the limits and constraints, the acceptance check, and the progress already made. It never says how to do it. Prescriptive step lists are only for Sonnet/Haiku workers doing mechanical tasks.
+
 ## Never-half-done rules
 * A task is only `done` when its acceptance check ran and passed; the check is written before the work starts.
 * Every workflow is resumable (`resumeFromRunId`), every module commit is atomic, the GPU queue is idempotent.
