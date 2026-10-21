@@ -364,6 +364,8 @@ def analyze(screen_pairs, screen_structures, *, pairs=None, structures_manifest=
                 rejected.add("identity_unchecked")
             if any("same_" in flag and "structure" in flag for flag in _flags(record)):
                 rejected.add("same_relaxed_structure")
+            if any("classical_limit_violation" in flag for flag in _flags(record)):
+                rejected.add(f"{model}:classical_limit_violation")
             bound = numerical_error_meV_atom
             if record.get("numerical_error_meV_atom") not in (None, ""):
                 try:

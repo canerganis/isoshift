@@ -25,7 +25,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "results" / "raw" / "screen"
 CACHE = ROOT / ".cache" / "isoshift"
-TEMPS = (0.0, 300.0, 600.0)
+TEMPS = (0.0, 300.0, 600.0, 2000.0)  # 2000 K only for the classical-limit check
 DENSITY = 60.0  # q points per inverse length, screen used 40 (isoshift.phonons.choose_mesh)
 
 
@@ -119,11 +119,15 @@ def main(argv=None):
         same = _same_phase(ra, rb)
         n_checked += 1
         n_same += same
-        dd = [(rb["F_D_meV_atom"][i] - rb["F_H_meV_atom"][i]) - (ra["F_D_meV_atom"][i] - ra["F_H_meV_atom"][i]) for i in range(3)]
-        err = max(abs(dd[i] - float(row[f"ddF_iso_{int(t)}K_meV_atom"])) for i, t in enumerate(TEMPS))
+        dd = [(rb["F_D_meV_atom"][i] - rb["F_H_meV_atom"][i]) - (ra["F_D_meV_atom"][i] - ra["F_H_meV_atom"][i]) for i in range(len(TEMPS))]
+        err = max(abs(dd[i] - float(row[f"ddF_iso_{int(t)}K_meV_atom"])) for i, t in enumerate(TEMPS[:3]))
         flags = [f for f in row.get("flags", "").split(";") if f and "identity_unchecked" not in f]
         if same:
             flags.append("same_relaxed_structure")
+        # ddF must decay as 1/T in the classical limit (M01); growth means omitted (imaginary) modes
+        # leave an uncancelled kT ln(w_D/w_H) term, as seen for ORB MgH2 at a larger supercell (G4/F3).
+        if abs(dd[3]) > abs(dd[2]) and abs(dd[3]) > 0.01:
+            flags.append("classical_limit_violation")
         row.update(identity_checked="true", numerical_error_meV_atom=f"{err:.6g}", flags=";".join(flags),
                    **{f"ddF_iso_{int(t)}K_refined_meV_atom": f"{dd[i]:.6g}" for i, t in enumerate(TEMPS)})
     fields = list(rows[0].keys())
