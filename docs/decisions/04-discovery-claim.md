@@ -100,3 +100,5 @@ Chair check scripts (session scratchpad):
 `C:\Users\can02\AppData\Local\Temp\claude\C--Users-can02--claude-spares-spare-MvrxRR\6cbef617-8c25-4b42-bf3b-8e15cd3cc49b\scratchpad\chair04_check.py` (counts, slopes, regime scan, baseline, O-H split, stretch windows) and
 `C:\Users\can02\AppData\Local\Temp\claude\C--Users-can02--claude-spares-spare-MvrxRR\6cbef617-8c25-4b42-bf3b-8e15cd3cc49b\scratchpad\chair04_real.py` (real-phase covalent pairs).
 Small differences from member numbers (Opus round 1: 129/136 strong, MACE 54/60, MatterSim 16/17) come from the threshold variable; this decision uses the chair recompute on pair max of per-structure mean X-H.
+
+Erratum (21 Oct, decision 05 action 6): the f_OLS order "0.91, 0.92, 0.95" for mace, orb, mattersim above (and in action 4) is wrong. The correct values are MACE 0.91, ORB 0.95, MatterSim 0.91 (`results/stretch_check_summary.json`).

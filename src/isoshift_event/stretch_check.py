@@ -63,7 +63,7 @@ def dedup_donors(df):
     return df.loc[keep]
 
 
-def window_stats(w, lo, hi, n_boot=1000, seed=0):
+def window_stats(w, lo, hi, n_boot=2000, seed=0):
     """w: donors of one source with d_OO_A in [lo, hi]. Slope ratios f of nu_model on nu_Libowitzky(d_OO)."""
     from scipy.stats import theilslopes
 

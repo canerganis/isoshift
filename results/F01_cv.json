@@ -2715,5 +2715,948 @@
    "baseline_right": 100,
    "R2_heldout": 0.618
   }
+ },
+ "oh_unfiltered_strong": {
+  "right": 123,
+  "n": 130,
+  "n_pairs": 67,
+  "n_formulas": 23,
+  "baseline_right": 82,
+  "per_model": {
+   "mace": {
+    "right": 51,
+    "n": 57
+   },
+   "mattersim": {
+    "right": 16,
+    "n": 17
+   },
+   "orb": {
+    "right": 56,
+    "n": 56
+   }
+  },
+  "unique_pair_majority": {
+   "n_pairs": 67,
+   "right": 62,
+   "tie": 5,
+   "wrong": 0
+  },
+  "definition": "O-H pairs, rmax >= 0.99 A, |dX-H| >= 5 mA, no |ddF_iso| cut; baseline = leave-one-formula-out majority sign of ddF_iso/H"
+ },
+ "nested_threshold_cv": {
+  "grid": [
+   0.97,
+   0.98,
+   0.99,
+   1.0,
+   1.01,
+   1.02,
+   1.03
+  ],
+  "objective": "maximise right minus wrong on the training strong side; lowest threshold wins ties",
+  "all_covalent_signal_cut": {
+   "right": 128,
+   "n": 134,
+   "baseline_right": 84,
+   "n_folds": 30,
+   "threshold_counts": {
+    "0.99": 30
+   },
+   "all_folds_choose_0.99": true,
+   "folds": [
+    {
+     "formula": "Al(HO)3",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "AlHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 26,
+     "heldout_n": 27,
+     "heldout_baseline_right": 18
+    },
+    {
+     "formula": "Ba(H2O3)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "Be(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Cd(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Co(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "CoHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 6,
+     "heldout_n": 6,
+     "heldout_baseline_right": 2
+    },
+    {
+     "formula": "CrHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 10,
+     "heldout_n": 10,
+     "heldout_baseline_right": 9
+    },
+    {
+     "formula": "CsHSO4",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "DyHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 2,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "FeHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 23,
+     "heldout_n": 23,
+     "heldout_baseline_right": 13
+    },
+    {
+     "formula": "GaHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 9,
+     "heldout_n": 9,
+     "heldout_baseline_right": 9
+    },
+    {
+     "formula": "H2O",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "H4NF",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 2
+    },
+    {
+     "formula": "HoHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 3,
+     "heldout_n": 4,
+     "heldout_baseline_right": 3
+    },
+    {
+     "formula": "LuHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 4
+    },
+    {
+     "formula": "MnHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 11,
+     "heldout_n": 11,
+     "heldout_baseline_right": 10
+    },
+    {
+     "formula": "Mo(HO2)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 2
+    },
+    {
+     "formula": "NaHF2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 2
+    },
+    {
+     "formula": "NaHO",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "RbHO",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "ScHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Si2H2O5",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Sr(H2O3)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "TeAsHO5",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "TmHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 2,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "U(HO2)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 3,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "U3(HO5)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 3
+    },
+    {
+     "formula": "YHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 3,
+     "heldout_n": 4,
+     "heldout_baseline_right": 3
+    },
+    {
+     "formula": "Zn(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 3,
+     "heldout_n": 3,
+     "heldout_baseline_right": 0
+    }
+   ]
+  },
+  "all_covalent_no_cut": {
+   "right": 129,
+   "n": 136,
+   "baseline_right": 86,
+   "n_folds": 30,
+   "threshold_counts": {
+    "0.99": 30
+   },
+   "all_folds_choose_0.99": true,
+   "folds": [
+    {
+     "formula": "Al(HO)3",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "AlHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 26,
+     "heldout_n": 27,
+     "heldout_baseline_right": 18
+    },
+    {
+     "formula": "Ba(H2O3)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "Be(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Cd(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Co(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "CoHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 6,
+     "heldout_n": 6,
+     "heldout_baseline_right": 2
+    },
+    {
+     "formula": "CrHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 10,
+     "heldout_n": 10,
+     "heldout_baseline_right": 9
+    },
+    {
+     "formula": "CsHSO4",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "DyHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 2,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "FeHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 23,
+     "heldout_n": 24,
+     "heldout_baseline_right": 14
+    },
+    {
+     "formula": "GaHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 9,
+     "heldout_n": 9,
+     "heldout_baseline_right": 9
+    },
+    {
+     "formula": "H2O",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "H4NF",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 2
+    },
+    {
+     "formula": "HoHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 3,
+     "heldout_n": 4,
+     "heldout_baseline_right": 3
+    },
+    {
+     "formula": "LuHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 4
+    },
+    {
+     "formula": "MnHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 12,
+     "heldout_n": 12,
+     "heldout_baseline_right": 11
+    },
+    {
+     "formula": "Mo(HO2)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 2
+    },
+    {
+     "formula": "NaHF2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 2
+    },
+    {
+     "formula": "NaHO",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "RbHO",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "ScHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Si2H2O5",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Sr(H2O3)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "TeAsHO5",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "TmHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 2,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "U(HO2)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 3,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "U3(HO5)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 3
+    },
+    {
+     "formula": "YHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 3,
+     "heldout_n": 4,
+     "heldout_baseline_right": 3
+    },
+    {
+     "formula": "Zn(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 3,
+     "heldout_n": 3,
+     "heldout_baseline_right": 0
+    }
+   ]
+  },
+  "OH_signal_cut": {
+   "right": 122,
+   "n": 128,
+   "baseline_right": 80,
+   "n_folds": 28,
+   "threshold_counts": {
+    "0.99": 28
+   },
+   "all_folds_choose_0.99": true,
+   "folds": [
+    {
+     "formula": "Al(HO)3",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "AlHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 26,
+     "heldout_n": 27,
+     "heldout_baseline_right": 18
+    },
+    {
+     "formula": "Ba(H2O3)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "Be(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Cd(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Co(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "CoHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 6,
+     "heldout_n": 6,
+     "heldout_baseline_right": 2
+    },
+    {
+     "formula": "CrHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 10,
+     "heldout_n": 10,
+     "heldout_baseline_right": 9
+    },
+    {
+     "formula": "CsHSO4",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "DyHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 2,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "FeHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 23,
+     "heldout_n": 23,
+     "heldout_baseline_right": 13
+    },
+    {
+     "formula": "GaHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 9,
+     "heldout_n": 9,
+     "heldout_baseline_right": 9
+    },
+    {
+     "formula": "H2O",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "HoHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 3,
+     "heldout_n": 4,
+     "heldout_baseline_right": 3
+    },
+    {
+     "formula": "LuHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 4
+    },
+    {
+     "formula": "MnHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 11,
+     "heldout_n": 11,
+     "heldout_baseline_right": 10
+    },
+    {
+     "formula": "Mo(HO2)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 2
+    },
+    {
+     "formula": "NaHO",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "RbHO",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "ScHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Si2H2O5",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Sr(H2O3)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "TeAsHO5",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "TmHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 2,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "U(HO2)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 3,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "U3(HO5)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 3
+    },
+    {
+     "formula": "YHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 3,
+     "heldout_n": 4,
+     "heldout_baseline_right": 3
+    },
+    {
+     "formula": "Zn(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 3,
+     "heldout_n": 3,
+     "heldout_baseline_right": 0
+    }
+   ]
+  },
+  "OH_no_cut": {
+   "right": 123,
+   "n": 130,
+   "baseline_right": 82,
+   "n_folds": 28,
+   "threshold_counts": {
+    "0.99": 28
+   },
+   "all_folds_choose_0.99": true,
+   "folds": [
+    {
+     "formula": "Al(HO)3",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "AlHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 26,
+     "heldout_n": 27,
+     "heldout_baseline_right": 18
+    },
+    {
+     "formula": "Ba(H2O3)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "Be(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Cd(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Co(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "CoHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 6,
+     "heldout_n": 6,
+     "heldout_baseline_right": 2
+    },
+    {
+     "formula": "CrHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 10,
+     "heldout_n": 10,
+     "heldout_baseline_right": 9
+    },
+    {
+     "formula": "CsHSO4",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "DyHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 2,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "FeHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 23,
+     "heldout_n": 24,
+     "heldout_baseline_right": 14
+    },
+    {
+     "formula": "GaHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 9,
+     "heldout_n": 9,
+     "heldout_baseline_right": 9
+    },
+    {
+     "formula": "H2O",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "HoHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 3,
+     "heldout_n": 4,
+     "heldout_baseline_right": 3
+    },
+    {
+     "formula": "LuHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 4
+    },
+    {
+     "formula": "MnHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 12,
+     "heldout_n": 12,
+     "heldout_baseline_right": 11
+    },
+    {
+     "formula": "Mo(HO2)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 2
+    },
+    {
+     "formula": "NaHO",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "RbHO",
+     "chosen_threshold": 0.99,
+     "heldout_right": 0,
+     "heldout_n": 0,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "ScHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Si2H2O5",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "Sr(H2O3)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 1,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "TeAsHO5",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 2,
+     "heldout_baseline_right": 0
+    },
+    {
+     "formula": "TmHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 1,
+     "heldout_n": 2,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "U(HO2)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 2,
+     "heldout_n": 3,
+     "heldout_baseline_right": 1
+    },
+    {
+     "formula": "U3(HO5)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 4,
+     "heldout_n": 4,
+     "heldout_baseline_right": 3
+    },
+    {
+     "formula": "YHO2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 3,
+     "heldout_n": 4,
+     "heldout_baseline_right": 3
+    },
+    {
+     "formula": "Zn(HO)2",
+     "chosen_threshold": 0.99,
+     "heldout_right": 3,
+     "heldout_n": 3,
+     "heldout_baseline_right": 0
+    }
+   ]
+  }
+ },
+ "no_threshold": {
+  "right": 129,
+  "n": 150,
+  "n_pairs": 83,
+  "n_formulas": 30,
+  "baseline_right_lofo": 100,
+  "lofo_line_sign_right": 129,
+  "formula_majority": {
+   "right": 23,
+   "wrong": 5,
+   "tie": 2,
+   "binomial_p_two_sided_descriptive": 0.00091,
+   "note": "descriptive, not a confirmatory test"
+  },
+  "formula_majority_strong_side": {
+   "right": 23,
+   "wrong": 0,
+   "tie": 2
+  }
+ },
+ "oh_strong_slopes": {
+  "mace": {
+   "n": 86,
+   "total_slope": 0.1403,
+   "stretch_slope": 0.278,
+   "perp_slope": -0.1377,
+   "compensation": 0.495
+  },
+  "mattersim": {
+   "n": 27,
+   "total_slope": 0.1514,
+   "stretch_slope": 0.2548,
+   "perp_slope": -0.1034,
+   "compensation": 0.406
+  },
+  "orb": {
+   "n": 74,
+   "total_slope": 0.1442,
+   "stretch_slope": 0.3077,
+   "perp_slope": -0.1635,
+   "compensation": 0.531
+  }
  }
 }

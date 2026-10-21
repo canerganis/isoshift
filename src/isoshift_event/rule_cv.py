@@ -182,6 +182,101 @@ def legacy_cv(c: pd.DataFrame) -> dict:
     return {**{m: lofo(q) for m, q in c[c.y.abs() > MIN_SIGNAL].groupby("model")}, "pooled": lofo(c[c.y.abs() > MIN_SIGNAL])}
 
 
+def _fold_baseline(g: pd.DataFrame, col: str = "y") -> np.ndarray:
+    """Training-fold constant-sign baseline sign for every row of g (leave one formula out)."""
+    base = np.full(len(g), np.nan)
+    for fam in g.family.unique():
+        te = (g.family == fam).values
+        if (~te).sum():
+            base[te] = _majority_sign(g.loc[~te, col].values)
+    return base
+
+
+def _block(g: pd.DataFrame, fit: pd.DataFrame) -> dict:
+    """Held-out sign count of the bare dX-H rule on g, with the baseline taken from leave-one-formula-out folds of `fit`
+    (fit is the fit set the baseline sign is computed from; g is a subset of fit)."""
+    base = pd.Series(_fold_baseline(fit.reset_index(drop=True)), index=fit.index)
+    b = base.loc[g.index]
+    return {"right": int(g.right.sum()), "n": int(len(g)), "n_pairs": int(g.pair_id.nunique()), "n_formulas": int(g.family.nunique()),
+            "baseline_right": int((b.values == np.sign(g.y.values)).sum())}
+
+
+def oh_unfiltered_strong(c: pd.DataFrame) -> dict:
+    """O-H strong-side sign test with no cut on the target (decision 05): |dX-H| >= 5 mA, rmax >= 0.99 A, O-H pairs only.
+    Baseline: majority sign of y over all strong-side O-H rows of the training formulas (same fit set as strong_regime_cv)."""
+    big = c.x.abs() >= MIN_DXH
+    fit = c[(c.rmax >= MAIN_THR) & c.OH]
+    g = fit[big.loc[fit.index]]
+    out = _block(g, fit)
+    out["per_model"] = {m: {"right": int(q.right.sum()), "n": int(len(q))} for m, q in g.groupby("model")}
+    out["unique_pair_majority"] = _majority(g)
+    out["definition"] = "O-H pairs, rmax >= 0.99 A, |dX-H| >= 5 mA, no |ddF_iso| cut; baseline = leave-one-formula-out majority sign of ddF_iso/H"
+    return out
+
+
+def _nested_one(base: pd.DataFrame) -> dict:
+    """Leave one formula out; on each training fold choose the threshold from THRESHOLDS that maximises
+    (right - wrong) of the bare sign rule on the training strong side (lowest threshold wins ties), then score the
+    held-out formula's rows with rmax >= chosen threshold. Baseline: training-fold majority sign on that strong side."""
+    folds = []
+    R = N = B = 0
+    for f in sorted(base.family.unique()):
+        tr, te = base[base.family != f], base[base.family == f]
+        best_t, best_s = None, None
+        for t in THRESHOLDS:
+            sd = tr[tr.rmax >= t]
+            sc = int(sd.right.sum() - (~sd.right).sum())
+            if best_s is None or sc > best_s:
+                best_t, best_s = t, sc
+        sgn = _majority_sign(tr[tr.rmax >= best_t].y.values)
+        h = te[te.rmax >= best_t]
+        r, n, b = int(h.right.sum()), int(len(h)), int((np.sign(h.y.values) == sgn).sum())
+        R, N, B = R + r, N + n, B + b
+        folds.append({"formula": f, "chosen_threshold": best_t, "heldout_right": r, "heldout_n": n, "heldout_baseline_right": b})
+    picks = pd.Series([x["chosen_threshold"] for x in folds]).value_counts().sort_index()
+    return {"right": R, "n": N, "baseline_right": B, "n_folds": len(folds), "threshold_counts": {f"{k:.2f}": int(v) for k, v in picks.items()},
+            "all_folds_choose_0.99": bool((picks.index == MAIN_THR).all()), "folds": folds}
+
+
+def nested_threshold_cv(c: pd.DataFrame) -> dict:
+    big = c.x.abs() >= MIN_DXH
+    sig = big & (c.y.abs() > MIN_SIGNAL)
+    out = {"grid": THRESHOLDS, "objective": "maximise right minus wrong on the training strong side; lowest threshold wins ties"}
+    for name, e in (("all_covalent_signal_cut", sig), ("all_covalent_no_cut", big)):
+        out[name] = _nested_one(c[e])
+    for name, e in (("OH_signal_cut", sig), ("OH_no_cut", big)):
+        out[name] = _nested_one(c[e & c.OH])
+    return out
+
+
+def no_threshold(c: pd.DataFrame) -> dict:
+    """No regime threshold: all clean covalent rows, signal-filtered (the legacy 129/150 set), with formula majority."""
+    from scipy.stats import binomtest
+    sig = c[variants(c)["signal_filtered"]]
+    cv = lofo(c[c.y.abs() > MIN_SIGNAL])
+    fm = sig.groupby("family").right.mean()
+    r, w, t = int((fm > .5).sum()), int((fm < .5).sum()), int((fm == .5).sum())
+    ms = sig[sig.rmax >= MAIN_THR].groupby("family").right.mean()
+    return {"right": int(sig.right.sum()), "n": int(len(sig)), "n_pairs": int(sig.pair_id.nunique()), "n_formulas": int(sig.family.nunique()),
+            "baseline_right_lofo": cv.get("baseline_right"), "lofo_line_sign_right": cv.get("line_sign_right"),
+            "formula_majority": {"right": r, "wrong": w, "tie": t, "binomial_p_two_sided_descriptive": round(float(binomtest(r, r + w).pvalue), 5),
+                                 "note": "descriptive, not a confirmatory test"},
+            "formula_majority_strong_side": {"right": int((ms > .5).sum()), "wrong": int((ms < .5).sum()), "tie": int((ms == .5).sum())}}
+
+
+def oh_strong_slopes(c: pd.DataFrame) -> dict:
+    """All clean rows of O-H pairs with rmax >= 0.99 A: total, stretch and perpendicular (bend/libration) slopes per model."""
+    out = {}
+    g0 = c[(c.rmax >= MAIN_THR) & c.OH]
+    for m, q in g0.groupby("model"):
+        tot = np.polyfit(q.x, q.y, 1)[0]
+        st = np.polyfit(q.x, q.ddF_str / q.H_per_atom, 1)[0]
+        pp = np.polyfit(q.x, q.ddF_perp / q.H_per_atom, 1)[0]
+        out[m] = {"n": int(len(q)), "total_slope": round(float(tot), 4), "stretch_slope": round(float(st), 4),
+                  "perp_slope": round(float(pp), 4), "compensation": round(float(-pp / st), 3)}
+    return out
+
+
 def main():
     c = load()
     v = variants(c)
@@ -199,6 +294,10 @@ def main():
         "pair_majority_0.99_signal_filtered": pair_table(c, MAIN_THR),
         "strong_regime_cv": strong_regime_cv(c),
         "legacy_cv_all_regimes": legacy_cv(c),
+        "oh_unfiltered_strong": oh_unfiltered_strong(c),
+        "nested_threshold_cv": nested_threshold_cv(c),
+        "no_threshold": no_threshold(c),
+        "oh_strong_slopes": oh_strong_slopes(c),
     }
     (ROOT / "results" / "F01_cv.json").write_text(json.dumps(out, indent=1))
     m = out["regime_scan"][f"{MAIN_THR:.2f}"]["signal_filtered"]
@@ -210,6 +309,12 @@ def main():
     print("0.99 signal pooled CV", out["strong_regime_cv"]["0.99"]["signal_filtered"]["pooled"])
     print("0.99 all pooled CV", out["strong_regime_cv"]["0.99"]["all_eligible"]["pooled"])
     print("legacy pooled", out["legacy_cv_all_regimes"]["pooled"])
+    print("oh_unfiltered_strong", out["oh_unfiltered_strong"])
+    for k, v in out["nested_threshold_cv"].items():
+        if isinstance(v, dict) and "right" in v:
+            print("nested", k, v["right"], v["n"], "baseline", v["baseline_right"], v["threshold_counts"])
+    print("no_threshold", out["no_threshold"])
+    print("oh_strong_slopes", out["oh_strong_slopes"])
 
 
 if __name__ == "__main__":

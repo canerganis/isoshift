@@ -84,7 +84,7 @@
     "f_OLS": 0.912,
     "f_TheilSen": 0.982,
     "f_OLS_boot95": [
-     0.658,
+     0.668,
      1.071
     ],
     "median_offset_cm": -39.0,
@@ -110,8 +110,8 @@
     "f_OLS": 0.948,
     "f_TheilSen": 0.978,
     "f_OLS_boot95": [
-     0.806,
-     1.066
+     0.816,
+     1.069
     ],
     "median_offset_cm": -58.2,
     "mean_offset_cm": -29.3,
@@ -136,8 +136,8 @@
     "f_OLS": 0.913,
     "f_TheilSen": 0.926,
     "f_OLS_boot95": [
-     0.355,
-     1.056
+     0.409,
+     1.053
     ],
     "median_offset_cm": -13.0,
     "mean_offset_cm": 45.4,
@@ -169,7 +169,7 @@
     "f_TheilSen": 0.748,
     "f_OLS_boot95": [
      -0.062,
-     1.672
+     1.657
     ],
     "median_offset_cm": -105.3,
     "mean_offset_cm": -93.9,
@@ -188,8 +188,8 @@
     "f_OLS": 2.71,
     "f_TheilSen": 2.368,
     "f_OLS_boot95": [
-     1.373,
-     4.747
+     1.382,
+     4.85
     ],
     "median_offset_cm": 5.6,
     "mean_offset_cm": 5.3,
@@ -208,7 +208,7 @@
     "f_OLS": 2.042,
     "f_TheilSen": 2.552,
     "f_OLS_boot95": [
-     1.184,
+     1.192,
      4.225
     ],
     "median_offset_cm": -144.3,
@@ -234,8 +234,8 @@
     "f_OLS": 0.781,
     "f_TheilSen": 0.834,
     "f_OLS_boot95": [
-     0.28,
-     1.068
+     0.265,
+     1.064
     ],
     "median_offset_cm": -23.6,
     "mean_offset_cm": 5.2,
@@ -260,8 +260,8 @@
     "f_OLS": 0.881,
     "f_TheilSen": 0.896,
     "f_OLS_boot95": [
-     0.5,
-     1.142
+     0.502,
+     1.136
     ],
     "median_offset_cm": -47.2,
     "mean_offset_cm": -15.0,
@@ -286,7 +286,7 @@
     "f_OLS": 1.079,
     "f_TheilSen": 1.057,
     "f_OLS_boot95": [
-     0.454,
+     0.456,
      1.705
     ],
     "median_offset_cm": 21.4,
@@ -318,8 +318,8 @@
     "f_OLS": 0.803,
     "f_TheilSen": 1.036,
     "f_OLS_boot95": [
-     -0.152,
-     1.258
+     -0.151,
+     1.282
     ],
     "median_offset_cm": -52.8,
     "mean_offset_cm": -11.2,
@@ -341,7 +341,7 @@
     "f_OLS": 1.346,
     "f_TheilSen": 1.613,
     "f_OLS_boot95": [
-     0.153,
+     0.203,
      2.309
     ],
     "median_offset_cm": -69.2,
@@ -364,8 +364,8 @@
     "f_OLS": 0.501,
     "f_TheilSen": 0.598,
     "f_OLS_boot95": [
-     -0.546,
-     1.011
+     -0.553,
+     1.012
     ],
     "median_offset_cm": -52.8,
     "mean_offset_cm": -2.2,
