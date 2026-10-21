@@ -12,9 +12,9 @@ Opus (this session) is the conductor: starts each phase workflow, reads its resu
 ## Reusable building blocks (sub-workflows)
 
 ### `board(question, evidence)`: hard decisions
-* Members in parallel, blind to each other: Opus max agent, Astra xhigh (`codex exec -m gpt-6-astra -c model_reasoning_effort=xhigh`, called by a Haiku runner), Gemini 4 Argon high (`harness.ask`, Haiku runner).
+* Members in parallel, blind to each other: Opus xhigh agent, Astra xhigh (`codex exec -m gpt-6-astra -c model_reasoning_effort=xhigh`, called by a Haiku runner), Gemini 4 Argon high (`harness.ask`, Haiku runner).
 * Each returns `{decision, rationale, key_numbers, risks, confidence}`.
-* Chair (Opus max) reads all three, writes `docs/decisions/NN-topic.md` with the decision, dissent and what would change it.
+* Chair (Opus xhigh; max only by exception, reason logged) reads all three, writes `docs/decisions/NN-topic.md` with the decision, dissent and what would change it.
 * Used for: brucite / imaginary modes, gate, ΔT_iso method and ranking, fallback switch, headline and final claims.
 
 ### `mathcheck(derivation_task)`: every formula before it goes into code

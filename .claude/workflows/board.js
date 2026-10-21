@@ -1,10 +1,10 @@
 export const meta = {
   name: 'board',
-  description: 'Advisory board (Opus max chair, Astra xhigh, Gemini 4 Argon) answers a hard decision blind, chair writes docs/decisions',
+  description: 'Advisory board (Opus xhigh chair, Astra xhigh, Gemini 4 Argon) answers a hard decision blind, chair writes docs/decisions',
   whenToUse: 'Hard physics, architecture, gate or claim decisions in IsoShift. args: {id, topic, question, evidence: [repo-relative paths], options?: [..]}',
   phases: [
     { title: 'Members', detail: 'three blind answers' },
-    { title: 'Chair', detail: 'Opus max decides and writes the record' },
+    { title: 'Chair', detail: 'Opus xhigh decides and writes the record' },
   ],
 }
 
@@ -48,7 +48,7 @@ ${brief}`,
 phase('Members')
 const [opus, astra, gemini] = await parallel([
   () => agent(`${brief}\nRead the evidence files yourself. Run small Python checks with ${PY} if a number needs verifying.`,
-    { label: 'member:opus', phase: 'Members', schema: MEMBER, model: 'opus', effort: 'max' }),
+    { label: 'member:opus', phase: 'Members', schema: MEMBER, model: 'opus', effort: (args && args.effort) || 'xhigh' }),
   () => external('gpt-6-astra', 'xhigh'),
   () => external('gemini-4-argon', null),
 ])
@@ -64,7 +64,7 @@ ${JSON.stringify(members, null, 2)}
 Weigh arguments, not votes. Astra is the strongest member on physics and math; Gemini is consultative. Re-check any number the decision depends on (Python at ${PY} if needed).
 Write ${REPO}/docs/decisions/${a.id}.md with: Decision, Why, Member positions (one line each), Dissent, What would change this, Follow-up tasks. Then return the schema.`,
   {
-    label: 'chair', phase: 'Chair', model: 'opus', effort: 'max',
+    label: 'chair', phase: 'Chair', model: 'opus', effort: (args && args.effort) || 'xhigh',
     schema: {
       type: 'object',
       properties: {
