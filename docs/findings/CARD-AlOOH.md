@@ -28,3 +28,25 @@ Goethite (alpha-FeOOH, Pnma, mp-605437) transforms to the InOOH-type epsilon-FeO
 | MACE | 11.0 GPa | 11.5 GPa | +0.46 GPa |
 | ORB | 9.4 GPa | 9.8 GPa | +0.40 GPa |
 Both roots lie beyond the 3 to 9 GPa grid (linear extrapolation). Same status as the AlOOH card: exploratory sign prediction; epsilon-FeOOH has a short H bond that symmetrises at higher pressure, outside harmonic physics.
+
+## Temperature dependence
+Computed with `src/isoshift_event/card_temperature.py` (`results/card_alooh_temperature.json`): Gamma-free QHA rebuilt from the cached force constants on a 0 to 1550 K grid, imaginary modes omitted, vinet EOS, the same linear fit through 10, 15 and 20 GPa for both isotopes. The imaginary fraction is at most 0.6 percent of the mesh modes (MACE delta-AlOOH; diaspore at most 0.03 percent), and the QHA volume stays inside the scanned volume grid up to 1500 K for all three models. The 300 K values reproduce the card (MACE +1.328, ORB +1.125 GPa). The MACE H root stays extrapolated below 10 GPa up to 1000 K.
+
+| model | T (K) | P_t AlOOH (GPa) | P_t AlOOD (GPa) | dP_iso (GPa) |
+|---|---|---|---|---|
+| MACE | 300 | 8.76 | 10.08 | +1.33 |
+| MACE | 600 | 8.99 | 10.22 | +1.23 |
+| MACE | 1000 | 9.48 | 10.42 | +0.94 |
+| MACE | 1500 | 10.18 | 10.84 | +0.66 |
+| ORB | 300 | 12.99 | 14.12 | +1.13 |
+| ORB | 600 | 13.51 | 14.57 | +1.06 |
+| ORB | 1000 | 14.30 | 15.11 | +0.81 |
+| ORB | 1500 | 15.17 | 15.73 | +0.56 |
+| MatterSim | 300 | 15.14 | 16.13 | +0.99 |
+| MatterSim | 600 | 15.52 | 16.46 | +0.94 |
+| MatterSim | 1000 | 16.11 | 16.83 | +0.73 |
+| MatterSim | 1500 | 16.79 | 17.31 | +0.52 |
+
+At about 1000 K an experimentalist should expect the boundary to sit roughly 0.7 to 1.5 GPa above its 300 K position in each model and the deuterated sample to cross about 0.7 to 0.9 GPa higher than the protiated one, a shift that shrinks with temperature but keeps its sign; this remains a harmonic/QHA statement and ignores the proton disorder of delta-AlOOH.
+
+Goethite to epsilon-FeOOH (same calculation, 3/6/9 GPa): ORB gives dP_iso = +0.37 (300 K), +0.42 (600 K), +0.38 (1000 K) and +0.18 GPa (1500 K, QHA volume off the grid), with P_t(FeOOH) 9.4, 9.9, 10.5 GPa at 300, 600, 1000 K. All FeOOH roots are extrapolated beyond 9 GPa. MACE leaves the volume grid above about 550 K (goethite is compressed below the grid at 9 GPa), so only its 300 K value is usable, and there the Gamma-free rebuild gives +0.22 GPa instead of the +0.46 GPa above. The difference is q-mesh sensitivity: changing the goethite mesh from 12x9x4 to 12x8x4 moves the 9 GPa dG by 0.1 to 0.2 meV/atom, as large as the isotope signal. The FeOOH shift is therefore a sign statement only, at +0.2 to +0.5 GPa.
