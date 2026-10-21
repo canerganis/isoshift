@@ -29,11 +29,15 @@ Conductor: Opus (orchestrating session). Started Wed 21 Oct 14:20 TRT, about 2.5
 | 0.1 | src scaffold | Opus | done | |
 | 0.2 | MP fetch | Opus | done | 4421 entries, 3542 formulas -> data/isoshift/mp_h.csv |
 | 0.3 | Bond check | Opus | done | list_sources OK, first query logged |
-| 1.math | mathcheck batch | workflow | running | |
+| 1.math | mathcheck batch | workflow | done | docs/math/M01, Astra/Opus agree; 3 review fixes applied (0eb8954) |
 | 1.3 | pairs.py | build workflow | running | |
 | 1.5 | screen.py | build workflow | running | |
-| 1.1 | validation literature | sweep workflow | running | |
-| 1.4 | stability repair (brucite, AlOOH) | Opus | running | |
+| 1.1 | validation literature | sweep + Sonnet follow-up | done | data/isoshift/validation.csv 30 rows; brucite +0.31% (10.2138/am.2013.4202), LiH +0.81%, ice Ih -0.09..-0.21%; portlandite no clean pair |
+| 1.4 | brucite imaginary modes | Opus | done | docs/decisions/00; K-point H off-axis branch, physical (H disorder), isotope quantity converged |
+| 2.1 | validation QHA 4 models | GPU queue | running | src/isoshift_event/validate.py, results/queue/validation |
+| 2.3 | DFT isotope benchmark module | Sonnet | running | src/isoshift_event/benchmark.py, MDR phonondb FCs |
 
 ## Notes
+- Planning session (other Claude) stood down 15:45; this session is the only writer. Its pool fix 62f1fde is post-baseline (event-time).
+- Double-well isotope-ordering idea tested on NaOH and dropped (see docs/decisions/00).
 - Bond found NaOH/NaOD isotope-induced transition (PRL 131, 126101, 2023): quantum paraelectric, add as negative control.
