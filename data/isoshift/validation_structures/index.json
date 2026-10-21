@@ -1,0 +1,338 @@
+[
+ {
+  "target": "Mg(OH)2",
+  "mp_id": "mp-30247",
+  "sg": "P-3m1",
+  "nsites": 5,
+  "ehull": 0.0,
+  "file": "MgOH2_mp-30247_P-3m1.cif"
+ },
+ {
+  "target": "Mg(OH)2",
+  "mp_id": "mp-626143",
+  "sg": "C2",
+  "nsites": 5,
+  "ehull": 0.0094,
+  "file": "MgOH2_mp-626143_C2.cif"
+ },
+ {
+  "target": "Ca(OH)2",
+  "mp_id": "mp-23879",
+  "sg": "P-3m1",
+  "nsites": 5,
+  "ehull": 0.0,
+  "file": "CaOH2_mp-23879_P-3m1.cif"
+ },
+ {
+  "target": "Ca(OH)2",
+  "mp_id": "mp-626644",
+  "sg": "C2",
+  "nsites": 5,
+  "ehull": 0.0075,
+  "file": "CaOH2_mp-626644_C2.cif"
+ },
+ {
+  "target": "Ca(OH)2",
+  "mp_id": "mp-643392",
+  "sg": "P2_1/c",
+  "nsites": 20,
+  "ehull": 0.0354,
+  "file": "CaOH2_mp-643392_P2_1-c.cif"
+ },
+ {
+  "target": "LiH",
+  "mp_id": "mp-23703",
+  "sg": "Fm-3m",
+  "nsites": 2,
+  "ehull": 0.0,
+  "file": "LiH_mp-23703_Fm-3m.cif"
+ },
+ {
+  "target": "H2O",
+  "mp_id": "mp-697111",
+  "sg": "Cmc2_1",
+  "nsites": 12,
+  "ehull": 0.0,
+  "file": "H2O_mp-697111_Cmc2_1.cif"
+ },
+ {
+  "target": "H2O",
+  "mp_id": "mp-1974803",
+  "sg": "Cc",
+  "nsites": 12,
+  "ehull": 0.0004,
+  "file": "H2O_mp-1974803_Cc.cif"
+ },
+ {
+  "target": "H2O",
+  "mp_id": "mp-703459",
+  "sg": "P6_3cm",
+  "nsites": 36,
+  "ehull": 0.0011,
+  "file": "H2O_mp-703459_P6_3cm.cif"
+ },
+ {
+  "target": "H2O",
+  "mp_id": "mp-24043",
+  "sg": "R-3",
+  "nsites": 36,
+  "ehull": 0.0056,
+  "file": "H2O_mp-24043_R-3.cif"
+ },
+ {
+  "target": "H2O",
+  "mp_id": "mp-696735",
+  "sg": "P4_12_12",
+  "nsites": 36,
+  "ehull": 0.0067,
+  "file": "H2O_mp-696735_P4_12_12.cif"
+ },
+ {
+  "target": "H2O",
+  "mp_id": "mp-558226",
+  "sg": "P2_12_12_1",
+  "nsites": 36,
+  "ehull": 0.0111,
+  "file": "H2O_mp-558226_P2_12_12_1.cif"
+ },
+ {
+  "target": "H2O",
+  "mp_id": "mp-557082",
+  "sg": "P2_1",
+  "nsites": 36,
+  "ehull": 0.012,
+  "file": "H2O_mp-557082_P2_1.cif"
+ },
+ {
+  "target": "H2O",
+  "mp_id": "mp-558958",
+  "sg": "P2_12_12_1",
+  "nsites": 36,
+  "ehull": 0.0124,
+  "file": "H2O_mp-558958_P2_12_12_1.cif"
+ },
+ {
+  "target": "H2O",
+  "mp_id": "mp-697085",
+  "sg": "I4_1/amd",
+  "nsites": 12,
+  "ehull": 0.0205,
+  "file": "H2O_mp-697085_I4_1-amd.cif"
+ },
+ {
+  "target": "H2O",
+  "mp_id": "mp-32959",
+  "sg": "P4_2nm",
+  "nsites": 6,
+  "ehull": 0.0252,
+  "file": "H2O_mp-32959_P4_2nm.cif"
+ },
+ {
+  "target": "H2O",
+  "mp_id": "mp-2739191",
+  "sg": "C222_1",
+  "nsites": 12,
+  "ehull": 0.0494,
+  "file": "H2O_mp-2739191_C222_1.cif"
+ },
+ {
+  "target": "AlOOH",
+  "mp_id": "mp-625152",
+  "sg": "Pnma",
+  "nsites": 16,
+  "ehull": 0.0,
+  "file": "AlOOH_mp-625152_Pnma.cif"
+ },
+ {
+  "target": "AlOOH",
+  "mp_id": "mp-625054",
+  "sg": "Cmc2_1",
+  "nsites": 8,
+  "ehull": 0.0074,
+  "file": "AlOOH_mp-625054_Cmc2_1.cif"
+ },
+ {
+  "target": "AlOOH",
+  "mp_id": "mp-625404",
+  "sg": "Pnma",
+  "nsites": 16,
+  "ehull": 0.0107,
+  "file": "AlOOH_mp-625404_Pnma.cif"
+ },
+ {
+  "target": "AlOOH",
+  "mp_id": "mp-625420",
+  "sg": "Pnma",
+  "nsites": 16,
+  "ehull": 0.034,
+  "file": "AlOOH_mp-625420_Pnma.cif"
+ },
+ {
+  "target": "AlOOH",
+  "mp_id": "mp-23807",
+  "sg": "Pmn2_1",
+  "nsites": 8,
+  "ehull": 0.0417,
+  "file": "AlOOH_mp-23807_Pmn2_1.cif"
+ },
+ {
+  "target": "KOH",
+  "mp_id": "mp-626785",
+  "sg": "Cmc2_1",
+  "nsites": 6,
+  "ehull": 0.0,
+  "file": "KOH_mp-626785_Cmc2_1.cif"
+ },
+ {
+  "target": "KOH",
+  "mp_id": "mp-642817",
+  "sg": "P2_1/c",
+  "nsites": 12,
+  "ehull": 0.0002,
+  "file": "KOH_mp-642817_P2_1-c.cif"
+ },
+ {
+  "target": "KOH",
+  "mp_id": "mp-626716",
+  "sg": "P2_1",
+  "nsites": 6,
+  "ehull": 0.0032,
+  "file": "KOH_mp-626716_P2_1.cif"
+ },
+ {
+  "target": "KDP",
+  "mp_id": "mp-23959",
+  "sg": "Fdd2",
+  "nsites": 16,
+  "ehull": 0.0,
+  "file": "KDP_mp-23959_Fdd2.cif"
+ },
+ {
+  "target": "KDP",
+  "mp_id": "mp-1181168",
+  "sg": "P2_1",
+  "nsites": 64,
+  "ehull": 0.0026,
+  "file": "KDP_mp-1181168_P2_1.cif"
+ },
+ {
+  "target": "KDP",
+  "mp_id": "mp-24263",
+  "sg": "P-1",
+  "nsites": 32,
+  "ehull": 0.0028,
+  "file": "KDP_mp-24263_P-1.cif"
+ },
+ {
+  "target": "KDP",
+  "mp_id": "mp-757909",
+  "sg": "Cc",
+  "nsites": 64,
+  "ehull": 0.0039,
+  "file": "KDP_mp-757909_Cc.cif"
+ },
+ {
+  "target": "KDP",
+  "mp_id": "mp-1223489",
+  "sg": "Pc",
+  "nsites": 32,
+  "ehull": 0.0053,
+  "file": "KDP_mp-1223489_Pc.cif"
+ },
+ {
+  "target": "KDP",
+  "mp_id": "mp-696752",
+  "sg": "I-42d",
+  "nsites": 16,
+  "ehull": 0.0053,
+  "file": "KDP_mp-696752_I-42d.cif"
+ },
+ {
+  "target": "KDP",
+  "mp_id": "mp-24262",
+  "sg": "P2_1/c",
+  "nsites": 32,
+  "ehull": 0.0066,
+  "file": "KDP_mp-24262_P2_1-c.cif"
+ },
+ {
+  "target": "KDP",
+  "mp_id": "mp-1106168",
+  "sg": "C222_1",
+  "nsites": 16,
+  "ehull": 0.022,
+  "file": "KDP_mp-1106168_C222_1.cif"
+ },
+ {
+  "target": "KDP",
+  "mp_id": "mp-1198928",
+  "sg": "P-1",
+  "nsites": 32,
+  "ehull": 0.0334,
+  "file": "KDP_mp-1198928_P-1.cif"
+ },
+ {
+  "target": "KDP",
+  "mp_id": "mp-699437",
+  "sg": "P2/c",
+  "nsites": 32,
+  "ehull": 0.0342,
+  "file": "KDP_mp-699437_P2-c.cif"
+ },
+ {
+  "target": "KDP",
+  "mp_id": "mp-695799",
+  "sg": "I-4",
+  "nsites": 32,
+  "ehull": 0.0481,
+  "file": "KDP_mp-695799_I-4.cif"
+ },
+ {
+  "target": "NH4Cl",
+  "mp_id": "mp-34337",
+  "sg": "P-43m",
+  "nsites": 6,
+  "ehull": 0.0,
+  "file": "NH4Cl_mp-34337_P-43m.cif"
+ },
+ {
+  "target": "MgH2",
+  "mp_id": "mp-23710",
+  "sg": "P4_2/mnm",
+  "nsites": 6,
+  "ehull": 0.0,
+  "file": "MgH2_mp-23710_P4_2-mnm.cif"
+ },
+ {
+  "target": "MgH2",
+  "mp_id": "mp-23711",
+  "sg": "Pbcn",
+  "nsites": 12,
+  "ehull": 0.0019,
+  "file": "MgH2_mp-23711_Pbcn.cif"
+ },
+ {
+  "target": "MgH2",
+  "mp_id": "mp-1102038",
+  "sg": "Pa-3",
+  "nsites": 12,
+  "ehull": 0.0353,
+  "file": "MgH2_mp-1102038_Pa-3.cif"
+ },
+ {
+  "target": "MgH2",
+  "mp_id": "mp-569051",
+  "sg": "Pca2_1",
+  "nsites": 12,
+  "ehull": 0.0438,
+  "file": "MgH2_mp-569051_Pca2_1.cif"
+ },
+ {
+  "target": "MgH2",
+  "mp_id": "mp-568441",
+  "sg": "Pbca",
+  "nsites": 24,
+  "ehull": 0.0459,
+  "file": "MgH2_mp-568441_Pbca.cif"
+ }
+]
