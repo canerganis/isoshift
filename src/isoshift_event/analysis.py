@@ -435,6 +435,9 @@ def analyze(screen_pairs, screen_structures, *, pairs=None, structures_manifest=
         if signal is not None and (signal <= threshold or math.isclose(signal, threshold, rel_tol=1e-12, abs_tol=1e-12)):
             rejected.add("signal_below_threshold")
         _statistics(row, "dE_static", "meV_atom", [r["dE_static_meV_atom"] for r in valid.values()])
+        # P13: the final 25 meV/atom polymorph-gap cut uses the MLIPs' own relaxed static energies
+        if valid and abs(row["dE_static_median_meV_atom"]) > 25:
+            rejected.add("mlip_static_gap_gt_25_meV_atom")
         pressures = []
         for model, result in valid.items():
             dv = result["dV_A3_atom"]
