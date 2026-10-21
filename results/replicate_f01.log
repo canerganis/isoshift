@@ -1,0 +1,214 @@
+C:\Users\can02\Projects\osi-hackathon-2026\.venv\Lib\site-packages\phonopy\api_phonopy.py:273: UserWarning: Warning: Point group symmetries of supercell and primitivecell are different.
+  self._search_primitive_symmetry()
+  JVASP-30504: (10, 8, 6), dF=-11.9304711, stable=0
+  JVASP-30504: (14, 10, 8), dF=-11.9309769, stable=1
+  JVASP-30504: (18, 14, 12), dF=-11.9310850, stable=2
+C:\Users\can02\Projects\osi-hackathon-2026\.venv\Lib\site-packages\phonopy\api_phonopy.py:273: UserWarning: Warning: Point group symmetries of supercell and primitivecell are different.
+  self._search_primitive_symmetry()
+  JVASP-113750: (10, 8, 6), dF=-11.9260536, stable=0
+  JVASP-113750: (14, 10, 8), dF=-11.9263797, stable=1
+  JVASP-113750: (18, 14, 12), dF=-11.9265223, stable=2
+{"pair_id": "JVASP-30504__JVASP-113750", "model": "mace", "struct_a": "JVASP-30504", "struct_b": "JVASP-113750", "flags": "jarvis_only;proton_transfer;a_quarantined:imaginary_modes;b_quarantined:imaginary_modes;relaxed_identity_unchecked_worker_has_no_coordinates", "ddF_direct": 0.004562730616321176, "ddF_str": 0.0051440454152724135, "ddF_perp": -0.0005813147989499612, "ddF_total": 0.004562730616322952, "closure_error_meV_atom": 1.7763568394002505e-15}
+  JVASP-30504: (10, 8, 6), dF=-13.6199497, stable=0
+  JVASP-30504: (14, 10, 10), dF=-13.6348002, stable=0
+  JVASP-30504: (18, 14, 12), dF=-13.6359427, stable=1
+  JVASP-30504: (24, 18, 16), dF=-13.6470395, stable=0
+  JVASP-30504: (28, 22, 20), dF=-13.6477652, stable=1
+  JVASP-30504: (36, 28, 24), dF=-13.6476541, stable=2
+  JVASP-113750: (10, 8, 6), dF=-13.1495072, stable=0
+  JVASP-113750: (14, 10, 10), dF=-13.1884487, stable=0
+  JVASP-113750: (18, 14, 12), dF=-13.1878877, stable=1
+  JVASP-113750: (24, 18, 16), dF=-13.1827947, stable=0
+  JVASP-113750: (28, 22, 20), dF=-13.1872241, stable=1
+  JVASP-113750: (36, 28, 24), dF=-13.1907730, stable=2
+{"pair_id": "JVASP-30504__JVASP-113750", "model": "orb", "struct_a": "JVASP-30504", "struct_b": "JVASP-113750", "flags": "jarvis_only;proton_transfer;a_quarantined:imaginary_modes;relax_not_converged;b_quarantined:imaginary_modes;relax_not_converged;relaxed_identity_unchecked_worker_has_no_coordinates", "ddF_direct": 0.45688111757991123, "ddF_str": 0.4968717626322303, "ddF_perp": -0.03999064505251404, "ddF_total": 0.45688111757971583, "closure_error_meV_atom": 1.9539925233402755e-13}
+  JVASP-105579: (10, 10, 6), dF=-17.4940383, stable=0
+  JVASP-105579: (16, 16, 8), dF=-17.4940383, stable=1
+  JVASP-105579: (20, 20, 12), dF=-17.4940383, stable=2
+  mp-27913: (10, 10, 6), dF=-9.9746609, stable=0
+  mp-27913: (16, 16, 10), dF=-9.9746609, stable=1
+  mp-27913: (20, 20, 12), dF=-9.9746609, stable=2
+{"pair_id": "mp-27913__JVASP-105579", "model": "mace", "struct_a": "JVASP-105579", "struct_b": "mp-27913", "flags": "jarvis_only;proton_transfer;b_quarantined:imaginary_modes;relaxed_identity_unchecked_worker_has_no_coordinates", "ddF_direct": 7.519377459484545, "ddF_str": 8.976644818184305, "ddF_perp": -1.4572673586997542, "ddF_total": 7.51937745948455, "closure_error_meV_atom": 5.329070518200751e-15}
+  JVASP-105579: (10, 10, 6), dF=-17.8137196, stable=0
+  JVASP-105579: (16, 16, 10), dF=-17.8137196, stable=1
+  JVASP-105579: (20, 20, 12), dF=-17.8137196, stable=2
+  mp-27913: (10, 10, 6), dF=-11.8155800, stable=0
+  mp-27913: (16, 16, 10), dF=-11.8165448, stable=1
+  mp-27913: (20, 20, 12), dF=-11.8163752, stable=2
+{"pair_id": "mp-27913__JVASP-105579", "model": "orb", "struct_a": "JVASP-105579", "struct_b": "mp-27913", "flags": "jarvis_only;proton_transfer;a_relax_not_converged;b_quarantined:imaginary_modes;relaxed_identity_unchecked_worker_has_no_coordinates", "ddF_direct": 5.997344406723528, "ddF_str": 6.933491924699799, "ddF_perp": -0.9361475179763108, "ddF_total": 5.997344406723489, "closure_error_meV_atom": 3.907985046680551e-14}
+  JVASP-29861: (8, 8, 6), dF=-34.5418083, stable=0
+  JVASP-29861: (12, 12, 10), dF=-34.5418083, stable=1
+  JVASP-29861: (14, 16, 12), dF=-34.5418083, stable=2
+  JVASP-106871: (10, 10, 6), dF=-35.9832521, stable=0
+  JVASP-106871: (14, 14, 8), dF=-35.9832521, stable=1
+  JVASP-106871: (18, 18, 12), dF=-35.9832521, stable=2
+{"pair_id": "JVASP-29861__JVASP-106871", "model": "mace", "struct_a": "JVASP-29861", "struct_b": "JVASP-106871", "flags": "jarvis_only;a_relax_not_converged;crossings_exploratory_no_offset_sweep;static_gap_gt_25_meV_atom", "ddF_direct": -1.4414438239823824, "ddF_str": -4.579243617406114, "ddF_perp": 3.1377997934237865, "ddF_total": -1.4414438239823255, "closure_error_meV_atom": 5.684341886080802e-14}
+  JVASP-118446: (8, 8, 4), dF=-15.6871140, stable=0
+  JVASP-118446: (12, 12, 6), dF=-15.6871140, stable=1
+  JVASP-118446: (14, 14, 8), dF=-15.6871140, stable=2
+  JVASP-118450: (6, 6, 6), dF=-14.5568995, stable=0
+  JVASP-118450: (10, 10, 8), dF=-14.5568995, stable=1
+  JVASP-118450: (12, 12, 10), dF=-14.5568995, stable=2
+{"pair_id": "JVASP-118446__JVASP-118450", "model": "orb", "struct_a": "JVASP-118446", "struct_b": "JVASP-118450", "flags": "jarvis_only;crossings_exploratory_no_offset_sweep", "ddF_direct": 1.1302145412167555, "ddF_str": 0.5401963251803403, "ddF_perp": 0.5900182160364142, "ddF_total": 1.1302145412167555, "closure_error_meV_atom": 0.0}
+  mp-1273062: (10, 10, 6), dF=-35.9825751, stable=0
+  mp-1273062: (14, 14, 8), dF=-35.9825751, stable=1
+  mp-1273062: (18, 18, 12), dF=-35.9825751, stable=2
+  mp-2665409: (10, 10, 6), dF=-35.8137120, stable=0
+  mp-2665409: (14, 14, 8), dF=-35.8137120, stable=1
+  mp-2665409: (18, 18, 10), dF=-35.8137120, stable=2
+{"pair_id": "mp-1273062__mp-2665409", "model": "mace", "struct_a": "mp-1273062", "struct_b": "mp-2665409", "flags": "theoretical;b_relax_not_converged;crossings_exploratory_no_offset_sweep;crossing_H_small_slope_guard;linear_dT_blocked_slope_guard;crossing_H_above_600K;crossing_D_small_slope_guard;crossing_D_above_600K;classical_limit_violation", "ddF_direct": 0.16886312249947366, "ddF_str": -0.42386299266002325, "ddF_perp": 0.5927261151594152, "ddF_total": 0.1688631224993884, "closure_error_meV_atom": 8.526512829121202e-14}
+  JVASP-118481: (8, 8, 4), dF=-13.0354696, stable=0
+  JVASP-118481: (12, 12, 6), dF=-13.0370043, stable=1
+  JVASP-118481: (16, 16, 8), dF=-13.0384265, stable=2
+  JVASP-118480: (8, 8, 6), dF=-11.8412011, stable=0
+  JVASP-118480: (10, 10, 8), dF=-11.8392873, stable=1
+  JVASP-118480: (14, 14, 10), dF=-11.8389615, stable=2
+{"pair_id": "JVASP-118480__JVASP-118481", "model": "orb", "struct_a": "JVASP-118481", "struct_b": "JVASP-118480", "flags": "jarvis_only;a_quarantined:imaginary_modes;relax_not_converged;b_quarantined:imaginary_modes;relaxed_identity_unchecked_worker_has_no_coordinates", "ddF_direct": 1.1994649734254352, "ddF_str": 0.5287021866128185, "ddF_perp": 0.6707627868126407, "ddF_total": 1.1994649734254583, "closure_error_meV_atom": 2.3092638912203256e-14}
+  mp-24105: (10, 10, 6), dF=-35.9826739, stable=0
+  mp-24105: (14, 14, 8), dF=-35.9826739, stable=1
+  mp-24105: (18, 18, 12), dF=-35.9826739, stable=2
+{"pair_id": "mp-24105__mp-2665409", "model": "mace", "struct_a": "mp-24105", "struct_b": "mp-2665409", "flags": "theoretical;b_relax_not_converged;crossings_exploratory_no_offset_sweep;crossing_H_small_slope_guard;linear_dT_blocked_slope_guard;crossing_H_above_600K;crossing_D_small_slope_guard;crossing_D_above_600K;classical_limit_violation", "ddF_direct": 0.16896192989882763, "ddF_str": -0.4236168346897813, "ddF_perp": 0.5925787645885361, "ddF_total": 0.16896192989875658, "closure_error_meV_atom": 7.105427357601002e-14}
+  JVASP-108839: (10, 10, 6), dF=-12.9756194, stable=0
+  JVASP-108839: (14, 14, 8), dF=-12.9759125, stable=1
+  JVASP-108839: (18, 18, 12), dF=-12.9758364, stable=2
+  JVASP-50102: (10, 10, 4), dF=-12.9533885, stable=0
+  JVASP-50102: (14, 14, 4), dF=-12.9547851, stable=1
+  JVASP-50102: (18, 18, 6), dF=-12.9541598, stable=2
+{"pair_id": "JVASP-50102__JVASP-108839", "model": "orb", "struct_a": "JVASP-108839", "struct_b": "JVASP-50102", "flags": "jarvis_only;proton_transfer;a_quarantined:imaginary_modes;b_quarantined:imaginary_modes;relax_not_converged;relaxed_identity_unchecked_worker_has_no_coordinates", "ddF_direct": 0.02167662623844535, "ddF_str": -0.020638766713228174, "ddF_perp": 0.04231539295165909, "ddF_total": 0.02167662623843114, "closure_error_meV_atom": 1.4210854715202004e-14}
+  mp-27912: (10, 10, 6), dF=-36.7172132, stable=0
+  mp-27912: (14, 14, 8), dF=-36.7172132, stable=1
+  mp-27912: (18, 18, 12), dF=-36.7172132, stable=2
+  mp-626843: (10, 10, 4), dF=-36.2037398, stable=0
+  mp-626843: (14, 14, 6), dF=-36.2037398, stable=1
+  mp-626843: (18, 18, 8), dF=-36.2037398, stable=2
+{"pair_id": "mp-27912__mp-626843", "model": "mace", "struct_a": "mp-27912", "struct_b": "mp-626843", "flags": "theoretical;b_relax_not_converged;crossings_exploratory_no_offset_sweep;crossing_H_above_600K;crossing_D_above_600K", "ddF_direct": 0.5134734013110318, "ddF_str": -0.4202215944134977, "ddF_perp": 0.933694995724645, "ddF_total": 0.5134734013111526, "closure_error_meV_atom": 1.2079226507921703e-13}
+  JVASP-52436: (10, 10, 4), dF=-11.9673667, stable=0
+  JVASP-52436: (16, 16, 6), dF=-11.9680918, stable=1
+  JVASP-52436: (20, 20, 6), dF=-11.9700509, stable=2
+{"pair_id": "JVASP-52436__JVASP-105579", "model": "orb", "struct_a": "JVASP-105579", "struct_b": "JVASP-52436", "flags": "jarvis_only;proton_transfer;a_relax_not_converged;b_quarantined:imaginary_modes;relaxed_identity_unchecked_worker_has_no_coordinates", "ddF_direct": 5.8436687015209685, "ddF_str": 6.644692251930077, "ddF_perp": -0.8010235504090968, "ddF_total": 5.843668701520981, "closure_error_meV_atom": 1.2434497875801753e-14}
+  mp-625074: (10, 10, 6), dF=-36.7672017, stable=0
+  mp-625074: (14, 14, 8), dF=-36.7672017, stable=1
+  mp-625074: (18, 18, 12), dF=-36.7672017, stable=2
+{"pair_id": "mp-625074__mp-626843", "model": "mace", "struct_a": "mp-625074", "struct_b": "mp-626843", "flags": "theoretical;b_relax_not_converged;crossings_exploratory_no_offset_sweep;crossing_H_above_600K;crossing_D_above_600K", "ddF_direct": 0.5634618987169233, "ddF_str": -0.3856974860045881, "ddF_perp": 0.9491593847215931, "ddF_total": 0.5634618987170086, "closure_error_meV_atom": 8.526512829121202e-14}
+  mp-23891: (8, 8, 6), dF=-28.4408187, stable=0
+  mp-23891: (12, 12, 8), dF=-28.4378632, stable=1
+  mp-23891: (16, 16, 10), dF=-28.4377825, stable=2
+  mp-23940: (8, 8, 6), dF=-28.3498357, stable=0
+  mp-23940: (12, 12, 8), dF=-28.3496249, stable=1
+  mp-23940: (16, 16, 10), dF=-28.3494487, stable=2
+{"pair_id": "mp-23891__mp-23940", "model": "orb", "struct_a": "mp-23891", "struct_b": "mp-23940", "flags": "hbond_disordered;a_quarantined:imaginary_modes;relax_not_converged;b_quarantined:imaginary_modes;relax_not_converged;relaxed_identity_unchecked_worker_has_no_coordinates", "ddF_direct": 0.0883338440478596, "ddF_str": 0.06655286963611218, "ddF_perp": 0.021780974410710918, "ddF_total": 0.08833384404682576, "closure_error_meV_atom": 1.0338396805309458e-12}
+  mp-1180084: (10, 10, 6), dF=-36.7685271, stable=0
+  mp-1180084: (14, 14, 8), dF=-36.7685271, stable=1
+  mp-1180084: (18, 18, 12), dF=-36.7685271, stable=2
+{"pair_id": "mp-626843__mp-1180084", "model": "mace", "struct_a": "mp-1180084", "struct_b": "mp-626843", "flags": "theoretical;b_relax_not_converged;crossings_exploratory_no_offset_sweep;crossing_H_above_600K;crossing_D_above_600K", "ddF_direct": 0.5647872836655239, "ddF_str": -0.385476224563007, "ddF_perp": 0.9502635082286144, "ddF_total": 0.5647872836656092, "closure_error_meV_atom": 8.526512829121202e-14}
+{"pair_id": "mp-27913__JVASP-52436", "model": "orb", "struct_a": "mp-27913", "struct_b": "JVASP-52436", "flags": "jarvis_only;proton_transfer;a_quarantined:imaginary_modes;b_quarantined:imaginary_modes;relaxed_identity_unchecked_worker_has_no_coordinates", "ddF_direct": -0.15367570520255924, "ddF_str": -0.28879967276972196, "ddF_perp": 0.135123967567214, "ddF_total": -0.15367570520250773, "closure_error_meV_atom": 5.1514348342607263e-14}
+  mp-1275121: (10, 10, 6), dF=-36.7681186, stable=0
+  mp-1275121: (14, 14, 8), dF=-36.7681186, stable=1
+  mp-1275121: (18, 18, 12), dF=-36.7681186, stable=2
+{"pair_id": "mp-626843__mp-1275121", "model": "mace", "struct_a": "mp-1275121", "struct_b": "mp-626843", "flags": "theoretical;b_relax_not_converged;crossings_exploratory_no_offset_sweep;crossing_H_above_600K;crossing_D_above_600K", "ddF_direct": 0.5643787735930204, "ddF_str": -0.38564287084385285, "ddF_perp": 0.9500216444369851, "ddF_total": 0.564378773593134, "closure_error_meV_atom": 1.1368683772161603e-13}
+  mp-996953: (10, 8, 6), dF=-12.0214236, stable=0
+  mp-996953: (16, 12, 10), dF=-12.0003945, stable=0
+  mp-996953: (20, 16, 12), dF=-11.9921443, stable=0
+  mp-996953: (26, 20, 16), dF=-11.9937101, stable=1
+  mp-996953: (32, 26, 20), dF=-11.9936048, stable=2
+  JVASP-30509: (10, 6, 6), dF=-20.9342096, stable=0
+  JVASP-30509: (14, 10, 8), dF=-20.9342096, stable=1
+  JVASP-30509: (18, 12, 10), dF=-20.9342096, stable=2
+{"pair_id": "mp-996953__JVASP-30509", "model": "orb", "struct_a": "mp-996953", "struct_b": "JVASP-30509", "flags": "jarvis_only;proton_transfer;theoretical;a_quarantined:imaginary_modes;b_relax_not_converged;relaxed_identity_unchecked_worker_has_no_coordinates", "ddF_direct": -8.940604758526298, "ddF_str": -10.03894989134872, "ddF_perp": 1.0983451328224518, "ddF_total": -8.94060475852627, "closure_error_meV_atom": 2.842170943040401e-14}
+  JVASP-118446: (8, 8, 4), dF=-15.7768470, stable=0
+  JVASP-118446: (12, 12, 6), dF=-15.7768470, stable=1
+  JVASP-118446: (14, 14, 8), dF=-15.7768470, stable=2
+  JVASP-118450: (6, 6, 6), dF=-14.5414843, stable=0
+  JVASP-118450: (10, 10, 8), dF=-14.5414842, stable=1
+  JVASP-118450: (12, 12, 10), dF=-14.5414842, stable=2
+{"pair_id": "JVASP-118446__JVASP-118450", "model": "mace", "struct_a": "JVASP-118446", "struct_b": "JVASP-118450", "flags": "jarvis_only;crossings_exploratory_no_offset_sweep;static_gap_gt_25_meV_atom", "ddF_direct": 1.2353627518653632, "ddF_str": 0.7418049194181942, "ddF_perp": 0.4935578324471539, "ddF_total": 1.2353627518653472, "closure_error_meV_atom": 1.5987211554602254e-14}
+  mp-996998: (8, 6, 6), dF=-13.1424826, stable=0
+  mp-996998: (10, 10, 8), dF=-13.1346664, stable=0
+  mp-996998: (14, 12, 10), dF=-13.1327805, stable=1
+  mp-996998: (18, 16, 12), dF=-13.1325415, stable=2
+  mp-996955: (10, 8, 6), dF=-13.3162087, stable=0
+  mp-996955: (14, 10, 10), dF=-13.3059618, stable=0
+  mp-996955: (18, 14, 12), dF=-13.3075158, stable=1
+  mp-996955: (24, 18, 16), dF=-13.3107440, stable=2
+{"pair_id": "mp-996955__mp-996998", "model": "orb", "struct_a": "mp-996998", "struct_b": "mp-996955", "flags": "proton_transfer;theoretical;a_quarantined:imaginary_modes;relax_not_converged;b_quarantined:imaginary_modes;relax_not_converged;relaxed_identity_unchecked_worker_has_no_coordinates", "ddF_direct": -0.17820248265081773, "ddF_str": 0.05497098587261329, "ddF_perp": -0.23317346852316767, "ddF_total": -0.17820248265055483, "closure_error_meV_atom": 2.6290081223123707e-13}
+{
+  "reference_sha256": "a52462118673ac4a8f9ea85985d33579e73569913e7a14994c8ca18c95228f84",
+  "statistics": {
+    "ddF_total": {
+      "max_abs_difference_meV_atom": 1.0169074471377826e-09,
+      "median_abs_difference_meV_atom": 9.237055564881302e-14,
+      "sign_agreement_count": 9,
+      "count": 9,
+      "sign_agreement_fraction": 1.0
+    },
+    "ddF_str": {
+      "max_abs_difference_meV_atom": 1.4555734395571562e-10,
+      "median_abs_difference_meV_atom": 1.7763568394002505e-14,
+      "sign_agreement_count": 9,
+      "count": 9,
+      "sign_agreement_fraction": 1.0
+    },
+    "ddF_perp": {
+      "max_abs_difference_meV_atom": 2.183853098358668e-10,
+      "median_abs_difference_meV_atom": 1.9539925233402755e-14,
+      "sign_agreement_count": 9,
+      "count": 9,
+      "sign_agreement_fraction": 1.0
+    },
+    "ddF_direct": {
+      "max_abs_difference_meV_atom": 1.016793760300061e-09,
+      "median_abs_difference_meV_atom": 1.2789769243681803e-13,
+      "count": 9
+    }
+  },
+  "rows_without_reference": [
+    {
+      "pair_id": "JVASP-30504__JVASP-113750",
+      "model": "mace"
+    },
+    {
+      "pair_id": "JVASP-30504__JVASP-113750",
+      "model": "orb"
+    },
+    {
+      "pair_id": "mp-27913__JVASP-105579",
+      "model": "mace"
+    },
+    {
+      "pair_id": "mp-27913__JVASP-105579",
+      "model": "orb"
+    },
+    {
+      "pair_id": "JVASP-118480__JVASP-118481",
+      "model": "orb"
+    },
+    {
+      "pair_id": "JVASP-50102__JVASP-108839",
+      "model": "orb"
+    },
+    {
+      "pair_id": "JVASP-52436__JVASP-105579",
+      "model": "orb"
+    },
+    {
+      "pair_id": "mp-23891__mp-23940",
+      "model": "orb"
+    },
+    {
+      "pair_id": "mp-27913__JVASP-52436",
+      "model": "orb"
+    },
+    {
+      "pair_id": "mp-996953__JVASP-30509",
+      "model": "orb"
+    },
+    {
+      "pair_id": "mp-996955__mp-996998",
+      "model": "orb"
+    }
+  ],
+  "n_rows_computed": 20,
+  "n_rows_with_reference": 9,
+  "outliers_above_0_05_meV_atom": [],
+  "sign_policy": "strict sign, including zero; no tolerance relabeling"
+}

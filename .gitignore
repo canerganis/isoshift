@@ -25,3 +25,10 @@ logs/*.jsonl
 
 # marimo session cache
 app/__marimo__/
+
+# regenerable per-run outputs and run logs (refine.py rewrites the CSVs; logs are local)
+results/screen_structures_extended.csv
+results/refined_structures.csv
+results/screen_run.log
+results/benchmark_mace.log
+results/validation/*.log
