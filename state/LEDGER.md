@@ -42,7 +42,14 @@ Conductor: Opus (orchestrating session). Started Wed 21 Oct 14:20 TRT, about 2.5
 | 4.0 | experimental provenance | Opus | done | 192/965 pairs both observed, 126 of them tier32 -> prioritise tier32 experimental pairs overnight |
 | 2.G | gate board | board workflow | done | conditional pass (P12 framing); G1-G4, F1, F3, F4 closed; G5 (LiH dZPE via benchmark) and F2 open |
 | 3.2 | screen queue: tier16 mace/orb finishing, experimental pairs (192, tier32 incl.) mace/orb/mattersim, mattersim tier16 | GPU | running | 3 workers; sevenn later alone |
-| 5.2 | README, PROVENANCE, LICENSE, CITATION, DATA_SOURCES | Sonnet | running | P22/P23/P25 |
+| 5.2 | README, PROVENANCE, LICENSE, CITATION, DATA_SOURCES | Sonnet | done | 18e663f, results placeholders |
+| 4.1b | decision 02 soft-mode tier + P13 gap cut | Opus | done | d88e1d8; clean 4, bracketed 29 eligible (interim) |
+| 4.3 | Bond literature + accessibility for 11 candidate families | sweep | running | state/sweeps/candidate-lit.jsonl |
+| 4.2b | P11 eigenvector following, 5 experimental-family pairs | GPU | running | stabilize.py; GaOOH mace both stable, ddF 2.56 |
+| 4.4 | reproduce_figures.py (main, funnel, benchmark) | Sonnet | running | |
+| 6.2 | video script draft v1 | Opus | done | 31e984a, placeholders |
+| 2.3b | DFT benchmark run (G5) | GPU | queued after mace drains | |
+| ops | thermal: workers relaunched with 4 threads each (19:00), GPU temp alarm at 87 C | Opus | done | |
 | 2.3 | DFT isotope benchmark | Sonnet | module done (aa1f6a0), GPU run queued after screen tier16 | |
 
 ## Notes
