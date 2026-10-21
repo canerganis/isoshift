@@ -1,0 +1,837 @@
+struct_id,experimental,evidence
+JVASP-80722,False,JARVIS no icsd
+JVASP-138309,False,JARVIS no icsd
+JVASP-138300,False,JARVIS no icsd
+JVASP-138305,False,JARVIS no icsd
+JVASP-125370,False,JARVIS no icsd
+JVASP-138308,False,JARVIS no icsd
+mp-37836,False,MP theoretical=True
+mp-554002,False,MP theoretical=True
+mp-554883,False,MP theoretical=True
+mp-555462,False,MP theoretical=True
+mp-560196,True,MP theoretical=False
+mp-625316,False,MP theoretical=True
+mp-626414,False,MP theoretical=True
+mp-626431,False,MP theoretical=True
+mp-626435,False,MP theoretical=True
+mp-626497,False,MP theoretical=True
+mp-626504,False,MP theoretical=True
+mp-777738,False,MP theoretical=True
+mp-985293,True,MP theoretical=False
+mp-1182949,False,MP theoretical=True
+JVASP-29414,True,JARVIS icsd=164050
+JVASP-29793,True,JARVIS icsd=16018
+JVASP-29795,True,JARVIS icsd=16018
+JVASP-29833,True,JARVIS icsd=34393
+JVASP-29834,True,JARVIS icsd=34393
+mp-1105589,False,MP theoretical=True
+mp-1183270,False,MP theoretical=True
+JVASP-29330,True,"JARVIS icsd=63315,63316"
+JVASP-168470,False,JARVIS no icsd
+JVASP-139255,False,JARVIS no icsd
+JVASP-139257,False,JARVIS no icsd
+JVASP-139262,False,JARVIS no icsd
+JVASP-139253,False,JARVIS no icsd
+JVASP-139256,False,JARVIS no icsd
+mp-23933,True,MP theoretical=False
+mp-570130,True,MP theoretical=False
+mp-1106356,True,MP theoretical=False
+mp-1183246,True,MP theoretical=False
+JVASP-139260,False,JARVIS no icsd
+mp-23807,True,MP theoretical=False
+mp-625054,False,MP theoretical=True
+mp-625152,True,MP theoretical=False
+mp-625404,False,MP theoretical=True
+mp-625420,False,MP theoretical=True
+JVASP-12038,True,"JARVIS icsd=93728,93729,93730,93731,100390,15696"
+JVASP-90648,False,JARVIS no icsd
+JVASP-113651,False,JARVIS no icsd
+JVASP-150288,False,JARVIS no icsd
+mp-504751,True,MP theoretical=False
+mp-1228828,False,MP theoretical=True
+JVASP-133386,False,JARVIS no icsd
+JVASP-153942,False,JARVIS no icsd
+mp-634117,True,MP theoretical=False
+JVASP-154631,False,JARVIS no icsd
+mp-1105968,True,MP theoretical=False
+JVASP-31154,False,JARVIS no icsd
+JVASP-163675,False,JARVIS no icsd
+JVASP-54734,True,JARVIS icsd=24777
+JVASP-54740,True,JARVIS icsd=24776
+JVASP-54757,True,JARVIS icsd=24776
+JVASP-97506,True,JARVIS icsd=24777
+mp-1103816,True,MP theoretical=False
+mp-1540000,False,MP theoretical=True
+JVASP-144101,False,JARVIS no icsd
+JVASP-135855,False,JARVIS no icsd
+JVASP-135856,False,JARVIS no icsd
+JVASP-135860,False,JARVIS no icsd
+JVASP-135862,False,JARVIS no icsd
+mp-1182102,False,MP theoretical=True
+JVASP-135854,False,JARVIS no icsd
+JVASP-135857,False,JARVIS no icsd
+JVASP-135865,False,JARVIS no icsd
+mp-23904,True,MP theoretical=False
+mp-626720,False,MP theoretical=True
+mp-626726,False,MP theoretical=True
+mp-626735,False,MP theoretical=True
+JVASP-51022,True,JARVIS icsd=60659
+JVASP-176835,True,JARVIS icsd=60660
+mp-28911,True,MP theoretical=False
+mp-1190967,False,MP theoretical=True
+mp-1191062,False,MP theoretical=True
+mp-1191721,False,MP theoretical=True
+mp-697136,True,MP theoretical=False
+JVASP-54742,True,JARVIS icsd=25569
+mp-1227394,False,MP theoretical=True
+mp-1227442,False,MP theoretical=True
+mp-1227646,False,MP theoretical=True
+mp-23719,False,MP theoretical=True
+mp-23720,False,MP theoretical=True
+JVASP-12562,True,JARVIS icsd=156311
+JVASP-134068,False,JARVIS no icsd
+JVASP-134071,False,JARVIS no icsd
+JVASP-134059,False,JARVIS no icsd
+JVASP-134063,False,JARVIS no icsd
+JVASP-134076,False,JARVIS no icsd
+JVASP-134077,False,JARVIS no icsd
+mp-984766,True,MP theoretical=False
+mp-1181812,True,MP theoretical=False
+mp-1190619,True,MP theoretical=False
+mp-1191012,True,MP theoretical=False
+mp-1191021,True,MP theoretical=False
+mp-1191340,True,MP theoretical=False
+mp-1237277,False,MP theoretical=True
+JVASP-63287,False,JARVIS no icsd
+mp-23879,True,MP theoretical=False
+mp-626644,False,MP theoretical=True
+mp-677422,False,MP theoretical=True
+mp-760729,True,MP theoretical=False
+JVASP-163689,False,JARVIS no icsd
+JVASP-165750,True,JARVIS icsd=280478
+mp-1103879,False,MP theoretical=True
+mp-1104215,False,MP theoretical=True
+mp-1104735,False,MP theoretical=True
+mp-1104841,False,MP theoretical=True
+mp-1104951,False,MP theoretical=True
+mp-1192226,True,MP theoretical=False
+mp-1226863,False,MP theoretical=True
+mp-23690,True,MP theoretical=False
+mp-753183,True,MP theoretical=False
+JVASP-88729,True,JARVIS icsd=8061
+JVASP-169211,False,JARVIS no icsd
+JVASP-94906,False,JARVIS no icsd
+JVASP-94911,False,JARVIS no icsd
+JVASP-94931,False,JARVIS no icsd
+JVASP-149557,False,JARVIS no icsd
+JVASP-149588,False,JARVIS no icsd
+mp-625548,True,MP theoretical=False
+mp-625565,False,MP theoretical=True
+mp-2051619,False,MP theoretical=True
+JVASP-54670,True,"JARVIS icsd=14328,202782"
+JVASP-138527,False,JARVIS no icsd
+JVASP-138528,False,JARVIS no icsd
+mp-24105,True,MP theoretical=False
+mp-1272379,False,MP theoretical=True
+mp-1273062,False,MP theoretical=True
+mp-1292002,True,MP theoretical=False
+mp-2665409,False,MP theoretical=True
+JVASP-29861,True,JARVIS icsd=53994
+JVASP-106871,False,JARVIS no icsd
+JVASP-140522,False,JARVIS no icsd
+mp-1183871,False,MP theoretical=True
+mp-1193243,True,MP theoretical=False
+mp-505469,True,MP theoretical=False
+mp-757297,True,MP theoretical=False
+mp-27913,True,MP theoretical=False
+JVASP-52436,True,JARVIS icsd=56288
+JVASP-105579,False,JARVIS no icsd
+JVASP-140535,False,JARVIS no icsd
+JVASP-146887,False,JARVIS no icsd
+JVASP-104842,False,JARVIS no icsd
+JVASP-125386,False,JARVIS no icsd
+mp-23910,True,MP theoretical=False
+mp-24040,True,MP theoretical=False
+mp-626703,False,MP theoretical=True
+mp-675232,False,MP theoretical=True
+mp-23752,True,MP theoretical=False
+mp-644236,True,MP theoretical=False
+mp-23980,True,MP theoretical=False
+mp-1181702,True,MP theoretical=False
+mp-1192732,True,MP theoretical=False
+mp-1226153,False,MP theoretical=True
+mp-1226195,False,MP theoretical=True
+mp-28582,False,MP theoretical=True
+mp-1191955,True,MP theoretical=False
+mp-984550,False,MP theoretical=True
+mp-1191351,False,MP theoretical=True
+mp-24181,True,MP theoretical=False
+mp-1200666,True,MP theoretical=False
+mp-632319,True,MP theoretical=False
+mp-1057286,True,MP theoretical=False
+mp-1184037,True,MP theoretical=False
+mp-1198227,True,MP theoretical=False
+mp-24668,True,MP theoretical=False
+mp-1225893,False,MP theoretical=True
+mp-540981,True,MP theoretical=False
+mp-557752,True,MP theoretical=False
+mp-1192419,True,MP theoretical=False
+mp-697181,True,MP theoretical=False
+mp-1182786,True,MP theoretical=False
+mp-23751,True,MP theoretical=False
+mp-571020,True,MP theoretical=False
+mp-1188121,True,MP theoretical=False
+mp-1188838,True,MP theoretical=False
+mp-1197651,True,MP theoretical=False
+JVASP-29300,True,JARVIS icsd=68459
+JVASP-29789,True,JARVIS icsd=15455
+JVASP-29465,True,"JARVIS icsd=153707,51677,70101"
+JVASP-51685,True,JARVIS icsd=64956
+JVASP-8603,True,JARVIS icsd=44859
+JVASP-134685,False,JARVIS no icsd
+JVASP-134686,False,JARVIS no icsd
+JVASP-134692,False,JARVIS no icsd
+mp-23795,True,MP theoretical=False
+mp-632759,True,MP theoretical=False
+mp-707170,True,MP theoretical=False
+mp-1192826,True,MP theoretical=False
+mp-996953,False,MP theoretical=True
+mp-996956,False,MP theoretical=True
+JVASP-30509,False,JARVIS no icsd
+mp-755659,False,MP theoretical=True
+mp-777422,False,MP theoretical=True
+JVASP-36033,False,JARVIS no icsd
+JVASP-36152,False,JARVIS no icsd
+mp-626680,False,MP theoretical=True
+mp-626689,False,MP theoretical=True
+mp-1272250,False,MP theoretical=True
+mp-1224911,False,MP theoretical=True
+mp-1224975,False,MP theoretical=True
+JVASP-144676,False,JARVIS no icsd
+mp-605437,True,MP theoretical=False
+mp-626088,False,MP theoretical=True
+mp-696580,True,MP theoretical=False
+JVASP-29792,True,JARVIS icsd=159962
+JVASP-29844,True,JARVIS icsd=37159
+JVASP-30365,False,JARVIS no icsd
+JVASP-50992,True,JARVIS icsd=31136
+JVASP-54682,True,"JARVIS icsd=245057,159957"
+JVASP-54685,True,JARVIS icsd=159960
+JVASP-92228,True,"JARVIS icsd=420002,420003,87325"
+JVASP-111938,False,JARVIS no icsd
+JVASP-122515,False,JARVIS no icsd
+mp-735529,True,MP theoretical=False
+mp-1273743,False,MP theoretical=True
+JVASP-136647,False,JARVIS no icsd
+JVASP-136649,False,JARVIS no icsd
+JVASP-136651,False,JARVIS no icsd
+JVASP-136654,False,JARVIS no icsd
+mp-23803,True,MP theoretical=False
+mp-634326,True,MP theoretical=False
+JVASP-54721,True,JARVIS icsd=23475
+mp-24131,True,MP theoretical=False
+mp-505686,True,MP theoretical=False
+mp-1181222,True,MP theoretical=False
+mp-1205379,False,MP theoretical=True
+mp-24504,True,MP theoretical=False
+mp-632172,False,MP theoretical=True
+mp-632291,True,MP theoretical=False
+mp-730101,True,MP theoretical=False
+mp-731827,False,MP theoretical=True
+mp-738409,True,MP theoretical=False
+mp-850274,False,MP theoretical=True
+mp-973783,False,MP theoretical=True
+mp-1066989,False,MP theoretical=True
+mp-1188177,False,MP theoretical=True
+JVASP-891,True,JARVIS icsd=28465
+JVASP-7406,False,JARVIS no icsd
+JVASP-21216,False,JARVIS no icsd
+JVASP-25169,True,"JARVIS icsd=68271,28464,28339,62004,62005,62006,62007,62008,62009,62010,62011,62012,62013,62014,62015,62016,62017,62018,62019,62020,62021,62022,62023,638165,638168,638170,67422,67423,67424,67425,94310,94311,56055"
+JVASP-25251,True,JARVIS icsd=28344
+JVASP-25291,True,"JARVIS icsd=28338,28340,638167"
+JVASP-25330,False,JARVIS no icsd
+JVASP-78576,False,JARVIS no icsd
+JVASP-112289,False,JARVIS no icsd
+JVASP-112943,False,JARVIS no icsd
+mp-32959,False,MP theoretical=True
+mp-697085,True,MP theoretical=False
+mp-697111,True,MP theoretical=False
+mp-1974803,False,MP theoretical=True
+mp-2739191,True,MP theoretical=False
+JVASP-12577,False,JARVIS no icsd
+JVASP-34894,True,"JARVIS icsd=41531,28067,28068,34253,41532"
+mp-33024,False,MP theoretical=True
+mp-696805,True,MP theoretical=False
+mp-1191644,False,MP theoretical=True
+JVASP-18392,True,"JARVIS icsd=24582,24583"
+JVASP-52902,True,"JARVIS icsd=87505,50333"
+JVASP-120236,False,JARVIS no icsd
+JVASP-120237,False,JARVIS no icsd
+mp-24172,True,MP theoretical=False
+mp-625475,False,MP theoretical=True
+mp-690733,True,MP theoretical=False
+JVASP-54701,True,JARVIS icsd=200412
+JVASP-54708,True,JARVIS icsd=200412
+mp-27996,True,MP theoretical=False
+mp-1102846,True,MP theoretical=False
+mp-23866,True,MP theoretical=False
+mp-626024,False,MP theoretical=True
+JVASP-51012,True,JARVIS icsd=202544
+JVASP-54712,True,"JARVIS icsd=202697,202875"
+JVASP-146094,False,JARVIS no icsd
+mp-29145,True,MP theoretical=False
+mp-643432,True,MP theoretical=False
+mp-779689,True,MP theoretical=False
+JVASP-134989,False,JARVIS no icsd
+mp-626256,True,MP theoretical=False
+JVASP-97507,True,JARVIS icsd=30619
+mp-27714,True,MP theoretical=False
+JVASP-121005,False,JARVIS no icsd
+JVASP-79491,False,JARVIS no icsd
+JVASP-81987,False,JARVIS no icsd
+mp-23675,True,MP theoretical=False
+mp-36248,True,MP theoretical=False
+mp-34381,False,MP theoretical=True
+mp-643062,True,MP theoretical=False
+JVASP-12569,True,JARVIS icsd=24013
+JVASP-31934,True,JARVIS icsd=24010
+JVASP-51372,True,JARVIS icsd=8027
+JVASP-51400,True,"JARVIS icsd=8026,2772"
+JVASP-54767,True,JARVIS icsd=28069
+mp-23794,True,MP theoretical=False
+JVASP-134756,False,JARVIS no icsd
+mp-2767413,False,MP theoretical=True
+JVASP-54714,True,JARVIS icsd=22124
+JVASP-54717,True,JARVIS icsd=22124
+JVASP-97746,True,"JARVIS icsd=8256,15271"
+JVASP-98409,True,JARVIS icsd=8256
+JVASP-98585,True,JARVIS icsd=15271
+mp-996955,False,MP theoretical=True
+mp-996985,False,MP theoretical=True
+mp-996998,False,MP theoretical=True
+JVASP-30504,False,JARVIS no icsd
+JVASP-113750,False,JARVIS no icsd
+mp-32684,False,MP theoretical=True
+mp-632229,True,MP theoretical=False
+mp-2020987,False,MP theoretical=True
+JVASP-8757,False,JARVIS no icsd
+mp-632326,True,MP theoretical=False
+mp-2037040,False,MP theoretical=True
+JVASP-120217,False,JARVIS no icsd
+JVASP-120219,False,JARVIS no icsd
+JVASP-120220,False,JARVIS no icsd
+mp-1536913,False,MP theoretical=True
+JVASP-118404,False,JARVIS no icsd
+JVASP-118408,False,JARVIS no icsd
+JVASP-118414,False,JARVIS no icsd
+JVASP-100184,False,JARVIS no icsd
+JVASP-124476,False,JARVIS no icsd
+JVASP-52861,True,"JARVIS icsd=28035,404572"
+JVASP-85663,True,JARVIS icsd=74291
+JVASP-7139,False,JARVIS no icsd
+JVASP-92265,False,JARVIS no icsd
+mp-27731,True,MP theoretical=False
+JVASP-190337,False,JARVIS no icsd
+JVASP-37766,False,JARVIS no icsd
+JVASP-38881,False,JARVIS no icsd
+JVASP-103257,False,JARVIS no icsd
+mp-626173,False,MP theoretical=True
+mp-754283,False,MP theoretical=True
+mp-755543,False,MP theoretical=True
+mp-626411,False,MP theoretical=True
+mp-626412,False,MP theoretical=True
+mp-504535,True,MP theoretical=False
+mp-632711,True,MP theoretical=False
+mp-1105641,False,MP theoretical=True
+mp-1188681,False,MP theoretical=True
+mp-974713,True,MP theoretical=False
+mp-1223664,False,MP theoretical=True
+JVASP-161741,True,JARVIS icsd=15880
+JVASP-164700,False,JARVIS no icsd
+mp-23774,True,MP theoretical=False
+mp-24411,False,MP theoretical=True
+mp-23779,True,MP theoretical=False
+mp-1224023,False,MP theoretical=True
+mp-23979,True,MP theoretical=False
+mp-1224049,False,MP theoretical=True
+mp-31097,True,MP theoretical=False
+mp-644486,False,MP theoretical=True
+mp-1211694,False,MP theoretical=True
+mp-1223579,False,MP theoretical=True
+mp-37722,True,MP theoretical=False
+mp-1223473,False,MP theoretical=True
+mp-626716,False,MP theoretical=True
+mp-626785,False,MP theoretical=True
+mp-642817,True,MP theoretical=False
+mp-38011,False,MP theoretical=True
+mp-634676,True,MP theoretical=False
+mp-758391,False,MP theoretical=True
+mp-1193430,True,MP theoretical=False
+mp-23758,False,MP theoretical=True
+mp-568428,False,MP theoretical=True
+mp-568439,False,MP theoretical=True
+mp-571414,False,MP theoretical=True
+mp-23959,True,MP theoretical=False
+mp-24262,True,MP theoretical=False
+mp-24263,True,MP theoretical=False
+mp-695799,True,MP theoretical=False
+mp-696752,True,MP theoretical=False
+mp-699437,True,MP theoretical=False
+mp-1106168,False,MP theoretical=True
+mp-1198928,False,MP theoretical=True
+mp-1223489,False,MP theoretical=True
+mp-625394,True,MP theoretical=False
+mp-625406,False,MP theoretical=True
+mp-625733,False,MP theoretical=True
+mp-673301,False,MP theoretical=True
+mp-2030372,False,MP theoretical=True
+mp-1103947,True,MP theoretical=False
+mp-1104116,False,MP theoretical=True
+JVASP-99649,False,JARVIS no icsd
+JVASP-151384,False,JARVIS no icsd
+mp-973064,False,MP theoretical=True
+mp-1018144,True,MP theoretical=False
+JVASP-118446,False,JARVIS no icsd
+JVASP-118450,False,JARVIS no icsd
+mp-23671,True,MP theoretical=False
+mp-1192500,True,MP theoretical=False
+JVASP-116261,False,JARVIS no icsd
+JVASP-187701,False,JARVIS no icsd
+JVASP-190298,False,JARVIS no icsd
+mp-24165,True,MP theoretical=False
+mp-753960,False,MP theoretical=True
+mp-1189942,True,MP theoretical=False
+mp-699284,False,MP theoretical=True
+mp-1189725,False,MP theoretical=True
+mp-1190219,False,MP theoretical=True
+mp-1223097,False,MP theoretical=True
+JVASP-118458,False,JARVIS no icsd
+JVASP-118459,False,JARVIS no icsd
+JVASP-154186,False,JARVIS no icsd
+mp-753660,False,MP theoretical=True
+JVASP-47444,False,JARVIS no icsd
+mp-1177768,False,MP theoretical=True
+JVASP-175945,False,JARVIS no icsd
+mp-759656,False,MP theoretical=True
+mp-775205,False,MP theoretical=True
+mp-27653,True,MP theoretical=False
+mp-976291,False,MP theoretical=True
+mp-1180547,True,MP theoretical=False
+mp-1192061,False,MP theoretical=True
+JVASP-146366,False,JARVIS no icsd
+mp-30209,True,MP theoretical=False
+mp-644223,True,MP theoretical=False
+mp-675926,False,MP theoretical=True
+mp-1095543,True,MP theoretical=False
+mp-1192133,False,MP theoretical=True
+mp-1407206,False,MP theoretical=True
+mp-2659898,True,MP theoretical=False
+JVASP-105454,False,JARVIS no icsd
+JVASP-121493,False,JARVIS no icsd
+mp-24817,False,MP theoretical=True
+mp-24818,False,MP theoretical=True
+mp-977148,False,MP theoretical=True
+mp-977298,False,MP theoretical=True
+mp-1079676,False,MP theoretical=True
+mp-753451,False,MP theoretical=True
+mp-756333,False,MP theoretical=True
+mp-1095586,False,MP theoretical=True
+mp-1192145,False,MP theoretical=True
+mp-23703,True,MP theoretical=False
+JVASP-116262,False,JARVIS no icsd
+JVASP-116264,False,JARVIS no icsd
+JVASP-116268,False,JARVIS no icsd
+JVASP-116275,False,JARVIS no icsd
+JVASP-116283,False,JARVIS no icsd
+JVASP-116263,False,JARVIS no icsd
+JVASP-116267,False,JARVIS no icsd
+JVASP-116276,False,JARVIS no icsd
+JVASP-116284,False,JARVIS no icsd
+mp-23702,True,MP theoretical=False
+mp-1079418,False,MP theoretical=True
+mp-1105785,False,MP theoretical=True
+mp-1188477,False,MP theoretical=True
+mp-1189549,False,MP theoretical=True
+JVASP-90731,False,JARVIS no icsd
+JVASP-117121,False,JARVIS no icsd
+JVASP-143537,False,JARVIS no icsd
+mp-27281,True,MP theoretical=False
+mp-625211,False,MP theoretical=True
+mp-24199,True,MP theoretical=False
+mp-1180580,False,MP theoretical=True
+JVASP-102439,False,JARVIS no icsd
+JVASP-116124,False,JARVIS no icsd
+JVASP-116127,False,JARVIS no icsd
+JVASP-116136,False,JARVIS no icsd
+JVASP-116137,False,JARVIS no icsd
+mp-30959,False,MP theoretical=True
+mp-37747,False,MP theoretical=True
+mp-644271,False,MP theoretical=True
+mp-644419,False,MP theoretical=True
+JVASP-116140,False,JARVIS no icsd
+JVASP-116142,False,JARVIS no icsd
+mp-755339,False,MP theoretical=True
+mp-757231,False,MP theoretical=True
+JVASP-119368,False,JARVIS no icsd
+JVASP-145602,False,JARVIS no icsd
+JVASP-42301,False,JARVIS no icsd
+JVASP-42689,False,JARVIS no icsd
+JVASP-116149,False,JARVIS no icsd
+JVASP-116150,False,JARVIS no icsd
+mp-775930,False,MP theoretical=True
+mp-1576561,False,MP theoretical=True
+JVASP-144075,False,JARVIS no icsd
+mp-625392,False,MP theoretical=True
+mp-625468,False,MP theoretical=True
+JVASP-30202,False,JARVIS no icsd
+JVASP-50316,False,JARVIS no icsd
+mp-976349,True,MP theoretical=False
+JVASP-166078,False,JARVIS no icsd
+mp-625367,False,MP theoretical=True
+mp-753947,False,MP theoretical=True
+mp-1176505,False,MP theoretical=True
+mp-23709,True,MP theoretical=False
+mp-1185517,False,MP theoretical=True
+mp-571156,False,MP theoretical=True
+mp-1103290,False,MP theoretical=True
+mp-1185521,False,MP theoretical=True
+mp-1190680,False,MP theoretical=True
+mp-1190942,False,MP theoretical=True
+mp-1192119,True,MP theoretical=False
+mp-1192265,False,MP theoretical=True
+JVASP-54884,True,JARVIS icsd=155717
+mp-30247,True,MP theoretical=False
+mp-626143,False,MP theoretical=True
+mp-677193,False,MP theoretical=True
+mp-1222264,False,MP theoretical=True
+mp-23710,True,MP theoretical=False
+mp-23711,True,MP theoretical=False
+mp-568441,True,MP theoretical=False
+mp-569051,True,MP theoretical=False
+mp-1102038,False,MP theoretical=True
+JVASP-12558,True,JARVIS icsd=155809
+JVASP-36262,False,JARVIS no icsd
+mp-697168,True,MP theoretical=False
+mp-1221999,False,MP theoretical=True
+mp-865188,True,MP theoretical=False
+mp-989229,True,MP theoretical=False
+JVASP-115071,False,JARVIS no icsd
+JVASP-115074,False,JARVIS no icsd
+JVASP-119057,False,JARVIS no icsd
+JVASP-143147,False,JARVIS no icsd
+JVASP-91513,False,JARVIS no icsd
+JVASP-91628,False,JARVIS no icsd
+JVASP-139075,False,JARVIS no icsd
+JVASP-139076,False,JARVIS no icsd
+mp-2228946,False,MP theoretical=True
+mp-2229286,False,MP theoretical=True
+mp-23789,True,MP theoretical=False
+mp-625671,False,MP theoretical=True
+mp-626701,False,MP theoretical=True
+mp-1272198,False,MP theoretical=True
+mp-625393,False,MP theoretical=True
+mp-1003920,False,MP theoretical=True
+JVASP-176028,False,JARVIS no icsd
+JVASP-118022,False,JARVIS no icsd
+JVASP-118023,False,JARVIS no icsd
+mp-29159,True,MP theoretical=False
+mp-626068,False,MP theoretical=True
+mp-626270,True,MP theoretical=False
+mp-1002573,False,MP theoretical=True
+mp-625576,False,MP theoretical=True
+mp-626540,False,MP theoretical=True
+JVASP-51003,True,JARVIS icsd=4112
+JVASP-85501,True,JARVIS icsd=2128
+JVASP-140582,False,JARVIS no icsd
+JVASP-29862,True,JARVIS icsd=78005
+JVASP-148151,False,JARVIS no icsd
+JVASP-187503,False,JARVIS no icsd
+JVASP-187521,False,JARVIS no icsd
+JVASP-38428,False,JARVIS no icsd
+JVASP-38450,False,JARVIS no icsd
+JVASP-54727,True,JARVIS icsd=24039
+JVASP-54729,True,JARVIS icsd=24039
+JVASP-54730,True,JARVIS icsd=24039
+JVASP-119880,False,JARVIS no icsd
+mp-24413,False,MP theoretical=True
+mp-644092,True,MP theoretical=False
+mp-978284,True,MP theoretical=False
+mp-1193174,True,MP theoretical=False
+mp-703305,True,MP theoretical=False
+mp-1221345,False,MP theoretical=True
+mp-1193700,True,MP theoretical=False
+mp-1222149,False,MP theoretical=True
+mp-23704,True,MP theoretical=False
+mp-1102924,False,MP theoretical=True
+JVASP-135651,False,JARVIS no icsd
+JVASP-135653,False,JARVIS no icsd
+mp-1190348,True,MP theoretical=False
+mp-1191970,True,MP theoretical=False
+mp-24810,False,MP theoretical=True
+mp-38725,True,MP theoretical=False
+mp-976181,False,MP theoretical=True
+mp-1103416,False,MP theoretical=True
+mp-1180167,False,MP theoretical=True
+mp-1190586,False,MP theoretical=True
+mp-1190869,True,MP theoretical=False
+mp-2646982,False,MP theoretical=True
+JVASP-150999,False,JARVIS no icsd
+JVASP-151034,False,JARVIS no icsd
+mp-1210157,False,MP theoretical=True
+mp-1221084,False,MP theoretical=True
+mp-1193301,True,MP theoretical=False
+mp-1287635,False,MP theoretical=True
+mp-625378,False,MP theoretical=True
+mp-625455,False,MP theoretical=True
+mp-625501,False,MP theoretical=True
+mp-626554,False,MP theoretical=True
+mp-3346528,False,MP theoretical=True
+mp-3347018,False,MP theoretical=True
+JVASP-164637,True,"JARVIS icsd=27794,16670"
+JVASP-176833,True,JARVIS icsd=16670
+JVASP-105704,False,JARVIS no icsd
+JVASP-121000,False,JARVIS no icsd
+JVASP-134758,False,JARVIS no icsd
+mp-23891,True,MP theoretical=False
+mp-23940,True,MP theoretical=False
+mp-625051,False,MP theoretical=True
+mp-626000,False,MP theoretical=True
+mp-626778,True,MP theoretical=False
+mp-1179949,False,MP theoretical=True
+JVASP-54759,True,JARVIS icsd=26832
+JVASP-134995,False,JARVIS no icsd
+mp-36582,False,MP theoretical=True
+mp-634657,True,MP theoretical=False
+mp-644302,True,MP theoretical=False
+mp-1220802,False,MP theoretical=True
+mp-541081,False,MP theoretical=True
+mp-1394437,False,MP theoretical=True
+mp-1173541,False,MP theoretical=True
+mp-1280674,False,MP theoretical=True
+mp-2901609,False,MP theoretical=True
+mp-1173649,False,MP theoretical=True
+mp-1221038,False,MP theoretical=True
+mp-1220997,False,MP theoretical=True
+JVASP-142411,False,JARVIS no icsd
+JVASP-183360,False,JARVIS no icsd
+JVASP-187754,False,JARVIS no icsd
+JVASP-187526,False,JARVIS no icsd
+JVASP-187544,False,JARVIS no icsd
+mp-33932,False,MP theoretical=True
+mp-626528,False,MP theoretical=True
+JVASP-187523,False,JARVIS no icsd
+JVASP-192878,False,JARVIS no icsd
+JVASP-187517,False,JARVIS no icsd
+JVASP-187561,False,JARVIS no icsd
+mp-625397,True,MP theoretical=False
+mp-625403,False,MP theoretical=True
+mp-673303,False,MP theoretical=True
+mp-27912,True,MP theoretical=False
+mp-625074,False,MP theoretical=True
+mp-626794,False,MP theoretical=True
+mp-626843,False,MP theoretical=True
+mp-1180084,False,MP theoretical=True
+mp-1274857,False,MP theoretical=True
+mp-1275121,False,MP theoretical=True
+mp-753890,True,MP theoretical=False
+mp-1220079,False,MP theoretical=True
+mp-977385,False,MP theoretical=True
+mp-1190843,True,MP theoretical=False
+JVASP-91817,False,JARVIS no icsd
+mp-23902,True,MP theoretical=False
+mp-626449,False,MP theoretical=True
+mp-626450,False,MP theoretical=True
+mp-626464,False,MP theoretical=True
+mp-23672,True,MP theoretical=False
+mp-1190536,True,MP theoretical=False
+mp-1220029,False,MP theoretical=True
+mp-1220107,False,MP theoretical=True
+mp-35220,False,MP theoretical=True
+mp-697139,True,MP theoretical=False
+mp-1197760,True,MP theoretical=False
+mp-1209774,False,MP theoretical=True
+mp-1220034,False,MP theoretical=True
+mp-625447,True,MP theoretical=False
+mp-625452,False,MP theoretical=True
+mp-626361,False,MP theoretical=True
+mp-643770,True,MP theoretical=False
+JVASP-95568,True,JARVIS icsd=67459
+mp-686677,False,MP theoretical=True
+mp-753854,True,MP theoretical=False
+mp-23781,True,MP theoretical=False
+mp-1219739,False,MP theoretical=True
+mp-23897,True,MP theoretical=False
+mp-1219652,False,MP theoretical=True
+mp-1219655,False,MP theoretical=True
+mp-1193778,True,MP theoretical=False
+mp-1251539,False,MP theoretical=True
+mp-29764,True,MP theoretical=False
+mp-677103,False,MP theoretical=True
+mp-626620,True,MP theoretical=False
+mp-626721,False,MP theoretical=True
+mp-643043,True,MP theoretical=False
+mp-695829,True,MP theoretical=False
+mp-696794,True,MP theoretical=False
+mp-722455,False,MP theoretical=True
+mp-1179724,True,MP theoretical=False
+mp-24609,True,MP theoretical=False
+mp-866712,True,MP theoretical=False
+mp-23667,True,MP theoretical=False
+mp-642831,True,MP theoretical=False
+mp-643791,True,MP theoretical=False
+mp-703528,True,MP theoretical=False
+mp-626788,False,MP theoretical=True
+mp-626799,False,MP theoretical=True
+mp-626800,False,MP theoretical=True
+mp-626819,False,MP theoretical=True
+mp-2766000,False,MP theoretical=True
+mp-2766424,False,MP theoretical=True
+JVASP-118480,False,JARVIS no icsd
+JVASP-118481,False,JARVIS no icsd
+mp-626182,False,MP theoretical=True
+mp-626218,False,MP theoretical=True
+mp-626193,False,MP theoretical=True
+mp-626194,False,MP theoretical=True
+JVASP-187706,False,JARVIS no icsd
+JVASP-191342,False,JARVIS no icsd
+JVASP-79011,False,JARVIS no icsd
+JVASP-125437,False,JARVIS no icsd
+mp-625150,False,MP theoretical=True
+mp-625663,False,MP theoretical=True
+JVASP-50102,False,JARVIS no icsd
+JVASP-104997,False,JARVIS no icsd
+JVASP-108839,False,JARVIS no icsd
+mp-626037,False,MP theoretical=True
+mp-626083,False,MP theoretical=True
+JVASP-85506,True,"JARVIS icsd=26792,27359"
+JVASP-85507,True,"JARVIS icsd=26792,27359"
+mp-995193,False,MP theoretical=True
+mp-1040468,False,MP theoretical=True
+mp-972825,False,MP theoretical=True
+mp-1188318,False,MP theoretical=True
+mp-625402,False,MP theoretical=True
+mp-625409,False,MP theoretical=True
+JVASP-40570,False,JARVIS no icsd
+JVASP-125440,False,JARVIS no icsd
+mp-23763,True,MP theoretical=False
+mp-696275,True,MP theoretical=False
+JVASP-118059,False,JARVIS no icsd
+JVASP-118060,False,JARVIS no icsd
+mp-643905,True,MP theoretical=False
+mp-696969,True,MP theoretical=False
+JVASP-54735,True,JARVIS icsd=24765
+JVASP-54736,True,JARVIS icsd=24764
+mp-27425,True,MP theoretical=False
+mp-625184,False,MP theoretical=True
+mp-23759,True,MP theoretical=False
+mp-1179094,True,MP theoretical=False
+mp-28420,True,MP theoretical=False
+mp-626727,False,MP theoretical=True
+JVASP-51024,True,JARVIS icsd=60661
+JVASP-190255,False,JARVIS no icsd
+JVASP-192930,False,JARVIS no icsd
+mp-24121,True,MP theoretical=False
+mp-625415,False,MP theoretical=True
+mp-982384,True,MP theoretical=False
+mp-1079249,False,MP theoretical=True
+JVASP-37069,False,JARVIS no icsd
+JVASP-125444,False,JARVIS no icsd
+JVASP-187539,False,JARVIS no icsd
+JVASP-187586,False,JARVIS no icsd
+JVASP-187537,False,JARVIS no icsd
+JVASP-187560,False,JARVIS no icsd
+JVASP-54758,True,JARVIS icsd=26740
+JVASP-54762,True,JARVIS icsd=26740
+mp-625526,False,MP theoretical=True
+JVASP-29801,True,JARVIS icsd=2129
+mp-1202171,True,MP theoretical=False
+mp-1203323,True,MP theoretical=False
+mp-24291,True,MP theoretical=False
+mp-1008734,False,MP theoretical=True
+mp-1077045,False,MP theoretical=True
+JVASP-191289,False,JARVIS no icsd
+JVASP-189824,False,JARVIS no icsd
+JVASP-193926,False,JARVIS no icsd
+mp-24161,True,MP theoretical=False
+mp-24726,True,MP theoretical=False
+mp-696590,True,MP theoretical=False
+mp-865466,False,MP theoretical=True
+mp-1189965,True,MP theoretical=False
+JVASP-159071,False,JARVIS no icsd
+mp-505405,True,MP theoretical=False
+mp-866804,False,MP theoretical=True
+mp-554704,True,MP theoretical=False
+mp-754297,False,MP theoretical=True
+mp-685281,True,MP theoretical=False
+mp-866807,False,MP theoretical=True
+JVASP-163872,False,JARVIS no icsd
+JVASP-39566,False,JARVIS no icsd
+JVASP-39573,False,JARVIS no icsd
+mp-643701,True,MP theoretical=False
+mp-690711,True,MP theoretical=False
+mp-1216736,False,MP theoretical=True
+mp-625465,False,MP theoretical=True
+mp-625472,False,MP theoretical=True
+mp-1102060,True,MP theoretical=False
+mp-1190688,True,MP theoretical=False
+mp-754004,False,MP theoretical=True
+mp-768422,False,MP theoretical=True
+mp-510128,True,MP theoretical=False
+JVASP-29787,True,"JARVIS icsd=16565,14286"
+JVASP-29796,True,JARVIS icsd=15892
+JVASP-29830,True,JARVIS icsd=2845
+JVASP-29864,True,"JARVIS icsd=9153,9116"
+mp-626062,True,MP theoretical=False
+JVASP-54768,True,JARVIS icsd=2710
+JVASP-108479,True,JARVIS icsd=2710
+mp-24659,True,MP theoretical=False
+mp-504970,True,MP theoretical=False
+JVASP-18407,True,"JARVIS icsd=44994,56188"
+JVASP-125451,False,JARVIS no icsd
+mp-721062,True,MP theoretical=False
+mp-1216869,False,MP theoretical=True
+JVASP-133397,False,JARVIS no icsd
+mp-642644,True,MP theoretical=False
+mp-642659,True,MP theoretical=False
+JVASP-51005,True,JARVIS icsd=40489
+JVASP-98589,True,JARVIS icsd=40489
+JVASP-141825,False,JARVIS no icsd
+mp-1002114,False,MP theoretical=True
+JVASP-189287,False,JARVIS no icsd
+mp-626787,False,MP theoretical=True
+mp-626791,False,MP theoretical=True
+JVASP-119535,False,JARVIS no icsd
+JVASP-122317,False,JARVIS no icsd
+mp-24076,True,MP theoretical=False
+mp-625677,False,MP theoretical=True
+mp-625718,False,MP theoretical=True
+mp-673310,False,MP theoretical=True
+mp-23706,True,MP theoretical=False
+mp-1084805,False,MP theoretical=True
+mp-1178678,True,MP theoretical=False
+mp-626151,True,MP theoretical=False
+mp-754117,False,MP theoretical=True
+mp-756402,False,MP theoretical=True
+JVASP-30489,True,JARVIS icsd=260837
+JVASP-145226,False,JARVIS no icsd
+mp-625103,False,MP theoretical=True
+mp-632348,True,MP theoretical=False
+mp-625230,False,MP theoretical=True
+mp-625272,False,MP theoretical=True
+mp-625830,True,MP theoretical=False
+mp-625857,False,MP theoretical=True
+mp-697146,True,MP theoretical=False
+JVASP-29800,True,JARVIS icsd=20285
+JVASP-54738,True,JARVIS icsd=25509
+mp-643814,True,MP theoretical=False
+mp-1215731,False,MP theoretical=True
+JVASP-135659,False,JARVIS no icsd
+JVASP-135662,False,JARVIS no icsd
+JVASP-51342,True,JARVIS icsd=43326
+JVASP-187707,False,JARVIS no icsd
+mp-24155,True,MP theoretical=False
+mp-24286,True,MP theoretical=False
+JVASP-39635,False,JARVIS no icsd
+JVASP-125458,False,JARVIS no icsd
+mp-24030,True,MP theoretical=False
+mp-643013,True,MP theoretical=False
