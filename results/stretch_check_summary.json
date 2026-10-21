@@ -1,0 +1,26 @@
+{
+ "mace": {
+  "n": 315,
+  "mean_residual_cm": -56.4,
+  "rms_residual_cm": 196.9,
+  "slope_dnu_ddOO_cm_per_A": 2049.5
+ },
+ "orb": {
+  "n": 223,
+  "mean_residual_cm": -8.2,
+  "rms_residual_cm": 151.6,
+  "slope_dnu_ddOO_cm_per_A": 2189.8
+ },
+ "mattersim": {
+  "n": 178,
+  "mean_residual_cm": -12.0,
+  "rms_residual_cm": 172.7,
+  "slope_dnu_ddOO_cm_per_A": 2094.5
+ },
+ "dft_pbesol": {
+  "n": 27,
+  "mean_residual_cm": 53.3,
+  "rms_residual_cm": 266.4,
+  "slope_dnu_ddOO_cm_per_A": 2655.1
+ }
+}
