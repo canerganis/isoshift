@@ -65,3 +65,4 @@ Conductor: Opus (orchestrating session). Started Wed 21 Oct 14:20 TRT, about 2.5
 - Running agents: F06 independent replication (Codex script, compare fix), F05 fractionation comparison (rule file first), F04 rewrite + card caveat (Sano-Furukawa: proton disorder 9.0 AlOOH / 13.4 GPa AlOOD).
 - GPU: main queue mattersim ~300, orb ~40, then sevenn 192 (auto-chain bwna4a5e0); qha_top: mattersim AlOOH pressure QHA (6 jobs, mem 0.35). Workers run with 2-4 threads (thermal).
 - Next: integrate F05/F06, final figures after Thu 12:00 freeze, write-up, video script v3, Can: public repo + video Thu 19:00.
+- Can, 21 Oct 22:00: headless Gemini (agy) gets NO repo read access; councils embed the evidence text in its prompts. The uncommitted --add-dir edit to harness/llm.py was reverted (diff kept in the session scratchpad).
