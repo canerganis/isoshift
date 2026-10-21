@@ -186,8 +186,10 @@ def _(data, mo):
         for _ax, _c in zip(_axes[0], _cases):
             _d = v[v.case == _c]
             for _m, _g in _d.groupby("model"):
-                _g = _g.sort_values("T_K")
-                _ax.plot(_g.T_K, _g.VIE_pct, marker="o", ms=3, label=_m)
+                # one point per T: imaginary-mode treatments (if present) become an error bar
+                _s = _g.groupby("T_K").VIE_pct.agg(["median", "min", "max"]).sort_index()
+                _ax.errorbar(_s.index, _s["median"], yerr=[_s["median"] - _s["min"], _s["max"] - _s["median"]],
+                             marker="o", ms=4, capsize=3, label=_m)
             _e = _d.dropna(subset=["exp_VIE_pct"])
             if len(_e):
                 _ee = _e.groupby("T_K").exp_VIE_pct.first()
