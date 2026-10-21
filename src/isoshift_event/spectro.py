@@ -81,9 +81,16 @@ def _bands(model, sid):
     return {k: float(np.mean(v)) for k, v in out.items()} | {"n_H": int((sym == "H").sum())}
 
 
-def main():
+def main(argv=None):
+    import argparse
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--pairs", help="label:a:b,label:a:b (default: the P02 pairs)")
+    ap.add_argument("--out", default="docs/predictions/P02_spectro_model.csv")
+    args = ap.parse_args(argv)
+    pairs = dict((x.split(":")[0], tuple(x.split(":")[1:3])) for x in args.pairs.split(",")) if args.pairs else PAIRS
     rows = []
-    for label, (a, b) in PAIRS.items():
+    for label, (a, b) in pairs.items():
         for m in MODELS:
             try:
                 ba, bb = _bands(m, a), _bands(m, b)
@@ -95,7 +102,7 @@ def main():
                 row[f"{k}_a"], row[f"{k}_b"] = round(ba[k], 4), round(bb[k], 4)
                 row[f"d_{k}"] = round(bb[k] - ba[k], 4)
             rows.append(row)
-    out = ROOT / "docs" / "predictions" / "P02_spectro_model.csv"
+    out = ROOT / args.out
     fields = sorted({k for r in rows for k in r}, key=lambda k: (k not in ("pair", "model", "a", "b"), k))
     with open(out, "w", newline="") as fh:
         w = csv.DictWriter(fh, fields, restval="")

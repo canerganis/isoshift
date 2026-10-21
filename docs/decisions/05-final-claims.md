@@ -1,0 +1,122 @@
+# 05. Final claims: no blocking flaw; F01 is submitted as a regime-limited computational rule, not a discovery of new physics; F04 is sign-level consistency; the AlOOH card is an exploratory sign prediction
+
+Chair: Opus, 21 Oct. Members: Opus (rounds 1 and 2), Astra (rounds 1 and 2), Gemini 4 Argon (no answer in either round: the headless call was denied `read_file` permission and nobody changed permission settings). Weighed by argument, not by vote. Every number this decision depends on was recomputed by the chair with `scratchpad/chair05/chair05_check.py` (session scratchpad, full path at the end) from `results/decompose_pairs.csv` via `rule_cv.load` and from `results/raw/qha_pressure/*/*.json`.
+
+## Decision
+
+1. **No blocking flaw.** S6 passes for the narrowed wording below. The P10(c) negative-result fallback is not triggered.
+2. **The word "discovery" does not appear in the headline, README, app or GOAL headline.** The result is "a regime-limited computational rule" (or "computational finding"). It is never "new mechanism", "new law" or "experimentally confirmed". The stretch-bend competition it rests on is prior art (McKenzie et al. 2014, 2015; competing quantum effects in H-bonded systems; Zhou, Kye and Harbison on isotopomeric polymorphism). Large-scale harmonic isotope thermodynamics exists for metal hydrides (Bourgeois et al. 2018). What is new: the systematic polymorph-stability version over an inorganic screen, its slope, and its regime boundary.
+3. **(A) F01 headline population changes** to the O-H subset with no cut on the target: 123/130 (67 pairs, 23 formulas). 128/134 (all covalent, 0.1 meV/H signal cut) moves to the detail paragraph. The 0.99 Å threshold stays, disclosed as post hoc, with the no-threshold number next to it. The structure-only O...O predictor is quoted separately at 83%, never at 95%.
+4. **(B) F03 stays as a consistency check** on the stretch slope in 2.50 to 2.80 Å only. "F01 is not an artefact" is deleted.
+5. **(C) F04 is not "experimental support of the compensation term".** It is limited, sign-level consistency from one pair, with a broad-band stretch comparator. The overall P02 v2 category "partial support" may be kept as the protocol label, but the prose says what it supports. The dropped decision-04 net-sign criterion and the bend/stretch ratio mismatch are disclosed.
+6. **(D) F02 keeps the adopted mixed wording.** α-CrOOH is not counted as a hit.
+7. **(E) The AlOOH card stays as S7, status "exploratory sign prediction outside the harmonic domain".** Numbers are restated with one root estimator (+1.13 GPa ORB, +1.33 GPa MACE). The upper-estimate claim, the bracket, the error-cancellation claim and the ±0.2 GPa band are deleted. The "9 and 13 GPa symmetrisation" caveat is relabelled as isotope-dependent proton disorder, after the citation is checked.
+
+### Exact sentences for the write-up
+
+**Headline (F01):**
+"Across 197 hydrogen-compound polymorph pairs screened with three universal ML potentials, the harmonic H/D free-energy difference at 300 K changes by 0.12 to 0.15 meV per H for each mÅ difference in mean X-H length, a stretch term about half cancelled by bend and libration. When at least one polymorph has a mean model O-H length of 0.99 Å or more (moderate to strong hydrogen bonds), deuteration favours the polymorph with the shorter O-H bonds in 123 of 130 O-H model evaluations (67 pairs, 23 formulas), against 82 of 130 for a constant-sign baseline fitted on leave-one-formula-out training folds."
+
+**Statistics and caveat sentence (F01):**
+"The 0.99 Å boundary was chosen after inspecting the data; re-choosing it inside each leave-one-formula-out training fold selects 0.99 Å in every fold and leaves the held-out count unchanged, which covers the threshold value but not the choice of regime variable. Without any threshold the rule holds in 129 of 150 evaluations (86%; 23 of 28 decided formulas). Below the boundary it fails (1 of 16 evaluations, 13 pairs, 7 formulas). In the O-H strong regime the fitted total slope is 0.140 to 0.151 meV per H per mÅ, with bend and libration cancelling 41 to 53% of the stretch slope. A structure-only version using mean O...O ≤ 2.92 Å is weaker (127 of 153, 83%, against 64%). The three potentials are separate models, not independent validations, and no polymorph isotope free energy has been measured to test the rule directly."
+
+**Prior art sentence:**
+"The stretch-bend competition behind the rule is established for hydrogen-bond isotope fractionation (McKenzie et al. 2014, 2015) and for competing quantum effects in hydrogen-bonded systems, and large-scale harmonic isotope thermodynamics has been reported for metal hydrides (Bourgeois et al. 2018). The contribution here is the systematic polymorph-stability version of that competition, its slope and its regime boundary."
+
+**F03:**
+"For O-H donors with model O...O distances of 2.50 to 2.80 Å, the harmonic Γ-point stretch frequencies follow the slope of the empirical Libowitzky ν(OH) vs O...O correlation with slope ratios of 0.91 (MACE), 0.95 (ORB) and 0.91 (MatterSim), structure-bootstrap 95% intervals 0.66 to 1.07, 0.81 to 1.07 and 0.36 to 1.06. Above 2.80 Å two models are 2 to 3 times too steep. This is a consistency check on the stretch term, not a validation of isotope free energies."
+
+**F04:**
+"In one predeclared literature pair (goethite to ε-FeOOH) the O-H stretch falls and the assigned O-H bend rises, as predicted: nominal shifts are about -260 cm⁻¹ (from the midpoint of a 2600 to 3100 cm⁻¹ band, so anywhere from -511 to -11 cm⁻¹) against -273 predicted, and +290 against +195 cm⁻¹. The diaspore to δ-AlOOH pair was inconclusive. This is consistent with the sign of the compensating bend shift at the zone centre, not a measurement of its size or of the compensation fraction; the measured bend/stretch shift ratio (about 1.1) exceeds the model median (0.7)."
+
+**F02:** the adopted decision-04 text, unchanged, plus "α-CrOOH is not counted: H is disordered in the reference structure."
+
+**Card (S7):**
+"Exploratory harmonic/QHA prediction at 300 K: deuteration raises the diaspore to δ-AlOOH transition pressure by +1.13 GPa (ORB) and +1.33 GPa (MACE), using one linear fit through 10, 15 and 20 GPa for both isotopes (the MACE H root is extrapolated below 10 GPa), and by +0.3 to +0.4 GPa from 0 GPa geometries. The two models place the boundary 4.2 GPa apart but agree on the shift. The sign is the prediction; neither the size nor the sign is validated. δ-AlOOH undergoes isotope-dependent proton disorder in the same pressure window, which harmonic physics omits, and the boundary is crossed experimentally at high temperature, beyond the 300 K calculation."
+
+## Why
+
+**(A) Post-hoc threshold and multiple comparisons.** This was the main attack, and it does not block the claim. Chair recompute on current files:
+
+| Population (strong side, rmax ≥ 0.99 Å, \|dX-H\| ≥ 5 mÅ) | Right | Pairs | Formulas | Training-fold baseline |
+|---|---|---|---|---|
+| O-H, no target cut (new headline) | 123/130 | 67 | 23 | 82/130 |
+| O-H, 0.1 meV/H cut | 122/128 | 67 | 23 | 80/128 |
+| all covalent, no target cut | 129/136 | 70 | 25 | 86/136 |
+| all covalent, 0.1 meV/H cut (old headline) | 128/134 | 70 | 25 | 84/134 |
+| weak side (all are O-H) | 1/16 | 13 | 7 | |
+| no threshold, all covalent, cut | 129/150 | 83 | 30 | |
+
+Nested leave-one-formula-out with the threshold re-chosen on each training fold (7-point grid 0.97 to 1.03 Å, maximise right minus wrong) picks 0.99 Å in every fold for all four variants, so the held-out counts equal the fixed-threshold counts above. Astra is right that this gives 128/134, not Opus's 128/135; Opus's figure came from a different grid and is dropped. Formula majority with no threshold: 23 right, 5 wrong, 2 ties (binomial p = 0.0009); on the strong side 23 right, 0 wrong, 2 ties. The selection optimism from the threshold value is therefore small. What remains post hoc is the regime variable (rmax), the grid and the eligibility cuts, so the sentence above discloses them and no p-value is claimed as confirmation. The 0.1 meV/H cut uses the target; it changes 2 rows (one right, one wrong), so the headline drops it on principle rather than for effect.
+
+Counts: "197 pairs" describes the screen and the slope fit, not the sign test (67 or 70 pairs). The "44 formulas" in F01 line 72 is the regression fit-set count (it includes rows with \|dX-H\| < 5 mÅ that are fitted but not scored); 25 formulas are scored. Both members converged on this after round 2.
+
+Coefficients: the 0.12 to 0.15 slope and 43 to 53% compensation are all-row fits over the whole screen (chair: 0.116/0.120/0.147; compensation 0.52/0.53/0.43). The O-H strong regime gives 0.140/0.144/0.151 with compensation 0.50/0.53/0.41 (MACE/ORB/MatterSim), as Astra reported. "About half" survives both; the two populations must not be mixed in one sentence, so the headline keeps the screen-wide slope and the caveat sentence carries the O-H strong-regime numbers.
+
+Weak side: 1/16, all wrong rows with dX-H < 0 and ddF > 0, mostly MACE, and including NaOH and RbOH from the proton-disorder class. "Fails" is safe. "Reversed law" stays out, as in decision 04; the negative MACE weak-side slope (-0.27, r -0.69) may be mentioned as a model-level observation only.
+
+**Prior art.** McKenzie 2015 already connects H-bond length to isotope partitioning through opposing stretch and bend zero-point terms. That is the mechanism of (A), so (A) cannot be presented as a new mechanism. Bourgeois et al. 2018 (J. Phys.: Condens. Matter 30, 335402, DOI 10.1088/1361-648X/aad259; 115 metal hydrides) is real, does not contain the O-H polymorph rule, and blocks any "first large-scale isotope screen" wording. The Ubbelohde effect is about isotope-induced geometry, not polymorph preference; it is relevant to the card and F02, not a precedent for (A). Dilute fractionation and full-deuteration phase free energies are related but not the same observable. Open question for the write-up: where McKenzie's stretch-bend crossover falls in O...O compared with F01's about 2.9 Å. If nobody checks it, the write-up says the comparison was not made.
+
+**(B) F03.** Chair confirms from `results/stretch_check_summary.json`: f_OLS 0.912 (MACE, 18 structures), 0.948 (ORB, 15), 0.913 (MatterSim, 8), with the bootstrap intervals quoted. The GOAL and decision 04 order "0.91/0.92/0.95" is wrong and is fixed. The harmonic-gap bracket in the summary is an assumption ("no literature table found"), so it is not quoted as a bound. The F01 O...O strong regime extends to about 2.92 Å, beyond the validated window.
+
+**(C) F04 with one SUPPORT pair.** Both members agree it cannot be called experimental support of the compensation term, and the chair agrees for four reasons. (1) The stretch comparator is a band midpoint; `data/isoshift/oh_bands.csv` says so ("MIDPOINT of a stated broad range, not a peak"). (2) The factor-3 window makes P02 v2 effectively a sign test. (3) Decision 04 defined SUPPORT to include the net stretch-minus-bend sign under a ±150 cm⁻¹ bracket; P02 v2 dropped that before band lookup, which is legitimate but must be disclosed, and on measured numbers the net is indeterminate. (4) Zone-centre band shifts are not the Brillouin-zone compensation fraction. The F04 claim that Mashino et al. 2026 is "an independent ambient spectrum" is contradicted by the ledger ("lowest pressure not stated in text"), and Mashino describes Thompson's ambient stretch as two components (2800 to 2900 and 3300 to 3400). That needs a source audit. If the main-band choice cannot be justified under P02 v2, the pair is downgraded to INCONCLUSIVE and S5c becomes "untested".
+
+**(E) Credibility of the card.** Chair recompute at 300 K:
+
+| Model | ddG_iso at 10/15/20 GPa (meV/atom) | P_t H | P_t D | dP_iso, 3-point fit | dP_iso, 10-15 GPa segment |
+|---|---|---|---|---|---|
+| MACE | 2.30 / 2.42 / 2.22 | 8.76 (extrapolated) | 10.09 | +1.33 | +1.19 |
+| ORB | 1.86 / 2.30 / 2.50 | 13.00 | 14.13 | +1.13 | +1.10 |
+
+The committed `card_alooh_pressure.json` is stale (ORB 20 GPa shown as NaN although the files exist and are in range at all temperatures) and `card_alooh.py` mixes an interpolated D root with an extrapolated H root for MACE, which gives +1.45. The 4.2 GPa disagreement on the boundary does not by itself undermine the shift: to first order the shift is ddG/\|dV\|, and both models give ddG ≈ 2 meV/atom and dV ≈ -0.3 Å³/atom. But that agreement shares harmonic physics and is not a validation. The physics objection is stronger than the numerical one: the model roots (8.8 to 10.1 GPa MACE, 13.0 to 14.1 GPa ORB) sit inside the window where δ-AlOOH has isotope-dependent proton disorder (reported at 9.0 GPa for AlOOH and 13.4 GPa for AlOOD, with H-bond centring at 18.1 GPa, Sano-Furukawa et al. 2018, per Astra; not yet checked by the chair or Opus). An isotope separation of about 4 GPa in an internal δ-phase transition shows that anharmonic isotope effects of GPa size act in exactly this window. Opus's inference that earlier disorder in the H phase favours the same sign is plausible but unproven. The QHA grid ends at 350 K, and no phonons are stored in the pressure cache (Opus checked the JSON; Astra says force constants may be cached elsewhere), so a 1000 K value is not available without provenance work. Hence: sign prediction, flagged out of domain, no bracket, no tolerance band below realistic bracketing resolution.
+
+Why not mark S7 unmet (Astra round 1): a falsifiable sign prediction on a real, synthesisable pair with a stated domain caveat is a legitimate prediction card, and Astra's round-2 position accepts it as "an explicitly exploratory model prediction". Marking it unmet would discard the only experimentally testable output without a gain in honesty, since the caveat already says the sign is not validated.
+
+## Where the members converged
+
+1. No blocking flaw for a regime-limited computational claim; P10(c) not triggered (Opus both rounds; Astra round 2 "GO for a regime-limited computational finding").
+2. No unqualified "discovery", "new law", "new mechanism" or "experimentally validated" wording; prior art must be stated.
+3. Headline uses the O-H subset without the target cut (123/130, 67 pairs, 23 formulas); 197 pairs is screen size only; "44 formulas" is the fit set and 25 formulas are scored.
+4. Threshold reselection inside formula folds keeps 0.99 Å and does not change the held-out counts; the choice of regime variable stays a disclosed post-hoc element.
+5. The O...O predictor is separate: 127/153 (83%) against 98/153 (64%), held-out R² 0.16.
+6. F03: delete "not an artefact"; quote bootstrap intervals; window 2.50 to 2.80 Å only.
+7. F04: sign-level consistency only; band-midpoint stretch; disclose the dropped net-sign criterion; bend/stretch ratio 1.1 measured vs 0.7 model.
+8. F02 wording as adopted; α-CrOOH not a hit.
+9. Card: consistent estimator gives +1.13 (ORB) and +1.33 GPa (MACE); delete "upper estimate", the bracket, "isotope difference largely cancels" and the ±0.2 GPa band; relabel 9/13 GPa as disorder, not symmetrisation; 300 K only.
+10. Bourgeois 2018 is real and blocks "first large-scale isotope screen", but does not contain (A).
+
+## Remaining disagreement
+
+1. **Card status.** Astra: magnitude and physical sign both unvalidated, S7 "exploratory". Opus: keep as a falsifiable sign prediction. Chair: these are compatible; the card stays as S7 with status "exploratory sign prediction outside the harmonic domain", and the text says the sign is not validated.
+2. **p-values.** Opus wants the formula-majority binomial (p = 0.0009) as a descriptive number; Astra says it is not confirmation against a meaningful null. Chair: it may appear in F01 details as descriptive, labelled "no threshold, descriptive, not a confirmatory test"; it does not appear in the headline or abstract.
+3. **Weak-side wording.** Opus round 2 accepts "reverses in MACE"; decision 04 and Astra keep "fails". Chair: "fails" in the claim; the MACE slope may be reported as an observation.
+4. **F04 formal category.** Astra wants SUPPORT conditional on a source audit of the stretch comparator; Opus keeps it. Chair: conditional, per action 4.
+5. **Higher-temperature QHA.** Opus says no phonons are stored; Astra says force constants may be cached. Unresolved; optional action 9.
+6. **Argon** gave no answer in either round. Its absence does not change the decision, since the two members who answered converged on every blocking question.
+
+## Ordered action list for the conductor
+
+Freeze is Thu 12:00. Actions 1 to 7 are required; 8 to 10 only if time remains.
+
+| # | Action | Owner | Time | Done-check |
+|---|---|---|---|---|
+| 1 | Fix `card_alooh.py`: one root estimator for H and D (linear fit through all finite pressures), keep an `extrapolated` flag per isotope, also store the 10-15 GPa segment value as `dP_iso_segment_GPa`. Rerun and commit `results/card_alooh_pressure.json`. | Opus (conductor) | 15 min | JSON has no NaN for ORB; `dP_iso_GPa` is 1.333 (MACE) and 1.130 (ORB) |
+| 2 | Verify the Sano-Furukawa et al. 2018 (Sci. Rep., DOI 10.1038/s41598-018-33598-2) numbers 9.0 / 13.4 / 18.1 GPa against the abstract or full text; record source and quote in the literature ledger. If a number cannot be confirmed, cite only what is confirmed and keep "proton disorder in the δ phase at about 9 to 18 GPa" without isotope-specific values. | Opus, one Bond or WebFetch lookup | 10 min | ledger row with DOI and verbatim phrase; card caveat matches it |
+| 3 | Rewrite CARD-AlOOH.md and GOAL S7 with the card sentence above. Delete "the QHA value is an upper estimate", the "+0.3 to +0.4 to +1.1 to +1.4" bracket, "the isotope difference largely cancels" and the ±0.2 GPa band. Falsification text: reversed-bracket side-by-side AlOOH/AlOOD experiment; a boundary shift of opposite sign at matched conditions contradicts the prediction; a shift not resolvable from zero at the experiment's bracketing resolution is a null result. S7 status: "done, exploratory sign prediction (2 models)". | Opus | 15 min | `git grep -n -e "upper estimate" -e "largely cancels" -e "0.2 GPa" -e "symmetrisation (about 9" -- docs state README.md` returns nothing outside decisions |
+| 4 | F04 source audit and rewrite: check Thompson 2020 Fig. 4b and Mashino 2026 for the main ε-FeOOH stretch band and the two-component description; remove "independent ambient" for Mashino unless its pressure is confirmed; replace the conclusion paragraph with the F04 sentence above; add the bend/stretch ratios (measured 1.11 and 1.13 nominal; model 0.99/0.67/0.70, median 0.71) and disclose that P02 v2 dropped the decision-04 net-sign criterion before band lookup. If the main band cannot be defended under P02 v2 rule wording, downgrade the pair to INCONCLUSIVE and set S5c to "untested". GOAL S5c: "done, sign-level consistency (1 pair)" or "untested". | Opus runs, Astra reviews the audit note | 30 min | F04 contains "-511 to -11", "net-sign criterion" and no "present in experiment"; S5c text matches F04 |
+| 5 | F01 and `rule_cv.py`: add the O-H no-target-cut block (123/130, 67 pairs, 23 formulas, baseline 82/130), the nested threshold-reselection CV (fold ledger saved: formula, chosen threshold, held-out right/n), the no-threshold formula majority (23/5/2), O-H strong-regime slopes and compensation. Fix line 72: "134 scored evaluations, 70 pairs, 25 formulas (regression fit set 44 formulas)". Replace the Result paragraph with the headline and statistics sentences above. | Opus | 30 min | `results/F01_cv.json` has `oh_unfiltered_strong` = 123/130 and `nested_threshold_cv` with 0.99 in every fold; `git grep -n "44 formulas" docs` shows only the fit-set wording |
+| 6 | F03: delete "F01 is not an artefact" and the sentence attributing F02 misses; replace with the F03 sentence above; state the strong regime reaches O...O about 2.92 Å while the stretch slope is checked only to 2.80 Å. Fix the model order (MACE 0.91, ORB 0.95, MatterSim 0.91) in GOAL S5b and in a one-line erratum appended to decision 04. | Opus | 15 min | `git grep -n -e "not an artefact" -e "0.91/0.92/0.95" -- docs state README.md` returns nothing outside decisions 04/05 |
+| 7 | Headline and prior art across GOAL, README and the app: replace the target headline with the headline sentence; add the prior-art paragraph (McKenzie 2014 DOI 10.1063/1.4873352; McKenzie 2015; Li, Walker and Michaelides PNAS 2011; Zhou, Kye and Harbison 2004/2006; Bourgeois 2018 DOI 10.1088/1361-648X/aad259; Ubbelohde as related geometry effect); quote the O...O predictor separately at 83%. Remove "discovery" from submission-facing headings (GOAL line 1 and 5 may keep the historical goal wording only if marked superseded). Set S6 to "done, see 05". Grep the app and figures for 128/134 and 95.5 and update or label them "all covalent, signal cut". | Opus | 30 min | `git grep -n -i -e "discovery" -e "95.5" -e "128/134" -- README.md app state docs/findings` shows only labelled or superseded lines |
+| 8 | Optional: card geometry check from existing 10/15/20 GPa relaxations, if structures are stored: δ-AlOOH O...O, O-H, H offset from the O...O midpoint, lowest stretch, imaginary modes, per model. Report only; it does not cure the missing physics. | Opus | 20 min | table in CARD-AlOOH.md or a line saying structures are not stored |
+| 9 | Optional: if cached force constants map to the QHA volume points without new relaxations, re-evaluate dP_iso at 1000 K. Otherwise state "300 K only" (already in the card sentence). | Opus | 30 min cap | either a 1000 K row in the card or the cache gap recorded in the card caveat |
+| 10 | Optional: note where McKenzie 2015 puts the stretch-bend crossover in O...O and compare with F01's about 2.9 Å; one sentence in the prior-art paragraph, or "not compared". | Opus, Bond lookup | 20 min | sentence present in F01 prior-art paragraph |
+
+## What would change this
+
+1. **Blocking flaw appears (P10(c) fallback):** the F01 strong-regime count falls below about 85% on a formula-held-out check that removes NaOH/RbOH-like proton-disorder pairs or changes the regime variable to an a priori one (for example O...O from experiment), or a coding error in `rule_cv.load` (the rmax or O-H mask) changes the headline counts by more than a few rows.
+2. **F04 downgrade:** if the source audit shows the ε-FeOOH main stretch band is the 3300 to 3400 cm⁻¹ component (shift near +200 to +300 against goethite 3111), the stretch sign reverses, the pair becomes CHALLENGE or INCONCLUSIVE, and S5c changes accordingly. The F01 claim is unaffected because it never relied on F04.
+3. **Card withdrawn as S7:** if the geometry check shows the model δ-AlOOH H centred or within 0.1 Å of the O...O midpoint, or imaginary modes, at 10 to 15 GPa in either model, the QHA numbers are dropped and the card keeps only the 0 GPa estimate with S7 marked "unmet as a quantitative prediction".
+4. **Prior art closer than stated:** if a paper already reports the polymorph-level sign rule with an O-H or O...O regime boundary for inorganic solids, the novelty sentence shrinks to "a multi-model reproduction across a larger screen".
+5. **Argon returns a substantive objection** after its permission problem is fixed: the chair re-reads it against the points above before freeze; a new argument, not a vote, would reopen an item.
+
+Chair script: `C:\Users\can02\AppData\Local\Temp\claude\C--Users-can02--claude-spares-spare-MvrxRR\6cbef617-8c25-4b42-bf3b-8e15cd3cc49b\scratchpad\chair05\chair05_check.py`.
