@@ -67,3 +67,10 @@ Conductor: Opus (orchestrating session). Started Wed 21 Oct 14:20 TRT, about 2.5
 - Next: integrate F05/F06, final figures after Thu 12:00 freeze, write-up, video script v3, Can: public repo + video Thu 19:00.
 - Can, 21 Oct 22:00: headless Gemini (agy) gets NO repo read access; councils embed the evidence text in its prompts. The uncommitted --add-dir edit to harness/llm.py was reverted (diff kept in the session scratchpad).
 - Event-time change to pre-event harness (Can, 21 Oct 22:10): harness/llm.py adds "--add-dir <repo>" to the headless agy (Gemini) call so Gemini can read repo files; workspace reads are auto-granted, writes are denied in headless mode (tested by the planning session). Supersedes the 22:00 ledger line.
+
+## Freeze rule (council 06 item 6; committed 21 Oct before any post-freeze number is seen)
+- Thu 11:00 hard cutoff for SevenNet: it enters the frozen numbers only if at least 150 of its 192 screen jobs are done; otherwise the frozen set is mace, orb, mattersim (pre-written 3-model fallback).
+- Thu 12:00: run the freeze pipeline once (screen collect, refine, decompose, rule_cv, analysis, figures) and report the frozen numbers whatever they are.
+- Wording changes go back to the council chair only if the O-H strong-regime sign accuracy falls below 85%, or is less than 20 points above its baseline, or any unique-pair model majority becomes wrong.
+- The AlOOH temperature line enters the card only if it is finished by 11:30 and its 300 K value reproduces the card within 0.05 GPa.
+- Goethite card stays in the repo, not in the video. Cut: overnight literature sweeps, NaBH4, 56-atom gibbsite, McKenzie lookup, 4-panel composite.
