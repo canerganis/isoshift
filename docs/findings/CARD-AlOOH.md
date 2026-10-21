@@ -20,3 +20,11 @@ Mechanism as in F01: delta-AlOOH has the stronger H bond (O-H longer by 24 to 32
 **Caveats.** Harmonic/QHA physics only; delta-AlOOH undergoes isotope-dependent proton disorder in the same pressure window, which harmonic physics omits (pressures to be cited only after the source check in `docs/findings/F04-source-audit.md`); the experimental boundary is crossed at high temperature, beyond the 300 K calculation; universal MLIPs trained on PBE-like data overbind H bonds (decision 01, F02).
 
 **Novelty check.** Valency Bond query (logged) finds high-pressure neutron work on deuterated delta-AlOOD and epsilon-FeOOD and DFT stability studies of AlOOH phases without isotope effects; no measurement or prediction of the isotope shift of the diaspore to delta boundary was found.
+
+## Second card: goethite to epsilon-FeOOH (same method, 3/6/9 GPa, 300 K)
+Goethite (alpha-FeOOH, Pnma, mp-605437) transforms to the InOOH-type epsilon-FeOOH (P2_1nm, JVASP-92228) at high pressure; epsilon-FeOOD is used for high-pressure neutron work (Ikeda et al. 2025, 10.1021/jacs.4c11982). This is the pair whose O-H stretch and bend shifts were compared with measured spectra in F04.
+| model | P_t FeOOH | P_t FeOOD | dP_iso |
+|---|---|---|---|
+| MACE | 11.0 GPa | 11.5 GPa | +0.46 GPa |
+| ORB | 9.4 GPa | 9.8 GPa | +0.40 GPa |
+Both roots lie beyond the 3 to 9 GPa grid (linear extrapolation). Same status as the AlOOH card: exploratory sign prediction; epsilon-FeOOH has a short H bond that symmetrises at higher pressure, outside harmonic physics.
