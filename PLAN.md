@@ -8,6 +8,12 @@ Times are Turkey time. Window: Wed 21 Oct 17:00 → Fri 23 Oct 03:00. Submit by 
 3. Join the hackathon Slack; read the kickoff video/notes when posted; check the submission form fields.
 4. Read DECISION.md (10 min) and say go / no-go. Plan B is PackEvolve if you veto.
 
+## Submission (Slack #general, Ben Blaiszik, 21 Oct)
+- Submitted on the new OSI platform **Moment**: sign up early at scientificintelligence.org/onboarding?campaign=osi-hackathon-2026 (Globus preferred, Google login works via Globus; Auth0 fallback), create a team (solo = team of one).
+- Fields: (1) link to social media post (the video goes here), (2) brief write-up with optional figure, (3) code repository link, (4) checkboxes for platforms used (tick Valency Bond, marimo).
+- Code must be enough to show the work is real (Ben in #random); reusability is a bonus.
+- Valency prize: use Bond in the project; help in #valency.
+
 ## Blocks
 | Block | Time | Work | Exit check |
 |---|---|---|---|
@@ -24,6 +30,8 @@ Times are Turkey time. Window: Wed 21 Oct 17:00 → Fri 23 Oct 03:00. Submit by 
 Left: validation (computed vs measured isotope shift for known cases, negative controls marked). Right: candidate map (polymorph gap vs ΔΔF_iso, ensemble error bars, top candidates labelled).
 
 ## Video outline (≤4 min)
+Publishing: default is an unlisted YouTube video (no face, screen only) whose link goes in the Moment form; Can does not want to post it on LinkedIn/X for now and may decide later.
+Format (Can's choice): screen recording with OBS, Can narrates in his own voice. Claude prepares the script (Turkish draft + English final), slides/figures and demo steps beforehand; one rehearsal, then record.
 1. Hook (20 s): "Swap H for D and a crystal can choose a different structure. Where does that happen?"
 2. Why it's hard (30 s): effect is meV, model errors are larger; trick: isotope shift from mass-independent force constants, ensemble of AI potentials.
 3. Validation (60 s): known cases reproduced, negative controls honestly flagged.
