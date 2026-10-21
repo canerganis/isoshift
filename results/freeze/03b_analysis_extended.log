@@ -1,0 +1,25 @@
+965 pairs; 40 eligible; 925 unranked. results\candidates_extended.csv
+rank pair_id median_ddF_meV_atom model_spread_meV_atom valid/expected_models
+1 mp-1077045__JVASP-191289 -9.9745 1.81379 4/4
+2 mp-23803__JVASP-54721 2.56037 1.55948 3/3
+3 mp-625420__JVASP-113651 -2.29907 0.548777 3/3
+4 mp-625054__JVASP-113651 2.07927 0.335537 3/3
+5 mp-626088__JVASP-111938 -2.00278 0.88482 3/3
+6 mp-626270__mp-1002573 1.9925 0.707238 3/3
+7 mp-625152__JVASP-113651 1.83828 0.385071 3/3
+8 mp-1103879__mp-1104841 -1.78667 0.336291 3/3
+9 mp-605437__JVASP-111938 1.63155 0.565263 3/3
+10 mp-626068__mp-1002573 1.60844 1.19136 3/3
+PROVISIONAL shortlist, 40 pairs: all gates pass except the listed pending evidence. Not a P14 ranking.
+provisional_rank pair_id formula median_ddF_meV_atom model_spread_meV_atom valid/expected_models pending_evidence
+1 mp-1077045__JVASP-191289 Ti2H -9.9745 1.81379 4/4 -
+2 mp-23803__JVASP-54721 GaHO2 2.56037 1.55948 3/3 -
+3 mp-625420__JVASP-113651 AlHO2 -2.29907 0.548777 3/3 -
+4 mp-625054__JVASP-113651 AlHO2 2.07927 0.335537 3/3 -
+5 mp-626088__JVASP-111938 FeHO2 -2.00278 0.88482 3/3 -
+6 mp-626270__mp-1002573 MnHO2 1.9925 0.707238 3/3 -
+7 mp-625152__JVASP-113651 AlHO2 1.83828 0.385071 3/3 -
+8 mp-1103879__mp-1104841 Ca2Ni10H -1.78667 0.336291 3/3 -
+9 mp-605437__JVASP-111938 FeHO2 1.63155 0.565263 3/3 -
+10 mp-626068__mp-1002573 MnHO2 1.60844 1.19136 3/3 -
+Exploratory harmonic screening; model spread has shared bias and is not experimental validation.

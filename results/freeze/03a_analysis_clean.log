@@ -1,0 +1,9 @@
+965 pairs; 2 eligible; 963 unranked. results\candidates.csv
+rank pair_id median_ddF_meV_atom model_spread_meV_atom valid/expected_models
+1 JVASP-118446__JVASP-118450 1.1302 0.38464 3/3
+2 JVASP-116268__JVASP-116283 -0.876131 0.366534 3/3
+PROVISIONAL shortlist, 2 pairs: all gates pass except the listed pending evidence. Not a P14 ranking.
+provisional_rank pair_id formula median_ddF_meV_atom model_spread_meV_atom valid/expected_models pending_evidence
+1 JVASP-118446__JVASP-118450 LaHO 1.1302 0.38464 3/3 -
+2 JVASP-116268__JVASP-116283 LiH -0.876131 0.366534 3/3 -
+Exploratory harmonic screening; model spread has shared bias and is not experimental validation.

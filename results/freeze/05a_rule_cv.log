@@ -1,0 +1,26 @@
+unique pairs {'clean_covalent_rows': 521, 'unique_pairs': 220, 'formulas': 63, 'unique_pairs_OH': 193, 'unique_pairs_non_OH': 27, 'rows_per_model': {'mace': 188, 'mattersim': 170, 'orb': 163}, 'all_eligible_rows': 242, 'signal_filtered_rows': 234, 'all_eligible_pairs': 100, 'signal_filtered_pairs': 99}
+0.97 all_eligible strong 197/242 (100p) weak 0/0 (0p)
+0.97 signal_filtered strong 190/234 (99p) weak 0/0 (0p)
+0.98 all_eligible strong 195/239 (98p) weak 2/3 (2p)
+0.98 signal_filtered strong 188/231 (97p) weak 2/3 (2p)
+0.99 all_eligible strong 195/222 (88p) weak 2/20 (13p)
+0.99 signal_filtered strong 188/214 (87p) weak 2/20 (13p)
+1.00 all_eligible strong 185/192 (77p) weak 12/50 (23p)
+1.00 signal_filtered strong 182/188 (76p) weak 8/46 (23p)
+1.01 all_eligible strong 158/162 (64p) weak 39/80 (39p)
+1.01 signal_filtered strong 156/159 (63p) weak 34/75 (39p)
+1.02 all_eligible strong 124/124 (49p) weak 73/118 (55p)
+1.02 signal_filtered strong 122/122 (48p) weak 68/112 (54p)
+1.03 all_eligible strong 115/115 (46p) weak 82/127 (58p)
+1.03 signal_filtered strong 113/113 (45p) weak 77/121 (58p)
+0.99 signal pooled CV {'n_rows': 305, 'n_formulas': 48, 'n_eligible': 214, 'n_eligible_pairs': 87, 'line_sign_acc': 0.879, 'raw_sign_acc': 0.879, 'train_fold_baseline_acc': 0.626, 'line_sign_right': 188, 'raw_sign_right': 188, 'baseline_right': 134, 'R2_heldout': 0.647}
+0.99 all pooled CV {'n_rows': 334, 'n_formulas': 52, 'n_eligible': 222, 'n_eligible_pairs': 88, 'line_sign_acc': 0.878, 'raw_sign_acc': 0.878, 'train_fold_baseline_acc': 0.622, 'line_sign_right': 195, 'raw_sign_right': 195, 'baseline_right': 138, 'R2_heldout': 0.644}
+legacy pooled {'n_rows': 459, 'n_formulas': 60, 'n_eligible': 234, 'n_eligible_pairs': 99, 'line_sign_acc': 0.803, 'raw_sign_acc': 0.812, 'train_fold_baseline_acc': 0.658, 'line_sign_right': 188, 'raw_sign_right': 190, 'baseline_right': 154, 'R2_heldout': 0.61}
+oh_unfiltered_strong {'right': 185, 'n': 212, 'n_pairs': 84, 'n_formulas': 28, 'baseline_right': 131, 'per_model': {'mace': {'right': 52, 'n': 68}, 'mattersim': {'right': 69, 'n': 71}, 'orb': {'right': 64, 'n': 73}}, 'unique_pair_majority': {'n_pairs': 84, 'right': 74, 'tie': 0, 'wrong': 10}, 'definition': 'O-H pairs, rmax >= 0.99 A, |dX-H| >= 5 mA, no |ddF_iso| cut; baseline = leave-one-formula-out majority sign of ddF_iso/H'}
+nested all_covalent_signal_cut 186 212 baseline 134 {'0.99': 1, '1.00': 32}
+nested all_covalent_no_cut 193 220 baseline 138 {'0.99': 1, '1.00': 33}
+nested OH_signal_cut 177 203 baseline 128 {'0.99': 1, '1.00': 30}
+nested OH_no_cut 183 210 baseline 131 {'0.99': 1, '1.00': 30}
+no_threshold {'right': 190, 'n': 234, 'n_pairs': 99, 'n_formulas': 33, 'baseline_right_lofo': 154, 'lofo_line_sign_right': 188, 'formula_majority': {'right': 29, 'wrong': 4, 'tie': 0, 'binomial_p_two_sided_descriptive': 1e-05, 'note': 'descriptive, not a confirmatory test'}, 'formula_majority_strong_side': {'right': 29, 'wrong': 1, 'tie': 0}}
+oh_strong_slopes {'mace': {'n': 97, 'total_slope': 0.1318, 'stretch_slope': 0.277, 'perp_slope': -0.1452, 'compensation': 0.524}, 'mattersim': {'n': 99, 'total_slope': 0.1471, 'stretch_slope': 0.2932, 'perp_slope': -0.1461, 'compensation': 0.498}, 'orb': {'n': 97, 'total_slope': 0.1364, 'stretch_slope': 0.3077, 'perp_slope': -0.1712, 'compensation': 0.557}}
+sevenn: four-model strong {'right': 195, 'n': 222, 'baseline_right': 138, 'unique_pair_majority': {'n_pairs': 85, 'right': 75, 'tie': 0, 'wrong': 10}} sevenn only {'right': 10, 'n': 10, 'baseline_right': 7}

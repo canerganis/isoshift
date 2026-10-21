@@ -2,738 +2,738 @@
  "donor_cap_A": null,
  "definition": "dOO = mean donor O...O of polymorph b minus a (A); rule: sign(ddF) = -sign(dOO)",
  "coverage": {
-  "rows_with_OO": 268,
-  "of_rows": 341,
-  "unique_pairs": 146,
-  "formulas": 42,
+  "rows_with_OO": 414,
+  "of_rows": 521,
+  "unique_pairs": 161,
+  "formulas": 44,
   "rows_per_model": {
-   "mace": 133,
-   "orb": 99,
-   "mattersim": 36
+   "mace": 144,
+   "orb": 138,
+   "mattersim": 132
   }
  },
  "min_abs_dOO_A": 0.03,
  "fit_all_rows": {
   "mace": {
-   "n": 133,
-   "slope_meV_per_H": -7.775,
-   "intercept": 0.857,
-   "r": -0.416
+   "n": 144,
+   "slope_meV_per_H": -7.259,
+   "intercept": 0.924,
+   "r": -0.398
   },
   "mattersim": {
-   "n": 36,
-   "slope_meV_per_H": -24.834,
-   "intercept": 1.263,
-   "r": -0.542
+   "n": 132,
+   "slope_meV_per_H": -11.622,
+   "intercept": 1.249,
+   "r": -0.501
   },
   "orb": {
-   "n": 99,
-   "slope_meV_per_H": -10.584,
-   "intercept": 0.994,
-   "r": -0.509
+   "n": 138,
+   "slope_meV_per_H": -9.844,
+   "intercept": 0.927,
+   "r": -0.495
   },
   "pooled": {
-   "n": 268,
-   "slope_meV_per_H": -9.358,
-   "intercept": 0.995,
-   "r": -0.448
+   "n": 414,
+   "slope_meV_per_H": -9.135,
+   "intercept": 1.022,
+   "r": -0.454
   }
  },
  "fit_all_rows_dXH_same_rows": {
   "mace": {
-   "n": 133,
-   "slope_meV_per_H": 0.138,
-   "intercept": 0.19,
-   "r": 0.872
+   "n": 144,
+   "slope_meV_per_H": 0.131,
+   "intercept": 0.387,
+   "r": 0.845
   },
   "mattersim": {
-   "n": 36,
+   "n": 132,
    "slope_meV_per_H": 0.151,
-   "intercept": 0.516,
-   "r": 0.901
+   "intercept": 0.538,
+   "r": 0.885
   },
   "orb": {
-   "n": 99,
-   "slope_meV_per_H": 0.143,
-   "intercept": 0.281,
-   "r": 0.884
+   "n": 138,
+   "slope_meV_per_H": 0.136,
+   "intercept": 0.389,
+   "r": 0.867
   },
   "pooled": {
-   "n": 268,
-   "slope_meV_per_H": 0.142,
-   "intercept": 0.27,
-   "r": 0.88
+   "n": 414,
+   "slope_meV_per_H": 0.139,
+   "intercept": 0.437,
+   "r": 0.863
   }
  },
  "threshold_translation_0.99": {
   "mace": {
    "donor_fit_dOH_vs_dOO": {
-    "n": 580,
-    "slope_A_per_A": -0.1315,
-    "OO_at_threshold": 2.898
+    "n": 606,
+    "slope_A_per_A": -0.1363,
+    "OO_at_threshold": 2.896
    },
    "structure_fit_meanOH_vs_meanOO": {
-    "n": 143,
-    "slope": -0.1116,
-    "OO_at_threshold": 2.97,
-    "r": -0.828
+    "n": 148,
+    "slope": -0.1187,
+    "OO_at_threshold": 2.968,
+    "r": -0.826
    },
    "structure_inverse_fit_OO_on_OH": {
-    "OO_at_threshold": 2.919
+    "OO_at_threshold": 2.914
    },
    "median_OO_of_structures_with_meanOH_within_12mA": {
-    "n": 50,
-    "median_OO": 2.918
+    "n": 52,
+    "median_OO": 2.916
    }
   },
   "orb": {
    "donor_fit_dOH_vs_dOO": {
-    "n": 358,
-    "slope_A_per_A": -0.1225,
-    "OO_at_threshold": 2.917
+    "n": 599,
+    "slope_A_per_A": -0.1207,
+    "OO_at_threshold": 2.911
    },
    "structure_fit_meanOH_vs_meanOO": {
-    "n": 106,
-    "slope": -0.1194,
-    "OO_at_threshold": 2.962,
-    "r": -0.875
+    "n": 143,
+    "slope": -0.126,
+    "OO_at_threshold": 2.946,
+    "r": -0.85
    },
    "structure_inverse_fit_OO_on_OH": {
-    "OO_at_threshold": 2.923
+    "OO_at_threshold": 2.899
    },
    "median_OO_of_structures_with_meanOH_within_12mA": {
-    "n": 39,
-    "median_OO": 2.917
+    "n": 54,
+    "median_OO": 2.89
    }
   },
   "mattersim": {
    "donor_fit_dOH_vs_dOO": {
-    "n": 308,
-    "slope_A_per_A": -0.1381,
-    "OO_at_threshold": 2.88
+    "n": 579,
+    "slope_A_per_A": -0.1305,
+    "OO_at_threshold": 2.897
    },
    "structure_fit_meanOH_vs_meanOO": {
-    "n": 61,
-    "slope": -0.124,
-    "OO_at_threshold": 2.92,
-    "r": -0.792
+    "n": 138,
+    "slope": -0.1121,
+    "OO_at_threshold": 2.972,
+    "r": -0.829
    },
    "structure_inverse_fit_OO_on_OH": {
-    "OO_at_threshold": 2.848
+    "OO_at_threshold": 2.91
    },
    "median_OO_of_structures_with_meanOH_within_12mA": {
-    "n": 24,
-    "median_OO": 2.879
+    "n": 51,
+    "median_OO": 2.884
    }
   }
  },
  "threshold_translation_summary": {
   "range_OO_A": [
-   2.88,
-   2.97
+   2.896,
+   2.972
   ],
-  "median_OO_A": 2.918
+  "median_OO_A": 2.929
  },
  "sign_accuracy": {
   "all_eligible": {
    "all_regimes": {
     "OO_rule": {
-     "right": 147,
-     "n": 204,
-     "acc": 0.721,
-     "n_pairs": 115
+     "right": 221,
+     "n": 314,
+     "acc": 0.704,
+     "n_pairs": 133
     },
     "XH_rule_same_rows_eligibility_of_OO": {
-     "right": 144,
-     "n": 204,
-     "acc": 0.706,
-     "n_pairs": 115
+     "right": 218,
+     "n": 314,
+     "acc": 0.694,
+     "n_pairs": 133
     }
    },
    "OO_regime_scan": {
     "2.60": {
      "strong_OO<=t": {
-      "right": 63,
-      "n": 63,
+      "right": 89,
+      "n": 89,
       "acc": 1.0,
-      "n_pairs": 34
+      "n_pairs": 40
      },
      "weak_OO>t": {
-      "right": 84,
-      "n": 141,
-      "acc": 0.596,
-      "n_pairs": 87
+      "right": 132,
+      "n": 225,
+      "acc": 0.587,
+      "n_pairs": 103
      },
      "strong_per_model": {
       "mace": {
-       "right": 24,
-       "n": 24,
+       "right": 25,
+       "n": 25,
        "acc": 1.0,
-       "n_pairs": 24
+       "n_pairs": 25
       },
       "mattersim": {
-       "right": 10,
-       "n": 10,
+       "right": 33,
+       "n": 33,
        "acc": 1.0,
-       "n_pairs": 10
+       "n_pairs": 33
       },
       "orb": {
-       "right": 29,
-       "n": 29,
+       "right": 31,
+       "n": 31,
        "acc": 1.0,
-       "n_pairs": 29
+       "n_pairs": 31
       }
      }
     },
     "2.65": {
      "strong_OO<=t": {
-      "right": 85,
-      "n": 89,
-      "acc": 0.955,
-      "n_pairs": 46
+      "right": 113,
+      "n": 117,
+      "acc": 0.966,
+      "n_pairs": 49
      },
      "weak_OO>t": {
-      "right": 62,
-      "n": 115,
-      "acc": 0.539,
-      "n_pairs": 73
+      "right": 108,
+      "n": 197,
+      "acc": 0.548,
+      "n_pairs": 88
      },
      "strong_per_model": {
       "mace": {
-       "right": 37,
-       "n": 40,
-       "acc": 0.925,
-       "n_pairs": 40
+       "right": 38,
+       "n": 41,
+       "acc": 0.927,
+       "n_pairs": 41
       },
       "mattersim": {
-       "right": 13,
-       "n": 14,
-       "acc": 0.929,
-       "n_pairs": 14
+       "right": 38,
+       "n": 39,
+       "acc": 0.974,
+       "n_pairs": 39
       },
       "orb": {
-       "right": 35,
-       "n": 35,
+       "right": 37,
+       "n": 37,
        "acc": 1.0,
-       "n_pairs": 35
+       "n_pairs": 37
       }
      }
     },
     "2.70": {
      "strong_OO<=t": {
-      "right": 100,
-      "n": 105,
-      "acc": 0.952,
-      "n_pairs": 56
+      "right": 134,
+      "n": 139,
+      "acc": 0.964,
+      "n_pairs": 62
      },
      "weak_OO>t": {
-      "right": 47,
-      "n": 99,
-      "acc": 0.475,
-      "n_pairs": 62
+      "right": 87,
+      "n": 175,
+      "acc": 0.497,
+      "n_pairs": 76
      },
      "strong_per_model": {
       "mace": {
-       "right": 44,
-       "n": 48,
-       "acc": 0.917,
-       "n_pairs": 48
+       "right": 45,
+       "n": 49,
+       "acc": 0.918,
+       "n_pairs": 49
       },
       "mattersim": {
-       "right": 14,
-       "n": 15,
-       "acc": 0.933,
-       "n_pairs": 15
+       "right": 43,
+       "n": 44,
+       "acc": 0.977,
+       "n_pairs": 44
       },
       "orb": {
-       "right": 42,
-       "n": 42,
+       "right": 46,
+       "n": 46,
        "acc": 1.0,
-       "n_pairs": 42
+       "n_pairs": 46
       }
      }
     },
     "2.75": {
      "strong_OO<=t": {
-      "right": 112,
-      "n": 121,
-      "acc": 0.926,
-      "n_pairs": 67
+      "right": 153,
+      "n": 162,
+      "acc": 0.944,
+      "n_pairs": 72
      },
      "weak_OO>t": {
-      "right": 35,
-      "n": 83,
-      "acc": 0.422,
-      "n_pairs": 54
+      "right": 68,
+      "n": 152,
+      "acc": 0.447,
+      "n_pairs": 67
      },
      "strong_per_model": {
       "mace": {
-       "right": 49,
-       "n": 57,
-       "acc": 0.86,
-       "n_pairs": 57
+       "right": 50,
+       "n": 58,
+       "acc": 0.862,
+       "n_pairs": 58
       },
       "mattersim": {
-       "right": 16,
-       "n": 17,
-       "acc": 0.941,
-       "n_pairs": 17
+       "right": 50,
+       "n": 51,
+       "acc": 0.98,
+       "n_pairs": 51
       },
       "orb": {
-       "right": 47,
-       "n": 47,
+       "right": 53,
+       "n": 53,
        "acc": 1.0,
-       "n_pairs": 47
+       "n_pairs": 53
       }
      }
     },
     "2.80": {
      "strong_OO<=t": {
-      "right": 121,
-      "n": 133,
-      "acc": 0.91,
-      "n_pairs": 70
+      "right": 174,
+      "n": 199,
+      "acc": 0.874,
+      "n_pairs": 88
      },
      "weak_OO>t": {
-      "right": 26,
-      "n": 71,
-      "acc": 0.366,
-      "n_pairs": 46
+      "right": 47,
+      "n": 115,
+      "acc": 0.409,
+      "n_pairs": 60
      },
      "strong_per_model": {
       "mace": {
-       "right": 51,
-       "n": 59,
-       "acc": 0.864,
-       "n_pairs": 59
+       "right": 52,
+       "n": 60,
+       "acc": 0.867,
+       "n_pairs": 60
       },
       "mattersim": {
-       "right": 18,
-       "n": 20,
-       "acc": 0.9,
-       "n_pairs": 20
+       "right": 63,
+       "n": 69,
+       "acc": 0.913,
+       "n_pairs": 69
       },
       "orb": {
-       "right": 52,
-       "n": 54,
-       "acc": 0.963,
-       "n_pairs": 54
+       "right": 59,
+       "n": 70,
+       "acc": 0.843,
+       "n_pairs": 70
       }
      }
     },
     "2.85": {
      "strong_OO<=t": {
-      "right": 124,
-      "n": 141,
-      "acc": 0.879,
-      "n_pairs": 75
+      "right": 183,
+      "n": 223,
+      "acc": 0.821,
+      "n_pairs": 95
      },
      "weak_OO>t": {
-      "right": 23,
-      "n": 63,
-      "acc": 0.365,
-      "n_pairs": 44
+      "right": 38,
+      "n": 91,
+      "acc": 0.418,
+      "n_pairs": 48
      },
      "strong_per_model": {
       "mace": {
-       "right": 51,
-       "n": 62,
-       "acc": 0.823,
-       "n_pairs": 62
+       "right": 52,
+       "n": 73,
+       "acc": 0.712,
+       "n_pairs": 73
       },
       "mattersim": {
-       "right": 18,
-       "n": 20,
-       "acc": 0.9,
-       "n_pairs": 20
+       "right": 67,
+       "n": 73,
+       "acc": 0.918,
+       "n_pairs": 73
       },
       "orb": {
-       "right": 55,
-       "n": 59,
-       "acc": 0.932,
-       "n_pairs": 59
+       "right": 64,
+       "n": 77,
+       "acc": 0.831,
+       "n_pairs": 77
       }
      }
     },
     "2.90": {
      "strong_OO<=t": {
-      "right": 132,
-      "n": 156,
-      "acc": 0.846,
-      "n_pairs": 84
+      "right": 197,
+      "n": 247,
+      "acc": 0.798,
+      "n_pairs": 104
      },
      "weak_OO>t": {
-      "right": 15,
-      "n": 48,
-      "acc": 0.312,
-      "n_pairs": 36
+      "right": 24,
+      "n": 67,
+      "acc": 0.358,
+      "n_pairs": 38
      },
      "strong_per_model": {
       "mace": {
-       "right": 54,
-       "n": 69,
-       "acc": 0.783,
-       "n_pairs": 69
+       "right": 55,
+       "n": 80,
+       "acc": 0.688,
+       "n_pairs": 80
       },
       "mattersim": {
-       "right": 19,
-       "n": 22,
-       "acc": 0.864,
-       "n_pairs": 22
+       "right": 74,
+       "n": 83,
+       "acc": 0.892,
+       "n_pairs": 83
       },
       "orb": {
-       "right": 59,
-       "n": 65,
-       "acc": 0.908,
-       "n_pairs": 65
+       "right": 68,
+       "n": 84,
+       "acc": 0.81,
+       "n_pairs": 84
       }
      }
     }
    },
-   "translated_threshold_OO": 2.918,
+   "translated_threshold_OO": 2.929,
    "translated_strong": {
-    "right": 135,
-    "n": 163,
-    "acc": 0.828,
-    "n_pairs": 86
+    "right": 206,
+    "n": 263,
+    "acc": 0.783,
+    "n_pairs": 112
    },
    "translated_weak": {
-    "right": 12,
-    "n": 41,
-    "acc": 0.293,
+    "right": 15,
+    "n": 51,
+    "acc": 0.294,
     "n_pairs": 29
    },
    "OH_strong_0.99_with_OO_rule": {
-    "right": 125,
-    "n": 144,
-    "acc": 0.868,
-    "n_pairs": 74
+    "right": 179,
+    "n": 223,
+    "acc": 0.803,
+    "n_pairs": 92
    },
    "OH_weak_0.99_with_OO_rule": {
-    "right": 22,
-    "n": 60,
-    "acc": 0.367,
-    "n_pairs": 41
+    "right": 42,
+    "n": 91,
+    "acc": 0.462,
+    "n_pairs": 43
    },
    "regime_agreement_rows": {
-    "both_strong": 140,
-    "both_weak": 37,
+    "both_strong": 219,
+    "both_weak": 47,
     "OH_strong_OO_weak": 4,
-    "OH_weak_OO_strong": 23
+    "OH_weak_OO_strong": 44
    }
   },
   "signal_filtered": {
    "all_regimes": {
     "OO_rule": {
-     "right": 136,
-     "n": 190,
-     "acc": 0.716,
-     "n_pairs": 110
+     "right": 199,
+     "n": 285,
+     "acc": 0.698,
+     "n_pairs": 128
     },
     "XH_rule_same_rows_eligibility_of_OO": {
-     "right": 135,
-     "n": 190,
-     "acc": 0.711,
-     "n_pairs": 110
+     "right": 198,
+     "n": 285,
+     "acc": 0.695,
+     "n_pairs": 128
     }
    },
    "OO_regime_scan": {
     "2.60": {
      "strong_OO<=t": {
-      "right": 63,
-      "n": 63,
+      "right": 89,
+      "n": 89,
       "acc": 1.0,
-      "n_pairs": 34
+      "n_pairs": 40
      },
      "weak_OO>t": {
-      "right": 73,
-      "n": 127,
-      "acc": 0.575,
-      "n_pairs": 81
+      "right": 110,
+      "n": 196,
+      "acc": 0.561,
+      "n_pairs": 97
      },
      "strong_per_model": {
       "mace": {
-       "right": 24,
-       "n": 24,
+       "right": 25,
+       "n": 25,
        "acc": 1.0,
-       "n_pairs": 24
+       "n_pairs": 25
       },
       "mattersim": {
-       "right": 10,
-       "n": 10,
+       "right": 33,
+       "n": 33,
        "acc": 1.0,
-       "n_pairs": 10
+       "n_pairs": 33
       },
       "orb": {
-       "right": 29,
-       "n": 29,
+       "right": 31,
+       "n": 31,
        "acc": 1.0,
-       "n_pairs": 29
+       "n_pairs": 31
       }
      }
     },
     "2.65": {
      "strong_OO<=t": {
-      "right": 84,
-      "n": 87,
-      "acc": 0.966,
-      "n_pairs": 45
+      "right": 112,
+      "n": 115,
+      "acc": 0.974,
+      "n_pairs": 48
      },
      "weak_OO>t": {
-      "right": 52,
-      "n": 103,
-      "acc": 0.505,
-      "n_pairs": 68
+      "right": 87,
+      "n": 170,
+      "acc": 0.512,
+      "n_pairs": 83
      },
      "strong_per_model": {
       "mace": {
-       "right": 36,
-       "n": 38,
-       "acc": 0.947,
-       "n_pairs": 38
+       "right": 37,
+       "n": 39,
+       "acc": 0.949,
+       "n_pairs": 39
       },
       "mattersim": {
-       "right": 13,
-       "n": 14,
-       "acc": 0.929,
-       "n_pairs": 14
+       "right": 38,
+       "n": 39,
+       "acc": 0.974,
+       "n_pairs": 39
       },
       "orb": {
-       "right": 35,
-       "n": 35,
+       "right": 37,
+       "n": 37,
        "acc": 1.0,
-       "n_pairs": 35
+       "n_pairs": 37
       }
      }
     },
     "2.70": {
      "strong_OO<=t": {
-      "right": 99,
-      "n": 103,
-      "acc": 0.961,
-      "n_pairs": 55
+      "right": 133,
+      "n": 137,
+      "acc": 0.971,
+      "n_pairs": 61
      },
      "weak_OO>t": {
-      "right": 37,
-      "n": 87,
-      "acc": 0.425,
-      "n_pairs": 57
+      "right": 66,
+      "n": 148,
+      "acc": 0.446,
+      "n_pairs": 71
      },
      "strong_per_model": {
       "mace": {
-       "right": 43,
-       "n": 46,
-       "acc": 0.935,
-       "n_pairs": 46
+       "right": 44,
+       "n": 47,
+       "acc": 0.936,
+       "n_pairs": 47
       },
       "mattersim": {
-       "right": 14,
-       "n": 15,
-       "acc": 0.933,
-       "n_pairs": 15
+       "right": 43,
+       "n": 44,
+       "acc": 0.977,
+       "n_pairs": 44
       },
       "orb": {
-       "right": 42,
-       "n": 42,
+       "right": 46,
+       "n": 46,
        "acc": 1.0,
-       "n_pairs": 42
+       "n_pairs": 46
       }
      }
     },
     "2.75": {
      "strong_OO<=t": {
-      "right": 111,
-      "n": 119,
-      "acc": 0.933,
-      "n_pairs": 66
+      "right": 152,
+      "n": 160,
+      "acc": 0.95,
+      "n_pairs": 71
      },
      "weak_OO>t": {
-      "right": 25,
-      "n": 71,
-      "acc": 0.352,
-      "n_pairs": 49
+      "right": 47,
+      "n": 125,
+      "acc": 0.376,
+      "n_pairs": 62
      },
      "strong_per_model": {
       "mace": {
-       "right": 48,
-       "n": 55,
-       "acc": 0.873,
-       "n_pairs": 55
+       "right": 49,
+       "n": 56,
+       "acc": 0.875,
+       "n_pairs": 56
       },
       "mattersim": {
-       "right": 16,
-       "n": 17,
-       "acc": 0.941,
-       "n_pairs": 17
+       "right": 50,
+       "n": 51,
+       "acc": 0.98,
+       "n_pairs": 51
       },
       "orb": {
-       "right": 47,
-       "n": 47,
+       "right": 53,
+       "n": 53,
        "acc": 1.0,
-       "n_pairs": 47
+       "n_pairs": 53
       }
      }
     },
     "2.80": {
      "strong_OO<=t": {
-      "right": 120,
-      "n": 131,
-      "acc": 0.916,
-      "n_pairs": 70
+      "right": 167,
+      "n": 191,
+      "acc": 0.874,
+      "n_pairs": 86
      },
      "weak_OO>t": {
-      "right": 16,
-      "n": 59,
-      "acc": 0.271,
-      "n_pairs": 40
+      "right": 32,
+      "n": 94,
+      "acc": 0.34,
+      "n_pairs": 54
      },
      "strong_per_model": {
       "mace": {
-       "right": 50,
-       "n": 57,
-       "acc": 0.877,
-       "n_pairs": 57
+       "right": 51,
+       "n": 58,
+       "acc": 0.879,
+       "n_pairs": 58
       },
       "mattersim": {
-       "right": 18,
-       "n": 20,
-       "acc": 0.9,
-       "n_pairs": 20
+       "right": 57,
+       "n": 63,
+       "acc": 0.905,
+       "n_pairs": 63
       },
       "orb": {
-       "right": 52,
-       "n": 54,
-       "acc": 0.963,
-       "n_pairs": 54
+       "right": 59,
+       "n": 70,
+       "acc": 0.843,
+       "n_pairs": 70
       }
      }
     },
     "2.85": {
      "strong_OO<=t": {
-      "right": 123,
-      "n": 138,
-      "acc": 0.891,
-      "n_pairs": 75
+      "right": 175,
+      "n": 213,
+      "acc": 0.822,
+      "n_pairs": 94
      },
      "weak_OO>t": {
-      "right": 13,
-      "n": 52,
-      "acc": 0.25,
-      "n_pairs": 39
+      "right": 24,
+      "n": 72,
+      "acc": 0.333,
+      "n_pairs": 43
      },
      "strong_per_model": {
       "mace": {
-       "right": 50,
-       "n": 59,
-       "acc": 0.847,
-       "n_pairs": 59
+       "right": 51,
+       "n": 70,
+       "acc": 0.729,
+       "n_pairs": 70
       },
       "mattersim": {
-       "right": 18,
-       "n": 20,
-       "acc": 0.9,
-       "n_pairs": 20
+       "right": 60,
+       "n": 66,
+       "acc": 0.909,
+       "n_pairs": 66
       },
       "orb": {
-       "right": 55,
-       "n": 59,
-       "acc": 0.932,
-       "n_pairs": 59
+       "right": 64,
+       "n": 77,
+       "acc": 0.831,
+       "n_pairs": 77
       }
      }
     },
     "2.90": {
      "strong_OO<=t": {
-      "right": 127,
-      "n": 149,
-      "acc": 0.852,
-      "n_pairs": 81
+      "right": 183,
+      "n": 230,
+      "acc": 0.796,
+      "n_pairs": 100
      },
      "weak_OO>t": {
-      "right": 9,
-      "n": 41,
-      "acc": 0.22,
-      "n_pairs": 31
+      "right": 16,
+      "n": 55,
+      "acc": 0.291,
+      "n_pairs": 34
      },
      "strong_per_model": {
       "mace": {
-       "right": 52,
-       "n": 65,
-       "acc": 0.8,
-       "n_pairs": 65
+       "right": 53,
+       "n": 76,
+       "acc": 0.697,
+       "n_pairs": 76
       },
       "mattersim": {
-       "right": 18,
-       "n": 21,
-       "acc": 0.857,
-       "n_pairs": 21
+       "right": 64,
+       "n": 73,
+       "acc": 0.877,
+       "n_pairs": 73
       },
       "orb": {
-       "right": 57,
-       "n": 63,
-       "acc": 0.905,
-       "n_pairs": 63
+       "right": 66,
+       "n": 81,
+       "acc": 0.815,
+       "n_pairs": 81
       }
      }
     }
    },
-   "translated_threshold_OO": 2.918,
+   "translated_threshold_OO": 2.929,
    "translated_strong": {
-    "right": 127,
-    "n": 153,
-    "acc": 0.83,
-    "n_pairs": 83
+    "right": 187,
+    "n": 241,
+    "acc": 0.776,
+    "n_pairs": 105
    },
    "translated_weak": {
-    "right": 9,
-    "n": 37,
-    "acc": 0.243,
+    "right": 12,
+    "n": 44,
+    "acc": 0.273,
     "n_pairs": 27
    },
    "OH_strong_0.99_with_OO_rule": {
-    "right": 123,
-    "n": 140,
-    "acc": 0.879,
-    "n_pairs": 74
+    "right": 171,
+    "n": 213,
+    "acc": 0.803,
+    "n_pairs": 91
    },
    "OH_weak_0.99_with_OO_rule": {
-    "right": 13,
-    "n": 50,
-    "acc": 0.26,
-    "n_pairs": 36
+    "right": 28,
+    "n": 72,
+    "acc": 0.389,
+    "n_pairs": 38
    },
    "regime_agreement_rows": {
-    "both_strong": 136,
-    "both_weak": 33,
+    "both_strong": 209,
+    "both_weak": 40,
     "OH_strong_OO_weak": 4,
-    "OH_weak_OO_strong": 17
+    "OH_weak_OO_strong": 32
    }
   }
  },
  "fit_strong_translated": {
   "mace": {
-   "n": 99,
-   "slope_meV_per_H": -8.178,
-   "intercept": 0.975,
-   "r": -0.427
+   "n": 110,
+   "slope_meV_per_H": -7.63,
+   "intercept": 1.062,
+   "r": -0.409
   },
   "mattersim": {
-   "n": 29,
-   "slope_meV_per_H": -25.837,
-   "intercept": 1.314,
-   "r": -0.542
+   "n": 116,
+   "slope_meV_per_H": -11.863,
+   "intercept": 1.35,
+   "r": -0.508
   },
   "orb": {
-   "n": 79,
-   "slope_meV_per_H": -10.8,
-   "intercept": 1.12,
-   "r": -0.516
+   "n": 113,
+   "slope_meV_per_H": -10.165,
+   "intercept": 1.018,
+   "r": -0.507
   },
   "pooled": {
-   "n": 207,
-   "slope_meV_per_H": -9.704,
-   "intercept": 1.13,
-   "r": -0.456
+   "n": 339,
+   "slope_meV_per_H": -9.479,
+   "intercept": 1.137,
+   "r": -0.465
   }
  },
  "fit_weak_translated": {
@@ -744,352 +744,352 @@
    "r": 0.201
   },
   "mattersim": {
-   "n": 7,
-   "slope_meV_per_H": 0.816,
-   "intercept": 0.149,
-   "r": 0.121
+   "n": 16,
+   "slope_meV_per_H": 2.486,
+   "intercept": -0.0,
+   "r": 0.553
   },
   "orb": {
-   "n": 20,
-   "slope_meV_per_H": 4.35,
-   "intercept": 0.226,
-   "r": 0.531
+   "n": 25,
+   "slope_meV_per_H": 4.899,
+   "intercept": 0.153,
+   "r": 0.53
   },
   "pooled": {
-   "n": 61,
-   "slope_meV_per_H": 1.529,
-   "intercept": 0.2,
-   "r": 0.27
+   "n": 75,
+   "slope_meV_per_H": 1.934,
+   "intercept": 0.152,
+   "r": 0.324
   }
  },
  "formula_cv_OO": {
   "all_regimes": {
    "all_eligible": {
     "mace": {
-     "n_rows": 133,
-     "n_formulas": 40,
-     "n_eligible": 102,
-     "n_eligible_pairs": 102,
-     "line_sign_acc": 0.686,
-     "raw_sign_acc": 0.637,
-     "train_fold_baseline_acc": 0.647,
-     "line_sign_right": 70,
-     "raw_sign_right": 65,
-     "baseline_right": 66,
-     "R2_heldout": 0.134
+     "n_rows": 144,
+     "n_formulas": 41,
+     "n_eligible": 113,
+     "n_eligible_pairs": 113,
+     "line_sign_acc": 0.628,
+     "raw_sign_acc": 0.584,
+     "train_fold_baseline_acc": 0.664,
+     "line_sign_right": 71,
+     "raw_sign_right": 66,
+     "baseline_right": 75,
+     "R2_heldout": 0.12
     },
     "mattersim": {
-     "n_rows": 36,
-     "n_formulas": 21,
-     "n_eligible": 26,
-     "n_eligible_pairs": 26,
-     "line_sign_acc": 0.731,
-     "raw_sign_acc": 0.769,
-     "train_fold_baseline_acc": 0.731,
-     "line_sign_right": 19,
-     "raw_sign_right": 20,
-     "baseline_right": 19,
-     "R2_heldout": 0.068
+     "n_rows": 132,
+     "n_formulas": 38,
+     "n_eligible": 98,
+     "n_eligible_pairs": 98,
+     "line_sign_acc": 0.704,
+     "raw_sign_acc": 0.806,
+     "train_fold_baseline_acc": 0.571,
+     "line_sign_right": 69,
+     "raw_sign_right": 79,
+     "baseline_right": 56,
+     "R2_heldout": 0.195
     },
     "orb": {
-     "n_rows": 99,
-     "n_formulas": 23,
-     "n_eligible": 76,
-     "n_eligible_pairs": 76,
-     "line_sign_acc": 0.737,
-     "raw_sign_acc": 0.816,
-     "train_fold_baseline_acc": 0.671,
-     "line_sign_right": 56,
-     "raw_sign_right": 62,
-     "baseline_right": 51,
-     "R2_heldout": 0.207
+     "n_rows": 138,
+     "n_formulas": 36,
+     "n_eligible": 103,
+     "n_eligible_pairs": 103,
+     "line_sign_acc": 0.631,
+     "raw_sign_acc": 0.738,
+     "train_fold_baseline_acc": 0.621,
+     "line_sign_right": 65,
+     "raw_sign_right": 76,
+     "baseline_right": 64,
+     "R2_heldout": 0.2
     },
     "pooled": {
-     "n_rows": 268,
-     "n_formulas": 42,
-     "n_eligible": 204,
-     "n_eligible_pairs": 115,
-     "line_sign_acc": 0.716,
-     "raw_sign_acc": 0.721,
-     "train_fold_baseline_acc": 0.667,
-     "line_sign_right": 146,
-     "raw_sign_right": 147,
-     "baseline_right": 136,
-     "R2_heldout": 0.156
+     "n_rows": 414,
+     "n_formulas": 44,
+     "n_eligible": 314,
+     "n_eligible_pairs": 133,
+     "line_sign_acc": 0.646,
+     "raw_sign_acc": 0.704,
+     "train_fold_baseline_acc": 0.621,
+     "line_sign_right": 203,
+     "raw_sign_right": 221,
+     "baseline_right": 195,
+     "R2_heldout": 0.165
     }
    },
    "signal_filtered": {
     "mace": {
-     "n_rows": 120,
-     "n_formulas": 37,
-     "n_eligible": 91,
-     "n_eligible_pairs": 91,
-     "line_sign_acc": 0.714,
-     "raw_sign_acc": 0.626,
-     "train_fold_baseline_acc": 0.67,
-     "line_sign_right": 65,
-     "raw_sign_right": 57,
-     "baseline_right": 61,
-     "R2_heldout": 0.142
+     "n_rows": 131,
+     "n_formulas": 38,
+     "n_eligible": 102,
+     "n_eligible_pairs": 102,
+     "line_sign_acc": 0.657,
+     "raw_sign_acc": 0.569,
+     "train_fold_baseline_acc": 0.686,
+     "line_sign_right": 67,
+     "raw_sign_right": 58,
+     "baseline_right": 70,
+     "R2_heldout": 0.129
     },
     "mattersim": {
-     "n_rows": 32,
-     "n_formulas": 19,
-     "n_eligible": 25,
-     "n_eligible_pairs": 25,
-     "line_sign_acc": 0.72,
-     "raw_sign_acc": 0.76,
-     "train_fold_baseline_acc": 0.72,
-     "line_sign_right": 18,
-     "raw_sign_right": 19,
-     "baseline_right": 18,
-     "R2_heldout": 0.114
+     "n_rows": 109,
+     "n_formulas": 33,
+     "n_eligible": 85,
+     "n_eligible_pairs": 85,
+     "line_sign_acc": 0.694,
+     "raw_sign_acc": 0.812,
+     "train_fold_baseline_acc": 0.565,
+     "line_sign_right": 59,
+     "raw_sign_right": 69,
+     "baseline_right": 48,
+     "R2_heldout": 0.214
     },
     "orb": {
-     "n_rows": 93,
-     "n_formulas": 23,
-     "n_eligible": 74,
-     "n_eligible_pairs": 74,
-     "line_sign_acc": 0.743,
-     "raw_sign_acc": 0.811,
-     "train_fold_baseline_acc": 0.689,
-     "line_sign_right": 55,
-     "raw_sign_right": 60,
-     "baseline_right": 51,
-     "R2_heldout": 0.202
+     "n_rows": 126,
+     "n_formulas": 35,
+     "n_eligible": 98,
+     "n_eligible_pairs": 98,
+     "line_sign_acc": 0.643,
+     "raw_sign_acc": 0.735,
+     "train_fold_baseline_acc": 0.653,
+     "line_sign_right": 63,
+     "raw_sign_right": 72,
+     "baseline_right": 64,
+     "R2_heldout": 0.2
     },
     "pooled": {
-     "n_rows": 245,
-     "n_formulas": 41,
-     "n_eligible": 190,
-     "n_eligible_pairs": 110,
-     "line_sign_acc": 0.732,
-     "raw_sign_acc": 0.716,
-     "train_fold_baseline_acc": 0.684,
-     "line_sign_right": 139,
-     "raw_sign_right": 136,
-     "baseline_right": 130,
-     "R2_heldout": 0.161
+     "n_rows": 366,
+     "n_formulas": 43,
+     "n_eligible": 285,
+     "n_eligible_pairs": 128,
+     "line_sign_acc": 0.67,
+     "raw_sign_acc": 0.698,
+     "train_fold_baseline_acc": 0.639,
+     "line_sign_right": 191,
+     "raw_sign_right": 199,
+     "baseline_right": 182,
+     "R2_heldout": 0.175
     }
    }
   },
   "strong_translated_OO": {
    "all_eligible": {
     "mace": {
-     "n_rows": 99,
-     "n_formulas": 36,
-     "n_eligible": 76,
-     "n_eligible_pairs": 76,
-     "line_sign_acc": 0.697,
-     "raw_sign_acc": 0.75,
-     "train_fold_baseline_acc": 0.618,
-     "line_sign_right": 53,
-     "raw_sign_right": 57,
-     "baseline_right": 47,
-     "R2_heldout": 0.137
+     "n_rows": 110,
+     "n_formulas": 37,
+     "n_eligible": 87,
+     "n_eligible_pairs": 87,
+     "line_sign_acc": 0.632,
+     "raw_sign_acc": 0.667,
+     "train_fold_baseline_acc": 0.644,
+     "line_sign_right": 55,
+     "raw_sign_right": 58,
+     "baseline_right": 56,
+     "R2_heldout": 0.125
     },
     "mattersim": {
-     "n_rows": 29,
-     "n_formulas": 19,
-     "n_eligible": 22,
-     "n_eligible_pairs": 22,
-     "line_sign_acc": 0.818,
-     "raw_sign_acc": 0.864,
-     "train_fold_baseline_acc": 0.682,
-     "line_sign_right": 18,
-     "raw_sign_right": 19,
-     "baseline_right": 15,
-     "R2_heldout": 0.046
+     "n_rows": 116,
+     "n_formulas": 35,
+     "n_eligible": 87,
+     "n_eligible_pairs": 87,
+     "line_sign_acc": 0.713,
+     "raw_sign_acc": 0.874,
+     "train_fold_baseline_acc": 0.552,
+     "line_sign_right": 62,
+     "raw_sign_right": 76,
+     "baseline_right": 48,
+     "R2_heldout": 0.203
     },
     "orb": {
-     "n_rows": 79,
-     "n_formulas": 19,
-     "n_eligible": 65,
-     "n_eligible_pairs": 65,
-     "line_sign_acc": 0.708,
-     "raw_sign_acc": 0.908,
-     "train_fold_baseline_acc": 0.631,
-     "line_sign_right": 46,
-     "raw_sign_right": 59,
-     "baseline_right": 41,
-     "R2_heldout": 0.208
+     "n_rows": 113,
+     "n_formulas": 32,
+     "n_eligible": 89,
+     "n_eligible_pairs": 89,
+     "line_sign_acc": 0.618,
+     "raw_sign_acc": 0.809,
+     "train_fold_baseline_acc": 0.584,
+     "line_sign_right": 55,
+     "raw_sign_right": 72,
+     "baseline_right": 52,
+     "R2_heldout": 0.212
     },
     "pooled": {
-     "n_rows": 207,
-     "n_formulas": 38,
-     "n_eligible": 163,
-     "n_eligible_pairs": 86,
-     "line_sign_acc": 0.718,
-     "raw_sign_acc": 0.828,
-     "train_fold_baseline_acc": 0.632,
-     "line_sign_right": 117,
-     "raw_sign_right": 135,
-     "baseline_right": 103,
-     "R2_heldout": 0.157
+     "n_rows": 339,
+     "n_formulas": 40,
+     "n_eligible": 263,
+     "n_eligible_pairs": 112,
+     "line_sign_acc": 0.654,
+     "raw_sign_acc": 0.783,
+     "train_fold_baseline_acc": 0.593,
+     "line_sign_right": 172,
+     "raw_sign_right": 206,
+     "baseline_right": 156,
+     "R2_heldout": 0.174
     }
    },
    "signal_filtered": {
     "mace": {
-     "n_rows": 90,
-     "n_formulas": 33,
-     "n_eligible": 69,
-     "n_eligible_pairs": 69,
-     "line_sign_acc": 0.71,
-     "raw_sign_acc": 0.754,
-     "train_fold_baseline_acc": 0.623,
-     "line_sign_right": 49,
-     "raw_sign_right": 52,
-     "baseline_right": 43,
-     "R2_heldout": 0.146
+     "n_rows": 101,
+     "n_formulas": 34,
+     "n_eligible": 80,
+     "n_eligible_pairs": 80,
+     "line_sign_acc": 0.637,
+     "raw_sign_acc": 0.662,
+     "train_fold_baseline_acc": 0.65,
+     "line_sign_right": 51,
+     "raw_sign_right": 53,
+     "baseline_right": 52,
+     "R2_heldout": 0.135
     },
     "mattersim": {
-     "n_rows": 26,
-     "n_formulas": 17,
-     "n_eligible": 21,
-     "n_eligible_pairs": 21,
-     "line_sign_acc": 0.81,
+     "n_rows": 99,
+     "n_formulas": 31,
+     "n_eligible": 77,
+     "n_eligible_pairs": 77,
+     "line_sign_acc": 0.701,
      "raw_sign_acc": 0.857,
-     "train_fold_baseline_acc": 0.524,
-     "line_sign_right": 17,
-     "raw_sign_right": 18,
-     "baseline_right": 11,
-     "R2_heldout": 0.091
+     "train_fold_baseline_acc": 0.558,
+     "line_sign_right": 54,
+     "raw_sign_right": 66,
+     "baseline_right": 43,
+     "R2_heldout": 0.22
     },
     "orb": {
-     "n_rows": 77,
-     "n_formulas": 19,
-     "n_eligible": 63,
-     "n_eligible_pairs": 63,
-     "line_sign_acc": 0.73,
-     "raw_sign_acc": 0.905,
-     "train_fold_baseline_acc": 0.651,
-     "line_sign_right": 46,
-     "raw_sign_right": 57,
-     "baseline_right": 41,
-     "R2_heldout": 0.204
+     "n_rows": 105,
+     "n_formulas": 31,
+     "n_eligible": 84,
+     "n_eligible_pairs": 84,
+     "line_sign_acc": 0.643,
+     "raw_sign_acc": 0.81,
+     "train_fold_baseline_acc": 0.619,
+     "line_sign_right": 54,
+     "raw_sign_right": 68,
+     "baseline_right": 52,
+     "R2_heldout": 0.211
     },
     "pooled": {
-     "n_rows": 193,
-     "n_formulas": 37,
-     "n_eligible": 153,
-     "n_eligible_pairs": 83,
-     "line_sign_acc": 0.732,
-     "raw_sign_acc": 0.83,
-     "train_fold_baseline_acc": 0.641,
-     "line_sign_right": 112,
-     "raw_sign_right": 127,
-     "baseline_right": 98,
-     "R2_heldout": 0.163
+     "n_rows": 305,
+     "n_formulas": 39,
+     "n_eligible": 241,
+     "n_eligible_pairs": 105,
+     "line_sign_acc": 0.672,
+     "raw_sign_acc": 0.776,
+     "train_fold_baseline_acc": 0.61,
+     "line_sign_right": 162,
+     "raw_sign_right": 187,
+     "baseline_right": 147,
+     "R2_heldout": 0.184
     }
    }
   },
   "strong_OH_0.99": {
    "all_eligible": {
     "mace": {
-     "n_rows": 86,
-     "n_formulas": 32,
-     "n_eligible": 64,
-     "n_eligible_pairs": 64,
-     "line_sign_acc": 0.75,
-     "raw_sign_acc": 0.828,
-     "train_fold_baseline_acc": 0.625,
-     "line_sign_right": 48,
-     "raw_sign_right": 53,
-     "baseline_right": 40,
-     "R2_heldout": 0.142
+     "n_rows": 97,
+     "n_formulas": 34,
+     "n_eligible": 75,
+     "n_eligible_pairs": 75,
+     "line_sign_acc": 0.653,
+     "raw_sign_acc": 0.72,
+     "train_fold_baseline_acc": 0.653,
+     "line_sign_right": 49,
+     "raw_sign_right": 54,
+     "baseline_right": 49,
+     "R2_heldout": 0.132
     },
     "mattersim": {
-     "n_rows": 27,
-     "n_formulas": 17,
-     "n_eligible": 21,
-     "n_eligible_pairs": 21,
-     "line_sign_acc": 0.81,
-     "raw_sign_acc": 0.857,
-     "train_fold_baseline_acc": 0.667,
-     "line_sign_right": 17,
-     "raw_sign_right": 18,
-     "baseline_right": 14,
-     "R2_heldout": 0.04
+     "n_rows": 98,
+     "n_formulas": 33,
+     "n_eligible": 73,
+     "n_eligible_pairs": 73,
+     "line_sign_acc": 0.726,
+     "raw_sign_acc": 0.877,
+     "train_fold_baseline_acc": 0.548,
+     "line_sign_right": 53,
+     "raw_sign_right": 64,
+     "baseline_right": 40,
+     "R2_heldout": 0.219
     },
     "orb": {
-     "n_rows": 74,
-     "n_formulas": 18,
-     "n_eligible": 59,
-     "n_eligible_pairs": 59,
-     "line_sign_acc": 0.763,
-     "raw_sign_acc": 0.915,
-     "train_fold_baseline_acc": 0.661,
-     "line_sign_right": 45,
-     "raw_sign_right": 54,
-     "baseline_right": 39,
-     "R2_heldout": 0.202
+     "n_rows": 97,
+     "n_formulas": 30,
+     "n_eligible": 75,
+     "n_eligible_pairs": 75,
+     "line_sign_acc": 0.693,
+     "raw_sign_acc": 0.813,
+     "train_fold_baseline_acc": 0.64,
+     "line_sign_right": 52,
+     "raw_sign_right": 61,
+     "baseline_right": 48,
+     "R2_heldout": 0.213
     },
     "pooled": {
-     "n_rows": 187,
-     "n_formulas": 34,
-     "n_eligible": 144,
-     "n_eligible_pairs": 74,
-     "line_sign_acc": 0.764,
-     "raw_sign_acc": 0.868,
-     "train_fold_baseline_acc": 0.646,
-     "line_sign_right": 110,
-     "raw_sign_right": 125,
-     "baseline_right": 93,
-     "R2_heldout": 0.157
+     "n_rows": 292,
+     "n_formulas": 38,
+     "n_eligible": 223,
+     "n_eligible_pairs": 92,
+     "line_sign_acc": 0.695,
+     "raw_sign_acc": 0.803,
+     "train_fold_baseline_acc": 0.614,
+     "line_sign_right": 155,
+     "raw_sign_right": 179,
+     "baseline_right": 137,
+     "R2_heldout": 0.183
     }
    },
    "signal_filtered": {
     "mace": {
-     "n_rows": 81,
-     "n_formulas": 29,
-     "n_eligible": 61,
-     "n_eligible_pairs": 61,
-     "line_sign_acc": 0.754,
-     "raw_sign_acc": 0.852,
-     "train_fold_baseline_acc": 0.623,
-     "line_sign_right": 46,
-     "raw_sign_right": 52,
-     "baseline_right": 38,
-     "R2_heldout": 0.15
+     "n_rows": 92,
+     "n_formulas": 31,
+     "n_eligible": 72,
+     "n_eligible_pairs": 72,
+     "line_sign_acc": 0.653,
+     "raw_sign_acc": 0.736,
+     "train_fold_baseline_acc": 0.653,
+     "line_sign_right": 47,
+     "raw_sign_right": 53,
+     "baseline_right": 47,
+     "R2_heldout": 0.142
     },
     "mattersim": {
-     "n_rows": 24,
-     "n_formulas": 15,
-     "n_eligible": 20,
-     "n_eligible_pairs": 20,
-     "line_sign_acc": 0.75,
-     "raw_sign_acc": 0.85,
-     "train_fold_baseline_acc": 0.5,
-     "line_sign_right": 15,
-     "raw_sign_right": 17,
-     "baseline_right": 10,
-     "R2_heldout": 0.089
+     "n_rows": 85,
+     "n_formulas": 29,
+     "n_eligible": 66,
+     "n_eligible_pairs": 66,
+     "line_sign_acc": 0.742,
+     "raw_sign_acc": 0.864,
+     "train_fold_baseline_acc": 0.561,
+     "line_sign_right": 49,
+     "raw_sign_right": 57,
+     "baseline_right": 37,
+     "R2_heldout": 0.227
     },
     "orb": {
-     "n_rows": 74,
-     "n_formulas": 18,
-     "n_eligible": 59,
-     "n_eligible_pairs": 59,
-     "line_sign_acc": 0.763,
-     "raw_sign_acc": 0.915,
-     "train_fold_baseline_acc": 0.661,
-     "line_sign_right": 45,
-     "raw_sign_right": 54,
-     "baseline_right": 39,
-     "R2_heldout": 0.202
+     "n_rows": 96,
+     "n_formulas": 29,
+     "n_eligible": 75,
+     "n_eligible_pairs": 75,
+     "line_sign_acc": 0.693,
+     "raw_sign_acc": 0.813,
+     "train_fold_baseline_acc": 0.64,
+     "line_sign_right": 52,
+     "raw_sign_right": 61,
+     "baseline_right": 48,
+     "R2_heldout": 0.212
     },
     "pooled": {
-     "n_rows": 179,
-     "n_formulas": 33,
-     "n_eligible": 140,
-     "n_eligible_pairs": 74,
-     "line_sign_acc": 0.771,
-     "raw_sign_acc": 0.879,
-     "train_fold_baseline_acc": 0.643,
-     "line_sign_right": 108,
-     "raw_sign_right": 123,
-     "baseline_right": 90,
-     "R2_heldout": 0.163
+     "n_rows": 273,
+     "n_formulas": 36,
+     "n_eligible": 213,
+     "n_eligible_pairs": 91,
+     "line_sign_acc": 0.695,
+     "raw_sign_acc": 0.803,
+     "train_fold_baseline_acc": 0.62,
+     "line_sign_right": 148,
+     "raw_sign_right": 171,
+     "baseline_right": 132,
+     "R2_heldout": 0.191
     }
    }
   }
@@ -1097,193 +1097,159 @@
  "sensitivity_donor_cap": {
   "3.2": {
    "coverage": {
-    "rows_with_OO": 254,
-    "of_rows": 341,
-    "unique_pairs": 138,
-    "formulas": 39,
+    "rows_with_OO": 397,
+    "of_rows": 521,
+    "unique_pairs": 154,
+    "formulas": 42,
     "rows_per_model": {
-     "mace": 121,
-     "orb": 97,
-     "mattersim": 36
+     "orb": 135,
+     "mace": 132,
+     "mattersim": 130
     }
    },
    "fit_all_rows": {
     "mace": {
-     "n": 121,
-     "slope_meV_per_H": -16.135,
-     "intercept": 0.672,
-     "r": -0.464
+     "n": 132,
+     "slope_meV_per_H": -13.969,
+     "intercept": 0.827,
+     "r": -0.427
     },
     "mattersim": {
-     "n": 36,
-     "slope_meV_per_H": -27.577,
-     "intercept": 1.488,
-     "r": -0.591
+     "n": 130,
+     "slope_meV_per_H": -13.46,
+     "intercept": 1.25,
+     "r": -0.537
     },
     "orb": {
-     "n": 97,
-     "slope_meV_per_H": -12.087,
-     "intercept": 1.051,
-     "r": -0.558
+     "n": 135,
+     "slope_meV_per_H": -11.254,
+     "intercept": 0.937,
+     "r": -0.538
     },
     "pooled": {
-     "n": 254,
-     "slope_meV_per_H": -14.264,
-     "intercept": 0.94,
-     "r": -0.5
+     "n": 397,
+     "slope_meV_per_H": -12.562,
+     "intercept": 1.006,
+     "r": -0.497
     }
    },
    "threshold_translation_summary": {
     "range_OO_A": [
-     2.853,
-     2.919
+     2.887,
+     2.911
     ],
-    "median_OO_A": 2.904
+    "median_OO_A": 2.901
    },
    "sign_accuracy": {
     "all_eligible": {
      "all_regimes": {
       "OO_rule": {
-       "right": 146,
-       "n": 182,
-       "acc": 0.802,
-       "n_pairs": 105
+       "right": 224,
+       "n": 287,
+       "acc": 0.78,
+       "n_pairs": 128
       },
       "XH_rule_same_rows_eligibility_of_OO": {
-       "right": 137,
-       "n": 182,
-       "acc": 0.753,
-       "n_pairs": 105
+       "right": 209,
+       "n": 287,
+       "acc": 0.728,
+       "n_pairs": 128
       }
      },
      "OO_regime_scan": {
       "2.60": {
        "strong_OO<=t": {
-        "right": 61,
-        "n": 61,
+        "right": 87,
+        "n": 87,
         "acc": 1.0,
-        "n_pairs": 34
+        "n_pairs": 40
        },
        "weak_OO>t": {
-        "right": 85,
-        "n": 121,
-        "acc": 0.702,
-        "n_pairs": 77
+        "right": 137,
+        "n": 200,
+        "acc": 0.685,
+        "n_pairs": 98
        },
        "strong_per_model": {
         "mace": {
-         "right": 22,
-         "n": 22,
+         "right": 23,
+         "n": 23,
          "acc": 1.0,
-         "n_pairs": 22
+         "n_pairs": 23
         },
         "mattersim": {
-         "right": 10,
-         "n": 10,
+         "right": 33,
+         "n": 33,
          "acc": 1.0,
-         "n_pairs": 10
+         "n_pairs": 33
         },
         "orb": {
-         "right": 29,
-         "n": 29,
+         "right": 31,
+         "n": 31,
          "acc": 1.0,
-         "n_pairs": 29
+         "n_pairs": 31
         }
        }
       },
       "2.65": {
        "strong_OO<=t": {
-        "right": 88,
-        "n": 92,
-        "acc": 0.957,
-        "n_pairs": 49
+        "right": 122,
+        "n": 126,
+        "acc": 0.968,
+        "n_pairs": 54
        },
        "weak_OO>t": {
-        "right": 58,
-        "n": 90,
-        "acc": 0.644,
-        "n_pairs": 58
+        "right": 102,
+        "n": 161,
+        "acc": 0.634,
+        "n_pairs": 77
        },
        "strong_per_model": {
         "mace": {
-         "right": 35,
-         "n": 38,
-         "acc": 0.921,
-         "n_pairs": 38
+         "right": 36,
+         "n": 39,
+         "acc": 0.923,
+         "n_pairs": 39
         },
         "mattersim": {
-         "right": 13,
-         "n": 14,
-         "acc": 0.929,
-         "n_pairs": 14
+         "right": 43,
+         "n": 44,
+         "acc": 0.977,
+         "n_pairs": 44
         },
         "orb": {
-         "right": 40,
-         "n": 40,
+         "right": 43,
+         "n": 43,
          "acc": 1.0,
-         "n_pairs": 40
+         "n_pairs": 43
         }
        }
       },
       "2.70": {
        "strong_OO<=t": {
-        "right": 104,
-        "n": 117,
-        "acc": 0.889,
-        "n_pairs": 62
+        "right": 144,
+        "n": 159,
+        "acc": 0.906,
+        "n_pairs": 69
        },
        "weak_OO>t": {
-        "right": 42,
-        "n": 65,
-        "acc": 0.646,
-        "n_pairs": 43
+        "right": 80,
+        "n": 128,
+        "acc": 0.625,
+        "n_pairs": 60
        },
        "strong_per_model": {
         "mace": {
-         "right": 41,
-         "n": 48,
-         "acc": 0.854,
-         "n_pairs": 48
+         "right": 42,
+         "n": 49,
+         "acc": 0.857,
+         "n_pairs": 49
         },
         "mattersim": {
-         "right": 15,
-         "n": 18,
-         "acc": 0.833,
-         "n_pairs": 18
-        },
-        "orb": {
-         "right": 48,
-         "n": 51,
-         "acc": 0.941,
-         "n_pairs": 51
-        }
-       }
-      },
-      "2.75": {
-       "strong_OO<=t": {
-        "right": 115,
-        "n": 131,
-        "acc": 0.878,
-        "n_pairs": 71
-       },
-       "weak_OO>t": {
-        "right": 31,
-        "n": 51,
-        "acc": 0.608,
-        "n_pairs": 35
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 45,
-         "n": 55,
-         "acc": 0.818,
-         "n_pairs": 55
-        },
-        "mattersim": {
-         "right": 17,
-         "n": 20,
-         "acc": 0.85,
-         "n_pairs": 20
+         "right": 49,
+         "n": 54,
+         "acc": 0.907,
+         "n_pairs": 54
         },
         "orb": {
          "right": 53,
@@ -1293,182 +1259,883 @@
         }
        }
       },
-      "2.80": {
+      "2.75": {
        "strong_OO<=t": {
-        "right": 120,
-        "n": 137,
-        "acc": 0.876,
-        "n_pairs": 74
+        "right": 161,
+        "n": 179,
+        "acc": 0.899,
+        "n_pairs": 77
        },
        "weak_OO>t": {
-        "right": 26,
-        "n": 45,
-        "acc": 0.578,
-        "n_pairs": 32
+        "right": 63,
+        "n": 108,
+        "acc": 0.583,
+        "n_pairs": 52
        },
        "strong_per_model": {
         "mace": {
-         "right": 47,
-         "n": 57,
-         "acc": 0.825,
-         "n_pairs": 57
+         "right": 46,
+         "n": 56,
+         "acc": 0.821,
+         "n_pairs": 56
         },
         "mattersim": {
-         "right": 18,
-         "n": 22,
-         "acc": 0.818,
-         "n_pairs": 22
+         "right": 55,
+         "n": 60,
+         "acc": 0.917,
+         "n_pairs": 60
         },
         "orb": {
-         "right": 55,
+         "right": 60,
+         "n": 63,
+         "acc": 0.952,
+         "n_pairs": 63
+        }
+       }
+      },
+      "2.80": {
+       "strong_OO<=t": {
+        "right": 177,
+        "n": 206,
+        "acc": 0.859,
+        "n_pairs": 91
+       },
+       "weak_OO>t": {
+        "right": 47,
+        "n": 81,
+        "acc": 0.58,
+        "n_pairs": 48
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 48,
          "n": 58,
-         "acc": 0.948,
+         "acc": 0.828,
          "n_pairs": 58
+        },
+        "mattersim": {
+         "right": 66,
+         "n": 73,
+         "acc": 0.904,
+         "n_pairs": 73
+        },
+        "orb": {
+         "right": 63,
+         "n": 75,
+         "acc": 0.84,
+         "n_pairs": 75
         }
        }
       },
       "2.85": {
        "strong_OO<=t": {
-        "right": 123,
-        "n": 141,
-        "acc": 0.872,
-        "n_pairs": 77
+        "right": 186,
+        "n": 226,
+        "acc": 0.823,
+        "n_pairs": 96
        },
        "weak_OO>t": {
-        "right": 23,
-        "n": 41,
-        "acc": 0.561,
-        "n_pairs": 31
+        "right": 38,
+        "n": 61,
+        "acc": 0.623,
+        "n_pairs": 36
        },
        "strong_per_model": {
         "mace": {
-         "right": 47,
-         "n": 58,
-         "acc": 0.81,
-         "n_pairs": 58
+         "right": 48,
+         "n": 69,
+         "acc": 0.696,
+         "n_pairs": 69
         },
         "mattersim": {
-         "right": 18,
-         "n": 22,
-         "acc": 0.818,
-         "n_pairs": 22
+         "right": 70,
+         "n": 77,
+         "acc": 0.909,
+         "n_pairs": 77
         },
         "orb": {
-         "right": 58,
-         "n": 61,
-         "acc": 0.951,
-         "n_pairs": 61
+         "right": 68,
+         "n": 80,
+         "acc": 0.85,
+         "n_pairs": 80
         }
        }
       },
       "2.90": {
        "strong_OO<=t": {
-        "right": 130,
-        "n": 154,
-        "acc": 0.844,
-        "n_pairs": 87
+        "right": 198,
+        "n": 247,
+        "acc": 0.802,
+        "n_pairs": 109
        },
        "weak_OO>t": {
-        "right": 16,
-        "n": 28,
-        "acc": 0.571,
-        "n_pairs": 23
+        "right": 26,
+        "n": 40,
+        "acc": 0.65,
+        "n_pairs": 27
        },
        "strong_per_model": {
         "mace": {
-         "right": 49,
-         "n": 63,
-         "acc": 0.778,
-         "n_pairs": 63
+         "right": 50,
+         "n": 74,
+         "acc": 0.676,
+         "n_pairs": 74
         },
         "mattersim": {
-         "right": 18,
-         "n": 25,
-         "acc": 0.72,
-         "n_pairs": 25
+         "right": 75,
+         "n": 87,
+         "acc": 0.862,
+         "n_pairs": 87
         },
         "orb": {
-         "right": 63,
-         "n": 66,
-         "acc": 0.955,
-         "n_pairs": 66
+         "right": 73,
+         "n": 86,
+         "acc": 0.849,
+         "n_pairs": 86
         }
        }
       }
      },
-     "translated_threshold_OO": 2.904,
+     "translated_threshold_OO": 2.901,
      "translated_strong": {
-      "right": 133,
-      "n": 157,
-      "acc": 0.847,
-      "n_pairs": 89
+      "right": 198,
+      "n": 247,
+      "acc": 0.802,
+      "n_pairs": 109
      },
      "translated_weak": {
-      "right": 13,
-      "n": 25,
-      "acc": 0.52,
-      "n_pairs": 22
+      "right": 26,
+      "n": 40,
+      "acc": 0.65,
+      "n_pairs": 27
      },
      "OH_strong_0.99_with_OO_rule": {
-      "right": 118,
-      "n": 136,
-      "acc": 0.868,
-      "n_pairs": 73
+      "right": 175,
+      "n": 215,
+      "acc": 0.814,
+      "n_pairs": 91
      },
      "OH_weak_0.99_with_OO_rule": {
-      "right": 28,
-      "n": 46,
-      "acc": 0.609,
-      "n_pairs": 32
+      "right": 49,
+      "n": 72,
+      "acc": 0.681,
+      "n_pairs": 38
      },
      "regime_agreement_rows": {
-      "both_strong": 136,
-      "both_weak": 25,
+      "both_strong": 215,
+      "both_weak": 40,
       "OH_strong_OO_weak": 0,
-      "OH_weak_OO_strong": 21
+      "OH_weak_OO_strong": 32
      }
     },
     "signal_filtered": {
      "all_regimes": {
       "OO_rule": {
-       "right": 140,
-       "n": 172,
-       "acc": 0.814,
-       "n_pairs": 99
+       "right": 207,
+       "n": 260,
+       "acc": 0.796,
+       "n_pairs": 122
       },
       "XH_rule_same_rows_eligibility_of_OO": {
-       "right": 130,
-       "n": 172,
-       "acc": 0.756,
-       "n_pairs": 99
+       "right": 191,
+       "n": 260,
+       "acc": 0.735,
+       "n_pairs": 122
       }
      },
      "OO_regime_scan": {
       "2.60": {
        "strong_OO<=t": {
-        "right": 61,
-        "n": 61,
+        "right": 87,
+        "n": 87,
         "acc": 1.0,
-        "n_pairs": 34
+        "n_pairs": 40
        },
        "weak_OO>t": {
-        "right": 79,
-        "n": 111,
-        "acc": 0.712,
-        "n_pairs": 70
+        "right": 120,
+        "n": 173,
+        "acc": 0.694,
+        "n_pairs": 91
        },
        "strong_per_model": {
         "mace": {
-         "right": 22,
-         "n": 22,
+         "right": 23,
+         "n": 23,
          "acc": 1.0,
-         "n_pairs": 22
+         "n_pairs": 23
         },
         "mattersim": {
-         "right": 10,
-         "n": 10,
+         "right": 33,
+         "n": 33,
          "acc": 1.0,
-         "n_pairs": 10
+         "n_pairs": 33
+        },
+        "orb": {
+         "right": 31,
+         "n": 31,
+         "acc": 1.0,
+         "n_pairs": 31
+        }
+       }
+      },
+      "2.65": {
+       "strong_OO<=t": {
+        "right": 121,
+        "n": 124,
+        "acc": 0.976,
+        "n_pairs": 53
+       },
+       "weak_OO>t": {
+        "right": 86,
+        "n": 136,
+        "acc": 0.632,
+        "n_pairs": 71
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 36,
+         "n": 38,
+         "acc": 0.947,
+         "n_pairs": 38
+        },
+        "mattersim": {
+         "right": 43,
+         "n": 44,
+         "acc": 0.977,
+         "n_pairs": 44
+        },
+        "orb": {
+         "right": 42,
+         "n": 42,
+         "acc": 1.0,
+         "n_pairs": 42
+        }
+       }
+      },
+      "2.70": {
+       "strong_OO<=t": {
+        "right": 143,
+        "n": 154,
+        "acc": 0.929,
+        "n_pairs": 68
+       },
+       "weak_OO>t": {
+        "right": 64,
+        "n": 106,
+        "acc": 0.604,
+        "n_pairs": 55
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 42,
+         "n": 47,
+         "acc": 0.894,
+         "n_pairs": 47
+        },
+        "mattersim": {
+         "right": 49,
+         "n": 52,
+         "acc": 0.942,
+         "n_pairs": 52
+        },
+        "orb": {
+         "right": 52,
+         "n": 55,
+         "acc": 0.945,
+         "n_pairs": 55
+        }
+       }
+      },
+      "2.75": {
+       "strong_OO<=t": {
+        "right": 160,
+        "n": 174,
+        "acc": 0.92,
+        "n_pairs": 76
+       },
+       "weak_OO>t": {
+        "right": 47,
+        "n": 86,
+        "acc": 0.547,
+        "n_pairs": 47
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 46,
+         "n": 54,
+         "acc": 0.852,
+         "n_pairs": 54
+        },
+        "mattersim": {
+         "right": 55,
+         "n": 58,
+         "acc": 0.948,
+         "n_pairs": 58
+        },
+        "orb": {
+         "right": 59,
+         "n": 62,
+         "acc": 0.952,
+         "n_pairs": 62
+        }
+       }
+      },
+      "2.80": {
+       "strong_OO<=t": {
+        "right": 171,
+        "n": 196,
+        "acc": 0.872,
+        "n_pairs": 89
+       },
+       "weak_OO>t": {
+        "right": 36,
+        "n": 64,
+        "acc": 0.562,
+        "n_pairs": 42
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 48,
+         "n": 56,
+         "acc": 0.857,
+         "n_pairs": 56
+        },
+        "mattersim": {
+         "right": 61,
+         "n": 66,
+         "acc": 0.924,
+         "n_pairs": 66
+        },
+        "orb": {
+         "right": 62,
+         "n": 74,
+         "acc": 0.838,
+         "n_pairs": 74
+        }
+       }
+      },
+      "2.85": {
+       "strong_OO<=t": {
+        "right": 179,
+        "n": 214,
+        "acc": 0.836,
+        "n_pairs": 95
+       },
+       "weak_OO>t": {
+        "right": 28,
+        "n": 46,
+        "acc": 0.609,
+        "n_pairs": 31
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 48,
+         "n": 66,
+         "acc": 0.727,
+         "n_pairs": 66
+        },
+        "mattersim": {
+         "right": 64,
+         "n": 69,
+         "acc": 0.928,
+         "n_pairs": 69
+        },
+        "orb": {
+         "right": 67,
+         "n": 79,
+         "acc": 0.848,
+         "n_pairs": 79
+        }
+       }
+      },
+      "2.90": {
+       "strong_OO<=t": {
+        "right": 186,
+        "n": 227,
+        "acc": 0.819,
+        "n_pairs": 103
+       },
+       "weak_OO>t": {
+        "right": 21,
+        "n": 33,
+        "acc": 0.636,
+        "n_pairs": 24
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 49,
+         "n": 70,
+         "acc": 0.7,
+         "n_pairs": 70
+        },
+        "mattersim": {
+         "right": 67,
+         "n": 75,
+         "acc": 0.893,
+         "n_pairs": 75
+        },
+        "orb": {
+         "right": 70,
+         "n": 82,
+         "acc": 0.854,
+         "n_pairs": 82
+        }
+       }
+      }
+     },
+     "translated_threshold_OO": 2.901,
+     "translated_strong": {
+      "right": 186,
+      "n": 227,
+      "acc": 0.819,
+      "n_pairs": 103
+     },
+     "translated_weak": {
+      "right": 21,
+      "n": 33,
+      "acc": 0.636,
+      "n_pairs": 24
+     },
+     "OH_strong_0.99_with_OO_rule": {
+      "right": 169,
+      "n": 204,
+      "acc": 0.828,
+      "n_pairs": 89
+     },
+     "OH_weak_0.99_with_OO_rule": {
+      "right": 38,
+      "n": 56,
+      "acc": 0.679,
+      "n_pairs": 33
+     },
+     "regime_agreement_rows": {
+      "both_strong": 204,
+      "both_weak": 33,
+      "OH_strong_OO_weak": 0,
+      "OH_weak_OO_strong": 23
+     }
+    }
+   },
+   "formula_cv_OO": {
+    "all_regimes": {
+     "all_eligible": {
+      "mace": {
+       "n_rows": 132,
+       "n_formulas": 38,
+       "n_eligible": 95,
+       "n_eligible_pairs": 95,
+       "line_sign_acc": 0.663,
+       "raw_sign_acc": 0.653,
+       "train_fold_baseline_acc": 0.642,
+       "line_sign_right": 63,
+       "raw_sign_right": 62,
+       "baseline_right": 61,
+       "R2_heldout": 0.099
+      },
+      "mattersim": {
+       "n_rows": 130,
+       "n_formulas": 36,
+       "n_eligible": 94,
+       "n_eligible_pairs": 94,
+       "line_sign_acc": 0.713,
+       "raw_sign_acc": 0.851,
+       "train_fold_baseline_acc": 0.553,
+       "line_sign_right": 67,
+       "raw_sign_right": 80,
+       "baseline_right": 52,
+       "R2_heldout": 0.202
+      },
+      "orb": {
+       "n_rows": 135,
+       "n_formulas": 35,
+       "n_eligible": 98,
+       "n_eligible_pairs": 98,
+       "line_sign_acc": 0.694,
+       "raw_sign_acc": 0.837,
+       "train_fold_baseline_acc": 0.602,
+       "line_sign_right": 68,
+       "raw_sign_right": 82,
+       "baseline_right": 59,
+       "R2_heldout": 0.249
+      },
+      "pooled": {
+       "n_rows": 397,
+       "n_formulas": 42,
+       "n_eligible": 287,
+       "n_eligible_pairs": 128,
+       "line_sign_acc": 0.697,
+       "raw_sign_acc": 0.78,
+       "train_fold_baseline_acc": 0.599,
+       "line_sign_right": 200,
+       "raw_sign_right": 224,
+       "baseline_right": 172,
+       "R2_heldout": 0.199
+      }
+     },
+     "signal_filtered": {
+      "mace": {
+       "n_rows": 119,
+       "n_formulas": 35,
+       "n_eligible": 88,
+       "n_eligible_pairs": 88,
+       "line_sign_acc": 0.648,
+       "raw_sign_acc": 0.659,
+       "train_fold_baseline_acc": 0.67,
+       "line_sign_right": 57,
+       "raw_sign_right": 58,
+       "baseline_right": 59,
+       "R2_heldout": 0.102
+      },
+      "mattersim": {
+       "n_rows": 107,
+       "n_formulas": 31,
+       "n_eligible": 80,
+       "n_eligible_pairs": 80,
+       "line_sign_acc": 0.725,
+       "raw_sign_acc": 0.9,
+       "train_fold_baseline_acc": 0.55,
+       "line_sign_right": 58,
+       "raw_sign_right": 72,
+       "baseline_right": 44,
+       "R2_heldout": 0.202
+      },
+      "orb": {
+       "n_rows": 123,
+       "n_formulas": 34,
+       "n_eligible": 92,
+       "n_eligible_pairs": 92,
+       "line_sign_acc": 0.707,
+       "raw_sign_acc": 0.837,
+       "train_fold_baseline_acc": 0.63,
+       "line_sign_right": 65,
+       "raw_sign_right": 77,
+       "baseline_right": 58,
+       "R2_heldout": 0.252
+      },
+      "pooled": {
+       "n_rows": 349,
+       "n_formulas": 41,
+       "n_eligible": 260,
+       "n_eligible_pairs": 122,
+       "line_sign_acc": 0.719,
+       "raw_sign_acc": 0.796,
+       "train_fold_baseline_acc": 0.619,
+       "line_sign_right": 187,
+       "raw_sign_right": 207,
+       "baseline_right": 161,
+       "R2_heldout": 0.205
+      }
+     }
+    },
+    "strong_translated_OO": {
+     "all_eligible": {
+      "mace": {
+       "n_rows": 97,
+       "n_formulas": 34,
+       "n_eligible": 74,
+       "n_eligible_pairs": 74,
+       "line_sign_acc": 0.635,
+       "raw_sign_acc": 0.676,
+       "train_fold_baseline_acc": 0.635,
+       "line_sign_right": 47,
+       "raw_sign_right": 50,
+       "baseline_right": 47,
+       "R2_heldout": 0.094
+      },
+      "mattersim": {
+       "n_rows": 115,
+       "n_formulas": 34,
+       "n_eligible": 87,
+       "n_eligible_pairs": 87,
+       "line_sign_acc": 0.736,
+       "raw_sign_acc": 0.862,
+       "train_fold_baseline_acc": 0.563,
+       "line_sign_right": 64,
+       "raw_sign_right": 75,
+       "baseline_right": 49,
+       "R2_heldout": 0.21
+      },
+      "orb": {
+       "n_rows": 110,
+       "n_formulas": 32,
+       "n_eligible": 86,
+       "n_eligible_pairs": 86,
+       "line_sign_acc": 0.709,
+       "raw_sign_acc": 0.849,
+       "train_fold_baseline_acc": 0.616,
+       "line_sign_right": 61,
+       "raw_sign_right": 73,
+       "baseline_right": 53,
+       "R2_heldout": 0.254
+      },
+      "pooled": {
+       "n_rows": 322,
+       "n_formulas": 40,
+       "n_eligible": 247,
+       "n_eligible_pairs": 109,
+       "line_sign_acc": 0.709,
+       "raw_sign_acc": 0.802,
+       "train_fold_baseline_acc": 0.603,
+       "line_sign_right": 175,
+       "raw_sign_right": 198,
+       "baseline_right": 149,
+       "R2_heldout": 0.205
+      }
+     },
+     "signal_filtered": {
+      "mace": {
+       "n_rows": 91,
+       "n_formulas": 31,
+       "n_eligible": 70,
+       "n_eligible_pairs": 70,
+       "line_sign_acc": 0.643,
+       "raw_sign_acc": 0.7,
+       "train_fold_baseline_acc": 0.643,
+       "line_sign_right": 45,
+       "raw_sign_right": 49,
+       "baseline_right": 45,
+       "R2_heldout": 0.1
+      },
+      "mattersim": {
+       "n_rows": 97,
+       "n_formulas": 30,
+       "n_eligible": 75,
+       "n_eligible_pairs": 75,
+       "line_sign_acc": 0.773,
+       "raw_sign_acc": 0.893,
+       "train_fold_baseline_acc": 0.573,
+       "line_sign_right": 58,
+       "raw_sign_right": 67,
+       "baseline_right": 43,
+       "R2_heldout": 0.208
+      },
+      "orb": {
+       "n_rows": 105,
+       "n_formulas": 31,
+       "n_eligible": 82,
+       "n_eligible_pairs": 82,
+       "line_sign_acc": 0.707,
+       "raw_sign_acc": 0.854,
+       "train_fold_baseline_acc": 0.634,
+       "line_sign_right": 58,
+       "raw_sign_right": 70,
+       "baseline_right": 52,
+       "R2_heldout": 0.256
+      },
+      "pooled": {
+       "n_rows": 293,
+       "n_formulas": 39,
+       "n_eligible": 227,
+       "n_eligible_pairs": 103,
+       "line_sign_acc": 0.718,
+       "raw_sign_acc": 0.819,
+       "train_fold_baseline_acc": 0.617,
+       "line_sign_right": 163,
+       "raw_sign_right": 186,
+       "baseline_right": 140,
+       "R2_heldout": 0.211
+      }
+     }
+    },
+    "strong_OH_0.99": {
+     "all_eligible": {
+      "mace": {
+       "n_rows": 91,
+       "n_formulas": 33,
+       "n_eligible": 68,
+       "n_eligible_pairs": 68,
+       "line_sign_acc": 0.647,
+       "raw_sign_acc": 0.691,
+       "train_fold_baseline_acc": 0.647,
+       "line_sign_right": 44,
+       "raw_sign_right": 47,
+       "baseline_right": 44,
+       "R2_heldout": 0.107
+      },
+      "mattersim": {
+       "n_rows": 97,
+       "n_formulas": 32,
+       "n_eligible": 72,
+       "n_eligible_pairs": 72,
+       "line_sign_acc": 0.792,
+       "raw_sign_acc": 0.903,
+       "train_fold_baseline_acc": 0.569,
+       "line_sign_right": 57,
+       "raw_sign_right": 65,
+       "baseline_right": 41,
+       "R2_heldout": 0.217
+      },
+      "orb": {
+       "n_rows": 97,
+       "n_formulas": 30,
+       "n_eligible": 75,
+       "n_eligible_pairs": 75,
+       "line_sign_acc": 0.72,
+       "raw_sign_acc": 0.84,
+       "train_fold_baseline_acc": 0.64,
+       "line_sign_right": 54,
+       "raw_sign_right": 63,
+       "baseline_right": 48,
+       "R2_heldout": 0.269
+      },
+      "pooled": {
+       "n_rows": 285,
+       "n_formulas": 37,
+       "n_eligible": 215,
+       "n_eligible_pairs": 91,
+       "line_sign_acc": 0.726,
+       "raw_sign_acc": 0.814,
+       "train_fold_baseline_acc": 0.619,
+       "line_sign_right": 156,
+       "raw_sign_right": 175,
+       "baseline_right": 133,
+       "R2_heldout": 0.224
+      }
+     },
+     "signal_filtered": {
+      "mace": {
+       "n_rows": 86,
+       "n_formulas": 30,
+       "n_eligible": 65,
+       "n_eligible_pairs": 65,
+       "line_sign_acc": 0.662,
+       "raw_sign_acc": 0.723,
+       "train_fold_baseline_acc": 0.662,
+       "line_sign_right": 43,
+       "raw_sign_right": 47,
+       "baseline_right": 43,
+       "R2_heldout": 0.109
+      },
+      "mattersim": {
+       "n_rows": 84,
+       "n_formulas": 28,
+       "n_eligible": 65,
+       "n_eligible_pairs": 65,
+       "line_sign_acc": 0.785,
+       "raw_sign_acc": 0.923,
+       "train_fold_baseline_acc": 0.585,
+       "line_sign_right": 51,
+       "raw_sign_right": 60,
+       "baseline_right": 38,
+       "R2_heldout": 0.198
+      },
+      "orb": {
+       "n_rows": 96,
+       "n_formulas": 29,
+       "n_eligible": 74,
+       "n_eligible_pairs": 74,
+       "line_sign_acc": 0.716,
+       "raw_sign_acc": 0.838,
+       "train_fold_baseline_acc": 0.635,
+       "line_sign_right": 53,
+       "raw_sign_right": 62,
+       "baseline_right": 47,
+       "R2_heldout": 0.27
+      },
+      "pooled": {
+       "n_rows": 266,
+       "n_formulas": 35,
+       "n_eligible": 204,
+       "n_eligible_pairs": 89,
+       "line_sign_acc": 0.735,
+       "raw_sign_acc": 0.828,
+       "train_fold_baseline_acc": 0.627,
+       "line_sign_right": 150,
+       "raw_sign_right": 169,
+       "baseline_right": 128,
+       "R2_heldout": 0.226
+      }
+     }
+    }
+   }
+  },
+  "3.0": {
+   "coverage": {
+    "rows_with_OO": 363,
+    "of_rows": 521,
+    "unique_pairs": 138,
+    "formulas": 39,
+    "rows_per_model": {
+     "mattersim": 123,
+     "mace": 121,
+     "orb": 119
+    }
+   },
+   "fit_all_rows": {
+    "mace": {
+     "n": 121,
+     "slope_meV_per_H": -24.745,
+     "intercept": 0.857,
+     "r": -0.535
+    },
+    "mattersim": {
+     "n": 123,
+     "slope_meV_per_H": -23.658,
+     "intercept": 1.144,
+     "r": -0.577
+    },
+    "orb": {
+     "n": 119,
+     "slope_meV_per_H": -22.009,
+     "intercept": 0.956,
+     "r": -0.591
+    },
+    "pooled": {
+     "n": 363,
+     "slope_meV_per_H": -23.415,
+     "intercept": 0.989,
+     "r": -0.565
+    }
+   },
+   "threshold_translation_summary": {
+    "range_OO_A": [
+     2.816,
+     2.851
+    ],
+    "median_OO_A": 2.829
+   },
+   "sign_accuracy": {
+    "all_eligible": {
+     "all_regimes": {
+      "OO_rule": {
+       "right": 196,
+       "n": 256,
+       "acc": 0.766,
+       "n_pairs": 112
+      },
+      "XH_rule_same_rows_eligibility_of_OO": {
+       "right": 186,
+       "n": 256,
+       "acc": 0.727,
+       "n_pairs": 112
+      }
+     },
+     "OO_regime_scan": {
+      "2.60": {
+       "strong_OO<=t": {
+        "right": 82,
+        "n": 82,
+        "acc": 1.0,
+        "n_pairs": 37
+       },
+       "weak_OO>t": {
+        "right": 114,
+        "n": 174,
+        "acc": 0.655,
+        "n_pairs": 84
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 23,
+         "n": 23,
+         "acc": 1.0,
+         "n_pairs": 23
+        },
+        "mattersim": {
+         "right": 30,
+         "n": 30,
+         "acc": 1.0,
+         "n_pairs": 30
         },
         "orb": {
          "right": 29,
@@ -1480,239 +2147,526 @@
       },
       "2.65": {
        "strong_OO<=t": {
-        "right": 88,
-        "n": 91,
-        "acc": 0.967,
-        "n_pairs": 49
+        "right": 112,
+        "n": 116,
+        "acc": 0.966,
+        "n_pairs": 51
        },
        "weak_OO>t": {
-        "right": 52,
-        "n": 81,
-        "acc": 0.642,
-        "n_pairs": 52
+        "right": 84,
+        "n": 140,
+        "acc": 0.6,
+        "n_pairs": 65
        },
        "strong_per_model": {
         "mace": {
-         "right": 35,
+         "right": 34,
          "n": 37,
-         "acc": 0.946,
+         "acc": 0.919,
          "n_pairs": 37
         },
         "mattersim": {
-         "right": 13,
-         "n": 14,
-         "acc": 0.929,
-         "n_pairs": 14
+         "right": 41,
+         "n": 42,
+         "acc": 0.976,
+         "n_pairs": 42
         },
         "orb": {
-         "right": 40,
-         "n": 40,
+         "right": 37,
+         "n": 37,
          "acc": 1.0,
-         "n_pairs": 40
+         "n_pairs": 37
         }
        }
       },
       "2.70": {
        "strong_OO<=t": {
-        "right": 104,
-        "n": 114,
-        "acc": 0.912,
-        "n_pairs": 61
+        "right": 127,
+        "n": 135,
+        "acc": 0.941,
+        "n_pairs": 60
        },
        "weak_OO>t": {
-        "right": 36,
-        "n": 58,
-        "acc": 0.621,
-        "n_pairs": 38
+        "right": 69,
+        "n": 121,
+        "acc": 0.57,
+        "n_pairs": 53
        },
        "strong_per_model": {
         "mace": {
-         "right": 41,
-         "n": 46,
-         "acc": 0.891,
-         "n_pairs": 46
+         "right": 37,
+         "n": 42,
+         "acc": 0.881,
+         "n_pairs": 42
         },
         "mattersim": {
-         "right": 15,
-         "n": 17,
-         "acc": 0.882,
-         "n_pairs": 17
+         "right": 46,
+         "n": 48,
+         "acc": 0.958,
+         "n_pairs": 48
         },
         "orb": {
-         "right": 48,
-         "n": 51,
-         "acc": 0.941,
-         "n_pairs": 51
+         "right": 44,
+         "n": 45,
+         "acc": 0.978,
+         "n_pairs": 45
         }
        }
       },
       "2.75": {
        "strong_OO<=t": {
-        "right": 115,
-        "n": 128,
-        "acc": 0.898,
+        "right": 145,
+        "n": 156,
+        "acc": 0.929,
         "n_pairs": 70
        },
        "weak_OO>t": {
-        "right": 25,
-        "n": 44,
-        "acc": 0.568,
-        "n_pairs": 30
+        "right": 51,
+        "n": 100,
+        "acc": 0.51,
+        "n_pairs": 47
        },
        "strong_per_model": {
         "mace": {
-         "right": 45,
-         "n": 53,
-         "acc": 0.849,
-         "n_pairs": 53
+         "right": 40,
+         "n": 48,
+         "acc": 0.833,
+         "n_pairs": 48
         },
         "mattersim": {
-         "right": 17,
-         "n": 19,
-         "acc": 0.895,
-         "n_pairs": 19
+         "right": 55,
+         "n": 57,
+         "acc": 0.965,
+         "n_pairs": 57
         },
         "orb": {
-         "right": 53,
-         "n": 56,
-         "acc": 0.946,
-         "n_pairs": 56
+         "right": 50,
+         "n": 51,
+         "acc": 0.98,
+         "n_pairs": 51
         }
        }
       },
       "2.80": {
        "strong_OO<=t": {
-        "right": 120,
-        "n": 134,
-        "acc": 0.896,
-        "n_pairs": 73
+        "right": 176,
+        "n": 207,
+        "acc": 0.85,
+        "n_pairs": 91
        },
        "weak_OO>t": {
         "right": 20,
-        "n": 38,
-        "acc": 0.526,
-        "n_pairs": 26
+        "n": 49,
+        "acc": 0.408,
+        "n_pairs": 28
        },
        "strong_per_model": {
         "mace": {
          "right": 47,
-         "n": 55,
-         "acc": 0.855,
-         "n_pairs": 55
+         "n": 63,
+         "acc": 0.746,
+         "n_pairs": 63
         },
         "mattersim": {
-         "right": 18,
-         "n": 21,
-         "acc": 0.857,
-         "n_pairs": 21
+         "right": 69,
+         "n": 74,
+         "acc": 0.932,
+         "n_pairs": 74
         },
         "orb": {
-         "right": 55,
-         "n": 58,
-         "acc": 0.948,
-         "n_pairs": 58
+         "right": 60,
+         "n": 70,
+         "acc": 0.857,
+         "n_pairs": 70
         }
        }
       },
       "2.85": {
        "strong_OO<=t": {
-        "right": 123,
-        "n": 137,
-        "acc": 0.898,
-        "n_pairs": 76
+        "right": 187,
+        "n": 238,
+        "acc": 0.786,
+        "n_pairs": 103
        },
        "weak_OO>t": {
-        "right": 17,
-        "n": 35,
-        "acc": 0.486,
-        "n_pairs": 26
+        "right": 9,
+        "n": 18,
+        "acc": 0.5,
+        "n_pairs": 13
        },
        "strong_per_model": {
         "mace": {
-         "right": 47,
-         "n": 55,
-         "acc": 0.855,
-         "n_pairs": 55
+         "right": 48,
+         "n": 74,
+         "acc": 0.649,
+         "n_pairs": 74
         },
         "mattersim": {
-         "right": 18,
-         "n": 21,
-         "acc": 0.857,
-         "n_pairs": 21
+         "right": 74,
+         "n": 85,
+         "acc": 0.871,
+         "n_pairs": 85
         },
         "orb": {
-         "right": 58,
-         "n": 61,
-         "acc": 0.951,
-         "n_pairs": 61
+         "right": 65,
+         "n": 79,
+         "acc": 0.823,
+         "n_pairs": 79
         }
        }
       },
       "2.90": {
        "strong_OO<=t": {
-        "right": 127,
-        "n": 147,
-        "acc": 0.864,
-        "n_pairs": 83
+        "right": 195,
+        "n": 253,
+        "acc": 0.771,
+        "n_pairs": 111
        },
        "weak_OO>t": {
-        "right": 13,
-        "n": 25,
-        "acc": 0.52,
-        "n_pairs": 20
+        "right": 1,
+        "n": 3,
+        "acc": 0.333,
+        "n_pairs": 3
        },
        "strong_per_model": {
         "mace": {
-         "right": 48,
-         "n": 59,
-         "acc": 0.814,
-         "n_pairs": 59
+         "right": 55,
+         "n": 82,
+         "acc": 0.671,
+         "n_pairs": 82
         },
         "mattersim": {
-         "right": 18,
-         "n": 24,
-         "acc": 0.75,
-         "n_pairs": 24
+         "right": 74,
+         "n": 87,
+         "acc": 0.851,
+         "n_pairs": 87
         },
         "orb": {
-         "right": 61,
-         "n": 64,
-         "acc": 0.953,
-         "n_pairs": 64
+         "right": 66,
+         "n": 84,
+         "acc": 0.786,
+         "n_pairs": 84
         }
        }
       }
      },
-     "translated_threshold_OO": 2.904,
+     "translated_threshold_OO": 2.829,
      "translated_strong": {
-      "right": 130,
-      "n": 150,
-      "acc": 0.867,
-      "n_pairs": 85
+      "right": 185,
+      "n": 231,
+      "acc": 0.801,
+      "n_pairs": 100
      },
      "translated_weak": {
-      "right": 10,
-      "n": 22,
-      "acc": 0.455,
-      "n_pairs": 19
+      "right": 11,
+      "n": 25,
+      "acc": 0.44,
+      "n_pairs": 18
      },
      "OH_strong_0.99_with_OO_rule": {
-      "right": 118,
-      "n": 132,
-      "acc": 0.894,
-      "n_pairs": 72
+      "right": 150,
+      "n": 176,
+      "acc": 0.852,
+      "n_pairs": 77
      },
      "OH_weak_0.99_with_OO_rule": {
-      "right": 22,
-      "n": 40,
-      "acc": 0.55,
-      "n_pairs": 27
+      "right": 46,
+      "n": 80,
+      "acc": 0.575,
+      "n_pairs": 36
      },
      "regime_agreement_rows": {
-      "both_strong": 132,
-      "both_weak": 22,
+      "both_strong": 176,
+      "both_weak": 25,
       "OH_strong_OO_weak": 0,
-      "OH_weak_OO_strong": 18
+      "OH_weak_OO_strong": 55
+     }
+    },
+    "signal_filtered": {
+     "all_regimes": {
+      "OO_rule": {
+       "right": 178,
+       "n": 231,
+       "acc": 0.771,
+       "n_pairs": 106
+      },
+      "XH_rule_same_rows_eligibility_of_OO": {
+       "right": 168,
+       "n": 231,
+       "acc": 0.727,
+       "n_pairs": 106
+      }
+     },
+     "OO_regime_scan": {
+      "2.60": {
+       "strong_OO<=t": {
+        "right": 82,
+        "n": 82,
+        "acc": 1.0,
+        "n_pairs": 37
+       },
+       "weak_OO>t": {
+        "right": 96,
+        "n": 149,
+        "acc": 0.644,
+        "n_pairs": 77
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 23,
+         "n": 23,
+         "acc": 1.0,
+         "n_pairs": 23
+        },
+        "mattersim": {
+         "right": 30,
+         "n": 30,
+         "acc": 1.0,
+         "n_pairs": 30
+        },
+        "orb": {
+         "right": 29,
+         "n": 29,
+         "acc": 1.0,
+         "n_pairs": 29
+        }
+       }
+      },
+      "2.65": {
+       "strong_OO<=t": {
+        "right": 112,
+        "n": 115,
+        "acc": 0.974,
+        "n_pairs": 51
+       },
+       "weak_OO>t": {
+        "right": 66,
+        "n": 116,
+        "acc": 0.569,
+        "n_pairs": 59
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 34,
+         "n": 36,
+         "acc": 0.944,
+         "n_pairs": 36
+        },
+        "mattersim": {
+         "right": 41,
+         "n": 42,
+         "acc": 0.976,
+         "n_pairs": 42
+        },
+        "orb": {
+         "right": 37,
+         "n": 37,
+         "acc": 1.0,
+         "n_pairs": 37
+        }
+       }
+      },
+      "2.70": {
+       "strong_OO<=t": {
+        "right": 127,
+        "n": 133,
+        "acc": 0.955,
+        "n_pairs": 60
+       },
+       "weak_OO>t": {
+        "right": 51,
+        "n": 98,
+        "acc": 0.52,
+        "n_pairs": 47
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 37,
+         "n": 41,
+         "acc": 0.902,
+         "n_pairs": 41
+        },
+        "mattersim": {
+         "right": 46,
+         "n": 47,
+         "acc": 0.979,
+         "n_pairs": 47
+        },
+        "orb": {
+         "right": 44,
+         "n": 45,
+         "acc": 0.978,
+         "n_pairs": 45
+        }
+       }
+      },
+      "2.75": {
+       "strong_OO<=t": {
+        "right": 144,
+        "n": 153,
+        "acc": 0.941,
+        "n_pairs": 69
+       },
+       "weak_OO>t": {
+        "right": 34,
+        "n": 78,
+        "acc": 0.436,
+        "n_pairs": 41
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 40,
+         "n": 47,
+         "acc": 0.851,
+         "n_pairs": 47
+        },
+        "mattersim": {
+         "right": 54,
+         "n": 55,
+         "acc": 0.982,
+         "n_pairs": 55
+        },
+        "orb": {
+         "right": 50,
+         "n": 51,
+         "acc": 0.98,
+         "n_pairs": 51
+        }
+       }
+      },
+      "2.80": {
+       "strong_OO<=t": {
+        "right": 164,
+        "n": 191,
+        "acc": 0.859,
+        "n_pairs": 86
+       },
+       "weak_OO>t": {
+        "right": 14,
+        "n": 40,
+        "acc": 0.35,
+        "n_pairs": 26
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 43,
+         "n": 58,
+         "acc": 0.741,
+         "n_pairs": 58
+        },
+        "mattersim": {
+         "right": 63,
+         "n": 67,
+         "acc": 0.94,
+         "n_pairs": 67
+        },
+        "orb": {
+         "right": 58,
+         "n": 66,
+         "acc": 0.879,
+         "n_pairs": 66
+        }
+       }
+      },
+      "2.85": {
+       "strong_OO<=t": {
+        "right": 170,
+        "n": 215,
+        "acc": 0.791,
+        "n_pairs": 98
+       },
+       "weak_OO>t": {
+        "right": 8,
+        "n": 16,
+        "acc": 0.5,
+        "n_pairs": 12
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 43,
+         "n": 68,
+         "acc": 0.632,
+         "n_pairs": 68
+        },
+        "mattersim": {
+         "right": 65,
+         "n": 75,
+         "acc": 0.867,
+         "n_pairs": 75
+        },
+        "orb": {
+         "right": 62,
+         "n": 72,
+         "acc": 0.861,
+         "n_pairs": 72
+        }
+       }
+      },
+      "2.90": {
+       "strong_OO<=t": {
+        "right": 177,
+        "n": 228,
+        "acc": 0.776,
+        "n_pairs": 105
+       },
+       "weak_OO>t": {
+        "right": 1,
+        "n": 3,
+        "acc": 0.333,
+        "n_pairs": 3
+       },
+       "strong_per_model": {
+        "mace": {
+         "right": 49,
+         "n": 74,
+         "acc": 0.662,
+         "n_pairs": 74
+        },
+        "mattersim": {
+         "right": 65,
+         "n": 77,
+         "acc": 0.844,
+         "n_pairs": 77
+        },
+        "orb": {
+         "right": 63,
+         "n": 77,
+         "acc": 0.818,
+         "n_pairs": 77
+        }
+       }
+      }
+     },
+     "translated_threshold_OO": 2.829,
+     "translated_strong": {
+      "right": 170,
+      "n": 210,
+      "acc": 0.81,
+      "n_pairs": 95
+     },
+     "translated_weak": {
+      "right": 8,
+      "n": 21,
+      "acc": 0.381,
+      "n_pairs": 15
+     },
+     "OH_strong_0.99_with_OO_rule": {
+      "right": 147,
+      "n": 171,
+      "acc": 0.86,
+      "n_pairs": 75
+     },
+     "OH_weak_0.99_with_OO_rule": {
+      "right": 31,
+      "n": 60,
+      "acc": 0.517,
+      "n_pairs": 31
+     },
+     "regime_agreement_rows": {
+      "both_strong": 171,
+      "both_weak": 21,
+      "OH_strong_OO_weak": 0,
+      "OH_weak_OO_strong": 39
      }
     }
    },
@@ -1721,1283 +2675,329 @@
      "all_eligible": {
       "mace": {
        "n_rows": 121,
-       "n_formulas": 37,
+       "n_formulas": 34,
        "n_eligible": 84,
        "n_eligible_pairs": 84,
-       "line_sign_acc": 0.75,
-       "raw_sign_acc": 0.726,
-       "train_fold_baseline_acc": 0.619,
-       "line_sign_right": 63,
-       "raw_sign_right": 61,
-       "baseline_right": 52,
-       "R2_heldout": 0.131
+       "line_sign_acc": 0.643,
+       "raw_sign_acc": 0.655,
+       "train_fold_baseline_acc": 0.679,
+       "line_sign_right": 54,
+       "raw_sign_right": 55,
+       "baseline_right": 57,
+       "R2_heldout": 0.098
       },
       "mattersim": {
-       "n_rows": 36,
-       "n_formulas": 21,
-       "n_eligible": 26,
-       "n_eligible_pairs": 26,
-       "line_sign_acc": 0.731,
-       "raw_sign_acc": 0.731,
-       "train_fold_baseline_acc": 0.654,
-       "line_sign_right": 19,
-       "raw_sign_right": 19,
-       "baseline_right": 17,
-       "R2_heldout": 0.111
+       "n_rows": 123,
+       "n_formulas": 34,
+       "n_eligible": 88,
+       "n_eligible_pairs": 88,
+       "line_sign_acc": 0.761,
+       "raw_sign_acc": 0.852,
+       "train_fold_baseline_acc": 0.557,
+       "line_sign_right": 67,
+       "raw_sign_right": 75,
+       "baseline_right": 49,
+       "R2_heldout": 0.161
       },
       "orb": {
-       "n_rows": 97,
-       "n_formulas": 22,
-       "n_eligible": 72,
-       "n_eligible_pairs": 72,
-       "line_sign_acc": 0.806,
-       "raw_sign_acc": 0.917,
-       "train_fold_baseline_acc": 0.653,
-       "line_sign_right": 58,
+       "n_rows": 119,
+       "n_formulas": 32,
+       "n_eligible": 84,
+       "n_eligible_pairs": 84,
+       "line_sign_acc": 0.762,
+       "raw_sign_acc": 0.786,
+       "train_fold_baseline_acc": 0.595,
+       "line_sign_right": 64,
        "raw_sign_right": 66,
-       "baseline_right": 47,
-       "R2_heldout": 0.253
+       "baseline_right": 50,
+       "R2_heldout": 0.246
       },
       "pooled": {
-       "n_rows": 254,
+       "n_rows": 363,
        "n_formulas": 39,
-       "n_eligible": 182,
-       "n_eligible_pairs": 105,
-       "line_sign_acc": 0.78,
-       "raw_sign_acc": 0.802,
-       "train_fold_baseline_acc": 0.637,
-       "line_sign_right": 142,
-       "raw_sign_right": 146,
-       "baseline_right": 116,
-       "R2_heldout": 0.192
+       "n_eligible": 256,
+       "n_eligible_pairs": 112,
+       "line_sign_acc": 0.738,
+       "raw_sign_acc": 0.766,
+       "train_fold_baseline_acc": 0.609,
+       "line_sign_right": 189,
+       "raw_sign_right": 196,
+       "baseline_right": 156,
+       "R2_heldout": 0.178
       }
      },
      "signal_filtered": {
       "mace": {
        "n_rows": 108,
-       "n_formulas": 34,
-       "n_eligible": 77,
-       "n_eligible_pairs": 77,
-       "line_sign_acc": 0.74,
-       "raw_sign_acc": 0.74,
-       "train_fold_baseline_acc": 0.649,
-       "line_sign_right": 57,
-       "raw_sign_right": 57,
-       "baseline_right": 50,
-       "R2_heldout": 0.131
+       "n_formulas": 31,
+       "n_eligible": 76,
+       "n_eligible_pairs": 76,
+       "line_sign_acc": 0.645,
+       "raw_sign_acc": 0.645,
+       "train_fold_baseline_acc": 0.697,
+       "line_sign_right": 49,
+       "raw_sign_right": 49,
+       "baseline_right": 53,
+       "R2_heldout": 0.148
       },
       "mattersim": {
-       "n_rows": 32,
-       "n_formulas": 19,
-       "n_eligible": 25,
-       "n_eligible_pairs": 25,
-       "line_sign_acc": 0.72,
-       "raw_sign_acc": 0.76,
-       "train_fold_baseline_acc": 0.64,
-       "line_sign_right": 18,
-       "raw_sign_right": 19,
-       "baseline_right": 16,
-       "R2_heldout": 0.109
+       "n_rows": 102,
+       "n_formulas": 30,
+       "n_eligible": 78,
+       "n_eligible_pairs": 78,
+       "line_sign_acc": 0.769,
+       "raw_sign_acc": 0.846,
+       "train_fold_baseline_acc": 0.577,
+       "line_sign_right": 60,
+       "raw_sign_right": 66,
+       "baseline_right": 45,
+       "R2_heldout": 0.261
       },
       "orb": {
-       "n_rows": 91,
-       "n_formulas": 22,
-       "n_eligible": 70,
-       "n_eligible_pairs": 70,
-       "line_sign_acc": 0.786,
-       "raw_sign_acc": 0.914,
-       "train_fold_baseline_acc": 0.671,
-       "line_sign_right": 55,
-       "raw_sign_right": 64,
-       "baseline_right": 47,
-       "R2_heldout": 0.25
+       "n_rows": 110,
+       "n_formulas": 31,
+       "n_eligible": 77,
+       "n_eligible_pairs": 77,
+       "line_sign_acc": 0.792,
+       "raw_sign_acc": 0.818,
+       "train_fold_baseline_acc": 0.636,
+       "line_sign_right": 61,
+       "raw_sign_right": 63,
+       "baseline_right": 49,
+       "R2_heldout": 0.283
       },
       "pooled": {
-       "n_rows": 231,
+       "n_rows": 320,
        "n_formulas": 38,
-       "n_eligible": 172,
-       "n_eligible_pairs": 99,
-       "line_sign_acc": 0.785,
-       "raw_sign_acc": 0.814,
-       "train_fold_baseline_acc": 0.657,
-       "line_sign_right": 135,
-       "raw_sign_right": 140,
-       "baseline_right": 113,
-       "R2_heldout": 0.19
+       "n_eligible": 231,
+       "n_eligible_pairs": 106,
+       "line_sign_acc": 0.736,
+       "raw_sign_acc": 0.771,
+       "train_fold_baseline_acc": 0.636,
+       "line_sign_right": 170,
+       "raw_sign_right": 178,
+       "baseline_right": 147,
+       "R2_heldout": 0.241
       }
      }
     },
     "strong_translated_OO": {
      "all_eligible": {
       "mace": {
-       "n_rows": 86,
-       "n_formulas": 33,
-       "n_eligible": 63,
-       "n_eligible_pairs": 63,
-       "line_sign_acc": 0.73,
-       "raw_sign_acc": 0.778,
-       "train_fold_baseline_acc": 0.603,
+       "n_rows": 98,
+       "n_formulas": 31,
+       "n_eligible": 70,
+       "n_eligible_pairs": 70,
+       "line_sign_acc": 0.657,
+       "raw_sign_acc": 0.671,
+       "train_fold_baseline_acc": 0.671,
        "line_sign_right": 46,
-       "raw_sign_right": 49,
-       "baseline_right": 38,
-       "R2_heldout": 0.122
+       "raw_sign_right": 47,
+       "baseline_right": 47,
+       "R2_heldout": 0.161
       },
       "mattersim": {
-       "n_rows": 32,
-       "n_formulas": 20,
-       "n_eligible": 25,
-       "n_eligible_pairs": 25,
-       "line_sign_acc": 0.72,
-       "raw_sign_acc": 0.72,
-       "train_fold_baseline_acc": 0.52,
-       "line_sign_right": 18,
-       "raw_sign_right": 18,
-       "baseline_right": 13,
-       "R2_heldout": 0.133
+       "n_rows": 115,
+       "n_formulas": 32,
+       "n_eligible": 82,
+       "n_eligible_pairs": 82,
+       "line_sign_acc": 0.78,
+       "raw_sign_acc": 0.89,
+       "train_fold_baseline_acc": 0.561,
+       "line_sign_right": 64,
+       "raw_sign_right": 73,
+       "baseline_right": 46,
+       "R2_heldout": 0.195
       },
       "orb": {
-       "n_rows": 86,
-       "n_formulas": 20,
-       "n_eligible": 69,
-       "n_eligible_pairs": 69,
-       "line_sign_acc": 0.754,
-       "raw_sign_acc": 0.957,
-       "train_fold_baseline_acc": 0.638,
-       "line_sign_right": 52,
-       "raw_sign_right": 66,
-       "baseline_right": 44,
-       "R2_heldout": 0.251
+       "n_rows": 111,
+       "n_formulas": 30,
+       "n_eligible": 79,
+       "n_eligible_pairs": 79,
+       "line_sign_acc": 0.759,
+       "raw_sign_acc": 0.823,
+       "train_fold_baseline_acc": 0.595,
+       "line_sign_right": 60,
+       "raw_sign_right": 65,
+       "baseline_right": 47,
+       "R2_heldout": 0.266
       },
       "pooled": {
-       "n_rows": 204,
+       "n_rows": 324,
        "n_formulas": 37,
-       "n_eligible": 157,
-       "n_eligible_pairs": 89,
-       "line_sign_acc": 0.771,
-       "raw_sign_acc": 0.847,
-       "train_fold_baseline_acc": 0.624,
-       "line_sign_right": 121,
-       "raw_sign_right": 133,
-       "baseline_right": 98,
-       "R2_heldout": 0.191
+       "n_eligible": 231,
+       "n_eligible_pairs": 100,
+       "line_sign_acc": 0.749,
+       "raw_sign_acc": 0.801,
+       "train_fold_baseline_acc": 0.606,
+       "line_sign_right": 173,
+       "raw_sign_right": 185,
+       "baseline_right": 140,
+       "R2_heldout": 0.218
       }
      },
      "signal_filtered": {
       "mace": {
-       "n_rows": 80,
-       "n_formulas": 30,
-       "n_eligible": 59,
-       "n_eligible_pairs": 59,
-       "line_sign_acc": 0.746,
-       "raw_sign_acc": 0.814,
-       "train_fold_baseline_acc": 0.61,
-       "line_sign_right": 44,
-       "raw_sign_right": 48,
-       "baseline_right": 36,
-       "R2_heldout": 0.125
+       "n_rows": 90,
+       "n_formulas": 29,
+       "n_eligible": 65,
+       "n_eligible_pairs": 65,
+       "line_sign_acc": 0.631,
+       "raw_sign_acc": 0.662,
+       "train_fold_baseline_acc": 0.677,
+       "line_sign_right": 41,
+       "raw_sign_right": 43,
+       "baseline_right": 44,
+       "R2_heldout": 0.195
       },
       "mattersim": {
-       "n_rows": 29,
-       "n_formulas": 18,
-       "n_eligible": 24,
-       "n_eligible_pairs": 24,
-       "line_sign_acc": 0.708,
-       "raw_sign_acc": 0.75,
-       "train_fold_baseline_acc": 0.417,
-       "line_sign_right": 17,
-       "raw_sign_right": 18,
-       "baseline_right": 10,
-       "R2_heldout": 0.133
+       "n_rows": 96,
+       "n_formulas": 29,
+       "n_eligible": 73,
+       "n_eligible_pairs": 73,
+       "line_sign_acc": 0.795,
+       "raw_sign_acc": 0.89,
+       "train_fold_baseline_acc": 0.575,
+       "line_sign_right": 58,
+       "raw_sign_right": 65,
+       "baseline_right": 42,
+       "R2_heldout": 0.295
       },
       "orb": {
-       "n_rows": 84,
-       "n_formulas": 20,
-       "n_eligible": 67,
-       "n_eligible_pairs": 67,
-       "line_sign_acc": 0.776,
-       "raw_sign_acc": 0.955,
-       "train_fold_baseline_acc": 0.657,
-       "line_sign_right": 52,
-       "raw_sign_right": 64,
-       "baseline_right": 44,
-       "R2_heldout": 0.247
+       "n_rows": 103,
+       "n_formulas": 29,
+       "n_eligible": 72,
+       "n_eligible_pairs": 72,
+       "line_sign_acc": 0.792,
+       "raw_sign_acc": 0.861,
+       "train_fold_baseline_acc": 0.639,
+       "line_sign_right": 57,
+       "raw_sign_right": 62,
+       "baseline_right": 46,
+       "R2_heldout": 0.304
       },
       "pooled": {
-       "n_rows": 193,
+       "n_rows": 289,
        "n_formulas": 36,
-       "n_eligible": 150,
-       "n_eligible_pairs": 85,
-       "line_sign_acc": 0.773,
-       "raw_sign_acc": 0.867,
-       "train_fold_baseline_acc": 0.633,
-       "line_sign_right": 116,
-       "raw_sign_right": 130,
-       "baseline_right": 95,
-       "R2_heldout": 0.191
+       "n_eligible": 210,
+       "n_eligible_pairs": 95,
+       "line_sign_acc": 0.757,
+       "raw_sign_acc": 0.81,
+       "train_fold_baseline_acc": 0.629,
+       "line_sign_right": 159,
+       "raw_sign_right": 170,
+       "baseline_right": 132,
+       "R2_heldout": 0.276
       }
      }
     },
     "strong_OH_0.99": {
      "all_eligible": {
       "mace": {
-       "n_rows": 80,
-       "n_formulas": 31,
-       "n_eligible": 57,
-       "n_eligible_pairs": 57,
-       "line_sign_acc": 0.772,
-       "raw_sign_acc": 0.807,
-       "train_fold_baseline_acc": 0.614,
-       "line_sign_right": 44,
-       "raw_sign_right": 46,
-       "baseline_right": 35,
-       "R2_heldout": 0.133
-      },
-      "mattersim": {
-       "n_rows": 27,
-       "n_formulas": 17,
-       "n_eligible": 21,
-       "n_eligible_pairs": 21,
-       "line_sign_acc": 0.762,
-       "raw_sign_acc": 0.81,
-       "train_fold_baseline_acc": 0.667,
-       "line_sign_right": 16,
-       "raw_sign_right": 17,
-       "baseline_right": 14,
-       "R2_heldout": 0.193
-      },
-      "orb": {
-       "n_rows": 74,
-       "n_formulas": 18,
-       "n_eligible": 58,
-       "n_eligible_pairs": 58,
-       "line_sign_acc": 0.793,
-       "raw_sign_acc": 0.948,
-       "train_fold_baseline_acc": 0.655,
-       "line_sign_right": 46,
-       "raw_sign_right": 55,
-       "baseline_right": 38,
-       "R2_heldout": 0.253
-      },
-      "pooled": {
-       "n_rows": 181,
-       "n_formulas": 33,
-       "n_eligible": 136,
-       "n_eligible_pairs": 73,
-       "line_sign_acc": 0.787,
-       "raw_sign_acc": 0.868,
-       "train_fold_baseline_acc": 0.64,
-       "line_sign_right": 107,
-       "raw_sign_right": 118,
-       "baseline_right": 87,
-       "R2_heldout": 0.202
-      }
-     },
-     "signal_filtered": {
-      "mace": {
-       "n_rows": 75,
-       "n_formulas": 28,
-       "n_eligible": 54,
-       "n_eligible_pairs": 54,
-       "line_sign_acc": 0.796,
-       "raw_sign_acc": 0.852,
-       "train_fold_baseline_acc": 0.63,
-       "line_sign_right": 43,
-       "raw_sign_right": 46,
-       "baseline_right": 34,
-       "R2_heldout": 0.132
-      },
-      "mattersim": {
-       "n_rows": 24,
-       "n_formulas": 15,
-       "n_eligible": 20,
-       "n_eligible_pairs": 20,
-       "line_sign_acc": 0.8,
-       "raw_sign_acc": 0.85,
-       "train_fold_baseline_acc": 0.5,
-       "line_sign_right": 16,
-       "raw_sign_right": 17,
-       "baseline_right": 10,
-       "R2_heldout": 0.203
-      },
-      "orb": {
-       "n_rows": 74,
-       "n_formulas": 18,
-       "n_eligible": 58,
-       "n_eligible_pairs": 58,
-       "line_sign_acc": 0.793,
-       "raw_sign_acc": 0.948,
-       "train_fold_baseline_acc": 0.655,
-       "line_sign_right": 46,
-       "raw_sign_right": 55,
-       "baseline_right": 38,
-       "R2_heldout": 0.253
-      },
-      "pooled": {
-       "n_rows": 173,
+       "n_rows": 86,
        "n_formulas": 32,
-       "n_eligible": 132,
-       "n_eligible_pairs": 72,
-       "line_sign_acc": 0.795,
-       "raw_sign_acc": 0.894,
-       "train_fold_baseline_acc": 0.644,
-       "line_sign_right": 105,
-       "raw_sign_right": 118,
-       "baseline_right": 85,
-       "R2_heldout": 0.202
-      }
-     }
-    }
-   }
-  },
-  "3.0": {
-   "coverage": {
-    "rows_with_OO": 228,
-    "of_rows": 341,
-    "unique_pairs": 123,
-    "formulas": 37,
-    "rows_per_model": {
-     "mace": 110,
-     "orb": 82,
-     "mattersim": 36
-    }
-   },
-   "fit_all_rows": {
-    "mace": {
-     "n": 110,
-     "slope_meV_per_H": -26.868,
-     "intercept": 0.707,
-     "r": -0.559
-    },
-    "mattersim": {
-     "n": 36,
-     "slope_meV_per_H": -29.046,
-     "intercept": 1.618,
-     "r": -0.617
-    },
-    "orb": {
-     "n": 82,
-     "slope_meV_per_H": -27.609,
-     "intercept": 1.03,
-     "r": -0.653
-    },
-    "pooled": {
-     "n": 228,
-     "slope_meV_per_H": -27.307,
-     "intercept": 0.965,
-     "r": -0.597
-    }
-   },
-   "threshold_translation_summary": {
-    "range_OO_A": [
-     2.823,
-     2.841
-    ],
-    "median_OO_A": 2.833
-   },
-   "sign_accuracy": {
-    "all_eligible": {
-     "all_regimes": {
-      "OO_rule": {
-       "right": 129,
-       "n": 162,
-       "acc": 0.796,
-       "n_pairs": 93
-      },
-      "XH_rule_same_rows_eligibility_of_OO": {
-       "right": 120,
-       "n": 162,
-       "acc": 0.741,
-       "n_pairs": 93
-      }
-     },
-     "OO_regime_scan": {
-      "2.60": {
-       "strong_OO<=t": {
-        "right": 59,
-        "n": 59,
-        "acc": 1.0,
-        "n_pairs": 32
-       },
-       "weak_OO>t": {
-        "right": 70,
-        "n": 103,
-        "acc": 0.68,
-        "n_pairs": 67
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 22,
-         "n": 22,
-         "acc": 1.0,
-         "n_pairs": 22
-        },
-        "mattersim": {
-         "right": 10,
-         "n": 10,
-         "acc": 1.0,
-         "n_pairs": 10
-        },
-        "orb": {
-         "right": 27,
-         "n": 27,
-         "acc": 1.0,
-         "n_pairs": 27
-        }
-       }
-      },
-      "2.65": {
-       "strong_OO<=t": {
-        "right": 83,
-        "n": 87,
-        "acc": 0.954,
-        "n_pairs": 45
-       },
-       "weak_OO>t": {
-        "right": 46,
-        "n": 75,
-        "acc": 0.613,
-        "n_pairs": 52
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 33,
-         "n": 36,
-         "acc": 0.917,
-         "n_pairs": 36
-        },
-        "mattersim": {
-         "right": 15,
-         "n": 16,
-         "acc": 0.938,
-         "n_pairs": 16
-        },
-        "orb": {
-         "right": 35,
-         "n": 35,
-         "acc": 1.0,
-         "n_pairs": 35
-        }
-       }
-      },
-      "2.70": {
-       "strong_OO<=t": {
-        "right": 93,
-        "n": 101,
-        "acc": 0.921,
-        "n_pairs": 52
-       },
-       "weak_OO>t": {
-        "right": 36,
-        "n": 61,
-        "acc": 0.59,
-        "n_pairs": 42
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 36,
-         "n": 41,
-         "acc": 0.878,
-         "n_pairs": 41
-        },
-        "mattersim": {
-         "right": 17,
-         "n": 19,
-         "acc": 0.895,
-         "n_pairs": 19
-        },
-        "orb": {
-         "right": 40,
-         "n": 41,
-         "acc": 0.976,
-         "n_pairs": 41
-        }
-       }
-      },
-      "2.75": {
-       "strong_OO<=t": {
-        "right": 101,
-        "n": 112,
-        "acc": 0.902,
-        "n_pairs": 58
-       },
-       "weak_OO>t": {
-        "right": 28,
-        "n": 50,
-        "acc": 0.56,
-        "n_pairs": 36
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 39,
-         "n": 47,
-         "acc": 0.83,
-         "n_pairs": 47
-        },
-        "mattersim": {
-         "right": 18,
-         "n": 20,
-         "acc": 0.9,
-         "n_pairs": 20
-        },
-        "orb": {
-         "right": 44,
-         "n": 45,
-         "acc": 0.978,
-         "n_pairs": 45
-        }
-       }
-      },
-      "2.80": {
-       "strong_OO<=t": {
-        "right": 116,
-        "n": 137,
-        "acc": 0.847,
-        "n_pairs": 74
-       },
-       "weak_OO>t": {
-        "right": 13,
-        "n": 25,
-        "acc": 0.52,
-        "n_pairs": 19
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 45,
-         "n": 61,
-         "acc": 0.738,
-         "n_pairs": 61
-        },
-        "mattersim": {
-         "right": 19,
-         "n": 22,
-         "acc": 0.864,
-         "n_pairs": 22
-        },
-        "orb": {
-         "right": 52,
-         "n": 54,
-         "acc": 0.963,
-         "n_pairs": 54
-        }
-       }
-      },
-      "2.85": {
-       "strong_OO<=t": {
-        "right": 120,
-        "n": 146,
-        "acc": 0.822,
-        "n_pairs": 80
-       },
-       "weak_OO>t": {
-        "right": 9,
-        "n": 16,
-        "acc": 0.562,
-        "n_pairs": 13
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 46,
-         "n": 65,
-         "acc": 0.708,
-         "n_pairs": 65
-        },
-        "mattersim": {
-         "right": 21,
-         "n": 25,
-         "acc": 0.84,
-         "n_pairs": 25
-        },
-        "orb": {
-         "right": 53,
-         "n": 56,
-         "acc": 0.946,
-         "n_pairs": 56
-        }
-       }
-      },
-      "2.90": {
-       "strong_OO<=t": {
-        "right": 128,
-        "n": 159,
-        "acc": 0.805,
-        "n_pairs": 91
-       },
-       "weak_OO>t": {
-        "right": 1,
-        "n": 3,
-        "acc": 0.333,
-        "n_pairs": 3
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 53,
-         "n": 73,
-         "acc": 0.726,
-         "n_pairs": 73
-        },
-        "mattersim": {
-         "right": 21,
-         "n": 27,
-         "acc": 0.778,
-         "n_pairs": 27
-        },
-        "orb": {
-         "right": 54,
-         "n": 59,
-         "acc": 0.915,
-         "n_pairs": 59
-        }
-       }
-      }
-     },
-     "translated_threshold_OO": 2.833,
-     "translated_strong": {
-      "right": 119,
-      "n": 142,
-      "acc": 0.838,
-      "n_pairs": 79
-     },
-     "translated_weak": {
-      "right": 10,
-      "n": 20,
-      "acc": 0.5,
-      "n_pairs": 17
-     },
-     "OH_strong_0.99_with_OO_rule": {
-      "right": 101,
-      "n": 113,
-      "acc": 0.894,
-      "n_pairs": 59
-     },
-     "OH_weak_0.99_with_OO_rule": {
-      "right": 28,
-      "n": 49,
-      "acc": 0.571,
-      "n_pairs": 34
-     },
-     "regime_agreement_rows": {
-      "both_strong": 113,
-      "both_weak": 20,
-      "OH_strong_OO_weak": 0,
-      "OH_weak_OO_strong": 29
-     }
-    },
-    "signal_filtered": {
-     "all_regimes": {
-      "OO_rule": {
-       "right": 120,
-       "n": 150,
-       "acc": 0.8,
-       "n_pairs": 88
-      },
-      "XH_rule_same_rows_eligibility_of_OO": {
-       "right": 111,
-       "n": 150,
-       "acc": 0.74,
-       "n_pairs": 88
-      }
-     },
-     "OO_regime_scan": {
-      "2.60": {
-       "strong_OO<=t": {
-        "right": 59,
-        "n": 59,
-        "acc": 1.0,
-        "n_pairs": 32
-       },
-       "weak_OO>t": {
-        "right": 61,
-        "n": 91,
-        "acc": 0.67,
-        "n_pairs": 61
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 22,
-         "n": 22,
-         "acc": 1.0,
-         "n_pairs": 22
-        },
-        "mattersim": {
-         "right": 10,
-         "n": 10,
-         "acc": 1.0,
-         "n_pairs": 10
-        },
-        "orb": {
-         "right": 27,
-         "n": 27,
-         "acc": 1.0,
-         "n_pairs": 27
-        }
-       }
-      },
-      "2.65": {
-       "strong_OO<=t": {
-        "right": 83,
-        "n": 86,
-        "acc": 0.965,
-        "n_pairs": 45
-       },
-       "weak_OO>t": {
-        "right": 37,
-        "n": 64,
-        "acc": 0.578,
-        "n_pairs": 47
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 33,
-         "n": 35,
-         "acc": 0.943,
-         "n_pairs": 35
-        },
-        "mattersim": {
-         "right": 15,
-         "n": 16,
-         "acc": 0.938,
-         "n_pairs": 16
-        },
-        "orb": {
-         "right": 35,
-         "n": 35,
-         "acc": 1.0,
-         "n_pairs": 35
-        }
-       }
-      },
-      "2.70": {
-       "strong_OO<=t": {
-        "right": 93,
-        "n": 99,
-        "acc": 0.939,
-        "n_pairs": 52
-       },
-       "weak_OO>t": {
-        "right": 27,
-        "n": 51,
-        "acc": 0.529,
-        "n_pairs": 37
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 36,
-         "n": 40,
-         "acc": 0.9,
-         "n_pairs": 40
-        },
-        "mattersim": {
-         "right": 17,
-         "n": 18,
-         "acc": 0.944,
-         "n_pairs": 18
-        },
-        "orb": {
-         "right": 40,
-         "n": 41,
-         "acc": 0.976,
-         "n_pairs": 41
-        }
-       }
-      },
-      "2.75": {
-       "strong_OO<=t": {
-        "right": 101,
-        "n": 110,
-        "acc": 0.918,
-        "n_pairs": 58
-       },
-       "weak_OO>t": {
-        "right": 19,
-        "n": 40,
-        "acc": 0.475,
-        "n_pairs": 31
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 39,
-         "n": 46,
-         "acc": 0.848,
-         "n_pairs": 46
-        },
-        "mattersim": {
-         "right": 18,
-         "n": 19,
-         "acc": 0.947,
-         "n_pairs": 19
-        },
-        "orb": {
-         "right": 44,
-         "n": 45,
-         "acc": 0.978,
-         "n_pairs": 45
-        }
-       }
-      },
-      "2.80": {
-       "strong_OO<=t": {
-        "right": 110,
-        "n": 129,
-        "acc": 0.853,
-        "n_pairs": 71
-       },
-       "weak_OO>t": {
-        "right": 10,
-        "n": 21,
-        "acc": 0.476,
-        "n_pairs": 17
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 41,
-         "n": 56,
-         "acc": 0.732,
-         "n_pairs": 56
-        },
-        "mattersim": {
-         "right": 19,
-         "n": 21,
-         "acc": 0.905,
-         "n_pairs": 21
-        },
-        "orb": {
-         "right": 50,
-         "n": 52,
-         "acc": 0.962,
-         "n_pairs": 52
-        }
-       }
-      },
-      "2.85": {
-       "strong_OO<=t": {
-        "right": 112,
-        "n": 136,
-        "acc": 0.824,
-        "n_pairs": 76
-       },
-       "weak_OO>t": {
-        "right": 8,
-        "n": 14,
-        "acc": 0.571,
-        "n_pairs": 12
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 41,
-         "n": 59,
-         "acc": 0.695,
-         "n_pairs": 59
-        },
-        "mattersim": {
-         "right": 20,
-         "n": 23,
-         "acc": 0.87,
-         "n_pairs": 23
-        },
-        "orb": {
-         "right": 51,
-         "n": 54,
-         "acc": 0.944,
-         "n_pairs": 54
-        }
-       }
-      },
-      "2.90": {
-       "strong_OO<=t": {
-        "right": 119,
-        "n": 147,
-        "acc": 0.81,
-        "n_pairs": 86
-       },
-       "weak_OO>t": {
-        "right": 1,
-        "n": 3,
-        "acc": 0.333,
-        "n_pairs": 3
-       },
-       "strong_per_model": {
-        "mace": {
-         "right": 47,
-         "n": 65,
-         "acc": 0.723,
-         "n_pairs": 65
-        },
-        "mattersim": {
-         "right": 20,
-         "n": 25,
-         "acc": 0.8,
-         "n_pairs": 25
-        },
-        "orb": {
-         "right": 52,
-         "n": 57,
-         "acc": 0.912,
-         "n_pairs": 57
-        }
-       }
-      }
-     },
-     "translated_threshold_OO": 2.833,
-     "translated_strong": {
-      "right": 112,
-      "n": 133,
-      "acc": 0.842,
-      "n_pairs": 75
-     },
-     "translated_weak": {
-      "right": 8,
-      "n": 17,
-      "acc": 0.471,
-      "n_pairs": 15
-     },
-     "OH_strong_0.99_with_OO_rule": {
-      "right": 101,
-      "n": 111,
-      "acc": 0.91,
-      "n_pairs": 59
-     },
-     "OH_weak_0.99_with_OO_rule": {
-      "right": 19,
-      "n": 39,
-      "acc": 0.487,
-      "n_pairs": 29
-     },
-     "regime_agreement_rows": {
-      "both_strong": 111,
-      "both_weak": 17,
-      "OH_strong_OO_weak": 0,
-      "OH_weak_OO_strong": 22
-     }
-    }
-   },
-   "formula_cv_OO": {
-    "all_regimes": {
-     "all_eligible": {
-      "mace": {
-       "n_rows": 110,
-       "n_formulas": 33,
-       "n_eligible": 75,
-       "n_eligible_pairs": 75,
-       "line_sign_acc": 0.707,
-       "raw_sign_acc": 0.707,
-       "train_fold_baseline_acc": 0.653,
-       "line_sign_right": 53,
-       "raw_sign_right": 53,
-       "baseline_right": 49,
-       "R2_heldout": 0.152
-      },
-      "mattersim": {
-       "n_rows": 36,
-       "n_formulas": 21,
-       "n_eligible": 28,
-       "n_eligible_pairs": 28,
-       "line_sign_acc": 0.821,
-       "raw_sign_acc": 0.786,
-       "train_fold_baseline_acc": 0.643,
-       "line_sign_right": 23,
-       "raw_sign_right": 22,
-       "baseline_right": 18,
-       "R2_heldout": 0.17
-      },
-      "orb": {
-       "n_rows": 82,
-       "n_formulas": 20,
-       "n_eligible": 59,
-       "n_eligible_pairs": 59,
-       "line_sign_acc": 0.898,
-       "raw_sign_acc": 0.915,
-       "train_fold_baseline_acc": 0.661,
-       "line_sign_right": 53,
-       "raw_sign_right": 54,
-       "baseline_right": 39,
-       "R2_heldout": 0.341
-      },
-      "pooled": {
-       "n_rows": 228,
-       "n_formulas": 37,
-       "n_eligible": 162,
-       "n_eligible_pairs": 93,
-       "line_sign_acc": 0.778,
-       "raw_sign_acc": 0.796,
-       "train_fold_baseline_acc": 0.654,
-       "line_sign_right": 126,
-       "raw_sign_right": 129,
-       "baseline_right": 106,
-       "R2_heldout": 0.257
-      }
-     },
-     "signal_filtered": {
-      "mace": {
-       "n_rows": 97,
-       "n_formulas": 30,
-       "n_eligible": 67,
-       "n_eligible_pairs": 67,
-       "line_sign_acc": 0.701,
-       "raw_sign_acc": 0.701,
-       "train_fold_baseline_acc": 0.672,
-       "line_sign_right": 47,
-       "raw_sign_right": 47,
-       "baseline_right": 45,
-       "R2_heldout": 0.199
-      },
-      "mattersim": {
-       "n_rows": 32,
-       "n_formulas": 19,
-       "n_eligible": 26,
-       "n_eligible_pairs": 26,
-       "line_sign_acc": 0.808,
-       "raw_sign_acc": 0.808,
-       "train_fold_baseline_acc": 0.654,
-       "line_sign_right": 21,
-       "raw_sign_right": 21,
-       "baseline_right": 17,
-       "R2_heldout": 0.177
-      },
-      "orb": {
-       "n_rows": 79,
-       "n_formulas": 20,
-       "n_eligible": 57,
-       "n_eligible_pairs": 57,
-       "line_sign_acc": 0.895,
-       "raw_sign_acc": 0.912,
-       "train_fold_baseline_acc": 0.684,
-       "line_sign_right": 51,
-       "raw_sign_right": 52,
-       "baseline_right": 39,
-       "R2_heldout": 0.337
-      },
-      "pooled": {
-       "n_rows": 208,
-       "n_formulas": 36,
-       "n_eligible": 150,
-       "n_eligible_pairs": 88,
-       "line_sign_acc": 0.78,
-       "raw_sign_acc": 0.8,
-       "train_fold_baseline_acc": 0.673,
-       "line_sign_right": 117,
-       "raw_sign_right": 120,
-       "baseline_right": 101,
-       "R2_heldout": 0.278
-      }
-     }
-    },
-    "strong_translated_OO": {
-     "all_eligible": {
-      "mace": {
-       "n_rows": 88,
-       "n_formulas": 31,
-       "n_eligible": 61,
-       "n_eligible_pairs": 61,
-       "line_sign_acc": 0.738,
-       "raw_sign_acc": 0.738,
-       "train_fold_baseline_acc": 0.639,
-       "line_sign_right": 45,
-       "raw_sign_right": 45,
-       "baseline_right": 39,
-       "R2_heldout": 0.213
-      },
-      "mattersim": {
-       "n_rows": 32,
-       "n_formulas": 20,
-       "n_eligible": 25,
-       "n_eligible_pairs": 25,
-       "line_sign_acc": 0.8,
-       "raw_sign_acc": 0.84,
-       "train_fold_baseline_acc": 0.52,
-       "line_sign_right": 20,
-       "raw_sign_right": 21,
-       "baseline_right": 13,
-       "R2_heldout": 0.205
-      },
-      "orb": {
-       "n_rows": 78,
-       "n_formulas": 19,
-       "n_eligible": 56,
-       "n_eligible_pairs": 56,
-       "line_sign_acc": 0.911,
-       "raw_sign_acc": 0.946,
-       "train_fold_baseline_acc": 0.643,
-       "line_sign_right": 51,
-       "raw_sign_right": 53,
-       "baseline_right": 36,
-       "R2_heldout": 0.345
-      },
-      "pooled": {
-       "n_rows": 198,
-       "n_formulas": 35,
-       "n_eligible": 142,
-       "n_eligible_pairs": 79,
-       "line_sign_acc": 0.817,
-       "raw_sign_acc": 0.838,
-       "train_fold_baseline_acc": 0.641,
-       "line_sign_right": 116,
-       "raw_sign_right": 119,
-       "baseline_right": 91,
-       "R2_heldout": 0.291
-      }
-     },
-     "signal_filtered": {
-      "mace": {
-       "n_rows": 79,
-       "n_formulas": 28,
        "n_eligible": 56,
        "n_eligible_pairs": 56,
        "line_sign_acc": 0.732,
        "raw_sign_acc": 0.732,
-       "train_fold_baseline_acc": 0.643,
+       "train_fold_baseline_acc": 0.679,
        "line_sign_right": 41,
        "raw_sign_right": 41,
-       "baseline_right": 36,
-       "R2_heldout": 0.244
+       "baseline_right": 38,
+       "R2_heldout": 0.303
       },
       "mattersim": {
-       "n_rows": 28,
-       "n_formulas": 18,
-       "n_eligible": 23,
-       "n_eligible_pairs": 23,
-       "line_sign_acc": 0.783,
-       "raw_sign_acc": 0.87,
-       "train_fold_baseline_acc": 0.522,
-       "line_sign_right": 18,
-       "raw_sign_right": 20,
-       "baseline_right": 12,
-       "R2_heldout": 0.215
-      },
-      "orb": {
-       "n_rows": 76,
-       "n_formulas": 19,
-       "n_eligible": 54,
-       "n_eligible_pairs": 54,
-       "line_sign_acc": 0.907,
-       "raw_sign_acc": 0.944,
-       "train_fold_baseline_acc": 0.667,
-       "line_sign_right": 49,
-       "raw_sign_right": 51,
-       "baseline_right": 36,
-       "R2_heldout": 0.341
-      },
-      "pooled": {
-       "n_rows": 183,
-       "n_formulas": 34,
-       "n_eligible": 133,
-       "n_eligible_pairs": 75,
-       "line_sign_acc": 0.812,
-       "raw_sign_acc": 0.842,
-       "train_fold_baseline_acc": 0.654,
-       "line_sign_right": 108,
-       "raw_sign_right": 112,
-       "baseline_right": 87,
-       "R2_heldout": 0.306
-      }
-     }
-    },
-    "strong_OH_0.99": {
-     "all_eligible": {
-      "mace": {
-       "n_rows": 75,
-       "n_formulas": 30,
-       "n_eligible": 47,
-       "n_eligible_pairs": 47,
-       "line_sign_acc": 0.83,
-       "raw_sign_acc": 0.83,
-       "train_fold_baseline_acc": 0.638,
-       "line_sign_right": 39,
-       "raw_sign_right": 39,
-       "baseline_right": 30,
-       "R2_heldout": 0.343
-      },
-      "mattersim": {
-       "n_rows": 27,
-       "n_formulas": 17,
-       "n_eligible": 20,
-       "n_eligible_pairs": 20,
-       "line_sign_acc": 0.8,
-       "raw_sign_acc": 0.85,
-       "train_fold_baseline_acc": 0.7,
-       "line_sign_right": 16,
-       "raw_sign_right": 17,
-       "baseline_right": 14,
-       "R2_heldout": 0.192
-      },
-      "orb": {
-       "n_rows": 66,
-       "n_formulas": 18,
-       "n_eligible": 46,
-       "n_eligible_pairs": 46,
-       "line_sign_acc": 0.913,
-       "raw_sign_acc": 0.978,
-       "train_fold_baseline_acc": 0.674,
-       "line_sign_right": 42,
-       "raw_sign_right": 45,
-       "baseline_right": 31,
-       "R2_heldout": 0.389
-      },
-      "pooled": {
-       "n_rows": 168,
-       "n_formulas": 33,
-       "n_eligible": 113,
-       "n_eligible_pairs": 59,
-       "line_sign_acc": 0.858,
-       "raw_sign_acc": 0.894,
-       "train_fold_baseline_acc": 0.664,
-       "line_sign_right": 97,
-       "raw_sign_right": 101,
-       "baseline_right": 75,
+       "n_rows": 92,
+       "n_formulas": 31,
+       "n_eligible": 61,
+       "n_eligible_pairs": 61,
+       "line_sign_acc": 0.82,
+       "raw_sign_acc": 0.934,
+       "train_fold_baseline_acc": 0.607,
+       "line_sign_right": 50,
+       "raw_sign_right": 57,
+       "baseline_right": 37,
        "R2_heldout": 0.373
+      },
+      "orb": {
+       "n_rows": 88,
+       "n_formulas": 29,
+       "n_eligible": 59,
+       "n_eligible_pairs": 59,
+       "line_sign_acc": 0.814,
+       "raw_sign_acc": 0.881,
+       "train_fold_baseline_acc": 0.661,
+       "line_sign_right": 48,
+       "raw_sign_right": 52,
+       "baseline_right": 39,
+       "R2_heldout": 0.379
+      },
+      "pooled": {
+       "n_rows": 266,
+       "n_formulas": 36,
+       "n_eligible": 176,
+       "n_eligible_pairs": 77,
+       "line_sign_acc": 0.801,
+       "raw_sign_acc": 0.852,
+       "train_fold_baseline_acc": 0.648,
+       "line_sign_right": 141,
+       "raw_sign_right": 150,
+       "baseline_right": 114,
+       "R2_heldout": 0.362
       }
      },
      "signal_filtered": {
       "mace": {
-       "n_rows": 70,
-       "n_formulas": 27,
-       "n_eligible": 46,
-       "n_eligible_pairs": 46,
-       "line_sign_acc": 0.848,
-       "raw_sign_acc": 0.848,
-       "train_fold_baseline_acc": 0.63,
+       "n_rows": 81,
+       "n_formulas": 29,
+       "n_eligible": 55,
+       "n_eligible_pairs": 55,
+       "line_sign_acc": 0.709,
+       "raw_sign_acc": 0.745,
+       "train_fold_baseline_acc": 0.673,
        "line_sign_right": 39,
-       "raw_sign_right": 39,
-       "baseline_right": 29,
-       "R2_heldout": 0.338
+       "raw_sign_right": 41,
+       "baseline_right": 37,
+       "R2_heldout": 0.302
       },
       "mattersim": {
-       "n_rows": 24,
-       "n_formulas": 15,
-       "n_eligible": 19,
-       "n_eligible_pairs": 19,
+       "n_rows": 79,
+       "n_formulas": 27,
+       "n_eligible": 57,
+       "n_eligible_pairs": 57,
        "line_sign_acc": 0.842,
-       "raw_sign_acc": 0.895,
-       "train_fold_baseline_acc": 0.526,
-       "line_sign_right": 16,
-       "raw_sign_right": 17,
-       "baseline_right": 10,
-       "R2_heldout": 0.191
+       "raw_sign_acc": 0.947,
+       "train_fold_baseline_acc": 0.632,
+       "line_sign_right": 48,
+       "raw_sign_right": 54,
+       "baseline_right": 36,
+       "R2_heldout": 0.378
       },
       "orb": {
-       "n_rows": 66,
-       "n_formulas": 18,
-       "n_eligible": 46,
-       "n_eligible_pairs": 46,
-       "line_sign_acc": 0.913,
-       "raw_sign_acc": 0.978,
-       "train_fold_baseline_acc": 0.674,
-       "line_sign_right": 42,
-       "raw_sign_right": 45,
-       "baseline_right": 31,
-       "R2_heldout": 0.389
+       "n_rows": 87,
+       "n_formulas": 28,
+       "n_eligible": 59,
+       "n_eligible_pairs": 59,
+       "line_sign_acc": 0.814,
+       "raw_sign_acc": 0.881,
+       "train_fold_baseline_acc": 0.661,
+       "line_sign_right": 48,
+       "raw_sign_right": 52,
+       "baseline_right": 39,
+       "R2_heldout": 0.379
       },
       "pooled": {
-       "n_rows": 160,
-       "n_formulas": 32,
-       "n_eligible": 111,
-       "n_eligible_pairs": 59,
-       "line_sign_acc": 0.874,
-       "raw_sign_acc": 0.91,
-       "train_fold_baseline_acc": 0.658,
-       "line_sign_right": 97,
-       "raw_sign_right": 101,
-       "baseline_right": 73,
-       "R2_heldout": 0.37
+       "n_rows": 247,
+       "n_formulas": 34,
+       "n_eligible": 171,
+       "n_eligible_pairs": 75,
+       "line_sign_acc": 0.807,
+       "raw_sign_acc": 0.86,
+       "train_fold_baseline_acc": 0.655,
+       "line_sign_right": 138,
+       "raw_sign_right": 147,
+       "baseline_right": 112,
+       "R2_heldout": 0.367
       }
      }
     }

@@ -1,0 +1,184 @@
+cap 3.2 {'rows_with_OO': 397, 'of_rows': 521, 'unique_pairs': 154, 'formulas': 42, 'rows_per_model': {'orb': 135, 'mace': 132, 'mattersim': 130}} {'n': 397, 'slope_meV_per_H': -12.562, 'intercept': 1.006, 'r': -0.497} {'OO_rule': {'right': 207, 'n': 260, 'acc': 0.796, 'n_pairs': 122}, 'XH_rule_same_rows_eligibility_of_OO': {'right': 191, 'n': 260, 'acc': 0.735, 'n_pairs': 122}} {'right': 186, 'n': 227, 'acc': 0.819, 'n_pairs': 103} {'right': 21, 'n': 33, 'acc': 0.636, 'n_pairs': 24} {'range_OO_A': [2.887, 2.911], 'median_OO_A': 2.901} {'n_rows': 349, 'n_formulas': 41, 'n_eligible': 260, 'n_eligible_pairs': 122, 'line_sign_acc': 0.719, 'raw_sign_acc': 0.796, 'train_fold_baseline_acc': 0.619, 'line_sign_right': 187, 'raw_sign_right': 207, 'baseline_right': 161, 'R2_heldout': 0.205}
+cap 3.0 {'rows_with_OO': 363, 'of_rows': 521, 'unique_pairs': 138, 'formulas': 39, 'rows_per_model': {'mattersim': 123, 'mace': 121, 'orb': 119}} {'n': 363, 'slope_meV_per_H': -23.415, 'intercept': 0.989, 'r': -0.565} {'OO_rule': {'right': 178, 'n': 231, 'acc': 0.771, 'n_pairs': 106}, 'XH_rule_same_rows_eligibility_of_OO': {'right': 168, 'n': 231, 'acc': 0.727, 'n_pairs': 106}} {'right': 170, 'n': 210, 'acc': 0.81, 'n_pairs': 95} {'right': 8, 'n': 21, 'acc': 0.381, 'n_pairs': 15} {'range_OO_A': [2.816, 2.851], 'median_OO_A': 2.829} {'n_rows': 320, 'n_formulas': 38, 'n_eligible': 231, 'n_eligible_pairs': 106, 'line_sign_acc': 0.736, 'raw_sign_acc': 0.771, 'train_fold_baseline_acc': 0.636, 'line_sign_right': 170, 'raw_sign_right': 178, 'baseline_right': 147, 'R2_heldout': 0.241}
+{
+ "coverage": {
+  "rows_with_OO": 414,
+  "of_rows": 521,
+  "unique_pairs": 161,
+  "formulas": 44,
+  "rows_per_model": {
+   "mace": 144,
+   "orb": 138,
+   "mattersim": 132
+  }
+ },
+ "fit_all_rows": {
+  "mace": {
+   "n": 144,
+   "slope_meV_per_H": -7.259,
+   "intercept": 0.924,
+   "r": -0.398
+  },
+  "mattersim": {
+   "n": 132,
+   "slope_meV_per_H": -11.622,
+   "intercept": 1.249,
+   "r": -0.501
+  },
+  "orb": {
+   "n": 138,
+   "slope_meV_per_H": -9.844,
+   "intercept": 0.927,
+   "r": -0.495
+  },
+  "pooled": {
+   "n": 414,
+   "slope_meV_per_H": -9.135,
+   "intercept": 1.022,
+   "r": -0.454
+  }
+ },
+ "fit_all_rows_dXH_same_rows": {
+  "mace": {
+   "n": 144,
+   "slope_meV_per_H": 0.131,
+   "intercept": 0.387,
+   "r": 0.845
+  },
+  "mattersim": {
+   "n": 132,
+   "slope_meV_per_H": 0.151,
+   "intercept": 0.538,
+   "r": 0.885
+  },
+  "orb": {
+   "n": 138,
+   "slope_meV_per_H": 0.136,
+   "intercept": 0.389,
+   "r": 0.867
+  },
+  "pooled": {
+   "n": 414,
+   "slope_meV_per_H": 0.139,
+   "intercept": 0.437,
+   "r": 0.863
+  }
+ },
+ "threshold_translation_summary": {
+  "range_OO_A": [
+   2.896,
+   2.972
+  ],
+  "median_OO_A": 2.929
+ },
+ "fit_strong_translated": {
+  "mace": {
+   "n": 110,
+   "slope_meV_per_H": -7.63,
+   "intercept": 1.062,
+   "r": -0.409
+  },
+  "mattersim": {
+   "n": 116,
+   "slope_meV_per_H": -11.863,
+   "intercept": 1.35,
+   "r": -0.508
+  },
+  "orb": {
+   "n": 113,
+   "slope_meV_per_H": -10.165,
+   "intercept": 1.018,
+   "r": -0.507
+  },
+  "pooled": {
+   "n": 339,
+   "slope_meV_per_H": -9.479,
+   "intercept": 1.137,
+   "r": -0.465
+  }
+ }
+}
+all_eligible all {'OO_rule': {'right': 221, 'n': 314, 'acc': 0.704, 'n_pairs': 133}, 'XH_rule_same_rows_eligibility_of_OO': {'right': 218, 'n': 314, 'acc': 0.694, 'n_pairs': 133}} translated 2.929 {'right': 206, 'n': 263, 'acc': 0.783, 'n_pairs': 112} {'right': 15, 'n': 51, 'acc': 0.294, 'n_pairs': 29} {'both_strong': 219, 'both_weak': 47, 'OH_strong_OO_weak': 4, 'OH_weak_OO_strong': 44}
+   2.60 {'right': 89, 'n': 89, 'acc': 1.0, 'n_pairs': 40} {'right': 132, 'n': 225, 'acc': 0.587, 'n_pairs': 103}
+   2.65 {'right': 113, 'n': 117, 'acc': 0.966, 'n_pairs': 49} {'right': 108, 'n': 197, 'acc': 0.548, 'n_pairs': 88}
+   2.70 {'right': 134, 'n': 139, 'acc': 0.964, 'n_pairs': 62} {'right': 87, 'n': 175, 'acc': 0.497, 'n_pairs': 76}
+   2.75 {'right': 153, 'n': 162, 'acc': 0.944, 'n_pairs': 72} {'right': 68, 'n': 152, 'acc': 0.447, 'n_pairs': 67}
+   2.80 {'right': 174, 'n': 199, 'acc': 0.874, 'n_pairs': 88} {'right': 47, 'n': 115, 'acc': 0.409, 'n_pairs': 60}
+   2.85 {'right': 183, 'n': 223, 'acc': 0.821, 'n_pairs': 95} {'right': 38, 'n': 91, 'acc': 0.418, 'n_pairs': 48}
+   2.90 {'right': 197, 'n': 247, 'acc': 0.798, 'n_pairs': 104} {'right': 24, 'n': 67, 'acc': 0.358, 'n_pairs': 38}
+signal_filtered all {'OO_rule': {'right': 199, 'n': 285, 'acc': 0.698, 'n_pairs': 128}, 'XH_rule_same_rows_eligibility_of_OO': {'right': 198, 'n': 285, 'acc': 0.695, 'n_pairs': 128}} translated 2.929 {'right': 187, 'n': 241, 'acc': 0.776, 'n_pairs': 105} {'right': 12, 'n': 44, 'acc': 0.273, 'n_pairs': 27} {'both_strong': 209, 'both_weak': 40, 'OH_strong_OO_weak': 4, 'OH_weak_OO_strong': 32}
+   2.60 {'right': 89, 'n': 89, 'acc': 1.0, 'n_pairs': 40} {'right': 110, 'n': 196, 'acc': 0.561, 'n_pairs': 97}
+   2.65 {'right': 112, 'n': 115, 'acc': 0.974, 'n_pairs': 48} {'right': 87, 'n': 170, 'acc': 0.512, 'n_pairs': 83}
+   2.70 {'right': 133, 'n': 137, 'acc': 0.971, 'n_pairs': 61} {'right': 66, 'n': 148, 'acc': 0.446, 'n_pairs': 71}
+   2.75 {'right': 152, 'n': 160, 'acc': 0.95, 'n_pairs': 71} {'right': 47, 'n': 125, 'acc': 0.376, 'n_pairs': 62}
+   2.80 {'right': 167, 'n': 191, 'acc': 0.874, 'n_pairs': 86} {'right': 32, 'n': 94, 'acc': 0.34, 'n_pairs': 54}
+   2.85 {'right': 175, 'n': 213, 'acc': 0.822, 'n_pairs': 94} {'right': 24, 'n': 72, 'acc': 0.333, 'n_pairs': 43}
+   2.90 {'right': 183, 'n': 230, 'acc': 0.796, 'n_pairs': 100} {'right': 16, 'n': 55, 'acc': 0.291, 'n_pairs': 34}
+all_regimes all_eligible {'n_rows': 414, 'n_formulas': 44, 'n_eligible': 314, 'n_eligible_pairs': 133, 'line_sign_acc': 0.646, 'raw_sign_acc': 0.704, 'train_fold_baseline_acc': 0.621, 'line_sign_right': 203, 'raw_sign_right': 221, 'baseline_right': 195, 'R2_heldout': 0.165}
+all_regimes signal_filtered {'n_rows': 366, 'n_formulas': 43, 'n_eligible': 285, 'n_eligible_pairs': 128, 'line_sign_acc': 0.67, 'raw_sign_acc': 0.698, 'train_fold_baseline_acc': 0.639, 'line_sign_right': 191, 'raw_sign_right': 199, 'baseline_right': 182, 'R2_heldout': 0.175}
+strong_translated_OO all_eligible {'n_rows': 339, 'n_formulas': 40, 'n_eligible': 263, 'n_eligible_pairs': 112, 'line_sign_acc': 0.654, 'raw_sign_acc': 0.783, 'train_fold_baseline_acc': 0.593, 'line_sign_right': 172, 'raw_sign_right': 206, 'baseline_right': 156, 'R2_heldout': 0.174}
+strong_translated_OO signal_filtered {'n_rows': 305, 'n_formulas': 39, 'n_eligible': 241, 'n_eligible_pairs': 105, 'line_sign_acc': 0.672, 'raw_sign_acc': 0.776, 'train_fold_baseline_acc': 0.61, 'line_sign_right': 162, 'raw_sign_right': 187, 'baseline_right': 147, 'R2_heldout': 0.184}
+strong_OH_0.99 all_eligible {'n_rows': 292, 'n_formulas': 38, 'n_eligible': 223, 'n_eligible_pairs': 92, 'line_sign_acc': 0.695, 'raw_sign_acc': 0.803, 'train_fold_baseline_acc': 0.614, 'line_sign_right': 155, 'raw_sign_right': 179, 'baseline_right': 137, 'R2_heldout': 0.183}
+strong_OH_0.99 signal_filtered {'n_rows': 273, 'n_formulas': 36, 'n_eligible': 213, 'n_eligible_pairs': 91, 'line_sign_acc': 0.695, 'raw_sign_acc': 0.803, 'train_fold_baseline_acc': 0.62, 'line_sign_right': 148, 'raw_sign_right': 171, 'baseline_right': 132, 'R2_heldout': 0.191}
+{
+ "mace": {
+  "donor_fit_dOH_vs_dOO": {
+   "n": 606,
+   "slope_A_per_A": -0.1363,
+   "OO_at_threshold": 2.896
+  },
+  "structure_fit_meanOH_vs_meanOO": {
+   "n": 148,
+   "slope": -0.1187,
+   "OO_at_threshold": 2.968,
+   "r": -0.826
+  },
+  "structure_inverse_fit_OO_on_OH": {
+   "OO_at_threshold": 2.914
+  },
+  "median_OO_of_structures_with_meanOH_within_12mA": {
+   "n": 52,
+   "median_OO": 2.916
+  }
+ },
+ "orb": {
+  "donor_fit_dOH_vs_dOO": {
+   "n": 599,
+   "slope_A_per_A": -0.1207,
+   "OO_at_threshold": 2.911
+  },
+  "structure_fit_meanOH_vs_meanOO": {
+   "n": 143,
+   "slope": -0.126,
+   "OO_at_threshold": 2.946,
+   "r": -0.85
+  },
+  "structure_inverse_fit_OO_on_OH": {
+   "OO_at_threshold": 2.899
+  },
+  "median_OO_of_structures_with_meanOH_within_12mA": {
+   "n": 54,
+   "median_OO": 2.89
+  }
+ },
+ "mattersim": {
+  "donor_fit_dOH_vs_dOO": {
+   "n": 579,
+   "slope_A_per_A": -0.1305,
+   "OO_at_threshold": 2.897
+  },
+  "structure_fit_meanOH_vs_meanOO": {
+   "n": 138,
+   "slope": -0.1121,
+   "OO_at_threshold": 2.972,
+   "r": -0.829
+  },
+  "structure_inverse_fit_OO_on_OH": {
+   "OO_at_threshold": 2.91
+  },
+  "median_OO_of_structures_with_meanOH_within_12mA": {
+   "n": 51,
+   "median_OO": 2.884
+  }
+ }
+}

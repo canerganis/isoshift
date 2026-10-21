@@ -28,9 +28,13 @@ THRESHOLDS = [round(0.97 + 0.01 * i, 2) for i in range(7)]
 MAIN_THR = 0.99
 MIN_DXH = 5.0  # mA
 MIN_SIGNAL = 0.1  # meV/H
+# Decision 01 G1 / ledger freeze rule: quantitative F01 numbers use these three models; SevenNet enters as sign votes
+# on a separately labelled line (sevenn_sign_votes block), never in slopes or the headline counts.
+QUANT_MODELS = ("mace", "orb", "mattersim")
+SIGN_ONLY_MODELS = ("sevenn",)
 
 
-def load() -> pd.DataFrame:
+def load(models: tuple[str, ...] | None = QUANT_MODELS) -> pd.DataFrame:
     d = pd.read_csv(ROOT / "results" / "decompose_pairs.csv")
     s = pd.read_csv(ROOT / "results" / "decompose_structures.csv")
     pairs = pd.read_csv(ROOT / "data" / "isoshift" / "pairs.csv").set_index("pair_id")
@@ -43,6 +47,8 @@ def load() -> pd.DataFrame:
     oh_structs = set(pd.read_csv(ROOT / "results" / "stretch_check.csv").struct_id)
     c["OH"] = [any(q in oh_structs for q in p.split("__")) for p in c.pair_id]
     c["right"] = np.sign(c.x) == np.sign(c.y)
+    if models is not None:
+        c = c[c.model.isin(models)]
     return c.reset_index(drop=True)
 
 
@@ -277,8 +283,28 @@ def oh_strong_slopes(c: pd.DataFrame) -> dict:
     return out
 
 
+def sevenn_sign_votes(c4: pd.DataFrame) -> dict:
+    """Separately labelled SevenNet line (freeze rule): the headline O-H population with SevenNet added as a fourth
+    sign vote, and SevenNet alone. Not used for slopes, compensation or any quantitative claim (decision 01 G1)."""
+    big = c4.x.abs() >= MIN_DXH
+    oh_all = c4[c4.OH & big]
+    sv = c4[c4.model.isin(SIGN_ONLY_MODELS)]
+    out = {"note": "SevenNet in sign votes only (decision 01 G1); headline blocks above use " + ", ".join(QUANT_MODELS),
+           "four_models_oh_unfiltered_strong": oh_unfiltered_strong(c4),
+           "four_models_oh_weak": _acc(oh_all[oh_all.rmax < MAIN_THR]),
+           "four_models_oh_all_regimes": _acc(oh_all),
+           "sevenn_rows_clean_covalent": int(len(sv)), "sevenn_unique_pairs": int(sv.pair_id.nunique())}
+    if len(sv[sv.OH & (sv.rmax >= MAIN_THR)]):
+        out["sevenn_only_oh_unfiltered_strong"] = oh_unfiltered_strong(sv)
+        out["sevenn_oh_strong_slope_not_quantitative"] = oh_strong_slopes(sv)
+    svb = sv[sv.OH & (sv.x.abs() >= MIN_DXH)]
+    out["sevenn_only_oh_weak"] = _acc(svb[svb.rmax < MAIN_THR])
+    return out
+
+
 def main():
-    c = load()
+    c4 = load(models=None)
+    c = c4[c4.model.isin(QUANT_MODELS)].reset_index(drop=True)
     v = variants(c)
     out = {
         "n_unique_pairs": {
@@ -298,6 +324,7 @@ def main():
         "nested_threshold_cv": nested_threshold_cv(c),
         "no_threshold": no_threshold(c),
         "oh_strong_slopes": oh_strong_slopes(c),
+        "sevenn_sign_votes": sevenn_sign_votes(c4),
     }
     (ROOT / "results" / "F01_cv.json").write_text(json.dumps(out, indent=1))
     m = out["regime_scan"][f"{MAIN_THR:.2f}"]["signal_filtered"]
@@ -315,6 +342,9 @@ def main():
             print("nested", k, v["right"], v["n"], "baseline", v["baseline_right"], v["threshold_counts"])
     print("no_threshold", out["no_threshold"])
     print("oh_strong_slopes", out["oh_strong_slopes"])
+    sv = out["sevenn_sign_votes"]
+    print("sevenn: four-model strong", {k: sv["four_models_oh_unfiltered_strong"][k] for k in ("right", "n", "baseline_right", "unique_pair_majority")},
+          "sevenn only", {k: v for k, v in sv.get("sevenn_only_oh_unfiltered_strong", {}).items() if k in ("right", "n", "baseline_right")})
 
 
 if __name__ == "__main__":
