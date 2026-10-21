@@ -17,7 +17,7 @@ Mechanism as in F01: delta-AlOOH has the stronger H bond (O-H longer by 24 to 32
 
 **How to test.** A reversed-bracket, side-by-side AlOOH/AlOOD experiment (same press, pressure medium, calibrant and temperature path). A boundary shift of opposite sign at matched conditions contradicts the prediction; a shift not resolvable from zero at the experiment's bracketing resolution is a null result.
 
-**Caveats.** Harmonic/QHA physics only; delta-AlOOH undergoes isotope-dependent proton disorder in the same pressure window, which harmonic physics omits (pressures to be cited only after the source check in `docs/findings/F04-source-audit.md`); the experimental boundary is crossed at high temperature, beyond the 300 K calculation; universal MLIPs trained on PBE-like data overbind H bonds (decision 01, F02).
+**Caveats.** Harmonic/QHA physics only; Sano-Furukawa et al. 2018 report the delta-AlOOH proton-disorder transition (P2_1nm to Pnnm) at 9.0 GPa for AlOOH and 13.4 GPa for AlOOD, and H-bond symmetrisation at 18.1 GPa in AlOOH only; this measured isotope shift of a neighbouring transition (+4.4 GPa) is anharmonic physics outside our model and shows that isotope effects in this system are large; the experimental boundary is crossed at high temperature, beyond the 300 K calculation; universal MLIPs trained on PBE-like data overbind H bonds (decision 01, F02).
 
 **Novelty check.** Valency Bond query (logged) finds high-pressure neutron work on deuterated delta-AlOOD and epsilon-FeOOD and DFT stability studies of AlOOH phases without isotope effects; no measurement or prediction of the isotope shift of the diaspore to delta boundary was found.
 

@@ -14,7 +14,7 @@ Submit by Fri 23 Oct 00:30 TRT (hard stop 02:00). Every work decision is checked
 | S4 | Blind test against measured H/D data, predictions committed first | F02: hydrides and brucite right sign, strong-H-bond oxyhydroxides wrong (low-quality data); F03: stretch-geometry relation matches measured spectra (Libowitzky) in all 3 MLIPs | done, mixed; does not test F01 (decision 04) |
 | S5 | Mechanism explained and tied to prior theory | stretch +0.25 vs bend -0.12 meV/H per mA; McKenzie 2014/2015 | done |
 | S5b | Stretch ingredient anchored in experiment | F03: consistency check of the stretch slope vs Libowitzky in O...O 2.50 to 2.80 A only: f_OLS 0.91 (MACE), 0.95 (ORB), 0.91 (MatterSim), bootstrap 95% 0.67 to 1.07, 0.82 to 1.07, 0.41 to 1.05; F01 strong regime reaches about 2.92 A, beyond the window; not a validation of isotope free energies | done |
-| S5c | Compensation (bend/libration) term tested against experiment | F04: goethite -> epsilon-FeOOH SUPPORT (stretch -261 vs -273 predicted, bend +290 vs +195), diaspore -> delta-AlOOH INCONCLUSIVE (no IR stretch in delta-AlOOH) | done, partial support |
+| S5c | Compensation (bend/libration) term tested against experiment | F04: goethite -> epsilon-FeOOH SUPPORT (stretch -261 vs -273 predicted, bend +290 vs +195), diaspore -> delta-AlOOH INCONCLUSIVE (no IR stretch in delta-AlOOH) | done, sign-level consistency (1 pair); P03 inconclusive |
 | S6 | Survives a multi-model red team (final-claims board) | docs/decisions/05-final-claims.md: no blocking flaw, claims narrowed | done, see 05 |
 | S7 | One concrete experimental prediction on a real material | CARD-AlOOH: dP_iso(diaspore -> delta-AlOOH) = +1.13 (ORB) and +1.33 GPa (MACE), QHA 10-20 GPa, 300 K | done, exploratory sign prediction (2 models) |
 
