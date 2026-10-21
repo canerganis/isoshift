@@ -1,0 +1,966 @@
+pair_id,formula,struct_a,struct_b,source,dE_meV_atom,nsites_a,nsites_b,tier,flags,energy_id_a,energy_id_b,energy_a_eV_atom,energy_b_eV_atom,energy_kind,functional
+JVASP-80722__JVASP-138309,AgH,JVASP-80722,JVASP-138309,jarvis,1.08999999999998,4,2,16,jarvis_only,JVASP-80722,JVASP-138309,0.23938,0.24047,jarvis_formation,OptB88vdW
+JVASP-138300__JVASP-138305,AgH2,JVASP-138305,JVASP-138300,jarvis,3.68000000000002,3,3,16,jarvis_only,JVASP-138305,JVASP-138300,0.45333,0.45701,jarvis_formation,OptB88vdW
+JVASP-125370__JVASP-138308,AgH3,JVASP-138308,JVASP-125370,jarvis,1.94,4,4,16,jarvis_only;molecular_h2,JVASP-138308,JVASP-125370,0.20101,0.20295,jarvis_formation,OptB88vdW
+JVASP-29414__JVASP-29793,Al(HO)3,JVASP-29793,JVASP-29414,jarvis,1.98999999999994,14,28,32,jarvis_only,JVASP-29793,JVASP-29414,-1.83524,-1.83325,jarvis_formation,OptB88vdW
+JVASP-29414__JVASP-29795,Al(HO)3,JVASP-29414,JVASP-29795,jarvis,1.17000000000012,28,14,32,jarvis_only,JVASP-29414,JVASP-29795,-1.83325,-1.83208,jarvis_formation,OptB88vdW
+JVASP-29414__JVASP-29833,Al(HO)3,JVASP-29833,JVASP-29414,jarvis,7.68999999999997,28,28,32,jarvis_only,JVASP-29833,JVASP-29414,-1.84094,-1.83325,jarvis_formation,OptB88vdW
+JVASP-29414__JVASP-29834,Al(HO)3,JVASP-29834,JVASP-29414,jarvis,4.01999999999991,28,28,32,jarvis_only,JVASP-29834,JVASP-29414,-1.83727,-1.83325,jarvis_formation,OptB88vdW
+JVASP-29793__JVASP-29795,Al(HO)3,JVASP-29793,JVASP-29795,jarvis,3.16000000000005,14,14,16,jarvis_only,JVASP-29793,JVASP-29795,-1.83524,-1.83208,jarvis_formation,OptB88vdW
+JVASP-29793__JVASP-29833,Al(HO)3,JVASP-29833,JVASP-29793,jarvis,5.70000000000004,28,14,32,jarvis_only,JVASP-29833,JVASP-29793,-1.84094,-1.83524,jarvis_formation,OptB88vdW
+JVASP-29793__JVASP-29834,Al(HO)3,JVASP-29834,JVASP-29793,jarvis,2.02999999999998,28,14,32,jarvis_only,JVASP-29834,JVASP-29793,-1.83727,-1.83524,jarvis_formation,OptB88vdW
+JVASP-29795__JVASP-29833,Al(HO)3,JVASP-29833,JVASP-29795,jarvis,8.86000000000009,28,14,32,jarvis_only,JVASP-29833,JVASP-29795,-1.84094,-1.83208,jarvis_formation,OptB88vdW
+JVASP-29795__JVASP-29834,Al(HO)3,JVASP-29834,JVASP-29795,jarvis,5.19000000000003,28,14,32,jarvis_only,JVASP-29834,JVASP-29795,-1.83727,-1.83208,jarvis_formation,OptB88vdW
+JVASP-29833__JVASP-29834,Al(HO)3,JVASP-29833,JVASP-29834,jarvis,3.67000000000006,28,28,32,jarvis_only,JVASP-29833,JVASP-29834,-1.84094,-1.83727,jarvis_formation,OptB88vdW
+mp-37836__mp-1182949,Al(HO)3,mp-37836,mp-1182949,mp,9.3066778571429,14,14,16,theoretical,mp-37836,mp-1182949,-2.02831606482143,-2.01900938696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37836__mp-554002,Al(HO)3,mp-554002,mp-37836,mp,9.11465571428582,14,14,16,theoretical,mp-554002,mp-37836,-2.03743072053571,-2.02831606482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37836__mp-554883,Al(HO)3,mp-554883,mp-37836,mp,1.98116785714264,14,14,16,theoretical,mp-554883,mp-37836,-2.03029723267857,-2.02831606482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37836__mp-555462,Al(HO)3,mp-37836,mp-555462,mp,5.86609999999954,14,28,32,theoretical,mp-37836,mp-555462,-2.02831606482143,-2.02244996482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37836__mp-560196,Al(HO)3,mp-560196,mp-37836,mp,2.0678903571425,28,14,32,theoretical,mp-560196,mp-37836,-2.03038395517857,-2.02831606482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37836__mp-625316,Al(HO)3,mp-37836,mp-625316,mp,7.10993285714245,14,14,16,theoretical,mp-37836,mp-625316,-2.02831606482143,-2.02120613196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37836__mp-626414,Al(HO)3,mp-626414,mp-37836,mp,0.0930314285718659,28,14,32,theoretical,mp-626414,mp-37836,-2.02840909625,-2.02831606482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37836__mp-626431,Al(HO)3,mp-626431,mp-37836,mp,1.52475928571416,28,14,32,theoretical,mp-626431,mp-37836,-2.02984082410714,-2.02831606482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37836__mp-626435,Al(HO)3,mp-626435,mp-37836,mp,10.9513732142861,28,14,32,theoretical,mp-626435,mp-37836,-2.03926743803571,-2.02831606482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37836__mp-626497,Al(HO)3,mp-37836,mp-626497,mp,5.27102571428628,14,14,16,theoretical,mp-37836,mp-626497,-2.02831606482143,-2.02304503910714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37836__mp-626504,Al(HO)3,mp-37836,mp-626504,mp,8.69234857142853,14,14,16,theoretical,mp-37836,mp-626504,-2.02831606482143,-2.01962371625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37836__mp-777738,Al(HO)3,mp-37836,mp-777738,mp,6.06713857142838,14,28,32,theoretical,mp-37836,mp-777738,-2.02831606482143,-2.02224892625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37836__mp-985293,Al(HO)3,mp-985293,mp-37836,mp,7.16086535714311,28,14,32,theoretical,mp-985293,mp-37836,-2.03547693017857,-2.02831606482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554002__JVASP-29414,Al(HO)3,mp-554002,JVASP-29414,jarvis,4.34000000000001,14,28,32,jarvis_only;theoretical,JVASP-29385,JVASP-29414,-1.83759,-1.83325,jarvis_formation,OptB88vdW
+mp-554002__JVASP-29793,Al(HO)3,mp-554002,JVASP-29793,jarvis,2.35000000000007,14,14,16,jarvis_only;theoretical,JVASP-29385,JVASP-29793,-1.83759,-1.83524,jarvis_formation,OptB88vdW
+mp-554002__JVASP-29795,Al(HO)3,mp-554002,JVASP-29795,jarvis,5.51000000000013,14,14,16,jarvis_only;theoretical,JVASP-29385,JVASP-29795,-1.83759,-1.83208,jarvis_formation,OptB88vdW
+mp-554002__JVASP-29833,Al(HO)3,JVASP-29833,mp-554002,jarvis,3.34999999999996,28,14,32,jarvis_only;theoretical,JVASP-29833,JVASP-29385,-1.84094,-1.83759,jarvis_formation,OptB88vdW
+mp-554002__JVASP-29834,Al(HO)3,mp-554002,JVASP-29834,jarvis,0.320000000000098,14,28,32,jarvis_only;theoretical,JVASP-29385,JVASP-29834,-1.83759,-1.83727,jarvis_formation,OptB88vdW
+mp-554002__mp-1182949,Al(HO)3,mp-554002,mp-1182949,mp,18.4213335714287,14,14,16,theoretical,mp-554002,mp-1182949,-2.03743072053571,-2.01900938696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554002__mp-554883,Al(HO)3,mp-554002,mp-554883,mp,7.13348785714318,14,14,16,theoretical,mp-554002,mp-554883,-2.03743072053571,-2.03029723267857,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554002__mp-555462,Al(HO)3,mp-554002,mp-555462,mp,14.9807557142854,14,28,32,theoretical,mp-554002,mp-555462,-2.03743072053571,-2.02244996482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554002__mp-560196,Al(HO)3,mp-554002,mp-560196,mp,7.04676535714333,14,28,32,theoretical,mp-554002,mp-560196,-2.03743072053571,-2.03038395517857,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554002__mp-625316,Al(HO)3,mp-554002,mp-625316,mp,16.2245885714283,14,14,16,theoretical,mp-554002,mp-625316,-2.03743072053571,-2.02120613196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554002__mp-626414,Al(HO)3,mp-554002,mp-626414,mp,9.02162428571396,14,28,32,theoretical,mp-554002,mp-626414,-2.03743072053571,-2.02840909625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554002__mp-626431,Al(HO)3,mp-554002,mp-626431,mp,7.58989642857166,14,28,32,theoretical,mp-554002,mp-626431,-2.03743072053571,-2.02984082410714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554002__mp-626435,Al(HO)3,mp-626435,mp-554002,mp,1.83671750000025,28,14,32,theoretical,mp-626435,mp-554002,-2.03926743803571,-2.03743072053571,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554002__mp-626497,Al(HO)3,mp-554002,mp-626497,mp,14.3856814285721,14,14,16,theoretical,mp-554002,mp-626497,-2.03743072053571,-2.02304503910714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554002__mp-626504,Al(HO)3,mp-554002,mp-626504,mp,17.8070042857144,14,14,16,theoretical,mp-554002,mp-626504,-2.03743072053571,-2.01962371625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554002__mp-777738,Al(HO)3,mp-554002,mp-777738,mp,15.1817942857142,14,28,32,theoretical,mp-554002,mp-777738,-2.03743072053571,-2.02224892625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554002__mp-985293,Al(HO)3,mp-554002,mp-985293,mp,1.95379035714272,14,28,32,theoretical,mp-554002,mp-985293,-2.03743072053571,-2.03547693017857,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554883__JVASP-29414,Al(HO)3,mp-554883,JVASP-29414,jarvis,0.289999999999901,14,28,32,jarvis_only;theoretical,JVASP-29401,JVASP-29414,-1.83354,-1.83325,jarvis_formation,OptB88vdW
+mp-554883__JVASP-29793,Al(HO)3,JVASP-29793,mp-554883,jarvis,1.70000000000003,14,14,16,jarvis_only;theoretical,JVASP-29793,JVASP-29401,-1.83524,-1.83354,jarvis_formation,OptB88vdW
+mp-554883__JVASP-29795,Al(HO)3,mp-554883,JVASP-29795,jarvis,1.46000000000002,14,14,16,jarvis_only;theoretical,JVASP-29401,JVASP-29795,-1.83354,-1.83208,jarvis_formation,OptB88vdW
+mp-554883__JVASP-29833,Al(HO)3,JVASP-29833,mp-554883,jarvis,7.40000000000007,28,14,32,jarvis_only;theoretical,JVASP-29833,JVASP-29401,-1.84094,-1.83354,jarvis_formation,OptB88vdW
+mp-554883__JVASP-29834,Al(HO)3,JVASP-29834,mp-554883,jarvis,3.73000000000001,28,14,32,jarvis_only;theoretical,JVASP-29834,JVASP-29401,-1.83727,-1.83354,jarvis_formation,OptB88vdW
+mp-554883__mp-1182949,Al(HO)3,mp-554883,mp-1182949,mp,11.2878457142855,14,14,16,theoretical,mp-554883,mp-1182949,-2.03029723267857,-2.01900938696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554883__mp-555462,Al(HO)3,mp-554883,mp-555462,mp,7.84726785714218,14,28,32,theoretical,mp-554883,mp-555462,-2.03029723267857,-2.02244996482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554883__mp-560196,Al(HO)3,mp-560196,mp-554883,mp,0.0867224999998584,28,14,32,theoretical,mp-560196,mp-554883,-2.03038395517857,-2.03029723267857,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554883__mp-625316,Al(HO)3,mp-554883,mp-625316,mp,9.09110071428509,14,14,16,theoretical,mp-554883,mp-625316,-2.03029723267857,-2.02120613196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554883__mp-626414,Al(HO)3,mp-554883,mp-626414,mp,1.88813642857077,14,28,32,theoretical,mp-554883,mp-626414,-2.03029723267857,-2.02840909625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554883__mp-626431,Al(HO)3,mp-554883,mp-626431,mp,0.456408571428479,14,28,32,theoretical,mp-554883,mp-626431,-2.03029723267857,-2.02984082410714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554883__mp-626435,Al(HO)3,mp-626435,mp-554883,mp,8.97020535714343,28,14,32,theoretical,mp-626435,mp-554883,-2.03926743803571,-2.03029723267857,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554883__mp-626497,Al(HO)3,mp-554883,mp-626497,mp,7.25219357142892,14,14,16,theoretical,mp-554883,mp-626497,-2.03029723267857,-2.02304503910714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554883__mp-626504,Al(HO)3,mp-554883,mp-626504,mp,10.6735164285712,14,14,16,theoretical,mp-554883,mp-626504,-2.03029723267857,-2.01962371625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554883__mp-777738,Al(HO)3,mp-554883,mp-777738,mp,8.04830642857102,14,28,32,theoretical,mp-554883,mp-777738,-2.03029723267857,-2.02224892625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554883__mp-985293,Al(HO)3,mp-985293,mp-554883,mp,5.17969750000047,28,14,32,theoretical,mp-985293,mp-554883,-2.03547693017857,-2.03029723267857,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-555462__mp-1182949,Al(HO)3,mp-555462,mp-1182949,mp,3.44057785714336,28,14,32,theoretical,mp-555462,mp-1182949,-2.02244996482143,-2.01900938696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-555462__mp-560196,Al(HO)3,mp-560196,mp-555462,mp,7.93399035714204,28,28,32,theoretical,mp-560196,mp-555462,-2.03038395517857,-2.02244996482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-555462__mp-625316,Al(HO)3,mp-555462,mp-625316,mp,1.24383285714291,28,14,32,theoretical,mp-555462,mp-625316,-2.02244996482143,-2.02120613196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-555462__mp-626414,Al(HO)3,mp-626414,mp-555462,mp,5.95913142857141,28,28,32,theoretical,mp-626414,mp-555462,-2.02840909625,-2.02244996482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-555462__mp-626431,Al(HO)3,mp-626431,mp-555462,mp,7.3908592857137,28,28,32,theoretical,mp-626431,mp-555462,-2.02984082410714,-2.02244996482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-555462__mp-626435,Al(HO)3,mp-626435,mp-555462,mp,16.8174732142856,28,28,32,theoretical,mp-626435,mp-555462,-2.03926743803571,-2.02244996482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-555462__mp-626497,Al(HO)3,mp-626497,mp-555462,mp,0.59507428571326,14,28,32,theoretical,mp-626497,mp-555462,-2.02304503910714,-2.02244996482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-555462__mp-626504,Al(HO)3,mp-555462,mp-626504,mp,2.82624857142899,28,14,32,theoretical,mp-555462,mp-626504,-2.02244996482143,-2.01962371625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-555462__mp-777738,Al(HO)3,mp-555462,mp-777738,mp,0.201038571428835,28,28,32,theoretical,mp-555462,mp-777738,-2.02244996482143,-2.02224892625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-555462__mp-985293,Al(HO)3,mp-985293,mp-555462,mp,13.0269653571427,28,28,32,theoretical,mp-985293,mp-555462,-2.03547693017857,-2.02244996482143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-560196__JVASP-29414,Al(HO)3,mp-560196,JVASP-29414,jarvis,2.92999999999988,28,28,32,jarvis_only,JVASP-29483,JVASP-29414,-1.83618,-1.83325,jarvis_formation,OptB88vdW
+mp-560196__JVASP-29793,Al(HO)3,mp-560196,JVASP-29793,jarvis,0.939999999999941,28,14,32,jarvis_only,JVASP-29483,JVASP-29793,-1.83618,-1.83524,jarvis_formation,OptB88vdW
+mp-560196__JVASP-29795,Al(HO)3,mp-560196,JVASP-29795,jarvis,4.09999999999999,28,14,32,jarvis_only,JVASP-29483,JVASP-29795,-1.83618,-1.83208,jarvis_formation,OptB88vdW
+mp-560196__JVASP-29833,Al(HO)3,JVASP-29833,mp-560196,jarvis,4.7600000000001,28,28,32,jarvis_only,JVASP-29833,JVASP-29483,-1.84094,-1.83618,jarvis_formation,OptB88vdW
+mp-560196__JVASP-29834,Al(HO)3,JVASP-29834,mp-560196,jarvis,1.09000000000004,28,28,32,jarvis_only,JVASP-29834,JVASP-29483,-1.83727,-1.83618,jarvis_formation,OptB88vdW
+mp-560196__mp-1182949,Al(HO)3,mp-560196,mp-1182949,mp,11.3745682142854,28,14,32,theoretical,mp-560196,mp-1182949,-2.03038395517857,-2.01900938696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-560196__mp-625316,Al(HO)3,mp-560196,mp-625316,mp,9.17782321428495,28,14,32,theoretical,mp-560196,mp-625316,-2.03038395517857,-2.02120613196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-560196__mp-626414,Al(HO)3,mp-560196,mp-626414,mp,1.97485892857063,28,28,32,theoretical,mp-560196,mp-626414,-2.03038395517857,-2.02840909625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-560196__mp-626431,Al(HO)3,mp-560196,mp-626431,mp,0.543131071428338,28,28,32,theoretical,mp-560196,mp-626431,-2.03038395517857,-2.02984082410714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-560196__mp-626435,Al(HO)3,mp-626435,mp-560196,mp,8.88348285714358,28,28,32,theoretical,mp-626435,mp-560196,-2.03926743803571,-2.03038395517857,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-560196__mp-626497,Al(HO)3,mp-560196,mp-626497,mp,7.33891607142878,28,14,32,theoretical,mp-560196,mp-626497,-2.03038395517857,-2.02304503910714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-560196__mp-626504,Al(HO)3,mp-560196,mp-626504,mp,10.760238928571,28,14,32,theoretical,mp-560196,mp-626504,-2.03038395517857,-2.01962371625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-560196__mp-777738,Al(HO)3,mp-560196,mp-777738,mp,8.13502892857088,28,28,32,theoretical,mp-560196,mp-777738,-2.03038395517857,-2.02224892625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-560196__mp-985293,Al(HO)3,mp-985293,mp-560196,mp,5.09297500000061,28,28,32,,mp-985293,mp-560196,-2.03547693017857,-2.03038395517857,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625316__mp-1182949,Al(HO)3,mp-625316,mp-1182949,mp,2.19674500000044,14,14,16,theoretical,mp-625316,mp-1182949,-2.02120613196429,-2.01900938696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625316__mp-626414,Al(HO)3,mp-626414,mp-625316,mp,7.20296428571432,28,14,32,theoretical,mp-626414,mp-625316,-2.02840909625,-2.02120613196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625316__mp-626431,Al(HO)3,mp-626431,mp-625316,mp,8.63469214285661,28,14,32,theoretical,mp-626431,mp-625316,-2.02984082410714,-2.02120613196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625316__mp-626435,Al(HO)3,mp-626435,mp-625316,mp,18.0613060714285,28,14,32,theoretical,mp-626435,mp-625316,-2.03926743803571,-2.02120613196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625316__mp-626497,Al(HO)3,mp-626497,mp-625316,mp,1.83890714285617,14,14,16,theoretical,mp-626497,mp-625316,-2.02304503910714,-2.02120613196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625316__mp-626504,Al(HO)3,mp-625316,mp-626504,mp,1.58241571428608,14,14,16,theoretical,mp-625316,mp-626504,-2.02120613196429,-2.01962371625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625316__mp-777738,Al(HO)3,mp-777738,mp-625316,mp,1.04279428571408,28,14,32,theoretical,mp-777738,mp-625316,-2.02224892625,-2.02120613196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625316__mp-985293,Al(HO)3,mp-985293,mp-625316,mp,14.2707982142856,28,14,32,theoretical,mp-985293,mp-625316,-2.03547693017857,-2.02120613196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626414__mp-1182949,Al(HO)3,mp-626414,mp-1182949,mp,9.39970928571476,28,14,32,theoretical,mp-626414,mp-1182949,-2.02840909625,-2.01900938696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626414__mp-626431,Al(HO)3,mp-626431,mp-626414,mp,1.4317278571423,28,28,32,theoretical,mp-626431,mp-626414,-2.02984082410714,-2.02840909625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626414__mp-626435,Al(HO)3,mp-626435,mp-626414,mp,10.8583417857142,28,28,32,theoretical,mp-626435,mp-626414,-2.03926743803571,-2.02840909625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626414__mp-626497,Al(HO)3,mp-626414,mp-626497,mp,5.36405714285815,28,14,32,theoretical,mp-626414,mp-626497,-2.02840909625,-2.02304503910714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626414__mp-626504,Al(HO)3,mp-626414,mp-626504,mp,8.7853800000004,28,14,32,theoretical,mp-626414,mp-626504,-2.02840909625,-2.01962371625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626414__mp-777738,Al(HO)3,mp-626414,mp-777738,mp,6.16017000000024,28,28,32,theoretical,mp-626414,mp-777738,-2.02840909625,-2.02224892625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626414__mp-985293,Al(HO)3,mp-985293,mp-626414,mp,7.06783392857124,28,28,32,theoretical,mp-985293,mp-626414,-2.03547693017857,-2.02840909625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626431__mp-1182949,Al(HO)3,mp-626431,mp-1182949,mp,10.8314371428571,28,14,32,theoretical,mp-626431,mp-1182949,-2.02984082410714,-2.01900938696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626431__mp-626435,Al(HO)3,mp-626435,mp-626431,mp,9.42661392857191,28,28,32,theoretical,mp-626435,mp-626431,-2.03926743803571,-2.02984082410714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626431__mp-626497,Al(HO)3,mp-626431,mp-626497,mp,6.79578500000044,28,14,32,theoretical,mp-626431,mp-626497,-2.02984082410714,-2.02304503910714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626431__mp-626504,Al(HO)3,mp-626431,mp-626504,mp,10.2171078571427,28,14,32,theoretical,mp-626431,mp-626504,-2.02984082410714,-2.01962371625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626431__mp-777738,Al(HO)3,mp-626431,mp-777738,mp,7.59189785714254,28,28,32,theoretical,mp-626431,mp-777738,-2.02984082410714,-2.02224892625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626431__mp-985293,Al(HO)3,mp-985293,mp-626431,mp,5.63610607142895,28,28,32,theoretical,mp-985293,mp-626431,-2.03547693017857,-2.02984082410714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626435__mp-1182949,Al(HO)3,mp-626435,mp-1182949,mp,20.258051071429,28,14,32,theoretical,mp-626435,mp-1182949,-2.03926743803571,-2.01900938696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626435__mp-626497,Al(HO)3,mp-626435,mp-626497,mp,16.2223989285724,28,14,32,theoretical,mp-626435,mp-626497,-2.03926743803571,-2.02304503910714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626435__mp-626504,Al(HO)3,mp-626435,mp-626504,mp,19.6437217857146,28,14,32,theoretical,mp-626435,mp-626504,-2.03926743803571,-2.01962371625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626435__mp-777738,Al(HO)3,mp-626435,mp-777738,mp,17.0185117857145,28,28,32,theoretical,mp-626435,mp-777738,-2.03926743803571,-2.02224892625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626435__mp-985293,Al(HO)3,mp-626435,mp-985293,mp,3.79050785714297,28,28,32,theoretical,mp-626435,mp-985293,-2.03926743803571,-2.03547693017857,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626497__JVASP-29414,Al(HO)3,JVASP-29414,mp-626497,jarvis,1.34999999999996,28,14,32,jarvis_only;theoretical,JVASP-29414,JVASP-29843,-1.83325,-1.8319,jarvis_formation,OptB88vdW
+mp-626497__JVASP-29793,Al(HO)3,JVASP-29793,mp-626497,jarvis,3.3399999999999,14,14,16,jarvis_only;theoretical,JVASP-29793,JVASP-29843,-1.83524,-1.8319,jarvis_formation,OptB88vdW
+mp-626497__JVASP-29795,Al(HO)3,JVASP-29795,mp-626497,jarvis,0.179999999999847,14,14,16,jarvis_only;theoretical,JVASP-29795,JVASP-29843,-1.83208,-1.8319,jarvis_formation,OptB88vdW
+mp-626497__JVASP-29833,Al(HO)3,JVASP-29833,mp-626497,jarvis,9.03999999999994,28,14,32,jarvis_only;theoretical,JVASP-29833,JVASP-29843,-1.84094,-1.8319,jarvis_formation,OptB88vdW
+mp-626497__JVASP-29834,Al(HO)3,JVASP-29834,mp-626497,jarvis,5.36999999999987,28,14,32,jarvis_only;theoretical,JVASP-29834,JVASP-29843,-1.83727,-1.8319,jarvis_formation,OptB88vdW
+mp-626497__mp-1182949,Al(HO)3,mp-626497,mp-1182949,mp,4.03565214285662,14,14,16,theoretical,mp-626497,mp-1182949,-2.02304503910714,-2.01900938696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626497__mp-626504,Al(HO)3,mp-626497,mp-626504,mp,3.42132285714225,14,14,16,theoretical,mp-626497,mp-626504,-2.02304503910714,-2.01962371625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626497__mp-777738,Al(HO)3,mp-626497,mp-777738,mp,0.796112857142095,14,28,32,theoretical,mp-626497,mp-777738,-2.02304503910714,-2.02224892625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626497__mp-985293,Al(HO)3,mp-985293,mp-626497,mp,12.4318910714294,28,14,32,theoretical,mp-985293,mp-626497,-2.03547693017857,-2.02304503910714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626504__mp-1182949,Al(HO)3,mp-626504,mp-1182949,mp,0.614329285714366,14,14,16,theoretical,mp-626504,mp-1182949,-2.01962371625,-2.01900938696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626504__mp-777738,Al(HO)3,mp-777738,mp-626504,mp,2.62521000000016,28,14,32,theoretical,mp-777738,mp-626504,-2.02224892625,-2.01962371625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626504__mp-985293,Al(HO)3,mp-985293,mp-626504,mp,15.8532139285716,28,14,32,theoretical,mp-985293,mp-626504,-2.03547693017857,-2.01962371625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-777738__mp-1182949,Al(HO)3,mp-777738,mp-1182949,mp,3.23953928571452,28,14,32,theoretical,mp-777738,mp-1182949,-2.02224892625,-2.01900938696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-777738__mp-985293,Al(HO)3,mp-985293,mp-777738,mp,13.2280039285715,28,28,32,theoretical,mp-985293,mp-777738,-2.03547693017857,-2.02224892625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-985293__JVASP-29414,Al(HO)3,mp-985293,JVASP-29414,jarvis,16.5999999999999,28,28,32,jarvis_only,JVASP-37958,JVASP-29414,-1.84985,-1.83325,jarvis_formation,OptB88vdW
+mp-985293__JVASP-29793,Al(HO)3,mp-985293,JVASP-29793,jarvis,14.61,28,14,32,jarvis_only,JVASP-37958,JVASP-29793,-1.84985,-1.83524,jarvis_formation,OptB88vdW
+mp-985293__JVASP-29795,Al(HO)3,mp-985293,JVASP-29795,jarvis,17.7700000000001,28,14,32,jarvis_only,JVASP-37958,JVASP-29795,-1.84985,-1.83208,jarvis_formation,OptB88vdW
+mp-985293__JVASP-29833,Al(HO)3,mp-985293,JVASP-29833,jarvis,8.90999999999997,28,28,32,jarvis_only,JVASP-37958,JVASP-29833,-1.84985,-1.84094,jarvis_formation,OptB88vdW
+mp-985293__JVASP-29834,Al(HO)3,mp-985293,JVASP-29834,jarvis,12.58,28,28,32,jarvis_only,JVASP-37958,JVASP-29834,-1.84985,-1.83727,jarvis_formation,OptB88vdW
+mp-985293__mp-1182949,Al(HO)3,mp-985293,mp-1182949,mp,16.467543214286,28,14,32,theoretical,mp-985293,mp-1182949,-2.03547693017857,-2.01900938696429,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-29330__JVASP-168470,Al2Si2H4O9,JVASP-168470,JVASP-29330,jarvis,1.44999999999973,17,17,32,jarvis_only,JVASP-168470,JVASP-29330,-2.36385,-2.3624,jarvis_formation,OptB88vdW
+mp-1105589__mp-1183270,Al2Si2H4O9,mp-1183270,mp-1105589,mp,13.1885299999994,17,17,32,theoretical,mp-1183270,mp-1105589,-2.60686846235294,-2.59367993235294,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-139255__JVASP-139257,AlH,JVASP-139255,JVASP-139257,jarvis,7.80999999999998,2,2,16,jarvis_only,JVASP-139255,JVASP-139257,0.25385,0.26166,jarvis_formation,OptB88vdW
+JVASP-139255__JVASP-139262,AlH,JVASP-139262,JVASP-139255,jarvis,2,2,2,16,jarvis_only,JVASP-139262,JVASP-139255,0.25185,0.25385,jarvis_formation,OptB88vdW
+JVASP-139257__JVASP-139262,AlH,JVASP-139262,JVASP-139257,jarvis,9.80999999999998,2,2,16,jarvis_only,JVASP-139262,JVASP-139257,0.25185,0.26166,jarvis_formation,OptB88vdW
+JVASP-139253__JVASP-139256,AlH2,JVASP-139253,JVASP-139256,jarvis,9.60000000000002,3,3,16,jarvis_only,JVASP-139253,JVASP-139256,0.2432,0.2528,jarvis_formation,OptB88vdW
+mp-1106356__JVASP-139260,AlH3,JVASP-139260,mp-1106356,jarvis,5.03000000000001,4,16,16,jarvis_only,JVASP-139260,JVASP-61729,-0.07989,-0.07486,jarvis_formation,OptB88vdW
+mp-1106356__mp-1183246,AlH3,mp-1183246,mp-1106356,mp,5.76555916666728,24,16,32,,mp-1183246,mp-1106356,-0.0693831832291665,-0.0636176240624993,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1183246__JVASP-139260,AlH3,mp-1183246,JVASP-139260,jarvis,10.05,24,4,32,jarvis_only,JVASP-148154,JVASP-139260,-0.08994,-0.07989,jarvis_formation,OptB88vdW
+mp-23933__JVASP-139260,AlH3,mp-23933,JVASP-139260,jarvis,22.12,8,4,16,jarvis_only,JVASP-3717,JVASP-139260,-0.10201,-0.07989,jarvis_formation,OptB88vdW
+mp-23933__mp-1106356,AlH3,mp-23933,mp-1106356,mp,10.0144587500006,8,16,16,,mp-23933,mp-1106356,-0.0736320828124999,-0.0636176240624993,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23933__mp-1183246,AlH3,mp-23933,mp-1183246,mp,4.24889958333334,8,24,32,,mp-23933,mp-1183246,-0.0736320828124999,-0.0693831832291665,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23933__mp-570130,AlH3,mp-23933,mp-570130,mp,14.584145416667,8,24,32,,mp-23933,mp-570130,-0.0736320828124999,-0.0590479373958329,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-570130__JVASP-139260,AlH3,mp-570130,JVASP-139260,jarvis,3.18,24,4,32,jarvis_only,JVASP-96839,JVASP-139260,-0.08307,-0.07989,jarvis_formation,OptB88vdW
+mp-570130__mp-1106356,AlH3,mp-1106356,mp-570130,mp,4.56968666666639,16,24,32,,mp-1106356,mp-570130,-0.0636176240624993,-0.0590479373958329,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-570130__mp-1183246,AlH3,mp-1183246,mp-570130,mp,10.3352458333337,24,24,32,,mp-1183246,mp-570130,-0.0693831832291665,-0.0590479373958329,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-113651__JVASP-150288,AlHO2,JVASP-113651,JVASP-150288,jarvis,22.5900000000001,4,8,16,jarvis_only;proton_transfer,JVASP-113651,JVASP-150288,-2.46924,-2.44665,jarvis_formation,OptB88vdW
+JVASP-12038__JVASP-150288,AlHO2,JVASP-150288,JVASP-12038,jarvis,16.54,8,8,16,jarvis_only;proton_transfer,JVASP-150288,JVASP-12038,-2.44665,-2.43011,jarvis_formation,OptB88vdW
+JVASP-12038__JVASP-90648,AlHO2,JVASP-90648,JVASP-12038,jarvis,18.37,8,8,16,jarvis_only;proton_transfer,JVASP-90648,JVASP-12038,-2.44848,-2.43011,jarvis_formation,OptB88vdW
+JVASP-90648__JVASP-113651,AlHO2,JVASP-113651,JVASP-90648,jarvis,20.7600000000001,4,8,16,jarvis_only;proton_transfer,JVASP-113651,JVASP-90648,-2.46924,-2.44848,jarvis_formation,OptB88vdW
+JVASP-90648__JVASP-150288,AlHO2,JVASP-90648,JVASP-150288,jarvis,1.83,8,8,16,jarvis_only;proton_transfer,JVASP-90648,JVASP-150288,-2.44848,-2.44665,jarvis_formation,OptB88vdW
+mp-23807__JVASP-113651,AlHO2,JVASP-113651,mp-23807,jarvis,8.58000000000025,4,8,16,jarvis_only;proton_transfer,JVASP-113651,JVASP-34788,-2.46924,-2.46066,jarvis_formation,OptB88vdW
+mp-23807__JVASP-150288,AlHO2,mp-23807,JVASP-150288,jarvis,14.0099999999999,8,8,16,jarvis_only;proton_transfer,JVASP-34788,JVASP-150288,-2.46066,-2.44665,jarvis_formation,OptB88vdW
+mp-23807__JVASP-90648,AlHO2,mp-23807,JVASP-90648,jarvis,12.1799999999999,8,8,16,jarvis_only;proton_transfer,JVASP-34788,JVASP-90648,-2.46066,-2.44848,jarvis_formation,OptB88vdW
+mp-23807__mp-625054,AlHO2,mp-625054,mp-23807,jarvis,13.7400000000003,8,8,16,proton_transfer;theoretical,JVASP-29869,JVASP-34788,-2.4744,-2.46066,jarvis_formation,OptB88vdW
+mp-23807__mp-625152,AlHO2,mp-625152,mp-23807,jarvis,24.7999999999999,16,8,16,proton_transfer,JVASP-54676,JVASP-34788,-2.48546,-2.46066,jarvis_formation,OptB88vdW
+mp-23807__mp-625404,AlHO2,mp-625404,mp-23807,jarvis,14.44,16,8,16,proton_transfer;theoretical,JVASP-54695,JVASP-34788,-2.4751,-2.46066,jarvis_formation,OptB88vdW
+mp-23807__mp-625420,AlHO2,mp-625420,mp-23807,mp,7.69573749999974,16,8,16,proton_transfer;theoretical,mp-625420,mp-23807,-2.6188285028125,-2.6111327653125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625054__JVASP-113651,AlHO2,mp-625054,JVASP-113651,jarvis,5.16000000000005,8,4,16,jarvis_only;proton_transfer;theoretical,JVASP-29869,JVASP-113651,-2.4744,-2.46924,jarvis_formation,OptB88vdW
+mp-625054__mp-625152,AlHO2,mp-625152,mp-625054,mp,7.37014562499994,16,8,16,proton_transfer;theoretical,mp-625152,mp-625054,-2.6528255821875,-2.6454554365625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625054__mp-625404,AlHO2,mp-625054,mp-625404,mp,3.32915875000062,8,16,16,proton_transfer;theoretical,mp-625054,mp-625404,-2.6454554365625,-2.6421262778125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625054__mp-625420,AlHO2,mp-625054,mp-625420,jarvis,23.3700000000003,8,16,16,proton_transfer;theoretical,JVASP-29869,JVASP-29798,-2.4744,-2.45103,jarvis_formation,OptB88vdW
+mp-625152__JVASP-113651,AlHO2,mp-625152,JVASP-113651,jarvis,16.2199999999997,16,4,16,jarvis_only;proton_transfer,JVASP-54676,JVASP-113651,-2.48546,-2.46924,jarvis_formation,OptB88vdW
+mp-625152__mp-625404,AlHO2,mp-625152,mp-625404,mp,10.6993043750006,16,16,16,proton_transfer;theoretical,mp-625152,mp-625404,-2.6528255821875,-2.6421262778125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625404__JVASP-113651,AlHO2,mp-625404,JVASP-113651,jarvis,5.85999999999975,16,4,16,jarvis_only;proton_transfer;theoretical,JVASP-54695,JVASP-113651,-2.4751,-2.46924,jarvis_formation,OptB88vdW
+mp-625404__mp-625420,AlHO2,mp-625404,mp-625420,mp,23.2977749999996,16,16,16,proton_transfer;theoretical,mp-625404,mp-625420,-2.6421262778125,-2.6188285028125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625420__JVASP-113651,AlHO2,JVASP-113651,mp-625420,jarvis,18.2100000000003,4,16,16,jarvis_only;proton_transfer;theoretical,JVASP-113651,JVASP-29798,-2.46924,-2.45103,jarvis_formation,OptB88vdW
+mp-625420__JVASP-12038,AlHO2,mp-625420,JVASP-12038,jarvis,20.9199999999998,16,8,16,jarvis_only;proton_transfer;theoretical,JVASP-29798,JVASP-12038,-2.45103,-2.43011,jarvis_formation,OptB88vdW
+mp-625420__JVASP-150288,AlHO2,mp-625420,JVASP-150288,jarvis,4.37999999999983,16,8,16,jarvis_only;proton_transfer;theoretical,JVASP-29798,JVASP-150288,-2.45103,-2.44665,jarvis_formation,OptB88vdW
+mp-625420__JVASP-90648,AlHO2,mp-625420,JVASP-90648,jarvis,2.54999999999983,16,8,16,jarvis_only;proton_transfer;theoretical,JVASP-29798,JVASP-90648,-2.45103,-2.44848,jarvis_formation,OptB88vdW
+mp-504751__mp-1228828,AsHPbO4,mp-1228828,mp-504751,mp,4.74275928571388,14,14,16,proton_transfer;theoretical,mp-1228828,mp-504751,-1.64626765839286,-1.64152489910714,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-133386__JVASP-153942,BH2S3N3F4,JVASP-133386,JVASP-153942,jarvis,4.78999999999985,26,13,32,jarvis_only,JVASP-133386,JVASP-153942,-1.01534,-1.01055,jarvis_formation,OptB88vdW
+mp-634117__JVASP-154631,BH3,mp-634117,JVASP-154631,jarvis,1.07,16,8,16,jarvis_only,JVASP-33032,JVASP-154631,-0.03803,-0.03696,jarvis_formation,OptB88vdW
+JVASP-31154__JVASP-163675,BH6N,JVASP-31154,JVASP-163675,jarvis,3.53000000000003,16,24,32,jarvis_only,JVASP-31154,JVASP-163675,-0.26788,-0.26435,jarvis_formation,OptB88vdW
+mp-1105968__JVASP-163675,BH6N,mp-1105968,JVASP-163675,jarvis,4.41000000000003,16,24,32,jarvis_only,JVASP-154362,JVASP-163675,-0.26876,-0.26435,jarvis_formation,OptB88vdW
+mp-1105968__JVASP-31154,BH6N,mp-1105968,JVASP-31154,jarvis,0.879999999999992,16,16,16,jarvis_only,JVASP-154362,JVASP-31154,-0.26876,-0.26788,jarvis_formation,OptB88vdW
+JVASP-54734__JVASP-54740,Ba(H2O3)2,JVASP-54740,JVASP-54734,jarvis,5.18999999999981,22,22,32,jarvis_only;proton_transfer,JVASP-54740,JVASP-54734,-1.00639,-1.0012,jarvis_formation,OptB88vdW
+JVASP-54734__JVASP-54757,Ba(H2O3)2,JVASP-54757,JVASP-54734,jarvis,11.59,22,22,32,jarvis_only;proton_transfer,JVASP-54757,JVASP-54734,-1.01279,-1.0012,jarvis_formation,OptB88vdW
+JVASP-54740__JVASP-54757,Ba(H2O3)2,JVASP-54757,JVASP-54740,jarvis,6.40000000000018,22,22,32,jarvis_only;proton_transfer,JVASP-54757,JVASP-54740,-1.01279,-1.00639,jarvis_formation,OptB88vdW
+JVASP-54757__JVASP-97506,Ba(H2O3)2,JVASP-97506,JVASP-54757,jarvis,18.8699999999999,22,22,32,jarvis_only;proton_transfer,JVASP-97506,JVASP-54757,-1.03166,-1.01279,jarvis_formation,OptB88vdW
+mp-1103816__mp-1540000,BaGaH5,mp-1540000,mp-1103816,mp,0.0521764285720261,14,14,16,theoretical,mp-1540000,mp-1103816,-0.354551463392861,-0.354499286964289,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1540000__JVASP-144101,BaGaH5,JVASP-144101,mp-1540000,jarvis,0.219999999999998,14,14,16,jarvis_only;theoretical,JVASP-144101,JVASP-137721,-0.30386,-0.30364,jarvis_formation,OptB88vdW
+JVASP-135855__JVASP-135860,BaH,JVASP-135855,JVASP-135860,jarvis,15.94,4,4,16,jarvis_only,JVASP-135855,JVASP-135860,-0.41249,-0.39655,jarvis_formation,OptB88vdW
+JVASP-135856__JVASP-135862,BaH,JVASP-135862,JVASP-135856,jarvis,3.52999999999998,4,2,16,jarvis_only,JVASP-135862,JVASP-135856,-0.36828,-0.36475,jarvis_formation,OptB88vdW
+JVASP-135857__JVASP-135865,BaH2,JVASP-135865,JVASP-135857,jarvis,16.33,3,3,16,jarvis_only;molecular_h2,JVASP-135865,JVASP-135857,0.26266,0.27899,jarvis_formation,OptB88vdW
+mp-1182102__JVASP-135854,BaH2,mp-1182102,JVASP-135854,jarvis,11.59,6,3,16,jarvis_only;theoretical,JVASP-172200,JVASP-135854,-0.58111,-0.56952,jarvis_formation,OptB88vdW
+JVASP-51022__JVASP-176835,BaH4O3,JVASP-176835,JVASP-51022,jarvis,1.72000000000017,16,16,16,jarvis_only;proton_transfer,JVASP-176835,JVASP-51022,-1.56983,-1.56811,jarvis_formation,OptB88vdW
+mp-23904__JVASP-176835,BaH4O3,mp-23904,JVASP-176835,jarvis,0.529999999999919,16,16,16,jarvis_only,JVASP-12575,JVASP-176835,-1.57036,-1.56983,jarvis_formation,OptB88vdW
+mp-23904__JVASP-51022,BaH4O3,mp-23904,JVASP-51022,jarvis,2.25000000000009,16,16,16,jarvis_only;proton_transfer,JVASP-12575,JVASP-51022,-1.57036,-1.56811,jarvis_formation,OptB88vdW
+mp-23904__mp-626720,BaH4O3,mp-23904,mp-626720,mp,20.4425537500006,16,16,16,theoretical,mp-23904,mp-626720,-1.768228955,-1.74778640125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23904__mp-626726,BaH4O3,mp-23904,mp-626726,mp,3.39849937499892,16,16,16,theoretical,mp-23904,mp-626726,-1.768228955,-1.764830455625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23904__mp-626735,BaH4O3,mp-23904,mp-626735,mp,14.287536875,16,16,16,proton_transfer;theoretical,mp-23904,mp-626735,-1.768228955,-1.753941418125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626720__mp-626726,BaH4O3,mp-626726,mp-626720,mp,17.0440543750017,16,16,16,theoretical,mp-626726,mp-626720,-1.764830455625,-1.74778640125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626720__mp-626735,BaH4O3,mp-626735,mp-626720,mp,6.15501687500064,16,16,16,proton_transfer;theoretical,mp-626735,mp-626720,-1.753941418125,-1.74778640125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626726__JVASP-176835,BaH4O3,JVASP-176835,mp-626726,jarvis,3.3700000000001,16,16,16,jarvis_only;theoretical,JVASP-176835,JVASP-51019,-1.56983,-1.56646,jarvis_formation,OptB88vdW
+mp-626726__JVASP-51022,BaH4O3,JVASP-51022,mp-626726,jarvis,1.64999999999993,16,16,16,jarvis_only;proton_transfer;theoretical,JVASP-51022,JVASP-51019,-1.56811,-1.56646,jarvis_formation,OptB88vdW
+mp-626726__mp-626735,BaH4O3,mp-626726,mp-626735,mp,10.889037500001,16,16,16,proton_transfer;theoretical,mp-626726,mp-626735,-1.764830455625,-1.753941418125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1190967__mp-1191062,BaReH9,mp-1191062,mp-1190967,mp,15.981573636363,22,22,32,theoretical,mp-1191062,mp-1190967,-0.330119265568178,-0.314137691931815,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1190967__mp-1191721,BaReH9,mp-1191721,mp-1190967,mp,6.12400772727223,22,22,32,theoretical,mp-1191721,mp-1190967,-0.320261699659087,-0.314137691931815,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1191062__mp-1191721,BaReH9,mp-1191062,mp-1191721,mp,9.85756590909076,22,22,32,theoretical,mp-1191062,mp-1191721,-0.330119265568178,-0.320261699659087,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-28911__mp-1190967,BaReH9,mp-28911,mp-1190967,mp,21.4897645454577,22,22,32,theoretical,mp-28911,mp-1190967,-0.335627456477273,-0.314137691931815,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-28911__mp-1191062,BaReH9,mp-28911,mp-1191062,mp,5.50819090909471,22,22,32,theoretical,mp-28911,mp-1191062,-0.335627456477273,-0.330119265568178,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-28911__mp-1191721,BaReH9,mp-28911,mp-1191721,mp,15.3657568181855,22,22,32,theoretical,mp-28911,mp-1191721,-0.335627456477273,-0.320261699659087,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-697136__JVASP-54742,Be(HO)2,mp-697136,JVASP-54742,jarvis,15.6900000000002,20,20,32,jarvis_only,JVASP-52903,JVASP-54742,-1.81655,-1.80086,jarvis_formation,OptB88vdW
+mp-1227394__mp-1227442,Be2BH3O5,mp-1227442,mp-1227394,mp,0.0928177272729869,11,22,32,proton_transfer;theoretical,mp-1227442,mp-1227394,-2.33007061526515,-2.32997779753788,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1227394__mp-1227646,Be2BH3O5,mp-1227394,mp-1227646,mp,3.50810636363619,22,22,32,proton_transfer;theoretical,mp-1227394,mp-1227646,-2.32997779753788,-2.32646969117424,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1227442__mp-1227646,Be2BH3O5,mp-1227442,mp-1227646,mp,3.60092409090917,11,22,32,proton_transfer;theoretical,mp-1227442,mp-1227646,-2.33007061526515,-2.32646969117424,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23719__mp-23720,BeAlH5,mp-23719,mp-23720,mp,1.61350857142852,14,14,16,theoretical,mp-23719,mp-23720,-0.0666230530357156,-0.0650095444642871,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23720__JVASP-12562,BeAlH5,mp-23720,JVASP-12562,jarvis,2.55,14,14,16,jarvis_only;theoretical,JVASP-12563,JVASP-12562,-0.10842,-0.10587,jarvis_formation,OptB88vdW
+JVASP-134068__JVASP-134071,BeH,JVASP-134071,JVASP-134068,jarvis,0.419999999999976,2,4,16,jarvis_only,JVASP-134071,JVASP-134068,0.30079,0.30121,jarvis_formation,OptB88vdW
+JVASP-134059__JVASP-134063,BeH2,JVASP-134063,JVASP-134059,jarvis,11.61,3,3,16,jarvis_only,JVASP-134063,JVASP-134059,0.08121,0.09282,jarvis_formation,OptB88vdW
+JVASP-134076__JVASP-134077,BeH3,JVASP-134076,JVASP-134077,jarvis,8.08999999999999,4,4,16,jarvis_only;molecular_h2,JVASP-134076,JVASP-134077,0.26576,0.27385,jarvis_formation,OptB88vdW
+mp-1181812__JVASP-63287,Ca(BH4)2,JVASP-63287,mp-1181812,jarvis,5.40999999999997,22,22,32,jarvis_only,JVASP-63287,JVASP-137613,-0.39042,-0.38501,jarvis_formation,OptB88vdW
+mp-1181812__mp-1190619,Ca(BH4)2,mp-1190619,mp-1181812,mp,10.9329581818187,22,22,32,,mp-1190619,mp-1181812,-0.478314454848485,-0.467381496666666,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1181812__mp-1191012,Ca(BH4)2,mp-1181812,mp-1191012,mp,0.0244577272722757,22,22,32,,mp-1181812,mp-1191012,-0.467381496666666,-0.467357038939394,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1181812__mp-1191021,Ca(BH4)2,mp-1191021,mp-1181812,mp,7.2709795454548,22,22,32,,mp-1191021,mp-1181812,-0.474652476212121,-0.467381496666666,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1181812__mp-1191340,Ca(BH4)2,mp-1181812,mp-1191340,mp,7.78526363636317,22,22,32,,mp-1181812,mp-1191340,-0.467381496666666,-0.459596233030303,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1181812__mp-1237277,Ca(BH4)2,mp-1237277,mp-1181812,mp,6.66172954545502,22,22,32,theoretical,mp-1237277,mp-1181812,-0.474043226212121,-0.467381496666666,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1190619__JVASP-63287,Ca(BH4)2,mp-1190619,JVASP-63287,jarvis,0.760000000000038,22,22,32,jarvis_only,JVASP-178405,JVASP-63287,-0.39118,-0.39042,jarvis_formation,OptB88vdW
+mp-1190619__mp-1191012,Ca(BH4)2,mp-1190619,mp-1191012,mp,10.957415909091,22,22,32,,mp-1190619,mp-1191012,-0.478314454848485,-0.467357038939394,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1190619__mp-1191021,Ca(BH4)2,mp-1190619,mp-1191021,mp,3.66197863636392,22,22,32,,mp-1190619,mp-1191021,-0.478314454848485,-0.474652476212121,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1190619__mp-1191340,Ca(BH4)2,mp-1190619,mp-1191340,mp,18.7182218181819,22,22,32,,mp-1190619,mp-1191340,-0.478314454848485,-0.459596233030303,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1190619__mp-1237277,Ca(BH4)2,mp-1190619,mp-1237277,mp,4.2712286363637,22,22,32,theoretical,mp-1190619,mp-1237277,-0.478314454848485,-0.474043226212121,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1191012__mp-1191021,Ca(BH4)2,mp-1191021,mp-1191012,mp,7.29543727272708,22,22,32,,mp-1191021,mp-1191012,-0.474652476212121,-0.467357038939394,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1191012__mp-1191340,Ca(BH4)2,mp-1191012,mp-1191340,mp,7.7608059090909,22,22,32,,mp-1191012,mp-1191340,-0.467357038939394,-0.459596233030303,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1191012__mp-1237277,Ca(BH4)2,mp-1237277,mp-1191012,mp,6.6861872727273,22,22,32,theoretical,mp-1237277,mp-1191012,-0.474043226212121,-0.467357038939394,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1191021__mp-1191340,Ca(BH4)2,mp-1191021,mp-1191340,mp,15.056243181818,22,22,32,,mp-1191021,mp-1191340,-0.474652476212121,-0.459596233030303,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1191021__mp-1237277,Ca(BH4)2,mp-1191021,mp-1237277,mp,0.609249999999784,22,22,32,theoretical,mp-1191021,mp-1237277,-0.474652476212121,-0.474043226212121,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1191340__mp-1237277,Ca(BH4)2,mp-1237277,mp-1191340,mp,14.4469931818182,22,22,32,theoretical,mp-1237277,mp-1191340,-0.474043226212121,-0.459596233030303,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-984766__mp-1181812,Ca(BH4)2,mp-1181812,mp-984766,mp,1.54033454545427,22,22,32,,mp-1181812,mp-984766,-0.467381496666666,-0.465841162121212,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-984766__mp-1190619,Ca(BH4)2,mp-1190619,mp-984766,mp,12.473292727273,22,22,32,,mp-1190619,mp-984766,-0.478314454848485,-0.465841162121212,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-984766__mp-1191012,Ca(BH4)2,mp-1191012,mp-984766,mp,1.51587681818199,22,22,32,,mp-1191012,mp-984766,-0.467357038939394,-0.465841162121212,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-984766__mp-1191021,Ca(BH4)2,mp-1191021,mp-984766,mp,8.81131409090907,22,22,32,,mp-1191021,mp-984766,-0.474652476212121,-0.465841162121212,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-984766__mp-1191340,Ca(BH4)2,mp-984766,mp-1191340,mp,6.2449290909089,22,22,32,,mp-984766,mp-1191340,-0.465841162121212,-0.459596233030303,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-984766__mp-1237277,Ca(BH4)2,mp-1237277,mp-984766,mp,8.20206409090929,22,22,32,theoretical,mp-1237277,mp-984766,-0.474043226212121,-0.465841162121212,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23879__mp-626644,Ca(HO)2,mp-23879,mp-626644,mp,7.46716799999314,5,5,16,theoretical,mp-23879,mp-626644,-2.16470391449999,-2.1572367465,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-163689__JVASP-165750,Ca2Ga2Si(HO4)2,JVASP-163689,JVASP-165750,jarvis,0.46999999999997,30,30,32,jarvis_only,JVASP-163689,JVASP-165750,-2.42147,-2.421,jarvis_formation,OptB88vdW
+mp-677422__mp-760729,Ca2Ga2Si(HO4)2,mp-760729,mp-677422,mp,13.3233860000002,30,30,32,theoretical,mp-760729,mp-677422,-2.65543751116667,-2.64211412516667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1103879__mp-1104215,Ca2Ni10H,mp-1104215,mp-1103879,mp,21.503474615385,13,13,16,theoretical,mp-1104215,mp-1103879,-0.130534251634615,-0.10903077701923,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1103879__mp-1104735,Ca2Ni10H,mp-1104735,mp-1103879,mp,3.90930923076928,13,13,16,theoretical,mp-1104735,mp-1103879,-0.11294008625,-0.10903077701923,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1103879__mp-1104841,Ca2Ni10H,mp-1104841,mp-1103879,mp,21.360382307692,13,13,16,theoretical,mp-1104841,mp-1103879,-0.130391159326922,-0.10903077701923,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1103879__mp-1104951,Ca2Ni10H,mp-1104951,mp-1103879,mp,3.21793076923116,13,13,16,theoretical,mp-1104951,mp-1103879,-0.112248707788462,-0.10903077701923,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1104215__mp-1104735,Ca2Ni10H,mp-1104215,mp-1104735,mp,17.5941653846158,13,13,16,theoretical,mp-1104215,mp-1104735,-0.130534251634615,-0.11294008625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1104215__mp-1104841,Ca2Ni10H,mp-1104215,mp-1104841,mp,0.143092307693077,13,13,16,theoretical,mp-1104215,mp-1104841,-0.130534251634615,-0.130391159326922,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1104215__mp-1104951,Ca2Ni10H,mp-1104215,mp-1104951,mp,18.2855438461539,13,13,16,theoretical,mp-1104215,mp-1104951,-0.130534251634615,-0.112248707788462,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1104735__mp-1104841,Ca2Ni10H,mp-1104841,mp-1104735,mp,17.4510730769227,13,13,16,theoretical,mp-1104841,mp-1104735,-0.130391159326922,-0.11294008625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1104735__mp-1104951,Ca2Ni10H,mp-1104735,mp-1104951,mp,0.69137846153812,13,13,16,theoretical,mp-1104735,mp-1104951,-0.11294008625,-0.112248707788462,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1104841__mp-1104951,Ca2Ni10H,mp-1104841,mp-1104951,mp,18.1424515384608,13,13,16,theoretical,mp-1104841,mp-1104951,-0.130391159326922,-0.112248707788462,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1192226__mp-1226863,CaBHO3,mp-1192226,mp-1226863,mp,12.3599724999992,24,12,32,proton_transfer;theoretical,mp-1192226,mp-1226863,-2.75879366756944,-2.74643369506944,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23690__mp-753183,CaH4SO6,mp-23690,mp-753183,mp,18.9522024999995,24,24,32,proton_transfer,mp-23690,mp-753183,-1.95767988479167,-1.93872768229167,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-88729__JVASP-169211,CaH8(ClO2)2,JVASP-88729,JVASP-169211,jarvis,9.6099999999999,30,30,32,jarvis_only,JVASP-88729,JVASP-169211,-1.32466,-1.31505,jarvis_formation,OptB88vdW
+JVASP-149557__JVASP-149588,CaNi5H,JVASP-149557,JVASP-149588,jarvis,18.82,7,7,16,jarvis_only,JVASP-149557,JVASP-149588,-0.16151,-0.14269,jarvis_formation,OptB88vdW
+JVASP-94906__JVASP-149557,CaNi5H,JVASP-94906,JVASP-149557,jarvis,3.96000000000002,7,7,16,jarvis_only,JVASP-94906,JVASP-149557,-0.16547,-0.16151,jarvis_formation,OptB88vdW
+JVASP-94906__JVASP-149588,CaNi5H,JVASP-94906,JVASP-149588,jarvis,22.78,7,7,16,jarvis_only,JVASP-94906,JVASP-149588,-0.16547,-0.14269,jarvis_formation,OptB88vdW
+JVASP-94906__JVASP-94911,CaNi5H,JVASP-94906,JVASP-94911,jarvis,4.61,7,7,16,jarvis_only,JVASP-94906,JVASP-94911,-0.16547,-0.16086,jarvis_formation,OptB88vdW
+JVASP-94906__JVASP-94931,CaNi5H,JVASP-94906,JVASP-94931,jarvis,14.56,7,7,16,jarvis_only,JVASP-94906,JVASP-94931,-0.16547,-0.15091,jarvis_formation,OptB88vdW
+JVASP-94911__JVASP-149557,CaNi5H,JVASP-149557,JVASP-94911,jarvis,0.649999999999984,7,7,16,jarvis_only,JVASP-149557,JVASP-94911,-0.16151,-0.16086,jarvis_formation,OptB88vdW
+JVASP-94911__JVASP-149588,CaNi5H,JVASP-94911,JVASP-149588,jarvis,18.17,7,7,16,jarvis_only,JVASP-94911,JVASP-149588,-0.16086,-0.14269,jarvis_formation,OptB88vdW
+JVASP-94911__JVASP-94931,CaNi5H,JVASP-94911,JVASP-94931,jarvis,9.95000000000001,7,7,16,jarvis_only,JVASP-94911,JVASP-94931,-0.16086,-0.15091,jarvis_formation,OptB88vdW
+JVASP-94931__JVASP-149557,CaNi5H,JVASP-149557,JVASP-94931,jarvis,10.6,7,7,16,jarvis_only,JVASP-149557,JVASP-94931,-0.16151,-0.15091,jarvis_formation,OptB88vdW
+JVASP-94931__JVASP-149588,CaNi5H,JVASP-94931,JVASP-149588,jarvis,8.21999999999998,7,7,16,jarvis_only,JVASP-94931,JVASP-149588,-0.15091,-0.14269,jarvis_formation,OptB88vdW
+mp-625548__JVASP-54670,Cd(HO)2,JVASP-54670,mp-625548,jarvis,3.22,10,5,16,jarvis_only,JVASP-54670,JVASP-176834,-1.0855,-1.08228,jarvis_formation,OptB88vdW
+mp-625548__mp-2051619,Cd(HO)2,mp-2051619,mp-625548,mp,4.53439900000063,10,5,16,theoretical,mp-2051619,mp-625548,-1.3169060285,-1.3123716295,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625548__mp-625565,Cd(HO)2,mp-625548,mp-625565,mp,21.4503189999988,5,5,16,theoretical,mp-625548,mp-625565,-1.3123716295,-1.2909213105,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-138527__JVASP-138528,CdH2,JVASP-138527,JVASP-138528,jarvis,7.78999999999999,3,3,16,jarvis_only;molecular_h2,JVASP-138527,JVASP-138528,0.1827,0.19049,jarvis_formation,OptB88vdW
+JVASP-106871__JVASP-140522,Co(HO)2,JVASP-106871,JVASP-140522,jarvis,3.70000000000004,5,10,16,jarvis_only,JVASP-106871,JVASP-140522,-0.84284,-0.83914,jarvis_formation,OptB88vdW
+JVASP-29861__JVASP-106871,Co(HO)2,JVASP-29861,JVASP-106871,jarvis,17.67,5,5,16,jarvis_only,JVASP-29861,JVASP-106871,-0.86051,-0.84284,jarvis_formation,OptB88vdW
+JVASP-29861__JVASP-140522,Co(HO)2,JVASP-29861,JVASP-140522,jarvis,21.37,5,10,16,jarvis_only,JVASP-29861,JVASP-140522,-0.86051,-0.83914,jarvis_formation,OptB88vdW
+mp-1272379__mp-1273062,Co(HO)2,mp-1273062,mp-1272379,mp,7.86133499999986,5,10,16,theoretical,mp-1273062,mp-1272379,-1.2404038535,-1.2325425185,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1272379__mp-1292002,Co(HO)2,mp-1292002,mp-1272379,mp,7.20097849999979,20,10,32,theoretical,mp-1292002,mp-1272379,-1.239743497,-1.2325425185,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1272379__mp-2665409,Co(HO)2,mp-2665409,mp-1272379,mp,5.95697999999989,5,10,16,theoretical,mp-2665409,mp-1272379,-1.2384994985,-1.2325425185,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1273062__mp-1292002,Co(HO)2,mp-1273062,mp-1292002,mp,0.66035650000007,5,20,32,theoretical,mp-1273062,mp-1292002,-1.2404038535,-1.239743497,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1273062__mp-2665409,Co(HO)2,mp-1273062,mp-2665409,mp,1.90435499999997,5,5,16,theoretical,mp-1273062,mp-2665409,-1.2404038535,-1.2384994985,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1292002__mp-2665409,Co(HO)2,mp-1292002,mp-2665409,mp,1.2439984999999,20,5,32,theoretical,mp-1292002,mp-2665409,-1.239743497,-1.2384994985,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24105__mp-1272379,Co(HO)2,mp-24105,mp-1272379,mp,7.48275399999931,5,10,16,theoretical,mp-24105,mp-1272379,-1.2400252725,-1.2325425185,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24105__mp-1273062,Co(HO)2,mp-1273062,mp-24105,mp,0.378581000000544,5,5,16,theoretical,mp-1273062,mp-24105,-1.2404038535,-1.2400252725,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24105__mp-1292002,Co(HO)2,mp-24105,mp-1292002,mp,0.281775499999526,5,20,32,,mp-24105,mp-1292002,-1.2400252725,-1.239743497,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24105__mp-2665409,Co(HO)2,mp-24105,mp-2665409,mp,1.52577399999942,5,5,16,theoretical,mp-24105,mp-2665409,-1.2400252725,-1.2384994985,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1183871__mp-1193243,CoBP2HPbO9,mp-1193243,mp-1183871,mp,0.155496000000088,30,30,32,proton_transfer;theoretical,mp-1193243,mp-1183871,-2.31988156431349,-2.31972606831349,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-505469__mp-757297,CoH2SeO4,mp-505469,mp-757297,mp,0.427708124999704,32,32,32,,mp-505469,mp-757297,-1.28720586029297,-1.28677815216797,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-105579__JVASP-140535,CoHO2,JVASP-105579,JVASP-140535,jarvis,0.539999999999985,4,16,16,jarvis_only;proton_transfer,JVASP-105579,JVASP-140535,-1.1453,-1.14476,jarvis_formation,OptB88vdW
+JVASP-105579__JVASP-146887,CoHO2,JVASP-105579,JVASP-146887,jarvis,1.51999999999997,4,16,16,jarvis_only;proton_transfer,JVASP-105579,JVASP-146887,-1.1453,-1.14378,jarvis_formation,OptB88vdW
+JVASP-140535__JVASP-146887,CoHO2,JVASP-140535,JVASP-146887,jarvis,0.979999999999981,16,16,16,jarvis_only;proton_transfer,JVASP-140535,JVASP-146887,-1.14476,-1.14378,jarvis_formation,OptB88vdW
+JVASP-52436__JVASP-105579,CoHO2,JVASP-105579,JVASP-52436,jarvis,14.9699999999999,4,8,16,jarvis_only;proton_transfer,JVASP-105579,JVASP-52436,-1.1453,-1.13033,jarvis_formation,OptB88vdW
+JVASP-52436__JVASP-140535,CoHO2,JVASP-140535,JVASP-52436,jarvis,14.4299999999999,16,8,16,jarvis_only;proton_transfer,JVASP-140535,JVASP-52436,-1.14476,-1.13033,jarvis_formation,OptB88vdW
+JVASP-52436__JVASP-146887,CoHO2,JVASP-146887,JVASP-52436,jarvis,13.45,16,8,16,jarvis_only;proton_transfer,JVASP-146887,JVASP-52436,-1.14378,-1.13033,jarvis_formation,OptB88vdW
+mp-27913__JVASP-105579,CoHO2,JVASP-105579,mp-27913,jarvis,3.87999999999988,4,4,16,jarvis_only;proton_transfer,JVASP-105579,JVASP-109213,-1.1453,-1.14142,jarvis_formation,OptB88vdW
+mp-27913__JVASP-140535,CoHO2,JVASP-140535,mp-27913,jarvis,3.3399999999999,16,4,16,jarvis_only;proton_transfer,JVASP-140535,JVASP-109213,-1.14476,-1.14142,jarvis_formation,OptB88vdW
+mp-27913__JVASP-146887,CoHO2,JVASP-146887,mp-27913,jarvis,2.35999999999992,16,4,16,jarvis_only;proton_transfer,JVASP-146887,JVASP-109213,-1.14378,-1.14142,jarvis_formation,OptB88vdW
+mp-27913__JVASP-52436,CoHO2,mp-27913,JVASP-52436,jarvis,11.09,4,8,16,jarvis_only;proton_transfer,JVASP-109213,JVASP-52436,-1.14142,-1.13033,jarvis_formation,OptB88vdW
+JVASP-104842__JVASP-125386,CrH3,JVASP-104842,JVASP-125386,jarvis,15.81,4,4,16,jarvis_only,JVASP-104842,JVASP-125386,0.26066,0.27647,jarvis_formation,OptB88vdW
+mp-23910__mp-24040,CrHO2,mp-24040,mp-23910,mp,6.69549624999988,8,4,16,proton_transfer,mp-24040,mp-23910,-1.9927140809375,-1.9860185846875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23910__mp-626703,CrHO2,mp-626703,mp-23910,mp,7.62156750000109,16,4,16,proton_transfer;theoretical,mp-626703,mp-23910,-1.9936401521875,-1.9860185846875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23910__mp-675232,CrHO2,mp-23910,mp-675232,mp,1.66263749999906,4,16,16,proton_transfer;theoretical,mp-23910,mp-675232,-1.9860185846875,-1.9843559471875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24040__mp-626703,CrHO2,mp-626703,mp-24040,mp,0.926071250001215,16,8,16,proton_transfer;theoretical,mp-626703,mp-24040,-1.9936401521875,-1.9927140809375,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24040__mp-675232,CrHO2,mp-24040,mp-675232,mp,8.35813374999894,8,16,16,proton_transfer;theoretical,mp-24040,mp-675232,-1.9927140809375,-1.9843559471875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626703__mp-675232,CrHO2,mp-626703,mp-675232,mp,9.28420500000016,16,16,16,proton_transfer;theoretical,mp-626703,mp-675232,-1.9936401521875,-1.9843559471875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23752__mp-644236,Cs2MgH4,mp-644236,mp-23752,mp,5.35374821428491,28,7,32,,mp-644236,mp-23752,-0.303352698115764,-0.297998949901479,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1181702__mp-1192732,Cs3H(SeO4)2,mp-1192732,mp-1181702,mp,1.04794107142903,28,28,32,proton_transfer,mp-1192732,mp-1181702,-1.66321906642164,-1.66217112535022,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1181702__mp-1226153,Cs3H(SeO4)2,mp-1181702,mp-1226153,mp,0.42753571428511,28,14,32,proton_transfer;theoretical,mp-1181702,mp-1226153,-1.66217112535022,-1.66174358963593,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1181702__mp-1226195,Cs3H(SeO4)2,mp-1226195,mp-1181702,mp,1.63210749999987,28,28,32,proton_transfer;theoretical,mp-1226195,mp-1181702,-1.66380323285022,-1.66217112535022,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1192732__mp-1226153,Cs3H(SeO4)2,mp-1192732,mp-1226153,mp,1.47547678571414,28,14,32,proton_transfer;theoretical,mp-1192732,mp-1226153,-1.66321906642164,-1.66174358963593,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1192732__mp-1226195,Cs3H(SeO4)2,mp-1226195,mp-1192732,mp,0.584166428570843,28,28,32,proton_transfer;theoretical,mp-1226195,mp-1192732,-1.66380323285022,-1.66321906642164,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1226153__mp-1226195,Cs3H(SeO4)2,mp-1226195,mp-1226153,mp,2.05964321428498,28,14,32,proton_transfer;theoretical,mp-1226195,mp-1226153,-1.66380323285022,-1.66174358963593,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23980__mp-1181702,Cs3H(SeO4)2,mp-1181702,mp-23980,mp,1.19374357142821,28,14,32,proton_transfer,mp-1181702,mp-23980,-1.66217112535022,-1.66097738177879,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23980__mp-1192732,Cs3H(SeO4)2,mp-1192732,mp-23980,mp,2.24168464285723,28,14,32,proton_transfer,mp-1192732,mp-23980,-1.66321906642164,-1.66097738177879,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23980__mp-1226153,Cs3H(SeO4)2,mp-1226153,mp-23980,mp,0.766207857143097,14,14,16,proton_transfer;theoretical,mp-1226153,mp-23980,-1.66174358963593,-1.66097738177879,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23980__mp-1226195,Cs3H(SeO4)2,mp-1226195,mp-23980,mp,2.82585107142808,28,14,32,proton_transfer;theoretical,mp-1226195,mp-23980,-1.66380323285022,-1.66097738177879,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-28582__mp-1191955,CsB3H8,mp-1191955,mp-28582,mp,0.970067083333248,24,24,32,theoretical,mp-1191955,mp-28582,-0.316299848573721,-0.315329781490387,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-984550__mp-1191351,CsGaH4,mp-1191351,mp-984550,mp,0.952112916666692,24,12,32,theoretical,mp-1191351,mp-984550,-0.311428949109196,-0.310476836192529,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24181__mp-1200666,CsGaP3HO10,mp-1200666,mp-24181,mp,0.0725728124999492,32,16,32,proton_transfer,mp-1200666,mp-24181,-2.52582192045836,-2.52574934764586,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632319__mp-1057286,CsH,mp-1057286,mp-632319,mp,16.0978499999995,2,2,16,,mp-1057286,mp-632319,-0.247597554374998,-0.231499704374999,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1184037__mp-1198227,CsH5N2,mp-1198227,mp-1184037,mp,10.8949659374993,32,32,32,,mp-1198227,mp-1184037,-0.39676863828125,-0.385873672343751,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24668__mp-1225893,CsHF2,mp-24668,mp-1225893,mp,20.0409300000004,8,4,16,proton_transfer;theoretical,mp-24668,mp-1225893,-2.47843063147629,-2.45838970147629,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-540981__mp-1192419,CsHSO4,mp-1192419,mp-540981,mp,4.96208107142881,28,28,32,proton_transfer,mp-1192419,mp-540981,-1.95962385655788,-1.95466177548645,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-540981__mp-557752,CsHSO4,mp-540981,mp-557752,mp,3.68744214285699,28,14,32,proton_transfer,mp-540981,mp-557752,-1.95466177548645,-1.9509743333436,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-557752__mp-1192419,CsHSO4,mp-1192419,mp-557752,mp,8.6495232142858,28,14,32,proton_transfer,mp-1192419,mp-557752,-1.95962385655788,-1.9509743333436,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-697181__mp-1182786,CsLi2(HO)3,mp-697181,mp-1182786,mp,3.1168933333332,18,18,32,,mp-697181,mp-1182786,-1.69482881445243,-1.69171192111909,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23751__mp-571020,CsMgH3,mp-571020,mp-23751,mp,2.97308799999979,30,15,32,,mp-571020,mp-23751,-0.321048684681035,-0.318075596681036,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1188121__mp-1188838,CsP(HO2)2,mp-1188121,mp-1188838,mp,1.05539249999964,16,16,16,proton_transfer,mp-1188121,mp-1188838,-2.18292644022475,-2.18187104772475,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1188121__mp-1197651,CsP(HO2)2,mp-1197651,mp-1188121,mp,0.132807187499751,32,16,32,proton_transfer,mp-1197651,mp-1188121,-2.18305924741225,-2.18292644022475,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1188838__mp-1197651,CsP(HO2)2,mp-1197651,mp-1188838,mp,1.18819968749939,32,16,32,proton_transfer,mp-1197651,mp-1188838,-2.18305924741225,-2.18187104772475,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-29300__JVASP-29789,Cu(HO)2,JVASP-29300,JVASP-29789,jarvis,18.08,10,10,16,jarvis_only,JVASP-29300,JVASP-29789,-0.80851,-0.79043,jarvis_formation,OptB88vdW
+JVASP-29465__JVASP-51685,Cu2H3ClO3,JVASP-51685,JVASP-29465,jarvis,6.29000000000002,18,18,32,jarvis_only,JVASP-51685,JVASP-29465,-0.80513,-0.79884,jarvis_formation,OptB88vdW
+JVASP-134686__JVASP-134692,CuH,JVASP-134686,JVASP-134692,jarvis,12.05,2,4,16,jarvis_only,JVASP-134686,JVASP-134692,0.25051,0.26256,jarvis_formation,OptB88vdW
+JVASP-8603__JVASP-134685,CuH,JVASP-8603,JVASP-134685,jarvis,2.98999999999999,4,2,16,jarvis_only,JVASP-8603,JVASP-134685,0.1519,0.15489,jarvis_formation,OptB88vdW
+mp-23795__mp-632759,CuH4(OF)2,mp-632759,mp-23795,mp,2.41664333333347,9,9,16,,mp-632759,mp-23795,-1.463884895,-1.46146825166667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-707170__mp-1192826,CuH6SO7,mp-1192826,mp-707170,mp,1.01986033333423,30,30,32,proton_transfer,mp-1192826,mp-707170,-1.37697155533333,-1.375951695,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-996953__JVASP-30509,CuHO2,mp-996953,JVASP-30509,jarvis,12.9900000000001,4,8,16,jarvis_only;proton_transfer;theoretical,JVASP-30503,JVASP-30509,-0.6861,-0.67311,jarvis_formation,OptB88vdW
+mp-996953__mp-996956,CuHO2,mp-996956,mp-996953,mp,8.95640625000027,8,4,16,proton_transfer;theoretical,mp-996956,mp-996953,-0.9910842090625,-0.982127802812499,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-755659__mp-777422,DyHO2,mp-755659,mp-777422,mp,6.71234062499959,16,8,16,theoretical,mp-755659,mp-777422,-2.98193642010416,-2.97522407947917,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-36033__JVASP-36152,ErH,JVASP-36152,JVASP-36033,jarvis,22.33,4,2,16,jarvis_only,JVASP-36152,JVASP-36033,-0.38529,-0.36296,jarvis_formation,OptB88vdW
+mp-626680__mp-1272250,Fe(HO)2,mp-626680,mp-1272250,mp,0.0404564999996193,5,20,32,theoretical,mp-626680,mp-1272250,-1.3601813595,-1.360140903,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626680__mp-626689,Fe(HO)2,mp-626680,mp-626689,mp,13.5837029999999,5,5,16,theoretical,mp-626680,mp-626689,-1.3601813595,-1.3465976565,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626689__mp-1272250,Fe(HO)2,mp-1272250,mp-626689,mp,13.5432465000003,20,5,32,theoretical,mp-1272250,mp-626689,-1.360140903,-1.3465976565,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1224911__JVASP-144676,Fe3H9S2O15,JVASP-144676,mp-1224911,jarvis,8.88999999999984,29,29,32,jarvis_only;proton_transfer;theoretical,JVASP-144676,JVASP-140876,-1.17888,-1.16999,jarvis_formation,OptB88vdW
+mp-1224911__mp-1224975,Fe3H9S2O15,mp-1224975,mp-1224911,mp,6.03422206896509,29,29,32,proton_transfer;theoretical,mp-1224975,mp-1224911,-1.54249801418103,-1.53646379211207,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-29792__JVASP-111938,FeHO2,JVASP-111938,JVASP-29792,jarvis,10.2800000000001,4,16,16,jarvis_only;proton_transfer,JVASP-111938,JVASP-29792,-1.21488,-1.2046,jarvis_formation,OptB88vdW
+JVASP-29792__JVASP-54685,FeHO2,JVASP-29792,JVASP-54685,jarvis,10.3199999999999,16,16,16,jarvis_only;proton_transfer,JVASP-29792,JVASP-54685,-1.2046,-1.19428,jarvis_formation,OptB88vdW
+JVASP-29844__JVASP-30365,FeHO2,JVASP-29844,JVASP-30365,jarvis,1.2700000000001,8,4,16,jarvis_only;proton_transfer,JVASP-29844,JVASP-30365,-1.13233,-1.13106,jarvis_formation,OptB88vdW
+JVASP-50992__JVASP-122515,FeHO2,JVASP-50992,JVASP-122515,jarvis,2.89000000000006,16,16,16,jarvis_only;proton_transfer,JVASP-50992,JVASP-122515,-1.16381,-1.16092,jarvis_formation,OptB88vdW
+JVASP-54682__JVASP-111938,FeHO2,JVASP-54682,JVASP-111938,jarvis,15.5000000000001,16,4,16,jarvis_only;proton_transfer,JVASP-54682,JVASP-111938,-1.23038,-1.21488,jarvis_formation,OptB88vdW
+JVASP-54682__JVASP-92228,FeHO2,JVASP-92228,JVASP-54682,jarvis,17.9499999999999,8,16,16,jarvis_only;proton_transfer,JVASP-92228,JVASP-54682,-1.24833,-1.23038,jarvis_formation,OptB88vdW
+JVASP-54685__JVASP-111938,FeHO2,JVASP-111938,JVASP-54685,jarvis,20.6,4,16,16,jarvis_only;proton_transfer,JVASP-111938,JVASP-54685,-1.21488,-1.19428,jarvis_formation,OptB88vdW
+mp-605437__JVASP-111938,FeHO2,mp-605437,JVASP-111938,jarvis,22.6300000000002,16,4,16,jarvis_only;proton_transfer,JVASP-54681,JVASP-111938,-1.23751,-1.21488,jarvis_formation,OptB88vdW
+mp-605437__JVASP-54682,FeHO2,mp-605437,JVASP-54682,jarvis,7.13000000000008,16,16,16,jarvis_only;proton_transfer,JVASP-54681,JVASP-54682,-1.23751,-1.23038,jarvis_formation,OptB88vdW
+mp-605437__JVASP-92228,FeHO2,JVASP-92228,mp-605437,jarvis,10.8199999999998,8,16,16,jarvis_only;proton_transfer,JVASP-92228,JVASP-54681,-1.24833,-1.23751,jarvis_formation,OptB88vdW
+mp-605437__mp-626088,FeHO2,mp-605437,mp-626088,mp,6.80081437499958,16,8,16,proton_transfer;theoretical,mp-605437,mp-626088,-1.5491195084375,-1.5423186940625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626088__JVASP-111938,FeHO2,JVASP-111938,mp-626088,jarvis,10.9999999999999,4,8,16,jarvis_only;proton_transfer;theoretical,JVASP-111938,JVASP-142846,-1.21488,-1.20388,jarvis_formation,OptB88vdW
+mp-626088__JVASP-29792,FeHO2,JVASP-29792,mp-626088,jarvis,0.719999999999832,16,8,16,jarvis_only;proton_transfer;theoretical,JVASP-29792,JVASP-142846,-1.2046,-1.20388,jarvis_formation,OptB88vdW
+mp-626088__JVASP-54685,FeHO2,mp-626088,JVASP-54685,jarvis,9.60000000000005,8,16,16,jarvis_only;proton_transfer;theoretical,JVASP-142846,JVASP-54685,-1.20388,-1.19428,jarvis_formation,OptB88vdW
+mp-696580__JVASP-122515,FeHO2,mp-696580,JVASP-122515,jarvis,15.5700000000001,8,16,16,jarvis_only;proton_transfer,JVASP-52431,JVASP-122515,-1.17649,-1.16092,jarvis_formation,OptB88vdW
+mp-696580__JVASP-50992,FeHO2,mp-696580,JVASP-50992,jarvis,12.68,8,16,16,jarvis_only;proton_transfer,JVASP-52431,JVASP-50992,-1.17649,-1.16381,jarvis_formation,OptB88vdW
+mp-696580__JVASP-54685,FeHO2,JVASP-54685,mp-696580,jarvis,17.79,16,8,16,jarvis_only;proton_transfer,JVASP-54685,JVASP-52431,-1.19428,-1.17649,jarvis_formation,OptB88vdW
+mp-735529__mp-1273743,FePH6NO5,mp-1273743,mp-735529,mp,0.158524642857261,28,28,32,proton_transfer;theoretical,mp-1273743,mp-735529,-1.48036190015306,-1.4802033755102,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-136647__JVASP-136649,GaH2,JVASP-136647,JVASP-136649,jarvis,4.81000000000004,3,3,16,jarvis_only,JVASP-136647,JVASP-136649,0.29732,0.30213,jarvis_formation,OptB88vdW
+JVASP-136647__JVASP-136651,GaH2,JVASP-136651,JVASP-136647,jarvis,13.34,3,3,16,jarvis_only;molecular_h2,JVASP-136651,JVASP-136647,0.28398,0.29732,jarvis_formation,OptB88vdW
+JVASP-136649__JVASP-136651,GaH2,JVASP-136651,JVASP-136649,jarvis,18.15,3,3,16,jarvis_only;molecular_h2,JVASP-136651,JVASP-136649,0.28398,0.30213,jarvis_formation,OptB88vdW
+JVASP-136649__JVASP-136654,GaH2,JVASP-136649,JVASP-136654,jarvis,23.05,3,3,16,jarvis_only,JVASP-136649,JVASP-136654,0.30213,0.32518,jarvis_formation,OptB88vdW
+mp-23803__JVASP-54721,GaHO2,mp-23803,JVASP-54721,jarvis,10.06,8,16,16,jarvis_only;proton_transfer,JVASP-8599,JVASP-54721,-1.6436,-1.63354,jarvis_formation,OptB88vdW
+mp-23803__mp-634326,GaHO2,mp-634326,mp-23803,mp,14.3828900000003,16,8,16,proton_transfer,mp-634326,mp-23803,-1.8985905559375,-1.8842076659375,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-634326__JVASP-54721,GaHO2,mp-634326,JVASP-54721,jarvis,21.5099999999999,16,16,16,jarvis_only;proton_transfer,JVASP-51395,JVASP-54721,-1.65505,-1.63354,jarvis_formation,OptB88vdW
+mp-24131__mp-505686,GdH3,mp-505686,mp-24131,mp,5.94014083333383,24,8,32,,mp-505686,mp-24131,-0.674504033645834,-0.6685638928125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1181222__mp-1205379,GeH4,mp-1181222,mp-1205379,mp,8.00510999999986,20,20,32,theoretical,mp-1181222,mp-1205379,-0.0356043204999999,-0.0275992105,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-112289__JVASP-112943,H2,JVASP-112289,JVASP-112943,jarvis,10.77,16,4,16,jarvis_only;molecular_h2,JVASP-112289,JVASP-112943,-0.00135,0.00942,jarvis_formation,OptB88vdW
+JVASP-21216__JVASP-25330,H2,JVASP-25330,JVASP-21216,jarvis,0.309999999999977,1,1,16,jarvis_only;molecular_h2,JVASP-25330,JVASP-21216,0.40864,0.40895,jarvis_formation,OptB88vdW
+JVASP-21216__JVASP-78576,H2,JVASP-21216,JVASP-78576,jarvis,7.17000000000001,1,1,16,jarvis_only;molecular_h2,JVASP-21216,JVASP-78576,0.40895,0.41612,jarvis_formation,OptB88vdW
+JVASP-25169__JVASP-25251,H2,JVASP-25169,JVASP-25251,jarvis,6.83999999999996,2,2,16,jarvis_only,JVASP-25169,JVASP-25251,2.50271,2.50955,jarvis_formation,OptB88vdW
+JVASP-25169__JVASP-25291,H2,JVASP-25169,JVASP-25291,jarvis,0.519999999999854,2,1,16,jarvis_only,JVASP-25169,JVASP-25291,2.50271,2.50323,jarvis_formation,OptB88vdW
+JVASP-25251__JVASP-25291,H2,JVASP-25291,JVASP-25251,jarvis,6.3200000000001,1,2,16,jarvis_only,JVASP-25291,JVASP-25251,2.50323,2.50955,jarvis_formation,OptB88vdW
+JVASP-25330__JVASP-78576,H2,JVASP-25330,JVASP-78576,jarvis,7.47999999999999,1,1,16,jarvis_only;molecular_h2,JVASP-25330,JVASP-78576,0.40864,0.41612,jarvis_formation,OptB88vdW
+JVASP-7406__JVASP-25169,H2,JVASP-25169,JVASP-7406,jarvis,10.8800000000002,2,1,16,jarvis_only,JVASP-25169,JVASP-7406,2.50271,2.51359,jarvis_formation,OptB88vdW
+JVASP-7406__JVASP-25251,H2,JVASP-25251,JVASP-7406,jarvis,4.04000000000027,2,1,16,jarvis_only,JVASP-25251,JVASP-7406,2.50955,2.51359,jarvis_formation,OptB88vdW
+JVASP-7406__JVASP-25291,H2,JVASP-25291,JVASP-7406,jarvis,10.3600000000004,1,1,16,jarvis_only,JVASP-25291,JVASP-7406,2.50323,2.51359,jarvis_formation,OptB88vdW
+JVASP-891__JVASP-25169,H2,JVASP-891,JVASP-25169,jarvis,1.77000000000005,1,2,16,jarvis_only,JVASP-891,JVASP-25169,2.50094,2.50271,jarvis_formation,OptB88vdW
+JVASP-891__JVASP-25251,H2,JVASP-891,JVASP-25251,jarvis,8.61000000000001,1,2,16,jarvis_only,JVASP-891,JVASP-25251,2.50094,2.50955,jarvis_formation,OptB88vdW
+JVASP-891__JVASP-25291,H2,JVASP-891,JVASP-25291,jarvis,2.2899999999999,1,1,16,jarvis_only,JVASP-891,JVASP-25291,2.50094,2.50323,jarvis_formation,OptB88vdW
+JVASP-891__JVASP-7406,H2,JVASP-891,JVASP-7406,jarvis,12.6500000000003,1,1,16,jarvis_only,JVASP-891,JVASP-7406,2.50094,2.51359,jarvis_formation,OptB88vdW
+mp-1066989__JVASP-112289,H2,JVASP-112289,mp-1066989,jarvis,6.98,16,2,16,jarvis_only;molecular_h2;theoretical,JVASP-112289,JVASP-79621,-0.00135,0.00563,jarvis_formation,OptB88vdW
+mp-1066989__JVASP-112943,H2,mp-1066989,JVASP-112943,jarvis,3.79,2,4,16,jarvis_only;molecular_h2;theoretical,JVASP-79621,JVASP-112943,0.00563,0.00942,jarvis_formation,OptB88vdW
+mp-1066989__mp-1188177,H2,mp-1188177,mp-1066989,mp,3.97544249999982,16,2,16,molecular_h2;theoretical,mp-1188177,mp-1066989,0.00353799875000016,0.00751344124999997,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24504__JVASP-112289,H2,JVASP-112289,mp-24504,jarvis,2.07,16,4,16,jarvis_only;molecular_h2,JVASP-112289,JVASP-25170,-0.00135,0.00072,jarvis_formation,OptB88vdW
+mp-24504__JVASP-112943,H2,mp-24504,JVASP-112943,jarvis,8.7,4,4,16,jarvis_only;molecular_h2,JVASP-25170,JVASP-112943,0.00072,0.00942,jarvis_formation,OptB88vdW
+mp-24504__mp-1066989,H2,mp-24504,mp-1066989,mp,5.07304749999982,4,2,16,molecular_h2;theoretical,mp-24504,mp-1066989,0.00244039375000016,0.00751344124999997,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24504__mp-1188177,H2,mp-24504,mp-1188177,mp,1.097605,4,16,16,molecular_h2;theoretical,mp-24504,mp-1188177,0.00244039375000016,0.00353799875000016,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24504__mp-632172,H2,mp-632172,mp-24504,mp,1.79714875000014,2,4,16,molecular_h2;theoretical,mp-632172,mp-24504,0.000643245000000014,0.00244039375000016,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24504__mp-632291,H2,mp-24504,mp-632291,mp,0.510407499999754,4,2,16,molecular_h2,mp-24504,mp-632291,0.00244039375000016,0.00295080124999991,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24504__mp-730101,H2,mp-730101,mp-24504,mp,2.44039375000016,8,4,16,molecular_h2,mp-730101,mp-24504,0,0.00244039375000016,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24504__mp-731827,H2,mp-731827,mp-24504,mp,0.16141062500008,16,4,16,molecular_h2;theoretical,mp-731827,mp-24504,0.00227898312500008,0.00244039375000016,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24504__mp-738409,H2,mp-24504,mp-738409,mp,0.274595312499848,4,32,32,molecular_h2,mp-24504,mp-738409,0.00244039375000016,0.00271498906250001,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24504__mp-850274,H2,mp-24504,mp-850274,mp,0.112837500000129,4,2,16,molecular_h2;theoretical,mp-24504,mp-850274,0.00244039375000016,0.00255323125000029,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24504__mp-973783,H2,mp-973783,mp-24504,mp,0.91156750000021,4,4,16,molecular_h2;theoretical,mp-973783,mp-24504,0.00152882624999995,0.00244039375000016,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632172__mp-1066989,H2,mp-632172,mp-1066989,mp,6.87019624999996,2,2,16,molecular_h2;theoretical,mp-632172,mp-1066989,0.000643245000000014,0.00751344124999997,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632172__mp-1188177,H2,mp-632172,mp-1188177,mp,2.89475375000015,2,16,16,molecular_h2;theoretical,mp-632172,mp-1188177,0.000643245000000014,0.00353799875000016,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632172__mp-632291,H2,mp-632172,mp-632291,mp,2.3075562499999,2,2,16,molecular_h2;theoretical,mp-632172,mp-632291,0.000643245000000014,0.00295080124999991,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632172__mp-730101,H2,mp-730101,mp-632172,mp,0.643245000000014,8,2,16,molecular_h2;theoretical,mp-730101,mp-632172,0,0.000643245000000014,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632172__mp-731827,H2,mp-632172,mp-731827,mp,1.63573812500006,2,16,16,molecular_h2;theoretical,mp-632172,mp-731827,0.000643245000000014,0.00227898312500008,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632172__mp-738409,H2,mp-632172,mp-738409,mp,2.07174406249999,2,32,32,molecular_h2;theoretical,mp-632172,mp-738409,0.000643245000000014,0.00271498906250001,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632172__mp-850274,H2,mp-632172,mp-850274,mp,1.90998625000027,2,2,16,molecular_h2;theoretical,mp-632172,mp-850274,0.000643245000000014,0.00255323125000029,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632172__mp-973783,H2,mp-632172,mp-973783,mp,0.885581249999934,2,4,16,molecular_h2;theoretical,mp-632172,mp-973783,0.000643245000000014,0.00152882624999995,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632291__JVASP-112289,H2,JVASP-112289,mp-632291,jarvis,0.38,16,2,16,jarvis_only;molecular_h2,JVASP-112289,JVASP-25288,-0.00135,-0.00097,jarvis_formation,OptB88vdW
+mp-632291__JVASP-112943,H2,mp-632291,JVASP-112943,jarvis,10.39,2,4,16,jarvis_only;molecular_h2,JVASP-25288,JVASP-112943,-0.00097,0.00942,jarvis_formation,OptB88vdW
+mp-632291__mp-1066989,H2,mp-632291,mp-1066989,mp,4.56264000000006,2,2,16,molecular_h2;theoretical,mp-632291,mp-1066989,0.00295080124999991,0.00751344124999997,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632291__mp-1188177,H2,mp-632291,mp-1188177,mp,0.587197500000247,2,16,16,molecular_h2;theoretical,mp-632291,mp-1188177,0.00295080124999991,0.00353799875000016,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632291__mp-730101,H2,mp-730101,mp-632291,mp,2.95080124999991,8,2,16,molecular_h2,mp-730101,mp-632291,0,0.00295080124999991,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632291__mp-731827,H2,mp-731827,mp-632291,mp,0.671818124999835,16,2,16,molecular_h2;theoretical,mp-731827,mp-632291,0.00227898312500008,0.00295080124999991,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632291__mp-738409,H2,mp-738409,mp-632291,mp,0.235812187499906,32,2,32,molecular_h2,mp-738409,mp-632291,0.00271498906250001,0.00295080124999991,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632291__mp-850274,H2,mp-850274,mp-632291,mp,0.397569999999625,2,2,16,molecular_h2;theoretical,mp-850274,mp-632291,0.00255323125000029,0.00295080124999991,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632291__mp-973783,H2,mp-973783,mp-632291,mp,1.42197499999996,4,2,16,molecular_h2;theoretical,mp-973783,mp-632291,0.00152882624999995,0.00295080124999991,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-730101__mp-1066989,H2,mp-730101,mp-1066989,mp,7.51344124999997,8,2,16,molecular_h2;theoretical,mp-730101,mp-1066989,0,0.00751344124999997,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-730101__mp-1188177,H2,mp-730101,mp-1188177,mp,3.53799875000016,8,16,16,molecular_h2;theoretical,mp-730101,mp-1188177,0,0.00353799875000016,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-730101__mp-731827,H2,mp-730101,mp-731827,mp,2.27898312500008,8,16,16,molecular_h2;theoretical,mp-730101,mp-731827,0,0.00227898312500008,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-730101__mp-738409,H2,mp-730101,mp-738409,mp,2.71498906250001,8,32,32,molecular_h2,mp-730101,mp-738409,0,0.00271498906250001,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-730101__mp-850274,H2,mp-730101,mp-850274,mp,2.55323125000029,8,2,16,molecular_h2;theoretical,mp-730101,mp-850274,0,0.00255323125000029,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-730101__mp-973783,H2,mp-730101,mp-973783,mp,1.52882624999995,8,4,16,molecular_h2;theoretical,mp-730101,mp-973783,0,0.00152882624999995,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-731827__mp-1066989,H2,mp-731827,mp-1066989,mp,5.2344581249999,16,2,16,molecular_h2;theoretical,mp-731827,mp-1066989,0.00227898312500008,0.00751344124999997,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-731827__mp-1188177,H2,mp-731827,mp-1188177,mp,1.25901562500008,16,16,16,molecular_h2;theoretical,mp-731827,mp-1188177,0.00227898312500008,0.00353799875000016,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-731827__mp-738409,H2,mp-731827,mp-738409,mp,0.436005937499928,16,32,32,molecular_h2;theoretical,mp-731827,mp-738409,0.00227898312500008,0.00271498906250001,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-731827__mp-850274,H2,mp-731827,mp-850274,mp,0.274248125000209,16,2,16,molecular_h2;theoretical,mp-731827,mp-850274,0.00227898312500008,0.00255323125000029,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-731827__mp-973783,H2,mp-973783,mp-731827,mp,0.75015687500013,4,16,16,molecular_h2;theoretical,mp-973783,mp-731827,0.00152882624999995,0.00227898312500008,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-738409__mp-1066989,H2,mp-738409,mp-1066989,mp,4.79845218749997,32,2,32,molecular_h2;theoretical,mp-738409,mp-1066989,0.00271498906250001,0.00751344124999997,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-738409__mp-1188177,H2,mp-738409,mp-1188177,mp,0.823009687500154,32,16,32,molecular_h2;theoretical,mp-738409,mp-1188177,0.00271498906250001,0.00353799875000016,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-738409__mp-850274,H2,mp-850274,mp-738409,mp,0.161757812499719,2,32,32,molecular_h2;theoretical,mp-850274,mp-738409,0.00255323125000029,0.00271498906250001,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-738409__mp-973783,H2,mp-973783,mp-738409,mp,1.18616281250006,4,32,32,molecular_h2;theoretical,mp-973783,mp-738409,0.00152882624999995,0.00271498906250001,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-850274__JVASP-112289,H2,JVASP-112289,mp-850274,jarvis,1.26,16,2,16,jarvis_only;molecular_h2;theoretical,JVASP-112289,JVASP-25340,-0.00135,-9e-05,jarvis_formation,OptB88vdW
+mp-850274__JVASP-112943,H2,mp-850274,JVASP-112943,jarvis,9.51,2,4,16,jarvis_only;molecular_h2;theoretical,JVASP-25340,JVASP-112943,-9e-05,0.00942,jarvis_formation,OptB88vdW
+mp-850274__mp-1066989,H2,mp-850274,mp-1066989,mp,4.96020999999969,2,2,16,molecular_h2;theoretical,mp-850274,mp-1066989,0.00255323125000029,0.00751344124999997,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-850274__mp-1188177,H2,mp-850274,mp-1188177,mp,0.984767499999872,2,16,16,molecular_h2;theoretical,mp-850274,mp-1188177,0.00255323125000029,0.00353799875000016,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-850274__mp-973783,H2,mp-973783,mp-850274,mp,1.02440500000034,4,2,16,molecular_h2;theoretical,mp-973783,mp-850274,0.00152882624999995,0.00255323125000029,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-973783__JVASP-112289,H2,JVASP-112289,mp-973783,jarvis,0.08,16,4,16,jarvis_only;molecular_h2;theoretical,JVASP-112289,JVASP-25379,-0.00135,-0.00127,jarvis_formation,OptB88vdW
+mp-973783__JVASP-112943,H2,mp-973783,JVASP-112943,jarvis,10.69,4,4,16,jarvis_only;molecular_h2;theoretical,JVASP-25379,JVASP-112943,-0.00127,0.00942,jarvis_formation,OptB88vdW
+mp-973783__mp-1066989,H2,mp-973783,mp-1066989,mp,5.98461500000003,4,2,16,molecular_h2;theoretical,mp-973783,mp-1066989,0.00152882624999995,0.00751344124999997,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-973783__mp-1188177,H2,mp-973783,mp-1188177,mp,2.00917250000021,4,16,16,molecular_h2;theoretical,mp-973783,mp-1188177,0.00152882624999995,0.00353799875000016,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-32959__mp-1974803,H2O,mp-1974803,mp-32959,mp,24.844659166666,12,6,16,hbond_disordered;theoretical,mp-1974803,mp-32959,-1.2796226075,-1.25477794833333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-32959__mp-2739191,H2O,mp-32959,mp-2739191,mp,24.2229541666668,6,12,16,hbond_disordered;proton_transfer;theoretical,mp-32959,mp-2739191,-1.25477794833333,-1.23055499416667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-32959__mp-697085,H2O,mp-697085,mp-32959,mp,4.76575999999973,12,6,16,hbond_disordered;theoretical,mp-697085,mp-32959,-1.25954370833333,-1.25477794833333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-32959__mp-697111,H2O,mp-697111,mp-32959,jarvis,17.08,12,6,16,hbond_disordered;proton_transfer;theoretical,JVASP-52900,JVASP-52134,-0.99305,-0.97597,jarvis_formation,OptB88vdW
+mp-697085__mp-1974803,H2O,mp-1974803,mp-697085,mp,20.0788991666663,12,12,16,hbond_disordered;theoretical,mp-1974803,mp-697085,-1.2796226075,-1.25954370833333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-697085__mp-697111,H2O,mp-697111,mp-697085,mp,20.4592850000001,12,12,16,hbond_disordered;proton_transfer,mp-697111,mp-697085,-1.28000299333333,-1.25954370833333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-697111__mp-1974803,H2O,mp-697111,mp-1974803,mp,0.380385833333774,12,12,16,hbond_disordered;proton_transfer;theoretical,mp-697111,mp-1974803,-1.28000299333333,-1.2796226075,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-12577__JVASP-34894,H2O2,JVASP-34894,JVASP-12577,jarvis,16.86,16,16,16,jarvis_only,JVASP-34894,JVASP-12577,-0.52151,-0.50465,jarvis_formation,OptB88vdW
+JVASP-18392__JVASP-120236,H2S,JVASP-18392,JVASP-120236,jarvis,8.31000000000004,3,3,16,jarvis_only,JVASP-18392,JVASP-120236,0.83943,0.84774,jarvis_formation,OptB88vdW
+JVASP-52902__JVASP-120237,H2S,JVASP-120237,JVASP-52902,jarvis,7.31000000000001,3,24,32,jarvis_only,JVASP-120237,JVASP-52902,-0.10301,-0.0957,jarvis_formation,OptB88vdW
+mp-33024__mp-1191644,H2S,mp-1191644,mp-33024,mp,3.43785375000039,24,12,32,theoretical,mp-1191644,mp-33024,-0.166101338020833,-0.162663484270833,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-33024__mp-696805,H2S,mp-696805,mp-33024,mp,8.09119875000044,24,12,32,theoretical,mp-696805,mp-33024,-0.170754683020833,-0.162663484270833,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-696805__mp-1191644,H2S,mp-696805,mp-1191644,mp,4.65334500000006,24,24,32,theoretical,mp-696805,mp-1191644,-0.170754683020833,-0.166101338020833,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-54701__JVASP-54708,H2SO4,JVASP-54708,JVASP-54701,jarvis,11.9499999999999,14,14,16,jarvis_only;proton_transfer,JVASP-54708,JVASP-54701,-1.11472,-1.10277,jarvis_formation,OptB88vdW
+mp-24172__JVASP-54701,H2SO4,mp-24172,JVASP-54701,jarvis,21.6700000000001,28,14,32,jarvis_only;proton_transfer,JVASP-161768,JVASP-54701,-1.12444,-1.10277,jarvis_formation,OptB88vdW
+mp-24172__JVASP-54708,H2SO4,mp-24172,JVASP-54708,jarvis,9.72000000000017,28,14,32,jarvis_only;proton_transfer,JVASP-161768,JVASP-54708,-1.12444,-1.11472,jarvis_formation,OptB88vdW
+mp-24172__mp-625475,H2SO4,mp-24172,mp-625475,mp,2.40188821428577,28,14,32,proton_transfer;theoretical,mp-24172,mp-625475,-1.53664397607143,-1.53424208785714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24172__mp-690733,H2SO4,mp-690733,mp-24172,mp,1.09526107142899,14,28,32,proton_transfer,mp-690733,mp-24172,-1.53773923714286,-1.53664397607143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625475__mp-690733,H2SO4,mp-690733,mp-625475,mp,3.49714928571476,14,14,16,proton_transfer;theoretical,mp-690733,mp-625475,-1.53773923714286,-1.53424208785714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-690733__JVASP-54701,H2SO4,mp-690733,JVASP-54701,jarvis,15.25,14,14,16,jarvis_only;proton_transfer,JVASP-52776,JVASP-54701,-1.11802,-1.10277,jarvis_formation,OptB88vdW
+mp-690733__JVASP-54708,H2SO4,mp-690733,JVASP-54708,jarvis,3.30000000000008,14,14,16,jarvis_only;proton_transfer,JVASP-52776,JVASP-54708,-1.11802,-1.11472,jarvis_formation,OptB88vdW
+mp-27996__mp-1102846,H2SeO3,mp-27996,mp-1102846,mp,7.81506625000117,24,12,32,proton_transfer,mp-27996,mp-1102846,-1.21362924372396,-1.20581417747396,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23866__mp-626024,H2SeO4,mp-23866,mp-626024,mp,1.58321178571441,28,28,32,proton_transfer;theoretical,mp-23866,mp-626024,-1.10339215854911,-1.10180894676339,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-51012__JVASP-146094,H2W2O7,JVASP-51012,JVASP-146094,jarvis,24.6899999999999,22,22,32,jarvis_only,JVASP-51012,JVASP-146094,-1.81984,-1.79515,jarvis_formation,OptB88vdW
+JVASP-51012__JVASP-54712,H2W2O7,JVASP-54712,JVASP-51012,jarvis,12.1600000000002,22,22,32,jarvis_only,JVASP-54712,JVASP-51012,-1.832,-1.81984,jarvis_formation,OptB88vdW
+mp-29145__mp-643432,H3N,mp-29145,mp-643432,mp,3.82718750000066,16,16,16,,mp-29145,mp-643432,-0.348918901875001,-0.345091714375,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-29145__mp-779689,H3N,mp-29145,mp-779689,mp,21.9523143750004,16,16,16,,mp-29145,mp-779689,-0.348918901875001,-0.3269665875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-643432__JVASP-134989,H3N,mp-643432,JVASP-134989,jarvis,22.29,16,4,16,jarvis_only,JVASP-85669,JVASP-134989,-0.28519,-0.2629,jarvis_formation,OptB88vdW
+mp-643432__mp-779689,H3N,mp-643432,mp-779689,mp,18.1251268749998,16,16,16,,mp-643432,mp-779689,-0.345091714375,-0.3269665875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626256__JVASP-97507,H3NO4,mp-626256,JVASP-97507,jarvis,19.4599999999999,32,32,32,jarvis_only;proton_transfer,JVASP-96132,JVASP-97507,-0.67204,-0.65258,jarvis_formation,OptB88vdW
+mp-27714__JVASP-121005,H3OF,JVASP-121005,mp-27714,jarvis,10.9100000000002,5,20,32,jarvis_only;proton_transfer,JVASP-121005,JVASP-24597,-1.28984,-1.27893,jarvis_formation,OptB88vdW
+JVASP-79491__JVASP-81987,H3S,JVASP-81987,JVASP-79491,jarvis,8.77,4,4,16,jarvis_only,JVASP-81987,JVASP-79491,0.38617,0.39494,jarvis_formation,OptB88vdW
+mp-23675__mp-36248,H4BrN,mp-23675,mp-36248,mp,1.25591749999998,12,6,16,hbond_disordered,mp-23675,mp-36248,-0.604757084166666,-0.603501166666666,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-34381__mp-643062,H4IN,mp-643062,mp-34381,mp,6.15514999999911,12,6,16,hbond_disordered;theoretical,mp-643062,mp-34381,-0.509539567500001,-0.503384417500002,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-12569__JVASP-51372,H4N2O3,JVASP-51372,JVASP-12569,jarvis,20.45,18,18,32,jarvis_only,JVASP-51372,JVASP-12569,-0.49594,-0.47549,jarvis_formation,OptB88vdW
+JVASP-12569__JVASP-51400,H4N2O3,JVASP-51400,JVASP-12569,jarvis,20.22,18,18,32,jarvis_only,JVASP-51400,JVASP-12569,-0.49571,-0.47549,jarvis_formation,OptB88vdW
+JVASP-31934__JVASP-54767,H4N2O3,JVASP-54767,JVASP-31934,jarvis,9.35000000000001,18,9,32,jarvis_only;proton_transfer,JVASP-54767,JVASP-31934,-0.09588,-0.08653,jarvis_formation,OptB88vdW
+JVASP-51372__JVASP-51400,H4N2O3,JVASP-51372,JVASP-51400,jarvis,0.230000000000008,18,18,32,jarvis_only,JVASP-51372,JVASP-51400,-0.49594,-0.49571,jarvis_formation,OptB88vdW
+mp-23794__JVASP-134756,H4NF,JVASP-134756,mp-23794,jarvis,8.28000000000007,6,12,16,hbond_disordered;jarvis_only,JVASP-134756,JVASP-23972,-0.88182,-0.87354,jarvis_formation,OptB88vdW
+JVASP-54714__JVASP-54717,H7BrO3,JVASP-54717,JVASP-54714,jarvis,12.72,22,22,32,jarvis_only;proton_transfer,JVASP-54717,JVASP-54714,-0.8782,-0.86548,jarvis_formation,OptB88vdW
+mp-2767413__JVASP-54717,H7BrO3,mp-2767413,JVASP-54717,jarvis,12.81,22,22,32,jarvis_only;proton_transfer;theoretical,JVASP-54715,JVASP-54717,-0.89101,-0.8782,jarvis_formation,OptB88vdW
+JVASP-97746__JVASP-98409,H8PtO6,JVASP-98409,JVASP-97746,jarvis,9.57999999999992,30,30,32,jarvis_only;proton_transfer,JVASP-98409,JVASP-97746,-0.89655,-0.88697,jarvis_formation,OptB88vdW
+JVASP-97746__JVASP-98585,H8PtO6,JVASP-98585,JVASP-97746,jarvis,0.299999999999967,30,30,32,jarvis_only;proton_transfer,JVASP-98585,JVASP-97746,-0.88727,-0.88697,jarvis_formation,OptB88vdW
+JVASP-98409__JVASP-98585,H8PtO6,JVASP-98409,JVASP-98585,jarvis,9.27999999999995,30,30,32,jarvis_only;proton_transfer,JVASP-98409,JVASP-98585,-0.89655,-0.88727,jarvis_formation,OptB88vdW
+JVASP-30504__JVASP-113750,HAuO2,JVASP-30504,JVASP-113750,jarvis,12.43,4,4,16,jarvis_only;proton_transfer,JVASP-30504,JVASP-113750,-0.42267,-0.41024,jarvis_formation,OptB88vdW
+mp-996955__mp-996985,HAuO2,mp-996985,mp-996955,mp,5.02499499999942,8,4,16,proton_transfer;theoretical,mp-996985,mp-996955,-0.7399935703125,-0.7349685753125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-996955__mp-996998,HAuO2,mp-996998,mp-996955,mp,19.8043987499998,8,4,16,proton_transfer;theoretical,mp-996998,mp-996955,-0.7547729740625,-0.7349685753125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-996985__JVASP-30504,HAuO2,mp-996985,JVASP-30504,jarvis,13.98,8,4,16,jarvis_only;proton_transfer;theoretical,JVASP-36774,JVASP-30504,-0.43665,-0.42267,jarvis_formation,OptB88vdW
+mp-996985__mp-996998,HAuO2,mp-996998,mp-996985,mp,14.7794037500004,8,8,16,proton_transfer;theoretical,mp-996998,mp-996985,-0.7547729740625,-0.7399935703125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-32684__mp-2020987,HBr,mp-2020987,mp-32684,mp,22.2202162500014,8,8,16,theoretical,mp-2020987,mp-32684,-0.516910504375001,-0.494690288125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-32684__mp-632229,HBr,mp-632229,mp-32684,mp,22.6418425000001,4,8,16,theoretical,mp-632229,mp-32684,-0.517332130625,-0.494690288125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632229__JVASP-8757,HBr,mp-632229,JVASP-8757,jarvis,0.329999999999997,4,8,16,jarvis_only,JVASP-51343,JVASP-8757,-0.18506,-0.18473,jarvis_formation,OptB88vdW
+mp-632229__mp-2020987,HBr,mp-632229,mp-2020987,mp,0.421626249998752,4,8,16,theoretical,mp-632229,mp-2020987,-0.517332130625,-0.516910504375001,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-2037040__JVASP-120217,HCl,JVASP-120217,mp-2037040,jarvis,14.97,4,2,16,jarvis_only;theoretical,JVASP-120217,JVASP-52594,-0.43766,-0.42269,jarvis_formation,OptB88vdW
+mp-632326__JVASP-120217,HCl,mp-632326,JVASP-120217,jarvis,16.42,4,4,16,jarvis_only,JVASP-22676,JVASP-120217,-0.45408,-0.43766,jarvis_formation,OptB88vdW
+JVASP-120219__JVASP-120220,HCl2,JVASP-120220,JVASP-120219,jarvis,8.08,3,3,16,jarvis_only,JVASP-120220,JVASP-120219,-0.10038,-0.0923,jarvis_formation,OptB88vdW
+mp-1536913__JVASP-118404,HF,JVASP-118404,mp-1536913,jarvis,22.9000000000001,4,4,16,jarvis_only;proton_transfer;theoretical,JVASP-118404,JVASP-163638,-1.5197,-1.4968,jarvis_formation,OptB88vdW
+JVASP-118408__JVASP-118414,HF2,JVASP-118408,JVASP-118414,jarvis,9.95999999999997,3,3,16,jarvis_only;proton_transfer,JVASP-118408,JVASP-118414,-0.82572,-0.81576,jarvis_formation,OptB88vdW
+JVASP-100184__JVASP-124476,HI3,JVASP-124476,JVASP-100184,jarvis,13.9,4,8,16,jarvis_only,JVASP-124476,JVASP-100184,0.03525,0.04915,jarvis_formation,OptB88vdW
+JVASP-52861__JVASP-85663,HPbClO,JVASP-52861,JVASP-85663,jarvis,0.410000000000021,16,8,16,jarvis_only,JVASP-52861,JVASP-85663,-1.20462,-1.20421,jarvis_formation,OptB88vdW
+JVASP-7139__JVASP-92265,HPbI3,JVASP-92265,JVASP-7139,jarvis,19.43,5,5,16,jarvis_only,JVASP-92265,JVASP-7139,-0.29871,-0.27928,jarvis_formation,OptB88vdW
+mp-27731__JVASP-190337,HfH2,mp-27731,JVASP-190337,jarvis,9.73000000000002,3,3,16,jarvis_only,JVASP-18459,JVASP-190337,-0.49662,-0.48689,jarvis_formation,OptB88vdW
+JVASP-37766__JVASP-103257,HfH3,JVASP-37766,JVASP-103257,jarvis,16.2,4,8,16,jarvis_only,JVASP-37766,JVASP-103257,-0.23147,-0.21527,jarvis_formation,OptB88vdW
+JVASP-37766__JVASP-38881,HfH3,JVASP-38881,JVASP-37766,jarvis,12.43,4,4,16,jarvis_only,JVASP-38881,JVASP-37766,-0.2439,-0.23147,jarvis_formation,OptB88vdW
+mp-626173__mp-755543,HoHO2,mp-626173,mp-755543,mp,22.1472500000006,8,8,16,theoretical,mp-626173,mp-755543,-3.0112192103125,-2.9890719603125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-754283__mp-755543,HoHO2,mp-755543,mp-754283,mp,7.43563312499962,8,16,16,theoretical,mp-755543,mp-754283,-2.9890719603125,-2.9816363271875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626411__mp-626412,In(HO)3,mp-626412,mp-626411,mp,0.0650235714283465,28,28,32,theoretical,mp-626412,mp-626411,-1.54791422363095,-1.54784920005952,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1105641__mp-1188681,InHO2,mp-1188681,mp-1105641,mp,6.27670375000022,16,16,16,proton_transfer;theoretical,mp-1188681,mp-1105641,-1.69096312822917,-1.68468642447917,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-504535__mp-632711,InHO2,mp-504535,mp-632711,mp,10.4257700000003,8,8,16,proton_transfer,mp-504535,mp-632711,-1.73100707197917,-1.72058130197917,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-632711__mp-1188681,InHO2,mp-632711,mp-1188681,jarvis,12.7900000000001,8,16,16,proton_transfer;theoretical,JVASP-51369,JVASP-122045,-1.46629,-1.4535,jarvis_formation,OptB88vdW
+mp-974713__mp-1223664,K2H4Pt,mp-974713,mp-1223664,mp,0.605665000000921,14,7,16,theoretical,mp-974713,mp-1223664,-0.490140353928571,-0.48953468892857,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-161741__JVASP-164700,K2HS2NO6,JVASP-164700,JVASP-161741,jarvis,6.60000000000016,24,24,32,jarvis_only;proton_transfer,JVASP-164700,JVASP-161741,-1.47439,-1.46779,jarvis_formation,OptB88vdW
+mp-23774__mp-24411,K2LiAlH6,mp-23774,mp-24411,mp,9.21937499999997,20,10,32,theoretical,mp-23774,mp-24411,-0.370907902533333,-0.361688527533333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23779__mp-1224023,K3H(SO4)2,mp-23779,mp-1224023,mp,6.33405321428482,28,14,32,proton_transfer;theoretical,mp-23779,mp-1224023,-2.11060202021428,-2.104267967,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23979__mp-1224049,K3H(SeO4)2,mp-1224049,mp-23979,mp,0.319245000000024,28,28,32,proton_transfer;theoretical,mp-1224049,mp-23979,-1.65361574304911,-1.65329649804911,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-31097__mp-644486,KAlH4,mp-31097,mp-644486,mp,4.82729666666631,24,12,32,theoretical,mp-31097,mp-644486,-0.275994969791666,-0.271167673125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1211694__mp-1223579,KAs(HO2)2,mp-1223579,mp-1211694,mp,6.97141937499968,16,16,16,proton_transfer;theoretical,mp-1223579,mp-1211694,-1.71479860215625,-1.70782718278125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37722__mp-1223473,KBH4,mp-37722,mp-1223473,mp,2.7547099999996,12,6,16,theoretical,mp-37722,mp-1223473,-0.454297090208333,-0.451542380208333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626716__mp-626785,KHO,mp-626785,mp-626716,mp,3.24114833333344,6,6,16,hbond_disordered;theoretical,mp-626785,mp-626716,-1.54600194283333,-1.5427607945,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626716__mp-642817,KHO,mp-642817,mp-626716,mp,3.05645750000072,12,6,16,hbond_disordered;theoretical,mp-642817,mp-626716,-1.545817252,-1.5427607945,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626785__mp-642817,KHO,mp-626785,mp-642817,mp,0.184690833332724,6,12,16,hbond_disordered;theoretical,mp-626785,mp-642817,-1.54600194283333,-1.545817252,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-38011__mp-634676,KHS,mp-634676,mp-38011,mp,2.54450000000017,6,3,16,theoretical,mp-634676,mp-38011,-0.9051011784375,-0.9025566784375,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-758391__mp-1193430,KMn2P2HO9,mp-1193430,mp-758391,mp,16.1611509999999,30,30,32,proton_transfer;theoretical,mp-1193430,mp-758391,-2.38001216024319,-2.36385100924319,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23758__mp-568428,KNa(BH4)2,mp-23758,mp-568428,mp,6.18989666666658,12,12,16,theoretical,mp-23758,mp-568428,-0.417805485312501,-0.411615588645835,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23758__mp-568439,KNa(BH4)2,mp-23758,mp-568439,mp,8.75354916666699,12,12,16,theoretical,mp-23758,mp-568439,-0.417805485312501,-0.409051936145834,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23758__mp-571414,KNa(BH4)2,mp-23758,mp-571414,mp,6.55508833333351,12,12,16,theoretical,mp-23758,mp-571414,-0.417805485312501,-0.411250396979168,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-568428__mp-568439,KNa(BH4)2,mp-568428,mp-568439,mp,2.5636525000004,12,12,16,theoretical,mp-568428,mp-568439,-0.411615588645835,-0.409051936145834,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-568428__mp-571414,KNa(BH4)2,mp-568428,mp-571414,mp,0.365191666666931,12,12,16,theoretical,mp-568428,mp-571414,-0.411615588645835,-0.411250396979168,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-568439__mp-571414,KNa(BH4)2,mp-571414,mp-568439,mp,2.19846083333347,12,12,16,theoretical,mp-571414,mp-568439,-0.411250396979168,-0.409051936145834,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1106168__mp-1198928,KP(HO2)2,mp-1106168,mp-1198928,mp,11.3518553125003,16,32,32,proton_transfer;theoretical,mp-1106168,mp-1198928,-2.16605889992411,-2.15470704461161,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1106168__mp-1223489,KP(HO2)2,mp-1223489,mp-1106168,mp,16.6776621875,32,16,32,proton_transfer;theoretical,mp-1223489,mp-1106168,-2.18273656211161,-2.16605889992411,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23959__mp-1106168,KP(HO2)2,mp-23959,mp-1106168,mp,22.0190624999992,16,16,16,proton_transfer;theoretical,mp-23959,mp-1106168,-2.18807796242411,-2.16605889992411,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23959__mp-1223489,KP(HO2)2,mp-23959,mp-1223489,mp,5.34140031249919,16,32,32,proton_transfer;theoretical,mp-23959,mp-1223489,-2.18807796242411,-2.18273656211161,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23959__mp-24262,KP(HO2)2,mp-23959,mp-24262,mp,6.60719937499987,16,32,32,proton_transfer,mp-23959,mp-24262,-2.18807796242411,-2.18147076304911,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23959__mp-24263,KP(HO2)2,mp-23959,mp-24263,mp,2.80776406249927,16,32,32,proton_transfer,mp-23959,mp-24263,-2.18807796242411,-2.18527019836161,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23959__mp-696752,KP(HO2)2,mp-23959,mp-696752,mp,5.34523249999985,16,16,16,proton_transfer,mp-23959,mp-696752,-2.18807796242411,-2.18273272992411,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24262__mp-1106168,KP(HO2)2,mp-24262,mp-1106168,mp,15.4118631249993,32,16,32,proton_transfer;theoretical,mp-24262,mp-1106168,-2.18147076304911,-2.16605889992411,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24262__mp-1223489,KP(HO2)2,mp-1223489,mp-24262,mp,1.26579906250068,32,32,32,proton_transfer;theoretical,mp-1223489,mp-24262,-2.18273656211161,-2.18147076304911,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24262__mp-24263,KP(HO2)2,mp-24263,mp-24262,mp,3.7994353125006,32,32,32,proton_transfer,mp-24263,mp-24262,-2.18527019836161,-2.18147076304911,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24262__mp-696752,KP(HO2)2,mp-696752,mp-24262,mp,1.26196687500002,16,32,32,proton_transfer,mp-696752,mp-24262,-2.18273272992411,-2.18147076304911,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24263__mp-1106168,KP(HO2)2,mp-24263,mp-1106168,mp,19.2112984374999,32,16,32,proton_transfer;theoretical,mp-24263,mp-1106168,-2.18527019836161,-2.16605889992411,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24263__mp-1223489,KP(HO2)2,mp-24263,mp-1223489,mp,2.53363624999992,32,32,32,proton_transfer;theoretical,mp-24263,mp-1223489,-2.18527019836161,-2.18273656211161,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24263__mp-696752,KP(HO2)2,mp-24263,mp-696752,mp,2.53746843750058,32,16,32,proton_transfer,mp-24263,mp-696752,-2.18527019836161,-2.18273272992411,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-695799__mp-1198928,KP(HO2)2,mp-1198928,mp-695799,mp,14.7296962499999,32,32,32,proton_transfer;theoretical,mp-1198928,mp-695799,-2.15470704461161,-2.13997734836161,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-695799__mp-699437,KP(HO2)2,mp-699437,mp-695799,mp,13.8830734374995,32,32,32,proton_transfer,mp-699437,mp-695799,-2.15386042179911,-2.13997734836161,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-696752__mp-1106168,KP(HO2)2,mp-696752,mp-1106168,mp,16.6738299999993,16,16,16,proton_transfer;theoretical,mp-696752,mp-1106168,-2.18273272992411,-2.16605889992411,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-696752__mp-1223489,KP(HO2)2,mp-1223489,mp-696752,mp,0.00383218750066305,32,16,32,proton_transfer;theoretical,mp-1223489,mp-696752,-2.18273656211161,-2.18273272992411,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-699437__mp-1106168,KP(HO2)2,mp-1106168,mp-699437,mp,12.1984781250006,16,32,32,proton_transfer;theoretical,mp-1106168,mp-699437,-2.16605889992411,-2.15386042179911,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-699437__mp-1198928,KP(HO2)2,mp-1198928,mp-699437,mp,0.846622812500364,32,32,32,proton_transfer;theoretical,mp-1198928,mp-699437,-2.15470704461161,-2.15386042179911,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625394__mp-2030372,La(HO)3,mp-625394,mp-2030372,mp,0.273624285715091,14,14,16,theoretical,mp-625394,mp-2030372,-2.23642141267857,-2.23614778839286,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625394__mp-625406,La(HO)3,mp-625394,mp-625406,mp,2.39786071428849,14,14,16,theoretical,mp-625394,mp-625406,-2.23642141267857,-2.23402355196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625394__mp-625733,La(HO)3,mp-625394,mp-625733,mp,0.362661428571887,14,14,16,theoretical,mp-625394,mp-625733,-2.23642141267857,-2.23605875125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625394__mp-673301,La(HO)3,mp-625394,mp-673301,mp,3.93158571428787,14,14,16,theoretical,mp-625394,mp-673301,-2.23642141267857,-2.23248982696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625406__mp-2030372,La(HO)3,mp-2030372,mp-625406,mp,2.1242364285734,14,14,16,theoretical,mp-2030372,mp-625406,-2.23614778839286,-2.23402355196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625406__mp-625733,La(HO)3,mp-625733,mp-625406,mp,2.0351992857166,14,14,16,theoretical,mp-625733,mp-625406,-2.23605875125,-2.23402355196429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625406__mp-673301,La(HO)3,mp-625406,mp-673301,mp,1.53372499999938,14,14,16,theoretical,mp-625406,mp-673301,-2.23402355196429,-2.23248982696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625733__mp-2030372,La(HO)3,mp-2030372,mp-625733,mp,0.089037142856796,14,14,16,theoretical,mp-2030372,mp-625733,-2.23614778839286,-2.23605875125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625733__mp-673301,La(HO)3,mp-625733,mp-673301,mp,3.56892428571598,14,14,16,theoretical,mp-625733,mp-673301,-2.23605875125,-2.23248982696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-673301__mp-2030372,La(HO)3,mp-2030372,mp-673301,mp,3.65796142857278,14,14,16,theoretical,mp-2030372,mp-673301,-2.23614778839286,-2.23248982696429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1103947__mp-1104116,La2H5,mp-1104116,mp-1103947,mp,0.261038571429451,14,14,16,theoretical,mp-1104116,mp-1103947,-0.723385532678573,-0.723124494107144,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-99649__JVASP-151384,LaCo5H4,JVASP-151384,JVASP-99649,jarvis,16.62,10,10,16,jarvis_only,JVASP-151384,JVASP-99649,-0.12103,-0.10441,jarvis_formation,OptB88vdW
+mp-973064__mp-1018144,LaH3,mp-1018144,mp-973064,mp,3.20885000000004,4,4,16,theoretical,mp-1018144,mp-973064,-0.685341640312499,-0.682132790312499,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-118446__JVASP-118450,LaHO,JVASP-118446,JVASP-118450,jarvis,10.6199999999999,6,6,16,jarvis_only,JVASP-118446,JVASP-118450,-2.4074,-2.39678,jarvis_formation,OptB88vdW
+mp-23671__mp-1192500,LaNi5H7,mp-23671,mp-1192500,mp,0.766815384615982,26,26,32,,mp-23671,mp-1192500,-0.319393831442309,-0.318627016057693,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-116261__JVASP-187701,Li2H,JVASP-187701,JVASP-116261,jarvis,1.28,3,3,16,jarvis_only,JVASP-187701,JVASP-116261,-0.32373,-0.32245,jarvis_formation,OptB88vdW
+JVASP-116261__JVASP-190298,Li2H,JVASP-190298,JVASP-116261,jarvis,3.52999999999998,3,3,16,jarvis_only,JVASP-190298,JVASP-116261,-0.32598,-0.32245,jarvis_formation,OptB88vdW
+JVASP-187701__JVASP-190298,Li2H,JVASP-190298,JVASP-187701,jarvis,2.24999999999997,3,3,16,jarvis_only,JVASP-190298,JVASP-187701,-0.32598,-0.32373,jarvis_formation,OptB88vdW
+mp-24165__mp-1189942,Li2H2SeO5,mp-24165,mp-1189942,mp,8.00525049999989,20,20,32,,mp-24165,mp-1189942,-1.67043600715104,-1.66243075665104,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24165__mp-753960,Li2H2SeO5,mp-24165,mp-753960,mp,11.3663860000004,20,20,32,theoretical,mp-24165,mp-753960,-1.67043600715104,-1.65906962115104,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-753960__mp-1189942,Li2H2SeO5,mp-1189942,mp-753960,mp,3.3611355000005,20,20,32,theoretical,mp-1189942,mp-753960,-1.66243075665104,-1.65906962115104,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-118458__JVASP-118459,Li2HN,JVASP-118458,JVASP-118459,jarvis,23.32,4,4,16,jarvis_only,JVASP-118458,JVASP-118459,-0.57182,-0.5485,jarvis_formation,OptB88vdW
+mp-1189725__mp-1223097,Li2HN,mp-1189725,mp-1223097,mp,8.58482281249984,16,32,32,theoretical,mp-1189725,mp-1223097,-0.582572850104167,-0.573988027291667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1190219__mp-1223097,Li2HN,mp-1223097,mp-1190219,mp,22.4681153124999,32,16,32,theoretical,mp-1223097,mp-1190219,-0.573988027291667,-0.551519911979167,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-699284__JVASP-154186,Li2HN,JVASP-154186,mp-699284,jarvis,6.68000000000002,16,32,32,jarvis_only;theoretical,JVASP-154186,JVASP-88310,-0.60366,-0.59698,jarvis_formation,OptB88vdW
+mp-699284__mp-1189725,Li2HN,mp-1189725,mp-699284,mp,8.33200312500004,16,32,32,theoretical,mp-1189725,mp-699284,-0.582572850104167,-0.574240846979167,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-699284__mp-1190219,Li2HN,mp-699284,mp-1190219,mp,22.7209349999997,32,16,32,theoretical,mp-699284,mp-1190219,-0.574240846979167,-0.551519911979167,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-699284__mp-1223097,Li2HN,mp-699284,mp-1223097,mp,0.252819687499795,32,32,32,theoretical,mp-699284,mp-1223097,-0.574240846979167,-0.573988027291667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-753660__JVASP-47444,Li2VCrP2(HO5)2,JVASP-47444,mp-753660,jarvis,9.47999999999993,18,18,32,jarvis_only;proton_transfer;theoretical,JVASP-47444,JVASP-146576,-2.17708,-2.1676,jarvis_formation,OptB88vdW
+mp-1177768__JVASP-175945,Li2VFeP2(HO5)2,mp-1177768,JVASP-175945,jarvis,5.67999999999991,18,18,32,jarvis_only;proton_transfer;theoretical,JVASP-173520,JVASP-175945,-2.06312,-2.05744,jarvis_formation,OptB88vdW
+mp-759656__mp-775205,Li3MnP2HO8,mp-775205,mp-759656,mp,5.54099283333276,15,30,32,proton_transfer;theoretical,mp-775205,mp-759656,-2.51307617039778,-2.50753517756445,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1180547__mp-1192061,LiAlH4,mp-1180547,mp-1192061,mp,12.7754595833333,12,24,32,theoretical,mp-1180547,mp-1192061,-0.208363580277777,-0.195588120694444,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-27653__JVASP-146366,LiAlH4,mp-27653,JVASP-146366,jarvis,13.89,24,12,32,jarvis_only,JVASP-62041,JVASP-146366,-0.24754,-0.23365,jarvis_formation,OptB88vdW
+mp-27653__mp-1180547,LiAlH4,mp-27653,mp-1180547,mp,8.78554625000011,24,12,32,,mp-27653,mp-1180547,-0.217149126527777,-0.208363580277777,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-27653__mp-1192061,LiAlH4,mp-27653,mp-1192061,mp,21.5610058333334,24,24,32,theoretical,mp-27653,mp-1192061,-0.217149126527777,-0.195588120694444,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-27653__mp-976291,LiAlH4,mp-27653,mp-976291,mp,7.34811375,24,12,32,theoretical,mp-27653,mp-976291,-0.217149126527777,-0.209801012777777,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-976291__JVASP-146366,LiAlH4,mp-976291,JVASP-146366,jarvis,10.45,12,12,16,jarvis_only;theoretical,JVASP-122412,JVASP-146366,-0.2441,-0.23365,jarvis_formation,OptB88vdW
+mp-976291__mp-1180547,LiAlH4,mp-976291,mp-1180547,mp,1.43743250000011,12,12,16,theoretical,mp-976291,mp-1180547,-0.209801012777777,-0.208363580277777,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-976291__mp-1192061,LiAlH4,mp-976291,mp-1192061,mp,14.2128920833334,12,24,32,theoretical,mp-976291,mp-1192061,-0.209801012777777,-0.195588120694444,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1095543__JVASP-121493,LiBH4,JVASP-121493,mp-1095543,jarvis,8.68000000000002,24,12,32,jarvis_only,JVASP-121493,JVASP-152439,-0.37045,-0.36177,jarvis_formation,OptB88vdW
+mp-1095543__mp-1192133,LiBH4,mp-1192133,mp-1095543,mp,21.0873749999993,24,12,32,theoretical,mp-1192133,mp-1095543,-0.44858299375,-0.42749561875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1095543__mp-2659898,LiBH4,mp-1095543,mp-2659898,mp,6.47557583333358,12,12,16,,mp-1095543,mp-2659898,-0.42749561875,-0.421020042916667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1407206__mp-2659898,LiBH4,mp-2659898,mp-1407206,mp,19.3256149999996,12,12,16,theoretical,mp-2659898,mp-1407206,-0.421020042916667,-0.401694427916667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-2659898__JVASP-105454,LiBH4,mp-2659898,JVASP-105454,jarvis,22.24,12,6,16,jarvis_only,JVASP-62921,JVASP-105454,-0.33742,-0.31518,jarvis_formation,OptB88vdW
+mp-30209__JVASP-121493,LiBH4,mp-30209,JVASP-121493,jarvis,0.419999999999976,24,24,32,jarvis_only,JVASP-31671,JVASP-121493,-0.37087,-0.37045,jarvis_formation,OptB88vdW
+mp-30209__mp-1095543,LiBH4,mp-30209,mp-1095543,mp,20.9391949999999,24,12,32,,mp-30209,mp-1095543,-0.44843481375,-0.42749561875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-30209__mp-1192133,LiBH4,mp-1192133,mp-30209,mp,0.148179999999443,24,24,32,theoretical,mp-1192133,mp-30209,-0.44858299375,-0.44843481375,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-644223__mp-1407206,LiBH4,mp-1407206,mp-644223,mp,0.212762500000352,12,12,16,theoretical,mp-1407206,mp-644223,-0.401694427916667,-0.401481665416667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-644223__mp-2659898,LiBH4,mp-2659898,mp-644223,mp,19.5383775,12,12,16,,mp-2659898,mp-644223,-0.421020042916667,-0.401481665416667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-644223__mp-675926,LiBH4,mp-675926,mp-644223,mp,3.97583666666651,12,12,16,theoretical,mp-675926,mp-644223,-0.405457502083333,-0.401481665416667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-675926__mp-1095543,LiBH4,mp-1095543,mp-675926,mp,22.0381166666671,12,12,16,theoretical,mp-1095543,mp-675926,-0.42749561875,-0.405457502083333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-675926__mp-1407206,LiBH4,mp-675926,mp-1407206,mp,3.76307416666616,12,12,16,theoretical,mp-675926,mp-1407206,-0.405457502083333,-0.401694427916667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-675926__mp-2659898,LiBH4,mp-2659898,mp-675926,mp,15.5625408333335,12,12,16,theoretical,mp-2659898,mp-675926,-0.421020042916667,-0.405457502083333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24817__mp-1079676,LiBeH3,mp-24817,mp-1079676,mp,5.86674633333395,30,10,32,theoretical,mp-24817,mp-1079676,-0.32742318975,-0.321556443416666,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24817__mp-24818,LiBeH3,mp-24817,mp-24818,mp,3.25269433333342,30,20,32,theoretical,mp-24817,mp-24818,-0.32742318975,-0.324170495416667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24817__mp-977148,LiBeH3,mp-24817,mp-977148,mp,4.94371699999996,30,30,32,theoretical,mp-24817,mp-977148,-0.32742318975,-0.32247947275,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24817__mp-977298,LiBeH3,mp-24817,mp-977298,mp,15.277531333334,30,20,32,theoretical,mp-24817,mp-977298,-0.32742318975,-0.312145658416666,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24818__mp-1079676,LiBeH3,mp-24818,mp-1079676,mp,2.61405200000053,20,10,32,theoretical,mp-24818,mp-1079676,-0.324170495416667,-0.321556443416666,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24818__mp-977148,LiBeH3,mp-24818,mp-977148,mp,1.69102266666654,20,30,32,theoretical,mp-24818,mp-977148,-0.324170495416667,-0.32247947275,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24818__mp-977298,LiBeH3,mp-24818,mp-977298,mp,12.0248370000006,20,20,32,theoretical,mp-24818,mp-977298,-0.324170495416667,-0.312145658416666,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-977148__mp-1079676,LiBeH3,mp-977148,mp-1079676,mp,0.923029333333991,30,10,32,theoretical,mp-977148,mp-1079676,-0.32247947275,-0.321556443416666,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-977148__mp-977298,LiBeH3,mp-977148,mp-977298,mp,10.333814333334,30,20,32,theoretical,mp-977148,mp-977298,-0.32247947275,-0.312145658416666,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-977298__mp-1079676,LiBeH3,mp-1079676,mp-977298,mp,9.41078500000003,10,20,32,theoretical,mp-1079676,mp-977298,-0.321556443416666,-0.312145658416666,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-753451__mp-756333,LiFe2P2HO8,mp-753451,mp-756333,mp,8.86015250000094,28,28,32,proton_transfer;theoretical,mp-753451,mp-756333,-2.28648572599065,-2.27762557349065,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1095586__mp-1192145,LiGaH4,mp-1192145,mp-1095586,mp,16.9056675892853,24,12,32,theoretical,mp-1192145,mp-1095586,-0.16771606203373,-0.150810394444444,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-116262__JVASP-116275,LiH,JVASP-116262,JVASP-116275,jarvis,13.71,2,2,16,jarvis_only,JVASP-116262,JVASP-116275,-0.37084,-0.35713,jarvis_formation,OptB88vdW
+JVASP-116264__JVASP-116283,LiH,JVASP-116283,JVASP-116264,jarvis,9.37000000000005,2,4,16,jarvis_only,JVASP-116283,JVASP-116264,-0.49569,-0.48632,jarvis_formation,OptB88vdW
+JVASP-116268__JVASP-116283,LiH,JVASP-116268,JVASP-116283,jarvis,21.34,4,2,16,jarvis_only,JVASP-116268,JVASP-116283,-0.51703,-0.49569,jarvis_formation,OptB88vdW
+mp-23703__JVASP-116268,LiH,mp-23703,JVASP-116268,jarvis,14.92,2,4,16,jarvis_only,JVASP-116270,JVASP-116268,-0.53195,-0.51703,jarvis_formation,OptB88vdW
+JVASP-116263__JVASP-116267,LiH2,JVASP-116263,JVASP-116267,jarvis,21.88,3,3,16,jarvis_only,JVASP-116263,JVASP-116267,0.11297,0.13485,jarvis_formation,OptB88vdW
+JVASP-116263__JVASP-116276,LiH2,JVASP-116263,JVASP-116276,jarvis,5.15,3,3,16,jarvis_only,JVASP-116263,JVASP-116276,0.11297,0.11812,jarvis_formation,OptB88vdW
+JVASP-116263__JVASP-116284,LiH2,JVASP-116263,JVASP-116284,jarvis,12.5,3,3,16,jarvis_only,JVASP-116263,JVASP-116284,0.11297,0.12547,jarvis_formation,OptB88vdW
+JVASP-116267__JVASP-116276,LiH2,JVASP-116276,JVASP-116267,jarvis,16.73,3,3,16,jarvis_only,JVASP-116276,JVASP-116267,0.11812,0.13485,jarvis_formation,OptB88vdW
+JVASP-116267__JVASP-116284,LiH2,JVASP-116284,JVASP-116267,jarvis,9.38,3,3,16,jarvis_only,JVASP-116284,JVASP-116267,0.12547,0.13485,jarvis_formation,OptB88vdW
+JVASP-116276__JVASP-116284,LiH2,JVASP-116276,JVASP-116284,jarvis,7.35,3,3,16,jarvis_only,JVASP-116276,JVASP-116284,0.11812,0.12547,jarvis_formation,OptB88vdW
+JVASP-117121__JVASP-143537,LiH2N,JVASP-143537,JVASP-117121,jarvis,17.1600000000001,16,16,16,jarvis_only,JVASP-143537,JVASP-117121,-0.53576,-0.5186,jarvis_formation,OptB88vdW
+JVASP-90731__JVASP-117121,LiH2N,JVASP-90731,JVASP-117121,jarvis,5.62000000000007,8,16,16,jarvis_only,JVASP-90731,JVASP-117121,-0.52422,-0.5186,jarvis_formation,OptB88vdW
+JVASP-90731__JVASP-143537,LiH2N,JVASP-143537,JVASP-90731,jarvis,11.54,16,8,16,jarvis_only,JVASP-143537,JVASP-90731,-0.53576,-0.52422,jarvis_formation,OptB88vdW
+mp-1079418__JVASP-117121,LiH2N,mp-1079418,JVASP-117121,jarvis,19.9900000000001,8,16,16,jarvis_only;theoretical,JVASP-163925,JVASP-117121,-0.53859,-0.5186,jarvis_formation,OptB88vdW
+mp-1079418__JVASP-143537,LiH2N,mp-1079418,JVASP-143537,jarvis,2.83,8,16,16,jarvis_only;theoretical,JVASP-163925,JVASP-143537,-0.53859,-0.53576,jarvis_formation,OptB88vdW
+mp-1079418__JVASP-90731,LiH2N,mp-1079418,JVASP-90731,jarvis,14.37,8,8,16,jarvis_only;theoretical,JVASP-163925,JVASP-90731,-0.53859,-0.52422,jarvis_formation,OptB88vdW
+mp-1079418__mp-1105785,LiH2N,mp-1079418,mp-1105785,mp,4.39942625,8,16,16,theoretical,mp-1079418,mp-1105785,-0.558249698958334,-0.553850272708334,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1079418__mp-1188477,LiH2N,mp-1079418,mp-1188477,mp,8.6504756250001,8,16,16,theoretical,mp-1079418,mp-1188477,-0.558249698958334,-0.549599223333334,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1105785__mp-1188477,LiH2N,mp-1105785,mp-1188477,mp,4.25104937500009,16,16,16,theoretical,mp-1105785,mp-1188477,-0.553850272708334,-0.549599223333334,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1188477__JVASP-117121,LiH2N,mp-1188477,JVASP-117121,jarvis,12.29,16,16,16,jarvis_only;theoretical,JVASP-168429,JVASP-117121,-0.53089,-0.5186,jarvis_formation,OptB88vdW
+mp-1188477__JVASP-143537,LiH2N,JVASP-143537,mp-1188477,jarvis,4.87000000000004,16,16,16,jarvis_only;theoretical,JVASP-143537,JVASP-168429,-0.53576,-0.53089,jarvis_formation,OptB88vdW
+mp-1188477__JVASP-90731,LiH2N,mp-1188477,JVASP-90731,jarvis,6.66999999999995,16,8,16,jarvis_only;theoretical,JVASP-168429,JVASP-90731,-0.53089,-0.52422,jarvis_formation,OptB88vdW
+mp-23702__JVASP-143537,LiH2N,mp-23702,JVASP-143537,jarvis,10.37,16,16,16,jarvis_only,JVASP-12554,JVASP-143537,-0.54613,-0.53576,jarvis_formation,OptB88vdW
+mp-23702__JVASP-90731,LiH2N,mp-23702,JVASP-90731,jarvis,21.91,16,8,16,jarvis_only,JVASP-12554,JVASP-90731,-0.54613,-0.52422,jarvis_formation,OptB88vdW
+mp-23702__mp-1079418,LiH2N,mp-23702,mp-1079418,jarvis,7.53999999999999,16,8,16,theoretical,JVASP-12554,JVASP-163925,-0.54613,-0.53859,jarvis_formation,OptB88vdW
+mp-23702__mp-1188477,LiH2N,mp-23702,mp-1188477,jarvis,15.24,16,16,16,theoretical,JVASP-12554,JVASP-168429,-0.54613,-0.53089,jarvis_formation,OptB88vdW
+mp-23702__mp-1189549,LiH2N,mp-23702,mp-1189549,mp,4.42503249999948,16,16,16,theoretical,mp-23702,mp-1189549,-0.590535692708333,-0.586110660208334,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-27281__mp-625211,LiH3O2,mp-27281,mp-625211,mp,0.740354166666846,12,12,16,theoretical,mp-27281,mp-625211,-1.53553943618056,-1.53479908201389,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24199__JVASP-102439,LiHF2,JVASP-102439,mp-24199,jarvis,16.8899999999996,4,4,16,jarvis_only;proton_transfer,JVASP-102439,JVASP-24017,-2.42649,-2.4096,jarvis_formation,OptB88vdW
+mp-24199__mp-1180580,LiHF2,mp-24199,mp-1180580,mp,21.5570249999999,4,4,16,proton_transfer;theoretical,mp-24199,mp-1180580,-2.53843264614583,-2.51687562114583,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-116124__JVASP-116127,LiHO,JVASP-116124,JVASP-116127,jarvis,11.96,6,6,16,hbond_disordered;jarvis_only,JVASP-116124,JVASP-116127,-1.61757,-1.60561,jarvis_formation,OptB88vdW
+JVASP-116136__JVASP-116137,LiHPd,JVASP-116136,JVASP-116137,jarvis,23.11,3,3,16,jarvis_only,JVASP-116136,JVASP-116137,0.26027,0.28338,jarvis_formation,OptB88vdW
+JVASP-116140__JVASP-116142,LiHS,JVASP-116140,JVASP-116142,jarvis,9.99,3,3,16,jarvis_only,JVASP-116140,JVASP-116142,-0.0408,-0.03081,jarvis_formation,OptB88vdW
+mp-30959__mp-37747,LiHS,mp-30959,mp-37747,mp,0.642803333335662,24,24,32,theoretical,mp-30959,mp-37747,-0.934366159861113,-0.933723356527777,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-30959__mp-644271,LiHS,mp-644271,mp-30959,mp,0.761555416666226,6,24,32,theoretical,mp-644271,mp-30959,-0.935127715277779,-0.934366159861113,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-30959__mp-644419,LiHS,mp-644419,mp-30959,mp,0.87292624999924,12,24,32,theoretical,mp-644419,mp-30959,-0.935239086111112,-0.934366159861113,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37747__mp-644271,LiHS,mp-644271,mp-37747,mp,1.40435875000189,6,24,32,theoretical,mp-644271,mp-37747,-0.935127715277779,-0.933723356527777,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-37747__mp-644419,LiHS,mp-644419,mp-37747,mp,1.5157295833349,12,24,32,theoretical,mp-644419,mp-37747,-0.935239086111112,-0.933723356527777,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-644271__mp-644419,LiHS,mp-644419,mp-644271,mp,0.111370833333013,12,6,16,theoretical,mp-644419,mp-644271,-0.935239086111112,-0.935127715277779,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-119368__JVASP-145602,LiMn2P2HO8,JVASP-145602,JVASP-119368,jarvis,11.9100000000001,28,28,32,jarvis_only;proton_transfer,JVASP-145602,JVASP-119368,-2.00225,-1.99034,jarvis_formation,OptB88vdW
+mp-755339__mp-757231,LiMn2P2HO8,mp-755339,mp-757231,mp,0.416293928570344,28,28,32,proton_transfer;theoretical,mp-755339,mp-757231,-2.43280004462365,-2.43238375069508,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-42301__JVASP-42689,LiMnPH2O5,JVASP-42301,JVASP-42689,jarvis,2.39000000000011,20,20,32,jarvis_only;proton_transfer,JVASP-42301,JVASP-42689,-1.76398,-1.76159,jarvis_formation,OptB88vdW
+JVASP-116149__JVASP-116150,LiTeH,JVASP-116149,JVASP-116150,jarvis,14.17,3,3,16,jarvis_only,JVASP-116149,JVASP-116150,0.26995,0.28412,jarvis_formation,OptB88vdW
+mp-775930__JVASP-144075,LiVP2HO8,JVASP-144075,mp-775930,jarvis,0.119999999999898,26,26,32,jarvis_only;proton_transfer;theoretical,JVASP-144075,JVASP-146623,-2.21963,-2.21951,jarvis_formation,OptB88vdW
+mp-775930__mp-1576561,LiVP2HO8,mp-1576561,mp-775930,mp,1.35522384615472,26,26,32,proton_transfer;theoretical,mp-1576561,mp-775930,-2.48455725914377,-2.48320203529762,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-30202__JVASP-50316,Lu(HO)3,JVASP-50316,JVASP-30202,jarvis,24.9800000000002,14,28,32,jarvis_only,JVASP-50316,JVASP-30202,-2.0613,-2.03632,jarvis_formation,OptB88vdW
+mp-625392__JVASP-50316,Lu(HO)3,mp-625392,JVASP-50316,jarvis,19.5599999999998,28,14,32,jarvis_only;theoretical,JVASP-54690,JVASP-50316,-2.08086,-2.0613,jarvis_formation,OptB88vdW
+mp-625392__mp-625468,Lu(HO)3,mp-625468,mp-625392,mp,0.0967582142856749,28,28,32,theoretical,mp-625468,mp-625392,-2.30020688255952,-2.30011012434524,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625468__JVASP-50316,Lu(HO)3,mp-625468,JVASP-50316,jarvis,19.7099999999999,28,14,32,jarvis_only;theoretical,JVASP-54706,JVASP-50316,-2.08101,-2.0613,jarvis_formation,OptB88vdW
+mp-976349__JVASP-166078,LuH2ClO2,JVASP-166078,mp-976349,jarvis,3.57999999999992,12,24,32,jarvis_only,JVASP-166078,JVASP-30479,-2.22144,-2.21786,jarvis_formation,OptB88vdW
+mp-625367__mp-1176505,LuHO2,mp-625367,mp-1176505,mp,4.72251312499949,8,16,16,theoretical,mp-625367,mp-1176505,-3.05150962072917,-3.04678710760417,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625367__mp-753947,LuHO2,mp-625367,mp-753947,mp,3.01557124999974,8,8,16,theoretical,mp-625367,mp-753947,-3.05150962072917,-3.04849404947917,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-753947__mp-1176505,LuHO2,mp-753947,mp-1176505,mp,1.70694187499976,8,16,16,theoretical,mp-753947,mp-1176505,-3.04849404947917,-3.04678710760417,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23709__mp-1185517,Mg(AlH4)2,mp-23709,mp-1185517,mp,5.95837636363616,11,11,16,theoretical,mp-23709,mp-1185517,-0.144007213181819,-0.138048836818183,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1103290__JVASP-54884,Mg(BH4)2,JVASP-54884,mp-1103290,jarvis,11.49,22,11,32,jarvis_only;theoretical,JVASP-54884,JVASP-62771,-0.22931,-0.21782,jarvis_formation,OptB88vdW
+mp-1103290__mp-1190680,Mg(BH4)2,mp-1190680,mp-1103290,jarvis,5.63,22,11,32,theoretical,JVASP-112957,JVASP-62771,-0.22345,-0.21782,jarvis_formation,OptB88vdW
+mp-1103290__mp-1190942,Mg(BH4)2,mp-1190942,mp-1103290,jarvis,5.81999999999999,22,11,32,theoretical,JVASP-143142,JVASP-62771,-0.22364,-0.21782,jarvis_formation,OptB88vdW
+mp-1103290__mp-1192119,Mg(BH4)2,mp-1192119,mp-1103290,mp,2.09843409090965,22,11,32,theoretical,mp-1192119,mp-1103290,-0.303917491666667,-0.301819057575758,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1103290__mp-1192265,Mg(BH4)2,mp-1192265,mp-1103290,mp,18.3467786363636,22,11,32,theoretical,mp-1192265,mp-1103290,-0.320165836212121,-0.301819057575758,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1185521__mp-1190680,Mg(BH4)2,mp-1190680,mp-1185521,mp,5.1465809090907,22,22,32,theoretical,mp-1190680,mp-1185521,-0.345540515757576,-0.340393934848485,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1185521__mp-1190942,Mg(BH4)2,mp-1190942,mp-1185521,mp,4.93955045454508,22,22,32,theoretical,mp-1190942,mp-1185521,-0.345333485303031,-0.340393934848485,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1185521__mp-1192265,Mg(BH4)2,mp-1185521,mp-1192265,mp,20.2280986363642,22,22,32,theoretical,mp-1185521,mp-1192265,-0.340393934848485,-0.320165836212121,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1190680__JVASP-54884,Mg(BH4)2,JVASP-54884,mp-1190680,jarvis,5.86,22,22,32,jarvis_only;theoretical,JVASP-54884,JVASP-112957,-0.22931,-0.22345,jarvis_formation,OptB88vdW
+mp-1190680__mp-1190942,Mg(BH4)2,mp-1190680,mp-1190942,mp,0.20703045454562,22,22,32,theoretical,mp-1190680,mp-1190942,-0.345540515757576,-0.345333485303031,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1190680__mp-1192265,Mg(BH4)2,mp-1192265,mp-1190680,jarvis,11.98,22,22,32,theoretical,JVASP-119623,JVASP-112957,-0.23543,-0.22345,jarvis_formation,OptB88vdW
+mp-1190942__JVASP-54884,Mg(BH4)2,JVASP-54884,mp-1190942,jarvis,5.67000000000001,22,22,32,jarvis_only;theoretical,JVASP-54884,JVASP-143142,-0.22931,-0.22364,jarvis_formation,OptB88vdW
+mp-1190942__mp-1192265,Mg(BH4)2,mp-1192265,mp-1190942,jarvis,11.79,22,22,32,theoretical,JVASP-119623,JVASP-143142,-0.23543,-0.22364,jarvis_formation,OptB88vdW
+mp-1192119__mp-1192265,Mg(BH4)2,mp-1192265,mp-1192119,mp,16.2483445454539,22,22,32,theoretical,mp-1192265,mp-1192119,-0.320165836212121,-0.303917491666667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1192265__JVASP-54884,Mg(BH4)2,mp-1192265,JVASP-54884,jarvis,6.11999999999999,22,22,32,jarvis_only;theoretical,JVASP-119623,JVASP-54884,-0.23543,-0.22931,jarvis_formation,OptB88vdW
+mp-571156__mp-1103290,Mg(BH4)2,mp-571156,mp-1103290,mp,23.6565477272731,22,11,32,theoretical,mp-571156,mp-1103290,-0.325475605303031,-0.301819057575758,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-571156__mp-1185521,Mg(BH4)2,mp-1185521,mp-571156,mp,14.9183295454546,22,22,32,theoretical,mp-1185521,mp-571156,-0.340393934848485,-0.325475605303031,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-571156__mp-1190680,Mg(BH4)2,mp-1190680,mp-571156,mp,20.0649104545453,22,22,32,theoretical,mp-1190680,mp-571156,-0.345540515757576,-0.325475605303031,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-571156__mp-1190942,Mg(BH4)2,mp-1190942,mp-571156,mp,19.8578799999997,22,22,32,theoretical,mp-1190942,mp-571156,-0.345333485303031,-0.325475605303031,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-571156__mp-1192119,Mg(BH4)2,mp-571156,mp-1192119,mp,21.5581136363635,22,22,32,theoretical,mp-571156,mp-1192119,-0.325475605303031,-0.303917491666667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-571156__mp-1192265,Mg(BH4)2,mp-571156,mp-1192265,mp,5.30976909090952,22,22,32,theoretical,mp-571156,mp-1192265,-0.325475605303031,-0.320165836212121,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-30247__mp-626143,Mg(HO)2,mp-30247,mp-626143,mp,9.38602799999444,5,5,16,theoretical,mp-30247,mp-626143,-2.00250444949999,-1.9931184215,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-677193__mp-1222264,Mg3BH2O5F,mp-1222264,mp-677193,mp,3.86504291666645,24,24,32,theoretical,mp-1222264,mp-677193,-2.71026603263889,-2.70640098972222,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-12558__JVASP-36262,MgH2,JVASP-12558,JVASP-36262,jarvis,14.02,12,3,16,jarvis_only,JVASP-12558,JVASP-36262,-0.18743,-0.17341,jarvis_formation,OptB88vdW
+mp-23710__mp-23711,MgH2,mp-23710,mp-23711,mp,1.87558916666691,6,12,16,,mp-23710,mp-23711,-0.2827190725,-0.280843483333333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-568441__mp-1102038,MgH2,mp-1102038,mp-568441,mp,10.6178299999999,12,24,32,theoretical,mp-1102038,mp-568441,-0.247419289166667,-0.236801459166667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-568441__mp-569051,MgH2,mp-569051,mp-568441,mp,2.11414333333279,12,24,32,,mp-569051,mp-568441,-0.2389156025,-0.236801459166667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-569051__mp-1102038,MgH2,mp-1102038,mp-569051,mp,8.50368666666706,12,12,16,theoretical,mp-1102038,mp-569051,-0.247419289166667,-0.2389156025,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-697168__mp-1221999,MgH6(NCl)2,mp-697168,mp-1221999,mp,1.05002454545455,22,11,32,theoretical,mp-697168,mp-1221999,-0.936589897500009,-0.935539872954554,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-865188__mp-989229,MgH8(ClO6)2,mp-865188,mp-989229,mp,9.13905826086903,23,23,32,,mp-865188,mp-989229,-1.12364838021739,-1.11450932195652,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-115071__JVASP-115074,MgPH,JVASP-115071,JVASP-115074,jarvis,22.63,3,3,16,jarvis_only,JVASP-115071,JVASP-115074,0.28979,0.31242,jarvis_formation,OptB88vdW
+JVASP-119057__JVASP-143147,MgSi(HO)6,JVASP-119057,JVASP-143147,jarvis,9.56000000000001,28,28,32,jarvis_only,JVASP-119057,JVASP-143147,-1.70655,-1.69699,jarvis_formation,OptB88vdW
+JVASP-91513__JVASP-91628,MgSi(HO2)2,JVASP-91628,JVASP-91513,jarvis,12.2599999999999,8,8,16,jarvis_only;proton_transfer,JVASP-91628,JVASP-91513,-2.15886,-2.1466,jarvis_formation,OptB88vdW
+JVASP-139075__JVASP-139076,MgTeH,JVASP-139075,JVASP-139076,jarvis,11.28,3,3,16,jarvis_only,JVASP-139075,JVASP-139076,0.31607,0.32735,jarvis_formation,OptB88vdW
+mp-2228946__mp-2229286,MgV2P2(HO5)2,mp-2228946,mp-2229286,mp,1.89488294117579,17,17,32,proton_transfer;theoretical,mp-2228946,mp-2229286,-2.51379467981092,-2.51189979686975,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23789__mp-1272198,Mn(HO)2,mp-23789,mp-1272198,mp,0.134783999999222,5,10,16,theoretical,mp-23789,mp-1272198,-1.55744411308621,-1.55730932908621,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23789__mp-625671,Mn(HO)2,mp-23789,mp-625671,mp,14.9522309999994,5,5,16,theoretical,mp-23789,mp-625671,-1.55744411308621,-1.54249188208621,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23789__mp-626701,Mn(HO)2,mp-23789,mp-626701,mp,1.82008299999969,5,5,16,theoretical,mp-23789,mp-626701,-1.55744411308621,-1.55562403008621,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625671__mp-1272198,Mn(HO)2,mp-1272198,mp-625671,mp,14.8174470000002,10,5,16,theoretical,mp-1272198,mp-625671,-1.55730932908621,-1.54249188208621,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625671__mp-626701,Mn(HO)2,mp-626701,mp-625671,mp,13.1321479999997,5,5,16,theoretical,mp-626701,mp-625671,-1.55562403008621,-1.54249188208621,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626701__mp-1272198,Mn(HO)2,mp-1272198,mp-626701,mp,1.68529900000047,10,5,16,theoretical,mp-1272198,mp-626701,-1.55730932908621,-1.55562403008621,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625393__JVASP-176028,Mn2HO4,mp-625393,JVASP-176028,jarvis,15.4700000000001,14,28,32,jarvis_only;theoretical,JVASP-54698,JVASP-176028,-1.61927,-1.6038,jarvis_formation,OptB88vdW
+mp-625393__mp-1003920,Mn2HO4,mp-1003920,mp-625393,mp,7.63554249999943,28,14,32,theoretical,mp-1003920,mp-625393,-1.75451045708744,-1.74687491458744,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-118022__JVASP-118023,MnHCl,JVASP-118023,JVASP-118022,jarvis,15.01,3,3,16,jarvis_only,JVASP-118023,JVASP-118022,0.39581,0.41082,jarvis_formation,OptB88vdW
+mp-29159__mp-1002573,MnHO2,mp-29159,mp-1002573,mp,5.09135499999935,16,4,16,proton_transfer;theoretical,mp-29159,mp-1002573,-1.73101519229526,-1.72592383729526,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-29159__mp-626068,MnHO2,mp-626068,mp-29159,mp,2.11190125000016,8,16,16,proton_transfer;theoretical,mp-626068,mp-29159,-1.73312709354526,-1.73101519229526,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-29159__mp-626270,MnHO2,mp-626270,mp-29159,mp,3.24896937499908,16,16,16,proton_transfer,mp-626270,mp-29159,-1.73426416167026,-1.73101519229526,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626068__mp-1002573,MnHO2,mp-626068,mp-1002573,mp,7.20325624999951,8,4,16,proton_transfer;theoretical,mp-626068,mp-1002573,-1.73312709354526,-1.72592383729526,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626068__mp-626270,MnHO2,mp-626270,mp-626068,mp,1.13706812499892,16,8,16,proton_transfer;theoretical,mp-626270,mp-626068,-1.73426416167026,-1.73312709354526,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626270__mp-1002573,MnHO2,mp-626270,mp-1002573,mp,8.34032437499843,16,4,16,proton_transfer;theoretical,mp-626270,mp-1002573,-1.73426416167026,-1.72592383729526,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-51003__JVASP-140582,Mo(HO2)2,JVASP-51003,JVASP-140582,jarvis,7.30000000000008,14,14,16,jarvis_only;proton_transfer,JVASP-51003,JVASP-140582,-1.57987,-1.57257,jarvis_formation,OptB88vdW
+JVASP-51003__JVASP-85501,Mo(HO2)2,JVASP-51003,JVASP-85501,jarvis,4.39000000000012,14,14,16,jarvis_only,JVASP-51003,JVASP-85501,-1.57987,-1.57548,jarvis_formation,OptB88vdW
+JVASP-85501__JVASP-140582,Mo(HO2)2,JVASP-85501,JVASP-140582,jarvis,2.90999999999997,14,14,16,jarvis_only;proton_transfer,JVASP-85501,JVASP-140582,-1.57548,-1.57257,jarvis_formation,OptB88vdW
+mp-625576__mp-626540,Mo(HO2)2,mp-626540,mp-625576,mp,0.776590714284264,14,14,16,theoretical,mp-626540,mp-625576,-1.61667397321428,-1.6158973825,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-29862__JVASP-148151,Mo2H2O7,JVASP-29862,JVASP-148151,jarvis,1.44999999999995,22,22,32,jarvis_only,JVASP-29862,JVASP-148151,-1.69545,-1.694,jarvis_formation,OptB88vdW
+JVASP-187503__JVASP-187521,Mo2HIrOs,JVASP-187503,JVASP-187521,jarvis,19.19,5,5,16,jarvis_only,JVASP-187503,JVASP-187521,-0.05243,-0.03324,jarvis_formation,OptB88vdW
+JVASP-38428__JVASP-38450,Mo3H,JVASP-38450,JVASP-38428,jarvis,3.83999999999995,4,4,16,jarvis_only,JVASP-38450,JVASP-38428,0.87714,0.88098,jarvis_formation,OptB88vdW
+JVASP-54727__JVASP-119880,MoH4O5,JVASP-54727,JVASP-119880,jarvis,7.82000000000016,20,20,32,jarvis_only;proton_transfer,JVASP-54727,JVASP-119880,-1.39603,-1.38821,jarvis_formation,OptB88vdW
+JVASP-54727__JVASP-54729,MoH4O5,JVASP-54729,JVASP-54727,jarvis,0.499999999999945,20,20,32,jarvis_only;proton_transfer,JVASP-54729,JVASP-54727,-1.39653,-1.39603,jarvis_formation,OptB88vdW
+JVASP-54727__JVASP-54730,MoH4O5,JVASP-54730,JVASP-54727,jarvis,3.54999999999994,20,20,32,jarvis_only;proton_transfer,JVASP-54730,JVASP-54727,-1.39958,-1.39603,jarvis_formation,OptB88vdW
+JVASP-54729__JVASP-119880,MoH4O5,JVASP-54729,JVASP-119880,jarvis,8.32000000000011,20,20,32,jarvis_only;proton_transfer,JVASP-54729,JVASP-119880,-1.39653,-1.38821,jarvis_formation,OptB88vdW
+JVASP-54729__JVASP-54730,MoH4O5,JVASP-54730,JVASP-54729,jarvis,3.05,20,20,32,jarvis_only;proton_transfer,JVASP-54730,JVASP-54729,-1.39958,-1.39653,jarvis_formation,OptB88vdW
+JVASP-54730__JVASP-119880,MoH4O5,JVASP-54730,JVASP-119880,jarvis,11.3700000000001,20,20,32,jarvis_only;proton_transfer,JVASP-54730,JVASP-119880,-1.39958,-1.38821,jarvis_formation,OptB88vdW
+mp-24413__mp-644092,Na2LiAlH6,mp-24413,mp-644092,mp,3.96232149999992,20,10,32,theoretical,mp-24413,mp-644092,-0.316796481859195,-0.312834160359195,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-978284__mp-1193174,Na2P3HO9,mp-1193174,mp-978284,mp,5.11697466666661,30,30,32,proton_transfer,mp-1193174,mp-978284,-2.49806840619581,-2.49295143152915,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-703305__mp-1221345,Na2PHO4,mp-703305,mp-1221345,mp,4.20172531250085,32,16,32,proton_transfer;theoretical,mp-703305,mp-1221345,-2.35743454451893,-2.35323281920643,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1193700__mp-1222149,Na3H5(SeO4)4,mp-1193700,mp-1222149,mp,0.9902192857143,28,28,32,proton_transfer;theoretical,mp-1193700,mp-1222149,-1.37141943177725,-1.37042921249153,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23704__mp-1102924,NaAlH4,mp-23704,mp-1102924,mp,22.0887850000005,12,12,16,theoretical,mp-23704,mp-1102924,-0.212679999166667,-0.190591214166666,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-135651__JVASP-135653,NaAsH2,JVASP-135653,JVASP-135651,jarvis,16.52,4,4,16,jarvis_only,JVASP-135653,JVASP-135651,0.28495,0.30147,jarvis_formation,OptB88vdW
+mp-1190348__mp-1191970,NaB3H8,mp-1190348,mp-1191970,mp,2.15713749999996,24,24,32,,mp-1190348,mp-1191970,-0.245992776964744,-0.243835639464744,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1103416__mp-1180167,NaBH4,mp-1103416,mp-1180167,mp,16.9788166666667,12,24,32,theoretical,mp-1103416,mp-1180167,-0.355652792916667,-0.33867397625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1103416__mp-2646982,NaBH4,mp-2646982,mp-1103416,mp,22.518409583333,24,12,32,theoretical,mp-2646982,mp-1103416,-0.3781712025,-0.355652792916667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1190586__mp-1190869,NaBH4,mp-1190869,mp-1190586,mp,0.296296666666862,24,24,32,theoretical,mp-1190869,mp-1190586,-0.38265713625,-0.382360839583333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1190586__mp-2646982,NaBH4,mp-1190586,mp-2646982,mp,4.18963708333325,24,24,32,theoretical,mp-1190586,mp-2646982,-0.382360839583333,-0.3781712025,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1190869__mp-2646982,NaBH4,mp-1190869,mp-2646982,mp,4.48593375000011,24,24,32,theoretical,mp-1190869,mp-2646982,-0.38265713625,-0.3781712025,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24810__JVASP-151034,NaBH4,mp-24810,JVASP-151034,jarvis,17.15,24,12,32,jarvis_only;theoretical,JVASP-117136,JVASP-151034,-0.34877,-0.33162,jarvis_formation,OptB88vdW
+mp-24810__mp-1103416,NaBH4,mp-24810,mp-1103416,mp,5.49445833333334,24,12,32,theoretical,mp-24810,mp-1103416,-0.36114725125,-0.355652792916667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24810__mp-1180167,NaBH4,mp-24810,mp-1180167,mp,22.473275,24,24,32,theoretical,mp-24810,mp-1180167,-0.36114725125,-0.33867397625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24810__mp-1190586,NaBH4,mp-1190586,mp-24810,mp,21.2135883333329,24,24,32,theoretical,mp-1190586,mp-24810,-0.382360839583333,-0.36114725125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24810__mp-1190869,NaBH4,mp-1190869,mp-24810,mp,21.5098849999998,24,24,32,theoretical,mp-1190869,mp-24810,-0.38265713625,-0.36114725125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24810__mp-2646982,NaBH4,mp-2646982,mp-24810,mp,17.0239512499997,24,24,32,theoretical,mp-2646982,mp-24810,-0.3781712025,-0.36114725125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24810__mp-38725,NaBH4,mp-38725,mp-24810,mp,24.6060566666669,12,24,32,theoretical,mp-38725,mp-24810,-0.385753307916667,-0.36114725125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24810__mp-976181,NaBH4,mp-976181,mp-24810,mp,7.59314833333313,6,24,32,theoretical,mp-976181,mp-24810,-0.368740399583333,-0.36114725125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-38725__mp-1190586,NaBH4,mp-38725,mp-1190586,mp,3.39246833333401,12,24,32,theoretical,mp-38725,mp-1190586,-0.385753307916667,-0.382360839583333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-38725__mp-1190869,NaBH4,mp-38725,mp-1190869,mp,3.09617166666715,12,24,32,,mp-38725,mp-1190869,-0.385753307916667,-0.38265713625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-38725__mp-2646982,NaBH4,mp-38725,mp-2646982,mp,7.58210541666726,12,24,32,theoretical,mp-38725,mp-2646982,-0.385753307916667,-0.3781712025,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-38725__mp-976181,NaBH4,mp-38725,mp-976181,mp,17.0129083333338,12,6,16,theoretical,mp-38725,mp-976181,-0.385753307916667,-0.368740399583333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-976181__JVASP-150999,NaBH4,JVASP-150999,mp-976181,jarvis,21.91,12,6,16,jarvis_only;theoretical,JVASP-150999,JVASP-38507,-0.37547,-0.35356,jarvis_formation,OptB88vdW
+mp-976181__JVASP-151034,NaBH4,mp-976181,JVASP-151034,jarvis,21.94,6,12,16,jarvis_only;theoretical,JVASP-38507,JVASP-151034,-0.35356,-0.33162,jarvis_formation,OptB88vdW
+mp-976181__mp-1103416,NaBH4,mp-976181,mp-1103416,mp,13.0876066666665,6,12,16,theoretical,mp-976181,mp-1103416,-0.368740399583333,-0.355652792916667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-976181__mp-1190586,NaBH4,mp-1190586,mp-976181,mp,13.6204399999998,24,6,32,theoretical,mp-1190586,mp-976181,-0.382360839583333,-0.368740399583333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-976181__mp-1190869,NaBH4,mp-1190869,mp-976181,mp,13.9167366666667,24,6,32,theoretical,mp-1190869,mp-976181,-0.38265713625,-0.368740399583333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-976181__mp-2646982,NaBH4,mp-2646982,mp-976181,mp,9.43080291666654,24,6,32,theoretical,mp-2646982,mp-976181,-0.3781712025,-0.368740399583333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1210157__mp-1221084,NaCu2H3(SO5)2,mp-1221084,mp-1210157,mp,0.242259444444226,18,18,32,proton_transfer;theoretical,mp-1221084,mp-1210157,-1.57246645167385,-1.57222419222941,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1193301__mp-1287635,NaFe2P2HO8,mp-1287635,mp-1193301,mp,18.4556574999997,28,28,32,proton_transfer;theoretical,mp-1287635,mp-1193301,-2.28449231120822,-2.26603665370822,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-164637__JVASP-176833,NaH9O5,JVASP-176833,JVASP-164637,jarvis,4.63000000000013,30,30,32,jarvis_only;proton_transfer,JVASP-176833,JVASP-164637,-1.08437,-1.07974,jarvis_formation,OptB88vdW
+mp-3346528__mp-3347018,NaH9O5,mp-3347018,mp-3346528,mp,5.43564666666718,30,30,32,proton_transfer;theoretical,mp-3347018,mp-3346528,-1.33117298217529,-1.32573733550862,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625378__mp-3346528,NaH9O5,mp-625378,mp-3346528,mp,19.285199,30,30,32,proton_transfer;theoretical,mp-625378,mp-3346528,-1.34502253450862,-1.32573733550862,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625378__mp-3347018,NaH9O5,mp-625378,mp-3347018,mp,13.8495523333328,30,30,32,proton_transfer;theoretical,mp-625378,mp-3347018,-1.34502253450862,-1.33117298217529,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625455__mp-625501,NaH9O5,mp-625501,mp-625455,mp,21.4732006666669,30,30,32,proton_transfer;theoretical,mp-625501,mp-625455,-1.31678544350862,-1.29531224284195,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625455__mp-626554,NaH9O5,mp-626554,mp-625455,mp,20.5942313333338,30,30,32,proton_transfer;theoretical,mp-626554,mp-625455,-1.31590647417529,-1.29531224284195,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625501__mp-3346528,NaH9O5,mp-3346528,mp-625501,mp,8.95189199999979,30,30,32,proton_transfer;theoretical,mp-3346528,mp-625501,-1.32573733550862,-1.31678544350862,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625501__mp-3347018,NaH9O5,mp-3347018,mp-625501,mp,14.387538666667,30,30,32,proton_transfer;theoretical,mp-3347018,mp-625501,-1.33117298217529,-1.31678544350862,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625501__mp-626554,NaH9O5,mp-625501,mp-626554,mp,0.878969333333091,30,30,32,proton_transfer;theoretical,mp-625501,mp-626554,-1.31678544350862,-1.31590647417529,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626554__mp-3346528,NaH9O5,mp-3346528,mp-626554,mp,9.83086133333289,30,30,32,proton_transfer;theoretical,mp-3346528,mp-626554,-1.32573733550862,-1.31590647417529,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626554__mp-3347018,NaH9O5,mp-3347018,mp-626554,mp,15.2665080000001,30,30,32,proton_transfer;theoretical,mp-3347018,mp-626554,-1.33117298217529,-1.31590647417529,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-105704__JVASP-134758,NaHF2,JVASP-134758,JVASP-105704,jarvis,16.6500000000003,4,4,16,jarvis_only;proton_transfer,JVASP-134758,JVASP-105704,-2.27701,-2.26036,jarvis_formation,OptB88vdW
+JVASP-121000__JVASP-134758,NaHF2,JVASP-121000,JVASP-134758,jarvis,9.49999999999962,4,4,16,jarvis_only;proton_transfer,JVASP-121000,JVASP-134758,-2.28651,-2.27701,jarvis_formation,OptB88vdW
+JVASP-54759__JVASP-134995,NaHO,JVASP-54759,JVASP-134995,jarvis,16.8999999999999,6,6,16,hbond_disordered;jarvis_only,JVASP-54759,JVASP-134995,-1.39886,-1.38196,jarvis_formation,OptB88vdW
+mp-23891__JVASP-54759,NaHO,mp-23891,JVASP-54759,jarvis,17.38,6,6,16,hbond_disordered;jarvis_only,JVASP-8600,JVASP-54759,-1.41624,-1.39886,jarvis_formation,OptB88vdW
+mp-23891__mp-1179949,NaHO,mp-23891,mp-1179949,mp,19.8328391666667,6,6,16,hbond_disordered;theoretical,mp-23891,mp-1179949,-1.53540101420977,-1.5155681750431,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23891__mp-23940,NaHO,mp-23891,mp-23940,mp,0.999200000000311,6,6,16,hbond_disordered,mp-23891,mp-23940,-1.53540101420977,-1.53440181420977,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23891__mp-626000,NaHO,mp-626000,mp-23891,mp,9.20060333333339,6,6,16,hbond_disordered;theoretical,mp-626000,mp-23891,-1.5446016175431,-1.53540101420977,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23891__mp-626778,NaHO,mp-626778,mp-23891,mp,7.83345249999923,12,6,16,hbond_disordered,mp-626778,mp-23891,-1.54323446670977,-1.53540101420977,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23940__JVASP-54759,NaHO,mp-23940,JVASP-54759,jarvis,17.38,6,6,16,hbond_disordered;jarvis_only,JVASP-8601,JVASP-54759,-1.41624,-1.39886,jarvis_formation,OptB88vdW
+mp-23940__mp-1179949,NaHO,mp-23940,mp-1179949,mp,18.8336391666664,6,6,16,hbond_disordered;theoretical,mp-23940,mp-1179949,-1.53440181420977,-1.5155681750431,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23940__mp-626000,NaHO,mp-626000,mp-23940,mp,10.1998033333337,6,6,16,hbond_disordered;theoretical,mp-626000,mp-23940,-1.5446016175431,-1.53440181420977,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23940__mp-626778,NaHO,mp-626778,mp-23940,mp,8.83265249999954,12,6,16,hbond_disordered,mp-626778,mp-23940,-1.54323446670977,-1.53440181420977,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625051__JVASP-134995,NaHO,JVASP-134995,mp-625051,jarvis,5.47000000000009,6,3,16,hbond_disordered;jarvis_only;theoretical,JVASP-134995,JVASP-54667,-1.38196,-1.37649,jarvis_formation,OptB88vdW
+mp-625051__JVASP-54759,NaHO,JVASP-54759,mp-625051,jarvis,22.37,6,3,16,hbond_disordered;jarvis_only;theoretical,JVASP-54759,JVASP-54667,-1.39886,-1.37649,jarvis_formation,OptB88vdW
+mp-625051__mp-1179949,NaHO,mp-1179949,mp-625051,mp,18.5385525000001,6,3,16,hbond_disordered;theoretical,mp-1179949,mp-625051,-1.5155681750431,-1.4970296225431,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626000__mp-626778,NaHO,mp-626000,mp-626778,mp,1.36715083333416,6,12,16,hbond_disordered;theoretical,mp-626000,mp-626778,-1.5446016175431,-1.54323446670977,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-36582__mp-634657,NaHS,mp-634657,mp-36582,mp,1.94134499999987,6,3,16,theoretical,mp-634657,mp-36582,-0.810359105520834,-0.808417760520834,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-644302__mp-1220802,NaHSeO4,mp-1220802,mp-644302,mp,2.06422035714215,14,28,32,proton_transfer;theoretical,mp-1220802,mp-644302,-1.45566417999615,-1.45359995963901,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-541081__mp-1394437,NaMg2H3(SO4)2,mp-541081,mp-1394437,mp,5.89958406250002,32,32,32,proton_transfer;theoretical,mp-541081,mp-1394437,-2.03105649969558,-2.02515691563308,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1173541__mp-1280674,NaMn2Mo2H3O10,mp-1280674,mp-1173541,mp,0.60437722222173,18,18,32,proton_transfer;theoretical,mp-1280674,mp-1173541,-1.89723642783285,-1.89663205061063,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1173541__mp-2901609,NaMn2Mo2H3O10,mp-2901609,mp-1173541,mp,3.19970888888732,18,18,32,proton_transfer;theoretical,mp-2901609,mp-1173541,-1.89983175949952,-1.89663205061063,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1280674__mp-2901609,NaMn2Mo2H3O10,mp-2901609,mp-1280674,mp,2.59533166666559,18,18,32,proton_transfer;theoretical,mp-2901609,mp-1280674,-1.89983175949952,-1.89723642783285,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1173649__mp-1221038,NaNi2H3(SO5)2,mp-1221038,mp-1173649,mp,0.447626111110822,18,18,32,proton_transfer;theoretical,mp-1221038,mp-1173649,-1.70278502445163,-1.70233739834052,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1220997__JVASP-142411,NaNi2Mo2H3O10,JVASP-142411,mp-1220997,jarvis,1.26000000000004,18,18,32,jarvis_only;proton_transfer;theoretical,JVASP-142411,JVASP-170493,-1.61337,-1.61211,jarvis_formation,OptB88vdW
+JVASP-183360__JVASP-187754,Nb2H,JVASP-187754,JVASP-183360,jarvis,0.609999999999999,3,3,16,jarvis_only,JVASP-187754,JVASP-183360,-0.11749,-0.11688,jarvis_formation,OptB88vdW
+JVASP-187526__JVASP-187544,Nb2HPdRu,JVASP-187526,JVASP-187544,jarvis,20.69,5,5,16,jarvis_only,JVASP-187526,JVASP-187544,-0.19248,-0.17179,jarvis_formation,OptB88vdW
+mp-33932__mp-626528,NbHO3,mp-33932,mp-626528,mp,11.4431894999996,20,20,32,theoretical,mp-33932,mp-626528,-2.47430703675,-2.46286384725,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-187523__JVASP-192878,NbHOsRu2,JVASP-187523,JVASP-192878,jarvis,1.69999999999999,5,5,16,jarvis_only,JVASP-187523,JVASP-192878,-0.08387,-0.08217,jarvis_formation,OptB88vdW
+JVASP-187517__JVASP-187561,NbTcHRu2,JVASP-187517,JVASP-187561,jarvis,23.48,5,5,16,jarvis_only,JVASP-187517,JVASP-187561,-0.06943,-0.04595,jarvis_formation,OptB88vdW
+mp-625397__mp-625403,Nd(HO)3,mp-625403,mp-625397,mp,0.0477507142857547,14,14,16,theoretical,mp-625403,mp-625397,-2.20950450732143,-2.20945675660714,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625397__mp-673303,Nd(HO)3,mp-625397,mp-673303,mp,2.90825214285695,14,14,16,theoretical,mp-625397,mp-673303,-2.20945675660714,-2.20654850446429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625403__mp-673303,Nd(HO)3,mp-625403,mp-673303,mp,2.9560028571427,14,14,16,theoretical,mp-625403,mp-673303,-2.20950450732143,-2.20654850446429,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1180084__mp-1274857,Ni(HO)2,mp-1180084,mp-1274857,mp,10.9795109999999,5,5,16,theoretical,mp-1180084,mp-1274857,-1.2388212985,-1.2278417875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1180084__mp-1275121,Ni(HO)2,mp-1275121,mp-1180084,mp,4.18803599999995,5,5,16,theoretical,mp-1275121,mp-1180084,-1.2430093345,-1.2388212985,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1274857__mp-1275121,Ni(HO)2,mp-1275121,mp-1274857,mp,15.1675469999999,5,5,16,theoretical,mp-1275121,mp-1274857,-1.2430093345,-1.2278417875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-27912__mp-1180084,Ni(HO)2,mp-27912,mp-1180084,mp,5.46819499999951,5,5,16,theoretical,mp-27912,mp-1180084,-1.2442894935,-1.2388212985,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-27912__mp-1274857,Ni(HO)2,mp-27912,mp-1274857,mp,16.4477059999994,5,5,16,theoretical,mp-27912,mp-1274857,-1.2442894935,-1.2278417875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-27912__mp-1275121,Ni(HO)2,mp-27912,mp-1275121,mp,1.28015899999956,5,5,16,theoretical,mp-27912,mp-1275121,-1.2442894935,-1.2430093345,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-27912__mp-625074,Ni(HO)2,mp-27912,mp-625074,mp,8.15073499999941,5,5,16,theoretical,mp-27912,mp-625074,-1.2442894935,-1.2361387585,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-27912__mp-626794,Ni(HO)2,mp-27912,mp-626794,mp,16.9538769999995,5,5,16,theoretical,mp-27912,mp-626794,-1.2442894935,-1.2273356165,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-27912__mp-626843,Ni(HO)2,mp-27912,mp-626843,mp,18.038864999999,5,5,16,theoretical,mp-27912,mp-626843,-1.2442894935,-1.2262506285,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625074__mp-1180084,Ni(HO)2,mp-1180084,mp-625074,mp,2.6825399999999,5,5,16,theoretical,mp-1180084,mp-625074,-1.2388212985,-1.2361387585,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625074__mp-1274857,Ni(HO)2,mp-625074,mp-1274857,mp,8.29697100000004,5,5,16,theoretical,mp-625074,mp-1274857,-1.2361387585,-1.2278417875,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625074__mp-1275121,Ni(HO)2,mp-1275121,mp-625074,mp,6.87057599999985,5,5,16,theoretical,mp-1275121,mp-625074,-1.2430093345,-1.2361387585,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625074__mp-626794,Ni(HO)2,mp-625074,mp-626794,mp,8.8031420000001,5,5,16,theoretical,mp-625074,mp-626794,-1.2361387585,-1.2273356165,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625074__mp-626843,Ni(HO)2,mp-625074,mp-626843,mp,9.88812999999955,5,5,16,theoretical,mp-625074,mp-626843,-1.2361387585,-1.2262506285,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626794__mp-1180084,Ni(HO)2,mp-1180084,mp-626794,mp,11.485682,5,5,16,theoretical,mp-1180084,mp-626794,-1.2388212985,-1.2273356165,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626794__mp-1274857,Ni(HO)2,mp-1274857,mp-626794,mp,0.506171000000055,5,5,16,theoretical,mp-1274857,mp-626794,-1.2278417875,-1.2273356165,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626794__mp-1275121,Ni(HO)2,mp-1275121,mp-626794,mp,15.6737179999999,5,5,16,theoretical,mp-1275121,mp-626794,-1.2430093345,-1.2273356165,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626794__mp-626843,Ni(HO)2,mp-626794,mp-626843,mp,1.08498799999945,5,5,16,theoretical,mp-626794,mp-626843,-1.2273356165,-1.2262506285,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626843__mp-1180084,Ni(HO)2,mp-1180084,mp-626843,mp,12.5706699999995,5,5,16,theoretical,mp-1180084,mp-626843,-1.2388212985,-1.2262506285,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626843__mp-1274857,Ni(HO)2,mp-1274857,mp-626843,mp,1.59115899999951,5,5,16,theoretical,mp-1274857,mp-626843,-1.2278417875,-1.2262506285,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626843__mp-1275121,Ni(HO)2,mp-1275121,mp-626843,mp,16.7587059999994,5,5,16,theoretical,mp-1275121,mp-626843,-1.2430093345,-1.2262506285,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-753890__mp-1220079,Ni2H,mp-1220079,mp-753890,mp,3.06693333333286,3,3,16,theoretical,mp-1220079,mp-753890,0.0358128704166679,0.0388798037500007,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-977385__JVASP-91817,NpH3,mp-977385,JVASP-91817,jarvis,16.86,4,8,16,jarvis_only;theoretical,JVASP-79086,JVASP-91817,-0.33604,-0.31918,jarvis_formation,OptB88vdW
+mp-977385__mp-1190843,NpH3,mp-977385,mp-1190843,mp,24.5785499999999,4,24,32,theoretical,mp-977385,mp-1190843,-0.573973663749999,-0.54939511375,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23902__mp-626450,PH3O4,mp-23902,mp-626450,mp,13.8917665625007,32,32,32,proton_transfer;theoretical,mp-23902,mp-626450,-1.87903476979911,-1.86514300323661,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23902__mp-626464,PH3O4,mp-23902,mp-626464,mp,22.7739318750002,32,32,32,proton_transfer;theoretical,mp-23902,mp-626464,-1.87903476979911,-1.85626083792411,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626449__mp-626450,PH3O4,mp-626450,mp-626449,mp,19.2577428125,32,32,32,proton_transfer;theoretical,mp-626450,mp-626449,-1.86514300323661,-1.84588526042411,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626449__mp-626464,PH3O4,mp-626464,mp-626449,mp,10.3755775000005,32,32,32,proton_transfer;theoretical,mp-626464,mp-626449,-1.85626083792411,-1.84588526042411,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626450__mp-626464,PH3O4,mp-626450,mp-626464,mp,8.88216531249952,32,32,32,proton_transfer;theoretical,mp-626450,mp-626464,-1.86514300323661,-1.85626083792411,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1190536__mp-1220107,PH6NO4,mp-1220107,mp-1190536,mp,11.2047370833335,24,24,32,proton_transfer;theoretical,mp-1220107,mp-1190536,-1.41537163809524,-1.40416690101191,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23672__mp-1220029,PH6NO4,mp-1220029,mp-23672,mp,1.87725625000001,24,24,32,proton_transfer;theoretical,mp-1220029,mp-23672,-1.44353548892857,-1.44165823267857,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-35220__mp-1197760,PHN2,mp-35220,mp-1197760,mp,9.33431499999848,8,32,32,theoretical,mp-35220,mp-1197760,-0.521251344806547,-0.511917029806549,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-35220__mp-697139,PHN2,mp-697139,mp-35220,mp,3.61598062500157,16,8,16,theoretical,mp-697139,mp-35220,-0.524867325431549,-0.521251344806547,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-697139__mp-1197760,PHN2,mp-697139,mp-1197760,mp,12.9502956250001,16,32,32,,mp-697139,mp-1197760,-0.524867325431549,-0.511917029806549,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1209774__mp-1220034,PHPbO4,mp-1220034,mp-1209774,mp,0.614902857143385,14,14,16,proton_transfer;theoretical,mp-1220034,mp-1209774,-2.17672531727041,-2.17611041441326,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625447__mp-625452,Pr(HO)3,mp-625447,mp-625452,mp,2.37101500000048,14,14,16,theoretical,mp-625447,mp-625452,-2.19877237720238,-2.19640136220238,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625447__mp-626361,Pr(HO)3,mp-625447,mp-626361,mp,1.93184714285799,14,14,16,theoretical,mp-625447,mp-626361,-2.19877237720238,-2.19684053005952,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625452__mp-626361,Pr(HO)3,mp-626361,mp-625452,mp,0.439167857142486,14,14,16,theoretical,mp-626361,mp-625452,-2.19684053005952,-2.19640136220238,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-643770__JVASP-95568,Rb2MgH4,JVASP-95568,mp-643770,jarvis,6.23999999999997,14,28,32,jarvis_only,JVASP-95568,JVASP-164650,-0.353,-0.34676,jarvis_formation,OptB88vdW
+mp-686677__mp-753854,Rb2PH3SeO8,mp-753854,mp-686677,mp,4.98677366666711,30,30,32,proton_transfer;theoretical,mp-753854,mp-686677,-1.87555638938244,-1.87056961571577,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23781__mp-1219739,Rb3H(SO4)2,mp-23781,mp-1219739,mp,0.0849153571431671,28,28,32,proton_transfer;theoretical,mp-23781,mp-1219739,-2.11163423455357,-2.11154931919643,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1219652__mp-1219655,Rb3H(SeO4)2,mp-1219652,mp-1219655,mp,4.04983571428574,28,14,32,proton_transfer;theoretical,mp-1219652,mp-1219655,-1.65938101131696,-1.65533117560268,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23897__mp-1219652,Rb3H(SeO4)2,mp-1219652,mp-23897,mp,0.105926071428009,28,28,32,proton_transfer;theoretical,mp-1219652,mp-23897,-1.65938101131696,-1.65927508524554,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23897__mp-1219655,Rb3H(SeO4)2,mp-23897,mp-1219655,mp,3.94390964285773,28,14,32,proton_transfer;theoretical,mp-23897,mp-1219655,-1.65927508524554,-1.65533117560268,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1193778__mp-1251539,RbAl(H2N)4,mp-1193778,mp-1251539,mp,1.62149499999997,28,28,32,theoretical,mp-1193778,mp-1251539,-0.599466153750001,-0.597844658750001,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-29764__mp-677103,RbHF2,mp-29764,mp-677103,mp,1.72716249999993,8,8,16,proton_transfer;theoretical,mp-29764,mp-677103,-2.4849673209375,-2.4832401584375,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626620__mp-626721,RbHO,mp-626620,mp-626721,mp,0.38416666666663,6,6,16,hbond_disordered;theoretical,mp-626620,mp-626721,-1.51254408125,-1.51215991458333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626620__mp-643043,RbHO,mp-626620,mp-643043,mp,18.7547916666659,6,6,16,hbond_disordered,mp-626620,mp-643043,-1.51254408125,-1.49378928958333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626721__mp-643043,RbHO,mp-626721,mp-643043,mp,18.3706249999993,6,6,16,hbond_disordered;theoretical,mp-626721,mp-643043,-1.51215991458333,-1.49378928958333,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-695829__mp-696794,RbHSeO4,mp-696794,mp-695829,mp,0.511462380952565,28,21,32,proton_transfer,mp-696794,mp-695829,-1.50585336015625,-1.5053418977753,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-722455__mp-1179724,RbLi2(H2N)3,mp-722455,mp-1179724,mp,0.0669745833329349,24,24,32,theoretical,mp-722455,mp-1179724,-0.534164239305555,-0.534097264722223,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24609__mp-866712,RbMnP3HO10,mp-866712,mp-24609,mp,0.551262187499901,32,32,32,proton_transfer,mp-866712,mp-24609,-2.4794672781631,-2.4789160159756,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23667__mp-642831,RbP(HO2)2,mp-23667,mp-642831,mp,6.59503124999983,16,16,16,proton_transfer,mp-23667,mp-642831,-2.18816629620536,-2.18157126495536,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23667__mp-643791,RbP(HO2)2,mp-23667,mp-643791,mp,13.3963824999999,16,16,16,proton_transfer,mp-23667,mp-643791,-2.18816629620536,-2.17476991370536,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23667__mp-703528,RbP(HO2)2,mp-23667,mp-703528,mp,7.10096624999945,16,32,32,proton_transfer,mp-23667,mp-703528,-2.18816629620536,-2.18106532995536,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-642831__mp-643791,RbP(HO2)2,mp-642831,mp-643791,mp,6.80135125000003,16,16,16,proton_transfer,mp-642831,mp-643791,-2.18157126495536,-2.17476991370536,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-642831__mp-703528,RbP(HO2)2,mp-642831,mp-703528,mp,0.505934999999624,16,32,32,proton_transfer,mp-642831,mp-703528,-2.18157126495536,-2.18106532995536,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-643791__mp-703528,RbP(HO2)2,mp-703528,mp-643791,mp,6.29541625000041,32,16,32,proton_transfer,mp-703528,mp-643791,-2.18106532995536,-2.17476991370536,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-2766000__mp-2766424,ReH3O5,mp-2766424,mp-2766000,mp,12.9369077777772,18,18,32,proton_transfer;theoretical,mp-2766424,mp-2766000,-1.66285689902778,-1.64991999125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626788__mp-2766000,ReH3O5,mp-2766000,mp-626788,mp,8.0330155555568,18,18,32,proton_transfer;theoretical,mp-2766000,mp-626788,-1.64991999125,-1.64188697569444,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626788__mp-2766424,ReH3O5,mp-2766424,mp-626788,mp,20.969923333334,18,18,32,proton_transfer;theoretical,mp-2766424,mp-626788,-1.66285689902778,-1.64188697569444,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626788__mp-626799,ReH3O5,mp-626799,mp-626788,mp,18.7708061111123,18,18,32,proton_transfer;theoretical,mp-626799,mp-626788,-1.66065778180556,-1.64188697569444,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626788__mp-626800,ReH3O5,mp-626788,mp-626800,mp,9.23350555555569,18,18,32,proton_transfer;theoretical,mp-626788,mp-626800,-1.64188697569444,-1.63265347013889,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626788__mp-626819,ReH3O5,mp-626819,mp-626788,mp,1.91854611111131,18,18,32,proton_transfer;theoretical,mp-626819,mp-626788,-1.64380552180556,-1.64188697569444,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626799__mp-2766000,ReH3O5,mp-626799,mp-2766000,mp,10.7377905555555,18,18,32,proton_transfer;theoretical,mp-626799,mp-2766000,-1.66065778180556,-1.64991999125,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626799__mp-2766424,ReH3O5,mp-2766424,mp-626799,mp,2.19911722222177,18,18,32,proton_transfer;theoretical,mp-2766424,mp-626799,-1.66285689902778,-1.66065778180556,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626799__mp-626819,ReH3O5,mp-626799,mp-626819,mp,16.852260000001,18,18,32,proton_transfer;theoretical,mp-626799,mp-626819,-1.66065778180556,-1.64380552180556,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626800__mp-2766000,ReH3O5,mp-2766000,mp-626800,mp,17.2665211111125,18,18,32,proton_transfer;theoretical,mp-2766000,mp-626800,-1.64991999125,-1.63265347013889,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626800__mp-626819,ReH3O5,mp-626819,mp-626800,mp,11.152051666667,18,18,32,proton_transfer;theoretical,mp-626819,mp-626800,-1.64380552180556,-1.63265347013889,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626819__mp-2766000,ReH3O5,mp-2766000,mp-626819,mp,6.11446944444549,18,18,32,proton_transfer;theoretical,mp-2766000,mp-626819,-1.64991999125,-1.64380552180556,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626819__mp-2766424,ReH3O5,mp-2766424,mp-626819,mp,19.0513772222227,18,18,32,proton_transfer;theoretical,mp-2766424,mp-626819,-1.66285689902778,-1.64380552180556,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-118480__JVASP-118481,SbHO,JVASP-118481,JVASP-118480,jarvis,15.53,6,6,16,jarvis_only,JVASP-118481,JVASP-118480,-0.39776,-0.38223,jarvis_formation,OptB88vdW
+mp-626182__mp-626218,SbHO3,mp-626218,mp-626182,mp,12.1538049999999,20,20,32,theoretical,mp-626218,mp-626182,-1.59182477125,-1.57967096625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626193__mp-626194,Sc(HO)3,mp-626194,mp-626193,mp,1.76791928571385,28,28,32,theoretical,mp-626194,mp-626193,-2.22609403303571,-2.22432611375,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-187706__JVASP-191342,ScH,JVASP-187706,JVASP-191342,jarvis,1.19000000000002,4,4,16,jarvis_only,JVASP-187706,JVASP-191342,-0.51363,-0.51244,jarvis_formation,OptB88vdW
+JVASP-79011__JVASP-125437,ScH3,JVASP-125437,JVASP-79011,jarvis,15.79,4,4,16,jarvis_only,JVASP-125437,JVASP-79011,-0.47996,-0.46417,jarvis_formation,OptB88vdW
+JVASP-50102__JVASP-108839,ScHO2,JVASP-108839,JVASP-50102,jarvis,7.63000000000025,4,8,16,jarvis_only;proton_transfer,JVASP-108839,JVASP-50102,-2.71159,-2.70396,jarvis_formation,OptB88vdW
+mp-625150__JVASP-104997,ScHO2,mp-625150,JVASP-104997,jarvis,20.7400000000004,8,8,16,jarvis_only;theoretical,JVASP-29788,JVASP-104997,-2.76115,-2.74041,jarvis_formation,OptB88vdW
+mp-625150__mp-625663,ScHO2,mp-625663,mp-625150,mp,9.07396999999932,16,8,16,theoretical,mp-625663,mp-625150,-2.9704737703125,-2.9613998003125,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-85506__JVASP-85507,Si2H2O5,JVASP-85506,JVASP-85507,jarvis,7.88000000000011,18,18,32,jarvis_only;proton_transfer,JVASP-85506,JVASP-85507,-2.23539,-2.22751,jarvis_formation,OptB88vdW
+mp-626037__mp-626083,Si2H2O5,mp-626037,mp-626083,mp,10.3961994444446,18,18,32,theoretical,mp-626037,mp-626083,-2.56945776694444,-2.5590615675,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-995193__mp-1040468,Si3H,mp-995193,mp-1040468,mp,0.474193749999685,8,8,16,theoretical,mp-995193,mp-1040468,0.0289045415625004,0.0293787353125001,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-972825__mp-1188318,SiH8,mp-1188318,mp-972825,mp,0.0244722222220162,18,9,32,molecular_h2;theoretical,mp-1188318,mp-972825,-0.00302292944444421,-0.00299845722222219,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625402__mp-625409,Sm(HO)3,mp-625402,mp-625409,mp,1.04875785714409,14,14,16,theoretical,mp-625402,mp-625409,-2.22357818696429,-2.22252942910714,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-40570__JVASP-125440,SmH3,JVASP-40570,JVASP-125440,jarvis,10.56,4,4,16,jarvis_only,JVASP-40570,JVASP-125440,-0.5788,-0.56824,jarvis_formation,OptB88vdW
+mp-23763__mp-696275,SnH8(NCl3)2,mp-23763,mp-696275,mp,6.63074176470624,17,17,32,hbond_disordered,mp-23763,mp-696275,-0.942131739705882,-0.935500997941176,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-118059__JVASP-118060,SnHCl,JVASP-118060,JVASP-118059,jarvis,19.9,6,6,16,jarvis_only,JVASP-118060,JVASP-118059,-0.36042,-0.34052,jarvis_formation,OptB88vdW
+mp-643905__mp-696969,Sr(H2N)2,mp-643905,mp-696969,mp,1.27722321428592,28,14,32,,mp-643905,mp-696969,-0.651188023571429,-0.649910800357143,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-54735__JVASP-54736,Sr(H2O3)2,JVASP-54736,JVASP-54735,jarvis,1.98000000000009,22,22,32,jarvis_only;proton_transfer,JVASP-54736,JVASP-54735,-1.01566,-1.01368,jarvis_formation,OptB88vdW
+mp-27425__mp-625184,Sr(HO)2,mp-27425,mp-625184,mp,1.66033449999947,20,20,32,theoretical,mp-27425,mp-625184,-2.1146129775,-2.112952643,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23759__mp-1179094,SrH2,mp-1179094,mp-23759,mp,1.78378999999984,6,6,16,,mp-1179094,mp-23759,-0.603446880833334,-0.601663090833334,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-28420__JVASP-51024,SrH4O3,mp-28420,JVASP-51024,jarvis,19.9,16,16,16,jarvis_only;proton_transfer,JVASP-163632,JVASP-51024,-1.60803,-1.58813,jarvis_formation,OptB88vdW
+mp-28420__mp-626727,SrH4O3,mp-28420,mp-626727,mp,2.41403937500007,16,16,16,theoretical,mp-28420,mp-626727,-1.798464281875,-1.7960502425,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-190255__JVASP-192930,TaHOsRu2,JVASP-190255,JVASP-192930,jarvis,17.32,5,5,16,jarvis_only,JVASP-190255,JVASP-192930,-0.14464,-0.12732,jarvis_formation,OptB88vdW
+mp-24121__mp-625415,Tb(HO)3,mp-24121,mp-625415,mp,2.57929928571565,14,14,16,theoretical,mp-24121,mp-625415,-2.24302438434524,-2.24044508505952,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-37069__JVASP-125444,TbH3,JVASP-37069,JVASP-125444,jarvis,8.36000000000003,4,4,16,jarvis_only,JVASP-37069,JVASP-125444,-0.59263,-0.58427,jarvis_formation,OptB88vdW
+mp-982384__mp-1079249,TbH3,mp-982384,mp-1079249,mp,8.86853916666652,24,8,32,theoretical,mp-982384,mp-1079249,-0.722232470729168,-0.713363931562501,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-187539__JVASP-187586,Tc2MoHRh,JVASP-187586,JVASP-187539,jarvis,14.62,5,5,16,jarvis_only,JVASP-187586,JVASP-187539,-0.02449,-0.00987,jarvis_formation,OptB88vdW
+JVASP-187537__JVASP-187560,TcMo2HRh,JVASP-187537,JVASP-187560,jarvis,3.35,5,5,16,jarvis_only,JVASP-187537,JVASP-187560,-0.00355,-0.0002,jarvis_formation,OptB88vdW
+JVASP-54758__JVASP-54762,Te(HO)6,JVASP-54758,JVASP-54762,jarvis,2.1000000000001,13,13,16,jarvis_only,JVASP-54758,JVASP-54762,-0.95698,-0.95488,jarvis_formation,OptB88vdW
+mp-625526__JVASP-29801,Te(HO2)2,JVASP-29801,mp-625526,jarvis,7.15999999999994,14,14,16,jarvis_only;theoretical,JVASP-29801,JVASP-29802,-0.94224,-0.93508,jarvis_formation,OptB88vdW
+mp-1202171__mp-1203323,TeAsHO5,mp-1202171,mp-1203323,mp,7.25406531249995,32,32,32,,mp-1202171,mp-1203323,-1.50535842161458,-1.49810435630208,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24291__mp-1008734,ThH2,mp-24291,mp-1008734,mp,9.46967333332793,3,3,16,theoretical,mp-24291,mp-1008734,-0.56397526583333,-0.554505592500002,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1077045__JVASP-191289,Ti2H,JVASP-191289,mp-1077045,jarvis,0.439999999999996,3,6,16,jarvis_only;theoretical,JVASP-191289,JVASP-93786,-0.19809,-0.19765,jarvis_formation,OptB88vdW
+JVASP-189824__JVASP-193926,Ti2ZnH2,JVASP-193926,JVASP-189824,jarvis,4.76000000000004,5,5,16,jarvis_only,JVASP-193926,JVASP-189824,-0.36458,-0.35982,jarvis_formation,OptB88vdW
+mp-24161__mp-24726,TiH2,mp-24726,mp-24161,mp,4.33941333333254,3,3,16,,mp-24726,mp-24161,-0.533858494722222,-0.52951908138889,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1189965__JVASP-159071,TiH8(NF3)2,mp-1189965,JVASP-159071,jarvis,3.68999999999997,17,17,32,hbond_disordered;jarvis_only,JVASP-140254,JVASP-159071,-1.71452,-1.71083,jarvis_formation,OptB88vdW
+mp-696590__mp-1189965,TiH8(NF3)2,mp-1189965,mp-696590,mp,16.5258888235296,17,17,32,hbond_disordered,mp-1189965,mp-696590,-1.82562634843137,-1.80910045960784,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-696590__mp-865466,TiH8(NF3)2,mp-865466,mp-696590,mp,6.00974529411791,17,17,32,hbond_disordered;theoretical,mp-865466,mp-696590,-1.81511020490196,-1.80910045960784,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-865466__JVASP-159071,TiH8(NF3)2,JVASP-159071,mp-865466,jarvis,7.51999999999997,17,17,32,hbond_disordered;jarvis_only;theoretical,JVASP-159071,JVASP-33825,-1.71083,-1.70331,jarvis_formation,OptB88vdW
+mp-865466__mp-1189965,TiH8(NF3)2,mp-1189965,mp-865466,mp,10.5161435294117,17,17,32,hbond_disordered;theoretical,mp-1189965,mp-865466,-1.82562634843137,-1.81511020490196,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-505405__mp-866804,TiMnH12(OF)6,mp-505405,mp-866804,mp,7.8370917307693,26,26,32,theoretical,mp-505405,mp-866804,-1.95411955197171,-1.94628246024094,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-554704__mp-754297,TiPHO5,mp-554704,mp-754297,mp,23.8067865625,32,16,32,proton_transfer;theoretical,mp-554704,mp-754297,-2.76247030584077,-2.73866351927827,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-685281__JVASP-163872,TiZnH12(OF)6,mp-685281,JVASP-163872,jarvis,1.77000000000005,26,26,32,jarvis_only,JVASP-163693,JVASP-163872,-1.67019,-1.66842,jarvis_formation,OptB88vdW
+mp-685281__mp-866807,TiZnH12(OF)6,mp-685281,mp-866807,mp,20.0612803846154,26,26,32,theoretical,mp-685281,mp-866807,-1.91736973301282,-1.8973084526282,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-39566__JVASP-39573,Tl3H,JVASP-39573,JVASP-39566,jarvis,7.31000000000004,4,4,16,jarvis_only,JVASP-39573,JVASP-39566,0.44187,0.44918,jarvis_formation,OptB88vdW
+mp-643701__mp-1216736,TlP(HO2)2,mp-1216736,mp-643701,mp,7.26771562499984,32,32,32,proton_transfer;theoretical,mp-1216736,mp-643701,-1.92221630537202,-1.91494858974702,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-643701__mp-690711,TlP(HO2)2,mp-690711,mp-643701,mp,5.0638037500006,32,32,32,proton_transfer,mp-690711,mp-643701,-1.92001239349703,-1.91494858974702,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-690711__mp-1216736,TlP(HO2)2,mp-1216736,mp-690711,mp,2.20391187499924,32,32,32,proton_transfer;theoretical,mp-1216736,mp-690711,-1.92221630537202,-1.92001239349703,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625465__mp-625472,Tm(HO)3,mp-625472,mp-625465,mp,2.6663878571429,14,14,16,theoretical,mp-625472,mp-625465,-2.25146328339286,-2.24879689553571,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1102060__mp-1190688,TmH2ClO2,mp-1190688,mp-1102060,mp,1.30380375000039,24,12,32,,mp-1190688,mp-1102060,-2.33349939166667,-2.33219558791667,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-754004__mp-768422,TmHO2,mp-754004,mp-768422,mp,7.87205937499991,16,16,16,theoretical,mp-754004,mp-768422,-3.0336672353125,-3.0257951759375,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-29787__JVASP-29796,U(HO2)2,JVASP-29796,JVASP-29787,jarvis,14.71,7,28,32,jarvis_only;proton_transfer,JVASP-29796,JVASP-29787,-2.20265,-2.18794,jarvis_formation,OptB88vdW
+JVASP-29787__JVASP-29830,U(HO2)2,JVASP-29830,JVASP-29787,jarvis,0.589999999999868,14,28,32,jarvis_only,JVASP-29830,JVASP-29787,-2.18853,-2.18794,jarvis_formation,OptB88vdW
+JVASP-29796__JVASP-29830,U(HO2)2,JVASP-29796,JVASP-29830,jarvis,14.1200000000001,7,14,16,jarvis_only;proton_transfer,JVASP-29796,JVASP-29830,-2.20265,-2.18853,jarvis_formation,OptB88vdW
+mp-510128__JVASP-29864,U(HO2)2,mp-510128,JVASP-29864,jarvis,3.51999999999997,28,14,32,jarvis_only,JVASP-29311,JVASP-29864,-2.25082,-2.2473,jarvis_formation,OptB88vdW
+JVASP-54768__JVASP-108479,U3(HO5)2,JVASP-54768,JVASP-108479,jarvis,23.4400000000003,15,15,16,jarvis_only,JVASP-54768,JVASP-108479,-2.7387,-2.71526,jarvis_formation,OptB88vdW
+mp-626062__JVASP-54768,U3(HO5)2,mp-626062,JVASP-54768,jarvis,24.4999999999997,15,15,16,jarvis_only,JVASP-54764,JVASP-54768,-2.7632,-2.7387,jarvis_formation,OptB88vdW
+JVASP-18407__JVASP-125451,UH3,JVASP-18407,JVASP-125451,jarvis,18.17,8,4,16,jarvis_only,JVASP-18407,JVASP-125451,-0.29199,-0.27382,jarvis_formation,OptB88vdW
+mp-24659__mp-504970,UH3,mp-504970,mp-24659,mp,11.1841265624975,32,8,32,,mp-504970,mp-24659,-0.461661750624998,-0.450477624062501,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-504970__JVASP-125451,UH3,mp-504970,JVASP-125451,jarvis,21.75,32,4,32,jarvis_only,JVASP-27332,JVASP-125451,-0.29557,-0.27382,jarvis_formation,OptB88vdW
+mp-504970__JVASP-18407,UH3,mp-504970,JVASP-18407,jarvis,3.57999999999997,32,8,32,jarvis_only,JVASP-27332,JVASP-18407,-0.29557,-0.29199,jarvis_formation,OptB88vdW
+mp-721062__JVASP-133397,V2Cu3H6O11,mp-721062,JVASP-133397,jarvis,5.12000000000001,22,22,32,jarvis_only,JVASP-142586,JVASP-133397,-1.36792,-1.3628,jarvis_formation,OptB88vdW
+mp-721062__mp-1216869,V2Cu3H6O11,mp-721062,mp-1216869,mp,16.2568804545447,22,22,32,theoretical,mp-721062,mp-1216869,-1.48498091738636,-1.46872403693182,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-642644__mp-642659,V2H,mp-642659,mp-642644,mp,0.0551066666645283,12,3,16,,mp-642659,mp-642644,-0.17064765625,-0.170592549583335,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-51005__JVASP-141825,V6H4O13,JVASP-141825,JVASP-51005,jarvis,18.92,23,23,32,jarvis_only,JVASP-141825,JVASP-51005,-2.0706,-2.05168,jarvis_formation,OptB88vdW
+JVASP-51005__JVASP-98589,V6H4O13,JVASP-51005,JVASP-98589,jarvis,0.650000000000261,23,23,32,jarvis_only,JVASP-51005,JVASP-98589,-2.05168,-2.05103,jarvis_formation,OptB88vdW
+JVASP-98589__JVASP-141825,V6H4O13,JVASP-141825,JVASP-98589,jarvis,19.5700000000003,23,23,32,jarvis_only,JVASP-141825,JVASP-98589,-2.0706,-2.05103,jarvis_formation,OptB88vdW
+mp-1002114__JVASP-189287,VH,JVASP-189287,mp-1002114,jarvis,6.50999999999999,4,2,16,jarvis_only;theoretical,JVASP-189287,JVASP-36010,-0.13388,-0.12737,jarvis_formation,OptB88vdW
+mp-626787__mp-626791,VHO2,mp-626787,mp-626791,mp,4.17960625000013,16,16,16,theoretical,mp-626787,mp-626791,-2.0787615134375,-2.0745819071875,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-119535__JVASP-122317,VHO3,JVASP-122317,JVASP-119535,jarvis,7.48000000000015,30,30,32,jarvis_only;proton_transfer,JVASP-122317,JVASP-119535,-1.97341,-1.96593,jarvis_formation,OptB88vdW
+mp-24076__mp-625677,Y(HO)3,mp-24076,mp-625677,mp,1.26163714285621,14,14,16,theoretical,mp-24076,mp-625677,-2.22300210696429,-2.22174046982143,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24076__mp-625718,Y(HO)3,mp-24076,mp-625718,mp,2.8038214285715,14,14,16,theoretical,mp-24076,mp-625718,-2.22300210696429,-2.22019828553571,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-24076__mp-673310,Y(HO)3,mp-24076,mp-673310,mp,5.95037857142788,14,14,16,theoretical,mp-24076,mp-673310,-2.22300210696429,-2.21705172839286,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625677__mp-625718,Y(HO)3,mp-625677,mp-625718,mp,1.54218428571529,14,14,16,theoretical,mp-625677,mp-625718,-2.22174046982143,-2.22019828553571,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625677__mp-673310,Y(HO)3,mp-625677,mp-673310,mp,4.68874142857167,14,14,16,theoretical,mp-625677,mp-673310,-2.22174046982143,-2.21705172839286,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625718__mp-673310,Y(HO)3,mp-625718,mp-673310,mp,3.14655714285639,14,14,16,theoretical,mp-625718,mp-673310,-2.22019828553571,-2.21705172839286,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-1084805__mp-1178678,YH3,mp-1178678,mp-1084805,mp,8.56753958333256,24,8,32,theoretical,mp-1178678,mp-1084805,-0.715430898645833,-0.706863359062501,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23706__mp-1084805,YH3,mp-23706,mp-1084805,mp,8.35674999999902,24,8,32,theoretical,mp-23706,mp-1084805,-0.7152201090625,-0.706863359062501,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-23706__mp-1178678,YH3,mp-1178678,mp-23706,mp,0.210789583333537,24,24,32,,mp-1178678,mp-23706,-0.715430898645833,-0.7152201090625,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-626151__mp-756402,YHO2,mp-626151,mp-756402,mp,20.0335268750003,8,16,16,theoretical,mp-626151,mp-756402,-2.9654263603125,-2.9453928334375,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-754117__mp-756402,YHO2,mp-756402,mp-754117,mp,13.1878956250002,16,8,16,theoretical,mp-756402,mp-754117,-2.9453928334375,-2.9322049378125,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-30489__JVASP-145226,YbH2ClO2,JVASP-145226,JVASP-30489,jarvis,12.5299999999999,24,12,32,jarvis_only,JVASP-145226,JVASP-30489,-1.69783,-1.6853,jarvis_formation,OptB88vdW
+mp-625103__mp-632348,YbHO2,mp-625103,mp-632348,mp,2.00951687499895,16,8,16,theoretical,mp-625103,mp-632348,-2.9631524384375,-2.9611429215625,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-29800__JVASP-54738,Zn(HO)2,JVASP-54738,JVASP-29800,jarvis,19.6999999999998,20,5,32,jarvis_only,JVASP-54738,JVASP-29800,-1.21087,-1.19117,jarvis_formation,OptB88vdW
+mp-625230__mp-625272,Zn(HO)2,mp-625272,mp-625230,mp,4.74964766666708,30,30,32,theoretical,mp-625272,mp-625230,-1.45038220116667,-1.4456325535,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625830__JVASP-54738,Zn(HO)2,mp-625830,JVASP-54738,jarvis,19.6000000000001,20,20,32,jarvis_only,JVASP-54739,JVASP-54738,-1.23047,-1.21087,jarvis_formation,OptB88vdW
+mp-625830__mp-625857,Zn(HO)2,mp-625830,mp-625857,mp,1.46431400000036,20,20,32,theoretical,mp-625830,mp-625857,-1.486389817,-1.484925503,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625830__mp-697146,Zn(HO)2,mp-625830,mp-697146,mp,2.41362499999975,20,20,32,,mp-625830,mp-697146,-1.486389817,-1.483976192,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-625857__mp-697146,Zn(HO)2,mp-625857,mp-697146,mp,0.949310999999398,20,20,32,theoretical,mp-625857,mp-697146,-1.484925503,-1.483976192,mp_corrected_formation,MP corrected mixed thermodynamics
+mp-697146__JVASP-54738,Zn(HO)2,mp-697146,JVASP-54738,jarvis,18.1900000000002,20,20,32,jarvis_only,JVASP-52906,JVASP-54738,-1.22906,-1.21087,jarvis_formation,OptB88vdW
+mp-643814__mp-1215731,Zn2SiH2O5,mp-643814,mp-1215731,mp,1.12443450000033,20,20,32,theoretical,mp-643814,mp-1215731,-2.07935946075,-2.07823502625,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-135659__JVASP-135662,ZnAsH,JVASP-135659,JVASP-135662,jarvis,3.76999999999994,3,3,16,jarvis_only,JVASP-135659,JVASP-135662,0.54003,0.5438,jarvis_formation,OptB88vdW
+JVASP-51342__JVASP-187707,ZrH,JVASP-187707,JVASP-51342,jarvis,24.78,2,2,16,jarvis_only,JVASP-187707,JVASP-51342,-0.35996,-0.33518,jarvis_formation,OptB88vdW
+mp-24155__mp-24286,ZrH2,mp-24286,mp-24155,mp,6.7955966666654,3,3,16,,mp-24286,mp-24155,-0.636864474166667,-0.630068877500001,mp_corrected_formation,MP corrected mixed thermodynamics
+JVASP-39635__JVASP-125458,ZrH3,JVASP-125458,JVASP-39635,jarvis,8.1,4,4,16,jarvis_only,JVASP-125458,JVASP-39635,-0.30712,-0.29902,jarvis_formation,OptB88vdW
+mp-24030__mp-643013,ZrP2(HO3)2,mp-24030,mp-643013,mp,3.42755181818122,11,11,16,proton_transfer,mp-24030,mp-643013,-2.49995328834416,-2.49652573652597,mp_corrected_formation,MP corrected mixed thermodynamics

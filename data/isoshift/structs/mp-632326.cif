@@ -1,0 +1,30 @@
+# generated using pymatgen
+data_HCl
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.9542203854
+_cell_length_b   3.9542203854
+_cell_length_c   5.2084189600
+_cell_angle_alpha   90.0000000000
+_cell_angle_beta   90.0000000000
+_cell_angle_gamma   99.8471866599
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   HCl
+_chemical_formula_sum   'H2 Cl2'
+_cell_volume   80.2383075873
+_cell_formula_units_Z   2
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  H  H0  1  0.0619296800  0.0619296800  0.6731835200  1
+  H  H1  1  0.9380703200  0.9380703200  0.1731835200  1
+  Cl  Cl2  1  0.2420126900  0.2420126900  0.4968164800  1
+  Cl  Cl3  1  0.7579873100  0.7579873100  0.9968164800  1

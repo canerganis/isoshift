@@ -1,0 +1,29 @@
+# generated using pymatgen
+data_AgH2
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   2.7107796978
+_cell_length_b   3.5345410969
+_cell_length_c   4.1295908234
+_cell_angle_alpha   76.4375279204
+_cell_angle_beta   75.4198938243
+_cell_angle_gamma   67.9640515507
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   AgH2
+_chemical_formula_sum   'Ag1 H2'
+_cell_volume   35.0602993668
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Ag  Ag0  1  0.0744392200  0.9425900158  0.9173005391  1
+  H  H1  1  0.5596952217  0.1754727080  0.6606886680  1
+  H  H2  1  0.5891595148  0.7097070875  0.1739339870  1

@@ -1,0 +1,40 @@
+# generated using pymatgen
+data_BeAlH5
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   4.3062340000
+_cell_length_b   4.7700920000
+_cell_length_c   6.2539138625
+_cell_angle_alpha   90.5929210454
+_cell_angle_beta   90.0000000000
+_cell_angle_gamma   90.0000000000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   BeAlH5
+_chemical_formula_sum   'Be2 Al2 H10'
+_cell_volume   128.4555939222
+_cell_formula_units_Z   2
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Be  Be0  1  0.7701250000  0.9980170000  0.6232560000  1
+  Be  Be1  1  0.2701250000  0.0019830000  0.3767440000  1
+  Al  Al2  1  0.0099800000  0.7569950000  0.9998040000  1
+  Al  Al3  1  0.5099800000  0.2430050000  0.0001960000  1
+  H  H4  1  0.5341770000  0.8897030000  0.4849540000  1
+  H  H5  1  0.0341770000  0.1102970000  0.5150460000  1
+  H  H6  1  0.6793050000  0.2404460000  0.7484440000  1
+  H  H7  1  0.1793050000  0.7595540000  0.2515560000  1
+  H  H8  1  0.8381700000  0.7529860000  0.7489020000  1
+  H  H9  1  0.3381700000  0.2470140000  0.2510980000  1
+  H  H10  1  0.2601310000  0.9987510000  0.9015950000  1
+  H  H11  1  0.7601310000  0.0012490000  0.0984050000  1
+  H  H12  1  0.2601110000  0.4989320000  0.9133870000  1
+  H  H13  1  0.7601110000  0.5010680000  0.0866130000  1

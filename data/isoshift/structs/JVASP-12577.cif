@@ -1,0 +1,42 @@
+# generated using pymatgen
+data_H2O2
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.2808026337
+_cell_length_b   3.2808026337
+_cell_length_c   11.2871392282
+_cell_angle_alpha   90.0000000000
+_cell_angle_beta   90.0000000000
+_cell_angle_gamma   90.0000000000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   H2O2
+_chemical_formula_sum   'H8 O8'
+_cell_volume   121.4909958584
+_cell_formula_units_Z   4
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  H  H0  1  0.3504499911  0.8157895875  0.4923278402  1
+  H  H1  1  0.6495508116  0.1842112153  0.9923278744  1
+  H  H2  1  0.8157895875  0.3504499911  0.5076722282  1
+  H  H3  1  0.3157899889  0.1495512130  0.2423278231  1
+  H  H4  1  0.6842108139  0.8504495897  0.7423278573  1
+  H  H5  1  0.1495512130  0.3157899889  0.7576722453  1
+  H  H6  1  0.8504495897  0.6842108139  0.2576722111  1
+  H  H7  1  0.1842112153  0.6495508116  0.0076721940  1
+  O  O8  1  0.0355724241  0.2215431796  0.2114627424  1
+  O  O9  1  0.9644283787  0.7784576231  0.7114627766  1
+  O  O10  1  0.2215431796  0.0355724241  0.7885373260  1
+  O  O11  1  0.7215427783  0.4644287801  0.9614627937  1
+  O  O12  1  0.2784580245  0.5355720227  0.4614627595  1
+  O  O13  1  0.4644287801  0.7215427783  0.0385372747  1
+  O  O14  1  0.5355720227  0.2784580245  0.5385373089  1
+  O  O15  1  0.7784576231  0.9644283787  0.2885372918  1

@@ -1,0 +1,34 @@
+# generated using pymatgen
+data_HAuO2
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   4.0755553868
+_cell_length_b   4.6595464699
+_cell_length_c   5.4053681578
+_cell_angle_alpha   92.2815879165
+_cell_angle_beta   90.1775588037
+_cell_angle_gamma   114.8921034010
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   HAuO2
+_chemical_formula_sum   'H2 Au2 O4'
+_cell_volume   93.0171877614
+_cell_formula_units_Z   2
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  H  H0  1  0.9279333400  0.9863147200  0.2493687500  1
+  H  H1  1  0.0720666600  0.0136852800  0.7506312500  1
+  Au  Au2  1  0.0000000000  0.5000000000  0.0000000000  1
+  Au  Au3  1  0.5000000000  0.5000000000  0.5000000000  1
+  O  O4  1  0.2407358700  0.2788156500  0.7978397200  1
+  O  O5  1  0.9536220200  0.7221689900  0.7026953700  1
+  O  O6  1  0.7592641300  0.7211843500  0.2021602800  1
+  O  O7  1  0.0463779800  0.2778310100  0.2973046300  1

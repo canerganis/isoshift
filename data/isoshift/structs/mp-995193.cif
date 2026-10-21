@@ -1,0 +1,34 @@
+# generated using pymatgen
+data_Si3H
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.8417253600
+_cell_length_b   3.8417459857
+_cell_length_c   11.6368978100
+_cell_angle_alpha   89.9999962682
+_cell_angle_beta   90.0001629873
+_cell_angle_gamma   59.9998222698
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Si3H
+_chemical_formula_sum   'Si6 H2'
+_cell_volume   148.7380334322
+_cell_formula_units_Z   2
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Si  Si0  1  0.3333349800  0.3333320100  0.5341767500  1
+  Si  Si1  1  0.6666650200  0.6666679900  0.4658232500  1
+  Si  Si2  1  0.3333020600  0.3333484700  0.7377400400  1
+  Si  Si3  1  0.6666979400  0.6666515300  0.2622599600  1
+  Si  Si4  1  0.6666401500  0.6666789200  0.8034263300  1
+  Si  Si5  1  0.3333598500  0.3333210800  0.1965736700  1
+  H  H6  1  0.6666651500  0.6666664300  0.9317102500  1
+  H  H7  1  0.3333348500  0.3333335700  0.0682897500  1

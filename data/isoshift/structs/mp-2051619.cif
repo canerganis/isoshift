@@ -1,0 +1,36 @@
+# generated using pymatgen
+data_Cd(HO)2
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.4337549855
+_cell_length_b   5.7024285023
+_cell_length_c   6.0529317496
+_cell_angle_alpha   117.4544772489
+_cell_angle_beta   105.7651586717
+_cell_angle_gamma   91.2127156749
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Cd(HO)2
+_chemical_formula_sum   'Cd2 H4 O4'
+_cell_volume   99.7175920390
+_cell_formula_units_Z   2
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Cd  Cd0  1  0.1715318000  0.1531727900  0.3144861600  1
+  Cd  Cd1  1  0.8639492200  0.8425410800  0.6988999400  1
+  H  H2  1  0.5271046900  0.7214622600  0.0128835100  1
+  H  H3  1  0.3588239600  0.3202617600  0.0017502600  1
+  H  H4  1  0.8832475900  0.3753845800  0.7297187900  1
+  H  H5  1  0.1620435600  0.6526680300  0.2825555300  1
+  O  O6  1  0.5285863000  0.8888411400  0.0080211700  1
+  O  O7  1  0.0773135100  0.3111787900  0.0039481600  1
+  O  O8  1  0.8008143200  0.3960325600  0.5712745300  1
+  O  O9  1  0.2373950500  0.8303370100  0.4407069500  1

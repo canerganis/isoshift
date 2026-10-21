@@ -1,0 +1,40 @@
+# generated using pymatgen
+data_NaHSeO4
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   5.1864880000
+_cell_length_b   5.7767452123
+_cell_length_c   6.6877315405
+_cell_angle_alpha   89.2289864557
+_cell_angle_beta   73.6331108376
+_cell_angle_gamma   82.8090389301
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   NaHSeO4
+_chemical_formula_sum   'Na2 H2 Se2 O8'
+_cell_volume   190.6893447559
+_cell_formula_units_Z   2
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Na  Na0  1  0.0302190000  0.7473660000  0.8410520000  1
+  Na  Na1  1  0.9677510000  0.2484410000  0.1520090000  1
+  H  H2  1  0.4692180000  0.9617910000  0.4862520000  1
+  H  H3  1  0.9686680000  0.4868650000  0.5201700000  1
+  Se  Se4  1  0.3733320000  0.7031270000  0.2526260000  1
+  Se  Se5  1  0.6371240000  0.2735520000  0.7251290000  1
+  O  O6  1  0.7005510000  0.6293410000  0.1491890000  1
+  O  O7  1  0.3215990000  0.3813990000  0.8376920000  1
+  O  O8  1  0.2309550000  0.8773250000  0.1059370000  1
+  O  O9  1  0.7862710000  0.1240580000  0.8824090000  1
+  O  O10  1  0.2170210000  0.4688600000  0.3316740000  1
+  O  O11  1  0.8037150000  0.5225840000  0.6505090000  1
+  O  O12  1  0.3225780000  0.8542340000  0.4922690000  1
+  O  O13  1  0.6820000000  0.1270580000  0.5010810000  1

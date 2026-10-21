@@ -1,0 +1,42 @@
+# generated using pymatgen
+data_LiH2N
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.7604540000
+_cell_length_b   3.7604540000
+_cell_length_c   8.2389450000
+_cell_angle_alpha   90.0000000000
+_cell_angle_beta   90.0000000000
+_cell_angle_gamma   90.0000000000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   LiH2N
+_chemical_formula_sum   'Li4 H8 N4'
+_cell_volume   116.5070389475
+_cell_formula_units_Z   4
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Li  Li0  1  0.0000000000  0.0000000000  0.7500000000  1
+  Li  Li1  1  0.0000000000  0.0000000000  0.2500000000  1
+  Li  Li2  1  0.5000000000  0.5000000000  0.7500000000  1
+  Li  Li3  1  0.5000000000  0.5000000000  0.2500000000  1
+  H  H4  1  0.6471430000  0.1471430000  0.4574930000  1
+  H  H5  1  0.6471430000  0.8528570000  0.9574930000  1
+  H  H6  1  0.3528570000  0.1471430000  0.9574930000  1
+  H  H7  1  0.3528570000  0.8528570000  0.4574930000  1
+  H  H8  1  0.8528570000  0.3528570000  0.0425070000  1
+  H  H9  1  0.8528570000  0.6471430000  0.5425070000  1
+  H  H10  1  0.1471430000  0.3528570000  0.5425070000  1
+  H  H11  1  0.1471430000  0.6471430000  0.0425070000  1
+  N  N12  1  0.0000000000  0.5000000000  0.1254920000  1
+  N  N13  1  0.0000000000  0.5000000000  0.6254920000  1
+  N  N14  1  0.5000000000  0.0000000000  0.3745080000  1
+  N  N15  1  0.5000000000  0.0000000000  0.8745080000  1

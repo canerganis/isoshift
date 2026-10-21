@@ -1,0 +1,32 @@
+# generated using pymatgen
+data_SbHO
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.8060863483
+_cell_length_b   3.8060863483
+_cell_length_c   6.9165888224
+_cell_angle_alpha   74.0295312087
+_cell_angle_beta   74.0295312089
+_cell_angle_gamma   60.0000000002
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   SbHO
+_chemical_formula_sum   'Sb2 H2 O2'
+_cell_volume   82.2763146732
+_cell_formula_units_Z   2
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Sb  Sb0  1  0.2405747087  0.2405747087  0.2782758740  1
+  Sb  Sb1  1  0.7594252065  0.7594252065  0.7217243806  1
+  H  H2  1  0.6121397259  0.6121397259  0.1635808222  1
+  H  H3  1  0.3878601892  0.3878601892  0.8364194323  1
+  O  O4  1  0.8694437797  0.8694437798  0.3916686607  1
+  O  O5  1  0.1305561354  0.1305561354  0.6083315939  1
