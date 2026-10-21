@@ -1,4 +1,5 @@
 # IsoShift ledger
+nThe goal and success criteria are in state/GOAL.md (Can, 21 Oct 20:30); every block is checked against it.
 
 Conductor: Opus (orchestrating session). Started Wed 21 Oct 14:20 TRT, about 2.5 h ahead of PLAN.md v3, so every block below is shifted earlier. Hard stop Fri 02:00, target submitted Fri 00:30.
 
