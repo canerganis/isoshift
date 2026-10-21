@@ -65,6 +65,7 @@ ROOT = Path(__file__).resolve().parents[2]
 TEMPERATURES = (0, 300, 600)
 DEFAULT_STRUCTURES = ROOT / "data/isoshift/structures.csv"
 # Evidence the current screen cannot produce; lacking only these gives a provisional rank.
+RELAX_FMAX_ACCEPT = 5e-3  # eV/A, decision 02
 PENDING_EVIDENCE = frozenset({"identity_unchecked", "numerical_error_unknown"})
 CAP_SKIP_PREFIXES = ("skipped_model_cap_", "shared_supercell_exceeds_160_atoms")
 CONFLICT = "conflict"
@@ -179,8 +180,20 @@ def _index(rows, keys):
 def _structure(row):
     """Validate an ok screen row before allowing its arrays into an ensemble."""
     if not _true(row.get("relax_converged")):
-        raise ValueError("relax_not_converged")
-    for isotope in ("H", "D"):
+        # decision 02: ORB's force noise floor is ~3e-3 eV/A, so a 1e-3 target never converges;
+        # residual forces up to RELAX_FMAX_ACCEPT change F_vib far below the 0.1 meV/atom floor
+        try:
+            ok = _number(row.get("fmax_final_eV_A")) <= RELAX_FMAX_ACCEPT
+        except ValueError:
+            ok = False
+        if not ok:
+            raise ValueError("relax_not_converged")
+    if "soft_mode_bracketed" in str(row.get("reason", "")):
+        # decision 02 secondary tier: small imaginary branch admitted, bracketed by omit vs |w| in refine.py
+        isotopes = ()
+    else:
+        isotopes = ("H", "D")
+    for isotope in isotopes:
         if _true(row.get(f"has_imaginary_{isotope}")):
             raise ValueError("imaginary_modes")
         if not _false(row.get(f"has_imaginary_{isotope}")):
