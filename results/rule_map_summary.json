@@ -1,0 +1,11 @@
+{
+ "line": {
+  "slope_meV_H_per_mA": 0.1216,
+  "intercept_meV_H": 0.536
+ },
+ "covalent_pairs_predicted": 703,
+ "with_ensemble": 197,
+ "r_rule_vs_ensemble": 0.654,
+ "sign_acc_dXH_ge_5mA": 0.686,
+ "n_ge_5mA": 102
+}

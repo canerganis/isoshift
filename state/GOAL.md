@@ -10,8 +10,8 @@ Submit by Fri 23 Oct 00:30 TRT (hard stop 02:00). Every work decision is checked
 |---|---|---|---|
 | S1 | Physics validated on measured isotope effects | brucite 4/4, LiH 4/4 (01-gate) | done |
 | S2 | Law holds in >= 3 independent MLIPs with consistent slope | F01: slopes 0.12/0.12/0.15 meV/H per mA, r 0.78 to 0.89 | done (sevenn pending) |
-| S3 | Law transfers to unseen chemical families | leave-family-out R2 0.62, sign 86% vs 67% baseline | done |
-| S4 | Blind test against measured H/D data, predictions committed first | P01 committed 20:27 (0fffc54, pushed); compare with validation.csv rows from the blind agents | in progress |
+| S3 | Law transfers to unseen chemical families | leave-family-out R2 0.62, sign 86% vs 67% baseline; structure-only with database geometry r 0.65, sign 69% | done |
+| S4 | Blind test against measured H/D data, predictions committed first | F02: hydrides and brucite right sign, strong-H-bond oxyhydroxides wrong (low-quality data); F03: stretch-geometry relation matches measured spectra (Libowitzky) in all 3 MLIPs | partial, council 04 deciding framing |
 | S5 | Mechanism explained and tied to prior theory | stretch +0.25 vs bend -0.12 meV/H per mA; McKenzie 2014/2015 | done |
 | S6 | Survives a multi-model red team (final-claims board) | docs/decisions/04-final-claims.md | todo |
 | S7 | One concrete experimental prediction on a real material | best real-phase pair (candidate card, P24) or NaBH4 pressure shift | todo |

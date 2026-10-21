@@ -33,3 +33,6 @@ A structure-only predictor: from two crystal structures (no phonons), the X-H le
 
 ## Out-of-sample test (leave one chemical family out, `src/isoshift_event/rule_cv.py`, `results/F01_cv.json`)
 Each formula family is removed, the line is refitted on the rest, and the held-out family is predicted. Pooled over models (312 pair-model rows, 57 families): held-out R^2 = 0.62; sign accuracy 86% for |dX-H| >= 5 mA (150 rows) against 67% for the best constant-sign baseline; 70% over all rows. Per model at |dX-H| >= 5 mA: ORB 98%, MatterSim 79%, MACE 76%. The rule transfers to chemistries it was not fitted on.
+
+## Structure-only use with database geometries (`src/isoshift_event/rule_map.py`, `results/rule_map_summary.json`)
+With X-H lengths taken directly from the Materials Project / JARVIS structures (no MLIP relaxation, no phonons), the pooled line predicts the ensemble ddF_iso with r = 0.65 over 197 covalent pairs and gets the sign right in 69% of pairs with |dX-H| >= 5 mA (vs 86% with MLIP-relaxed geometry). Database H positions are noisier than relaxed ones, so the structure-only rule is a pre-screen; relaxed geometries (any DFT or MLIP relaxation) are needed for reliable signs.
