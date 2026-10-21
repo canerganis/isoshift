@@ -17,3 +17,9 @@ mattersim,classical_decay,0.0932351183298351,True
 mattersim,MgH2_ddF_0K_meV_atom,-0.38963948937426096,
 mattersim,LiH_TO_H_THz,16.45839642605832,True
 mattersim,LiH_TO_D_THz,12.35737558693496,True
+sevenn,equal_mass,0.0,True
+sevenn,swap_sign,0.0,True
+sevenn,classical_decay,0.18975698597509924,True
+sevenn,MgH2_ddF_0K_meV_atom,-0.4032142258989495,
+sevenn,LiH_TO_H_THz,20.411754406931795,False
+sevenn,LiH_TO_D_THz,15.325655614624168,True

@@ -114,3 +114,8 @@ Chair re-run scripts (temporary, session scratchpad; G2 moves this logic into th
 * `C:\Users\can02\AppData\Local\Temp\claude\C--Users-can02--claude-spares-spare-MvrxRR\6cbef617-8c25-4b42-bf3b-8e15cd3cc49b\scratchpad\chair_qha_sens.py` (brucite and portlandite, omit and |ω|)
 * `C:\Users\can02\AppData\Local\Temp\claude\C--Users-can02--claude-spares-spare-MvrxRR\6cbef617-8c25-4b42-bf3b-8e15cd3cc49b\scratchpad\imag_scan.py` (imaginary fraction per volume)
 * `C:\Users\can02\AppData\Local\Temp\claude\C--Users-can02--claude-spares-spare-MvrxRR\6cbef617-8c25-4b42-bf3b-8e15cd3cc49b\scratchpad\chair_sc_check.py` (supercell size per volume)
+
+## Follow-up status (Opus, 21 Oct ~17:30)
+* G1 closed: SevenNet tier A code path passes (equal mass 0, swap sign exact, classical decay 0.19). LiH TO(H) 20.41 THz vs 17.7 THz exp (+15.3%) fails the 15% band by 0.3 pp, TO(D) passes. Per this decision SevenNet stays in ensemble sign votes and model spread but out of quantitative validated claims.
+* G2, G3, F1, F4 closed (cbfb528, 9129ab6): brucite and LiH sign right in 4/4 models under all four imaginary-mode treatments.
+* Open: G4 (supercell doubling on MgH2 ddF_iso), G5 (LiH dZPE via DFT benchmark), F2 (supercell consistency disclosure), F3 (T x ddF_iso classical check).
