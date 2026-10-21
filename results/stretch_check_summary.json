@@ -22,5 +22,369 @@
   "mean_residual_cm": 53.3,
   "rms_residual_cm": 266.4,
   "slope_dnu_ddOO_cm_per_A": 2655.1
+ },
+ "windowed": {
+  "settings": {
+   "min_stretch_weight": 0.5,
+   "dedup_tolerance": {
+    "d_OH_A": 0.001,
+    "d_OO_A": 0.002,
+    "nu_stretch_cm": 2.0
+   },
+   "windows_A": {
+    "main_2.50-2.80": [
+     2.5,
+     2.8
+    ],
+    "outer_2.80-3.10": [
+     2.8,
+     3.1
+    ],
+    "sub_2.50-2.65": [
+     2.5,
+     2.65
+    ],
+    "sub_2.65-2.80": [
+     2.65,
+     2.8
+    ]
+   },
+   "gap_change_bracket_cm": {
+    "central_150": 150.0,
+    "pessimistic_400": 400.0
+   },
+   "gap_assumption": "harmonic-minus-fundamental O-H gap grows by 150 cm-1 (central) to 400 cm-1 (pessimistic) from the weak to the strong end of 2.50-2.80 A; an assumption, no literature table found"
+  },
+  "counts": {
+   "dft_pbesol": {
+    "rows": 41,
+    "weight_gt_0.5_finite_OO": 1,
+    "after_dedup": 1
+   },
+   "mace": {
+    "rows": 708,
+    "weight_gt_0.5_finite_OO": 74,
+    "after_dedup": 74
+   },
+   "mattersim": {
+    "rows": 361,
+    "weight_gt_0.5_finite_OO": 60,
+    "after_dedup": 59
+   },
+   "orb": {
+    "rows": 423,
+    "weight_gt_0.5_finite_OO": 72,
+    "after_dedup": 71
+   }
+  },
+  "main_2.50-2.80": {
+   "mace": {
+    "n_donors": 52,
+    "n_structures": 18,
+    "f_OLS": 0.912,
+    "f_TheilSen": 0.982,
+    "f_OLS_boot95": [
+     0.658,
+     1.071
+    ],
+    "median_offset_cm": -39.0,
+    "mean_offset_cm": -1.4,
+    "rms_residual_cm": 276.6,
+    "libowitzky_span_cm": 1646.3,
+    "slope_dnu_ddOO_model_cm_per_A": 4198.2,
+    "slope_dnu_ddOO_libowitzky_cm_per_A": 4566.3,
+    "f_harmonic_corrected": {
+     "central_150": {
+      "OLS": 1.003,
+      "TheilSen": 1.08
+     },
+     "pessimistic_400": {
+      "OLS": 1.205,
+      "TheilSen": 1.297
+     }
+    }
+   },
+   "orb": {
+    "n_donors": 30,
+    "n_structures": 15,
+    "f_OLS": 0.948,
+    "f_TheilSen": 0.978,
+    "f_OLS_boot95": [
+     0.806,
+     1.066
+    ],
+    "median_offset_cm": -58.2,
+    "mean_offset_cm": -29.3,
+    "rms_residual_cm": 187.6,
+    "libowitzky_span_cm": 1646.3,
+    "slope_dnu_ddOO_model_cm_per_A": 5012.3,
+    "slope_dnu_ddOO_libowitzky_cm_per_A": 5185.6,
+    "f_harmonic_corrected": {
+     "central_150": {
+      "OLS": 1.044,
+      "TheilSen": 1.076
+     },
+     "pessimistic_400": {
+      "OLS": 1.253,
+      "TheilSen": 1.292
+     }
+    }
+   },
+   "mattersim": {
+    "n_donors": 41,
+    "n_structures": 8,
+    "f_OLS": 0.913,
+    "f_TheilSen": 0.926,
+    "f_OLS_boot95": [
+     0.355,
+     1.056
+    ],
+    "median_offset_cm": -13.0,
+    "mean_offset_cm": 45.4,
+    "rms_residual_cm": 250.0,
+    "libowitzky_span_cm": 1646.3,
+    "slope_dnu_ddOO_model_cm_per_A": 4340.3,
+    "slope_dnu_ddOO_libowitzky_cm_per_A": 4947.8,
+    "f_harmonic_corrected": {
+     "central_150": {
+      "OLS": 1.005,
+      "TheilSen": 1.019
+     },
+     "pessimistic_400": {
+      "OLS": 1.206,
+      "TheilSen": 1.224
+     }
+    }
+   },
+   "dft_pbesol": {
+    "n_donors": 1,
+    "n_structures": 1
+   }
+  },
+  "outer_2.80-3.10": {
+   "mace": {
+    "n_donors": 11,
+    "n_structures": 8,
+    "f_OLS": 0.665,
+    "f_TheilSen": 0.748,
+    "f_OLS_boot95": [
+     -0.062,
+     1.672
+    ],
+    "median_offset_cm": -105.3,
+    "mean_offset_cm": -93.9,
+    "rms_residual_cm": 124.1,
+    "libowitzky_span_cm": 169.9,
+    "slope_dnu_ddOO_model_cm_per_A": 329.3,
+    "slope_dnu_ddOO_libowitzky_cm_per_A": 511.6,
+    "f_harmonic_corrected": {
+     "central_150": null,
+     "pessimistic_400": null
+    }
+   },
+   "orb": {
+    "n_donors": 28,
+    "n_structures": 13,
+    "f_OLS": 2.71,
+    "f_TheilSen": 2.368,
+    "f_OLS_boot95": [
+     1.373,
+     4.747
+    ],
+    "median_offset_cm": 5.6,
+    "mean_offset_cm": 5.3,
+    "rms_residual_cm": 126.9,
+    "libowitzky_span_cm": 169.9,
+    "slope_dnu_ddOO_model_cm_per_A": 1304.6,
+    "slope_dnu_ddOO_libowitzky_cm_per_A": 450.1,
+    "f_harmonic_corrected": {
+     "central_150": null,
+     "pessimistic_400": null
+    }
+   },
+   "mattersim": {
+    "n_donors": 12,
+    "n_structures": 6,
+    "f_OLS": 2.042,
+    "f_TheilSen": 2.552,
+    "f_OLS_boot95": [
+     1.184,
+     4.225
+    ],
+    "median_offset_cm": -144.3,
+    "mean_offset_cm": -130.6,
+    "rms_residual_cm": 170.1,
+    "libowitzky_span_cm": 169.9,
+    "slope_dnu_ddOO_model_cm_per_A": 1400.6,
+    "slope_dnu_ddOO_libowitzky_cm_per_A": 620.0,
+    "f_harmonic_corrected": {
+     "central_150": null,
+     "pessimistic_400": null
+    }
+   },
+   "dft_pbesol": {
+    "n_donors": 0,
+    "n_structures": 0
+   }
+  },
+  "sub_2.50-2.65": {
+   "mace": {
+    "n_donors": 31,
+    "n_structures": 13,
+    "f_OLS": 0.781,
+    "f_TheilSen": 0.834,
+    "f_OLS_boot95": [
+     0.28,
+     1.068
+    ],
+    "median_offset_cm": -23.6,
+    "mean_offset_cm": 5.2,
+    "rms_residual_cm": 330.3,
+    "libowitzky_span_cm": 1246.0,
+    "slope_dnu_ddOO_model_cm_per_A": 5763.5,
+    "slope_dnu_ddOO_libowitzky_cm_per_A": 7775.9,
+    "f_harmonic_corrected": {
+     "central_150": {
+      "OLS": 0.888,
+      "TheilSen": 0.949
+     },
+     "pessimistic_400": {
+      "OLS": 1.15,
+      "TheilSen": 1.229
+     }
+    }
+   },
+   "orb": {
+    "n_donors": 15,
+    "n_structures": 10,
+    "f_OLS": 0.881,
+    "f_TheilSen": 0.896,
+    "f_OLS_boot95": [
+     0.5,
+     1.142
+    ],
+    "median_offset_cm": -47.2,
+    "mean_offset_cm": -15.0,
+    "rms_residual_cm": 202.7,
+    "libowitzky_span_cm": 1246.0,
+    "slope_dnu_ddOO_model_cm_per_A": 7782.9,
+    "slope_dnu_ddOO_libowitzky_cm_per_A": 8856.7,
+    "f_harmonic_corrected": {
+     "central_150": {
+      "OLS": 1.001,
+      "TheilSen": 1.019
+     },
+     "pessimistic_400": {
+      "OLS": 1.297,
+      "TheilSen": 1.32
+     }
+    }
+   },
+   "mattersim": {
+    "n_donors": 23,
+    "n_structures": 5,
+    "f_OLS": 1.079,
+    "f_TheilSen": 1.057,
+    "f_OLS_boot95": [
+     0.454,
+     1.705
+    ],
+    "median_offset_cm": 21.4,
+    "mean_offset_cm": 82.6,
+    "rms_residual_cm": 294.9,
+    "libowitzky_span_cm": 1246.0,
+    "slope_dnu_ddOO_model_cm_per_A": 8831.1,
+    "slope_dnu_ddOO_libowitzky_cm_per_A": 8242.8,
+    "f_harmonic_corrected": {
+     "central_150": {
+      "OLS": 1.227,
+      "TheilSen": 1.202
+     },
+     "pessimistic_400": {
+      "OLS": 1.59,
+      "TheilSen": 1.557
+     }
+    }
+   },
+   "dft_pbesol": {
+    "n_donors": 0,
+    "n_structures": 0
+   }
+  },
+  "sub_2.65-2.80": {
+   "mace": {
+    "n_donors": 21,
+    "n_structures": 11,
+    "f_OLS": 0.803,
+    "f_TheilSen": 1.036,
+    "f_OLS_boot95": [
+     -0.152,
+     1.258
+    ],
+    "median_offset_cm": -52.8,
+    "mean_offset_cm": -11.2,
+    "rms_residual_cm": 168.4,
+    "libowitzky_span_cm": 400.3,
+    "slope_dnu_ddOO_model_cm_per_A": 1978.1,
+    "slope_dnu_ddOO_libowitzky_cm_per_A": 2526.6,
+    "f_harmonic_corrected": {
+     "central_150": {
+      "OLS": 1.285,
+      "TheilSen": 1.657
+     },
+     "pessimistic_400": null
+    }
+   },
+   "orb": {
+    "n_donors": 15,
+    "n_structures": 8,
+    "f_OLS": 1.346,
+    "f_TheilSen": 1.613,
+    "f_OLS_boot95": [
+     0.153,
+     2.309
+    ],
+    "median_offset_cm": -69.2,
+    "mean_offset_cm": -43.5,
+    "rms_residual_cm": 171.2,
+    "libowitzky_span_cm": 400.3,
+    "slope_dnu_ddOO_model_cm_per_A": 3329.2,
+    "slope_dnu_ddOO_libowitzky_cm_per_A": 2449.3,
+    "f_harmonic_corrected": {
+     "central_150": {
+      "OLS": 2.153,
+      "TheilSen": 2.579
+     },
+     "pessimistic_400": null
+    }
+   },
+   "mattersim": {
+    "n_donors": 18,
+    "n_structures": 7,
+    "f_OLS": 0.501,
+    "f_TheilSen": 0.598,
+    "f_OLS_boot95": [
+     -0.546,
+     1.011
+    ],
+    "median_offset_cm": -52.8,
+    "mean_offset_cm": -2.2,
+    "rms_residual_cm": 176.7,
+    "libowitzky_span_cm": 400.3,
+    "slope_dnu_ddOO_model_cm_per_A": 1347.1,
+    "slope_dnu_ddOO_libowitzky_cm_per_A": 2792.8,
+    "f_harmonic_corrected": {
+     "central_150": {
+      "OLS": 0.802,
+      "TheilSen": 0.957
+     },
+     "pessimistic_400": null
+    }
+   },
+   "dft_pbesol": {
+    "n_donors": 1,
+    "n_structures": 1
+   }
+  }
  }
 }
