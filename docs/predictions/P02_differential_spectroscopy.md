@@ -21,3 +21,19 @@ Overall: the compensation term is supported if both pairs are SUPPORT, or one SU
 
 ## Caveats stated in advance
 Harmonic frequencies vs anharmonic fundamentals; delta-AlOOH has a very short H bond (proton may be delocalised at pressure, decision 03 negative-control class), so its stretch may be broad; epsilon-FeOOH is a high-pressure phase that can be quenched. Bands of the two phases may come from different papers.
+
+
+## v2 (after Astra review of step A, still before any band lookup)
+Astra (gpt-6-astra, high) returned "fix first": periodic acceptor search, compare peak modes not projection means, mutually exclusive rules, boehmite exclusion by a structure check. Changes:
+* Acceptor = nearest periodic O image with H...O <= 2.6 A and O-H...O >= 110 deg (pymatgen neighbour search). Boehmite exclusion confirmed structurally: JVASP-12038 has no such acceptor for any H, so the ordered model lacks the H bond of real boehmite.
+* delta-AlOOH and epsilon-FeOOH have near-linear O-H...O (175 to 178 deg), so the in-plane/out-of-plane split is ill-defined there. The comparator is the highest-frequency assigned O-H bending band (delta OH) of each phase, and the model value is the dominant Gamma mode with the largest in-plane bend projection.
+* Model predictions used for the test (dominant Gamma modes, b minus a, mace / orb / mattersim; medians in brackets):
+  * diaspore -> delta-AlOOH: stretch -498 / -497 / -415 (-497); delta OH bend +299 / +287 / +251 (+287)
+  * goethite -> epsilon-FeOOH: stretch -206 / -292 / -273 (-273); delta OH bend +205 / +195 / +192 (+195)
+
+Decision rules v2 (mutually exclusive, applied per pair to measured Delta = b minus a; stretch = main O-H stretching band, bend = highest-frequency assigned delta OH band; same technique for both phases where possible):
+1. INCONCLUSIVE if either measured band is missing, unassigned or disputed, if the two phases were measured under incompatible conditions (one only at high pressure), or if |Delta stretch| < 30 or |Delta bend| < 30 cm^-1 (unresolved).
+2. otherwise CHALLENGE if Delta stretch > 0, or if Delta bend < 0 (compensation reversed).
+3. otherwise SUPPORT if |Delta stretch + 150 bracket| and |Delta bend| are both within a factor 3 of the model medians above (stretch compared as |Delta_meas| between |median|/3 - 150 and 3 |median| + 150).
+4. otherwise PARTIAL (signs as predicted, magnitude outside the factor-3 window).
+Overall: both pairs SUPPORT -> compensation supported; any CHALLENGE -> challenged; any other combination with at least one SUPPORT or PARTIAL -> partial support; both INCONCLUSIVE -> untested. The factor 3 reflects the harmonic vs fundamental gap for strongly H-bonded O-H (stretch fundamentals can sit several hundred cm^-1 below harmonic values) and mode mixing at Gamma; it is a generous window by design, because the test is about the direction of the bend shift.

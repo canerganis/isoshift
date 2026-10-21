@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[2]
 THZ_CM = 33.35641
 MODELS = ("mace", "orb", "mattersim")
 PAIRS = {  # (a, b, label); phase names from space group + ICSD/MP provenance, see P02 file
-    "diaspore_boehmite": ("mp-625152", "JVASP-12038"),
+    "diaspore_boehmite": ("mp-625152", "JVASP-12038"),  # structure check only (see P02)
     "diaspore_deltaAlOOH": ("mp-625152", "mp-23807"),
     "goethite_epsilonFeOOH": ("mp-605437", "JVASP-92228"),
 }
@@ -38,31 +38,46 @@ def _bands(model, sid):
     key = (safe, round(raw["fc_meta"]["energy_eV"], 6), round(raw["fc_meta"]["volume_A3"], 4))
     ph = phonopy.load(str(refine._cache_index()[key] / "phonopy_params.yaml"), produce_fc=False, log_level=0)
     pc = ph.primitive
+    from pymatgen.core import Lattice, Structure
+
+    st = Structure(Lattice(np.asarray(pc.cell)), list(pc.symbols), np.asarray(pc.scaled_positions))
     sym = np.array(pc.symbols)
-    cell = np.asarray(pc.cell)
-    frac = np.asarray(pc.scaled_positions)
-    O = np.flatnonzero(sym == "O")
     ph.run_qpoints([[0, 0, 0]], with_eigenvectors=True)
     f = ph.qpoints.frequencies[0] * THZ_CM
     ev = ph.qpoints.eigenvectors[0].reshape(len(sym), 3, -1)
-    out = {"stretch": [], "bend_ip": [], "bend_op": [], "d_OH": [], "d_OO": []}
+    out = {k: [] for k in ("stretch", "bend_ip", "bend_op", "stretch_peak", "bend_ip_peak", "bend_op_peak",
+                           "stretch_peak_w", "bend_ip_peak_w", "bend_op_peak_w", "d_OH", "d_OO", "angle_OHO", "linear_flag")}
     for i in np.flatnonzero(sym == "H"):
-        d = frac[O] - frac[i]
-        d -= np.round(d)
-        cart = d @ cell
-        r = np.linalg.norm(cart, axis=1)
-        o = np.argsort(r)
-        b = cart[o[0]] / r[o[0]]  # H -> donor O
-        acc = cart[o[1]] / r[o[1]]
-        n_op = np.cross(b, acc)
+        nb = sorted((n for n in st.get_neighbors(st[i], 3.0) if n.specie.symbol == "O"), key=lambda n: n.nn_distance)
+        don = nb[0]
+        h = st[i].coords
+        best = None
+        for n in nb[1:]:  # acceptor: periodic image, H...O <= 2.6 A, O-H...O angle >= 110 deg
+            v1, v2 = don.coords - h, n.coords - h
+            ang = np.degrees(np.arccos(np.dot(v1, v2) / np.linalg.norm(v1) / np.linalg.norm(v2)))
+            if n.nn_distance <= 2.6 and ang >= 110 and np.linalg.norm(n.coords - don.coords) > 1.8:
+                best = (n, ang)
+                break
+        b = (don.coords - h) / don.nn_distance
+        if best is None:
+            acc_dir, ang, d_oo = None, float("nan"), float("nan")
+        else:
+            acc_dir = (best[0].coords - h) / np.linalg.norm(best[0].coords - h)
+            ang, d_oo = best[1], float(np.linalg.norm(best[0].coords - don.coords))
+        n_op = np.cross(b, acc_dir) if acc_dir is not None else np.cross(b, [0.0, 0.0, 1.0] if abs(b[2]) < 0.9 else [1.0, 0.0, 0.0])
+        linear = acc_dir is None or np.linalg.norm(n_op) < 0.26  # O-H...O within 15 deg of linear: plane ill-defined
         n_op /= np.linalg.norm(n_op)
         n_ip = np.cross(n_op, b)
         for name, u, fmin in (("stretch", b, 1500), ("bend_ip", n_ip, 500), ("bend_op", n_op, 500)):
             w = np.abs(np.einsum("a,ab->b", u, ev[i])) ** 2 * (f > fmin)
             out[name].append(float((w * f).sum() / w.sum()))
-        out["d_OH"].append(float(r[o[0]]))
-        donor = cart[o[0]]
-        out["d_OO"].append(float(np.linalg.norm(cart[o[1]] - donor)))
+            k = int(np.argmax(w))
+            out[name + "_peak"].append(float(f[k]))
+            out[name + "_peak_w"].append(float(w[k]))
+        out["d_OH"].append(float(don.nn_distance))
+        out["d_OO"].append(d_oo)
+        out["angle_OHO"].append(float(ang))
+        out["linear_flag"].append(float(linear))
     return {k: float(np.mean(v)) for k, v in out.items()} | {"n_H": int((sym == "H").sum())}
 
 
@@ -76,7 +91,7 @@ def main():
                 rows.append({"pair": label, "model": m, "error": str(exc)})
                 continue
             row = {"pair": label, "a": a, "b": b, "model": m}
-            for k in ("stretch", "bend_ip", "bend_op", "d_OH", "d_OO"):
+            for k in ("stretch", "bend_ip", "bend_op", "stretch_peak", "bend_ip_peak", "bend_op_peak", "d_OH", "d_OO", "angle_OHO", "linear_flag"):
                 row[f"{k}_a"], row[f"{k}_b"] = round(ba[k], 4), round(bb[k], 4)
                 row[f"d_{k}"] = round(bb[k] - ba[k], 4)
             rows.append(row)
@@ -90,7 +105,7 @@ def main():
         if "error" in r:
             print(r)
             continue
-        print(f"{r['pair']:22s} {r['model']:9s} stretch {r['stretch_a']:7.0f}->{r['stretch_b']:7.0f} (d {r['d_stretch']:+6.0f})  "
+        print(f"{r['pair']:22s} {r['model']:9s} peaks: stretch {r['d_stretch_peak']:+6.0f} bend_ip {r['d_bend_ip_peak']:+5.0f} bend_op {r['d_bend_op_peak']:+5.0f} | angle {r['angle_OHO_a']:.0f}->{r['angle_OHO_b']:.0f} OO {r['d_OO_a']:.3f}->{r['d_OO_b']:.3f} | mean: stretch {r['stretch_a']:7.0f}->{r['stretch_b']:7.0f} (d {r['d_stretch']:+6.0f})  "
               f"bend_ip {r['bend_ip_a']:6.0f}->{r['bend_ip_b']:6.0f} (d {r['d_bend_ip']:+5.0f})  bend_op {r['bend_op_a']:6.0f}->{r['bend_op_b']:6.0f} "
               f"(d {r['d_bend_op']:+5.0f})  dOH {r['d_d_OH']*1000:+5.1f} mA  dOO {r['d_d_OO']*1000:+6.1f} mA")
 
