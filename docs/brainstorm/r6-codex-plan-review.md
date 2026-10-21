@@ -1,0 +1,34 @@
+Reviewed all four documents, treating P1–P9 as authoritative. These are remaining gaps, including contradictions that could undo those safeguards.
+
+| # | gap | severity (blocker/high/medium/low) | concrete fix (one line) | which plan block it belongs to |
+|---|---|---|---|---|
+| 1 | Portlandite’s required volume-sign target lacks established support; one [experimental study](https://waseda.elsevierpure.com/en/publications/pressure-responses-of-portlandite-and-h-d-isotope-effects-on-pres/) found no detectable volume/compression isotope effect. | blocker | Require a resolved measurement with uncertainty; otherwise treat portlandite as a null check. | 1.1, 2, P1 |
+| 2 | Two volume signs cannot justify “validated isotope free energies.” | blocker | Require quantitative, condition-matched errors and numerical tolerances; describe validation only for observables actually tested. | 2, P1 |
+| 3 | Gate failure always permits screening—even if implementation sanity fails. | blocker | Separate implementation failure (stop), observable failure (benchmark framing), and zero qualifying candidates (negative-result deliverable). | 2–4, fallback |
+| 4 | Conflicting instructions remain: FixSymmetry/P2, 1000/600 K, hour 10/7, three/four models, unlisted/Public. | high | Replace obsolete instructions across all four documents; preserve one executable specification. | All |
+| 5 | Classical cancellation is ambiguous: single-structure isotope free energy does **not** vanish. | high | Test cancellation of the same-composition **double difference**; specify signs, normalization, temperature range, and floating-point tolerances. | P1, mathcheck |
+| 6 | ΔT remains sensitive to static offsets through crossing location and entropy slope. | high | Define ΔΔG explicitly; justify offset ranges, track matching roots, and require slope/convergence robustness across those ranges. | 4.1, P3 |
+| 7 | ΔP at 300 K is underspecified and can diverge for small ΔV. | high | Evaluate near an H-phase equilibrium pressure; add a ΔV guard and pressure-dependent stability checks. | P3 |
+| 8 | Convergence requirements have no numerical acceptance thresholds. | high | Bound ΔΔF error below the ranking signal using displacement, q-mesh, supercell, precision, and relaxation checks. | P4, 4.1 |
+| 9 | Imaginary-mode handling could change phase identity; isotropic QHA can miss anisotropic response. | high | Recheck identity after mode following; relax internal coordinates at constrained volumes and disclose strain limitations. | 1.4, P2–P3 |
+| 10 | Γ stretch agreement does not validate integrated free energies. | high | Match polymorph, geometry, functional, and LO–TO treatment; compare full-spectrum isotope free energies on a small reference subset. | 2.3 |
+| 11 | Negative controls and the 1800 cm⁻¹/70% rule lack operational justification. | high | Prespecify observable-specific failure mechanisms; use mode character and sensitivity checks, treating thresholds as heuristics. | 2.2, P3, P6 |
+| 12 | Shared MLIP biases survive consensus; screening only agreeing pairs biases agreement statistics. | high | Define “spread,” retain correlated-error caveats, audit rejected pairs, and specify eligibility after cutting a model. | 3.2, 4.1 |
+| 13 | Pairwise crossings need not be accessible equilibrium transitions. | high | Check competing polymorphs, decomposition, proton ordering, isotope occupancy, and relevant stability conditions before ranking. | 1.3, 4.3 |
+| 14 | ≥100 pairs and ~300 pairs/~5 hours are unsupported workload assumptions. | high | Benchmark representative jobs; budget unique structures × displacements × volumes × models, including validation and retries. | 1–4 |
+| 15 | Four-model validation plus 10–20 QHA candidates competes for one GPU. | high | Reserve validation priority, cap candidate QHA from measured throughput, and impose a Thursday noon compute freeze. | 2–4, cut list |
+| 16 | Local commits and resumability do not protect against laptop loss. | high | Arrange an authorized off-device backup immediately; copy results incrementally and retain a GPU-free submission package. | 0, 3, 5 |
+| 17 | “Result file exists” can accept partial, stale, or failed jobs. | high | Require atomic writes, validated success status, input/model hashes, bounded retries, single-GPU locking, and heartbeat timeouts. | WORKFLOW queue |
+| 18 | Opus remains a quota/session bottleneck; reviewer voting can overlook one valid fatal objection. | high | Reserve completion quota, document conductor takeover, and require resolution of every substantiated blocker regardless of votes. | P7, WORKFLOW |
+| 19 | Agent activity is visible internally but its scientific value is not demonstrated. | high | Show one source→extraction→verification→decision trace and a small comparison against an unassisted deterministic baseline. | 1, 5–6 |
+| 20 | “First” remains vulnerable despite acknowledging Bourgeois’s 115-hydride study. | high | Compare scope, observables, methods, and validation explicitly; claim the demonstrated extension without asserting exhaustive novelty. | DECISION, 6 |
+| 21 | “Cheap D₂O experiments” lacks a specific user and feasible decision. | high | Target a synthesis/diffraction researcher; provide one candidate card with exchange route, conditions, readout, resolution, and caveats. | 4.3, 6 |
+| 22 | Can-dependent recording, approval, authentication, and submission lack reserved appointments. | high | Schedule these explicitly; prepare pass/fail scripts and a cached demo before Can records. | 0, 5–7 |
+| 23 | One CIF cannot define a polymorph pair; cached versus computed behavior is unclear. | medium | Require two structures or explicit partner selection; label cached results and separate CPU viewing from GPU computation. | 5.1 |
+| 24 | Licensing, redistribution, and reproducibility remain incomplete. | high | Add code license, dataset/model terms and citations, pinned environments, checkpoint IDs, input hashes, raw results, and figure-generation instructions. | 5 |
+| 25 | A baseline tag misses uncommitted preparation and prefetched data provenance. | high | Inventory pre-event pool/harness/data artifacts and timestamps; disclose reused assets and the actual event-built contribution. | 0, P8, 6–7 |
+| 26 | Main parity figure mixes observables; submission QA is too generic. | medium | Separate units; label spread/uncertainty and exclusions; structure write-up as problem→method→evidence→limits; check captions, public links, rules, and submission receipt. | 4.4, 6–7 |
+
+**Verdict:** Promising, but the validation claim and portlandite gate need correction before execution.  
+Prioritize a defensible benchmark, one compelling candidate, and a visible agent contribution over screening volume.  
+First-place credibility depends on evidence, usability, and reliable submission—not model consensus or orchestration complexity.

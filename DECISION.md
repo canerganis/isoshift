@@ -4,7 +4,7 @@
 
 ## Chosen: IsoShift — where does heavy water move phase boundaries?
 
-**Headline:** First systematic map of isotope-tunable polymorphism in inorganic hydrogen compounds, and of where harmonic physics provably cannot explain it.
+**Headline:** A systematic map of where H/D substitution shifts polymorph free energies in inorganic hydrogen compounds, validated against measured isotope effects, with the limits of harmonic physics stated by mechanism (see PLAN.md P10 to P25).
 
 **Core idea.** Born-Oppenheimer force constants do not depend on nuclear mass, so one set of phonon calculations per structure gives the vibrational free energy for both H and D by re-diagonalizing the dynamical matrix with new masses. For hydrogen-containing polymorph pairs we compute quasi-harmonic free energies for H and D and report the **isotope shift of transition temperature/pressure**, ΔT_iso ≈ ΔΔF_iso / ΔS near a crossing. This shift is largely insensitive to the absolute polymorph energy error that would kill a naive "ground state flips" claim.
 
@@ -17,7 +17,7 @@
 
 **Fallback inside the same pipeline:** H-phonon benchmark of universal MLIPs vs DFT + isotope ZPE/free-energy atlas for every screened compound (still a validated, reusable tool).
 
-**Hard gates.** Validation on known cases by hour 10; if the sign comes out wrong, switch to the fallback framing. Never headline "ground-state flips".
+**Hard gates.** Gate at Thu 00:00 with three outcomes (PLAN.md P10, P12). Never headline "ground-state flips".
 
 ## Why this over the alternatives
 - Round 5 red team (docs/brainstorm/r5-*): Opus ranked it 1st (~25% for 1st place, vs 18% for PackEvolve); Codex and Gemini preferred PackEvolve for verifiability but gave both low odds (Codex 2 to 7%).

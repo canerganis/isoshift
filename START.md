@@ -23,7 +23,7 @@ Can gives the start signal; nothing starts on its own. On "başla":
 | Valency Bond | MCP `valency` (https://mcp.valency.io/). Codex: logged in, tested. agy: added, needs `/mcp` → Authenticate. Claude: claude.ai connector (verify with `list_sources`). Sources: arXiv, PubMed, bio/med/Psy/Soc/EarthArXiv, Valency Hub; use OpenAlex for journals. |
 | Materials Project | `MP_API_KEY` in `.env`, tested OK (LiH mp-23703). |
 | GitHub | `gh` logged in as `canerganis`. Create the public repo only with Can's go-ahead. |
-| Video | OBS installed; Can narrates (English) over screen recording; publish unlisted YouTube and/or LinkedIn (Can decides). |
+| Video | OBS installed; Can narrates (English) over screen recording; publish on YouTube as **Public** (P9); LinkedIn/X optional (Can decides). |
 | Datasets list | github.com/blaiszik/awesome-matchem-datasets |
 
 **First task in the new session:** with Can, build a detailed end-to-end plan (from now to submission) on top of `PLAN.md`: concrete tasks per block, who does what (Claude / Codex / Gemini 4 Argon / Can), gates, and timings shifted to start now. Then start executing.
@@ -38,4 +38,4 @@ Read in this order: `CONTEXT.md`, `DECISION.md` (approved: IsoShift), `PLAN.md`,
 - Valency MCP Bond: added to agy and Codex (`valency`, https://mcp.valency.io/); Claude via claude.ai connector. Verify each with the `list_sources` tool.
 - Save Claude quota: use Codex (gpt-6-astra) and Gemini 4 Argon through `harness.ask` for reviews and bulk LLM work; Sonnet subagents for mechanical work.
 - Video: Can narrates in English over an OBS screen recording, with captions; Claude prepares script, slides, demo steps.
-- Gate at hour 10: validation (ice and brucite volume isotope sign, LiH ZPE, negative controls) must hold, else switch to the fallback framing in DECISION.md.
+- Gate at Thu 00:00 with three outcomes and redefined tiers: see PLAN.md "Final review decisions" P10 to P25 (they override older text).

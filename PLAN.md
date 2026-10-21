@@ -1,6 +1,7 @@
 # IsoShift: 34-hour plan
 
-Times are Turkey time. Official schedule (Moment): hacking may begin any time on Oct 21 anywhere on Earth, so we can start as soon as Can is ready (no need to wait for 17:00). Deadline Fri 23 Oct 03:00. Submit by 02:00 to keep a buffer. Block times below shift earlier accordingly.
+Times are Turkey time. Official schedule (Moment): hacking may begin any time on Oct 21 anywhere on Earth; work starts when Can says "başla" (default 17:00, earlier is allowed and simply shifts blocks earlier). Deadline Fri 23 Oct 03:00; internal target submitted by 00:30 (P9), hard stop 02:00.
+**Where documents disagree, the "Final review decisions" section (P10 to P25) wins, then P1 to P9, then the block tables.**
 Extra platform credits are listed in Slack #resources.
 
 ## Morning checklist for Can (before 17:00, ~30 min)
@@ -50,8 +51,8 @@ Hardware: RTX 4060 laptop. Overnight: plugged in, Windows sleep off, lid-close a
 |---|---|---|---|
 | 1.1 | Validation set: for brucite, ice Ih, LiH/LiD, portlandite Ca(OH)2, AlOOH, KOH, KDP, NH4Cl collect experimental H vs D numbers (lattice/volume isotope effect, transition T/P shifts) with DOIs via Bond + OpenAlex → `data/isoshift/validation.csv` (value, unit, T, P, DOI, harmonic-tractable yes/no) | X (Bond), C reviews | ≥6 cases with DOIs |
 | 1.2 | Independent cross-check of every validation row against its DOI (value, unit, sign); disagreements resolved by Claude. Can only sees the final table | G + X via `harness.ask` | all rows confirmed or dropped |
-| 1.3 | Pair builder `src/isoshift_event/pairs.py`: merge MP + JARVIS, same composition, different structure (StructureMatcher), ΔE ≤ 25 meV/atom, ≤ 16 atoms (≤ 32 second tier), drop partial occupancy, flag proton-transfer/H-bond-disordered families → `data/isoshift/pairs.csv` | X writes, C reviews | ≥ 100 pairs |
-| 1.4 | Fix brucite imaginary modes before trusting QHA: symmetry-constrained relax (FixSymmetry), tighter fmax, check supercell size; same for AlOOH | C | brucite min freq > -0.5 THz in ≥3 models |
+| 1.3 | Pair builder `src/isoshift_event/pairs.py`: merge MP + JARVIS structures, same composition, different structure (StructureMatcher), within-database ΔE_hull ≤ 50 meV/atom as a loose pre-filter only (never MP minus JARVIS), ≤ 16 atoms (≤ 32 second tier), drop partial occupancy, flag proton-transfer/H-bond-disordered families; final ΔE ≤ 25 meV/atom cut uses each MLIP's own relaxed static energy (P13) → `data/isoshift/pairs.csv` | X writes, C reviews | pair count logged (no fixed quota, P18) |
+| 1.4 | Fix brucite imaginary modes before trusting QHA, per P2 as amended by P11 (FixSymmetry relax first, eigenvector following only if optical modes stay imaginary, identity recheck); same for AlOOH | C | brucite min optical freq > -0.5 THz in ≥3 models |
 | 1.5 | Batch runner `src/isoshift_event/screen.py`: job queue over pairs × models, resumable, per-job JSON in `results/`, OOM retry, writes ΔF_H, ΔF_D, ΔΔF_iso(T), min freq | X writes, C reviews | dry run on 3 pairs |
 
 ### Block 2. Validation first (20:00–00:00) → GATE
@@ -73,7 +74,7 @@ Hardware: RTX 4060 laptop. Overnight: plugged in, Windows sleep off, lid-close a
 ### Block 4. Analysis (08:00–13:00)
 | # | Task | Owner | Done when |
 |---|---|---|---|
-| 4.1 | Ensemble filter: 4/4 sign agreement and |ΔΔF_iso| > ensemble spread; ΔT_iso ≈ ΔΔF_iso / ΔS for pairs with a crossing below 1000 K; rank | C | ranked table |
+| 4.1 | Ensemble filter and ranking per P14 and P15 (sign agreement across all models that ran on the pair, |ΔΔF_iso| above model spread and numerical error; T_c sensitivity at 300 and 500 K over the static-offset sweep instead of a hard crossing filter; 600 K cap from P3) | C | ranked table |
 | 4.2 | QHA on top 10 to 20 | GPU | done |
 | 4.3 | Novelty + experimental context for top 10 via Bond (is the polymorph pair known, any deuteride data, feasible D2O/D2 synthesis) | X (Bond) | table with DOIs |
 | 4.4 | Main figure (left validation parity, right candidate map) + benchmark figure | S drafts, C checks | PNG/SVG in `figures/` |
@@ -91,7 +92,7 @@ Hardware: RTX 4060 laptop. Overnight: plugged in, Windows sleep off, lid-close a
 |---|---|---|---|
 | 6.1 | One-page summary with main figure | C drafts, G reviews, Can approves | final |
 | 6.2 | Video script (TR draft + EN final, ≤ 4 min), 5 slides, demo steps | C | Can reads it |
-| 6.3 | Rehearse once, record with OBS, captions, upload unlisted YouTube | Can | public link, no login |
+| 6.3 | Rehearse once, record with OBS, upload to YouTube as **Public** (P9) with the SRT captions file from 6.2 | Can | public link opens in incognito |
 | 6.4 | Social post text (if Can wants one) | C | ready |
 
 ### Block 7. Submit (23:00–02:00)
@@ -112,6 +113,32 @@ Raw reviews: `docs/preflight/astra.md`, `docs/preflight/gemini.md`. Both flagged
 * **P8 Provenance.** Tag `pre-event-baseline` on the last pre-event commit before work starts; all event code in `src/` and `app/`.
 * **P9 Submission.** Checked on the Moment campaign page (21 Oct): field 1 is "your social media post ... on X, LinkedIn, Bluesky, Instagram, Threads, YouTube or anywhere else. It must be publicly accessible", video ≤ 4 min inside the post. A YouTube video counts as the post. Decision: publish the YouTube video as **Public** (not unlisted) to remove any doubt about "publicly accessible"; title and description act as the post text. Internal target: submitted by 00:30, hard stop 02:00.
 
+### Final review decisions (Opus, 21 Oct, after independent Astra xhigh + Gemini 4 Argon plan reviews)
+Raw reviews: `docs/brainstorm/r6-codex-plan-review.md` (26 items), `docs/brainstorm/r6-gemini-plan-review.md` (14 items). Binding; they override older text.
+
+**Science and gate**
+* **P10 Gate outcomes are three, not two.** (a) Tier A implementation sanity fails → stop the screen, fix code, nothing ships until it passes. (b) Tier A passes, tier B fails → fallback framing (X–H benchmark + isotope free-energy atlas), screen runs. (c) Tier B passes but zero candidates survive P14 → negative-result deliverable ("where isotope tuning is and is not resolvable with today's universal MLIPs"), still with benchmark + atlas.
+* **P11 Relaxation and imaginary modes (amends P2).** Relax each polymorph with FixSymmetry + FrechetCellFilter (fmax 1e-4 eV/Å) first, to keep the polymorph and the small displacement set. Only if optical modes stay imaginary: drop symmetry, follow the eigenvector, re-relax, re-symmetrize, then **recheck identity** with StructureMatcher against the input; if it collapsed into the partner or a third phase, quarantine the pair (listed, never silently dropped).
+* **P12 Tier B redefined.** Portlandite has no resolved experimental volume isotope effect (Astra found a study reporting none), so it becomes a **null check** (predicted |ΔV/V| must be small), not a sign test. Tier B passes if **two of {brucite volume sign, LiH vs LiD lattice-constant sign, ice Ih (reported only)}** with brucite mandatory are right in ≥3 of the models that ran, with quantitative error reported against the measured value. QHA at each volume relaxes cell shape and internal coordinates at fixed volume (anisotropic layered hydroxides); strain limitations disclosed. Wording: "validated against measured volume/lattice isotope effects", only for observables actually tested.
+* **P13 Tier A additions.** Classical-limit cancellation is tested on the **same-composition double difference** ΔΔF_iso (single-structure ΔF_iso does not vanish). Supercell-doubling test: ΔΔF_iso per atom and per H changes < 0.01 meV/atom. Explicit sign convention ΔΔF_iso = [F_D(β) − F_D(α)] − [F_H(β) − F_H(α)], per atom and per H, with the formula-unit normalisation fixed for Z1 ≠ Z2. All formulas go through one mathcheck (Astra xhigh) before code.
+* **P14 Ranking signal.** A pair ranks only if: all models that ran on it agree on the sign; |ΔΔF_iso| exceeds max(model spread, numerical error from P13 checks, 0.1 meV/atom); no unresolved imaginary optical modes; P11 identity check passed. Spread = max − min across models, called "model spread", with the shared-bias caveat (all MLIPs are PBE-trained). Audit 10 rejected pairs by hand.
+* **P15 Transition-shift reporting.** Primary result is ΔΔF_iso(T). Secondary: T_c sensitivity ΔT ≈ −ΔΔF_iso/ΔS at 300 and 500 K, evaluated over a static-offset sweep of ±(model spread of ΔE0); report only if the sign and magnitude are stable across the sweep and |ΔS| ≥ 0.01 meV/atom/K. ΔP_iso only when |ΔV| ≥ 0.1 Å³/atom, else omitted. No hard "crossing below 1000 K" filter.
+* **P16 Accessibility check for the top 10.** Before a candidate card is written: competing polymorphs on the MP hull, decomposition risk, proton-ordering/disorder, and whether D occupancy is realistic. Fails → kept in the table, not in the headline.
+* **P17 Negative controls split.** Two classes: nuclear-quantum/tunnelling (KDP, δ-AlOOH H-bond symmetrisation) and configurational/orientational disorder (KOH, NH4Cl). They test stated physics limits, are not required to fail, and are labelled by mechanism.
+
+**Compute and robustness**
+* **P18 Throughput is measured, not assumed.** At ~20:00 benchmark 5 representative unique structures per model (relax + displacements + one QHA); then size the screen: unique structures only, bulk MACE in float32 (float64 only for validation + top 20), cap tier 1 at the number that fits by 08:00 with 20% retry margin. Validation jobs have GPU priority. **Compute freeze Thu 12:00**: after that only top-candidate QHA already queued and figure regeneration.
+* **P19 Queue hygiene.** Job done = atomic write of a result JSON with `status: ok`, input structure hash, model id/checkpoint, code commit; partial or stale files are ignored; single GPU lock; heartbeat file every 60 s; bounded retries (2) then quarantine; `torch.cuda.empty_cache()` between jobs.
+* **P20 Off-device backup.** A **private** GitHub repo is created at block 0 with Can's go-ahead and pushed after every block and every 2 h overnight (results JSON included, data/ weights excluded); flipped to public at 5.3. Windows Update paused for 3 days at 0.4. A GPU-free submission package (figures, CSV results, write-up) is kept current from Thursday 10:00.
+* **P21 Orchestrator safety.** Keep ≥15% of Can's Claude limit in reserve for Blocks 6 to 7. If the conductor session dies or runs out, any new session resumes from the state ledger (`docs/WORKFLOW.md`) and `PLAN.md`. A single substantiated blocker from any reviewer must be resolved regardless of votes.
+
+**Story and judging fit**
+* **P22 Make the AI visible.** README, app and slide 2 show the loop: Bond literature agent extracts validation numbers → cross-checked by a second model → MLIP ensemble computes → multi-model red team → Opus decision log. Include one full trace (source paper → extracted value → verification → decision) and a small comparison of agent-extracted validation numbers against hand-checked values (precision).
+* **P23 Novelty vs Bourgeois 2018.** Stated in write-up and video: Bourgeois et al. modelled H/D/T effects on **gas–solid hydride formation** (dominated by H2/D2 gas ZPE) with DFT; IsoShift maps **solid–solid polymorph free-energy differences** (gas terms cancel) across hydroxides, borohydrides, alanates and hydrides with an MLIP ensemble, validated against measured volume/lattice isotope effects. Claim the demonstrated extension, not exhaustive novelty.
+* **P24 Impact story.** Two named users: (1) neutron-scattering crystallographers who deuterate samples (warning when deuteration may shift phase stability), (2) researchers using D2O/D2 synthesis to target metastable phases. One "candidate card" for the best candidate: pair, predicted ΔΔF_iso and ΔT with spread, suggested D route, readout (XRD/neutron), required resolution, caveats.
+* **P25 Deliverables completeness.** Fallback figure spec (MLIP vs DFT X–H error by chemical family + ZPE/free-energy atlas) and an app tab "Benchmark & Atlas" exist whatever the gate says. App takes **two** structures (or a pair id); cached results are labelled "precomputed" and GPU computation is separate. Repo: LICENSE (MIT), CITATION.cff, data/model attributions and licences (MP CC-BY, JARVIS, Petretto CC0, MDR, model checkpoints), pinned environments, checkpoint ids, raw results, `reproduce_figures.py` (CPU, < 1 min). Main figure keeps units separate per panel. Write-up structure: problem → method → evidence → limits → disclosure. Provenance: before tagging `pre-event-baseline`, commit or explicitly list every pre-event artifact (including `isoshift/pool.py`, `tests/test_pool.py`, `docs/specs/`, prefetched data with timestamps) in `docs/PROVENANCE.md`.
+* **Can's appointments (reserved):** 0.x private-repo go-ahead and Windows Update pause (start); gate note ~00:15 (read only); Thu ~10:00 morning check (5 min); Thu 19:00–20:30 rehearse + record video; Thu 23:30–00:30 public-repo go-ahead and Moment submission. Scripts, slides, SRT and a cached demo are ready before 19:00.
+
 ### Cut list if behind (in order)
 1. QHA on top candidates → harmonic only with stated caveat. 2. mattersim from the screen. 3. ≤ 32-atom second tier. 4. App upload widget → cached demo only. Never cut: validation table, negative controls, honest disclosure.
 
@@ -119,7 +146,7 @@ Raw reviews: `docs/preflight/astra.md`, `docs/preflight/gemini.md`. Both flagged
 Left: validation (computed vs measured isotope shift for known cases, negative controls marked). Right: candidate map (polymorph gap vs ΔΔF_iso, ensemble error bars, top candidates labelled).
 
 ## Video outline (≤4 min)
-Publishing: default is an unlisted YouTube video (no face, screen only) whose link goes in the Moment form; Can does not want to post it on LinkedIn/X for now and may decide later.
+Publishing (P9): YouTube video published as **Public** (no face, screen only); its link goes in the Moment form as the social media post. Posting on LinkedIn/X is optional and Can's decision.
 Format (Can's choice): screen recording with OBS, Can narrates in his own voice. Claude prepares the script (Turkish draft + English final), slides/figures and demo steps beforehand; one rehearsal, then record.
 1. Hook (20 s): "Swap H for D and a crystal can choose a different structure. Where does that happen?"
 2. Why it's hard (30 s): effect is meV, model errors are larger; trick: isotope shift from mass-independent force constants, ensemble of AI potentials.
