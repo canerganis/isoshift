@@ -1,5 +1,19 @@
 # Start here (new session)
 
+## Quick reference
+| What | Where |
+| --- | --- |
+| Deadline | Fri 23 Oct 03:00 Turkey time (Thu 22 Oct 7pm CDT). Aim 02:00. Hacking already open (Oct 21 anywhere on Earth). |
+| Submission | Moment, team **IsoShift** (solo): https://scientificintelligence.org/campaigns/osi-hackathon-2026 → your team page → Submit. Needs: public social post link (video ≤4 min inside), write-up (+figure), public GitHub repo with README, rules confirmation. |
+| Judging | Impact, Innovativeness, Novelty, Relevance (1 to 5 each; rubric on the campaign page). Awards Nov 19. |
+| Pre-existing work | Allowed if explicitly stated; judged on what was built during the event (organizer, Slack #2026-event). |
+| Slack | Open Scientific Intelligence workspace: #general (announcements), #help, #2026-event, #valency, #resources, #idea-time, #2025-paper. Contact: blaiszik@uchicago.edu |
+| Valency Bond | MCP `valency` (https://mcp.valency.io/). Codex: logged in, tested. agy: added, needs `/mcp` → Authenticate. Claude: claude.ai connector (verify with `list_sources`). Sources: arXiv, PubMed, bio/med/Psy/Soc/EarthArXiv, Valency Hub; use OpenAlex for journals. |
+| Materials Project | `MP_API_KEY` in `.env`, tested OK (LiH mp-23703). |
+| GitHub | `gh` logged in as `canerganis`. Create the public repo only with Can's go-ahead. |
+| Video | OBS installed; Can narrates (English) over screen recording; publish unlisted YouTube and/or LinkedIn (Can decides). |
+| Datasets list | github.com/blaiszik/awesome-matchem-datasets |
+
 Read in this order: `CONTEXT.md`, `DECISION.md` (approved: IsoShift), `PLAN.md`, then `prep/feasibility_isoshift/REPORT.md` and `harness/README.md`.
 
 - Event window: Wed 21 Oct 17:00 → Fri 23 Oct 03:00 Turkey time. Submit by 02:00.

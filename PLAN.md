@@ -1,6 +1,7 @@
 # IsoShift: 34-hour plan
 
-Times are Turkey time. Window: Wed 21 Oct 17:00 → Fri 23 Oct 03:00. Submit by 02:00 to keep a buffer.
+Times are Turkey time. Official schedule (Moment): hacking may begin any time on Oct 21 anywhere on Earth, so we can start as soon as Can is ready (no need to wait for 17:00). Deadline Fri 23 Oct 03:00. Submit by 02:00 to keep a buffer. Block times below shift earlier accordingly.
+Extra platform credits are listed in Slack #resources.
 
 ## Morning checklist for Can (before 17:00, ~30 min)
 1. Materials Project API key: materialsproject.org → Dashboard → API key. Put it in `.env` as `MP_API_KEY=...` (never commit).
@@ -40,4 +41,5 @@ Format (Can's choice): screen recording with OBS, Can narrates in his own voice.
 6. Close (10 s): open code, what's next.
 
 ## Disclosure for the form
+Organizer guidance (Slack #2026-event, 18 Oct): pre-existing code/datasets are allowed but must be explicitly stated; judging is based on what was implemented during the hackathon. So the write-up must clearly separate pre-event infrastructure from event work.
 Before event: generic LLM harness (harness/), topic harness (isoshift/: MLIP calculators, phonon mass override, QHA, comparison utilities), environment, feasibility tests, brainstorm docs. During event: candidate curation, validation, screening, analysis, app, write-up.
