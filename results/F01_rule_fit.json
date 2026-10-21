@@ -1,0 +1,29 @@
+{
+ "mace": {
+  "n": 177,
+  "r": 0.779,
+  "slope_total": 0.1163,
+  "intercept": 0.575,
+  "slope_stretch": 0.2444,
+  "slope_perp": -0.1281,
+  "compensation": 0.524
+ },
+ "mattersim": {
+  "n": 43,
+  "r": 0.885,
+  "slope_total": 0.1471,
+  "intercept": 0.598,
+  "slope_stretch": 0.2566,
+  "slope_perp": -0.1095,
+  "compensation": 0.427
+ },
+ "orb": {
+  "n": 121,
+  "r": 0.838,
+  "slope_total": 0.1203,
+  "intercept": 0.44,
+  "slope_stretch": 0.253,
+  "slope_perp": -0.1327,
+  "compensation": 0.525
+ }
+}

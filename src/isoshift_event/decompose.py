@@ -45,6 +45,8 @@ def _one(args):
     cell = np.asarray(uc.cell)
     frac = np.asarray(uc.scaled_positions)
     heavy = np.flatnonzero(sym != "H")
+    if len(heavy) == 0 or len(H) == 0:
+        return None  # pure H (solid H2) or H-free cells: nothing to decompose
     bonds, dists = np.zeros((len(sym), 3)), []
     for i in H:
         d = frac[heavy] - frac[i]
@@ -84,7 +86,7 @@ def _one(args):
           for iso, sub in (("H", {}), ("D", {"H": "D"}))}
     dF_direct = float(mf["D"].helmholtz_free_energy([T])[0] - mf["H"].helmholtz_free_energy([T])[0]) * 1000 / n
     return {"model": model, "struct_id": sid, "n_atoms": n, "n_H": int(len(H)), "covalent_XH": covalent,
-            "XH_max_A": round(max(dists), 4) if dists else "", "dF_str_meV_atom": -I_str * 1000 / n,
+            "XH_max_A": round(max(dists), 4) if dists else "", "XH_mean_A": round(float(np.mean(dists)), 5) if dists else "", "dF_str_meV_atom": -I_str * 1000 / n,
             "dF_perp_meV_atom": -I_perp * 1000 / n, "dF_quad_meV_atom": dF_quad, "dF_direct_meV_atom": dF_direct}
 
 
@@ -117,7 +119,7 @@ def main(argv=None):
         if key in idx:
             jobs.append((model, sid, str(idx[key])))
     with ProcessPoolExecutor(args.workers) as ex:
-        res = {(r["model"], r["struct_id"]): r for r in ex.map(_one, jobs, chunksize=2)}
+        res = {(r["model"], r["struct_id"]): r for r in ex.map(_one, jobs, chunksize=2) if r}
     with open(ROOT / "results" / "decompose_structures.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, list(next(iter(res.values()))))
         w.writeheader()
@@ -127,13 +129,17 @@ def main(argv=None):
         a, b = res.get((p["model"], p["struct_a"])), res.get((p["model"], p["struct_b"]))
         if not a or not b:
             continue
-        out.append({"pair_id": p["pair_id"], "model": p["model"], "formula": p.get("formula", ""),
+        out.append({"pair_id": p["pair_id"], "model": p["model"], "formula": p.get("formula", "") or a.get("formula", ""),
                     "covalent_XH": a["covalent_XH"] and b["covalent_XH"],
                     "ddF_str": b["dF_str_meV_atom"] - a["dF_str_meV_atom"],
                     "ddF_perp": b["dF_perp_meV_atom"] - a["dF_perp_meV_atom"],
                     "ddF_total": b["dF_quad_meV_atom"] - a["dF_quad_meV_atom"],
                     "ddF_direct": b["dF_direct_meV_atom"] - a["dF_direct_meV_atom"],
-                    "dXH_A": (b["XH_max_A"] - a["XH_max_A"]) if a["covalent_XH"] and b["covalent_XH"] else ""})
+                    "dXH_A": (b["XH_max_A"] - a["XH_max_A"]) if a["covalent_XH"] and b["covalent_XH"] else "",
+                    "dXH_mean_A": (b["XH_mean_A"] - a["XH_mean_A"]) if a["covalent_XH"] and b["covalent_XH"] else "",
+                    "H_per_atom": a["n_H"] / a["n_atoms"],
+                    "clean": abs(a["dF_quad_meV_atom"] - a["dF_direct_meV_atom"]) < 0.01
+                             and abs(b["dF_quad_meV_atom"] - b["dF_direct_meV_atom"]) < 0.01})
     with open(ROOT / "results" / "decompose_pairs.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, list(out[0]))
         w.writeheader()
