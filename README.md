@@ -2,7 +2,7 @@
 
 IsoShift computes how swapping hydrogen for deuterium changes the vibrational free energy of a crystal, and uses that to ask which polymorph deuteration favours.
 
-**Main finding (F01).** Deuteration favours the polymorph with the shorter O-H bonds once hydrogen bonds are moderate to strong. In three universal ML potentials over 197 hydrogen-compound polymorph pairs, an O-H stretch term is about half cancelled by bend and libration, and the stretch ingredient reproduces the measured O-H frequency vs O...O correlation. One concrete prediction: deuteration raises the diaspore to delta-AlOOH transition pressure by a few tenths of a GPa.
+**Main finding (F01).** Deuteration favours the polymorph with the shorter O-H bonds once hydrogen bonds are moderate to strong. In three universal ML potentials over 197 hydrogen-compound polymorph pairs, an O-H stretch term is about half cancelled by bend and libration, and the stretch ingredient reproduces the measured O-H frequency vs O...O correlation. One concrete prediction: deuteration raises the diaspore to delta-AlOOH transition pressure by about 1 GPa.
 
 ## Why
 
@@ -68,7 +68,7 @@ Predictions committed before the measured values were read (`docs/predictions/P0
 
 ### Candidate card: diaspore to delta-AlOOH (`docs/findings/CARD-AlOOH.md`)
 
-Deuteration destabilises delta-AlOOH relative to diaspore by +0.5 to +0.8 meV/atom (three models) and raises the transition pressure by about +0.3 to +0.4 GPa at the 0 GPa geometry. A predeclared spectroscopy test of the bend/libration term (`docs/findings/F04-differential-spectroscopy.md`) gave partial support: for goethite to epsilon-FeOOH the measured O-H stretch drops by 261 cm-1 (predicted 273) while the O-H bend rises by 290 cm-1 (predicted 195); the AlOOH pair was inconclusive under the predeclared rules.
+Deuteration destabilises delta-AlOOH relative to diaspore by +0.5 to +0.8 meV/atom (three models) and, from quasi-harmonic Gibbs energies at 10 to 20 GPa, raises the transition pressure by +1.1 (ORB) to +1.4 GPa (MACE); the 0 GPa-geometry estimate is +0.3 to +0.4 GPa. The two models differ by 4 GPa on the boundary itself but agree on the isotope shift. A predeclared spectroscopy test of the bend/libration term (`docs/findings/F04-differential-spectroscopy.md`) gave partial support: for goethite to epsilon-FeOOH the measured O-H stretch drops by 261 cm-1 (predicted 273) while the O-H bend rises by 290 cm-1 (predicted 195); the AlOOH pair was inconclusive under the predeclared rules.
 
 ### Benchmark
 

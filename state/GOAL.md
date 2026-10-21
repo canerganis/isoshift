@@ -16,7 +16,7 @@ Submit by Fri 23 Oct 00:30 TRT (hard stop 02:00). Every work decision is checked
 | S5b | Stretch ingredient anchored in experiment | F03: model nu(OH) vs O...O slope within 10% of Libowitzky (f 0.91/0.92/0.95) | done |
 | S5c | Compensation (bend/libration) term tested against experiment | F04: goethite -> epsilon-FeOOH SUPPORT (stretch -261 vs -273 predicted, bend +290 vs +195), diaspore -> delta-AlOOH INCONCLUSIVE (no IR stretch in delta-AlOOH) | done, partial support |
 | S6 | Survives a multi-model red team (final-claims board) | docs/decisions/05-final-claims.md | todo |
-| S7 | One concrete experimental prediction on a real material | best real-phase pair (candidate card, P24) or NaBH4 pressure shift | todo |
+| S7 | One concrete experimental prediction on a real material | CARD-AlOOH: dP_iso(diaspore -> delta-AlOOH) = +1.1 (ORB) to +1.4 GPa (MACE) by QHA; +0.3 to +0.4 at 0 GPa geometry | done (2 models), mattersim optional |
 
 Fallbacks: S4 fails -> claim the law as a computational result with the blind miss reported; S6 finds a blocking flaw -> P10(c) negative-result framing plus validated volume isotope effects and benchmark.
 
