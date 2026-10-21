@@ -91,17 +91,22 @@ def make_matcher() -> StructureMatcher:
 
 
 MERGE_SYMPREC = 0.05  # Angstrom; structures with different space groups at this precision are never merged
-_SPG_CACHE: dict[int, int] = {}
+# Keyed by id(); the entry keeps a reference to the crystal so a freed object's id
+# cannot be reused by a different structure and return a stale space group (this
+# happened across separate build_pairs calls in one process, e.g. the test suite).
+_SPG_CACHE: dict[int, tuple[Structure, int]] = {}
 
 
 def _spg(crystal: Structure) -> int:
     key = id(crystal)
-    if key not in _SPG_CACHE:
+    hit = _SPG_CACHE.get(key)
+    if hit is None or hit[0] is not crystal:
         try:
-            _SPG_CACHE[key] = SpacegroupAnalyzer(crystal, symprec=MERGE_SYMPREC).get_space_group_number()
+            number = SpacegroupAnalyzer(crystal, symprec=MERGE_SYMPREC).get_space_group_number()
         except Exception:
-            _SPG_CACHE[key] = 0
-    return _SPG_CACHE[key]
+            number = 0
+        hit = _SPG_CACHE[key] = (crystal, number)
+    return hit[1]
 
 
 def _matches(matcher: StructureMatcher, a: Structure, b: Structure) -> bool:
