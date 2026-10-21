@@ -26,6 +26,13 @@ Effort policy (Claude assigns, per task): **max** for physics/architecture decis
 **Final authority:** Opus (this orchestrating session, high/max effort) makes all task assignments, owner and effort choices at the start of each block, and is the final decision maker on every gate, scope and claim; the board advises, Opus decides. The owner tables above are the starting assignment and Opus may reassign.
 **Physics and math (Can, 21 Oct):** gpt-6-astra (xhigh) is the preferred model for physics and math work: deriving and checking the ΔT_iso ≈ ΔΔF_iso / ΔS estimate and its error propagation, QHA/thermodynamics checks, imaginary-mode diagnosis, unit and sign audits of validation numbers. Opus integrates and decides.
 **Workers and scans (Can, 21 Oct):** worker agents and scans go to Sonnet and Haiku, not Opus. Haiku: fetching (MP/JARVIS/PhononDB), log and result scanning, file checks, overnight watchdog. Sonnet: literature scans and Bond query batches, table building, running scripts and tests, figures, README. Opus agents only for design and decisions.
+**Not linear (Can, 21 Oct):** blocks are a skeleton, work runs as parallel tracks whenever inputs exist:
+* GPU track: the harmonic mace+orb screen starts as soon as `screen.py` passes its dry run (~20:00), interleaved with validation jobs; the gate only decides framing, not whether the screen runs.
+* Benchmark track (2.3): DFT phonon fetch and parity run from 17:30, independent of validation.
+* Product track: marimo app skeleton, README and write-up skeleton start in the evening with placeholder data (Codex + Sonnet), filled when results land.
+* Story track: video script, slides and figure layout drafted overnight and Thursday morning, not left to Block 6.
+* Literature track: Bond novelty checks run on candidates as they enter the ranking, not only for the final top 10.
+Opus re-plans at every result checkpoint and moves work forward whenever a track is idle.
 **Minimal human in the loop (Can, 21 Oct):** Claude runs blocks autonomously with workflows (Workflow tool, Sonnet/Codex workers, Codex+Gemini reviewers) and orchestra skills. Can is needed only for: public repo go-ahead, video recording, Moment submission, and any account login. Gate and scope decisions follow the written criteria; Can gets a short status note at the gate and in the morning.
 Hardware: RTX 4060 laptop. Overnight: plugged in, Windows sleep off, lid-close action "do nothing".
 
