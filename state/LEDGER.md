@@ -40,7 +40,9 @@ Conductor: Opus (orchestrating session). Started Wed 21 Oct 14:20 TRT, about 2.5
 | 5.1 | marimo app skeleton | Sonnet | done | 47def1b |
 | 4.1 | analysis + refine | build + Opus | done | 7f8bc45; refine supplies identity + numerical error (median 2e-4 meV/atom) |
 | 4.0 | experimental provenance | Opus | done | 192/965 pairs both observed, 126 of them tier32 -> prioritise tier32 experimental pairs overnight |
-| 2.G | gate board | board workflow | running | docs/decisions/01-gate.md |
+| 2.G | gate board | board workflow | done | conditional pass (P12 framing); G1-G4, F1, F3, F4 closed; G5 (LiH dZPE via benchmark) and F2 open |
+| 3.2 | screen queue: tier16 mace/orb finishing, experimental pairs (192, tier32 incl.) mace/orb/mattersim, mattersim tier16 | GPU | running | 3 workers; sevenn later alone |
+| 5.2 | README, PROVENANCE, LICENSE, CITATION, DATA_SOURCES | Sonnet | running | P22/P23/P25 |
 | 2.3 | DFT isotope benchmark | Sonnet | module done (aa1f6a0), GPU run queued after screen tier16 | |
 
 ## Notes
