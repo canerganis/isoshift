@@ -20,7 +20,26 @@ def main():
     for k in ("ddF_total", "ddF_str", "ddF_perp"):
         c[k + "_H"] = c[k] / c.H_per_atom
     c["dXH_mA"] = c.dXH_mean_A * 1000
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4.4))
+    # regime (decision 04): strong if either polymorph has mean model X-H >= 0.99 A
+    st = pd.read_csv(ROOT / "results" / "decompose_structures.csv").set_index(["model", "struct_id"]).XH_mean_A
+    pr = pd.read_csv(ROOT / "results" / "screen_pairs_refined.csv").set_index(["pair_id", "model"])
+    def _strong(r):
+        a, b = pr.loc[(r.pair_id, r.model), ["struct_a", "struct_b"]]
+        return max(st.get((r.model, a), 0), st.get((r.model, b), 0)) >= 0.99
+    c["strong"] = [_strong(r) for r in c.itertuples()]
+    fig, axes = plt.subplots(1, 3, figsize=(16, 4.6))
+    ax = axes[2]
+    for strong, mk, lab in ((True, "o", "moderate/strong H bond (max O-H >= 0.99 A)"), (False, "x", "weak H bonds on both sides")):
+        g = c[c.strong == strong]
+        ax.scatter(g.dXH_mA, g.ddF_total_H, s=12, alpha=0.6, marker=mk, color="#0072B2" if strong else "#D55E00",
+                   label=f"{lab}: n={len(g)}")
+    ax.axhline(0, color="0.6", lw=0.8)
+    ax.axvline(0, color="0.6", lw=0.8)
+    ax.axvspan(-5, 5, color="0.9", zorder=0)
+    ax.set_xlabel("change in mean X-H bond length (mA)")
+    ax.set_ylabel(r"$\Delta\Delta F_{iso}$ at 300 K (meV per H)")
+    ax.set_title("Sign rule holds in the strong regime: 128/134")
+    ax.legend(fontsize=7.5, loc="upper left")
     ax = axes[0]
     for m, g in c.groupby("model"):
         k, b = np.polyfit(g.dXH_mA, g.ddF_total_H, 1)
