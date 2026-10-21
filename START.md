@@ -14,6 +14,8 @@
 | Video | OBS installed; Can narrates (English) over screen recording; publish unlisted YouTube and/or LinkedIn (Can decides). |
 | Datasets list | github.com/blaiszik/awesome-matchem-datasets |
 
+**First task in the new session:** with Can, build a detailed end-to-end plan (from now to submission) on top of `PLAN.md`: concrete tasks per block, who does what (Claude / Codex / Gemini 4 Argon / Can), gates, and timings shifted to start now. Then start executing.
+
 Read in this order: `CONTEXT.md`, `DECISION.md` (approved: IsoShift), `PLAN.md`, then `prep/feasibility_isoshift/REPORT.md` and `harness/README.md`.
 
 - Event window: Wed 21 Oct 17:00 → Fri 23 Oct 03:00 Turkey time. Submit by 02:00.
