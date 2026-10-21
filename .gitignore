@@ -1,4 +1,15 @@
-data/
+# data: big downloads stay local; small curated inputs are published
+data/*
+!data/isoshift/
+data/isoshift/*
+!data/isoshift/*.csv
+!data/isoshift/*.md
+!data/isoshift/structs/
+!data/isoshift/validation_structures/
+# results: raw per-job JSON and GPU queues stay local; summaries are published
+results/raw/
+results/queue/
+state/sweeps/
 .venv/
 __pycache__/
 *.pyc
