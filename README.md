@@ -16,7 +16,7 @@ The effect is small (meV per atom) and static-energy errors of the models are la
 ## Method
 
 1. Born-Oppenheimer force constants do not depend on nuclear mass. One phonon calculation per structure therefore gives the harmonic and quasi-harmonic free energies for both H and D: the dynamical matrix is rebuilt with the D mass and diagonalised again. Formulas are in `docs/math/M01-isotope-formulas.md`.
-2. Four universal machine-learned interatomic potentials (MLIPs) act as an ensemble: MACE, ORB, MatterSim and SevenNet (exact checkpoints in `DATA_SOURCES.md`). Phonons come from phonopy. The spread between models is reported as model spread.
+2. Four universal machine-learned interatomic potentials (MLIPs) act as an ensemble (SevenNet in sign votes only): MACE, ORB, MatterSim and SevenNet (exact checkpoints in `DATA_SOURCES.md`). Phonons come from phonopy. The spread between models is reported as model spread.
 3. Polymorph pairs are built from Materials Project and JARVIS-DFT: same composition, different structure, hydrogen present, no carbon, up to 32 atoms. The current set has 836 structures and 965 pairs (`data/isoshift/pairs.csv`, method in `data/isoshift/PAIRS.md`). Energies from the two databases are never subtracted from each other.
 4. Validation uses measured volume and lattice isotope effects (see Results).
 
@@ -52,9 +52,9 @@ Implementation checks (equal masses give zero shift, H/D swap flips the sign, cl
 
 ![F01](figures/fig4_xh_rule.png)
 
-* The isotope double difference per H is linear in the change of mean X-H bond length between the polymorphs: slope 0.12 (MACE), 0.12 (ORB), 0.15 (MatterSim) meV/H per mA; r 0.78 to 0.89.
-* Mechanism, from a mode-resolved mass integral: the X-H stretch term (+0.24 to +0.26 meV/H per mA, same in all models) is about half cancelled by bending and libration (-0.11 to -0.13).
-* Domain: when at least one polymorph has a moderate or strong H bond (mean model O-H at least 0.99 A, O...O below about 2.92 A), the sign of the bond-length change predicts which polymorph deuteration favours in 123 of 130 O-H model evaluations with |Δ mean O-H| ≥ 5 mÅ (67 pairs, 23 formulas; baseline 82/130 from leave-one-formula-out training folds). Re-choosing the threshold inside each fold picks 0.99 A every time; without any threshold the rule holds in 124 of 146 O-H evaluations (85%, same O-H, no-cut population; the weak side is 1 of 16). On all covalent pairs with a signal cut it is 129 of 150 (baseline 100/150). With weak H bonds on both sides the rule has no skill (1 of 16). The threshold was found after looking at the data; the full scan is in `results/F01_cv.json`.
+* The isotope double difference per H is linear in the change of mean X-H bond length between the polymorphs: slope 0.12 (MACE), 0.12 (ORB), 0.15 (MatterSim) meV/H per mÅ; r 0.78 to 0.89.
+* Mechanism, from a mode-resolved mass integral: the X-H stretch term (+0.24 to +0.26 meV/H per mÅ, same in all models) is about half cancelled by bending and libration (-0.11 to -0.13).
+* Domain: when at least one polymorph has a moderate or strong H bond (mean model O-H at least 0.99 Å, O...O below about 2.92 A), the sign of the bond-length change predicts which polymorph deuteration favours in 123 of 130 O-H model evaluations with |Δ mean O-H| ≥ 5 mÅ (67 pairs, 23 formulas; baseline 82/130 from leave-one-formula-out training folds). Re-choosing the threshold inside each fold picks 0.99 A every time; without any threshold the rule holds in 124 of 146 O-H evaluations (85%, same O-H, no-cut population; the weak side is 1 of 16). On all covalent pairs with a signal cut it is 129 of 150 (baseline 100/150). With weak H bonds on both sides the rule has no skill (1 of 16). The threshold was found after looking at the data; the full scan is in `results/F01_cv.json`.
 
 ### F03: the stretch ingredient matches measured spectra (`docs/findings/F03-stretch-vs-experiment.md`)
 
@@ -68,11 +68,15 @@ Predictions committed before the measured values were read (`docs/predictions/P0
 
 ### Candidate card: diaspore to delta-AlOOH (`docs/findings/CARD-AlOOH.md`)
 
-Deuteration destabilises delta-AlOOH relative to diaspore by +0.5 to +0.8 meV/atom (three models) and, in an exploratory QHA prediction at 300 K, raises the transition pressure by +1.13 GPa (ORB) and +1.33 GPa (MACE) (+0.3 to +0.4 GPa from 0 GPa geometries). The two models place the boundary 4.2 GPa apart but agree on the shift; the sign is the prediction, and proton disorder in delta-AlOOH lies outside harmonic physics. In one predeclared literature pair (goethite to ε-FeOOH) the O-H stretch falls and the assigned O-H bend rises, as predicted: nominal shifts are about -260 cm⁻¹ (from the midpoint of a 2600 to 3100 cm⁻¹ band, so anywhere from -511 to -11 cm⁻¹) against -273 predicted, and +290 against +195 cm⁻¹. The diaspore to δ-AlOOH pair was inconclusive. This is consistent with the sign of the compensating bend shift at the zone centre, not a measurement of its size or of the compensation fraction; the measured bend/stretch shift ratio (about 1.1) exceeds the model median (0.7) (`docs/findings/F04-differential-spectroscopy.md`).
+Deuteration destabilises delta-AlOOH relative to diaspore by +0.5 to +0.8 meV/atom (three models) and, in an exploratory QHA prediction at 300 K, raises the transition pressure by +1.13 GPa (ORB) and +1.33 GPa (MACE) (+0.3 to +0.4 GPa from 0 GPa geometries). The two models place the boundary 4.2 GPa apart but agree on the shift; the sign is the prediction, and proton disorder in delta-AlOOH lies outside harmonic physics.
+
+### F04: differential spectroscopy (`docs/findings/F04-differential-spectroscopy.md`)
+
+In one predeclared literature pair (goethite to ε-FeOOH) the O-H stretch falls and the assigned O-H bend rises, as predicted: nominal shifts are about -260 cm⁻¹ (from the midpoint of a 2600 to 3100 cm⁻¹ band, so anywhere from -511 to -11 cm⁻¹) against -273 predicted, and +290 against +195 cm⁻¹. The diaspore to δ-AlOOH pair was inconclusive. This is consistent with the sign of the compensating bend shift at the zone centre, not a measurement of its size or of the compensation fraction; the measured bend/stretch shift ratio (about 1.1) exceeds the model median (0.7).
 
 ### F05: blind test against measured mineral D/H fractionation (`docs/findings/F05-fractionation-test.md`)
 
-The same H/D free energies give reduced partition function ratios, so mineral-mineral differences of measured mineral-water D/H fractionation test them without any water model. Predictions for 118 structures were committed before the data were read (`docs/predictions/P04_fractionation_blind.csv`, f3ac0ac) and the comparison rule before the comparison (`docs/predictions/P04_comparison_rule.md`). Result: the sign of every scored difference (6 of 6) and the order brucite > goethite > manganite are right in all three models, and the mineral with the longer O-H bonds takes up less deuterium, as F01 implies. The magnitudes are 5 to 10 times too large and the brucite-goethite temperature trend has the wrong sign, so the preset verdict is "ordering only": harmonic partition functions of O-H minerals are known to be biased by stretch anharmonicity.
+The same H/D free energies give reduced partition function ratios, so mineral-mineral differences of measured mineral-water D/H fractionation test them without any water model. Predictions for 118 structures were committed before the data were read (`docs/predictions/P04_fractionation_blind.csv`, f3ac0ac). The comparison rule (`docs/predictions/P04_comparison_rule.md`) was committed together with its result (90ad4cd), not before it (timing note in F05). Result: the sign of every scored difference (6 of 6) and the order brucite > goethite > manganite are right in all three models, and the mineral with the longer O-H bonds takes up less deuterium, as F01 implies. The magnitudes are 5 to 10 times too large and the brucite-goethite temperature trend has the wrong sign, so the preset verdict is "ordering only": harmonic partition functions of O-H minerals are known to be biased by stretch anharmonicity.
 
 ### F06: independent reimplementation (`docs/findings/F06-independent-replication.md`)
 
@@ -88,7 +92,7 @@ The competition between O-H stretch and bend zero-point energies that underlies 
 
 ## Novelty
 
-The stretch-versus-bend competition behind F01 was derived for hydrogen-bond isotope fractionation in molecules and proteins by McKenzie et al. (J. Chem. Phys. 140, 174508 (2014); 143, 044309 (2015)). F01 is its solid-state, polymorph-stability counterpart, measured over hundreds of crystal pairs with three independent ML potentials. Bourgeois et al. (2018, J. Phys.: Condens. Matter, doi 10.1088/1361-648X/aad259) modelled H, D and T effects on gas-solid hydride formation with DFT. That effect is dominated by the zero-point energy of the H2 or D2 gas. IsoShift maps solid-solid polymorph free-energy differences, where the gas terms cancel, across hydroxides, borohydrides, alanates and hydrides with an MLIP ensemble, validated against measured volume and lattice isotope effects. The claim is this demonstrated extension, not exhaustive novelty.
+The stretch-versus-bend competition behind F01 was derived for hydrogen-bond isotope fractionation in molecules and proteins by McKenzie et al. (J. Chem. Phys. 140, 174508 (2014); 143, 044309 (2015)). F01 is its solid-state, polymorph-stability counterpart, computed over 197 crystal pairs with three separate ML models (not independent validations). Bourgeois et al. (2018, J. Phys.: Condens. Matter, doi 10.1088/1361-648X/aad259) modelled H, D and T effects on gas-solid hydride formation with DFT. That effect is dominated by the zero-point energy of the H2 or D2 gas. IsoShift maps solid-solid polymorph free-energy differences, where the gas terms cancel, across hydroxides, borohydrides, alanates and hydrides with an MLIP ensemble, validated against measured volume and lattice isotope effects. The claim is this demonstrated extension, not exhaustive novelty.
 
 ## Limitations
 
@@ -101,6 +105,8 @@ The stretch-versus-bend competition behind F01 was derived for hydrogen-bond iso
 * Open items are listed in `docs/decisions/01-gate.md`.
 
 ## How to run
+
+Tests: `.venv/Scripts/python.exe -m pytest -q -m "not live"`
 
 ```
 python -m venv .venv

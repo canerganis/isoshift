@@ -1,5 +1,7 @@
 # F01. Deuteration favours the polymorph with the shorter O-H bonds once hydrogen bonds are moderate to strong
 
+**Status: computed (three MLIPs; no polymorph isotope free energy has been measured).**
+
 ## Current statement (decision 05, numbers reproduced by `src/isoshift_event/rule_cv.py` into `results/F01_cv.json`)
 
 **Headline.** Across 197 hydrogen-compound polymorph pairs screened with three universal ML potentials, the harmonic H/D free-energy difference at 300 K changes by 0.12 to 0.15 meV per H for each mÅ difference in mean X-H length, a stretch term about half cancelled by bend and libration. When at least one polymorph has a mean model O-H length of 0.99 Å or more (a model-derived boundary for moderate to strong hydrogen bonds), deuteration favours the polymorph with the shorter O-H bonds in 123 of 130 O-H model evaluations with |Δ mean O-H| ≥ 5 mÅ (67 pairs, 23 formulas), against 82 of 130 for a constant-sign baseline fitted on leave-one-formula-out training folds.
@@ -30,9 +32,9 @@ Mechanism (mode-resolved mass integral, M01 section 6, quadrature checked agains
 Secondary tendency (weaker): oriented from the MLIP ground state to the metastable polymorph, deuteration further stabilises the ground state in 64% of covalent pairs (median +0.28 meV/H; fit intercept +0.37 meV/H at equal X-H length). No such tendency for hydridic (metal-H) compounds.
 
 ## Why it is credible
-* Three independently trained universal potentials give the same stretch slope within 5% and the same total slope within 25%.
+* Three separately trained universal potentials give the same stretch slope within 5% and the same total slope within 25%.
 * Order-of-magnitude check: the empirical red shift of O-H stretching with bond length (about 10 cm-1 per mA in hydroxides) times the harmonic H/D zero-point factor (1 - 1/sqrt2) gives about 0.18 meV/H per mA for the stretch alone; the ensemble gives 0.25.
-* The same stretch-versus-bend competition was derived by McKenzie et al. for hydrogen-bond isotope fractionation in molecules and proteins (J. Chem. Phys. 140, 174508 (2014), 10.1063/1.4873352; 143, 044309 (2015), 10.1063/1.4927391). F01 is the solid-state, polymorph-stability counterpart, obtained from an MLIP ensemble over hundreds of real and hypothetical crystal pairs.
+* The same stretch-versus-bend competition was derived by McKenzie et al. for hydrogen-bond isotope fractionation in molecules and proteins (J. Chem. Phys. 140, 174508 (2014), 10.1063/1.4873352; 143, 044309 (2015), 10.1063/1.4927391). F01 is the solid-state, polymorph-stability counterpart, obtained from an MLIP ensemble over 197 crystal pairs.
 
 ## Limits
 * Harmonic, 300 K. H-bond symmetrisation, tunnelling and proton disorder are outside the model (negative controls KDP, KOH, NaOH, delta-AlOOH).

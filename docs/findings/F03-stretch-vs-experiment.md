@@ -1,4 +1,6 @@
-# F03. The ensemble reproduces the measured O-H stretch versus hydrogen-bond length correlation
+# F03. The ensemble is consistent with the measured O-H stretch versus hydrogen-bond length correlation
+
+**Status: tested (consistency check of the stretch slope, O...O 2.50 to 2.80 Å; not a test of isotope free energies).**
 
 Test of the ingredient that carries F01: the dependence of the O-H stretch frequency on hydrogen-bond geometry. For every O-H donor in clean screened structures (`src/isoshift_event/stretch_check.py`), the Gamma-point stretch frequency is compared with the empirical correlation of Libowitzky (1999) built from measured IR/Raman spectra of minerals, nu = 3592 - 304e9 exp(-d(O...O)/0.1321) cm^-1, and with DFT (PBEsol) phonons from MDR phonondb.
 
@@ -9,7 +11,7 @@ Test of the ingredient that carries F01: the dependence of the O-H stretch frequ
 | MatterSim | 178 | -12 cm^-1 | 173 cm^-1 |
 | DFT PBEsol (MDR) | 27 | +53 cm^-1 | 266 cm^-1 |
 
-All three potentials follow the measured curve over 2.5 to 3.2 A without a large systematic offset, and scatter less than the DFT reference set (figure `figures/fig5_stretch_check.png`). Harmonic frequencies are compared with anharmonic measured fundamentals, so a positive offset of order 100 cm^-1 would be expected; the near-zero offset may reflect the MLIPs' slight H-bond overbinding cancelling it.
+Averaged over all donors (2.5 to 3.2 A), the three potentials show no large systematic offset (mean residuals above) and scatter less than the DFT reference set (figure `figures/fig5_stretch_check.png`). The mean residuals hide the slope: only 2.50 to 2.80 A is checked against the measured slope, and above 2.80 A two models are 2 to 3 times too steep (windowed section below). Harmonic frequencies are compared with anharmonic measured fundamentals, so a positive offset of order 100 cm^-1 would be expected; the near-zero offset may reflect the MLIPs' slight H-bond overbinding cancelling it.
 
 Scope: this is a consistency check on the stretch slope against O...O, not a validation of isotope free energies. Above 2.80 A the picture changes (see the windowed analysis below). The wrong-sign blind volume isotope effects for strongly H-bonded oxyhydroxides (F02) are a separate question, the volume derivative (Gruneisen and anharmonic, Ubbelohde-type geometric isotope effects), which harmonic QHA cannot describe.
 
