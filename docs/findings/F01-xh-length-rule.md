@@ -30,3 +30,6 @@ Secondary tendency (weaker): oriented from the MLIP ground state to the metastab
 
 ## What it is useful for
 A structure-only predictor: from two crystal structures (no phonons), the X-H length difference estimates which polymorph deuteration favours and by how much. This can be applied to every H-containing polymorph pair in a database in seconds, and it tells neutron crystallographers when a deuterated sample may not be the same phase balance as the protonated one.
+
+## Out-of-sample test (leave one chemical family out, `src/isoshift_event/rule_cv.py`, `results/F01_cv.json`)
+Each formula family is removed, the line is refitted on the rest, and the held-out family is predicted. Pooled over models (312 pair-model rows, 57 families): held-out R^2 = 0.62; sign accuracy 86% for |dX-H| >= 5 mA (150 rows) against 67% for the best constant-sign baseline; 70% over all rows. Per model at |dX-H| >= 5 mA: ORB 98%, MatterSim 79%, MACE 76%. The rule transfers to chemistries it was not fitted on.

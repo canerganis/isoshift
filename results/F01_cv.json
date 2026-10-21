@@ -1,0 +1,38 @@
+{
+ "mace": {
+  "n": 161,
+  "families": 50,
+  "sign_acc_all": 0.658,
+  "sign_acc_dXH_ge_5mA": 0.757,
+  "n_ge_5mA": 70,
+  "baseline_sign_acc_ge_5mA": 0.657,
+  "R2_heldout": 0.547
+ },
+ "mattersim": {
+  "n": 37,
+  "families": 23,
+  "sign_acc_all": 0.622,
+  "sign_acc_dXH_ge_5mA": 0.789,
+  "n_ge_5mA": 19,
+  "baseline_sign_acc_ge_5mA": 0.684,
+  "R2_heldout": 0.773
+ },
+ "orb": {
+  "n": 114,
+  "families": 30,
+  "sign_acc_all": 0.763,
+  "sign_acc_dXH_ge_5mA": 0.984,
+  "n_ge_5mA": 61,
+  "baseline_sign_acc_ge_5mA": 0.672,
+  "R2_heldout": 0.641
+ },
+ "pooled": {
+  "n": 312,
+  "families": 57,
+  "sign_acc_all": 0.696,
+  "sign_acc_dXH_ge_5mA": 0.86,
+  "n_ge_5mA": 150,
+  "baseline_sign_acc_ge_5mA": 0.667,
+  "R2_heldout": 0.618
+ }
+}
