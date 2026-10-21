@@ -38,7 +38,7 @@ def main():
     ax.axvspan(-5, 5, color="0.9", zorder=0)
     ax.set_xlabel("change in mean X-H bond length (mA)")
     ax.set_ylabel(r"$\Delta\Delta F_{iso}$ at 300 K (meV per H)")
-    ax.set_title("Sign rule holds in the strong regime: 128/134")
+    ax.set_title("Sign rule by regime (all covalent, signal cut): strong 128/134, weak 1/16")
     ax.legend(fontsize=7.5, loc="upper left")
     ax = axes[0]
     for m, g in c.groupby("model"):
