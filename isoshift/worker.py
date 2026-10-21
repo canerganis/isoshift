@@ -28,7 +28,7 @@ def _read(cif):
 
 
 def harmonic_job(cif: str, calc_name: str, device="cuda", min_length=10.0, max_atoms=None, fmax=0.001, relax_cell=True,
-                 mesh=None, temps=(300.0,), subs=None, supercell=None, steps=500) -> dict:
+                 mesh=None, temps=(300.0,), subs=None, supercell=None, steps=500, calc=None) -> dict:
     """Relax, force constants (cached), harmonic ZPE and F(T) for each mass variant."""
     from . import phonons as P
     from .calculators import MAX_ATOMS, calculator_info, get_calculator
@@ -37,7 +37,7 @@ def harmonic_job(cif: str, calc_name: str, device="cuda", min_length=10.0, max_a
     max_atoms = max_atoms or MAX_ATOMS[calc_name]
 
     subs = subs or {"H": {}, "D": {"H": "D"}}
-    calc = get_calculator(calc_name, device)
+    calc = calc if calc is not None else get_calculator(calc_name, device)
     info = calculator_info(calc)
     cid = f"{info['name']}-{info['model']}"
     atoms = _read(cif)
@@ -63,13 +63,14 @@ def harmonic_job(cif: str, calc_name: str, device="cuda", min_length=10.0, max_a
     return out
 
 
-def qha_job(cif: str, calc_name: str, device="cuda", **kw) -> dict:
+def qha_job(cif: str, calc_name: str, device="cuda", calc=None, **kw) -> dict:
     from .calculators import MAX_ATOMS, calculator_info, get_calculator
     from .qha import qha_gibbs
 
-    kw.setdefault("max_atoms", MAX_ATOMS[calc_name])
+    if "max_atoms" not in kw:
+        kw["max_atoms"] = MAX_ATOMS[calc_name]
 
-    calc = get_calculator(calc_name, device)
+    calc = calc if calc is not None else get_calculator(calc_name, device)
     info = calculator_info(calc)
     variants = kw.pop("variants", None) or {"H": {}, "D": {"H": "D"}}
     return qha_gibbs(_read(cif), calc, f"{info['name']}-{info['model']}", variants, **kw)
