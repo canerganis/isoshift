@@ -32,7 +32,11 @@ def _job(args):
 
     validate.PRIM = ROOT / "data" / "isoshift" / "structs"
     r = json.loads((RAW / model / f"{sid}.json").read_text())
-    temps, vols, v, diag = validate._vie_case(sid, r)
+    try:
+        temps, vols, v, diag = validate._vie_case(sid, r)
+    except (FileNotFoundError, RuntimeError, ValueError) as exc:  # recorded, never silently dropped
+        print(f"skip {sid} {model}: {exc}", flush=True)
+        return []
     rows = []
     for T in TEMPS_REPORT:
         it = int(np.argmin(np.abs(temps - T)))
