@@ -64,13 +64,13 @@ Where hydrogen bonds are moderate or
 
 14
 00:01:07,827 --> 00:01:13,762
-strong, deuteration favours the shorter
-O-H bonds in 185 of 212 model evaluations.
+strong, deuteration favours the polymorph
+with the shorter O-H bonds in 185 of 212
 
 15
 00:01:13,782 --> 00:01:17,321
-A baseline that always guesses one sign
-gets 131.
+model evaluations. A baseline that always
+guesses one sign gets 131.
 
 16
 00:01:17,341 --> 00:01:23,349
@@ -122,13 +122,13 @@ possible deep-Earth water carrier.
 
 26
 00:02:00,284 --> 00:02:05,165
-The measured boundary near 18 gigapascal
-is at high temperature.
+The measured boundary lies at higher
+pressure and high temperature.
 
 27
 00:02:05,185 --> 00:02:10,984
-Our 300 kelvin models put it at about 9 to 13
-gigapascal, and both say deuteration
+Our 300 kelvin models put it at about 9 to
+13 gigapascal, and both say deuteration
 
 28
 00:02:11,004 --> 00:02:16,881
