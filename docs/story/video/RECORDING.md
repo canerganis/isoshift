@@ -24,6 +24,21 @@ Target length 3:40. Hard limit 4:00 (YouTube upload, judging cut-off). Narration
 | 8 | 3:08 to 3:21 | Browser window (marimo app) | Banner, Check a pair, How we know | See the click path below. |
 | 9 | 3:21 to 3:40 | `slide_08_limits_repo.png` | Limits ("Blind tests: F07 ice boundaries failed, F02 mixed (details in repo)") and https://github.com/canerganis/isoshift | Read the limits paragraph. Hold the slide 2 s after the last word. |
 
+## LinkedIn face intro (4 s, LinkedIn version only)
+
+The judged YouTube video stays as frozen (decision 09: narration unchanged). The LinkedIn copy gets a 4 s face intro in front of it.
+
+1. OBS: add scene 0 `Webcam` with a Video Capture Device source stretched to 1920x1080. Face lit from the front, plain background.
+2. Record one take: start on scene 0, look at the camera and say "Hi, I'm Can. This is IsoShift." (about 3 s), switch to scene 1 at 0:04 and carry on with the script as normal.
+3. LinkedIn file is that take as recorded. Captions: `captions_linkedin.srt` (same cues shifted by 4 s plus the intro line, built by `make_linkedin_srt.py`).
+4. YouTube file is the same take with the first 4 s cut off (re-encode so the cut is frame exact):
+
+```bash
+ffmpeg -ss 4 -i take.mkv -c:v libx264 -crf 18 -c:a aac -b:a 192k youtube.mp4
+```
+
+Check that `youtube.mp4` opens on the title slide with no webcam frame, then upload it with `captions.srt` as below. If the switch to scene 1 came late, raise `-ss` to match.
+
 ## Click path in the marimo app (scene 8, 13 s)
 
 1. Start on the "F01 isotope rule" tab (banner visible, 2 s). Do not touch the sliders.
