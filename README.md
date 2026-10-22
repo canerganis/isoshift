@@ -54,7 +54,7 @@ Sign convention: ddF_iso = [F_D(b) - F_D(a)] - [F_H(b) - F_H(a)] for polymorphs 
 
 Each step of the loop is logged so it can be checked.
 
-1. A Valency Bond literature agent extracts the experimental validation numbers (value, unit, temperature, pressure, DOI). Bond queries are counted in the log. Every query, its purpose and what was kept are in `logs/bond_queries.jsonl`.
+1. Valency Bond literature agents find the experimental validation numbers (value, unit, temperature, pressure, DOI). Every query, its purpose and what was kept are in `logs/bond_queries.jsonl`: 182 rows, 85 sweep rows plus 97 agent rows (20 prior-art checks, 26 atlas-test queries plus one re-log, 9 ice-boundary queries, 41 other validation lookups; recount with `python -m src.isoshift_event.bond_counts`). Of 11 sweep items, 9 came back 'ok' in one pass and 2 became quantitative targets, and the board caught a reference value off by 2x. Not every measured value came through Bond: the [extraction audit](docs/story/agent_extraction_audit.md) gives each cited source with its log line numbers or 'no matching log row'.
 2. A second model cross-checks every extracted row against its source (`data/isoshift/validation.csv`).
 3. Every formula in the code went through `mathcheck`: two separate derivations by two models, a numerical comparison, then reconciliation (`docs/math/M01-isotope-formulas.md`).
 4. The MLIP ensemble computes the free energies (`src/isoshift_event/`).
