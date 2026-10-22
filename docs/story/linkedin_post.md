@@ -16,5 +16,6 @@ Thanks to @Ben Blaiszik, @University of Chicago and @Materials Discovery Researc
 
 Video: https://youtu.be/X8ckZ7dV40Y
 Code and data: https://github.com/canerganis/isoshift
+Archived release (DOI): https://doi.org/10.5281/zenodo.23578412
 
 #materialsscience #AIforScience #machinelearning #crystallography #OSIHackathon
