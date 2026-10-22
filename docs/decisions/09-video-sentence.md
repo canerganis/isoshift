@@ -1,0 +1,72 @@
+# 09. Video sentence after F09: SKIP. The video stays as frozen. F09 gets a small erratum on the H3 scope, the H4 label and the 600 K quadrature disclosure.
+
+Chair: Opus, 22 Oct. Members: Opus, Astra, Gemini 4 Argon (rounds 1 and 2, all answered). Weighed by argument, not by vote; Astra's physics and math carry the most weight. Every number this decision depends on was recomputed by the chair from committed files with `chair09.py`, `chair09b.py` and `chair09c.py` (session temp folder), through `f09_temperature.headline()`, `results/post_freeze/T{0,300,600}/decompose_pairs.csv`, `results/post_freeze/F09_temperature.json` and `docs/story/video_script.md`.
+
+Binding frame: decision 07's headline stays word for word, and decision 08 action 9 governs the video gate. F09 is a post-freeze addendum; nothing here changes `results/post_freeze/F09_temperature.json`, the predeclared row set or any verdict.
+
+## Decision
+
+1. **SKIP. No "after the freeze" sentence in the video.** `docs/story/video_script.md` narration stays byte for byte as it is. No fallback wording is kept on file for the video; any later sentence needs a new council.
+2. **F09 erratum (post-freeze addendum, no number or verdict changes):** narrow the H3 interpretation, qualify H4 in the title, status line and verdict table, add the mp-985293 cleanliness count and the quadrature-vs-direct sign check at 600 K, fix the predeclaration chronology, and soften "is the room-temperature side of" to "is consistent with". Same wording fix in the F09 row of `docs/INDEX.md`.
+3. **Script word-count line.** Line 21 of the script says 458; the recount is 459. Correct that one metadata line in its own commit. It is not narration, and this decision authorizes it as the only diff to the script.
+
+## Why
+
+**(1) Is the decision 08 sentence accurate?** Mostly, but not cleanly. Recomputed: mp-985293 rows have the F01 sign in 0 of 28 at 0 K, 8 of 28 at 300 K and 28 of 28 at 600 K, and quadrature and direct ddF agree in sign on all 28 at every temperature (smallest |ddF_direct| at 600 K 0.134 meV/atom, largest quadrature-direct gap 0.012). Three looseness points:
+* "In all three models" is false for one of the ten pairs: mp-37836__mp-985293 has only a MACE row in the headline (MACE 10, ORB 9, MatterSim 9 rows). The 28 are evaluations, not 10 pairs times 3 models.
+* "Break the rule at room temperature" holds at pair majority, but MatterSim already follows the rule at 300 K in 8 of its 9 rows (crossover below the 300 K grid start).
+* "We ran the same calculations" is loose: the 0, 600 and 2000 K total free energies were written by `refine.py` before the freeze. What is new after the freeze is the stretch/perp decomposition and the four predeclared tests.
+
+**(2) Help or hurt with materials-science judges?** Hurt. Without the causal clause (forbidden because H1 failed, 98 of 212 = 46.2% against an 80% bar), the sentence says only that the counterexample goes away when the temperature is raised. A judge hears that as moving to the regime where the textbook Bigeleisen-Mayer trace limit makes the stiff O-H stretch win anyway. 600 K (327 °C) is also above where gibbsite-type Al(OH)3 dehydroxylates, and the video has no room for "harmonic isotope term at fixed 0 K geometry, not phase stability". The current script already ends that shot on its strongest credibility line ("We chose that boundary after seeing the data, and we say so"); a post-freeze temperature line right after it dilutes it.
+
+**(3) The rewording alternatives do not rescue it.**
+* Word cap: narration is 459 words (recounted). Decision 08 sentence 31 words gives 490; Argon's 30-word fallback gives 489; both break the ≤ 480 done-check. Opus's 21-word sentence lands at exactly 480 with no slack, and the 0:48 to 1:37 shot already carries 116 words in 49 s.
+* Argon's "cross over to follow it between 317 and 506 kelvin" is wrong as a pair statement. Recomputed pair-majority flip temperatures: ORB's crossover (317 to 406 K) in eight pairs where MatterSim is already right, 370 K in mp-985293__JVASP-29795 (MatterSim 318, ORB 370, MACE 441), and 438 K in mp-37836__mp-985293 (MACE only). So the pair-level range is 317 to 438 K, not 317 to 506 K, and Opus's round 2 figure of 317 to 406 K misses the single-model pair.
+* Opus's "bending and libration win only below a model-dependent crossover" is not the forbidden causal clause, but Astra is right that endpoint tests plus a 300 to 600 K grid do not show a single crossing, and MatterSim's crossings below 300 K are unresolved.
+* Script line 3 says temperature dependence stays out of the video; any sentence would also need a header edit.
+* Decision 08 ruling 4: any doubt at 16:00 means no sentence. All three members now say SKIP.
+
+**(4) Is F09 honest and complete?** Honest on the verdicts, and the Disclosure is now complete on H4: it names the bug (trace difference taken in `pair_id` order instead of struct_b minus struct_a from `results/screen_pairs_refined.csv`), gives the 124 then 211 history, and backs the fix with a frame check that does not depend on H4 (struct order reproduces frozen x in 212 of 212 headline rows, `pair_id` order in 125). It also retracts the earlier p2s attribution of dfacd79. An orientation fix verified against frozen x is a bug fix, not tuning. The 600 K quadrature cleanliness (190 of 212) and the 25 K crossover grid are already in the text. What remains is scope:
+* H3 overreach. The Teller-Redlich sum on |ω²| is a determinant identity of the mass-scaled dynamical matrix. Passing it shows mass scaling and mode counts are intact on the mesh; it does not test the force field, positive frequencies, the treatment of imaginary modes in the thermal sum, or quadrature. "Not an artefact of missing or broken modes" and "not a numerical artefact (H3)" claim more than that. The quadrature-vs-direct sign agreement (212 of 212 headline rows at 0, 300 and 600 K, recomputed) is the separate check that covers quadrature.
+* H4 label. P09 says each hypothesis is scored once. The title, status line and verdict table say plain PASS; the qualifier lives only in the footer.
+* H4 scope. The stretch scale is about 5000 K, so ħω/kT ≈ 2.5 at 2000 K. H4 is a sign agreement with the trace-limit prediction, not a demonstration that 2000 K is asymptotic. "The high-temperature trace limit holds" (title) should say what was tested.
+* 600 K cleanliness on the subset that the H2 verdict rests on: 24 of 28 mp-985293 rows are quadrature-clean at 600 K (all 28 clean at 0 and 300 K); signs unchanged under direct ddF.
+* Chronology. "Pushed before any run at a temperature other than 300 K" should say decomposition run; the total free energies at 0, 600 and 2000 K predate P09 and were already re-scored in decision 08.
+* "F01 is a thermal rule" (title, INDEX) and "F01 is the room-temperature side of the classical trace rule" read stronger than a sign test with H1 failing supports.
+
+## Where the members converged
+
+1. The decision 08 sentence is not used: it breaks the 480-word check and leads with 600 K (all three, round 2).
+2. SKIP, video unchanged (Astra both rounds, Argon both rounds, Opus round 2).
+3. H2 and H3 pass as computed; H1 fails; no causal clause anywhere in the video (all three).
+4. The H4 Disclosure now names the bug correctly as pair orientation, not on-site indexing (Opus and Argon round 2, Astra accepts the audit trail).
+5. F09 needs the 600 K subset cleanliness and direct-sign check stated, H3 narrowed, and H4 qualified in the table (all three round 2).
+
+## Remaining disagreement
+
+1. **Fallback sentence on file.** Opus wanted a 20-word fallback kept in case of overrule; Astra objects to "win only below". Ruling: no fallback on file. The SKIP is not close, and a stored sentence invites a late edit during recording.
+2. **Independent H4 trace recompute.** Astra wants it before packaging, Opus calls it optional, Argon considers his code reading sufficient. Ruling: optional, after P10 and recording, because H4 carries no weight for any frozen claim or for this gate. Until done, H4 is cited only as "consistent with the textbook trace limit", never as evidence.
+3. **Pair-level crossover range.** Opus round 2 gave 317 to 406 K. Ruling: 317 to 438 K (chair recompute, above). It goes nowhere public; F09 keeps the per-model ranges.
+
+## Ordered action list for the conductor
+
+| # | Action | Owner | Time | Done-check |
+|---|---|---|---|---|
+| 1 | **No video sentence.** Do not touch the narration column of `docs/story/video_script.md`. Change only line 21 to "Spoken words in the narration column: 459 (about 3.5 minutes at 130 words per minute, before pauses)." Commit "video script: word count 459 (recount, decision 09); narration unchanged". | Opus | 2 min | `git diff HEAD~1 -- docs/story/video_script.md` shows one changed line, line 21; `grep -c "after the freeze" docs/story/video_script.md` is 0; `grep -n "185 of 212" docs/story/video_script.md` unchanged. |
+| 2 | **F09 title and status.** Title: "F09. At fixed geometry mp-985293 follows F01 above a model-dependent crossover (MatterSim mostly below 300 K, ORB 317 to 406 K, MACE 431 to 506 K), 2000 K signs agree with the trace-limit prediction, but the zero-point weighting test fails". Status line: "H1 failed, H2 passed, H3 passed, H4 passed after a disclosed orientation fix (first run 124 of 212)"; replace "pushed before any run at a temperature other than 300 K" with "pushed before any decomposition run at a temperature other than 300 K; the 0, 600 and 2000 K total free energies were stored before the freeze and re-scored in decision 08". | Opus | 3 min | `grep -n "thermal rule\|limit holds" docs/findings/F09-temperature-crossover.md` is empty; `grep -n "decomposition run" docs/findings/F09-temperature-crossover.md` hits the status line. |
+| 3 | **F09 verdict table, H4 cell:** "**PASS** after orientation fix (first run 124 of 212, see Disclosure)". | Opus | 1 min | `grep -n "first run 124" docs/findings/F09-temperature-crossover.md` hits the table row. |
+| 4 | **F09 Results, 600 K cleanliness:** after "190 of 212 at 600 K, where omitted soft modes in the direct sum weigh more." add "Among the 28 mp-985293 rows, 24 are clean at 600 K (all 28 at 0 and 300 K; largest gap 0.012 meV/atom). Quadrature and direct ddF give the same sign in all 212 headline rows at 0, 300 and 600 K, so the counts 153, 185, 210 and the mp-985293 28 of 28 do not depend on the quadrature; the smallest \|ddF_direct\| among those 28 rows at 600 K is 0.134 meV/atom." | Opus | 3 min | `grep -n "24 are clean" docs/findings/F09-temperature-crossover.md` returns one line. |
+| 5 | **F09 H3 scope.** Replace "No row is numerically compromised by this test, so the temperature result for mp-985293 is not an artefact of missing or broken modes." with "No row is flagged by this test. The rule is a determinant identity of the mass-scaled dynamical matrix, so passing it shows that mass scaling and mode counts are intact on the mesh; it does not test the force field or the treatment of imaginary modes. The quadrature is covered separately by the direct-sign check above." In the Verdict paragraph replace "not a numerical artefact (H3)" with "not a mass-scaling or quadrature artefact (H3 and the direct-sign check)". | Opus | 3 min | `grep -n "missing or broken modes\|not a numerical artefact" docs/findings/F09-temperature-crossover.md` is empty. |
+| 6 | **F09 H4 and Verdict wording.** H4 heading: "H4, 2000 K signs against the trace-limit prediction: PASS after orientation fix, 211 of 212". Add after the per-model counts: "With the stretch near 5000 K, ħω/kT is about 2.5 at 2000 K, so this is a sign test, not a check that 2000 K is asymptotic." Verdict: "F01 tested at 300 K is the room-temperature side of" becomes "the F01 sign at 300 K is consistent with". Last Verdict sentence: append "Decision 09 skipped the sentence: the video is unchanged." | Opus | 4 min | `grep -n "sign test\|consistent with\|Decision 09" docs/findings/F09-temperature-crossover.md` returns three lines. |
+| 7 | **INDEX row for F09.** Replace "F01 is a thermal rule." with "Fixed-geometry harmonic result; not in the video (decision 09)." and "high-T trace limit 211 of 212 (H4 pass after a disclosed rerun)" with "2000 K trace-limit signs 211 of 212 (H4 pass after a disclosed orientation fix)". Add a decision 09 row next to decision 08. | Opus | 3 min | `grep -n "thermal rule" docs/INDEX.md` is empty; `grep -n "09-video-sentence" docs/INDEX.md` returns one line. |
+| 8 | **Commit and verify.** One commit for actions 2 to 7 plus this file: "F09 erratum (post-freeze addendum): H3 scope, H4 label, 600 K subset cleanliness; decision 09 video SKIP". | Opus | 3 min | `git diff --stat HEAD~1` lists only `docs/findings/F09-temperature-crossover.md`, `docs/INDEX.md`, `docs/decisions/09-video-sentence.md`; `git diff HEAD~1 -- results/` is empty; decision 08 action 11 grep gate (`git grep -n -e "210/212" -e "210 of 212" -e "600 K" -- README.md docs/story/writeup.md figures app`) still clean. |
+| 9 | **Optional, only after P10 and recording:** independent recompute of per-row Δ Tr K_H from cached `phonopy_params.yaml` with struct_a/struct_b orientation; one line in F09 with the count, pass or fail. | Opus or Astra | 30 min | F09 gains one line naming the script and its count against 211 of 212. |
+
+Order: 1 now; 2 to 8 in one sitting (about 20 min); 9 last and only if time allows. None of this touches the GPU or the P10 queue.
+
+## What would change this
+
+1. **Can asks for a temperature line after watching a rehearsal.** Not by the conductor: a new council with a sentence of at most 20 words (the cap leaves 21), no number above 400 K, no causal clause, and the header line 3 edited in the same diff.
+2. **A judge-facing written channel needs the temperature fact.** It goes in the post-freeze addendum of `docs/story/writeup_long.md` with the fixed-geometry caveat and the H1 failure stated next to it, never in the README headline or the one-page summary.
+3. **The optional H4 recompute disagrees with 211 of 212** by more than a handful of rows: F09 records H4 as unverified and the INDEX row drops the H4 count. No effect on the video or the frozen headline.
+4. **Someone finds an imaginary mode or a quadrature problem in an mp-985293 structure that flips a 600 K sign under direct ddF:** the 28 of 28 becomes the clean-row count and F09 says so. Recomputed today, no such row exists.

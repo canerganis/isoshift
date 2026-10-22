@@ -18,7 +18,7 @@ All numbers are the frozen values of 22 Oct (`results/F01_cv.json`, decision 07)
 | 3:08 to 3:21 | marimo app: "Check a pair" tab, pick delta-AlOOH vs diaspore, then the Bond provenance trace | Everything runs in an open marimo app. Pick a pair and see the model numbers, the rule's call, and the Bond query behind each measured value. |
 | 3:21 to 3:40 | Slide: limits, then repository URL | Limits. One blind test came out mixed. The physics is harmonic, with no proton tunnelling. The potentials are trained on similar data, so three models agreeing is not three validations. Code, data and every decision are public. |
 
-Spoken words in the narration column: 458 (about 3.5 minutes at 130 words per minute, before pauses).
+Spoken words in the narration column: 459 (about 3.5 minutes at 130 words per minute, before pauses).
 
 ## Turkish reading draft (for Can, not recorded)
 
