@@ -1,0 +1,31 @@
+{
+ "OO_threshold_A": 2.929,
+ "o_bearing_formulas": 2722,
+ "oh_structures": 3212,
+ "duplicates_merged": 14,
+ "pairs": 1796,
+ "formulas_with_pairs": 317,
+ "regime": {
+  "strong": 1488,
+  "weak": 292,
+  "undefined": 16
+ },
+ "confidence": {
+  "conflict": 524,
+  "high": 503,
+  "medium": 386,
+  "low": 383
+ },
+ "both_experimental": 218,
+ "strong_and_both_experimental": 185,
+ "strong_and_both_experimental_formulas": 122,
+ "strong_both_exp_confidence": {
+  "high": 62,
+  "conflict": 51,
+  "low": 43,
+  "medium": 29
+ },
+ "time_total_s": 52.6,
+ "time_geometry_s": 8.6,
+ "time_per_pair_s": 0.0293
+}
