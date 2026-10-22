@@ -200,7 +200,17 @@ def slide_02():
 
 def slide_03():
     fig, ax = canvas(2)
-    title(ax, "The short-bond rule: shorter O-H bonds win")
+    r = fig.canvas.get_renderer()  # title with the rule name set off in the rule's colour (as on the title chip)
+    t1 = text(ax, X0, 100, "The short-bond rule:", 72, ORANGE, "bold")
+    w1 = t1.get_window_extent(renderer=r).width
+    sp = text(ax, 0, -500, "a a", 72, INK, "bold")
+    ws = sp.get_window_extent(renderer=r).width
+    sp.remove()
+    sp = text(ax, 0, -500, "aa", 72, INK, "bold")
+    ws -= sp.get_window_extent(renderer=r).width
+    sp.remove()
+    text(ax, X0 + w1 + ws, 100, "shorter O-H bonds win", 72, INK, "bold")
+    ax.add_patch(Rectangle((X0, 186), w1, 6, color=ORANGE, lw=0))
     image_card(ax, ROOT / "figures" / "fig_headline.png", X0 + 14, 214, 1110)
     x = 1300
     text(ax, x, 220, "220", 120, BLUE, "bold", family=NUM)
@@ -427,6 +437,51 @@ def slide_08():
     save(fig, "slide_08_limits_repo.png")
 
 
+def intro_frames(seconds=6.5):
+    """Cold open: a drifting lattice and two vibrating bonds, O-H fast and O-D slower (0.73x, harmonic, reduced masses)."""
+    import math
+    d = OUT / "anim" / "intro"
+    d.mkdir(parents=True, exist_ok=True)
+    n = int(seconds * 30)
+    for k in range(n):
+        t = k / 30
+        fig = plt.figure(figsize=(W / DPI, H / DPI), dpi=DPI)
+        fig.patch.set_facecolor(BG)
+        ax = fig.add_axes([0, 0, 1, 1])
+        ax.set_xlim(0, W)
+        ax.set_ylim(H, 0)
+        ax.axis("off")
+        a_all = min(1.0, t / 1.4)
+        for gx in range(-1, 26):  # lattice drifting slowly to the left
+            for gy in range(0, 15):
+                x = gx * 80 + 40 - (t * 18) % 80
+                y = gy * 80 + 20 + (40 if gx % 2 else 0)
+                ax.add_patch(Circle((x, y), 4, color=FAINT, alpha=0.55 * a_all, lw=0))
+        a_txt = max(0.0, min(1.0, (t - 0.8) / 0.9))
+        text(ax, W / 2, 150, "Swap hydrogen for deuterium.", 70, INK, "bold", ha="center", alpha=a_txt)
+        for row, (iso, col, f, amp, label) in enumerate(((("H", BLUE, 3.0, 26, "O-H stretch")),
+                                                         ("D", ORANGE, 3.0 * 0.728, 20, "O-D stretch"))):
+            y = 470 + row * 210
+            x_o = 640
+            x_h = x_o + 240 + amp * math.sin(2 * math.pi * f * t)
+            zz = 14  # spring
+            xs = [x_o + 46 + (x_h - 34 - x_o - 46) * i / zz for i in range(zz + 1)]
+            ys = [y + (16 if i % 2 else -16) * (0 < i < zz) for i in range(zz + 1)]
+            ax.plot(xs, ys, color=INK, lw=4, alpha=a_all, solid_joinstyle="round")
+            ax.add_patch(Circle((x_o, y), 46, color=VERM, lw=0, alpha=a_all))
+            text(ax, x_o, y + 2, "O", 40, BG, "bold", ha="center", va="center", alpha=a_all)
+            ax.add_patch(Circle((x_h, y), 34, color=col, lw=0, alpha=a_all))
+            text(ax, x_h, y + 2, iso, 36, BG, "bold", ha="center", va="center", alpha=a_all)
+            text(ax, 1020, y - 20, label, 44, col, "bold", alpha=a_all)
+        a_ratio = max(0.0, min(1.0, (t - 2.4) / 0.8))
+        text(ax, 1020, 790, r"$\nu$(O-D) $\approx$ 0.73 $\nu$(O-H): heavier, slower", 38, MUTED, alpha=a_ratio)
+        a_q = max(0.0, min(1.0, (t - 3.6) / 1.0))
+        text(ax, W / 2, 900, "Which crystal structure wins?", 64, BLUE, "bold", ha="center", alpha=a_q)
+        fig.savefig(d / f"f{k:03d}.png", dpi=DPI, facecolor=BG)
+        plt.close(fig)
+    print("intro", n, "frames")
+
+
 ANIMATED = {"slide_01_title": "slide_01", "slide_03b_counts_zoom": "slide_03b", "slide_03c_weak_side_zoom": "slide_03c",
             "slide_04_stretch_check": "slide_04", "slide_05_alooh_card": "slide_05"}
 
@@ -449,3 +504,4 @@ if __name__ == "__main__":
               slide_07, slide_07c, slide_07b, slide_08):
         f()
     render_animations()
+    intro_frames()
