@@ -12,7 +12,7 @@ Reading order for a judge. One line per document. Times are 21 Oct 2026, +0300, 
 
 | id | file | status | one line |
 |---|---|---|---|
-| F01 | [F01-xh-length-rule.md](findings/F01-xh-length-rule.md) | computed | Deuteration favours the polymorph with shorter O-H bonds in 123 of 130 O-H evaluations once H bonds are moderate to strong (mean O-H ≥ 0.99 Å); fails below (1 of 16). |
+| F01 | [F01-xh-length-rule.md](findings/F01-xh-length-rule.md) | computed | Deuteration favours the polymorph with shorter O-H bonds in 185 of 212 O-H evaluations once H bonds are moderate to strong (model mean O-H ≥ 0.99 Å; baseline 131/212; pairs 74 right, 10 wrong, all 10 contain Al(OH)3 mp-985293); fails below (2 of 20). Frozen numbers, decision 07. |
 | F03 | [F03-stretch-vs-experiment.md](findings/F03-stretch-vs-experiment.md) | tested | Model O-H stretch slope against O...O matches the measured Libowitzky correlation in 2.50 to 2.80 Å (f 0.91 to 0.95); consistency check on the stretch term only. |
 | F02 | [F02-blind-test.md](findings/F02-blind-test.md) | tested | Prediction-first volume isotope effects (P01): mixed; hydrides and brucite right, two strong-H-bond oxyhydroxides wrong against weak data; does not test F01. |
 | F04 | [F04-differential-spectroscopy.md](findings/F04-differential-spectroscopy.md) | tested | Predeclared O-H stretch and bend shifts (P02, P03): sign-level consistency for goethite to ε-FeOOH, two pairs inconclusive. |
