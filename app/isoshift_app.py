@@ -383,7 +383,8 @@ def _(mo):
     mo.md("""
     # IsoShift
     For hydrogen compounds with two polymorphs, IsoShift computes harmonic free energies with H and with D from the same
-    ML-potential force constants (four models), and reports how deuteration shifts the relative stability, ddF_iso(T) in meV/atom.
+    ML-potential force constants, and reports how deuteration shifts the relative stability, ddF_iso(T) in meV/atom.
+    Three models (MACE, ORB, MatterSim) give every number; SevenNet votes on signs only. The F01 headline is per H.
     """)
     return
 
@@ -529,7 +530,7 @@ def _(mo):
 @app.cell
 def _(data, mo):
     f01 = f01_frame(data)
-    thr = mo.ui.slider(0.97, 1.03, step=0.005, value=0.99, label="Strong-regime threshold, max X-H (A)", show_value=True)
+    thr = mo.ui.slider(0.97, 1.03, step=0.005, value=0.99, label="Exploratory boundary, larger mean O-H of the pair (Å)", show_value=True)
     f01_models = mo.ui.multiselect(options=MODELS[:3], value=MODELS[:3], label="Models")
     _fl = sorted(f01.formula.unique()) if len(f01) else []
     hl = mo.ui.dropdown(options=["(none)"] + _fl, value="(none)", label="Highlight formula")
@@ -569,8 +570,8 @@ def _(f01, f01_banner, f01_models, f01_posthoc, hl, mo, thr):
         _kw = dict(oh_only=True) if _oh else dict(y_min=0.1)
         _k, _n, _b = sign_rule(_d, thr.value, **_kw)
         _kw_, _nw, _bw = sign_rule(_d, thr.value, weak=True, **_kw)
-        _label = ("O-H pairs, |dX-H| >= 5 mA, no cut on ddF" if _oh
-                  else "all covalent X-H, |dX-H| >= 5 mA, |ddF| > 0.1 meV/H (signal cut)")
+        _label = ("O-H pairs, |Δ mean O-H| >= 5 mÅ, no cut on ddF" if _oh
+                  else "all covalent X-H, |dX-H| >= 5 mÅ, |ddF| > 0.1 meV/H (signal cut)")
         _fig, (_a1, _a2) = plt.subplots(1, 2, figsize=(11, 4.2))
         for _flag, _col, _lab in ((False, "tab:blue", "weak"), (True, "tab:red", "strong")):
             _g = _d[_d.strong == _flag]
@@ -595,7 +596,7 @@ def _(f01, f01_banner, f01_models, f01_posthoc, hl, mo, thr):
         f01_tab = mo.vstack([
             f01_banner,
             mo.vstack([thr, f01_models, hl]),
-            mo.md(f"Interactive recount at the slider settings: sign rule right {_k} of {_n} "
+            mo.md(f"Exploratory recount at the slider settings, not the frozen result: sign rule right {_k} of {_n} "
                   f"({_label}) | leave-one-formula-out constant-sign baseline: {_b} of {_n} "
                   f"| weak side: {_kw_} of {_nw} _(precomputed)_"),
             _fig,

@@ -5,7 +5,7 @@ Reading order for a judge. One line per document. Times are 21 and 22 Oct 2026, 
 ## Start here (2 minutes)
 
 1. `README.md`: what IsoShift computes, the F01 headline, results table, limits, how to run.
-2. `docs/decisions/05-final-claims.md`: the binding claim wording, the numbers behind it and what was narrowed (with the Argon addendum).
+2. `docs/decisions/07-freeze-wording.md`: the binding claim wording and frozen numbers; it governs where it differs from `docs/decisions/05-final-claims.md`, which records what was narrowed and why.
 3. `docs/story/writeup.md`: the submission summary.
 
 ## Findings
@@ -13,12 +13,12 @@ Reading order for a judge. One line per document. Times are 21 and 22 Oct 2026, 
 | id | file | status | one line |
 |---|---|---|---|
 | F01 | [F01-xh-length-rule.md](findings/F01-xh-length-rule.md) | computed | Deuteration favours the polymorph with shorter O-H bonds in 185 of 212 O-H evaluations once H bonds are moderate to strong (model mean O-H ≥ 0.99 Å; baseline 131/212; pairs 74 right, 10 wrong, all 10 contain Al(OH)3 mp-985293); fails below (2 of 20). Frozen numbers, decision 07. |
-| F03 | [F03-stretch-vs-experiment.md](findings/F03-stretch-vs-experiment.md) | tested | Model O-H stretch slope against O...O matches the measured Libowitzky correlation in 2.50 to 2.80 Å (f 0.91 to 0.95); consistency check on the stretch term only. |
+| F03 | [F03-stretch-vs-experiment.md](findings/F03-stretch-vs-experiment.md) | tested | Model O-H stretch slope against O...O matches the measured Libowitzky correlation in 2.50 to 2.80 Å (f 0.91 to 0.92); consistency check on the stretch term only. |
 | F02 | [F02-blind-test.md](findings/F02-blind-test.md) | tested | Prediction-first volume isotope effects (P01): mixed; hydrides and brucite right, two strong-H-bond oxyhydroxides wrong against weak data; does not test F01. |
 | F04 | [F04-differential-spectroscopy.md](findings/F04-differential-spectroscopy.md) | tested | Predeclared O-H stretch and bend shifts (P02, P03): sign-level consistency for goethite to ε-FeOOH, two pairs inconclusive. |
 | F04 audit | [F04-source-audit.md](findings/F04-source-audit.md) | tested | Literature audit of the F04 band choices and of the Sano-Furukawa 9.0 / 13.4 / 18.1 GPa numbers used in the card caveat. |
 | F05 | [F05-fractionation-test.md](findings/F05-fractionation-test.md) | tested | Blind harmonic D/H fractionation (P04): sign and order brucite > goethite > manganite right, magnitudes 5 to 10 times too large; verdict "ordering only". |
-| F06 | [F06-independent-replication.md](findings/F06-independent-replication.md) | computed | A second implementation (Codex, without our code) reproduces ddF_iso and its stretch/bend split to 1e-9 meV/atom on 9 rows; checks code, not physics. |
+| F06 | [F06-independent-replication.md](findings/F06-independent-replication.md) | computed | A second implementation (Codex, written without our code) reproduces ddF_iso and its stretch/bend split to 1e-9 meV/atom on 9 rows; checks code, not physics. |
 | F07 | [F07-ice-boundary-test.md](findings/F07-ice-boundary-test.md) | tested | Blind H2O to D2O shift of three ice boundaries (P05): Ih-II and Ih-III wrong sign in 3 of 3 models, II-III right; both failures involve ice Ih through the ordered ice XI proxy. Reported as a failed prediction. |
 | Card | [CARD-AlOOH.md](findings/CARD-AlOOH.md) | exploratory | Deuteration raises the diaspore to δ-AlOOH transition pressure by +1.13 (ORB) and +1.33 GPa (MACE) at 300 K; a sign prediction outside the harmonic domain; goethite to ε-FeOOH as a second, extrapolated card. |
 
@@ -60,9 +60,9 @@ Everything below was planned by decision 08 after the compute freeze. Each study
 | P09, F09 | [P09_temperature.md](predictions/P09_temperature.md), [F09-temperature-crossover.md](findings/F09-temperature-crossover.md) | d03f8d2, b9832a1 | Same calculations at 0, 300 and 600 K: headline rows right 153, 185, 210 of 212; all 28 mp-985293 rows follow the rule by 600 K with the stretch sign unchanged (H2 pass), product rule holds (H3 pass), 2000 K trace-limit signs 211 of 212 (H4 pass after a disclosed orientation fix), the zero-point weighting test fails (H1, 98 of 212). Fixed-geometry harmonic result; not in the video (decision 09). |
 | P08, F10 | [P08_atlas_blind.md](predictions/P08_atlas_blind.md), [F10-isotope-atlas.md](findings/F10-isotope-atlas.md) | d991991, bb5f8f8 | Structure-only atlas of 1796 Materials Project O-H polymorph pairs; blind literature test scored 0 of 26 (22 excluded E1, 2 E3, 2 unmappable). An untested map, no verdict on the rule. |
 | P11, F12 | [P11_boehmite_diaspore.md](predictions/P11_boehmite_diaspore.md), [F12-boehmite-diaspore.md](findings/F12-boehmite-diaspore.md) | 184fbee, 42a8282 | Boehmite vs diaspore model D/H fractionation against Graham et al. 1980 via a compilation: sign agrees at 380 C in 3 of 3 models but INCONCLUSIVE under the rule (no uncertainty, diaspore 25% exchange). |
-| P10, F11 | pending | pending | Prospective held-out test of the frozen rule on experimental pairs never computed; predictions committed after relax-only geometry and before phonons. |
+| P10, F11 | [P10_prospective.md](predictions/P10_prospective.md); F11 pending | eb61ccf; pending | Prospective held-out test of the frozen rule on experimental pairs never computed (111 primary rows, 42 pairs, 20 formulas); predictions committed after relax-only geometry and before any phonon job. F11 result not yet written up. |
 
-## Math notes (two independent derivations, numeric cross-check)
+## Math notes (two separate derivations, numeric cross-check)
 
 | id | file | one line |
 |---|---|---|

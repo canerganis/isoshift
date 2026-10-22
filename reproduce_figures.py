@@ -201,16 +201,16 @@ def fig3():
         print("[skip] fig3: no benchmark summary")
         return
     b = b.copy()
-    b["grp"] = b["model"] + "\n" + b["setting"]
+    b["grp"] = b["model"] + "\n" + b["setting"].map({"a_dftstruct": "DFT geom", "b_relaxed": "relaxed"}).fillna(b["setting"])
     fig, axs = plt.subplots(1, 2, figsize=(9, 3.8))
     for ax, col, lab in ((axs[0], "dzpe_MAE_meV", r"MAE of $\Delta$ZPE per H (meV)"),
                          (axs[1], "dF300_MAE_meV", r"MAE of $\Delta F_{300K}$ per H (meV)")):
         cols = [MODEL_COL.get(m, "#666666") for m in b["model"]]
         ax.bar(range(len(b)), b[col], color=cols)
         ax.set_xticks(range(len(b)))
-        ax.set_xticklabels(b["grp"], fontsize=8)
+        ax.set_xticklabels(b["grp"], fontsize=7)
         ax.set_ylabel(lab)
-    axs[0].set_title("Isotope benchmark (placeholder, n=%s)" % ",".join(map(str, b["n"].unique())))
+    axs[0].set_title("Isotope benchmark vs PBEsol DFT phonons (n = %s entries)" % ", ".join(map(str, b["n"].unique())))
     fig.tight_layout()
     save(fig, "fig3_benchmark")
 

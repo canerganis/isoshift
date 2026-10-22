@@ -4,6 +4,14 @@ IsoShift computes how swapping hydrogen for deuterium changes the vibrational fr
 
 **Main finding (F01).** Across 220 hydrogen-compound polymorph pairs screened with three universal ML potentials, the harmonic H/D free-energy difference at 300 K changes by 0.11 to 0.13 meV per H for each mÅ difference in mean X-H length, a stretch term about half cancelled by bend and libration. When at least one polymorph has a mean model O-H length of 0.99 Å or more (a model-derived boundary for moderate to strong hydrogen bonds, chosen after inspecting the data), deuteration favours the polymorph with the shorter O-H bonds in 185 of 212 O-H model evaluations with |Δ mean O-H| ≥ 5 mÅ (84 pairs, 28 formulas), against 131 of 212 for a constant-sign baseline fitted on leave-one-formula-out training folds. By model majority 74 pairs are right and 10 are wrong, and all 10 wrong pairs contain one Al(OH)3 structure, mp-985293. One exploratory prediction: deuteration raises the diaspore to delta-AlOOH transition pressure by about 1 GPa.
 
+![Headline figure](figures/fig_headline.png)
+
+*O-H pairs with |Δ mean O-H| ≥ 5 mÅ. Regime by the larger mean model O-H of the pair; the 0.99 Å boundary was chosen after inspecting the data (nested re-choice picks 1.00 Å in 30 of 31 folds). Open markers: evaluations involving Al(OH)3 mp-985293, kept in the counts. Evaluations share structures and models.*
+
+How to read it: points in the upper right and lower left follow the rule; a positive ΔΔF_iso means deuteration destabilises polymorph b. A shorter O-H bond goes with a weaker hydrogen bond, so the rule says deuteration favours the polymorph whose hydrogen bonds are weaker.
+
+**How to test it.** No polymorph isotope free energy has been measured. The D/H fractionation between two coexisting polymorphs equals the isotope shift of their boundary (n_H kT ln α = ΔΔG_iso, where α is the D/H fractionation factor between the two phases; [M02](docs/math/M02-bigeleisen-bridge.md)), so measuring that fractionation tests F01 directly. For the AlOOH card, matched reversed-bracket runs on AlOOH and AlOOD test the sign of the pressure shift.
+
 One-page summary: [docs/story/writeup.md](docs/story/writeup.md) (long version: [writeup_long.md](docs/story/writeup_long.md)). Evidence index: [docs/INDEX.md](docs/INDEX.md).
 
 ## Why
@@ -18,11 +26,23 @@ The effect is small (meV per atom) and static-energy errors of the models are la
 ## Method
 
 1. Born-Oppenheimer force constants do not depend on nuclear mass. One phonon calculation per structure therefore gives the harmonic and quasi-harmonic free energies for both H and D: the dynamical matrix is rebuilt with the D mass and diagonalised again. Formulas are in `docs/math/M01-isotope-formulas.md`.
-2. Four universal machine-learned interatomic potentials (MLIPs) act as an ensemble (SevenNet in sign votes only): MACE, ORB, MatterSim and SevenNet (exact checkpoints in `DATA_SOURCES.md`). Phonons come from phonopy. The spread between models is reported as model spread.
-3. Polymorph pairs are built from Materials Project and JARVIS-DFT: same composition, different structure, hydrogen present, no carbon, up to 32 atoms. The current set has 836 structures and 965 pairs (`data/isoshift/pairs.csv`, method in `data/isoshift/PAIRS.md`). Energies from the two databases are never subtracted from each other.
+2. Three universal machine-learned interatomic potentials (MLIPs), MACE, ORB and MatterSim, give every number. A fourth, SevenNet, votes on signs only, because its LiH TO(H) frequency is 15.3% off experiment (see Results). Exact checkpoints are in `DATA_SOURCES.md`. Phonons come from phonopy. The spread between models is reported as model spread.
+3. Polymorph pairs are built from Materials Project and JARVIS-DFT: same composition, different structure, hydrogen present, no carbon, up to 32 atoms. The current set has 836 structures and 965 pairs (`data/isoshift/pairs.csv`, method in `data/isoshift/PAIRS.md`). Energies from the two databases are never subtracted from each other. Of the 965 pairs built, 220 (63 formulas) have clean harmonic results for covalent X-H bonds in at least one model and give the slope; 84 of those are O-H pairs in the headline sign test ([pipeline counts](figures/fig2_pipeline_counts.png)).
 4. Validation uses measured volume and lattice isotope effects (see Results).
 
-Sign convention: ddF_iso = [F_D(beta) - F_D(alpha)] - [F_H(beta) - F_H(alpha)]. Rules for ranking and reporting are in `PLAN.md` (P3, P13 to P15).
+Sign convention: ddF_iso = [F_D(b) - F_D(a)] - [F_H(b) - F_H(a)] for polymorphs a and b. Rules for ranking and reporting are in `PLAN.md` (P3, P13 to P15).
+
+## Glossary
+
+* **Polymorph:** one of two or more crystal structures of the same compound.
+* **Isotope effect:** the change in a property when H is replaced by D.
+* **MLIP:** a universal machine-learned interatomic potential, trained on DFT data across the periodic table; it gives forces at a small fraction of the DFT cost.
+* **Harmonic, QHA:** vibrational free energy from phonons at fixed geometry; the quasi-harmonic approximation (QHA) adds the volume dependence. Neither includes anharmonicity or tunnelling.
+* **ΔΔF_iso (ddF_iso):** the isotope double difference above. Positive means deuteration destabilises polymorph b. The static energy gap between a and b cancels in it.
+* **mÅ:** 0.001 Å. Typical O-H length differences between polymorphs are a few mÅ.
+* **Libration:** the hindered rocking of an O-H group. Together with bending it opposes the O-H stretch in ΔΔF_iso.
+* **LOFO:** leave-one-formula-out cross-validation. Each formula is held out in turn and the baseline or threshold is fitted on the rest.
+* **Evaluation:** one pair computed with one model. **Clean:** quadrature and direct isotope free energy agree within 0.01 meV/atom per structure.
 
 ## How AI was used
 
@@ -30,9 +50,9 @@ Each step of the loop is logged so it can be checked.
 
 1. A Valency Bond literature agent extracts the experimental validation numbers (value, unit, temperature, pressure, DOI). Bond queries are counted in the log. Every query, its purpose and what was kept are in `logs/bond_queries.jsonl`.
 2. A second model cross-checks every extracted row against its source (`data/isoshift/validation.csv`).
-3. Every formula in the code went through `mathcheck`: two independent derivations by two models, a numerical comparison, then reconciliation (`docs/math/M01-isotope-formulas.md`).
+3. Every formula in the code went through `mathcheck`: two separate derivations by two models, a numerical comparison, then reconciliation (`docs/math/M01-isotope-formulas.md`).
 4. The MLIP ensemble computes the free energies (`src/isoshift_event/`).
-5. Hard decisions went to a multi-model board that answers independently, with the chair writing the record including dissent. Records are in `docs/decisions/`. The gate decision (`01-gate.md`) shows one model arguing for failure and the chair overruling it on stated grounds.
+5. Hard decisions went to a multi-model board that answers blind, with the chair writing the record including dissent. Records are in `docs/decisions/`. The gate decision (`01-gate.md`) shows one model arguing for failure and the chair overruling it on stated grounds.
 6. Opus integrates the results, assigns work and makes the final calls. The task ledger is `state/LEDGER.md`, the workflow is described in `docs/WORKFLOW.md`.
 
 ## Results
@@ -52,10 +72,12 @@ Implementation checks (equal masses give zero shift, H/D swap flips the sign, cl
 
 ### F01: an isotope rule for polymorph stability (`docs/findings/F01-xh-length-rule.md`)
 
-![F01](figures/fig4_xh_rule.png)
+The headline figure is at the top. Details figure, all clean covalent rows and four models (SevenNet drawn for comparison only):
+
+![F01 all rows](figures/fig4_xh_rule.png)
 
 * The isotope double difference per H is linear in the change of mean X-H bond length between the polymorphs: slope 0.11 (MACE), 0.12 (ORB), 0.13 (MatterSim) meV/H per mÅ over all clean covalent rows of the screen; r 0.76 to 0.84.
-* Mechanism, from a mode-resolved mass integral: the X-H stretch term (+0.24 to +0.26 meV/H per mÅ, same in all models) is about half cancelled by bending and libration (-0.12 to -0.14).
+* Mechanism, from a mode-resolved mass integral: over all clean covalent rows the X-H stretch term (+0.24 to +0.26 meV/H per mÅ) is about half cancelled by bending and libration (-0.12 to -0.14); in the O-H strong regime of the headline it is +0.28 to +0.31 against -0.15 to -0.17 (50 to 56% cancelled, the inset of the headline figure).
 
 The 0.99 Å boundary was chosen after inspecting the pre-freeze data and is kept for the frozen result. Re-choosing it inside each leave-one-formula-out training fold picks 1.00 Å in 30 of 31 folds and 0.99 Å only in the fold that holds out Al(OH)3, and gives 183 of 210 held-out evaluations right against a baseline of 131. In that Al(OH)3 fold the rule scores 8 of 28 against a baseline of 19, so a sharp, universal boundary is not established; the cross-validation covers the threshold value, not the choice of regime variable, grid or eligibility cuts. The 10 wrong pairs all contain mp-985293 (P2₁2₁2₁, listed by the Materials Project as experimental, no imaginary modes in any of the three models), whose mean model O-H of 0.996 to 0.999 Å sits just above the boundary while its mean O...O contacts are short (2.77 to 2.82 Å). In these pairs the stretch term has the predicted sign, but bend and libration cancel 95 to 132% of it instead of about half: MACE calls 0 of 10 right, ORB 0 of 9 and MatterSim 8 of 9, with every MatterSim value at |ΔΔF| ≤ 0.26 meV per H. Without any threshold the rule holds in 187 of 232 O-H evaluations (81%). Below the boundary it fails (2 of 20 evaluations, 13 pairs, 7 formulas). In the O-H strong regime the fitted total slope is 0.13 to 0.15 meV per H per mÅ, with bend and libration cancelling 50 to 56% of the stretch slope. A structure-only version using mean O...O ≤ 2.93 Å is weaker (187 of 241 evaluations with |ΔΔF| > 0.1 meV per H, 78%, against 61%). The evaluations share structures and models, the three potentials are separate models, not independent validations, and no polymorph isotope free energy has been measured to test the rule directly. The full scan and the per-fold ledger are in `results/F01_cv.json`.
 
@@ -67,11 +89,11 @@ For O-H donors with model O...O distances of 2.50 to 2.80 Å, the harmonic Γ-po
 
 ### F02: prediction-first volume isotope test (`docs/findings/F02-blind-test.md`)
 
-Predictions committed before the measured values were read (`docs/predictions/P01_volume_isotope_blind.csv`, commit 0fffc54). Mixed: alpha-AlH3 right sign but 1.3 to 1.5x too large; GaOOH and beta-CrOOH wrong sign against low-quality references; brucite and LiH right. The misses are in the strong-H-bond regime, where harmonic quasi-harmonic physics omits Ubbelohde-type proton anharmonicity. F02 does not test F01.
+Predictions committed before the measured values were read (`docs/predictions/P01_volume_isotope_blind.csv`, commit 0fffc54). Mixed: alpha-AlH3 right sign but 1.3 to 1.5x too large; GaOOH and beta-CrOOH wrong sign against low-quality references; brucite and LiH right. The misses are in the strong-H-bond regime, where harmonic and quasi-harmonic physics omits Ubbelohde-type proton anharmonicity. F02 does not test F01.
 
 ### Candidate card: diaspore to delta-AlOOH (`docs/findings/CARD-AlOOH.md`)
 
-Deuteration destabilises delta-AlOOH relative to diaspore by +0.5 to +0.8 meV/atom (three models) and, in an exploratory QHA prediction at 300 K, raises the transition pressure by +1.13 GPa (ORB) and +1.33 GPa (MACE) (+0.3 to +0.4 GPa from 0 GPa geometries). The two models place the boundary 4.2 GPa apart but agree on the shift; the sign is the prediction, and proton disorder in delta-AlOOH lies outside harmonic physics.
+Deuteration destabilises delta-AlOOH relative to diaspore by +0.5 to +0.8 meV/atom (three models) and, in an exploratory QHA prediction at 300 K, raises the transition pressure by +1.13 GPa (ORB) and +1.33 GPa (MACE) (+0.3 to +0.4 GPa from 0 GPa geometries). The two models place the boundary 4.2 GPa apart but agree on the shift; the sign is the prediction, and proton disorder in delta-AlOOH lies outside harmonic physics. The MACE H root is extrapolated below the 10 to 20 GPa fit grid, and the measured boundary is crossed at high temperature, far from the 300 K absolute values, so only the sign of the shift is claimed.
 
 ### F04: differential spectroscopy (`docs/findings/F04-differential-spectroscopy.md`)
 
@@ -81,21 +103,25 @@ In one predeclared literature pair (goethite to ε-FeOOH) the O-H stretch falls 
 
 The same H/D free energies give reduced partition function ratios, so mineral-mineral differences of measured mineral-water D/H fractionation test them without any water model. Predictions for 118 structures were committed before the data were read (`docs/predictions/P04_fractionation_blind.csv`, f3ac0ac). The comparison rule (`docs/predictions/P04_comparison_rule.md`) was committed together with its result (90ad4cd), not before it (timing note in F05). Result: the sign of every scored difference (6 of 6) and the order brucite > goethite > manganite are right in all three models, and the mineral with the longer O-H bonds takes up less deuterium, as F01 implies. The magnitudes are 5 to 10 times too large and the brucite-goethite temperature trend has the wrong sign, so the preset verdict is "ordering only": harmonic partition functions of O-H minerals are known to be biased by stretch anharmonicity.
 
-### F06: independent reimplementation (`docs/findings/F06-independent-replication.md`)
+### F06: reimplementation without our code (`docs/findings/F06-independent-replication.md`)
 
 A second model (Codex) reimplemented the isotope double difference and its stretch/bend split from the cached force constants without reading our code, using a different quadrature and q-mesh. It reproduces our numbers to 1e-9 meV/atom with 9 of 9 signs: the implementation is checked; the force fields are not.
 
+### F07: blind ice boundary test, a failed prediction (`docs/findings/F07-ice-boundary-test.md`)
+
+Model H2O to D2O shifts of three ice boundaries were committed before any measured D2O boundary was read (`docs/predictions/P05_ice_boundary_blind.md`, bec68d7). Ih-II and Ih-III have the wrong sign in 3 of 3 models; II-III is right. Both failures involve ice Ih, which the models treat through the ordered ice XI proxy; ice XI is 7 to 9% too dense in all three models. Test: the same calculation with a proton-disordered Ih model or anharmonic free energies.
+
 ### Benchmark
 
-MACE vs DFT phonons (PBEsol, 40 MDR phonondb entries): isotope ZPE difference MAE 1.5 meV, F(300 K) difference MAE 1.1 meV, X-H stretch MAE 45 cm-1 (`results/benchmark/summary.csv`).
+Four models vs DFT phonons (PBEsol, 40 MDR phonondb entries, 36 for SevenNet, DFT geometries): isotope ZPE difference MAE 0.7 to 1.5 meV per H (ORB 0.7, SevenNet 1.1, MatterSim 1.3, MACE 1.5), 300 K H/D free-energy difference MAE 0.5 to 1.1 meV per H, X-H stretch MAE 28 to 45 cm-1 (`results/benchmark/summary.csv`, [figure](figures/fig3_benchmark.png)).
 
 ## Prior work
 
-The competition between O-H stretch and bend zero-point energies that underlies F01 is known: McKenzie et al. derived it for hydrogen-bond isotope fractionation (J. Chem. Phys. 140, 174508 (2014), 10.1063/1.4873352; J. Chem. Phys. 143, 044309 (2015), 10.1063/1.4927391), Li, Walker and Michaelides showed competing quantum effects whose net sign depends on H-bond strength (PNAS 108, 6369 (2011)), and Zhou, Kye and Harbison explained isotopomeric polymorphism in molecular crystals by zero-point energy differences (2004, 2006). The Ubbelohde geometric isotope effect is a related geometry effect. Bourgeois et al. (2018, 10.1088/1361-648X/aad259) modelled H/D/T effects on gas-solid hydride formation. IsoShift's contribution is the systematic polymorph-stability version of that competition, its slope, and where it holds and fails in three models, over 220 crystal pairs, with a model-derived regime boundary chosen after inspecting the data (mean O-H 0.99 Å, O...O about 2.93 Å) and a weaker structure-only O...O sign predictor (78% vs 61% baseline).
+The competition between O-H stretch and bend zero-point energies that underlies F01 is known: McKenzie et al. derived it for hydrogen-bond isotope fractionation (J. Chem. Phys. 140, 174508 (2014), 10.1063/1.4873352; J. Chem. Phys. 143, 044309 (2015), 10.1063/1.4927391), Li, Walker and Michaelides showed competing quantum effects whose net sign depends on H-bond strength (PNAS 108, 6369 (2011)), and Zhou, Kye and Harbison explained isotopomeric polymorphism in molecular crystals by zero-point energy differences (2004, 2006). The Ubbelohde geometric isotope effect is a related geometry effect. Bourgeois et al. (2018, J. Phys.: Condens. Matter, 10.1088/1361-648X/aad259) computed harmonic H, D and T effects on gas-solid hydride formation with DFT for 115 metal hydrides; there the zero-point energy of the H2 or D2 gas dominates.
 
-## Novelty
+## What is new
 
-The stretch-versus-bend competition behind F01 was derived for hydrogen-bond isotope fractionation in molecules and proteins by McKenzie et al. (J. Chem. Phys. 140, 174508 (2014); 143, 044309 (2015)). F01 is its solid-state, polymorph-stability counterpart, computed over 220 crystal pairs with three separate ML models (not independent validations). Bourgeois et al. (2018, J. Phys.: Condens. Matter, doi 10.1088/1361-648X/aad259) modelled H, D and T effects on gas-solid hydride formation with DFT. That effect is dominated by the zero-point energy of the H2 or D2 gas. IsoShift maps solid-solid polymorph free-energy differences, where the gas terms cancel, across hydroxides, borohydrides, alanates and hydrides with an MLIP ensemble, validated against measured volume and lattice isotope effects. The claim is this demonstrated extension, not exhaustive novelty.
+IsoShift's contribution is the systematic polymorph-stability version of that competition, its slope, and where it holds and fails in three models, over 220 crystal pairs. Solid-solid polymorph differences cancel the gas terms that dominate hydride formation, and the screen spans hydroxides, oxyhydroxides, borohydrides, alanates and hydrides. It adds a model-derived regime boundary chosen after inspecting the data (mean O-H 0.99 Å, O...O about 2.93 Å), a structure-only O...O sign predictor that needs no phonons (78% vs 61% baseline), and a named experiment that would test the rule (M02). The three ML models share PBE-level training data, so their agreement is not a validation. The claim is this demonstrated extension to solids, not priority over earlier work.
 
 ## Limitations
 
@@ -109,14 +135,35 @@ The stretch-versus-bend competition behind F01 was derived for hydrogen-bond iso
 
 ## How to run
 
-Tests: `.venv/Scripts/python.exe -m pytest -q -m "not live"`
+Needs Python 3.12 (tested with 3.12.10). On Windows, clone into a short folder path: pip hits the long-path limit in deep folders. Commands below use the Windows venv layout (`.venv/Scripts/`); on Linux or macOS use `.venv/bin/`.
 
 ```
 python -m venv .venv
-.venv/Scripts/pip install -r requirements.txt            # MACE and ORB
+.venv/Scripts/pip install -r requirements.txt            # MACE and ORB, CPU torch from PyPI
+# GPU (CUDA 12.4): .venv/Scripts/pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124
 # SevenNet and MatterSim need e3nn>=0.5 and live in a second environment:
 python -m venv .venv-sevenn
 .venv-sevenn/Scripts/pip install -r requirements-secondary.txt
+```
+
+Check the headline in one command (a few seconds, CPU only). It recomputes `results/F01_cv.json` from the frozen `results/decompose_pairs.csv` and prints `oh_unfiltered_strong {'right': 185, 'n': 212, ...}` with pair majorities 74 right, 0 ties, 10 wrong:
+
+```
+.venv/Scripts/python.exe -m src.isoshift_event.rule_cv
+```
+
+Tests (the test suite expects the venv at `.venv` in the repo root; the DFT benchmark test skips when the git-ignored MDR data is absent):
+
+```
+.venv/Scripts/python.exe -m pytest -q -m "not live"
+```
+
+Figures. These overwrite the files in `figures/`:
+
+```
+.venv/Scripts/python.exe reproduce_figures.py                    # fig1 to fig3
+.venv/Scripts/python.exe -m src.isoshift_event.fig_headline      # headline figure and caption
+.venv/Scripts/python.exe -m src.isoshift_event.fig_rule          # fig4, all rows
 ```
 
 Screen, analysis and validation (the screen needs a GPU):
@@ -132,7 +179,7 @@ python -m src.isoshift_event.sanity mace,orb       # tier A checks
 App (reads cached results, no GPU needed):
 
 ```
-marimo run app/isoshift_app.py
+.venv/Scripts/python.exe -m marimo run app/isoshift_app.py
 ```
 
 See `app/README.md` for the data layout the app reads.
