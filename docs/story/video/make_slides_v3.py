@@ -151,10 +151,26 @@ def bond(ax, x, y, length, label, sub, good, iso="D"):
         chip(ax, x + 170, y + 84, "favoured with D", GREEN, 28, fill=True)
 
 
+def slide_00():
+    """Hook card: a measured isotope shift of a phase transition (not one of our predictions)."""
+    fig = plt.figure(figsize=(W / DPI, H / DPI), dpi=DPI)
+    fig.patch.set_facecolor(BG)
+    ax = fig.add_axes([0, 0, 1, 1])
+    ax.set_xlim(0, W)
+    ax.set_ylim(H, 0)
+    ax.axis("off")
+    text(ax, W / 2, 210, "+4.4 GPa", 300, ORANGE, "bold", family=NUM, ha="center")
+    text(ax, W / 2, 590, "H → D in δ-AlOOH moves a measured transition from 9.0 to 13.4 GPa", 44, INK, ha="center")
+    text(ax, W / 2, 660, "proton-disorder transition, Sano-Furukawa et al. 2018", 32, MUTED, ha="center")
+    text(ax, W / 2, 790, "Which crystals does deuterium shift, and which way?", 48, BLUE, "bold", ha="center")
+    save(fig, "slide_00_hook.png")
+
+
 def slide_01():
     fig, ax = canvas(0)
     text(ax, X0, 105, "IsoShift", 150, INK, "bold")
-    chip(ax, X0, 292, "THE SHORT-BOND RULE", ORANGE, 34, fill=True)
+    xc = chip(ax, X0, 292, "THE SHORT-BOND RULE", ORANGE, 34, fill=True)
+    chip(ax, xc + 24, 292, "FOUND AT THIS HACKATHON", GREEN, 34, fill=True)
     text(ax, X0, 380, "Deuteration favours the polymorph", 64, INK, "bold")
     text(ax, X0, 458, "with the shorter O-H bonds", 64, BLUE, "bold")
     E = ease(P)
@@ -213,6 +229,7 @@ def slide_03():
     ax.add_patch(Rectangle((X0, 186), w1, 6, color=ORANGE, lw=0))
     image_card(ax, ROOT / "figures" / "fig_headline.png", X0 + 14, 214, 1110)
     x = 1300
+    chip(ax, x, 925, "FOUND AT THIS HACKATHON", GREEN, 32, fill=True)
     text(ax, x, 220, "220", 120, BLUE, "bold", family=NUM)
     text(ax, x, 360, "polymorph pairs screened", 38, INK)
     text(ax, x, 450, "0.11 to 0.13", 96, BLUE, "bold", family=NUM)
@@ -324,8 +341,10 @@ def slide_05():
     text(ax, ax0, 830, "About 1000 K: +0.7 to +0.9 GPa in MACE, ORB and MatterSim, same sign", 34, INK)
     text(ax, ax0, 880, "MACE H root extrapolated below 10 GPa. Harmonic physics leaves out the proton disorder of δ-AlOOH.",
          26, MUTED)
-    box(ax, 1480, 380, XR - 1480, 300, fc=PANEL)
-    wrap(ax, 1510, 410, "δ-AlOOH: a possible deep-Earth water carrier", 38, XR - 1540, color=INK, weight="bold")
+    box(ax, 1480, 350, XR - 1480, 420, fc=PANEL)
+    yb = wrap(ax, 1510, 375, "δ-AlOOH: a possible deep-Earth water carrier", 36, XR - 1540, color=INK, weight="bold")
+    wrap(ax, 1510, yb + 22, "Measured: deuteration moves its proton-disorder transition from 9.0 to 13.4 GPa", 28, XR - 1540,
+         color=ORANGE)
     save(fig, "slide_05_alooh_card.png")
 
 
@@ -500,7 +519,7 @@ def render_animations():
 
 
 if __name__ == "__main__":
-    for f in (slide_01, slide_02, slide_03, slide_03b, slide_03c, slide_04, slide_05, slide_06,
+    for f in (slide_00, slide_01, slide_02, slide_03, slide_03b, slide_03c, slide_04, slide_05, slide_06,
               slide_07, slide_07c, slide_07b, slide_08):
         f()
     render_animations()

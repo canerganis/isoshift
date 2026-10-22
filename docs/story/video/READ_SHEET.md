@@ -73,7 +73,8 @@ Numbers:
 | # | On screen | Read |
 |---|---|---|
 | 00 | face (camera) | Hi, I'm Can, a metallurgical and materials engineer. This is IsoShift. |
-| 01 | slide_01_title | Swap hydrogen for deuterium in a hydrogen-bonded crystal and, in our calculations, it leans toward the polymorph with the shorter O-H bonds. Three machine-learned potentials get this sign in 185 of 212 cases where the hydrogen bonds are moderate or strong, and the rule says where it stops working. |
+| H0 | slide_00_hook | One extra neutron in hydrogen moves a crystal transition by four gigapascals. We found no rule for which crystals this hits. So we found one. |
+| 01 | slide_01_title | Swap hydrogen for deuterium in a hydrogen-bonded crystal and, in our calculations, it leans toward the polymorph with the shorter O-H bonds. Three machine-learned potentials get this sign in 185 of 212 cases where the hydrogen bonds are moderate or strong, and the rule says where it stops working. What we found at this hackathon is a simple rule: deuterium favours the crystal with shorter O-H bonds. |
 | 02 | slide_02_method | Polymorph energy gaps are smaller than any machine-learned potential's error. So we compute only the isotope difference. Force constants do not depend on mass, so one phonon calculation gives both hydrogen and deuterium free energies, and the static gap cancels. Three universal potentials do the work; SevenNet only votes on signs. |
 | 03 | slide_03_headline | We screened 220 polymorph pairs. The isotope free-energy difference follows the change in mean O-H length, 0.11 to 0.13 meV per hydrogen per thousandth of an angstrom. The O-H stretch drives it, and bending and libration cancel about half. |
 | 04 | slide_03b_counts_zoom | Where hydrogen bonds are moderate or strong, deuteration favours the polymorph with the shorter O-H bonds in 185 of 212 model evaluations. A baseline that always guesses one sign gets 131. Counted per pair, 74 are right and 10 are wrong, and all 10 wrong pairs contain the same aluminium hydroxide structure, where bending and libration outweigh the stretch. |
@@ -85,6 +86,6 @@ Numbers:
 | 10 | slide_07c_bond_trace | Literature agents on Valency Bond pulled the measured values and logged every query. |
 | 11 | slide_07b_commit_timeline | Predictions were committed to git before the data were read. Councils of three models argued each claim, and every decision records its dissent. A second model rewrote the calculation blind and matched our numbers. |
 | 12 | marimo screen clip | Everything runs in an open marimo app. Pick a pair and see the model numbers, the rule's call, and the Bond query behind each measured value. |
-| 13 | slide_08_limits_repo | Limits. One blind test came out mixed. The physics is harmonic, with no proton tunnelling. The potentials are trained on similar data, so three models agreeing is not three validations. Code, data and every decision are public. |
+| 13 | slide_08_limits_repo | Limits. Two blind tests did not pass: one came out mixed, one failed. The physics is harmonic, with no proton tunnelling. The potentials are trained on similar data, so three models agreeing is not three validations. Code, data and every decision are public. One measurement, D/H partitioning between coexisting polymorphs, can now test it. |
 
 Target total of 01 to 13: 3:30 to 3:45. Hard limit 4:00.

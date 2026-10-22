@@ -20,7 +20,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 REPO = HERE.parents[2]
-SLIDES = {"01": "slide_01_title", "02": "slide_02_method", "03": "slide_03_headline", "04": "slide_03b_counts_zoom",
+SLIDES = {"H0": "slide_00_hook", "01": "slide_01_title", "02": "slide_02_method", "03": "slide_03_headline", "04": "slide_03b_counts_zoom",
           "05": "slide_03c_weak_side_zoom", "06": "slide_04_stretch_check", "07": "slide_05_alooh_card",
           "08": "slide_06_m02_bridge", "09": "slide_07_ai_process", "10": "slide_07c_bond_trace",
           "11": "slide_07b_commit_timeline", "13": "slide_08_limits_repo"}
@@ -28,7 +28,7 @@ APP_SHOTS = ["01_f01_banner", "02_check_a_pair", "03_how_we_know"]
 LEAD, PAD_IN, PAD_OUT, GAP, HOLD = 0.4, 0.12, 0.25, 0.35, 1.8  # seconds
 EXTRA_HOLD = {"01": 1.8, "03": 1.0, "09": 5.0, "10": 4.0}  # silent beats: the rule lands (01), before the scoreboard (03); reading time (09, 10)
 XFADE, ZOOM = 0.45, 0.035  # crossfade seconds, push-in over one slide
-MUSIC = -12  # synthesized pad under the voice, dB (None for voice only)
+MUSIC = -17  # synthesized pad under the voice, dB (None for voice only)
 FPS = 30
 INTRO = HERE / "anim" / "intro"  # cold open frames (make_slides_v3.intro_frames), played before the narration
 REVEAL = "03"  # the score swells into this segment (the result slide)
@@ -188,7 +188,7 @@ def speech_span(p):
 
 
 def read_sheet():
-    rows = re.findall(r"^\| (\d\d) \| [^|]+ \| (.+) \|$", (HERE / "READ_SHEET.md").read_text(encoding="utf-8"), re.M)
+    rows = re.findall(r"^\| (\d\d|H0) \| [^|]+ \| (.+) \|$", (HERE / "READ_SHEET.md").read_text(encoding="utf-8"), re.M)
     return dict(rows)
 
 
@@ -247,16 +247,18 @@ def build(segs, files, words, tmp, out_mp4, srt_path, screen=None, face=None):
     audio_parts, video_parts, cues, t = [], [], [], 0.0
     starts = {}
     n_intro = len(list(INTRO.glob("f*.png"))) if INTRO.is_dir() and segs[0] != "00" else 0
-    if n_intro:  # cold open: silence under the narration track, so audio and captions start after it
-        t = n_intro / FPS
-        sil = tmp / "a_intro.wav"
-        run("ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", f"{t:.3f}",
-            "-c:a", "pcm_s16le", str(sil))
-        audio_parts.append(sil)
-        video_parts.append(("intro", INTRO, t))
-    intro_len = t
+    intro_len = 0.0
     beats, swells = {}, []
     for n, sid in enumerate(segs):
+        if sid == "01" and n_intro:  # cold open after the hook: music only, so audio and captions wait for it
+            d_in = n_intro / FPS
+            sil = tmp / "a_intro.wav"
+            run("ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", f"{d_in:.3f}",
+                "-c:a", "pcm_s16le", str(sil))
+            audio_parts.append(sil)
+            video_parts.append(("intro", INTRO, d_in))
+            t += d_in
+            intro_len = t
         starts[sid] = t
         f = files[sid]
         a, b = speech_span(f)
@@ -450,6 +452,8 @@ def main():
     out = Path(a.out_dir)
     out.mkdir(parents=True, exist_ok=True)
     body = [f"{i:02d}" for i in range(1, 14)]
+    if "H0" in files:
+        body = ["H0"] + body
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         t = build(body, files, words, tmp, out / "isoshift_youtube.mp4", HERE / "captions.srt", screen=a.screen)
