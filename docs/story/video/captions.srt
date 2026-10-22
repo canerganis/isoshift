@@ -142,54 +142,54 @@ phases, so deuterium partitioning between
 coexisting polymorphs is a direct test.
 
 30
-00:02:36,798 --> 00:02:39,414
+00:02:36,798 --> 00:02:39,664
 An AI team ran the work.
 
 31
-00:02:39,434 --> 00:02:43,064
+00:02:44,434 --> 00:02:48,064
 Literature agents on Valency Bond pulled
 the measured values and logged every
 
 32
-00:02:43,084 --> 00:02:44,349
+00:02:48,084 --> 00:02:49,599
 query.
 
 33
-00:02:44,369 --> 00:02:51,169
+00:02:53,369 --> 00:03:00,169
 Predictions were committed to git before
 the data were read. Councils of three
 
 34
-00:02:51,189 --> 00:02:56,389
+00:03:00,189 --> 00:03:05,389
 models argued each claim, and every
 decision records its dissent. A second
 
 35
-00:02:56,409 --> 00:02:59,990
+00:03:05,409 --> 00:03:08,990
 model rewrote the calculation blind and
 matched our numbers.
 
 36
-00:03:00,010 --> 00:03:06,384
+00:03:09,010 --> 00:03:15,384
 Everything runs in an open marimo app.
 Pick a pair and see the model numbers, the
 
 37
-00:03:06,404 --> 00:03:09,906
+00:03:15,404 --> 00:03:18,906
 rule's call, and the Bond query behind
 each measured value.
 
 38
-00:03:09,926 --> 00:03:17,746
+00:03:18,926 --> 00:03:26,746
 Limits. One blind test came out mixed. The
 physics is harmonic, with no proton
 
 39
-00:03:17,766 --> 00:03:22,866
+00:03:26,766 --> 00:03:31,866
 tunnelling. The potentials are trained on
 similar data, so three models agreeing is
 
 40
-00:03:22,886 --> 00:03:28,252
+00:03:31,886 --> 00:03:37,252
 not three validations. Code, data and
 every decision are public.

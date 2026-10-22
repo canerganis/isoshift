@@ -24,6 +24,7 @@ SLIDES = {"01": "slide_01_title", "02": "slide_02_method", "03": "slide_03_headl
           "11": "slide_07b_commit_timeline", "13": "slide_08_limits_repo"}
 APP_SHOTS = ["01_f01_banner", "02_check_a_pair", "03_how_we_know"]
 LEAD, PAD_IN, PAD_OUT, GAP, HOLD = 0.4, 0.12, 0.25, 0.35, 1.8  # seconds
+EXTRA_HOLD = {"09": 5.0, "10": 4.0}  # silent reading time after short lines on dense slides
 FPS = 30
 
 
@@ -108,7 +109,7 @@ def build(segs, files, words, tmp, out_mp4, srt_path, screen=None, face=None):
         f = files[sid]
         a, b = speech_span(f)
         lead = LEAD if n == 0 else 0.0
-        tail = HOLD if n == len(segs) - 1 else GAP
+        tail = (HOLD if n == len(segs) - 1 else GAP) + EXTRA_HOLD.get(sid, 0.0)
         seg_len = lead + (b - a) + tail
         wav = tmp / f"a{sid}.wav"
         run("ffmpeg", "-y", "-v", "error", "-ss", f"{a:.3f}", "-to", f"{b:.3f}", "-i", str(f), "-af",
