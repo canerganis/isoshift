@@ -1,6 +1,6 @@
 # IsoShift
 
-IsoShift computes harmonic H and D phonon free energies of crystal polymorphs with three universal ML potentials and finds that deuteration favours the polymorph with the shorter O-H bonds in 185 of 212 evaluations with moderate-to-strong hydrogen bonds (constant-sign baseline 131), fails with weak ones (2 of 20) and has one Al(OH)3 counterexample by pair majority; no measurement has tested this rule directly. Two would: D/H partitioning between coexisting polymorphs ([M02](docs/math/M02-bigeleisen-bridge.md)), and matched reversed-bracket AlOOH/AlOOD runs on the diaspore to δ-AlOOH transition, where the models predict a pressure about 1 GPa higher for AlOOD (exploratory sign prediction).
+IsoShift computes harmonic H and D phonon free energies of crystal polymorphs with three universal ML potentials and finds that deuteration favours the polymorph with the shorter O-H bonds in 185 of 212 evaluations with moderate-to-strong hydrogen bonds (constant-sign baseline 131), fails with weak ones (2 of 20) and has one Al(OH)3 counterexample by pair majority; no measurement has tested this rule directly. Two would: D/H partitioning between coexisting polymorphs (exact for one H site type such as AlOOH; [M02](docs/math/M02-bigeleisen-bridge.md) gives the correction otherwise), and matched reversed-bracket AlOOH/AlOOD runs on the diaspore to δ-AlOOH transition, where the models predict a pressure about 1 GPa higher for AlOOD (exploratory sign prediction).
 
 > **Check it in 60 seconds.**
 > Headline numbers, CPU only, a few seconds: `.venv/Scripts/python.exe -m src.isoshift_event.rule_cv` (Windows) or `.venv/bin/python -m src.isoshift_event.rule_cv` (Linux, macOS). The `oh_unfiltered_strong` line prints right 185, n 212, baseline 131 and pair majorities 74 right, 0 ties, 10 wrong. Setup: [How to run](#how-to-run).
@@ -16,7 +16,7 @@ IsoShift computes harmonic H and D phonon free energies of crystal polymorphs wi
 
 How to read it: points in the upper right and lower left follow the rule; a positive ΔΔF_iso means deuteration destabilises polymorph b. A shorter O-H bond goes with a weaker hydrogen bond, so the rule says deuteration favours the polymorph whose hydrogen bonds are weaker.
 
-**How to test it.** No polymorph isotope free energy has been measured. The D/H fractionation between two coexisting polymorphs equals the isotope shift of their boundary (n_H kT ln α = ΔΔG_iso, where α is the D/H fractionation factor between the two phases; [M02](docs/math/M02-bigeleisen-bridge.md)), so measuring that fractionation tests F01 directly. For the AlOOH card, matched reversed-bracket runs on AlOOH and AlOOD test the sign of the pressure shift.
+**How to test it.** No polymorph isotope free energy has been measured. Measured D/H fractionation between two coexisting polymorphs constrains their isotope free-energy difference through ΔΔG_iso = n_H k_B T ln α + R, with α the a to b fractionation factor of [M02](docs/math/M02-bigeleisen-bridge.md) and R = 0 for one H site type with no H-H coupling, as in diaspore and δ-AlOOH; the boundary shift then follows from ΔΔG_iso and ΔV. For the AlOOH card, matched reversed-bracket runs on AlOOH and AlOOD test the sign of the pressure shift.
 
 One-page summary: [docs/story/writeup.md](docs/story/writeup.md) (long version: [writeup_long.md](docs/story/writeup_long.md)). Evidence index: [docs/INDEX.md](docs/INDEX.md).
 
@@ -59,7 +59,8 @@ Each step of the loop is logged so it can be checked.
 3. Every formula in the code went through `mathcheck`: two separate derivations by two models, a numerical comparison, then reconciliation (`docs/math/M01-isotope-formulas.md`).
 4. The MLIP ensemble computes the free energies (`src/isoshift_event/`).
 5. Hard decisions went to a multi-model board that answers blind, with the chair writing the record including dissent. Records are in `docs/decisions/`. The gate decision (`01-gate.md`) shows one model arguing for failure and the chair overruling it on stated grounds.
-6. Opus integrates the results, assigns work and makes the final calls. The task ledger is `state/LEDGER.md`, the workflow is described in `docs/WORKFLOW.md`.
+6. A second model (Codex) reimplemented the isotope double difference without our code. F06 is a nine-row implementation check, not a physics test.
+7. Opus integrates the results, assigns work and makes the final calls. The task ledger is `state/LEDGER.md`, the workflow is described in `docs/WORKFLOW.md`.
 
 ## Results
 
@@ -148,6 +149,13 @@ IsoShift's contribution is the systematic polymorph-stability version of that co
 * The volume isotope effect tests the volume derivative of F_H - F_D inside one phase. It does not validate polymorph double differences or transition shifts. The one double difference we checked, alpha/gamma MgH2, splits in sign across models.
 * Brucite has an imaginary H branch (up to 0.8% of modes). It is excluded from F_vib and its effect is bounded by a four-treatment bracket, not computed anharmonically. Relaxed volumes are off: brucite 5.4 to 7.2% too large, ice 6.5 to 7.9% too dense.
 * No nuclear tunnelling and no order-disorder physics. Negative controls are labelled by mechanism: tunnelling (KDP, delta-AlOOH), configurational disorder (KOH, NH4Cl), plus NaOH/NaOD. They test stated limits and are not required to fail.
+* F11, a post-freeze prospective test on pairs never computed before, failed its predeclared bar (16 of 111 right; 87 rows lost to the predeclared numerical rules; on the 24 clean rows the rule got 16 and a constant guess 19). Transfer of F01 to new pairs is not shown.
+* The DFT benchmark is per structure. No DFT value of a polymorph isotope double difference was computed.
+* 'Clean' means the two free-energy routes agree within 0.01 meV/atom; it does not certify relaxation convergence, dynamical stability or robustness to imaginary modes. 42 of 212 headline evaluations carry a classical-limit flag (decision 07: a diagnostic, not a filter).
+* Cross-validation covers the 0.99 Å threshold, not the choice of regime variable, grid or eligibility cuts.
+* Experimental usefulness is untested. The screen excludes carbon, so drug and organic polymorphs are out of scope.
+* Bond-assisted extraction needed source checking: of 11 sweep items, 9 came back 'ok' in one pass and 2 became quantitative targets, and the board caught a reference value off by 2x. These are screening outcomes, not an extraction accuracy.
+* The marimo app inspects cached results for screened pairs. It does not compute phonons and does not predict arbitrary pairs.
 * Open items are listed in `docs/decisions/01-gate.md`.
 
 ## How to run

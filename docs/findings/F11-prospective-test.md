@@ -10,7 +10,7 @@ Prediction: `docs/predictions/P10_prospective.md` and `results/post_freeze/P10_p
 
 * **Counted: 111 of 111 committed primary rows** (69 failed or unstable, 18 not clean, 24 scored); 16 right (14.4%), frozen constant-sign baseline (+1) 5. Committed rows not counted: 0.
 * **Ceiling:** the 87 rows lost to the predeclared numerical rules count as not right whatever their sign, so the pooled accuracy could reach at most (111 - 87)/111 = 21.6% even with every clean row right, against the 75% bar.
-* **Clean rows only (per protocol, no bar):** the rule is right in 16 of 24; a constant sign of -1 (deuteration favours b) would be right in 19 of 24, the frozen constant +1 in 5 of 24. The rule does not beat a constant guess on the clean rows.
+* **Clean rows only (per protocol, no bar):** the rule is right in 16 of 24; a constant sign of -1 (deuteration favours b) would be right in 19 of 24, the frozen constant +1 in 5 of 24. The rule does not beat a constant guess on the clean rows. Transfer of F01 to new pairs is not shown.
 * **Pairs (unique-pair majority, all counted rows):** 5 right, 1 tie, 36 wrong of 42.
 * **Structure transfer (Al(OH)3 and H2O, formulas in the frozen F01 population):** 3 of 34 right.
 * Per model: mace 5/39, orb 5/34, mattersim 6/38.

@@ -70,7 +70,7 @@ Everything below was planned by decision 08 after the compute freeze. Each study
 |---|---|---|
 | M00 | [M00-plumbing-diatomic-zpe.md](math/M00-plumbing-diatomic-zpe.md) | Plumbing test of the mathcheck workflow on a diatomic ZPE isotope ratio. |
 | M01 | [M01-isotope-formulas.md](math/M01-isotope-formulas.md) | All harmonic and QHA H/D formulas the code uses, including the mode-resolved mass integral behind the stretch/bend split. |
-| M02 | [M02-bigeleisen-bridge.md](math/M02-bigeleisen-bridge.md), [M02-line47.md](math/M02-line47.md) | Links the polymorph-boundary isotope shift to inter-polymorph D/H fractionation (n_H kT ln alpha = ddG_iso), which names the direct experiment for F01. Line 47 variance correction verified by mathcheck on 22 Oct (1366e27). |
+| M02 | [M02-bigeleisen-bridge.md](math/M02-bigeleisen-bridge.md), [M02-line47.md](math/M02-line47.md) | Links the polymorph-boundary isotope shift to inter-polymorph D/H fractionation (ddG_iso = n_H k_B T ln alpha + R, with R = 0 for one H site type such as AlOOH), which names the direct experiment for F01. Line 47 variance correction verified by mathcheck on 22 Oct (1366e27). |
 
 ## Provenance and process
 
