@@ -2,6 +2,8 @@
 
 Amended after the compute freeze by [07](07-freeze-wording.md): headline, statistics, F03, threshold re-choice, judge and organiser sentences, pair counts, video and figure counts. Where they differ, 07 governs.
 
+Action 10 opening amended by [11](11-positive-framing.md).
+
 Chair: Opus. Members: Opus, Astra (round 1 only; no round 2 answer), Gemini 4 Argon (consultative). Written Wed 21 Oct, about 23:30 TRT.
 Binding claim wording stays as in [05-final-claims.md](05-final-claims.md). This decision only orders the work.
 

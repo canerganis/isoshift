@@ -1,6 +1,6 @@
 # IsoShift: deuteration and polymorph stability
 
-Two days produced a testable, regime-limited computational rule, its failure boundary, one named counterexample and a falsifiable pressure prediction. It is not a confirmed discovery, because this observable has never been measured.
+In harmonic calculations with three ML potentials, deuteration favours the polymorph with shorter O-H bonds in 185 of 212 evaluations with moderate-to-strong hydrogen bonds (constant-sign baseline 131), fails with weak ones (2 of 20) and has one Al(OH)3 counterexample by pair majority; no measurement has tested it directly. Two would: D/H partitioning between coexisting polymorphs ([M02](../math/M02-bigeleisen-bridge.md)), and matched reversed-bracket AlOOH/AlOOD runs on the diaspore to δ-AlOOH transition, where the models predict a higher pressure for AlOOD (exploratory sign prediction).
 
 **Result (F01).** Across 220 hydrogen-compound polymorph pairs screened with three universal ML potentials, the harmonic H/D free-energy difference at 300 K changes by 0.11 to 0.13 meV per H for each mÅ difference in mean X-H length, a stretch term about half cancelled by bend and libration. When at least one polymorph has a mean model O-H length of 0.99 Å or more (a model-derived boundary for moderate to strong hydrogen bonds, chosen after inspecting the data), deuteration favours the polymorph with the shorter O-H bonds in 185 of 212 O-H model evaluations with |Δ mean O-H| ≥ 5 mÅ (84 pairs, 28 formulas), against 131 of 212 for a constant-sign baseline fitted on leave-one-formula-out training folds. By model majority 74 pairs are right and 10 are wrong, and all 10 wrong pairs contain one Al(OH)3 structure, mp-985293.
 
@@ -8,15 +8,13 @@ Two days produced a testable, regime-limited computational rule, its failure bou
 
 *O-H pairs with |Δ mean O-H| ≥ 5 mÅ. Regime by the larger mean model O-H of the pair; the 0.99 Å boundary was chosen after inspecting the data (nested re-choice picks 1.00 Å in 30 of 31 folds). Open markers: evaluations involving Al(OH)3 mp-985293, kept in the counts. Evaluations share structures and models.*
 
-**Limits.** Re-choosing the boundary inside training folds gives 183 of 210 held-out evaluations right against 131; the fold holding out Al(OH)3 scores 8 of 28 against 19, so no sharp boundary is established. With weak hydrogen bonds it fails (2 of 20).
-
-**Direct test.** Measured D/H partitioning between coexisting polymorphs would test F01 directly: it equals the boundary isotope shift (n_H kT ln α = ΔΔG_iso, M02).
+**Limits.** Re-choosing the boundary inside training folds gives 183 of 210 held-out evaluations right against 131; the fold holding out Al(OH)3 scores 8 of 28 against 19, so no sharp boundary is established.
 
 **What is new.** 2,009 phonon calculations (structure and model combinations, `docs/freeze/FREEZE_REPORT.md`) ran on one 8 GB laptop GPU; a structure-only version (mean O...O ≤ 2.93 Å, 78% against 61%, signal-filtered) needs no phonons. McKenzie et al. showed the stretch-bend competition for isotope fractionation; new here is its polymorph-stability version, slope and failure boundary.
 
 **Checks.** F03: stretch slopes match measured spectra at O...O 2.50 to 2.80 Å (ratios 0.91 to 0.92). F04: stretch and bend shifts match in sign for one pair (goethite to ε-FeOOH). F05: mineral D/H fractionation, ordering only. F02: volume isotope effects, mixed. F07: blind ice boundaries, Ih-II and Ih-III wrong sign in 3 of 3 models (failed prediction), II-III right. Benchmark: four models against PBEsol phonons at DFT geometries, isotope ZPE MAE 0.7 to 1.5 meV per H, 300 K H/D free-energy MAE 0.5 to 1.1 meV per H (`results/benchmark/summary.csv`).
 
-**AlOOH card (exploratory sign prediction).** Deuteration raises the diaspore to δ-AlOOH transition pressure: +1.13 to +1.33 GPa at 300 K (ORB, MACE), +0.7 to +0.9 GPa near 1000 K (three models); the MACE H root is extrapolated below the fit grid, so only the sign is claimed. δ-AlOOH proton disorder is not modelled. Falsifier: matched side-by-side reversed-bracket AlOOH and AlOOD runs; an opposite-sign shift refutes it.
+**AlOOH card (exploratory sign prediction).** Deuteration raises the diaspore to δ-AlOOH transition pressure: +1.13 to +1.33 GPa at 300 K (ORB, MACE), +0.7 to +0.9 GPa near 1000 K (three models); the MACE H root is extrapolated below the fit grid, so only the sign is claimed. δ-AlOOH proton disorder is not modelled.
 
 **How the AI worked.** Valency Bond agents found validation data (182 logged queries, `logs/bond_queries.jsonl`). Formulas passed a two-model mathcheck. Predictions were committed before reading data. Councils (Opus, Astra, Gemini) logged hard calls and dissent in `docs/decisions/`. Codex reimplemented ΔΔF_iso blind, matching to 1e-9 meV/atom (F06).
 
