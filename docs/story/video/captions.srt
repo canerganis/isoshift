@@ -19,177 +19,177 @@ hydrogen bonds are moderate or strong, and
 the rule says where it stops working.
 
 5
-00:00:20,474 --> 00:00:24,870
+00:00:20,474 --> 00:00:24,714
 Polymorph energy gaps are smaller than any
 machine-learned potential's error. So we
 
 6
-00:00:24,890 --> 00:00:29,850
+00:00:24,734 --> 00:00:30,714
 compute only the isotope difference. Force
 constants do not depend on mass, so one
 
 7
-00:00:29,870 --> 00:00:34,230
+00:00:30,734 --> 00:00:34,794
 phonon calculation gives both hydrogen and
 deuterium free energies, and the static
 
 8
-00:00:34,250 --> 00:00:39,688
+00:00:34,814 --> 00:00:40,654
 gap cancels. Three universal potentials do
 the work; SevenNet only votes on signs.
 
 9
-00:00:39,708 --> 00:00:46,515
+00:00:40,674 --> 00:00:47,882
 We screened 220 polymorph pairs. The
 isotope free-energy difference follows the
 
 10
-00:00:46,535 --> 00:00:53,295
+00:00:47,902 --> 00:00:54,982
 change in mean O-H length, 0.11 to 0.13
 meV per hydrogen per thousandth of an
 
 11
-00:00:53,315 --> 00:01:01,535
+00:00:55,002 --> 00:01:02,746
 angstrom. The O-H stretch drives it, and
 bending and libration cancel about half.
 
 12
-00:01:01,555 --> 00:01:06,075
+00:01:02,766 --> 00:01:07,306
 Where hydrogen bonds are moderate or
 strong, deuteration favours the polymorph
 
 13
-00:01:06,095 --> 00:01:14,155
+00:01:07,326 --> 00:01:15,066
 with the shorter O-H bonds in 185 of 212
 model evaluations. A baseline that always
 
 14
-00:01:14,175 --> 00:01:20,655
+00:01:15,086 --> 00:01:22,146
 guesses one sign gets 131. Counted per
 pair, 74 are right and 10 are wrong, and
 
 15
-00:01:20,675 --> 00:01:25,255
+00:01:22,166 --> 00:01:26,106
 all 10 wrong pairs contain the same
 aluminium hydroxide structure, where
 
 16
-00:01:25,275 --> 00:01:28,339
+00:01:26,126 --> 00:01:28,834
 bending and libration outweigh the
 stretch.
 
 17
-00:01:28,359 --> 00:01:33,779
+00:01:28,854 --> 00:01:34,274
 With weak hydrogen bonds it fails, 2 of
 20. We chose that boundary after seeing
 
 18
-00:01:33,799 --> 00:01:35,815
+00:01:34,294 --> 00:01:36,309
 the data, and we say so.
 
 19
-00:01:35,835 --> 00:01:40,915
+00:01:36,329 --> 00:01:42,449
 Is this a shared model bias? Their O-H
 stretch frequencies follow the slope
 
 20
-00:01:40,935 --> 00:01:45,815
+00:01:42,469 --> 00:01:47,949
 measured from real mineral spectra, for O
 to O distances between 2.5 and 2.8
 
 21
-00:01:45,835 --> 00:01:50,781
+00:01:47,969 --> 00:01:52,811
 angstrom. That checks the main ingredient,
 not the free energies.
 
 22
-00:01:50,801 --> 00:01:56,101
+00:01:52,831 --> 00:01:58,011
 Diaspore turns into delta-AlOOH, a
 possible deep-Earth water carrier. The
 
 23
-00:01:56,121 --> 00:02:02,141
+00:01:58,031 --> 00:02:03,711
 measured boundary lies at higher pressure
 and high temperature. Our 300 kelvin
 
 24
-00:02:02,161 --> 00:02:10,041
+00:02:03,731 --> 00:02:11,731
 models put it at about 9 to 13 gigapascal,
 and both say deuteration raises it, by
 
 25
-00:02:10,061 --> 00:02:19,441
+00:02:11,751 --> 00:02:20,671
 1.13 and 1.33 gigapascal. It is an
 exploratory sign prediction, because
 
 26
-00:02:19,461 --> 00:02:25,948
+00:02:20,691 --> 00:02:26,209
 delta-AlOOH has proton disorder there that
 harmonic physics leaves out.
 
 27
-00:02:25,968 --> 00:02:30,248
+00:02:26,229 --> 00:02:29,859
 Nobody has measured this directly, but the
 isotope shift of a phase boundary equals
 
 28
-00:02:30,268 --> 00:02:35,788
+00:02:29,879 --> 00:02:34,059
 the D/H fractionation between the two
 phases, so deuterium partitioning between
 
 29
-00:02:35,808 --> 00:02:38,862
+00:02:34,079 --> 00:02:36,778
 coexisting polymorphs is a direct test.
 
 30
-00:02:38,882 --> 00:02:41,498
+00:02:36,798 --> 00:02:39,414
 An AI team ran the work.
 
 31
-00:02:41,518 --> 00:02:45,461
+00:02:39,434 --> 00:02:43,064
 Literature agents on Valency Bond pulled
 the measured values and logged every
 
 32
-00:02:45,481 --> 00:02:46,486
+00:02:43,084 --> 00:02:44,349
 query.
 
 33
-00:02:46,506 --> 00:02:53,306
+00:02:44,369 --> 00:02:51,169
 Predictions were committed to git before
 the data were read. Councils of three
 
 34
-00:02:53,326 --> 00:02:58,526
+00:02:51,189 --> 00:02:56,389
 models argued each claim, and every
 decision records its dissent. A second
 
 35
-00:02:58,546 --> 00:03:02,128
+00:02:56,409 --> 00:02:59,990
 model rewrote the calculation blind and
 matched our numbers.
 
 36
-00:03:02,148 --> 00:03:08,522
+00:03:00,010 --> 00:03:06,384
 Everything runs in an open marimo app.
 Pick a pair and see the model numbers, the
 
 37
-00:03:08,542 --> 00:03:12,043
+00:03:06,404 --> 00:03:09,906
 rule's call, and the Bond query behind
 each measured value.
 
 38
-00:03:12,063 --> 00:03:19,783
+00:03:09,926 --> 00:03:17,746
 Limits. One blind test came out mixed. The
 physics is harmonic, with no proton
 
 39
-00:03:19,803 --> 00:03:25,203
+00:03:17,766 --> 00:03:22,866
 tunnelling. The potentials are trained on
 similar data, so three models agreeing is
 
 40
-00:03:25,223 --> 00:03:29,752
+00:03:22,886 --> 00:03:28,252
 not three validations. Code, data and
 every decision are public.
