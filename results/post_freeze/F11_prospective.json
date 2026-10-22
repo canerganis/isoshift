@@ -10,42 +10,42 @@
   "sign_600K": 1
  },
  "n_primary_committed": 111,
- "n_primary_total": 96,
- "n_primary_scored_clean": 21,
+ "n_primary_total": 111,
+ "n_primary_scored_clean": 24,
  "primary_outcome_counts": {
-  "scored": 21,
-  "not_clean": 13,
-  "failed_or_unstable": 62
+  "scored": 24,
+  "not_clean": 18,
+  "failed_or_unstable": 69
  },
  "primary": {
   "rule": "frozen F01 at 300 K: sign(ddF_iso(b-a)/H) = sign(d mean model O-H(b-a)); rmax >= 0.99 A, |d| >= 5 mA",
-  "n": 96,
-  "right": 14,
-  "acc": 0.1458,
-  "baseline_right": 4,
-  "baseline_acc": 0.0417,
-  "points_above_baseline": 10.4,
-  "n_pairs": 34,
-  "n_formulas": 16,
+  "n": 111,
+  "right": 16,
+  "acc": 0.1441,
+  "baseline_right": 5,
+  "baseline_acc": 0.045,
+  "points_above_baseline": 9.9,
+  "n_pairs": 42,
+  "n_formulas": 20,
   "unique_pair_majority": {
-   "right": 4,
+   "right": 5,
    "tie": 1,
-   "wrong": 29
+   "wrong": 36
   },
-  "pair_majority_right_frac": 0.1176,
-  "n_failures_counted_not_right": 75,
+  "pair_majority_right_frac": 0.119,
+  "n_failures_counted_not_right": 87,
   "per_model": {
    "mace": {
     "right": 5,
-    "n": 33
+    "n": 39
    },
    "orb": {
-    "right": 4,
-    "n": 31
+    "right": 5,
+    "n": 34
    },
    "mattersim": {
-    "right": 5,
-    "n": 32
+    "right": 6,
+    "n": 38
    }
   },
   "bars": {
@@ -58,50 +58,50 @@
  },
  "secondary": {
   "rule": "600 K, no threshold, all O-H pairs with |d| >= 5 mA",
-  "n": 96,
-  "right": 14,
-  "acc": 0.1458,
-  "baseline_right": 2,
-  "baseline_acc": 0.0208,
-  "points_above_baseline": 12.5,
-  "n_pairs": 34,
-  "n_formulas": 16,
+  "n": 120,
+  "right": 21,
+  "acc": 0.175,
+  "baseline_right": 3,
+  "baseline_acc": 0.025,
+  "points_above_baseline": 15.0,
+  "n_pairs": 45,
+  "n_formulas": 23,
   "unique_pair_majority": {
-   "right": 5,
+   "right": 8,
    "tie": 0,
-   "wrong": 29
+   "wrong": 37
   },
-  "pair_majority_right_frac": 0.1471,
-  "n_failures_counted_not_right": 82,
+  "pair_majority_right_frac": 0.1778,
+  "n_failures_counted_not_right": 99,
   "per_model": {
    "mace": {
-    "right": 3,
-    "n": 33
+    "right": 4,
+    "n": 42
    },
    "orb": {
-    "right": 6,
-    "n": 31
+    "right": 8,
+    "n": 37
    },
    "mattersim": {
-    "right": 5,
-    "n": 32
+    "right": 9,
+    "n": 41
    }
   },
   "bar_acc_ge_0.90": false
  },
  "primary_per_protocol_clean_only": {
-  "n": 21,
-  "right": 14,
+  "n": 24,
+  "right": 16,
   "acc": 0.6667,
-  "baseline_right": 4,
-  "baseline_acc": 0.1905,
-  "points_above_baseline": 47.6,
-  "n_pairs": 8,
-  "n_formulas": 6,
+  "baseline_right": 5,
+  "baseline_acc": 0.2083,
+  "points_above_baseline": 45.8,
+  "n_pairs": 10,
+  "n_formulas": 8,
   "unique_pair_majority": {
-   "right": 4,
+   "right": 5,
    "tie": 1,
-   "wrong": 3
+   "wrong": 4
   },
   "pair_majority_right_frac": 0.5,
   "n_failures_counted_not_right": 0,
@@ -111,97 +111,97 @@
     "n": 7
    },
    "orb": {
-    "right": 4,
-    "n": 6
+    "right": 5,
+    "n": 7
    },
    "mattersim": {
-    "right": 5,
-    "n": 8
+    "right": 6,
+    "n": 10
    }
   }
  },
  "primary_sensitivity_1p00": {
-  "n": 87,
-  "right": 13,
-  "acc": 0.1494,
+  "n": 98,
+  "right": 15,
+  "acc": 0.1531,
   "baseline_right": 2,
-  "baseline_acc": 0.023,
-  "points_above_baseline": 12.6,
-  "n_pairs": 31,
+  "baseline_acc": 0.0204,
+  "points_above_baseline": 13.3,
+  "n_pairs": 35,
   "n_formulas": 15,
   "unique_pair_majority": {
-   "right": 4,
+   "right": 5,
    "tie": 1,
-   "wrong": 26
+   "wrong": 29
   },
-  "pair_majority_right_frac": 0.129,
-  "n_failures_counted_not_right": 72,
+  "pair_majority_right_frac": 0.1429,
+  "n_failures_counted_not_right": 81,
   "per_model": {
    "mace": {
     "right": 5,
-    "n": 30
+    "n": 34
    },
    "orb": {
-    "right": 4,
-    "n": 28
+    "right": 5,
+    "n": 31
    },
    "mattersim": {
-    "right": 4,
-    "n": 29
+    "right": 5,
+    "n": 33
    }
   }
  },
  "primary_structure_transfer_known_formula": {
-  "n": 23,
-  "right": 1,
-  "acc": 0.0435,
+  "n": 34,
+  "right": 3,
+  "acc": 0.0882,
   "baseline_right": 2,
-  "baseline_acc": 0.087,
-  "points_above_baseline": -4.3,
-  "n_pairs": 8,
+  "baseline_acc": 0.0588,
+  "points_above_baseline": 2.9,
+  "n_pairs": 12,
   "n_formulas": 2,
   "unique_pair_majority": {
-   "right": 0,
+   "right": 1,
    "tie": 0,
-   "wrong": 8
+   "wrong": 11
   },
-  "pair_majority_right_frac": 0.0,
-  "n_failures_counted_not_right": 17,
+  "pair_majority_right_frac": 0.0833,
+  "n_failures_counted_not_right": 26,
   "per_model": {
    "mace": {
     "right": 0,
-    "n": 8
+    "n": 12
    },
    "orb": {
-    "right": 0,
-    "n": 7
+    "right": 1,
+    "n": 10
    },
    "mattersim": {
-    "right": 1,
-    "n": 8
+    "right": 2,
+    "n": 12
    }
   }
  },
  "primary_new_formula": {
-  "n": 73,
+  "n": 77,
   "right": 13,
-  "acc": 0.1781,
-  "baseline_right": 2,
-  "baseline_acc": 0.0274,
-  "points_above_baseline": 15.1,
-  "n_pairs": 26,
-  "n_formulas": 14,
+  "acc": 0.1688,
+  "baseline_right": 3,
+  "baseline_acc": 0.039,
+  "points_above_baseline": 13.0,
+  "n_pairs": 30,
+  "n_formulas": 18,
   "unique_pair_majority": {
    "right": 4,
    "tie": 1,
-   "wrong": 21
+   "wrong": 25
   },
-  "pair_majority_right_frac": 0.1538,
-  "n_failures_counted_not_right": 58,
+  "pair_majority_right_frac": 0.1333,
+  "n_failures_counted_not_right": 61,
   "per_model": {
    "mace": {
     "right": 5,
-    "n": 25
+    "n": 27
    },
    "orb": {
     "right": 4,
@@ -209,21 +209,21 @@
    },
    "mattersim": {
     "right": 4,
-    "n": 24
+    "n": 26
    }
   }
  },
  "secondary_per_protocol_clean_only": {
-  "n": 14,
-  "right": 14,
+  "n": 21,
+  "right": 21,
   "acc": 1.0,
-  "baseline_right": 2,
+  "baseline_right": 3,
   "baseline_acc": 0.1429,
   "points_above_baseline": 85.7,
-  "n_pairs": 7,
-  "n_formulas": 5,
+  "n_pairs": 11,
+  "n_formulas": 9,
   "unique_pair_majority": {
-   "right": 7,
+   "right": 11,
    "tie": 0,
    "wrong": 0
   },
@@ -231,36 +231,49 @@
   "n_failures_counted_not_right": 0,
   "per_model": {
    "mace": {
-    "right": 3,
-    "n": 3
+    "right": 4,
+    "n": 4
    },
    "orb": {
-    "right": 6,
-    "n": 6
+    "right": 8,
+    "n": 8
    },
    "mattersim": {
-    "right": 5,
-    "n": 5
+    "right": 9,
+    "n": 9
    }
   }
  },
  "weak_side_300K_descriptive": {
-  "n": 0,
-  "right": 0,
-  "acc": null,
-  "baseline_right": 0,
-  "baseline_acc": null,
-  "points_above_baseline": null,
-  "n_pairs": 0,
-  "n_formulas": 0,
+  "n": 9,
+  "right": 2,
+  "acc": 0.2222,
+  "baseline_right": 1,
+  "baseline_acc": 0.1111,
+  "points_above_baseline": 11.1,
+  "n_pairs": 3,
+  "n_formulas": 3,
   "unique_pair_majority": {
-   "right": 0,
+   "right": 1,
    "tie": 0,
-   "wrong": 0
+   "wrong": 2
   },
-  "pair_majority_right_frac": null,
-  "n_failures_counted_not_right": 0,
-  "per_model": {}
+  "pair_majority_right_frac": 0.3333,
+  "n_failures_counted_not_right": 4,
+  "per_model": {
+   "mace": {
+    "right": 1,
+    "n": 3
+   },
+   "orb": {
+    "right": 0,
+    "n": 3
+   },
+   "mattersim": {
+    "right": 1,
+    "n": 3
+   }
+  }
  },
  "failures": [
   {
@@ -1472,6 +1485,86 @@
    "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
   },
   {
+   "order": "33",
+   "pair_id": "mp-24043__mp-703459",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "33",
+   "pair_id": "mp-24043__mp-703459",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "33",
+   "pair_id": "mp-24043__mp-703459",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "33",
+   "pair_id": "mp-24043__mp-703459",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "33",
+   "pair_id": "mp-24043__mp-703459",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "33",
+   "pair_id": "mp-24043__mp-703459",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "34",
+   "pair_id": "mp-510654__mp-1200251",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.023"
+  },
+  {
+   "order": "34",
+   "pair_id": "mp-510654__mp-1200251",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.023"
+  },
+  {
+   "order": "35",
+   "pair_id": "mp-554651__mp-1237009",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "failed:Masses of {'Pu'} are undefined. These have to be specified by masses parameter.;failed:Masses of {'Pu'} are undefined. These have to be specified by masses parameter."
+  },
+  {
+   "order": "35",
+   "pair_id": "mp-554651__mp-1237009",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "failed:Masses of {'Pu'} are undefined. These have to be specified by masses parameter.;failed:Masses of {'Pu'} are undefined. These have to be specified by masses parameter."
+  },
+  {
    "order": "37",
    "pair_id": "mp-696735__mp-697085",
    "model": "mace",
@@ -1518,207 +1611,199 @@
    "T_K": 600,
    "outcome": "failed_or_unstable",
    "reason": "unstable:imag_fraction_0.045"
+  },
+  {
+   "order": "38",
+   "pair_id": "mp-696735__mp-703459",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0445"
+  },
+  {
+   "order": "38",
+   "pair_id": "mp-696735__mp-703459",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0445"
+  },
+  {
+   "order": "38",
+   "pair_id": "mp-696735__mp-703459",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.045"
+  },
+  {
+   "order": "38",
+   "pair_id": "mp-696735__mp-703459",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.045"
+  },
+  {
+   "order": "39",
+   "pair_id": "mp-697085__mp-703459",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "39",
+   "pair_id": "mp-697085__mp-703459",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "40",
+   "pair_id": "mp-703459__mp-2739191",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0575"
+  },
+  {
+   "order": "40",
+   "pair_id": "mp-703459__mp-2739191",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0575"
+  },
+  {
+   "order": "40",
+   "pair_id": "mp-703459__mp-2739191",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0612"
+  },
+  {
+   "order": "40",
+   "pair_id": "mp-703459__mp-2739191",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0612"
+  },
+  {
+   "order": "40",
+   "pair_id": "mp-703459__mp-2739191",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0568"
+  },
+  {
+   "order": "40",
+   "pair_id": "mp-703459__mp-2739191",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0568"
+  },
+  {
+   "order": "41",
+   "pair_id": "mp-766178__mp-1198515",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "41",
+   "pair_id": "mp-766178__mp-1198515",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "43",
+   "pair_id": "mp-24004__mp-722516",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0213"
+  },
+  {
+   "order": "43",
+   "pair_id": "mp-24004__mp-722516",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0213"
+  },
+  {
+   "order": "43",
+   "pair_id": "mp-24004__mp-722516",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0278"
+  },
+  {
+   "order": "43",
+   "pair_id": "mp-24004__mp-722516",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0278"
+  },
+  {
+   "order": "43",
+   "pair_id": "mp-24004__mp-722516",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0224"
+  },
+  {
+   "order": "43",
+   "pair_id": "mp-24004__mp-722516",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0224"
+  },
+  {
+   "order": "44",
+   "pair_id": "mp-23879__mp-643392",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "44",
+   "pair_id": "mp-23879__mp-643392",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "44",
+   "pair_id": "mp-23879__mp-643392",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
   }
  ],
  "not_computed_in_committed_order": [
   {
-   "order": 33,
-   "pair_id": "mp-24043__mp-703459",
-   "model": "mace",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "soft_mode_bracketed"
-  },
-  {
-   "order": 33,
-   "pair_id": "mp-24043__mp-703459",
-   "model": "mattersim",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "soft_mode_bracketed"
-  },
-  {
-   "order": 33,
-   "pair_id": "mp-24043__mp-703459",
-   "model": "orb",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "soft_mode_bracketed"
-  },
-  {
-   "order": 34,
-   "pair_id": "mp-510654__mp-1200251",
-   "model": "mace",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "not_computed"
-  },
-  {
-   "order": 35,
-   "pair_id": "mp-554651__mp-1237009",
-   "model": "mace",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "not_computed"
-  },
-  {
-   "order": 36,
-   "pair_id": "mp-557615__mp-1194761",
-   "model": "mattersim",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "not_computed"
-  },
-  {
-   "order": 38,
-   "pair_id": "mp-696735__mp-703459",
-   "model": "mace",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "unstable:imag_fraction_0.0445"
-  },
-  {
-   "order": 38,
-   "pair_id": "mp-696735__mp-703459",
-   "model": "mattersim",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "unstable:imag_fraction_0.045"
-  },
-  {
-   "order": 39,
-   "pair_id": "mp-697085__mp-703459",
-   "model": "mace",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "soft_mode_bracketed"
-  },
-  {
-   "order": 39,
-   "pair_id": "mp-697085__mp-703459",
-   "model": "mattersim",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "soft_mode_bracketed"
-  },
-  {
-   "order": 39,
-   "pair_id": "mp-697085__mp-703459",
-   "model": "orb",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "soft_mode_bracketed"
-  },
-  {
-   "order": 40,
-   "pair_id": "mp-703459__mp-2739191",
-   "model": "mace",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "unstable:imag_fraction_0.0575"
-  },
-  {
-   "order": 40,
-   "pair_id": "mp-703459__mp-2739191",
-   "model": "mattersim",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "unstable:imag_fraction_0.0568"
-  },
-  {
-   "order": 40,
-   "pair_id": "mp-703459__mp-2739191",
-   "model": "orb",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "unstable:imag_fraction_0.0612"
-  },
-  {
-   "order": 41,
-   "pair_id": "mp-766178__mp-1198515",
-   "model": "mattersim",
-   "eligible_primary": true,
-   "status_a": "not_computed",
-   "status_b": "not_computed"
-  },
-  {
-   "order": 43,
-   "pair_id": "mp-24004__mp-722516",
-   "model": "mace",
-   "eligible_primary": false,
-   "status_a": "not_computed",
-   "status_b": "not_computed"
-  },
-  {
-   "order": 43,
-   "pair_id": "mp-24004__mp-722516",
-   "model": "mattersim",
-   "eligible_primary": false,
-   "status_a": "not_computed",
-   "status_b": "not_computed"
-  },
-  {
-   "order": 43,
-   "pair_id": "mp-24004__mp-722516",
-   "model": "orb",
-   "eligible_primary": false,
-   "status_a": "not_computed",
-   "status_b": "not_computed"
-  },
-  {
-   "order": 44,
-   "pair_id": "mp-23879__mp-643392",
-   "model": "mace",
-   "eligible_primary": false,
-   "status_a": "not_computed",
-   "status_b": "not_computed"
-  },
-  {
-   "order": 44,
-   "pair_id": "mp-23879__mp-643392",
-   "model": "mattersim",
-   "eligible_primary": false,
-   "status_a": "not_computed",
-   "status_b": "not_computed"
-  },
-  {
-   "order": 44,
-   "pair_id": "mp-23879__mp-643392",
-   "model": "orb",
-   "eligible_primary": false,
-   "status_a": "not_computed",
-   "status_b": "not_computed"
-  },
-  {
-   "order": 45,
-   "pair_id": "mp-24595__mp-698170",
-   "model": "mace",
-   "eligible_primary": false,
-   "status_a": "not_computed",
-   "status_b": "not_computed"
-  },
-  {
-   "order": 45,
-   "pair_id": "mp-24595__mp-698170",
-   "model": "mattersim",
-   "eligible_primary": false,
-   "status_a": "not_computed",
-   "status_b": "not_computed"
-  },
-  {
-   "order": 45,
-   "pair_id": "mp-24595__mp-698170",
-   "model": "orb",
-   "eligible_primary": false,
-   "status_a": "not_computed",
-   "status_b": "not_computed"
-  },
-  {
    "order": 46,
    "pair_id": "mp-24595__mp-721300",
    "model": "mace",
    "eligible_primary": false,
-   "status_a": "not_computed",
+   "status_a": "ok",
    "status_b": "not_computed"
   },
   {
@@ -1726,7 +1811,7 @@
    "pair_id": "mp-24595__mp-721300",
    "model": "mattersim",
    "eligible_primary": false,
-   "status_a": "not_computed",
+   "status_a": "ok",
    "status_b": "not_computed"
   },
   {
@@ -1734,7 +1819,7 @@
    "pair_id": "mp-24595__mp-721300",
    "model": "orb",
    "eligible_primary": false,
-   "status_a": "not_computed",
+   "status_a": "ok",
    "status_b": "not_computed"
   }
  ]
