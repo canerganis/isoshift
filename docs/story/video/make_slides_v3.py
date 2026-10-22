@@ -25,6 +25,15 @@ BLUE, ORANGE, VERM, GREEN = "#56B4E9", "#E69F00", "#F26B3A", "#2FBF8F"
 SANS = ["Segoe UI", "Segoe UI Symbol", "DejaVu Sans"]
 NUM = ["Bahnschrift", "Segoe UI", "DejaVu Sans"]
 X0, XR = 90, 1830
+P = 1.0  # animation progress 0..1 for the slides that build up; 1 = final still
+FRAME = None  # (dir, index) while rendering animation frames
+ANIM_FRAMES = 36  # 1.2 s at 30 fps
+
+
+def ease(p):
+    return 1 - (1 - p) ** 3
+
+
 SECTIONS = ["Claim", "Method", "Result", "Check", "Prediction", "Lab test", "Process", "Limits"]
 
 
@@ -115,6 +124,11 @@ def dots(ax, x, y, n, n_hi, cols, d, gap, hi=BLUE, lo=VERM, hi_first=True):
 
 
 def save(fig, name):
+    if FRAME is not None:
+        d, k = FRAME
+        fig.savefig(d / f"f{k:03d}.png", dpi=DPI, facecolor=BG)
+        plt.close(fig)
+        return
     fig.savefig(OUT / name, dpi=DPI, facecolor=BG)
     plt.close(fig)
     img = mpimg.imread(OUT / name)
@@ -122,13 +136,13 @@ def save(fig, name):
     print("wrote", name)
 
 
-def bond(ax, x, y, length, label, sub, good):
+def bond(ax, x, y, length, label, sub, good, iso="D"):
     """O-H...O drawn to scale-ish: covalent O-H of `length` px, then a dashed H...O."""
     o1, h = x, x + length
     o2 = x + 360
     ax.plot([o1, h], [y, y], color=INK, lw=9, solid_capstyle="round", zorder=2)
     ax.plot([h, o2], [y, y], color=MUTED, lw=4, ls=(0, (3, 3)), zorder=1)
-    for cx, lab, col, r in ((o1, "O", VERM, 46), (o2, "O", VERM, 46), (h, "D", ORANGE, 34)):
+    for cx, lab, col, r in ((o1, "O", VERM, 46), (o2, "O", VERM, 46), (h, iso, ORANGE if iso == "D" else BLUE, 34)):
         ax.add_patch(Circle((cx, y), r, color=col, lw=0, zorder=3))
         text(ax, cx, y + 2, lab, 40, BG, "bold", ha="center", va="center", zorder=4)
     text(ax, x - 46, y + 80, label, 46, INK, "bold")
@@ -140,15 +154,17 @@ def bond(ax, x, y, length, label, sub, good):
 def slide_01():
     fig, ax = canvas(0)
     text(ax, X0, 105, "IsoShift", 150, INK, "bold")
-    text(ax, X0 + 4, 290, "Swap hydrogen for deuterium. Which crystal wins?", 44, MUTED)
+    chip(ax, X0, 292, "THE SHORT-BOND RULE", ORANGE, 34, fill=True)
     text(ax, X0, 380, "Deuteration favours the polymorph", 64, INK, "bold")
     text(ax, X0, 458, "with the shorter O-H bonds", 64, BLUE, "bold")
-    text(ax, X0 - 6, 560, "185/212", 210, BLUE, "bold", family=NUM)
+    E = ease(P)
+    text(ax, X0 - 6, 560, f"{round(185 * E)}/212", 210, BLUE, "bold", family=NUM)
     text(ax, X0, 800, "model evaluations agree, moderate-to-strong H bonds", 40, INK)
     text(ax, X0, 856, "Baseline (one fixed sign): 131/212", 40, MUTED)
     box(ax, 1360, 380, XR - 1360, 520, fc=PANEL)
-    bond(ax, 1430, 480, 105, "diaspore", "shorter O-H", True)
-    bond(ax, 1430, 720, 165, "δ-AlOOH", "longer O-H", False)
+    iso = "D" if E > 0.5 else "H"
+    bond(ax, 1430, 480, 105, "diaspore", "shorter O-H", E > 0.95, iso)
+    bond(ax, 1430, 720, 165, "δ-AlOOH", "longer O-H", False, iso)
     save(fig, "slide_01_title.png")
 
 
@@ -184,7 +200,7 @@ def slide_02():
 
 def slide_03():
     fig, ax = canvas(2)
-    title(ax, "Shorter O-H bonds win")
+    title(ax, "The short-bond rule: shorter O-H bonds win")
     image_card(ax, ROOT / "figures" / "fig_headline.png", X0 + 14, 214, 1110)
     x = 1300
     text(ax, x, 220, "220", 120, BLUE, "bold", family=NUM)
@@ -200,7 +216,8 @@ def slide_03():
 def slide_03b():
     fig, ax = canvas(2)
     title(ax, "The scoreboard")
-    text(ax, X0 - 6, 200, "185/212", 200, BLUE, "bold", family=NUM)
+    E = ease(P)
+    text(ax, X0 - 6, 200, f"{round(185 * E)}/212", 200, BLUE, "bold", family=NUM)
     text(ax, X0, 430, "model evaluations agree with the rule", 40, INK)
     text(ax, X0, 482, "where H bonds are moderate or strong", 40, MUTED)
     bw = 780
@@ -208,15 +225,15 @@ def slide_03b():
         yy = 585 + i * 120
         text(ax, X0, yy, lab, 34, INK)
         ax.add_patch(Rectangle((X0, yy + 50), bw, 34, color=FAINT, lw=0))
-        ax.add_patch(Rectangle((X0, yy + 50), bw * v / 212, 34, color=col, lw=0))
-        text(ax, X0 + bw * v / 212 + 16, yy + 42, str(v), 40, col, "bold", family=NUM)
+        ax.add_patch(Rectangle((X0, yy + 50), bw * v / 212 * E, 34, color=col, lw=0))
+        text(ax, X0 + bw * v / 212 * E + 16, yy + 42, str(round(v * E)), 40, col, "bold", family=NUM)
     x = 1060
     box(ax, x, 200, XR - x, 700, fc=PANEL)
     text(ax, x + 40, 230, "Counted per pair", 44, INK, "bold")
-    text(ax, x + 40, 300, "74 right", 56, BLUE, "bold", family=NUM)
-    text(ax, x + 330, 300, "10 wrong", 56, VERM, "bold", family=NUM)
+    text(ax, x + 40, 300, f"{round(74 * E)} right", 56, BLUE, "bold", family=NUM)
+    text(ax, x + 330, 300, f"{round(10 * E)} wrong", 56, VERM, "bold", family=NUM)
     text(ax, x + 640, 312, "0 ties", 40, MUTED, family=NUM)
-    dots(ax, x + 44, 400, 84, 74, 14, 38, 12)
+    dots(ax, x + 44, 400, round(84 * E), 74, 14, 38, 12)
     wrap(ax, x + 40, 760, "All 10 wrong pairs contain one Al(OH)₃ structure, mp-985293, "
          "where bending and libration outweigh the stretch.", 34, XR - x - 80, color=VERM)
     save(fig, "slide_03b_counts_zoom.png")
@@ -224,7 +241,7 @@ def slide_03b():
 
 def slide_03c():
     fig, ax = canvas(2)
-    title(ax, "Where the rule stops working")
+    title(ax, "Where the short-bond rule stops working")
     y0, x1, xb, x2 = 330, X0, 760, XR
     ax.add_patch(Rectangle((x1, y0), xb - x1, 300, color="#3A2420", lw=0))
     ax.add_patch(Rectangle((xb, y0), x2 - xb, 300, color="#14304A", lw=0))
@@ -233,7 +250,7 @@ def slide_03c():
     text(ax, x1 + 40, y0 + 30, "weak H bonds", 44, VERM, "bold")
     text(ax, x1 + 40, y0 + 100, "2/20", 130, VERM, "bold", family=NUM)
     text(ax, xb + 50, y0 + 30, "moderate to strong H bonds", 44, BLUE, "bold")
-    text(ax, xb + 50, y0 + 100, "185/212", 130, BLUE, "bold", family=NUM)
+    text(ax, xb + 50, y0 + 100, f"{round(185 * ease(P))}/212", 130, BLUE, "bold", family=NUM)
     arrow(ax, x1, y0 + 420, x2, y0 + 420, MUTED, 3, 26)
     text(ax, (x1 + x2) / 2, y0 + 440, "larger mean model O-H of the pair  →", 32, MUTED, ha="center")
     box(ax, X0, 840, XR - X0, 92, fc=BG, ec=ORANGE, lw=3, r=18)
@@ -254,8 +271,8 @@ def slide_04():
         yy = 360 + i * 120
         text(ax, x, yy, m, 36, INK)
         ax.add_patch(Rectangle((x, yy + 50), bw, 30, color=FAINT, lw=0))
-        ax.add_patch(Rectangle((x, yy + 50), bw * v, 30, color=GREEN, lw=0))
-        text(ax, x + bw + 20, yy + 38, f"{v:.2f}", 44, GREEN, "bold", family=NUM)
+        ax.add_patch(Rectangle((x, yy + 50), bw * v * ease(P), 30, color=GREEN, lw=0))
+        text(ax, x + bw + 20, yy + 38, f"{v * ease(P):.2f}", 44, GREEN, "bold", family=NUM)
     ax.plot([x + bw, x + bw], [345, 720], color=INK, lw=2, ls=(0, (4, 4)))
     text(ax, x + bw, 724, "1.00", 28, MUTED, ha="center")
     box(ax, x, 800, XR - x, 100, fc=BG, ec=ORANGE, lw=3, r=18)
@@ -283,9 +300,13 @@ def slide_05():
         text(ax, ax0 - 10, yy - 22, m, 36, INK, ha="right")
         ax.plot([ax0, ax1], [yy, yy], color=FAINT, lw=2)
         ax.add_patch(Circle((X(ph), yy), 16, color=BLUE, lw=0, zorder=3))
-        ax.add_patch(Circle((X(pd), yy), 16, color=ORANGE, lw=0, zorder=3))
-        arrow(ax, X(ph) + 18, yy, X(pd) - 18, yy, ORANGE, 4, 24)
-        text(ax, X(pd) + 30, yy - 26, dp, 44, ORANGE, "bold", family=NUM)
+        E = ease(P)
+        xd = X(ph) + (X(pd) - X(ph)) * E
+        ax.add_patch(Circle((xd, yy), 16, color=ORANGE, lw=0, zorder=3))
+        if xd - X(ph) > 40:
+            arrow(ax, X(ph) + 18, yy, xd - 18, yy, ORANGE, 4, 24)
+        if E > 0.85:
+            text(ax, X(pd) + 30, yy - 26, dp, 44, ORANGE, "bold", family=NUM)
     text(ax, ax0, 415, "●", 30, BLUE)
     text(ax, ax0 + 34, 412, "boundary with H", 30, BLUE)
     text(ax, ax0 + 330, 415, "●", 30, ORANGE)
@@ -406,7 +427,25 @@ def slide_08():
     save(fig, "slide_08_limits_repo.png")
 
 
+ANIMATED = {"slide_01_title": "slide_01", "slide_03b_counts_zoom": "slide_03b", "slide_03c_weak_side_zoom": "slide_03c",
+            "slide_04_stretch_check": "slide_04", "slide_05_alooh_card": "slide_05"}
+
+
+def render_animations():
+    """Frames 0..ANIM_FRAMES-1 for each animated slide into anim/<slide>/; build_video.py plays them first."""
+    global P, FRAME
+    for stem, fn in ANIMATED.items():
+        d = OUT / "anim" / stem
+        d.mkdir(parents=True, exist_ok=True)
+        for k in range(ANIM_FRAMES):
+            P, FRAME = k / (ANIM_FRAMES - 1), (d, k)
+            globals()[fn]()
+        print("animated", stem)
+    P, FRAME = 1.0, None
+
+
 if __name__ == "__main__":
     for f in (slide_01, slide_02, slide_03, slide_03b, slide_03c, slide_04, slide_05, slide_06,
               slide_07, slide_07c, slide_07b, slide_08):
         f()
+    render_animations()

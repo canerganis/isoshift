@@ -25,6 +25,8 @@ SLIDES = {"01": "slide_01_title", "02": "slide_02_method", "03": "slide_03_headl
 APP_SHOTS = ["01_f01_banner", "02_check_a_pair", "03_how_we_know"]
 LEAD, PAD_IN, PAD_OUT, GAP, HOLD = 0.4, 0.12, 0.25, 0.35, 1.8  # seconds
 EXTRA_HOLD = {"09": 5.0, "10": 4.0}  # silent reading time after short lines on dense slides
+XFADE, ZOOM = 0.45, 0.035  # crossfade seconds, push-in over one slide
+MUSIC = -12  # synthesized pad under the voice, dB (None for voice only)
 FPS = 30
 
 
@@ -142,37 +144,79 @@ def build(segs, files, words, tmp, out_mp4, srt_path, screen=None, face=None):
         f"loudnorm=I=-16:TP=-1.5:LRA=11:measured_I={j['input_i']}:measured_TP={j['input_tp']}:"
         f"measured_LRA={j['input_lra']}:measured_thresh={j['input_thresh']}:offset={j['target_offset']}:linear=true",
         "-ar", "48000", str(norm))
-    # video: one clip per segment, same size and rate, then concat
-    clips = []
+    if MUSIC:
+        tot = duration(norm)
+        tones = [(110.0, 0.20, 0.05), (164.81, 0.15, 0.07), (220.0, 0.12, 0.04), (261.63, 0.08, 0.06), (329.63, 0.07, 0.03)]
+        expr = "+".join(f"{a}*sin(2*PI*{f}*t)*(0.6+0.4*sin(2*PI*{r}*t+{k}))" for k, (f, a, r) in enumerate(tones))
+        mixed = tmp / f"mix_{out_mp4.stem}.wav"
+        run("ffmpeg", "-y", "-v", "error", "-i", str(norm), "-f", "lavfi", "-i", f"aevalsrc='{expr}':s=48000:d={tot:.3f}",
+            "-filter_complex",
+            f"[0]asplit=2[v][key];[1]lowpass=f=1600,aecho=0.8:0.6:180|360:0.3|0.2,volume={MUSIC}dB,"
+            f"afade=t=in:d=2.5,afade=t=out:st={max(tot - 4, 0):.3f}:d=4[m];"
+            f"[m][key]sidechaincompress=threshold=0.03:ratio=5:attack=30:release=500[md];"
+            f"[v][md]amix=inputs=2:normalize=0:duration=first,loudnorm=I=-16:TP=-1.5:LRA=11[out]",
+            "-map", "[out]", "-ar", "48000", str(mixed))
+        norm = mixed
+    # video: one clip per segment (slow push-in on slides), joined by crossfades that keep the narration timing
+    clips, n = [], len(video_parts)
     for i, (kind, src, d) in enumerate(video_parts):
+        dd = d + (XFADE if i < n - 1 else 0.0)  # each clip overlaps the next by XFADE
         c = tmp / f"v{out_mp4.stem}_{i:02d}.mp4"
         vf = f"scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2:white,fps={FPS},format=yuv420p"
         if kind == "img":
-            run("ffmpeg", "-y", "-v", "error", "-loop", "1", "-t", f"{d:.3f}", "-i", str(src), "-vf", vf,
-                "-c:v", "libx264", "-preset", "medium", "-crf", "16", "-tune", "stillimage", "-an", str(c))
+            anim = HERE / "anim" / Path(src).stem
+            nf = len(list(anim.glob("f*.png"))) if anim.is_dir() else 0
+            lead_hold = XFADE if i > 0 else 0.0  # let the crossfade finish before the slide starts building
+            a_len = lead_hold + nf / FPS
+            still = dd - a_len if nf and dd > a_len + 1.0 else dd
+            frames = int(round(still * FPS))
+            push = (f"scale=2880:1620,zoompan=z='1+{ZOOM}*on/{frames}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'"
+                    f":d=1:s=1920x1080:fps={FPS},format=yuv420p")
+            cs = tmp / f"s{out_mp4.stem}_{i:02d}.mp4"
+            run("ffmpeg", "-y", "-v", "error", "-framerate", str(FPS), "-loop", "1", "-t", f"{still:.3f}", "-i", str(src),
+                "-vf", push, "-frames:v", str(frames), "-c:v", "libx264", "-preset", "medium", "-crf", "16", "-an", str(cs))
+            if still < dd:  # build-up frames first, then the slow push-in on the final still
+                ca = tmp / f"a{out_mp4.stem}_{i:02d}.mp4"
+                run("ffmpeg", "-y", "-v", "error", "-framerate", str(FPS), "-i", str(anim / "f%03d.png"), "-vf",
+                    f"tpad=start_mode=clone:start_duration={lead_hold:.3f},fps={FPS},format=yuv420p",
+                    "-c:v", "libx264", "-preset", "medium", "-crf", "16", "-an", str(ca))
+                lst2 = tmp / f"c{out_mp4.stem}_{i:02d}.txt"
+                lst2.write_text(f"file '{ca.as_posix()}'" + chr(10) + f"file '{cs.as_posix()}'" + chr(10), encoding="utf-8")
+                run("ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", str(lst2), "-c", "copy", str(c))
+            else:
+                cs.replace(c)
         elif kind == "screen" and src:
             sd = duration(src)
             speed = f"setpts={d / sd:.5f}*PTS," if sd < d else ""
-            run("ffmpeg", "-y", "-v", "error", "-i", str(src), "-t", f"{d:.3f}", "-vf", speed + vf,
+            run("ffmpeg", "-y", "-v", "error", "-i", str(src), "-vf",
+                speed + vf + f",tpad=stop_mode=clone:stop_duration={XFADE + 1}", "-t", f"{dd:.3f}",
                 "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-an", str(c))
         elif kind == "screen":
             shots = tmp / "shots.txt"
-            per = d / len(APP_SHOTS)
-            shots.write_text("".join(f"file '{(REPO / 'docs' / 'screenshots' / (s + '.png')).as_posix()}'\nduration {per:.3f}\n"
-                                     for s in APP_SHOTS) + f"file '{(REPO / 'docs' / 'screenshots' / (APP_SHOTS[-1] + '.png')).as_posix()}'\n",
+            per = dd / len(APP_SHOTS)
+            shots.write_text("".join(f"file '{(REPO / 'docs' / 'screenshots' / (s + '.png')).as_posix()}'" + chr(10) + f"duration {per:.3f}" + chr(10)
+                                     for s in APP_SHOTS) + f"file '{(REPO / 'docs' / 'screenshots' / (APP_SHOTS[-1] + '.png')).as_posix()}'" + chr(10),
                              encoding="utf-8")
-            run("ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", str(shots), "-t", f"{d:.3f}", "-vf", vf,
+            run("ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", str(shots), "-t", f"{dd:.3f}", "-vf", vf,
                 "-c:v", "libx264", "-preset", "medium", "-crf", "16", "-an", str(c))
         else:  # face clip, video only (the intro audio comes from segment 00)
-            run("ffmpeg", "-y", "-v", "error", "-i", str(src), "-t", f"{d:.3f}", "-vf",
+            run("ffmpeg", "-y", "-v", "error", "-i", str(src), "-vf",
                 "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080," + f"fps={FPS},format=yuv420p,tpad=stop_mode=clone:stop_duration=10",
-                "-t", f"{d:.3f}", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-an", str(c))
+                "-t", f"{dd:.3f}", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-an", str(c))
         clips.append(c)
-    vl = tmp / f"vlist_{out_mp4.stem}.txt"
-    vl.write_text("".join(f"file '{p.as_posix()}'\n" for p in clips), encoding="utf-8")
-    run("ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", str(vl), "-i", str(norm),
-        "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest",
-        "-movflags", "+faststart", str(out_mp4))
+    inputs, chain, prev, off = [], [], "[0:v]", 0.0
+    for c in clips:
+        inputs += ["-i", str(c)]
+    for i in range(1, n):
+        off += video_parts[i - 1][2]
+        out = f"[x{i}]"
+        chain.append(f"{prev}[{i}:v]xfade=transition=fade:duration={XFADE}:offset={off:.3f}{out}")
+        prev = out
+    total = sum(p[2] for p in video_parts)
+    chain.append(f"{prev}fade=t=in:st=0:d=0.6,fade=t=out:st={total - 0.9:.3f}:d=0.9,format=yuv420p[vout]")
+    run("ffmpeg", "-y", "-v", "error", *inputs, "-i", str(norm), "-filter_complex", ";".join(chain),
+        "-map", "[vout]", "-map", f"{n}:a", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+        "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(out_mp4))
     write_srt(srt_path, cues)
     return t
 
