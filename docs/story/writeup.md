@@ -68,3 +68,12 @@ Every prediction file was committed to git before its data, except the P04 scori
 Built before the event (git tag `pre-event-baseline`): the generic LLM harness and the `isoshift/` GPU job pool. Built on 21 and 22 October: `src/isoshift_event/`, `app/`, and every finding, prediction and decision ([PROVENANCE.md](https://github.com/canerganis/isoshift/blob/main/docs/PROVENANCE.md)).
 
 Evidence index: [docs/INDEX.md](https://github.com/canerganis/isoshift/blob/main/docs/INDEX.md).
+
+## References
+
+1. Sano-Furukawa, A., Hattori, T., Komatsu, K. et al. Direct observation of symmetrization of hydrogen bond in δ-AlOOH under mantle conditions using neutron diffraction. Sci. Rep. 8, 15520 (2018). https://doi.org/10.1038/s41598-018-33598-2
+2. McKenzie, R. H., Bekker, C., Athokpam, B. et al. Effect of quantum nuclear motion on hydrogen bonding. J. Chem. Phys. 140, 174508 (2014). https://doi.org/10.1063/1.4873352
+3. McKenzie, R. H., Athokpam, B., Ramesh, S. G. Isotopic fractionation in proteins as a measure of hydrogen bond length. J. Chem. Phys. 143, 044309 (2015). https://doi.org/10.1063/1.4927391
+4. Du et al. Isotope Effects at Classical Cost through Mass-Differentiable Machine Learning. arXiv:2610.11325 (2026). https://arxiv.org/abs/2610.11325
+5. Bourgeois, N., Crivello, J.-C., Cenedese, P. et al. Vibration analysis of hydrogen, deuterium and tritium in metals: consequences on the isotope effect. J. Phys.: Condens. Matter 30, 335402 (2018). https://doi.org/10.1088/1361-648X/aad259
+6. Libowitzky, E. Correlation of O-H stretching frequencies and O-H...O hydrogen bond lengths in minerals. Monatsh. Chem. 130, 1047 (1999). https://doi.org/10.1007/BF03354882
