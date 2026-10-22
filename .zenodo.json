@@ -1,0 +1,35 @@
+{
+  "title": "IsoShift: the short-bond rule for deuteration and polymorph stability in hydrogen-bonded crystals",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "creators": [
+    {
+      "name": "Erganiş, Muhammet Can"
+    }
+  ],
+  "description": "<p>The short-bond rule: in crystals with moderate-to-strong hydrogen bonds, deuteration favours the polymorph with the shorter O-H bonds. In a screen of 220 polymorph pairs of carbon-free hydrogen compounds with three universal machine-learned interatomic potentials (MACE, ORB, MatterSim), the rule holds in 185 of 212 model evaluations against 131 for a constant-sign baseline. The harmonic isotope free-energy difference between two polymorphs changes by 0.11 to 0.13 meV per H for each mÅ change in mean O-H length; the O-H stretch drives it and bending and libration cancel about half. The rule fails for weak hydrogen bonds (2 of 20 evaluations). The models predict that deuteration raises the diaspore to δ-AlOOH transition by about 1 GPa (exploratory sign prediction). These are computational results that have not been tested experimentally; D/H partitioning between coexisting polymorphs would test the rule directly.</p><p>The archive contains the code, cached results, a marimo app that runs without a GPU, the predictions committed before their data, the failed and passed blind tests, and the decision records. Built at the OSI Hackathon 2026 (21 and 22 October 2026) with a team of AI agents under the author's direction; the pre-event code is tagged pre-event-baseline. Video: https://youtu.be/X8ckZ7dV40Y</p>",
+  "keywords": [
+    "isotope effect",
+    "deuteration",
+    "polymorphism",
+    "hydrogen bond",
+    "phonons",
+    "zero-point energy",
+    "machine-learned interatomic potentials",
+    "δ-AlOOH",
+    "OSI Hackathon 2026"
+  ],
+  "license": "MIT",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/canerganis/isoshift",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://youtu.be/X8ckZ7dV40Y",
+      "relation": "isDocumentedBy",
+      "scheme": "url"
+    }
+  ]
+}

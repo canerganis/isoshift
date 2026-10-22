@@ -1,12 +1,19 @@
 cff-version: 1.2.0
 message: "If you use IsoShift, please cite it as below."
-title: "IsoShift"
+title: "IsoShift: the short-bond rule for deuteration and polymorph stability in hydrogen-bonded crystals"
 type: software
 authors:
-  - family-names: "Erganis"
-    given-names: "Can"
-version: "0.1.0"
-date-released: "2026-10-22"
+  - family-names: "Erganiş"
+    given-names: "Muhammet Can"
+version: "1.0.0"
+date-released: "2026-10-23"
 license: MIT
 repository-code: "https://github.com/canerganis/isoshift"
-abstract: "Harmonic and quasi-harmonic H/D isotope free energies of hydrogen-containing polymorphs from an ensemble of universal machine-learned interatomic potentials."
+abstract: "In crystals with moderate-to-strong hydrogen bonds, deuteration favours the polymorph with the shorter O-H bonds: 185 of 212 model evaluations against 131 for a constant-sign baseline, from harmonic H/D free energies of 220 polymorph pairs with three universal machine-learned interatomic potentials. The isotope free-energy difference changes by 0.11 to 0.13 meV per H for each mÅ change in mean O-H length. Computational result, not yet tested experimentally."
+keywords:
+  - isotope effect
+  - deuteration
+  - polymorphism
+  - hydrogen bond
+  - phonons
+  - machine-learned interatomic potentials
