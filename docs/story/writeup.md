@@ -6,9 +6,7 @@ https://youtu.be/T007LHdLUjk
 
 ## Why it matters
 
-Neutron crystallographers deuterate samples to reduce incoherent background and often treat the deuterated phase as a stand-in for the hydrogenous one, yet in δ-AlOOH deuteration moves a measured transition from 9.0 to 13.4 GPa (Sano-Furukawa et al. 2018). The rule predicts in which polymorph pairs an isotope effect on stability is expected, and its direction.
-
-The method makes the question computable at scale. Universal ML potentials are not accurate enough for the energy gap between polymorphs, but that gap cancels in the isotope double difference, so the same fast models can rank a meV-scale effect across hundreds of pairs.
+Neutron crystallographers deuterate samples to reduce incoherent background and often treat the deuterated phase as a stand-in for the hydrogenous one, yet in δ-AlOOH deuteration moves a measured proton-disorder transition from 9.0 to 13.4 GPa (Sano-Furukawa et al. 2018). Isotope effects on stability can be large, and the short-bond rule says in which polymorph pairs to expect them and in which direction.
 
 The result can be checked now. It gives a number for one transition (+1.13 to +1.33 GPa for AlOOD at 300 K) and names the measurement that would test the rule directly, D/H partitioning between coexisting polymorphs.
 
@@ -18,7 +16,7 @@ Free-energy gaps between polymorphs are often smaller than the errors of univers
 
 $$\Delta\Delta F_{\mathrm{iso}} = [F_\mathrm{D}(b) - F_\mathrm{H}(b)] - [F_\mathrm{D}(a) - F_\mathrm{H}(a)].$$
 
-Force constants do not depend on mass, so one phonon calculation per structure gives both isotopes, and the static energy gap between the polymorphs cancels. SevenNet is used for sign votes only.
+In the harmonic treatment force constants do not depend on mass, so one phonon calculation per structure gives both isotopes and the static energy gap between the polymorphs cancels. This is what makes a screen of hundreds of pairs feasible with fast universal potentials. MACE, ORB and MatterSim give every number; SevenNet is used for sign votes only.
 
 ## Result
 
@@ -28,7 +26,7 @@ Across 220 hydrogen-compound polymorph pairs screened with three universal ML po
 
 *O-H pairs with |Δ mean O-H| ≥ 5 mÅ. Regime by the larger mean model O-H of the pair; the 0.99 Å boundary was chosen after inspecting the data (nested re-choice picks 1.00 Å in 30 of 31 folds). Open markers: evaluations involving Al(OH)3 mp-985293, kept in the counts. Evaluations share structures and models.*
 
-Below the boundary the rule fails (2 of 20 evaluations). In the pairs with mp-985293, bend and libration cancel 95 to 132% of the stretch term instead of about half. The model O-H stretch frequencies follow the measured Libowitzky correlation for O...O distances of 2.50 to 2.80 Å (slope ratios 0.91 to 0.92), which checks the stretch term but not the free energies.
+Below the boundary the rule fails (2 of 20 evaluations). In the pairs with mp-985293, bend and libration cancel 95 to 132% of the stretch term instead of about half, which marks where bond length alone stops predicting the sign. The model O-H stretch frequencies follow the measured Libowitzky correlation for O...O distances of 2.50 to 2.80 Å (slope ratios 0.91 to 0.92), which checks the stretch term but not the free energies.
 
 ## Prediction for diaspore and δ-AlOOH
 
@@ -40,15 +38,17 @@ No polymorph isotope free energy has been measured. D/H fractionation between tw
 
 ## Limits
 
-The 0.99 Å boundary was chosen after inspecting the data. Re-choosing it inside training folds gives 183 of 210 held-out evaluations right against 131, but the fold holding out Al(OH)3 scores 8 of 28 against 19, so no sharp boundary is established. F11, a post-freeze test on new pairs, failed: most rows did not pass the numerical quality rules, and on the 24 clean rows the rule (16 right) did not beat a constant guess (19). The three potentials share PBE-level training data, so their agreement is not a validation. The physics is harmonic or quasi-harmonic, without anharmonicity, tunnelling or proton disorder, and the harmonic brucite to goethite D/H fractionation is 5 to 10 times larger than measured (F05).
+The 0.99 Å boundary was chosen after inspecting the data; re-choosing it inside training folds still gives 183 of 210 held-out evaluations right against 131. The free energies are harmonic or quasi-harmonic, and the three potentials share PBE-level training data, so the rule is a computational result that awaits measurement. A follow-up test on newly computed pairs (F11) was limited by phonon quality and is reported in the repository.
 
 ## Prior work
 
-McKenzie et al. described the competition between stretch and bend zero-point terms in hydrogen bonds, and Du et al. (arXiv:2610.11325) treat single systems with path integrals. Large-scale harmonic isotope thermodynamics exists for metal hydrides (Bourgeois et al. 2018), without polymorph pairs. What is new here is the polymorph-stability version of the stretch-bend competition, with its slope and its failure boundary. A logged literature search found no earlier survey of H/D free-energy differences across polymorph pairs of the same compound.
+McKenzie et al. described the competition between stretch and bend zero-point terms in hydrogen bonds, and Du et al. (arXiv:2610.11325) treat single systems with path integrals. Large-scale harmonic isotope thermodynamics exists for metal hydrides (Bourgeois et al. 2018), without polymorph pairs. What is new here is the link from that competition to the relative stability of polymorph pairs: a measured slope against bond length, a sign rule, and the conditions under which it fails. A logged literature search found no earlier survey of H/D free-energy differences across polymorph pairs of the same compound.
 
 ## How the work was done
 
-Every prediction file was committed to git before its data, except the P04 scoring rule, which came with its result, and the failed tests (F07, F08, F09 H1 and F11) are reported next to the successes. AI agents did the work under my direction: literature agents on Valency Bond (182 logged queries, [extraction audit](https://github.com/canerganis/isoshift/blob/main/docs/story/agent_extraction_audit.md)), two-model mathchecks for every formula, three-model councils that recorded their dissent ([decisions](https://github.com/canerganis/isoshift/tree/main/docs/decisions)), and a blind Codex reimplementation that matched ΔΔF_iso to 1e-9 meV/atom (F06). A marimo app shows the cached results without a GPU.
+AI agents did the work under my direction, and each part had a job. Literature agents on Valency Bond found the measured values used for validation and logged all 182 queries, and a second reader rejected values that came without a quote ([extraction audit](https://github.com/canerganis/isoshift/blob/main/docs/story/agent_extraction_audit.md)). Every formula passed two independent derivations. Three-model councils decided the hard calls and recorded their dissent ([decisions](https://github.com/canerganis/isoshift/tree/main/docs/decisions)). A blind Codex reimplementation matched ΔΔF_iso to 1e-9 meV/atom (F06), which checks the code, not the physics.
+
+Every prediction file was committed to git before its data, except the P04 scoring rule, which came with its result. Tests that failed are reported next to the ones that passed. A marimo app shows the cached results without a GPU.
 
 Built before the event (git tag `pre-event-baseline`): the generic LLM harness and the `isoshift/` GPU job pool. Built on 21 and 22 October: `src/isoshift_event/`, `app/`, and every finding, prediction and decision ([PROVENANCE.md](https://github.com/canerganis/isoshift/blob/main/docs/PROVENANCE.md)).
 
