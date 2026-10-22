@@ -1,8 +1,16 @@
 # The short-bond rule: deuteration and polymorph stability in hydrogen-bonded crystals
 
-In crystals with moderate-to-strong hydrogen bonds, deuteration favours the polymorph with the shorter O-H bonds. We call this the short-bond rule. Harmonic H and D free energies of 220 polymorph pairs from three universal ML potentials (MACE, ORB, MatterSim) follow it in 185 of 212 model evaluations, against 131 for a constant-sign baseline. The rule fails for weak hydrogen bonds, and it predicts that deuteration raises the diaspore to δ-AlOOH transition pressure by about 1 GPa. Neither the rule nor the prediction has been tested experimentally.
+Deuterium replaces hydrogen in neutron experiments, isotope tracing and synthesis, yet a logged literature search found no general rule for whether the swap changes which crystal structure of a compound is stable. We propose one, the short-bond rule: in crystals with moderate-to-strong hydrogen bonds, deuteration favours the polymorph with the shorter O-H bonds. In a screen of 220 polymorph pairs with three universal ML potentials (MACE, ORB, MatterSim) the rule holds in 185 of 212 model evaluations, against 131 for a constant-sign baseline, and it fails where hydrogen bonds are weak. It predicts that deuteration raises the diaspore to δ-AlOOH transition by about 1 GPa (δ-AlOOH is a candidate carrier of water into the deep Earth). Neither the rule nor the prediction has been tested experimentally yet.
 
 https://youtu.be/T007LHdLUjk
+
+## Why it matters
+
+Neutron crystallographers deuterate samples to reduce incoherent background and often treat the deuterated phase as a stand-in for the hydrogenous one, yet in δ-AlOOH deuteration moves a measured transition from 9.0 to 13.4 GPa (Sano-Furukawa et al. 2018). The rule predicts in which polymorph pairs an isotope effect on stability is expected, and its direction.
+
+The method makes the question computable at scale. Universal ML potentials are not accurate enough for the energy gap between polymorphs, but that gap cancels in the isotope double difference, so the same fast models can rank a meV-scale effect across hundreds of pairs.
+
+The result can be checked now. It gives a number for one transition (+1.13 to +1.33 GPa for AlOOD at 300 K) and names the measurement that would test the rule directly, D/H partitioning between coexisting polymorphs.
 
 ## Method
 
@@ -38,13 +46,9 @@ The 0.99 Å boundary was chosen after inspecting the data. Re-choosing it inside
 
 McKenzie et al. described the competition between stretch and bend zero-point terms in hydrogen bonds, and Du et al. (arXiv:2610.11325) treat single systems with path integrals. Large-scale harmonic isotope thermodynamics exists for metal hydrides (Bourgeois et al. 2018), without polymorph pairs. What is new here is the polymorph-stability version of the stretch-bend competition, with its slope and its failure boundary. A logged literature search found no earlier survey of H/D free-energy differences across polymorph pairs of the same compound.
 
-## Who could use it
-
-Neutron groups use δ-AlOOD as a stand-in for hydrous mantle phases, yet deuteration moves its measured proton-disorder transition from 9.0 to 13.4 GPa (Sano-Furukawa et al. 2018). Isotope geochemists measuring D/H partitioning between coexisting minerals can run the test above.
-
 ## How the work was done
 
-AI agents did the work under my direction: literature agents on Valency Bond (182 logged queries, [extraction audit](https://github.com/canerganis/isoshift/blob/main/docs/story/agent_extraction_audit.md)), two-model mathchecks for every formula, three-model councils that recorded their dissent ([decisions](https://github.com/canerganis/isoshift/tree/main/docs/decisions)), and a blind Codex reimplementation that matched ΔΔF_iso to 1e-9 meV/atom (F06). Prediction files were committed to git before their data, except the P04 scoring rule, which came with its result; F07, F08, F09 (H1) and F11 failed and are reported. A marimo app shows the cached results without a GPU.
+Every prediction was committed to git before its data, and the failures are reported next to the successes. AI agents did the work under my direction: literature agents on Valency Bond (182 logged queries, [extraction audit](https://github.com/canerganis/isoshift/blob/main/docs/story/agent_extraction_audit.md)), two-model mathchecks for every formula, three-model councils that recorded their dissent ([decisions](https://github.com/canerganis/isoshift/tree/main/docs/decisions)), and a blind Codex reimplementation that matched ΔΔF_iso to 1e-9 meV/atom (F06). The one exception is the P04 scoring rule, which came with its result; F07, F08, F09 (H1) and F11 failed. A marimo app shows the cached results without a GPU.
 
 Built before the event (git tag `pre-event-baseline`): the generic LLM harness and the `isoshift/` GPU job pool. Built on 21 and 22 October: `src/isoshift_event/`, `app/`, and every finding, prediction and decision ([PROVENANCE.md](https://github.com/canerganis/isoshift/blob/main/docs/PROVENANCE.md)).
 
