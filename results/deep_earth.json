@@ -1,0 +1,632 @@
+{
+ "AlOOH/mace": {
+  "pair": "AlOOH",
+  "low": "mp-625152",
+  "high": "mp-23807",
+  "names": [
+   "diaspore",
+   "delta-AlOOH (InOOH-type, P2_1nm)"
+  ],
+  "pressures_GPa": [
+   10,
+   15,
+   20
+  ],
+  "n_H_per_fu": 1,
+  "atoms_per_fu": 4,
+  "treatment": "Gamma-free; omit (primary) and |w| bracket",
+  "imag_frac_pct_max": {
+   "mp-625152": 0.0096,
+   "mp-23807": 0.598
+  },
+  "min_freq_THz": {
+   "mp-625152": -1.568,
+   "mp-23807": -5.234
+  },
+  "T": {
+   "300": {
+    "dG_meV_atom_H": [
+     -1.9265,
+     -11.4952,
+     -19.5013
+    ],
+    "Pt_H_GPa": 8.756,
+    "Pt_H_extrapolated": true,
+    "fit_resid_meV_atom_H": 0.5209,
+    "in_range_H": true,
+    "dG_meV_atom_D": [
+     0.3839,
+     -9.1551,
+     -17.2791
+    ],
+    "Pt_D_GPa": 10.084,
+    "Pt_D_extrapolated": false,
+    "fit_resid_meV_atom_D": 0.4717,
+    "in_range_D": true,
+    "dP_iso_GPa": 1.328,
+    "ddG_iso_meV_atom_at_PtH": 2.3461,
+    "1000lnalpha_low_high": 363.0,
+    "dV_A3_atom_at_PtH": -0.3453,
+    "dP_bridge_first_order_GPa": 1.088,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": 8.671,
+     "dP_iso_GPa": 1.325,
+     "1000lnalpha_low_high": 362.09
+    },
+    "bracket_dP_iso_GPa": 0.003,
+    "bracket_1000lnalpha": 0.91
+   },
+   "1000": {
+    "dG_meV_atom_H": [
+     -0.727,
+     -11.8819,
+     -21.0617
+    ],
+    "Pt_H_GPa": 9.481,
+    "Pt_H_extrapolated": true,
+    "fit_resid_meV_atom_H": 0.6583,
+    "in_range_H": true,
+    "dG_meV_atom_D": [
+     1.1765,
+     -10.04,
+     -19.3665
+    ],
+    "Pt_D_GPa": 10.419,
+    "Pt_D_extrapolated": false,
+    "fit_resid_meV_atom_D": 0.63,
+    "in_range_D": true,
+    "dP_iso_GPa": 0.938,
+    "ddG_iso_meV_atom_at_PtH": 1.9285,
+    "1000lnalpha_low_high": 89.52,
+    "dV_A3_atom_at_PtH": -0.3975,
+    "dP_bridge_first_order_GPa": 0.777,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": 8.993,
+     "dP_iso_GPa": 0.934,
+     "1000lnalpha_low_high": 89.58
+    },
+    "bracket_dP_iso_GPa": 0.004,
+    "bracket_1000lnalpha": 0.06
+   },
+   "1500": {
+    "dG_meV_atom_H": [
+     0.8245,
+     -12.0247,
+     -22.5001
+    ],
+    "Pt_H_GPa": 10.184,
+    "Pt_H_extrapolated": false,
+    "fit_resid_meV_atom_H": 0.7912,
+    "in_range_H": true,
+    "dG_meV_atom_D": [
+     2.3565,
+     -10.5475,
+     -21.1411
+    ],
+    "Pt_D_GPa": 10.839,
+    "Pt_D_extrapolated": false,
+    "fit_resid_meV_atom_D": 0.7701,
+    "in_range_D": true,
+    "dP_iso_GPa": 0.655,
+    "ddG_iso_meV_atom_at_PtH": 1.5394,
+    "1000lnalpha_low_high": 47.64,
+    "dV_A3_atom_at_PtH": -0.4494,
+    "dP_bridge_first_order_GPa": 0.549,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": 9.489,
+     "dP_iso_GPa": 0.647,
+     "1000lnalpha_low_high": 47.86
+    },
+    "bracket_dP_iso_GPa": 0.008,
+    "bracket_1000lnalpha": 0.22
+   }
+  }
+ },
+ "AlOOH/orb": {
+  "pair": "AlOOH",
+  "low": "mp-625152",
+  "high": "mp-23807",
+  "names": [
+   "diaspore",
+   "delta-AlOOH (InOOH-type, P2_1nm)"
+  ],
+  "pressures_GPa": [
+   10,
+   15,
+   20
+  ],
+  "n_H_per_fu": 1,
+  "atoms_per_fu": 4,
+  "treatment": "Gamma-free; omit (primary) and |w| bracket",
+  "imag_frac_pct_max": {
+   "mp-625152": 0.0289,
+   "mp-23807": 0.3376
+  },
+  "min_freq_THz": {
+   "mp-625152": -2.204,
+   "mp-23807": -6.069
+  },
+  "T": {
+   "300": {
+    "dG_meV_atom_H": [
+     5.8778,
+     -4.1274,
+     -13.3043
+    ],
+    "Pt_H_GPa": 12.992,
+    "Pt_H_extrapolated": false,
+    "fit_resid_meV_atom_H": 0.2761,
+    "in_range_H": true,
+    "dG_meV_atom_D": [
+     7.7633,
+     -1.8872,
+     -10.7891
+    ],
+    "Pt_D_GPa": 14.117,
+    "Pt_D_extrapolated": false,
+    "fit_resid_meV_atom_D": 0.2495,
+    "in_range_D": true,
+    "dP_iso_GPa": 1.125,
+    "ddG_iso_meV_atom_at_PtH": 2.0872,
+    "1000lnalpha_low_high": 322.94,
+    "dV_A3_atom_at_PtH": -0.3202,
+    "dP_bridge_first_order_GPa": 1.044,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": 12.976,
+     "dP_iso_GPa": 1.122,
+     "1000lnalpha_low_high": 323.0
+    },
+    "bracket_dP_iso_GPa": 0.003,
+    "bracket_1000lnalpha": 0.06
+   },
+   "1000": {
+    "dG_meV_atom_H": [
+     9.6193,
+     -1.7145,
+     -12.5348
+    ],
+    "Pt_H_GPa": 14.303,
+    "Pt_H_extrapolated": false,
+    "fit_resid_meV_atom_H": 0.1712,
+    "in_range_H": true,
+    "dG_meV_atom_D": [
+     11.2224,
+     0.1042,
+     -10.5929
+    ],
+    "Pt_D_GPa": 15.112,
+    "Pt_D_extrapolated": false,
+    "fit_resid_meV_atom_D": 0.1404,
+    "in_range_D": true,
+    "dP_iso_GPa": 0.809,
+    "ddG_iso_meV_atom_at_PtH": 1.7643,
+    "1000lnalpha_low_high": 81.89,
+    "dV_A3_atom_at_PtH": -0.3518,
+    "dP_bridge_first_order_GPa": 0.804,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": 14.21,
+     "dP_iso_GPa": 0.802,
+     "1000lnalpha_low_high": 82.37
+    },
+    "bracket_dP_iso_GPa": 0.007,
+    "bracket_1000lnalpha": 0.48
+   },
+   "1500": {
+    "dG_meV_atom_H": [
+     12.7553,
+     0.4236,
+     -11.9166
+    ],
+    "Pt_H_GPa": 15.171,
+    "Pt_H_extrapolated": false,
+    "fit_resid_meV_atom_H": 0.0028,
+    "in_range_H": true,
+    "dG_meV_atom_D": [
+     13.896,
+     1.8297,
+     -10.4045
+    ],
+    "Pt_D_GPa": 15.73,
+    "Pt_D_extrapolated": false,
+    "fit_resid_meV_atom_D": 0.056,
+    "in_range_D": true,
+    "dP_iso_GPa": 0.559,
+    "ddG_iso_meV_atom_at_PtH": 1.3593,
+    "1000lnalpha_low_high": 42.06,
+    "dV_A3_atom_at_PtH": -0.3776,
+    "dP_bridge_first_order_GPa": 0.577,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": 15.044,
+     "dP_iso_GPa": 0.553,
+     "1000lnalpha_low_high": 42.34
+    },
+    "bracket_dP_iso_GPa": 0.006,
+    "bracket_1000lnalpha": 0.28
+   }
+  }
+ },
+ "AlOOH/mattersim": {
+  "pair": "AlOOH",
+  "low": "mp-625152",
+  "high": "mp-23807",
+  "names": [
+   "diaspore",
+   "delta-AlOOH (InOOH-type, P2_1nm)"
+  ],
+  "pressures_GPa": [
+   10,
+   15,
+   20
+  ],
+  "n_H_per_fu": 1,
+  "atoms_per_fu": 4,
+  "treatment": "Gamma-free; omit (primary) and |w| bracket",
+  "imag_frac_pct_max": {
+   "mp-625152": 0.0289,
+   "mp-23807": 0.1061
+  },
+  "min_freq_THz": {
+   "mp-625152": -1.739,
+   "mp-23807": -3.859
+  },
+  "T": {
+   "300": {
+    "dG_meV_atom_H": [
+     9.2051,
+     -0.0601,
+     -8.4314
+    ],
+    "Pt_H_GPa": 15.135,
+    "Pt_H_extrapolated": false,
+    "fit_resid_meV_atom_H": 0.298,
+    "in_range_H": true,
+    "dG_meV_atom_D": [
+     10.4996,
+     1.6419,
+     -6.4288
+    ],
+    "Pt_D_GPa": 16.125,
+    "Pt_D_extrapolated": false,
+    "fit_resid_meV_atom_D": 0.2623,
+    "in_range_D": true,
+    "dP_iso_GPa": 0.99,
+    "ddG_iso_meV_atom_at_PtH": 1.6759,
+    "1000lnalpha_low_high": 259.31,
+    "dV_A3_atom_at_PtH": -0.2809,
+    "dP_bridge_first_order_GPa": 0.956,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": 15.13,
+     "dP_iso_GPa": 0.989,
+     "1000lnalpha_low_high": 259.38
+    },
+    "bracket_dP_iso_GPa": 0.001,
+    "bracket_1000lnalpha": 0.07
+   },
+   "1000": {
+    "dG_meV_atom_H": [
+     12.0274,
+     1.9432,
+     -7.4962
+    ],
+    "Pt_H_GPa": 16.105,
+    "Pt_H_extrapolated": false,
+    "fit_resid_meV_atom_H": 0.2149,
+    "in_range_H": true,
+    "dG_meV_atom_D": [
+     13.1469,
+     3.3251,
+     -5.9602
+    ],
+    "Pt_D_GPa": 16.834,
+    "Pt_D_extrapolated": false,
+    "fit_resid_meV_atom_D": 0.1789,
+    "in_range_D": true,
+    "dP_iso_GPa": 0.729,
+    "ddG_iso_meV_atom_at_PtH": 1.3918,
+    "1000lnalpha_low_high": 64.61,
+    "dV_A3_atom_at_PtH": -0.3048,
+    "dP_bridge_first_order_GPa": 0.732,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": 16.087,
+     "dP_iso_GPa": 0.724,
+     "1000lnalpha_low_high": 64.85
+    },
+    "bracket_dP_iso_GPa": 0.005,
+    "bracket_1000lnalpha": 0.24
+   },
+   "1500": {
+    "dG_meV_atom_H": [
+     14.1589,
+     3.7572,
+     -6.7138
+    ],
+    "Pt_H_GPa": 16.789,
+    "Pt_H_extrapolated": false,
+    "fit_resid_meV_atom_H": 0.0231,
+    "in_range_H": true,
+    "dG_meV_atom_D": [
+     14.9087,
+     4.798,
+     -5.5439
+    ],
+    "Pt_D_GPa": 17.308,
+    "Pt_D_extrapolated": false,
+    "fit_resid_meV_atom_D": 0.0771,
+    "in_range_D": true,
+    "dP_iso_GPa": 0.519,
+    "ddG_iso_meV_atom_at_PtH": 1.062,
+    "1000lnalpha_low_high": 32.86,
+    "dV_A3_atom_at_PtH": -0.3262,
+    "dP_bridge_first_order_GPa": 0.522,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": 16.774,
+     "dP_iso_GPa": 0.516,
+     "1000lnalpha_low_high": 33.07
+    },
+    "bracket_dP_iso_GPa": 0.003,
+    "bracket_1000lnalpha": 0.21
+   }
+  }
+ },
+ "FeOOH/mace": {
+  "pair": "FeOOH",
+  "low": "mp-605437",
+  "high": "JVASP-92228",
+  "names": [
+   "goethite",
+   "epsilon-FeOOH (InOOH-type)"
+  ],
+  "pressures_GPa": [
+   3,
+   6,
+   9
+  ],
+  "n_H_per_fu": 1,
+  "atoms_per_fu": 4,
+  "treatment": "Gamma-free; omit (primary) and |w| bracket",
+  "imag_frac_pct_max": {
+   "mp-605437": 0.1736,
+   "JVASP-92228": 0.0
+  },
+  "min_freq_THz": {
+   "mp-605437": -1.227,
+   "JVASP-92228": 0.843
+  },
+  "T": {
+   "300": {
+    "dG_meV_atom_H": [
+     9.2748,
+     5.1525,
+     2.5904
+    ],
+    "Pt_H_GPa": 11.092,
+    "Pt_H_extrapolated": true,
+    "fit_resid_meV_atom_H": 0.5201,
+    "in_range_H": true,
+    "dG_meV_atom_D": [
+     9.3432,
+     5.3075,
+     2.7801
+    ],
+    "Pt_D_GPa": 11.312,
+    "Pt_D_extrapolated": true,
+    "fit_resid_meV_atom_D": 0.5028,
+    "in_range_D": true,
+    "dP_iso_GPa": 0.22,
+    "ddG_iso_meV_atom_at_PtH": 0.2407,
+    "1000lnalpha_low_high": 37.24,
+    "dV_A3_atom_at_PtH": -0.036,
+    "dP_bridge_first_order_GPa": 1.072,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": 11.347,
+     "dP_iso_GPa": 0.402,
+     "1000lnalpha_low_high": 64.1
+    },
+    "bracket_dP_iso_GPa": 0.182,
+    "bracket_1000lnalpha": 26.86
+   },
+   "1000": {
+    "dG_meV_atom_H": [
+     11.617,
+     9.9196,
+     10.1552
+    ],
+    "Pt_H_GPa": 49.36,
+    "Pt_H_extrapolated": true,
+    "fit_resid_meV_atom_H": 0.6443,
+    "in_range_H": false,
+    "dG_meV_atom_D": [
+     11.8411,
+     10.2472,
+     10.7118
+    ],
+    "Pt_D_GPa": 64.091,
+    "Pt_D_extrapolated": true,
+    "fit_resid_meV_atom_D": 0.6861,
+    "in_range_D": false,
+    "dP_iso_GPa": 14.731,
+    "ddG_iso_meV_atom_at_PtH": 2.7725,
+    "1000lnalpha_low_high": 128.7,
+    "dV_A3_atom_at_PtH": 1.4557,
+    "dP_bridge_first_order_GPa": -0.305,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": -38.258,
+     "dP_iso_GPa": 8.332,
+     "1000lnalpha_low_high": -129.19
+    },
+    "bracket_dP_iso_GPa": 6.399,
+    "bracket_1000lnalpha": 257.89
+   },
+   "1500": {
+    "dG_meV_atom_H": [
+     14.0889,
+     14.265,
+     15.9407
+    ],
+    "Pt_H_GPa": -41.839,
+    "Pt_H_extrapolated": true,
+    "fit_resid_meV_atom_H": 0.4999,
+    "in_range_H": false,
+    "dG_meV_atom_D": [
+     14.2106,
+     14.5165,
+     16.3928
+    ],
+    "Pt_D_GPa": -35.354,
+    "Pt_D_extrapolated": true,
+    "fit_resid_meV_atom_D": 0.5235,
+    "in_range_D": false,
+    "dP_iso_GPa": 6.485,
+    "ddG_iso_meV_atom_at_PtH": -2.3587,
+    "1000lnalpha_low_high": -72.99,
+    "dV_A3_atom_at_PtH": -1.2706,
+    "dP_bridge_first_order_GPa": -0.297,
+    "D_prefers": "high",
+    "bracket_abs": {
+     "Pt_H_GPa": -4.355,
+     "dP_iso_GPa": 0.45,
+     "1000lnalpha_low_high": -26.27
+    },
+    "bracket_dP_iso_GPa": 6.035,
+    "bracket_1000lnalpha": 46.72
+   }
+  }
+ },
+ "FeOOH/orb": {
+  "pair": "FeOOH",
+  "low": "mp-605437",
+  "high": "JVASP-92228",
+  "names": [
+   "goethite",
+   "epsilon-FeOOH (InOOH-type)"
+  ],
+  "pressures_GPa": [
+   3,
+   6,
+   9
+  ],
+  "n_H_per_fu": 1,
+  "atoms_per_fu": 4,
+  "treatment": "Gamma-free; omit (primary) and |w| bracket",
+  "imag_frac_pct_max": {
+   "mp-605437": 0.0482,
+   "JVASP-92228": 0.0096
+  },
+  "min_freq_THz": {
+   "mp-605437": -1.414,
+   "JVASP-92228": -0.915
+  },
+  "T": {
+   "300": {
+    "dG_meV_atom_H": [
+     11.9738,
+     6.1065,
+     0.9199
+    ],
+    "Pt_H_GPa": 9.438,
+    "Pt_H_extrapolated": true,
+    "fit_resid_meV_atom_H": 0.2269,
+    "in_range_H": true,
+    "dG_meV_atom_D": [
+     12.451,
+     6.6445,
+     1.5795
+    ],
+    "Pt_D_GPa": 9.803,
+    "Pt_D_extrapolated": true,
+    "fit_resid_meV_atom_D": 0.2472,
+    "in_range_D": true,
+    "dP_iso_GPa": 0.365,
+    "ddG_iso_meV_atom_at_PtH": 0.6628,
+    "1000lnalpha_low_high": 102.55,
+    "dV_A3_atom_at_PtH": -0.2659,
+    "dP_bridge_first_order_GPa": 0.399,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": 9.451,
+     "dP_iso_GPa": 0.365,
+     "1000lnalpha_low_high": 102.15
+    },
+    "bracket_dP_iso_GPa": 0.0,
+    "bracket_1000lnalpha": 0.4
+   },
+   "1000": {
+    "dG_meV_atom_H": [
+     14.2769,
+     8.2171,
+     2.9291
+    ],
+    "Pt_H_GPa": 10.481,
+    "Pt_H_extrapolated": true,
+    "fit_resid_meV_atom_H": 0.2573,
+    "in_range_H": true,
+    "dG_meV_atom_D": [
+     14.8337,
+     8.8708,
+     3.6011
+    ],
+    "Pt_D_GPa": 10.862,
+    "Pt_D_extrapolated": true,
+    "fit_resid_meV_atom_D": 0.231,
+    "in_range_D": true,
+    "dP_iso_GPa": 0.381,
+    "ddG_iso_meV_atom_at_PtH": 0.7135,
+    "1000lnalpha_low_high": 33.12,
+    "dV_A3_atom_at_PtH": -0.2545,
+    "dP_bridge_first_order_GPa": 0.449,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": 10.581,
+     "dP_iso_GPa": 0.384,
+     "1000lnalpha_low_high": 32.79
+    },
+    "bracket_dP_iso_GPa": 0.003,
+    "bracket_1000lnalpha": 0.33
+   },
+   "1500": {
+    "dG_meV_atom_H": [
+     15.6386,
+     10.238,
+     4.365
+    ],
+    "Pt_H_GPa": 11.365,
+    "Pt_H_extrapolated": true,
+    "fit_resid_meV_atom_H": 0.1575,
+    "in_range_H": false,
+    "dG_meV_atom_D": [
+     16.1862,
+     10.1182,
+     4.9205
+    ],
+    "Pt_D_GPa": 11.543,
+    "Pt_D_extrapolated": true,
+    "fit_resid_meV_atom_D": 0.2901,
+    "in_range_D": false,
+    "dP_iso_GPa": 0.178,
+    "ddG_iso_meV_atom_at_PtH": 0.3349,
+    "1000lnalpha_low_high": 10.36,
+    "dV_A3_atom_at_PtH": -0.9347,
+    "dP_bridge_first_order_GPa": 0.057,
+    "D_prefers": "low",
+    "bracket_abs": {
+     "Pt_H_GPa": 11.514,
+     "dP_iso_GPa": 0.184,
+     "1000lnalpha_low_high": 10.32
+    },
+    "bracket_dP_iso_GPa": 0.006,
+    "bracket_1000lnalpha": 0.04
+   }
+  }
+ }
+}

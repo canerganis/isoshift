@@ -1,0 +1,13 @@
+struct_id,source,mp_database_version,formula,spg,spg_number,nsites,e_above_hull_eV_atom,volume_A3_atom,theoretical,icsd_ids,cif,cif_written_now,fetched
+JVASP-92228,jarvis dft_3d (data/isoshift/dft_3d.pkl),,FeHO2,Pmn2_1,31,8,,,False,420002;420003;87325,data/isoshift/structs/JVASP-92228.cif,False,pre-existing (CARD-AlOOH)
+mp-1078468,materials_project,2026.09.28,MgSi(HO2)2,P2/m,10,8,0.1611,7.2944,True,icsd-190935;icsd-190936,data/isoshift/structs/mp-1078468.cif,True,2026-10-22
+mp-1078877,materials_project,2026.09.28,MgSi(HO2)2,Pm,6,8,0.1518,7.4271,True,icsd-190934,data/isoshift/structs/mp-1078877.cif,True,2026-10-22
+mp-23803,materials_project,2026.09.28,GaHO2,Pmn2_1,31,8,0.0144,7.8692,False,icsd-420004,data/isoshift/structs/mp-23803.cif,False,2026-10-22
+mp-23807,materials_project,2026.09.28,AlHO2,Pmn2_1,31,8,0.0417,7.2743,False,icsd-240375;icsd-166335;icsd-166334;icsd-166331;icsd-166332;icsd-166333,data/isoshift/structs/mp-23807.cif,False,2026-10-22
+mp-23879,materials_project,2026.09.28,Ca(HO)2,P-3m1,164,5,0.0,10.7179,False,icsd-202229;icsd-51411;icsd-191851;icsd-202228;icsd-202227;icsd-202224;icsd-34240;icsd-43433;icsd-34241;icsd-202232;icsd-64950;icsd-202225;icsd-202230;icsd-202231;icsd-64951;icsd-202220;icsd-15471;icsd-202226;icsd-202222;icsd-202221;icsd-202223;icsd-202233,data/isoshift/structs/mp-23879.cif,False,2026-10-22
+mp-23910,materials_project,2026.09.28,CrHO2,R3m,160,4,0.0076,8.7134,False,icsd-1372;icsd-88574;icsd-64754;icsd-1373,data/isoshift/structs/mp-23910.cif,False,2026-10-22
+mp-24040,materials_project,2026.09.28,CrHO2,Pmn2_1,31,8,0.0009,7.813,False,icsd-27517;icsd-28499;icsd-2258;icsd-2257,data/isoshift/structs/mp-24040.cif,False,2026-10-22
+mp-605437,materials_project,2026.09.28,FeHO2,Pnma,62,16,0.0,8.6917,False,icsd-239324;icsd-239321;icsd-109041;icsd-245057;icsd-239323;icsd-239322,data/isoshift/structs/mp-605437.cif,False,2026-10-22
+mp-625152,materials_project,2026.09.28,AlHO2,Pnma,62,16,0.0,7.3029,False,icsd-29344;icsd-173074;icsd-173078;icsd-200952;icsd-169040;icsd-66800;icsd-169039;icsd-173075;icsd-16768;icsd-173076;icsd-64982;icsd-173077,data/isoshift/structs/mp-625152.cif,False,2026-10-22
+mp-634326,materials_project,2026.09.28,GaHO2,Pnma,62,16,0.0,8.2041,False,icsd-1232;icsd-409671;icsd-1231,data/isoshift/structs/mp-634326.cif,False,2026-10-22
+mp-643392,materials_project,2026.09.28,Ca(HO)2,P2_1/c,14,20,0.0354,9.3824,False,icsd-84867;icsd-248618,data/isoshift/structs/mp-643392.cif,True,2026-10-22
