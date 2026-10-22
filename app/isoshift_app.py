@@ -54,7 +54,32 @@ with app.setup:
             stretch=read_json(root / "results" / "stretch_check_summary.json"),
             stretch_check=_csv(root / "results" / "stretch_check.csv"),
             f01_cv=read_json(root / "results" / "F01_cv.json"),
+            experimental=_csv(resolve(root, "data/isoshift/experimental.csv")),
+            lit=_csv(resolve(root, "data/isoshift/validation.csv")),
+            bond=read_jsonl(resolve(root, "logs/bond_queries.jsonl")),
+            gate_text=read_text(resolve(root, "docs/decisions/01-gate.md")),
         )
+
+    def resolve(root, rel):
+        """root/rel if it exists, else the same path in the repo (demo_data folders only carry the CSVs)."""
+        p = Path(root) / rel
+        return p if p.exists() else REPO / rel
+
+    def read_text(path):
+        try:
+            return Path(path).read_text(encoding="utf-8")
+        except Exception:
+            return ""
+
+    def read_jsonl(path):
+        """[(line_number, dict)] for every parsable line of a JSONL file (line numbers are 1-based)."""
+        out = []
+        for i, line in enumerate(read_text(path).splitlines(), 1):
+            try:
+                out.append((i, json.loads(line)))
+            except Exception:
+                continue
+        return out
 
     def read_json(path):
         try:
@@ -208,6 +233,143 @@ with app.setup:
                                                     or "above_600K" in f or "anharm" in f))})
         df = pd.DataFrame(rows, columns=cols)
         return df.sort_values("median_abs_ddF_300K_meV_atom", ascending=False).reset_index(drop=True)
+
+    DEFAULT_PAIR = "mp-23807__mp-625152"
+    CARD_URL = "https://github.com/canerganis/isoshift/blob/main/docs/findings/CARD-AlOOH.md"
+    STRONG_XH_A = 0.99
+    MIN_DXH_A = 0.005  # F01 eligibility: |d(X-H)| >= 5 mA
+
+    def _sgn(x):
+        return 0 if (x is None or pd.isna(x) or x == 0) else (1 if x > 0 else -1)
+
+    def _sgn_txt(n):
+        return {1: "+", -1: "-", 0: "0"}[n]
+
+    def pair_options(data):
+        """{label: pair_id} for the pairs in screen_pairs_refined.csv, labelled from data/isoshift/pairs.csv."""
+        rf = data["refined"]
+        ids = sorted(rf.pair_id.unique()) if len(rf) else []
+        return {pair_label(data["meta_pairs"], data["meta_structs"], i): i for i in ids}
+
+    def _struct_row(data, sid):
+        out = {"struct_id": sid, "spg": "?", "source": "?", "experimental": "?", "evidence": ""}
+        ms = data["meta_structs"]
+        if len(ms):
+            r = ms[ms.struct_id == sid]
+            if len(r):
+                out["spg"] = str(r.iloc[0].get("spg", "?"))
+                out["source"] = str(r.iloc[0].get("source", "?"))
+        ex = data.get("experimental")
+        if ex is not None and len(ex):
+            r = ex[ex.struct_id == sid]
+            if len(r):
+                out["experimental"] = str(r.iloc[0]["experimental"])
+                out["evidence"] = str(r.iloc[0]["evidence"])
+        return out
+
+    def pair_report(data, pid):
+        """Everything the 'Check a pair' tab shows for one pair (all precomputed; None if the pair is not in the refined CSV)."""
+        rf = data["refined"]
+        rows = rf[rf.pair_id == pid] if len(rf) else rf
+        if not len(rows):
+            return None
+        dp, ds = data["dec_pairs"], data["dec_structs"]
+        out = []
+        for m in MODELS:
+            r = rows[rows.model == m]
+            if not len(r):
+                continue
+            r = r.iloc[0]
+            sa, sb = str(r["struct_a"]), str(r["struct_b"])
+
+            def xh(sid):
+                if not len(ds):
+                    return np.nan, False
+                q = ds[(ds.model == m) & (ds.struct_id == sid)]
+                if not len(q):
+                    return np.nan, False
+                return float(q.iloc[0]["XH_mean_A"]), str(q.iloc[0]["covalent_XH"]).lower() == "true"
+
+            (xa, ca), (xb, cb) = xh(sa), xh(sb)
+            d = dp[(dp.pair_id == pid) & (dp.model == m)] if len(dp) else dp
+            dxh = xb - xa if (ca and cb) else np.nan
+            ddf_str = ddf_perp = np.nan
+            if len(d):
+                d = d.iloc[0]
+                ddf_str, ddf_perp = float(d["ddF_str"]), float(d["ddF_perp"])
+                if not (ca and cb) and pd.notna(d.get("dXH_mean_A")):
+                    dxh = float(d["dXH_mean_A"])
+            cov = [x for x, c in ((xa, ca), (xb, cb)) if c and pd.notna(x)]
+            if not cov:
+                regime = "no covalent X-H"
+            else:
+                regime = "strong" if max(cov) >= STRONG_XH_A else "weak"
+            rule = _sgn(dxh) if (pd.notna(dxh) and abs(dxh) >= MIN_DXH_A) else 0
+            ddf = float(r["ddF_iso_300K_meV_atom"]) if pd.notna(r["ddF_iso_300K_meV_atom"]) else np.nan
+            msign = _sgn(ddf)
+            if not rule or not msign:
+                agree = "n/a"
+            else:
+                agree = "yes" if rule == msign else "no"
+            out.append({
+                "model": m, "ddF_iso 300 K (meV/atom)": ddf,
+                "ddF_iso 300 K (meV/H)": float(r["ddF_iso_300K_meV_H"]) if pd.notna(r["ddF_iso_300K_meV_H"]) else np.nan,
+                "mean X-H a (A)": xa, "mean X-H b (A)": xb,
+                "d(X-H) b minus a (mA)": dxh * 1000 if pd.notna(dxh) else np.nan,
+                "regime": regime, "rule call": _sgn_txt(rule), "model sign": _sgn_txt(msign), "agree": agree,
+                "stretch (meV/atom)": ddf_str, "bend/libration (meV/atom)": ddf_perp,
+                "flags": "; ".join(split_flags(r.get("flags"))) or "none",
+            })
+        r0 = rows.iloc[0]
+        sa, sb = str(r0["struct_a"]), str(r0["struct_b"])
+        mp = data["meta_pairs"]
+        formula = ""
+        if len(mp):
+            q = mp[mp.pair_id == pid]
+            formula = str(q.iloc[0]["formula"]) if len(q) else ""
+        return {"pair_id": pid, "formula": formula, "a": _struct_row(data, sa), "b": _struct_row(data, sb),
+                "models": pd.DataFrame(out)}
+
+    BRUCITE_STEPS = [
+        "Bond query on deuteration and hydroxide volume returns Horita 2010 and Chakoumakos 2013.",
+        "Stage 1 sweep worker reports \"about 0.3%, sign D smaller\" without a quote.",
+        "Stage 2 agent finds the abstract sentence (0.31% larger volume for Mg(OH)2 at room temperature) "
+        "and records DOI and quote.",
+        "QHA with four models and four imaginary-mode treatments gives the computed volume isotope effect.",
+        "Board ruling (01-gate): brucite sign right in 4/4 models under every treatment, tier B passes.",
+    ]
+    AUDIT = {"sweep_items": 11, "ok_single_pass": 9, "survived": 2}
+
+    def bond_hits(bond, needles=("brucite", "mg(oh)2")):
+        """[(line_number, row)] of the Bond log whose text mentions any needle (case-insensitive)."""
+        return [(i, r) for i, r in bond if any(n in json.dumps(r, ensure_ascii=False).lower() for n in needles)]
+
+    def _bond_table(hits):
+        rows = []
+        for i, r in hits:
+            kept = r.get("kept")
+            rows.append({"log line": i, "agent": r.get("agent", "sweep:" + str(r.get("sweep", ""))),
+                         "query": r.get("query", ""), "n_results": r.get("n_results", ""),
+                         "kept": "; ".join(kept)[:200] if isinstance(kept, list) else ""})
+        return pd.DataFrame(rows, columns=["log line", "agent", "query", "n_results", "kept"])
+
+    def brucite_trace(data):
+        hits = bond_hits(data["bond"])
+        lit = data["lit"]
+        if len(lit):
+            m = lit["system"].astype(str).str.contains("brucite", case=False)
+            m &= lit["doi"].notna() & lit["quote"].notna() & lit["derived_isotope_effect_pct"].notna()
+            lit = lit[m][["system", "observable", "doi", "source_location", "quote", "derived_isotope_effect_pct"]]
+        v = data["validation"]
+        if len(v):
+            v = v[(v.case == "brucite") & (v.T_K == 290)][["model", "treatment", "T_K", "VIE_pct", "in_range"]]
+        gate = [ln.strip() for ln in str(data.get("gate_text", "")).splitlines()
+                if ln.startswith("**Tier B under P12 passes with margin") or ln.startswith("Sign 4/4 under every treatment")]
+        return {"n_log": len(data["bond"]), "n_sweep": sum(1 for _, r in data["bond"] if "sweep" in r),
+                "n_agent": sum(1 for _, r in data["bond"] if "agent" in r),
+                "agent_rows": _bond_table([h for h in hits if "sweep" not in h[1]]),
+                "sweep_rows": _bond_table([h for h in hits if "sweep" in h[1]]),
+                "lit": lit, "vie": v, "gate": gate}
 
 
 @app.cell
@@ -486,8 +648,110 @@ def _(data, mo):
 
 
 @app.cell
-def _(bench_tab, f01_tab, mo):
-    mo.ui.tabs({"F01 isotope rule": f01_tab, "Benchmark & atlas": bench_tab})
+def _(data, mo):
+    _opts = pair_options(data)
+    check_dd = mo.ui.dropdown(options=_opts, label="Pair (formula, space groups, pair_id)",
+                              value=next((k for k, v in _opts.items() if v == DEFAULT_PAIR), next(iter(_opts), None)),
+                              full_width=True)
+    return (check_dd,)
+
+
+@app.cell
+def _(check_dd, data, mo):
+    _rep = pair_report(data, check_dd.value) if check_dd.value else None
+    if _rep is None:
+        _body = mo.md("_No pair data found (`results/screen_pairs_refined.csv`)._")
+    else:
+        _t = _rep["models"].copy()
+        _num = [c for c in _t.columns if c not in ("model", "regime", "rule call", "model sign", "agree", "flags")]
+        _t[_num] = _t[_num].astype(float).round(3)
+        _prov = lambda s: (f"`{s['struct_id']}` (space group {s['spg']}, {s['source']}): experimental = "
+                           f"**{s['experimental']}**, evidence: {s['evidence'] or 'not listed'}")
+        _agree = _t[_t.agree != "n/a"]
+        _n_yes = int((_agree.agree == "yes").sum())
+        _summary = (f"Rule vs models: {_n_yes} of {len(_agree)} models with a defined sign agree with the sign of the "
+                    f"O-H change (rule: deuteration favours the polymorph with the shorter O-H bonds; it is claimed "
+                    f"only in the strong regime, either member with mean O-H >= {STRONG_XH_A:.2f} A).")
+        _items = [
+            mo.md(f"**{_rep['formula'] or _rep['pair_id']}**, pair `{_rep['pair_id']}` _(precomputed)_. "
+                  f"Sign convention: ddF_iso = [F_D(b) - F_H(b)] - [F_D(a) - F_H(a)], so a positive value means "
+                  f"deuteration disfavours b; d(X-H) is b minus a, so the rule calls + when b has the longer bond."),
+            mo.ui.table(_t, selection=None, page_size=10),
+            mo.md(_summary + " The stretch and bend/libration columns are the split of ddF_total (meV/atom, "
+                  "`results/decompose_pairs.csv`)."),
+            mo.md("### Experimental provenance (`data/isoshift/experimental.csv`)\n\n"
+                  f"- a: {_prov(_rep['a'])}\n- b: {_prov(_rep['b'])}"),
+        ]
+        if _rep["pair_id"] == DEFAULT_PAIR:
+            _items.append(mo.callout(mo.md(
+                f"Default pair: diaspore (mp-625152) vs delta-AlOOH (mp-23807). Candidate card with the pressure "
+                f"shift of the boundary: [docs/findings/CARD-AlOOH.md]({CARD_URL}). Exploratory, outside the "
+                f"harmonic domain."), kind="info"))
+        _body = mo.vstack(_items)
+    check_tab = mo.vstack([mo.md("All numbers on this tab are **precomputed** from cached results; nothing is computed "
+                                 "live."), check_dd, _body])
+    return (check_tab,)
+
+
+@app.cell
+def _(data, mo):
+    _tr = brucite_trace(data)
+
+    def _tbl(df, empty):
+        return mo.ui.table(df, selection=None, page_size=10) if len(df) else mo.md(empty)
+
+    _lit = _tr["lit"]
+    if len(_lit):
+        _r = _lit.iloc[0]
+        _lit_md = mo.md(f"`data/isoshift/validation.csv`: **{_r['system']}**, {_r['observable']}, "
+                        f"DOI [{_r['doi']}](https://doi.org/{_r['doi']}), {_r['source_location']}.\n\n"
+                        f"> {_r['quote']}\n\nDerived effect: +{_r['derived_isotope_effect_pct']}%.")
+    else:
+        _lit_md = mo.md("_validation.csv row not found._")
+    _v = _tr["vie"]
+    if len(_v):
+        _vie = mo.vstack([
+            mo.md(f"`results/validation/volume_isotope.csv`, brucite at the 290 K grid point (measured +0.31% at 295 K): "
+                  f"{int((_v.VIE_pct > 0).sum())} of {len(_v)} model x treatment rows positive, range "
+                  f"{_v.VIE_pct.min():+.2f} to {_v.VIE_pct.max():+.2f}% _(precomputed)_."),
+            mo.ui.table(_v.round(3), selection=None, page_size=16)])
+    else:
+        _vie = mo.md("_volume_isotope.csv brucite rows not found._")
+    _gate = mo.md("\n\n".join(f"> {g}" for g in _tr["gate"]) if _tr["gate"]
+                  else "_Decision lines not found (`docs/decisions/01-gate.md`)._")
+    _steps = [
+        ("1", BRUCITE_STEPS[0], mo.vstack([
+            mo.md(f"Matching rows of `logs/bond_queries.jsonl` (text contains brucite or Mg(OH)2), "
+                  f"{len(_tr['agent_rows'])} agent queries; the log line number is the query id."),
+            _tbl(_tr["agent_rows"], "_No matching agent rows._")])),
+        ("2", BRUCITE_STEPS[1], mo.vstack([
+            mo.md(f"{len(_tr['sweep_rows'])} sweep queries (stage 1 workers) mention brucite or Mg(OH)2. "
+                  "This stage gave the sign but no quote and no paired lattice table."),
+            _tbl(_tr["sweep_rows"], "_No matching sweep rows._")])),
+        ("3", BRUCITE_STEPS[2], _lit_md),
+        ("4", BRUCITE_STEPS[3], _vie),
+        ("5", BRUCITE_STEPS[4], _gate),
+    ]
+    _counts = mo.md(
+        f"**Counts.** Bond queries in the log: **{_tr['n_log']}** ({_tr['n_sweep']} sweep, {_tr['n_agent']} agent). "
+        f"Agent audit (`docs/story/agent_extraction_audit.md`): of {AUDIT['sweep_items']} sweep items, "
+        f"**{AUDIT['ok_single_pass']} returned \"ok\" on a single pass**, but only **{AUDIT['survived']} survived** as "
+        f"quantitative validation targets (brucite and LiH) after the second reader and the board.")
+    how_tab = mo.vstack([
+        mo.md("One claim traced from the first literature query to the gate decision (brucite, V_H/V_D - 1 = +0.31%). "
+              "All evidence below is read from files in the repo _(precomputed)_."),
+        _counts,
+        *[mo.vstack([mo.md(f"### Step {n}. {t}"), e]) for n, t, e in _steps],
+        mo.md("Lesson: single-pass agent extraction found sources but could not be trusted for numbers; the "
+              "second reader and the board made the table usable."),
+    ])
+    return (how_tab,)
+
+
+@app.cell
+def _(bench_tab, check_tab, f01_tab, how_tab, mo):
+    mo.ui.tabs({"F01 isotope rule": f01_tab, "Benchmark & atlas": bench_tab,
+                "Check a pair": check_tab, "How we know": how_tab})
     return
 
 

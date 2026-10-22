@@ -72,3 +72,55 @@ def test_f01_banner_frozen_and_posthoc_collapsed():
     cv = json.loads((APP.parents[1] / "results" / "F01_cv.json").read_text(encoding="utf-8"))["oh_unfiltered_strong"]
     pm = cv["unique_pair_majority"]
     assert (cv["right"], cv["n"], pm["right"], pm["tie"], pm["wrong"]) == (185, 212, 74, 0, 10)
+
+
+def _repo_data():
+    m = _load()
+    return m, m.load_data(m.REPO)
+
+
+def test_check_a_pair_default_is_diaspore_delta():
+    m, d = _repo_data()
+    opts = m.pair_options(d)
+    assert m.DEFAULT_PAIR in opts.values() and any("AlHO2" in k for k in opts)
+    rep = m.pair_report(d, m.DEFAULT_PAIR)
+    t = rep["models"].set_index("model")
+    assert list(t.index) == m.MODELS and rep["formula"] == "AlHO2"
+    assert (t["regime"] == "strong").all()  # both members have mean O-H above 0.99 A
+    assert (t["rule call"] == "+").all() and (t["model sign"] == "+").all() and (t["agree"] == "yes").all()
+    assert abs(t.loc["mace", "ddF_iso 300 K (meV/atom)"] - 0.768484) < 1e-5
+    assert abs(t.loc["mace", "ddF_iso 300 K (meV/H)"] - 3.073935) < 1e-5
+    assert abs(t.loc["mace", "d(X-H) b minus a (mA)"] - 32.36) < 0.1
+    assert abs(t.loc["mace", "stretch (meV/atom)"] - 2.1048) < 1e-3 and t.loc["mace", "bend/libration (meV/atom)"] < 0
+    assert rep["a"]["struct_id"] == "mp-625152" and rep["b"]["struct_id"] == "mp-23807"
+    assert rep["a"]["experimental"] == "True" and rep["b"]["experimental"] == "True"
+    assert (APP.parents[1] / "docs" / "findings" / "CARD-AlOOH.md").exists()
+
+
+def test_check_a_pair_synthetic_regime_and_missing(tmp_path):
+    m = _load()
+    _build(tmp_path)
+    pd.DataFrame([dict(pair_id="A__B", model="mace", struct_a="A", struct_b="B", flags="x",
+                       ddF_iso_300K_meV_atom=-1.0, ddF_iso_300K_meV_H=-2.0)]
+                 ).to_csv(tmp_path / "results" / "screen_pairs_refined.csv", index=False)
+    pd.DataFrame([dict(model="mace", struct_id=s, XH_mean_A=x, covalent_XH=True) for s, x in (("A", 0.97), ("B", 0.985))]
+                 ).to_csv(tmp_path / "results" / "decompose_structures.csv", index=False)
+    d = m.load_data(tmp_path)
+    r = m.pair_report(d, "A__B")["models"].iloc[0]
+    assert r["regime"] == "weak" and r["rule call"] == "+" and r["model sign"] == "-" and r["agree"] == "no"
+    assert m.pair_report(d, "nope") is None
+
+
+def test_how_we_know_brucite_trace():
+    m, d = _repo_data()
+    tr = m.brucite_trace(d)
+    assert tr["n_log"] == len((APP.parents[1] / "logs" / "bond_queries.jsonl").read_text(encoding="utf-8").splitlines())
+    assert tr["n_sweep"] + tr["n_agent"] == tr["n_log"]
+    assert len(tr["agent_rows"]) + len(tr["sweep_rows"]) >= 5 and len(tr["sweep_rows"]) >= 1
+    assert tr["lit"].iloc[0]["doi"] == "10.2138/am.2013.4202" and "0.31% larger volume" in tr["lit"].iloc[0]["quote"]
+    assert len(tr["vie"]) == 16 and (tr["vie"].VIE_pct > 0).all()
+    assert len(tr["gate"]) == 2 and "Tier B under P12 passes" in tr["gate"][0]
+    audit = (APP.parents[1] / "docs" / "story" / "agent_extraction_audit.md").read_text(encoding="utf-8")
+    a = m.AUDIT
+    assert f"of {a['sweep_items']} sweep items, {a['ok_single_pass']} returned \"ok\", but only {a['survived']}" in audit
+    assert len(m.BRUCITE_STEPS) == 5
