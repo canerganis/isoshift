@@ -27,6 +27,8 @@ Two groups of people deuterate crystals and would like to know what it does to p
 1. Neutron-scattering crystallographers deuterate samples to reduce incoherent background. They need a warning when deuteration may move a sample toward a different polymorph than the hydrogenous one.
 2. Researchers who use D2O or D2 in synthesis to target metastable phases need to know which polymorph pairs are sensitive to the isotope at all.
 
+Possible users: high-pressure neutron groups that use δ-AlOOD and ε-FeOOD as stand-ins for hydrous mantle phases (the models give the AlOOD boundary about 1 GPa higher, exploratory sign), and isotope geochemists comparing D/H partitioning between coexisting minerals (M02, with R stated). No group has used these results yet.
+
 The effect is small (meV per atom) and static-energy errors of the models are larger. That is why the main output is the isotope double difference of free energies, which does not depend on the static energy gap between the polymorphs.
 
 ## Method
@@ -132,6 +134,24 @@ Everything in this section was computed after the compute freeze, each with its 
 * **Angle-refined rule (F08, failed prediction).** Adding the O-H...O angle did not fix the mp-985293 pairs: it failed its predeclared SevenNet test and does not beat F01 on the three models. Test: a held-out set that contains high-compensation pairs.
 * **Isotope atlas (F10, exploratory map, untested).** A structure-only map of 1796 Materials Project O-H polymorph pairs gives the predicted deuteration preference from database geometry in 53 s on one CPU core. Its blind literature test found no scorable measurement (0 of 26 rows; most are order-disorder or tunnelling transitions, which the rule excludes). Test: any measured D/H fractionation or isotope-shifted boundary between two ordered polymorphs in the map.
 * **Prospective held-out test (P10, F11).** Predictions for experimental pairs never computed before (111 primary rows, 42 pairs, 20 formulas) were committed after relax-only geometry and before any phonon job (eb61ccf). F11 prospective test: FAIL against its predeclared bar; see [docs/findings/F11-prospective-test.md](docs/findings/F11-prospective-test.md).
+
+### Prediction scorecard
+
+Every prediction file, the commit that fixed it before its data or result, and the outcome. P06 to P11 are post-freeze (22 Oct) and belong to this addendum; P01 to P05 are pre-freeze. Details: [docs/INDEX.md](docs/INDEX.md).
+
+| id | what | commit | outcome |
+|---|---|---|---|
+| P01 | volume isotope effects, 13 known H compounds | 0fffc54 | F02: mixed |
+| P02 | O-H stretch and bend shifts, diaspore to δ-AlOOH and goethite to ε-FeOOH | da560cf | F04: sign-level, one pair (goethite to ε-FeOOH); diaspore pair inconclusive |
+| P03 | stretch and bend shifts, manganite to groutite | c990f11 | F04: inconclusive |
+| P04 | harmonic mineral D/H fractionation, 118 structures | f3ac0ac (scoring rule 90ad4cd, committed with its result) | F05: ordering only |
+| P05 | H2O to D2O shift of three ice boundaries | bec68d7 | F07: failed (Ih-II and Ih-III wrong sign; II-III right) |
+| P06 | refined rule with the O-H...O angle | cdb32da | F08: failed |
+| P07 | deep-Earth isotope draft | 08a9b1f | parked per decision 08; exploratory, not scored |
+| P08 | structure-only atlas, 1796 pairs | d991991 | F10: nothing scorable (0 of 26) |
+| P09 | temperature-resolved F01, H1 to H4 | d03f8d2 | F09: H1 failed |
+| P10 | prospective held-out test on new pairs | eb61ccf | F11: failed (16 of 111) |
+| P11 | boehmite vs diaspore D/H fractionation | 184fbee | F12: inconclusive (sign agrees) |
 
 ## Prior work
 
