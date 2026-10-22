@@ -351,12 +351,12 @@ with app.setup:
             else:
                 agree = "yes" if rule == msign else "no"
             out.append({
-                "model": m, "ddF_iso 300 K (meV/atom)": ddf,
+                "model": m, "in F01 headline": inh, "agree": agree, "rule call": rule_txt,
+                "model sign": "" if pd.isna(ddf) else _sgn_txt(msign), "regime": regime,
+                "ddF_iso 300 K (meV/atom)": ddf,
                 "ddF_iso 300 K (meV/H)": float(r["ddF_iso_300K_meV_H"]) if pd.notna(r["ddF_iso_300K_meV_H"]) else np.nan,
-                "mean X-H a (A)": xa, "mean X-H b (A)": xb,
                 "d(X-H) b minus a (mA)": dxh * 1000 if pd.notna(dxh) else np.nan,
-                "regime": regime, "in F01 headline": inh, "rule call": rule_txt,
-                "model sign": "" if pd.isna(ddf) else _sgn_txt(msign), "agree": agree,
+                "mean X-H a (A)": xa, "mean X-H b (A)": xb,
                 "stretch (meV/atom)": ddf_str, "bend/libration (meV/atom)": ddf_perp,
                 "flags": "; ".join(split_flags(r.get("flags"))) or "none",
             })

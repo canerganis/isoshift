@@ -27,7 +27,7 @@ Target length 3:40. Hard limit 4:00 (YouTube upload, judging cut-off). Narration
 ## Click path in the marimo app (scene 8, 13 s)
 
 1. Start on the "F01 isotope rule" tab (banner visible, 2 s). Do not touch the sliders.
-2. Click "Check a pair" (3 s). The dropdown already shows the default pair, diaspore (mp-625152) vs delta-AlOOH (mp-23807). Do not change it. Scroll just enough to show the model table, the rule's call and the experimental provenance lines.
+2. Click "Check a pair" (3 s). The dropdown already shows the default pair, diaspore (mp-625152) vs delta-AlOOH (mp-23807). Do not change it. Scroll just enough to show the model table (first columns: in F01 headline, agree, rule call; SevenNet reads "outside headline" because it is a secondary sign-only vote) and the experimental provenance lines.
 3. Click "How we know" (7 s). Scroll slowly through the brucite Bond provenance trace, from the first query to the gate decision.
 4. Cut to scene 9.
 
