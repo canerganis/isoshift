@@ -21,7 +21,7 @@ You are one of several independent models brainstorming. Do not run tools, do no
 Other awards went to solo projects too (olfactory receptor CNN, GCxGC-MS analysis, MLIP docking agent). Plain RAG chatbots did not win. Almost no projects on metals, alloys or additive manufacturing.
 
 ## The participant
-Can Erganiş, solo. Materials engineer (recent graduate), works as AI trainer / evaluator (rubrics, LLM evals). No lab access. Has access to Claude (Opus 5.5), Codex (GPT-6 Astra), Gemini 4, personal PC (GPU unknown, assume modest; Colab possible).
+Can Erganiş, solo. Metallurgical and materials engineer. No lab access. Has access to Claude (Opus 5.5), Codex (GPT-6 Astra), Gemini 4, personal PC (GPU unknown, assume modest; Colab possible).
 Existing personal project "Metalliksa": LPBF (laser powder bed fusion) research platform with a working 3D Ti-6Al-4V transient thermal (enthalpy) CPU solver with evaporation loss, pycalphad CALPHAD checks, source/evidence tracking. Never compared against experiments. Using it is optional.
 Current leading candidate: agent mines LPBF papers for Ti64 process params + measured melt pool dimensions, runs the Metalliksa solver, compares, then finds where the model fails and proposes/calibrates a correction (e.g. absorptivity vs energy density, keyhole threshold) validated on held-out papers.
 

@@ -8,7 +8,7 @@ Pattern of 2025 winners: usable, validated tools that produce a concrete result.
 Sponsor tracks (optional): Valency MCP Bond (literature search over 44.5M papers), Marimo notebooks, Adaption.
 
 ## Team and resources
-One solo participant (materials engineer, AI trainer). 34 hours total including video. Laptop with RTX 4060 8GB, Python. Subscription CLI access to three frontier LLMs (Opus 5.5, GPT-6 Astra, Gemini 4 Argon), usable as agents. No wet lab, no paid compute, no API keys for gated databases. Only open data and free tools (Materials Project dumps via public mirrors, OQMD, JARVIS, AFLOW, COD, NOMAD, Alexandria, PubChem, ChEMBL, NIST, arXiv, OpenAlex, etc., ML potentials such as MACE, CHGNet, ORB, pymatgen, ASE, RDKit, xtb, LAMMPS are fine).
+One solo participant (metallurgical and materials engineer). 34 hours total including video. Laptop with RTX 4060 8GB, Python. Subscription CLI access to three frontier LLMs (Opus 5.5, GPT-6 Astra, Gemini 4 Argon), usable as agents. No wet lab, no paid compute, no API keys for gated databases. Only open data and free tools (Materials Project dumps via public mirrors, OQMD, JARVIS, AFLOW, COD, NOMAD, Alexandria, PubChem, ChEMBL, NIST, arXiv, OpenAlex, etc., ML potentials such as MACE, CHGNet, ORB, pymatgen, ASE, RDKit, xtb, LAMMPS are fine).
 
 ## Ideas ALREADY considered (do not repeat, do not lightly rephrase)
 1. Agentic discovery benchmark with oracle budget (exists: MADE, ICML 2026).

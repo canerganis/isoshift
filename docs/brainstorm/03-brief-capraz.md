@@ -3,7 +3,7 @@
 You are one of three judges (Opus 5.5, GPT-6 Astra, Gemini 4 Argon). Earlier, each of you proposed topics independently. Now rank the finalists harshly, as if you were a hackathon judge. Do not run tools or edit files. English, markdown, under 900 words.
 
 ## Event and criteria
-Open Scientific Intelligence Hackathon 2026 (MDRI). Solo participant, ~34 hours, modest GPU (RTX 4060 8GB), access to Opus 5.5, GPT-6 Astra, Gemini 4 Argon via subscription CLIs (no API keys; each call ~10 to 60 s). Materials engineer and professional LLM evaluator.
+Open Scientific Intelligence Hackathon 2026 (MDRI). Solo participant, ~34 hours, modest GPU (RTX 4060 8GB), access to Opus 5.5, GPT-6 Astra, Gemini 4 Argon via subscription CLIs (no API keys; each call ~10 to 60 s). Metallurgical and materials engineer.
 Official criteria: (1) impact on research, (2) innovativeness and making researchers' lives easier, (3) scalability, (4) relevance to materials science and chemistry. Organizer framing: "is two days to a real discovery possible?", paper-worthy results. Deliverables: 4 min video, one-page summary with figure, code. 2025 1st place was a usable tool (synthesis recipe agent with Materials Project, confidence, citations); top 5 were working tools validated on real data; plain RAG did not win. Sponsor prizes: Valency (MCP Bond literature search, 44.5M papers), Marimo (marimo notebooks).
 
 ## Finalists

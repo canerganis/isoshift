@@ -19,7 +19,7 @@ Frontier models (Fable, Opus 5.5, GPT-6 Astra, Gemini 4 Argon) are far beyond la
 1st: agent that adapts synthesis recipes from Materials Project neighbors to a new target with confidence and citations. Others: NMR mixture deconvolution agent, solo XRD phase-ID pipeline, closed-loop lab discovery. Plain RAG chatbots did not win.
 
 ## Participant
-Solo, ~34 hours. Materials engineer, professional LLM evaluator (rubrics, evals). No wet lab. Access to Opus 5.5, GPT-6 Astra (Codex), Gemini 4 Argon. Modest compute, Colab possible. Background is NOT a constraint: pick the topic that best fits the criteria.
+Solo, ~34 hours. Metallurgical and materials engineer. No wet lab. Access to Opus 5.5, GPT-6 Astra (Codex), Gemini 4 Argon. Modest compute, Colab possible. Background is NOT a constraint: pick the topic that best fits the criteria.
 
 ## Task
 1. Propose 4 topics that score high on ALL FOUR criteria and produce a concrete, checkable discovery-style result in 34 hours solo. Use only real, open, accessible data and tools (name them).
