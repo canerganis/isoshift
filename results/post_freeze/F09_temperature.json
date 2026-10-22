@@ -67,7 +67,18 @@
   "median_C0": 0.665,
   "median_C300": 0.582,
   "median_C600": 0.406,
-  "median_ratio_C600_over_C0": 0.613
+  "median_ratio_C600_over_C0": 0.613,
+  "descriptive_not_scored": {
+   "n_C600_lt_C0": 198,
+   "n_C300_lt_C0": 198,
+   "ratio_C600_over_C0_quartiles": [
+    0.559,
+    0.613,
+    0.688
+   ],
+   "n_ratio_lt_0p7": 171,
+   "n_C0_negative": 13
+  }
  },
  "H2": {
   "rule": "all 28 mp-985293 rows: ddF_str F01 sign at 0 and 600 K, C(0 K) > 1, C(600 K) < 1",

@@ -1,0 +1,6 @@
+regression 300 K: 1314/1314 rows, max |d ddF_total| = 0 meV/atom, pass=True
+accuracy {'0K': 153, '300K': 185, '600K': 210}
+H1 FAIL
+H2 PASS
+H3 PASS
+H4 PASS

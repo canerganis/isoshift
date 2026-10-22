@@ -1,3 +1,1 @@
-C:\Users\can02\Projects\osi-hackathon-2026\.venv\Lib\site-packages\phonopy\api_phonopy.py:1807: MeshSymmetryFallbackWarning: Half-grid shift [1, 1, 1] is not preserved by the primitive-cell point group for mesh [10, 10, 4]. Point-group symmetry reduction is disabled; only time-reversal symmetry is applied. Use a gamma-centered mesh (no shift) to keep full symmetry.
-  self._mesh = Mesh(
 T = 300 K, 1310 structures, 1314 pair rows; max |quadrature - direct| = 6.43e+00 meV/atom
