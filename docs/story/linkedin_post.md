@@ -2,19 +2,19 @@ LinkedIn post (Can approves before it is posted; video: isoshift_final_v6_subs.m
 
 ---
 
-The short-bond rule: swap hydrogen for deuterium in a crystal with moderate-to-strong hydrogen bonds, and it favours the polymorph with the shorter O-H bonds.
+Does replacing hydrogen with deuterium change which crystal structure of a compound is stable?
 
-At OSI Hackathon 2026, with an AI team working under my direction, I derived this rule from a screen of 220 polymorph pairs of 63 carbon-free hydrogen compounds, using three universal ML potentials (MACE, ORB, MatterSim). It holds in 185 of 212 model evaluations, against 131 for a constant guess. With weak hydrogen bonds it fails (2 of 20), and a single Al(OH)3 structure is the one counterexample.
+At OSI Hackathon 2026 I worked on this question with a team of AI agents under my direction. We computed harmonic H and D free energies for 220 polymorph pairs of 63 carbon-free hydrogen compounds with three universal ML potentials (MACE, ORB, MatterSim).
 
-Why it is not obvious: deuterium pulls two ways. The O-H stretch favours one crystal, bending and libration favour the other, and they cancel about half of each other. Which one wins depends on the hydrogen bond, and for polymorph stability this had not been mapped across a large screen.
+The result is a sign rule, which we call the short-bond rule: in crystals with moderate-to-strong hydrogen bonds, deuteration favours the polymorph with the shorter O-H bonds. It holds in 185 of 212 model evaluations, against 131 for a constant-sign baseline. It fails for weak hydrogen bonds (2 of 20), and the 10 pairs the models get wrong all contain one Al(OH)3 structure.
 
-The trick that made it possible: polymorph energy gaps are smaller than any ML potential's error, so I computed only the isotope difference. One phonon run per crystal gives both the H and the D free energy, and the static energy gap drops out.
+The O-H stretch and the bending and libration modes contribute with opposite signs, and in the strong-bond regime the stretch dominates, with about half of it cancelled. Because polymorph energy gaps are smaller than the errors of the potentials, we computed only the isotope difference: one phonon calculation per structure gives both isotopes, and the static energy gap cancels.
 
-A prediction a lab can check: deuterium raises the diaspore to δ-AlOOH transition, a possible deep-Earth water carrier, by about 1 GPa (1.13 GPa ORB, 1.33 GPa MACE, exploratory sign). D/H partitioning between coexisting polymorphs would test the rule directly. Nobody has measured it yet.
+For the diaspore to δ-AlOOH transition the models predict a transition pressure about 1 GPa higher for AlOOD (1.13 GPa with ORB, 1.33 GPa with MACE). This is an exploratory sign prediction. The rule itself has not been tested experimentally; D/H partitioning between coexisting polymorphs would test it.
 
-How it was done: literature agents on Valency Bond logged 182 queries, three-model councils argued every claim, and predictions went into git before the data. Some of them failed, and the repo reports those with the same weight as the successes.
+Literature searches ran on Valency Bond (182 logged queries), predictions were committed to git before the data, and the failed blind tests are reported in the repository.
 
 Video: https://youtu.be/3gE5nxhLo80
-Code, data, interactive marimo app and every decision: https://github.com/canerganis/isoshift
+Code, data, marimo app and decision records: https://github.com/canerganis/isoshift
 
 #materialsscience #machinelearning #isotopes #crystallography #OSIHackathon

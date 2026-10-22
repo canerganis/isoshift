@@ -1,15 +1,15 @@
 # The short-bond rule: deuterium tips hydrogen-bonded crystals toward shorter O-H bonds
 
-**The short-bond rule.** Swap hydrogen for deuterium in a crystal with moderate-to-strong hydrogen bonds, and it favours the polymorph with the shorter O-H bonds. We derived this rule from a screen of 220 polymorph pairs with three ML potentials: it holds in 185 of 212 evaluations (constant-sign baseline 131), fails with weak hydrogen bonds (2 of 20), and has one named Al(OH)₃ counterexample. It predicts that deuterium raises the diaspore to δ-AlOOH transition by about 1 GPa (exploratory sign). No measurement has tested it yet; D/H partitioning between coexisting polymorphs would ([M02](https://github.com/canerganis/isoshift/blob/main/docs/math/M02-bigeleisen-bridge.md)), as would matched reversed-bracket AlOOH/AlOOD runs.
+**The short-bond rule.** In crystals with moderate-to-strong hydrogen bonds, deuteration favours the polymorph with the shorter O-H bonds. We obtained this rule from harmonic H and D free energies of 220 polymorph pairs computed with three universal ML potentials (MACE, ORB, MatterSim). It holds in 185 of 212 model evaluations, against 131 for a constant-sign baseline. It fails for weak hydrogen bonds (2 of 20 evaluations), and the 10 pairs that the model majority calls wrong all contain one Al(OH)₃ structure, mp-985293. For the diaspore to δ-AlOOH transition the models predict a transition pressure about 1 GPa higher for AlOOD (exploratory sign prediction). The rule has not been tested experimentally; D/H partitioning between coexisting polymorphs ([M02](https://github.com/canerganis/isoshift/blob/main/docs/math/M02-bigeleisen-bridge.md)) or matched reversed-bracket AlOOH/AlOOD runs would test it.
 
 Video (3:30): https://youtu.be/3gE5nxhLo80
 
-**Why it stands out.**
+**Contributions.**
 
-1. **One testable sentence for a meV-scale effect.** Earlier work treated isotope effects on stability one system at a time; this screen counts every evaluation across 220 pairs and states where the rule holds and where it breaks.
-2. **A method that removes the models' largest error.** The static energy gap cancels in the isotope double difference, and one phonon run per structure gives both isotopes, so cheap universal potentials can rank the effect.
-3. **A falsifiable prediction for a deep-Earth water carrier.** Deuterium raises the diaspore to δ-AlOOH boundary by +1.13 (ORB) and +1.33 GPa (MACE) at 300 K, a number a high-pressure lab can check.
-4. **Honest by construction.** Predictions were committed to git before the data, the boundary choice is disclosed, and the failed blind tests (F07, F11) are reported.
+1. A sign rule for the isotope effect on polymorph stability, with a fitted slope (0.11 to 0.13 meV per H for each mÅ change in mean X-H length) and a stated regime boundary, from a screen in which every evaluation is counted.
+2. An isotope double difference that cancels the static energy gap between polymorphs, the quantity on which universal potentials are least reliable; one phonon calculation per structure gives both isotopes.
+3. A pressure-shift prediction for the diaspore to δ-AlOOH transition at 300 K: +1.13 GPa (ORB) and +1.33 GPa (MACE).
+4. Predictions committed to git before the data, with the failed blind tests (F07, F11) reported next to the result.
 
 **Result (F01).** Across 220 hydrogen-compound polymorph pairs screened with three universal ML potentials, the harmonic H/D free-energy difference at 300 K changes by 0.11 to 0.13 meV per H for each mÅ difference in mean X-H length, a stretch term about half cancelled by bend and libration. When at least one polymorph has a mean model O-H length of 0.99 Å or more (a model-derived boundary for moderate to strong hydrogen bonds, chosen after inspecting the data), deuteration favours the polymorph with the shorter O-H bonds in 185 of 212 O-H model evaluations with |Δ mean O-H| ≥ 5 mÅ (84 pairs, 28 formulas), against 131 of 212 for a constant-sign baseline fitted on leave-one-formula-out training folds. By model majority 74 pairs are right and 10 are wrong, and all 10 wrong pairs contain one Al(OH)3 structure, mp-985293.
 

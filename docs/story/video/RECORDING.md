@@ -59,13 +59,16 @@ Do not open "Benchmark & stretch check" and do not open the "Post hoc sensitivit
 ## YouTube upload
 
 1. Upload the final file (3:40 target, under 4:00).
-2. Title: `IsoShift: swapping hydrogen for deuterium tips crystals toward shorter O-H bonds`
+2. Title: `Deuteration favours the polymorph with shorter O-H bonds: an ML screen of 220 polymorph pairs`
 3. Visibility: Public. Audience: not made for kids. Language: English.
 4. Description (paste as is):
 
 ```
-IsoShift tests a simple rule: in hydrogen-bonded crystals, swapping hydrogen for deuterium tips the balance toward the polymorph with the shorter O-H bonds. In harmonic calculations with three machine-learned potentials the rule gets the sign right in 185 of 212 evaluations, it fails for weak hydrogen bonds, and it gives an exploratory sign prediction for the diaspore to delta-AlOOH boundary. Code, data and every decision: https://github.com/canerganis/isoshift
-AI disclosure: the calculations, literature search and drafts were produced by AI agents working under my direction, and every query and decision is logged in the repository.
+Harmonic H and D free energies of 220 polymorph pairs, computed with three universal ML potentials (MACE, ORB, MatterSim), show that in crystals with moderate-to-strong hydrogen bonds deuteration favours the polymorph with the shorter O-H bonds (185 of 212 model evaluations; constant-sign baseline 131). The rule fails for weak hydrogen bonds (2 of 20). For the diaspore to δ-AlOOH transition the models predict a pressure about 1 GPa higher for AlOOD (exploratory sign prediction). The rule has not been tested experimentally.
+
+Code, data and decision records: https://github.com/canerganis/isoshift
+
+AI disclosure: the calculations, literature search and drafts were produced by AI agents working under my direction; every query and decision is logged in the repository.
 ```
 
 5. Subtitles: Add language English, Upload file, With timing, choose `captions.srt`, Publish.
