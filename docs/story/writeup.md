@@ -61,7 +61,13 @@ The results are a marimo app. A slider on the F01 tab moves the 0.99 Å boundary
 
 ## How the work was done
 
-AI agents did the work under my direction, and each part had a job. Literature agents on Valency Bond found the measured values (above). Every formula passed two independent derivations. Three-model councils decided the hard calls and recorded their dissent ([decisions](https://github.com/canerganis/isoshift/tree/main/docs/decisions)). A blind Codex reimplementation matched $\Delta\Delta F_{\mathrm{iso}}$ to $10^{-9}$ meV/atom (F06), which checks the code, not the physics.
+AI agents did the work under my direction, each with a fixed role, and I set the question, approved each step and made the calls that needed a person.
+
+1. Conductor: Claude Opus 5.5 planned the work, ran the GPU screen with MACE, ORB, MatterSim and SevenNet, wrote the analysis and kept a ledger of every step.
+2. Literature and blind-test agents: Claude Sonnet instances queried Valency Bond, each with one task (a validation value, an ice boundary, a fractionation factor); the blind-test agents never saw our predictions.
+3. Math checks: every formula was derived twice, independently, by GPT-6 Astra and Claude Opus, and the code used it only after the two agreed.
+4. Councils: hard calls (the freeze, what to claim, what to drop) went to a council of Claude Opus, GPT-6 Astra and Gemini 4 Argon. Each member answered blind, then read and challenged the others; the chair (Claude Opus) decided by argument, not vote, and recorded the dissent ([decisions](https://github.com/canerganis/isoshift/tree/main/docs/decisions)).
+5. Independent check: GPT-6 Astra, through Codex and without our code, rewrote the calculation from the equations and matched $\Delta\Delta F_{\mathrm{iso}}$ to $10^{-9}$ meV/atom (F06), which checks the code, not the physics.
 
 Every prediction file was committed to git before its data, except the P04 scoring rule, which came with its result. Tests that failed are reported next to the ones that passed. A marimo app shows the cached results without a GPU.
 
