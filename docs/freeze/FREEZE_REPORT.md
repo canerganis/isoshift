@@ -66,9 +66,9 @@ What changed it: SevenNet adds only 10 headline rows, all right. The change come
 
 Diagnosis for the chair (no wording changed):
 
-* All 10 wrong pairs share one structure, mp-985293, a theoretical Al(OH)3 polymorph. Its mean model O-H is 0.996 Å (MACE), 0.997 Å (ORB) and 0.999 Å (MatterSim), just above the 0.99 Å boundary. MACE and ORB call all 10 wrong. MatterSim gets 8 of 10 right, with small values (|ΔΔF| ≤ 0.26 meV/H).
+* All 10 wrong pairs share one structure, mp-985293, an Al(OH)3 polymorph listed by the Materials Project as experimental (theoretical=False; the pair-level theoretical, soft-mode and classical-limit flags come from its partners; it has no imaginary modes in any model). Its mean model O-H is 0.996 Å (MACE), 0.997 Å (ORB) and 0.999 Å (MatterSim), just above the 0.99 Å boundary. MACE and ORB call all 10 wrong. MatterSim gets 8 of 9 right, with small values (|ΔΔF| ≤ 0.26 meV/H).
 * These pair rows were absent before the freeze, because ORB and MatterSim had not run on mp-985293. In `results/screen_pairs_refined.csv` the rows carry `theoretical`, `soft_mode_bracketed`, `classical_limit_violation` and, for ORB, `relax_not_converged`. The `clean` flag in `decompose.py` tests only the quadrature check, so none of these flags removes them.
-* Dropping the pairs that contain mp-985293 gives 177/184 (96.2%), with pairs 74 right, 0 ties, 0 wrong. Raising the boundary to 1.00 Å gives 175/182 (96.2%, 73 pairs). This is also why the nested re-choice now picks 1.00 Å in 30 of 31 folds. As a result, the sentence "re-choosing it inside each fold selects 0.99 Å in every fold" is false on the frozen numbers.
+* Dropping the pairs that contain mp-985293 gives 177/184 (96.2%), with pairs 74 right, 0 ties, 0 wrong. Raising the boundary to 1.00 Å gives 175/182 (96.2%, 73 pairs). 28 of the 30 evaluations between 0.99 and 1.00 Å are mp-985293. This is also why the nested re-choice now picks 1.00 Å in 30 of 31 folds. As a result, the sentence "re-choosing it inside each fold selects 0.99 Å in every fold" is false on the frozen numbers.
 * Both repairs are post hoc and would be chosen after seeing the frozen data. That choice belongs to the chair, not to the freeze run.
 
 ## Not done because the trigger fired
