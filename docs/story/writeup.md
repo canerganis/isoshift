@@ -75,6 +75,8 @@ Built before the event (git tag `pre-event-baseline`): the generic LLM harness a
 
 Evidence index: [docs/INDEX.md](https://github.com/canerganis/isoshift/blob/main/docs/INDEX.md).
 
+Archived release: [doi:10.5281/zenodo.23578412](https://doi.org/10.5281/zenodo.23578412).
+
 ## References
 
 [1] A. Sano-Furukawa et al., "Direct observation of symmetrization of hydrogen bond in δ-AlOOH under mantle conditions using neutron diffraction," *Sci. Rep.*, vol. 8, no. 1, Art. no. 15520, 2018, doi: [10.1038/s41598-018-33598-2](https://doi.org/10.1038/s41598-018-33598-2).
