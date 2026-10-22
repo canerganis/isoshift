@@ -41,7 +41,7 @@ def speech_span(p):
     d = duration(p)
     log = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(p), "-af", "silencedetect=n=-45dB:d=0.15", "-f", "null", "-"],
                          capture_output=True, text=True, encoding="utf-8", errors="replace").stderr
-    sil = [(float(a), float(b)) for a, b in re.findall(r"silence_start: ([\d.]+)[\s\S]*?silence_end: ([\d.]+)", log)]
+    sil = [(float(a), float(b)) for a, b in re.findall(r"silence_start: (-?[\d.]+)[\s\S]*?silence_end: (-?[\d.]+)", log)]
     start = sil[0][1] if sil and sil[0][0] < 0.01 else 0.0
     end = sil[-1][0] if sil and sil[-1][1] > d - 0.02 else d
     return max(0.0, start - PAD_IN), min(d, end + PAD_OUT)
