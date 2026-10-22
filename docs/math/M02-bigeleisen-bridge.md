@@ -44,7 +44,7 @@ Let delta_g_j,tr be the trace substitution free energy in phase j, and define R_
 
 n_H k_B T ln alpha_(a-b),tr = ddG_iso - R
 
-Equivalently, ddG_iso = n_H k_B T ln alpha_tr + R. The trace fractionation factor identifies with the full-substitution one only when R = 0. For n_s inequivalent H sites, the trace ratio uses arithmetic site means and the full ratio uses geometric means, so R is of order (1/2)[Var_a(ln beta_i) - Var_b(ln beta_i)] to leading order (erratum pending mathcheck: R ≈ (n_H k_B T/2)[Var_b(l) - Var_a(l)] plus a nonadditivity term; the earlier sign was reversed). This second-order estimate was given by one derivation and was not independently verified.
+Equivalently, ddG_iso = n_H k_B T ln alpha_tr + R. The trace fractionation factor identifies with the full-substitution one only when R = 0. For n_s inequivalent H sites, the trace ratio uses arithmetic site means and the full ratio uses geometric means, so to second order R ≈ (n_H k_B T/2)[Var_b(l) - Var_a(l)] + (N_b - N_a), with l_i = ln beta_i, hydrogen-site-weighted variances, and N_j the site-nonadditivity term of full substitution (zero for independent sites). Exactly, R_j = n_H k_B T [ln⟨e^l⟩_j - ⟨l⟩_j] + N_j; the next term is (n_H k_B T/6)[κ3_b - κ3_a]. Erratum (22 Oct): the earlier text "(1/2)[Var_a - Var_b]" had the reversed sign and no n_H k_B T factor. Verified by mathcheck M02-line47 (Astra and Opus, independent derivations agree; test case a: l = 0.10, 0.30, b: l = 0.20, n_H = 1, 300 K gives exact R = -0.129045 meV, second order -0.129260 meV).
 
 ### Boundary shifts (first order)
 
