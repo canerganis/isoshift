@@ -1,7 +1,7 @@
 # Judge FAQ
 
 **Was the 0.99 Å boundary chosen after seeing the data?**
-Yes. Re-chosen inside each leave-one-formula-out fold, it becomes 1.00 Å in 30 of 31 folds and gives 183 of 210 held-out evaluations right against a baseline of 131. The fold that holds out Al(OH)3 keeps 0.99 Å and scores 8 of 28 against 19, so a sharp universal boundary is not established ([F01](findings/F01-xh-length-rule.md)). The prospective test on new pairs failed its predeclared bar: 14 right of 96 counted rows (111 committed, 75 lost to the predeclared numerical rules); on the 21 clean rows the rule gets 14 and a constant guess 17 ([F11](findings/F11-prospective-test.md)).
+Yes. Re-chosen inside each leave-one-formula-out fold, it becomes 1.00 Å in 30 of 31 folds and gives 183 of 210 held-out evaluations right against a baseline of 131. The fold that holds out Al(OH)3 keeps 0.99 Å and scores 8 of 28 against 19, so a sharp universal boundary is not established ([F01](findings/F01-xh-length-rule.md)). The prospective test on new pairs failed its predeclared bar: 16 right of 111 rows (87 lost to the predeclared numerical rules, mostly imaginary modes); on the 24 clean rows the rule gets 16 and a constant guess 19 ([F11](findings/F11-prospective-test.md)).
 
 **Are three ML potentials three separate checks?**
 No. They share similar DFT training data, so agreement is not validation. Against PBEsol phonons their isotope ZPE error is 0.7 to 1.5 meV per H ([summary.csv](../results/benchmark/summary.csv)). A blind second code (F06) matched ours within 1e-9 meV/atom; that checks the implementation, not the physics ([output](../results/replicate_f01.json)).
