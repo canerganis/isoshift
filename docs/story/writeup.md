@@ -21,7 +21,9 @@ The result can be checked now. It gives a number for one transition (+1.13 to +1
 
 Free-energy gaps between polymorphs are often smaller than the errors of universal ML potentials, so we compute only the isotope double difference
 
-$$\Delta\Delta F_{\mathrm{iso}} = [F_\mathrm{D}(b) - F_\mathrm{H}(b)] - [F_\mathrm{D}(a) - F_\mathrm{H}(a)].$$
+$$
+\Delta\Delta F_{\mathrm{iso}} = [F_\mathrm{D}(b) - F_\mathrm{H}(b)] - [F_\mathrm{D}(a) - F_\mathrm{H}(a)]
+$$
 
 In the harmonic treatment force constants do not depend on mass, so one phonon calculation per structure gives both isotopes and the static energy gap between the polymorphs cancels. This is what makes a screen of hundreds of pairs feasible with fast universal potentials. MACE, ORB and MatterSim give every number; SevenNet is used for sign votes only.
 
@@ -53,7 +55,7 @@ McKenzie et al. described the competition between stretch and bend zero-point te
 
 ## How the work was done
 
-AI agents did the work under my direction, and each part had a job. Literature agents on Valency Bond found the measured values used for validation and logged all 182 queries, and a second reader rejected values that came without a quote ([extraction audit](https://github.com/canerganis/isoshift/blob/main/docs/story/agent_extraction_audit.md)). Every formula passed two independent derivations. Three-model councils decided the hard calls and recorded their dissent ([decisions](https://github.com/canerganis/isoshift/tree/main/docs/decisions)). A blind Codex reimplementation matched ΔΔF_iso to 1e-9 meV/atom (F06), which checks the code, not the physics.
+AI agents did the work under my direction, and each part had a job. Literature agents on Valency Bond found the measured values used for validation and logged all 182 queries, and a second reader rejected values that came without a quote ([extraction audit](https://github.com/canerganis/isoshift/blob/main/docs/story/agent_extraction_audit.md)). Every formula passed two independent derivations. Three-model councils decided the hard calls and recorded their dissent ([decisions](https://github.com/canerganis/isoshift/tree/main/docs/decisions)). A blind Codex reimplementation matched $\Delta\Delta F_{\mathrm{iso}}$ to $10^{-9}$ meV/atom (F06), which checks the code, not the physics.
 
 Every prediction file was committed to git before its data, except the P04 scoring rule, which came with its result. Tests that failed are reported next to the ones that passed. A marimo app shows the cached results without a GPU.
 
