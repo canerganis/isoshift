@@ -147,7 +147,7 @@ tenacity==9.2.1
 threadpoolctl==3.7.0
 tomlkit==0.15.2
 toolz==1.2.0
-torch==2.6.0+cu124
+torch==2.6.0
 torch-ema==0.3
 torch-geometric==2.8.1
 torchmetrics==1.9.0

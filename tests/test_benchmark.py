@@ -7,6 +7,8 @@ from src.isoshift_event import benchmark as bm
 
 
 def test_dft_dzpe_positive_and_equal_masses_zero():
+    if not (bm.ROOT / "data/isoshift/dft_phonons/mdr_phonondb/index.json").exists():
+        pytest.skip("prefetched MDR DFT phonon data is gitignored and not in a fresh clone")
     entry = bm.entries(limit=1)[0]
     q, ctx = bm.dft_record(entry)
     assert q["dzpe_meV"] > 0
