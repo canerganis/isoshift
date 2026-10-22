@@ -22,6 +22,7 @@ from . import rule_cv as R
 
 ROOT = R.ROOT
 PF = ROOT / "results" / "post_freeze"
+H4_DISCLOSURE = 'H4 was scored after a code fix prompted by a failing first run: the first run (22 Oct, about 10:34) gave H4 124 of 212; the trace difference had been taken b minus a in pair_id order, while ddF and x are struct_b minus struct_a of results/screen_pairs_refined.csv (the orders differ in 1756 of 3860 refined rows; struct order reproduces frozen x in 212 of 212 headline rows, pair_id order in 125). The code was changed to read the orientation from that file and the rerun gave 211 of 212. Hypothesis text, threshold and row set unchanged; H1, H2, H3 verdicts identical in every run.'
 CROSS_GRID = [300.0 + 25.0 * i for i in range(13)]  # 300 to 600 K, descriptive crossover location only
 
 
@@ -198,7 +199,7 @@ def main(argv=None):
           "descriptive_not_scored": {"agree_with_decompose_600K": int(ok4_600.sum()),
                                      "trace_larger_in_shorter_OH_phase": int(tr_vs_x.sum()),
                                      "mp985293_rows_agree": int(ok4[h.pair_id.str.contains("mp-985293")].sum())},
-          "missing_cache": missing}
+          "missing_cache": missing, "disclosure": H4_DISCLOSURE}
 
     # descriptive: crossover temperature of the total for each mp-985293 row (linear interpolation, 25 K grid)
     F = {(m, sid, t): v for m, sid, t, v in cr}
