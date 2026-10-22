@@ -18,6 +18,8 @@ In harmonic calculations with three ML potentials, deuteration favours the polym
 
 ## (a) YouTube
 
+Video URL (paste into the Moment form): https://youtu.be/3gE5nxhLo80. Uploaded with the title and description of `docs/story/video/RECORDING.md` and `captions.srt` as English subtitles.
+
 Title:
 
 ```

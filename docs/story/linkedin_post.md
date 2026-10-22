@@ -15,7 +15,7 @@ Why it matters: neutron groups use deuterated delta-AlOOD as a stand-in for a po
 
 How it was done matters as much as what came out. An AI team did the work under my direction: literature agents on Valency Bond (182 logged queries), three-model councils for the hard calls, and prediction files committed to git before their data (one scoring rule, P04, was committed with its result). Some of those predictions failed, including a prospective test on new pairs, and the repo reports them with the same weight as the successes. This is a computational result; nobody has measured a polymorph isotope free energy yet, and the repo names the experiment that would.
 
-Video: [VIDEO LINK]
+Video: https://youtu.be/3gE5nxhLo80
 Code, data, interactive marimo app and every decision: https://github.com/canerganis/isoshift
 
 #materialsscience #machinelearning #isotopes #crystallography #OSIHackathon
