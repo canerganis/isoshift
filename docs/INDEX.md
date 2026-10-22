@@ -55,7 +55,7 @@ Everything below was planned by decision 08 after the compute freeze. Each study
 | id | file | commit | one line |
 |---|---|---|---|
 | 08 | [08-post-freeze-science.md](decisions/08-post-freeze-science.md) | dfacd79 | Council plan for the addendum: temperature crossover, prospective held-out test, boehmite vs diaspore; video gate for one labelled sentence. |
-| 09 | [09-video-sentence.md](decisions/09-video-sentence.md) | this commit | Video SKIP: no post-freeze sentence in the video, narration unchanged; F09 erratum (H3 scope, H4 label, 600 K subset cleanliness). |
+| 09 | [09-video-sentence.md](decisions/09-video-sentence.md) | 23b1693 | Video SKIP: no post-freeze sentence in the video, narration unchanged; F09 erratum (H3 scope, H4 label, 600 K subset cleanliness). |
 | P06, F08 | [P06_refined_rule.md](predictions/P06_refined_rule.md), [F08-refined-rule.md](findings/F08-refined-rule.md) | cdb32da, a66d602 | A refined rule with the O-H...O angle failed its predeclared SevenNet test (it could not pass); reported as a failure. |
 | P09, F09 | [P09_temperature.md](predictions/P09_temperature.md), [F09-temperature-crossover.md](findings/F09-temperature-crossover.md) | d03f8d2, b9832a1 | Same calculations at 0, 300 and 600 K: headline rows right 153, 185, 210 of 212; all 28 mp-985293 rows follow the rule by 600 K with the stretch sign unchanged (H2 pass), product rule holds (H3 pass), 2000 K trace-limit signs 211 of 212 (H4 pass after a disclosed orientation fix), the zero-point weighting test fails (H1, 98 of 212). Fixed-geometry harmonic result; not in the video (decision 09). |
 | P08, F10 | [P08_atlas_blind.md](predictions/P08_atlas_blind.md), [F10-isotope-atlas.md](findings/F10-isotope-atlas.md) | d991991, bb5f8f8 | Structure-only atlas of 1796 Materials Project O-H polymorph pairs; blind literature test scored 0 of 26 (22 excluded E1, 2 E3, 2 unmappable). An untested map, no verdict on the rule. |
@@ -68,7 +68,7 @@ Everything below was planned by decision 08 after the compute freeze. Each study
 |---|---|---|
 | M00 | [M00-plumbing-diatomic-zpe.md](math/M00-plumbing-diatomic-zpe.md) | Plumbing test of the mathcheck workflow on a diatomic ZPE isotope ratio. |
 | M01 | [M01-isotope-formulas.md](math/M01-isotope-formulas.md) | All harmonic and QHA H/D formulas the code uses, including the mode-resolved mass integral behind the stretch/bend split. |
-| M02 | [M02-bigeleisen-bridge.md](math/M02-bigeleisen-bridge.md) | Links the polymorph-boundary isotope shift to inter-polymorph D/H fractionation (n_H kT ln alpha = ddG_iso), which names the direct experiment for F01. |
+| M02 | [M02-bigeleisen-bridge.md](math/M02-bigeleisen-bridge.md), [M02-line47.md](math/M02-line47.md) | Links the polymorph-boundary isotope shift to inter-polymorph D/H fractionation (n_H kT ln alpha = ddG_iso), which names the direct experiment for F01. Line 47 variance correction verified by mathcheck on 22 Oct (1366e27). |
 
 ## Provenance and process
 
