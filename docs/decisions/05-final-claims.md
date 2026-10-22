@@ -1,5 +1,7 @@
 # 05. Final claims: no blocking flaw; F01 is submitted as a regime-limited computational rule, not a discovery of new physics; F04 is sign-level consistency; the AlOOH card is an exploratory sign prediction
 
+Amended after the compute freeze by [07](07-freeze-wording.md): headline, statistics, F03, threshold re-choice, judge and organiser sentences, pair counts, video and figure counts. Where they differ, 07 governs.
+
 Chair: Opus, 21 Oct. Members: Opus (rounds 1 and 2), Astra (rounds 1 and 2), Gemini 4 Argon (no answer in either round: the headless call was denied `read_file` permission and nobody changed permission settings). Weighed by argument, not by vote. Every number this decision depends on was recomputed by the chair with `scratchpad/chair05/chair05_check.py` (session scratchpad, full path at the end) from `results/decompose_pairs.csv` via `rule_cv.load` and from `results/raw/qha_pressure/*/*.json`.
 
 ## Decision
