@@ -14,15 +14,15 @@ Target length 3:40. Hard limit 4:00 (YouTube upload, judging cut-off). Narration
 
 | # | Script time | OBS scene | What is on screen | Do |
 |---|---|---|---|---|
-| 1 | 0:00 to 0:21 | `slide_01_title.png` | IsoShift title, H to D, diaspore and delta-AlOOH | Read the hook. No clicking. |
+| 1 | 0:00 to 0:21 | `slide_01_title.png` | IsoShift title, "185 of 212 model evaluations (baseline 131), moderate-to-strong H bonds", diaspore and delta-AlOOH | Read the hook. No clicking. |
 | 2 | 0:21 to 0:48 | `slide_02_method.png` | One set of force constants, two masses, the three potentials, SevenNet greyed | Read the method paragraph. |
-| 3 | 0:48 to 1:37 | `slide_03_headline.png`, then `slide_03b_counts_zoom.png`, then `slide_03c_weak_side_zoom.png` | Headline figure with 185/212 beside it | Start on the full figure. At "185 of 212" cut to 03b (count box). At "With weak hydrogen bonds it fails" cut to 03c. Use only the cuts you rehearsed. |
+| 3 | 0:48 to 1:37 | `slide_03_headline.png`, then `slide_03b_counts_zoom.png`, then `slide_03c_weak_side_zoom.png` | Headline figure with 185/212 beside it; top right "Slope 0.11 to 0.13 meV per H per mÅ, screen-wide, all X-H rows" | Start on the full figure. At "185 of 212" cut to 03b (count box). At "With weak hydrogen bonds it fails" cut to 03c. Use only the cuts you rehearsed. |
 | 4 | 1:37 to 1:55 | `slide_04_stretch_check.png` | Stretch check figure, window 2.50 to 2.80 A shaded, slope ratios 0.91, 0.92, 0.92 | Read the stretch paragraph. This is the shot to cut if you run long. |
 | 5 | 1:55 to 2:23 | `slide_05_alooh_card.png` | "Exploratory sign prediction", 300 K +1.13 GPa (ORB) and +1.33 GPa (MACE), about 1000 K +0.7 to +0.9 GPa | Read the card paragraph. Optional: for the last 5 s cut to `CARD-AlOOH.md` at the temperature table. |
-| 6 | 2:23 to 2:39 | `slide_06_m02_bridge.png` | Boundary isotope shift = D/H fractionation between the two phases | Read the bridge paragraph. |
-| 7 | 2:39 to 3:08 | `slide_07_ai_process.png` for about 5 s, then the editor window | AI process slide, then screen tour | Cut in this order, about 5 s each: `logs/bond_queries.jsonl`, the `git log` terminal with the commit hashes, `docs/decisions/`, `F06-independent-replication.md`. |
+| 6 | 2:23 to 2:39 | `slide_06_m02_bridge.png` | Boundary isotope shift and D/H fractionation, "linked through isotope free energy, up to a coupling term R (M02)", equal only when R = 0 | Read the bridge paragraph. |
+| 7 | 2:39 to 3:08 | `slide_07_ai_process.png` (about 5 s), then `slide_07c_bond_trace.png` (about 10 s), then `slide_07b_commit_timeline.png` (about 14 s) | AI process slide; one Bond trace (query, DOI, value with conditions, first pass not accepted, used); commit timeline (P04 f3ac0ac 21:36 before data e7ee2d5 21:43, P05 bec68d7 01:15, F07 2eb6b8a 01:27 failed, F06 1e-9 meV/atom) | Static slides, no editor scrolling. Cut to 07c at "Literature agents on Valency Bond", to 07b at "Predictions were committed to git", and hold 07b to the end of the scene. |
 | 8 | 3:08 to 3:21 | Browser window (marimo app) | Banner, Check a pair, How we know | See the click path below. |
-| 9 | 3:21 to 3:40 | `slide_08_limits_repo.png` | Limits and https://github.com/canerganis/isoshift | Read the limits paragraph. Hold the slide 2 s after the last word. |
+| 9 | 3:21 to 3:40 | `slide_08_limits_repo.png` | Limits ("Blind tests: F07 ice boundaries failed, F02 mixed (details in repo)") and https://github.com/canerganis/isoshift | Read the limits paragraph. Hold the slide 2 s after the last word. |
 
 ## Click path in the marimo app (scene 8, 13 s)
 
