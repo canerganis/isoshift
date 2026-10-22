@@ -302,6 +302,51 @@ def sevenn_sign_votes(c4: pd.DataFrame) -> dict:
     return out
 
 
+POSTHOC_STRUCT = "mp-985293"
+POSTHOC_NOTE = "post hoc, not a headline"
+
+
+def _headline(c: pd.DataFrame, thr: float = MAIN_THR) -> pd.DataFrame:
+    return c[(c.x.abs() >= MIN_DXH) & c.OH & (c.rmax >= thr)]
+
+
+def posthoc_locators(c: pd.DataFrame) -> dict:
+    """Decision 07: post hoc locators of the 10 wrong headline pairs. They locate the failure only; neither replaces
+    oh_unfiltered_strong or nested_threshold_cv.OH_no_cut."""
+    h = _headline(c)
+    has = h.pair_id.str.contains(POSTHOC_STRUCT, regex=False)
+    wo, s = h[~has], h[has]
+    h1 = _headline(c, 1.00)
+    band = h[h.rmax < 1.00]
+    band_s = band.pair_id.str.contains(POSTHOC_STRUCT, regex=False)
+    other = band[~band_s]
+    return {
+        "note": POSTHOC_NOTE,
+        "structure": POSTHOC_STRUCT,
+        "without_structure": {**_acc(wo), "n_formulas": int(wo.family.nunique()), "unique_pair_majority": _majority(wo)},
+        "fixed_threshold_1.00": {**_acc(h1), "unique_pair_majority": _majority(h1)},
+        "band_0.99_to_1.00": {"n": int(len(band)), "right": int(band.right.sum()), "n_structure_rows": int(band_s.sum()),
+                              "structure_rows_right": int(band[band_s].right.sum()),
+                              "other_rows": [{"pair_id": p, "model": m, "right": bool(r)} for p, m, r in zip(other.pair_id, other.model, other.right)]},
+        "structure_rows_in_headline": {**_acc(s), "per_model": {m: {"right": int(q.right.sum()), "n": int(len(q))} for m, q in s.groupby("model")},
+                                       "max_abs_ddF_per_H_mattersim": round(float(s[s.model == "mattersim"].y.abs().max()), 3) if (s.model == "mattersim").any() else None},
+    }
+
+
+def quality_flags_diagnostic(c: pd.DataFrame) -> dict:
+    """Decision 07: stored classical_limit_violation flag (results/screen_pairs_refined.csv) on the headline rows.
+    A diagnostic, never a filter: the flag tracks the outcome."""
+    h = _headline(c)
+    sp = pd.read_csv(ROOT / "results" / "screen_pairs_refined.csv", usecols=["pair_id", "model", "flags"])
+    fl = h[["pair_id", "model", "right"]].merge(sp.drop_duplicates(["pair_id", "model"]), on=["pair_id", "model"], how="left")
+    clv = fl["flags"].fillna("").str.contains("classical_limit_violation", regex=False)
+    s = fl.pair_id.str.contains(POSTHOC_STRUCT, regex=False)
+    return {"note": POSTHOC_NOTE + "; diagnostic, not a filter",
+            "classical_limit_violation": {"n": int(clv.sum()), "right": int(fl[clv].right.sum()),
+                                          "structure_rows_flagged": int((clv & s).sum()), "structure_rows": int(s.sum())},
+            "unflagged": {"n": int((~clv).sum()), "right": int(fl[~clv].right.sum())}}
+
+
 def main():
     c4 = load(models=None)
     c = c4[c4.model.isin(QUANT_MODELS)].reset_index(drop=True)
@@ -325,6 +370,8 @@ def main():
         "no_threshold": no_threshold(c),
         "oh_strong_slopes": oh_strong_slopes(c),
         "sevenn_sign_votes": sevenn_sign_votes(c4),
+        "posthoc_locators": posthoc_locators(c),
+        "quality_flags_diagnostic": quality_flags_diagnostic(c),
     }
     (ROOT / "results" / "F01_cv.json").write_text(json.dumps(out, indent=1))
     m = out["regime_scan"][f"{MAIN_THR:.2f}"]["signal_filtered"]
@@ -345,6 +392,8 @@ def main():
     sv = out["sevenn_sign_votes"]
     print("sevenn: four-model strong", {k: sv["four_models_oh_unfiltered_strong"][k] for k in ("right", "n", "baseline_right", "unique_pair_majority")},
           "sevenn only", {k: v for k, v in sv.get("sevenn_only_oh_unfiltered_strong", {}).items() if k in ("right", "n", "baseline_right")})
+    print("posthoc_locators (post hoc, not a headline)", out["posthoc_locators"])
+    print("quality_flags_diagnostic", out["quality_flags_diagnostic"])
 
 
 if __name__ == "__main__":

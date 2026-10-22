@@ -3984,5 +3984,86 @@
    "acc": null,
    "n_pairs": 0
   }
+ },
+ "posthoc_locators": {
+  "note": "post hoc, not a headline",
+  "structure": "mp-985293",
+  "without_structure": {
+   "right": 177,
+   "n": 184,
+   "acc": 0.962,
+   "n_pairs": 74,
+   "n_formulas": 27,
+   "unique_pair_majority": {
+    "n_pairs": 74,
+    "right": 74,
+    "tie": 0,
+    "wrong": 0
+   }
+  },
+  "fixed_threshold_1.00": {
+   "right": 175,
+   "n": 182,
+   "acc": 0.962,
+   "n_pairs": 73,
+   "unique_pair_majority": {
+    "n_pairs": 73,
+    "right": 73,
+    "tie": 0,
+    "wrong": 0
+   }
+  },
+  "band_0.99_to_1.00": {
+   "n": 30,
+   "right": 10,
+   "n_structure_rows": 28,
+   "structure_rows_right": 8,
+   "other_rows": [
+    {
+     "pair_id": "mp-697136__JVASP-54742",
+     "model": "orb",
+     "right": true
+    },
+    {
+     "pair_id": "mp-697136__JVASP-54742",
+     "model": "mattersim",
+     "right": true
+    }
+   ]
+  },
+  "structure_rows_in_headline": {
+   "right": 8,
+   "n": 28,
+   "acc": 0.286,
+   "n_pairs": 10,
+   "per_model": {
+    "mace": {
+     "right": 0,
+     "n": 10
+    },
+    "mattersim": {
+     "right": 8,
+     "n": 9
+    },
+    "orb": {
+     "right": 0,
+     "n": 9
+    }
+   },
+   "max_abs_ddF_per_H_mattersim": 0.255
+  }
+ },
+ "quality_flags_diagnostic": {
+  "note": "post hoc, not a headline; diagnostic, not a filter",
+  "classical_limit_violation": {
+   "n": 42,
+   "right": 17,
+   "structure_rows_flagged": 28,
+   "structure_rows": 28
+  },
+  "unflagged": {
+   "n": 170,
+   "right": 168
+  }
  }
 }
