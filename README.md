@@ -3,7 +3,7 @@
 IsoShift computes harmonic H and D phonon free energies of crystal polymorphs with three universal ML potentials and finds that deuteration favours the polymorph with the shorter O-H bonds in 185 of 212 evaluations with moderate-to-strong hydrogen bonds (constant-sign baseline 131), fails with weak ones (2 of 20) and has one Al(OH)3 counterexample by pair majority; no measurement has tested this rule directly. Two would: D/H partitioning between coexisting polymorphs (exact for one H site type such as AlOOH; [M02](docs/math/M02-bigeleisen-bridge.md) gives the correction otherwise), and matched reversed-bracket AlOOH/AlOOD runs on the diaspore to δ-AlOOH transition, where the models predict a pressure about 1 GPa higher for AlOOD (exploratory sign prediction).
 
 > **Check it in 60 seconds.**
-> Headline numbers, CPU only, a few seconds: `.venv/Scripts/python.exe -m src.isoshift_event.rule_cv` (Windows) or `.venv/bin/python -m src.isoshift_event.rule_cv` (Linux, macOS). The `oh_unfiltered_strong` line prints right 185, n 212, baseline 131 and pair majorities 74 right, 0 ties, 10 wrong. Setup: [How to run](#how-to-run).
+> Headline numbers, CPU only: `python -m venv .venv`, activate it, `pip install -r requirements-judge.txt` (five packages, no torch, about two minutes), then `python -m src.isoshift_event.rule_cv`. The `oh_unfiltered_strong` line prints right 185, n 212, baseline 131 and pair majorities 74 right, 0 ties, 10 wrong. Setup: [How to run](#how-to-run).
 > App, no GPU: `marimo run app/isoshift_app.py` (inside the venv); the frozen banner and the tabs are at the top.
 > Evidence index: [docs/INDEX.md](docs/INDEX.md). Judge FAQ: [docs/FAQ.md](docs/FAQ.md).
 > Video: link added at upload.
@@ -19,6 +19,13 @@ How to read it: points in the upper right and lower left follow the rule; a posi
 **How to test it.** No polymorph isotope free energy has been measured. Measured D/H fractionation between two coexisting polymorphs constrains their isotope free-energy difference through ΔΔG_iso = n_H k_B T ln α + R, with α the a to b fractionation factor of [M02](docs/math/M02-bigeleisen-bridge.md) and R = 0 for one H site type with no H-H coupling, as in diaspore and δ-AlOOH; the boundary shift then follows from ΔΔG_iso and ΔV. For the AlOOH card, matched reversed-bracket runs on AlOOH and AlOOD test the sign of the pressure shift.
 
 One-page summary: [docs/story/writeup.md](docs/story/writeup.md) (long version: [writeup_long.md](docs/story/writeup_long.md)). Evidence index: [docs/INDEX.md](docs/INDEX.md).
+
+
+**The app (marimo, cached results only).**
+
+![F01 banner: 185 of 212, baseline 131](docs/screenshots/01_f01_banner.png)
+![Check a pair: diaspore vs delta-AlOOH, with the in F01 headline column](docs/screenshots/02_check_a_pair.png)
+![How we know: brucite Bond provenance trace](docs/screenshots/03_how_we_know.png)
 
 ## Why
 
