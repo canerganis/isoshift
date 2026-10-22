@@ -18,4 +18,6 @@ In harmonic calculations with three ML potentials, deuteration favours the polym
 
 **How the AI worked.** Valency Bond agents found validation data (182 logged queries; extraction audit: [agent_extraction_audit.md](https://github.com/canerganis/isoshift/blob/main/docs/story/agent_extraction_audit.md)). Formulas passed two-model mathchecks. Ten prediction files were committed before their data, except the P04 scoring rule, committed with its result; F07, F08, F09 (H1) and F11 failed and are reported. Three-model councils logged hard calls and dissent ([decisions](https://github.com/canerganis/isoshift/tree/main/docs/decisions)). Codex reimplemented ΔΔF_iso blind to 1e-9 meV/atom on nine rows (F06, an implementation check). A marimo app (Check a pair, How we know, Benchmark) inspects the cached results without a GPU; it computes no new phonons.
 
+**Built before vs during the event.** Before (git tag `pre-event-baseline`): the generic LLM harness and the `isoshift/` GPU job pool. During 21 and 22 Oct: all of `src/isoshift_event/` and `app/`, every finding, prediction and decision; two event-time fixes to pre-event code are disclosed in [PROVENANCE.md](https://github.com/canerganis/isoshift/blob/main/docs/PROVENANCE.md).
+
 Evidence: [docs/INDEX.md](https://github.com/canerganis/isoshift/blob/main/docs/INDEX.md).
