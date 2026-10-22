@@ -10,7 +10,7 @@ At the OSI Hackathon 2026 we found one. Screening 220 polymorph pairs with three
 
 It makes a prediction a high-pressure lab can check: deuteration should raise the diaspore to δ-AlOOH transition by about 1 GPa.
 
-As a metallurgy and materials engineer, I ran this with a team of AI agents. Claude Opus 5.5 ran the calculations, Claude Sonnet agents searched the literature with @Valency Bond, and a council of Claude Opus, GPT-6 Astra and Gemini 4 Argon argued every claim before it went in. Predictions were committed before the data, and the tests that failed are published next to the ones that passed. Everything is open, including a @marimo app that runs on a laptop.
+As a metallurgy and materials engineer, I ran this with a team of AI agents built on models from @Anthropic, @OpenAI and @Google DeepMind. Claude Opus 5.5 ran the calculations, Claude Sonnet agents searched the literature with @Valency Bond, and a council of Claude Opus, GPT-6 Astra and Gemini 4 Argon argued every claim before it went in. Predictions were committed before the data, and the tests that failed are published next to the ones that passed. Everything is open, including a @marimo app that runs on a laptop.
 
 Thanks to @Ben Blaiszik, @University of Chicago and @Materials Discovery Research Institute for running the hackathon.
 
