@@ -4,9 +4,11 @@ __generated_with = "0.25.2"
 app = marimo.App(width="medium", app_title="IsoShift")
 
 with app.setup:
+    import io
     import json
     import os
     import re
+    import threading
     from pathlib import Path
 
     import matplotlib
@@ -15,6 +17,18 @@ with app.setup:
 
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+
+    _PLOT_LOCK = threading.Lock()
+
+    def fig_png(fig):
+        """(png bytes, display width px) for a laid-out figure. mathtext (pyparsing) is not thread-safe and marimo run
+        serves each browser session on its own thread, so layout and rasterising happen under one lock."""
+        with _PLOT_LOCK:
+            fig.tight_layout()
+            buf = io.BytesIO()
+            fig.savefig(buf, format="png", dpi=150)
+            plt.close(fig)
+        return buf.getvalue(), int(fig.get_figwidth() * 100)
 
     APP_DIR = Path(__file__).resolve().parent
     REPO = APP_DIR.parent
@@ -485,8 +499,8 @@ def _(data, mo):
             _ax.set_ylabel(r"$V_\mathrm{H}/V_\mathrm{D} - 1$ (%)")
             _ax.grid(alpha=0.3)
         _axes[0][0].legend(fontsize=8)
-        _fig.tight_layout()
-        _out = _fig
+        _png, _w = fig_png(_fig)
+        _out = mo.image(src=_png, width=_w)
     val_out = _out
     return (val_out,)
 
@@ -550,8 +564,8 @@ def _(data, mo, model_ms, offset, pair_dd):
         _a2.legend(fontsize=7, ncol=3)
         for _a in (_a1, _a2):
             _a.grid(alpha=0.3)
-        _fig.tight_layout()
-        _out = mo.vstack([_fig, mo.md("\n\n".join(_txt))])
+        _png, _w = fig_png(_fig)
+        _out = mo.vstack([mo.image(src=_png, width=_w), mo.md("\n\n".join(_txt))])
     pair_out = _out
     return (pair_out,)
 
@@ -627,7 +641,7 @@ def _(f01, f01_banner, f01_models, f01_posthoc, hl, mo, thr):
             _a1.scatter(_g.x_mA, _g.y_total, s=14, c=_col, alpha=0.6, label=f"{_lab} regime (n={len(_g)})")
         _a2.scatter(_d.x_mA, _d.y_str, s=12, c="tab:orange", alpha=0.6, label=r"stretch $\Delta\Delta F_\mathrm{str}$/H")
         _a2.scatter(_d.x_mA, _d.y_perp, s=12, c="tab:green", alpha=0.6,
-                    label=r"bend/libration $\Delta\Delta F_\perp$/H")
+                    label=r"bend/libration $\Delta\Delta F_\mathrm{perp}$/H")
         if hl.value != "(none)":
             _h = _d[_d.formula == hl.value]
             _a1.scatter(_h.x_mA, _h.y_total, s=90, facecolors="none", edgecolors="k", lw=1.5, label=chem(hl.value))
@@ -642,14 +656,14 @@ def _(f01, f01_banner, f01_models, f01_posthoc, hl, mo, thr):
             _a.legend(fontsize=8)
         _a1.set_title("F01: isotope shift vs bond-length change (precomputed)")
         _a2.set_title("stretch vs bend/libration (precomputed)")
-        _fig.tight_layout()
+        _png, _w = fig_png(_fig)
         f01_tab = mo.vstack([
             f01_banner,
             mo.vstack([thr, f01_models, hl]),
             mo.md(f"Exploratory recount at the slider settings, not the frozen result: sign rule right {_k} of {_n} "
                   f"({_label}) | leave-one-formula-out constant-sign baseline: {_b} of {_n} "
                   f"| weak side: {_kw_} of {_nw} _(precomputed)_"),
-            _fig,
+            mo.image(src=_png, width=_w),
             mo.md("The frozen result is the banner above: the 0.99 Å model-derived boundary, chosen after inspecting "
                   "the data, with the three quantitative models. Deuteration favours the polymorph with the shorter "
                   "O-H bonds once H bonds are moderate to strong; the stretch term is about half cancelled by "
@@ -674,8 +688,9 @@ def _(data, mo):
             _ax.set_xticklabels(_lab, rotation=60, ha="right", fontsize=7)
             _ax.set_title(BENCH_TITLES.get(_c, _c) + " (precomputed)")
             _ax.grid(alpha=0.3, axis="y")
-        _fig.tight_layout()
-        _bench = mo.vstack([mo.md("### Benchmark summary (precomputed)"), mo.ui.table(_b, selection=None), _fig])
+        _png, _w = fig_png(_fig)
+        _bench = mo.vstack([mo.md("### Benchmark summary (precomputed)"), mo.ui.table(_b, selection=None),
+                            mo.image(src=_png, width=_w)])
     _st = data["stretch"]
     _rows = []
     for _m, _v in (_st.get("windowed", {}).get("main_2.50-2.80", {}) or {}).items():
