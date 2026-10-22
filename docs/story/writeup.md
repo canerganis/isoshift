@@ -2,7 +2,7 @@
 
 The short-bond rule: in crystals with moderate-to-strong hydrogen bonds, deuteration favours the polymorph with the shorter O-H bonds. We found it in a screen of 220 polymorph pairs with three universal ML potentials (MACE, ORB, MatterSim), where it holds in 185 of 212 model evaluations against 131 for a constant-sign baseline, and it rests on a correlation we did not find in earlier work: the isotope free-energy difference between two polymorphs follows the change in their mean O-H bond length, by 0.11 to 0.13 meV per H for each mÅ. Deuterium replaces hydrogen in neutron experiments, isotope tracing and synthesis, yet a logged literature search found no general rule for whether the swap changes which crystal structure is stable. The rule predicts that deuteration raises the diaspore to δ-AlOOH transition by about 1 GPa (δ-AlOOH is a candidate carrier of water into the deep Earth). Neither the rule nor the prediction has been tested experimentally yet.
 
-https://youtu.be/T007LHdLUjk
+https://youtu.be/X8ckZ7dV40Y
 
 ## What we found at this hackathon
 

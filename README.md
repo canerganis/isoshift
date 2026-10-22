@@ -6,7 +6,7 @@ IsoShift computes harmonic H and D phonon free energies of crystal polymorphs wi
 > Headline numbers, CPU only: `python -m venv .venv`, activate it, `pip install -r requirements-judge.txt` (five packages, no torch, about two minutes), then `python -m src.isoshift_event.rule_cv`. The `oh_unfiltered_strong` line prints right 185, n 212, baseline 131 and pair majorities 74 right, 0 ties, 10 wrong. Setup: [How to run](#how-to-run).
 > App, no GPU: `marimo run app/isoshift_app.py` (inside the venv); the frozen banner and the tabs are at the top.
 > Evidence index: [docs/INDEX.md](docs/INDEX.md). Judge FAQ: [docs/FAQ.md](docs/FAQ.md).
-> Video (3:18): https://youtu.be/T007LHdLUjk
+> Video (3:47): https://youtu.be/X8ckZ7dV40Y
 
 **Main finding (F01).** Across 220 hydrogen-compound polymorph pairs screened with three universal ML potentials, the harmonic H/D free-energy difference at 300 K changes by 0.11 to 0.13 meV per H for each mÅ difference in mean X-H length, a stretch term about half cancelled by bend and libration. When at least one polymorph has a mean model O-H length of 0.99 Å or more (a model-derived boundary for moderate to strong hydrogen bonds, chosen after inspecting the data), deuteration favours the polymorph with the shorter O-H bonds in 185 of 212 O-H model evaluations with |Δ mean O-H| ≥ 5 mÅ (84 pairs, 28 formulas), against 131 of 212 for a constant-sign baseline fitted on leave-one-formula-out training folds. By model majority 74 pairs are right and 10 are wrong, and all 10 wrong pairs contain one Al(OH)3 structure, mp-985293.
 
