@@ -1,0 +1,740 @@
+{
+ "constants": {
+  "feature": "dtheta",
+  "n_fit": 292,
+  "s_stretch": 0.28863621384728644,
+  "p_x": -0.09132948845203431,
+  "p_feat": -0.1372649219565174,
+  "C": 0.6956930722029026,
+  "A": 0.31641728955173837,
+  "B": 0.4755637559365383,
+  "R2_perp": 0.8209956735134929
+ },
+ "three_model_insample": {
+  "F01": {
+   "right": 185,
+   "n": 212,
+   "acc": 0.8726,
+   "n_pairs": 84,
+   "struct_rows": {
+    "right": 8,
+    "n": 28
+   },
+   "other_rows": {
+    "right": 177,
+    "n": 184
+   },
+   "per_model": {
+    "mace": {
+     "right": 52,
+     "n": 68
+    },
+    "mattersim": {
+     "right": 69,
+     "n": 71
+    },
+    "orb": {
+     "right": 64,
+     "n": 73
+    }
+   },
+   "unique_pair_majority": {
+    "n_pairs": 84,
+    "right": 74,
+    "tie": 0,
+    "wrong": 10
+   }
+  },
+  "refined": {
+   "right": 184,
+   "n": 212,
+   "acc": 0.8679,
+   "n_pairs": 84,
+   "struct_rows": {
+    "right": 12,
+    "n": 28
+   },
+   "other_rows": {
+    "right": 172,
+    "n": 184
+   },
+   "per_model": {
+    "mace": {
+     "right": 53,
+     "n": 68
+    },
+    "mattersim": {
+     "right": 67,
+     "n": 71
+    },
+    "orb": {
+     "right": 64,
+     "n": 73
+    }
+   },
+   "unique_pair_majority": {
+    "n_pairs": 84,
+    "right": 73,
+    "tie": 1,
+    "wrong": 10
+   }
+  },
+  "n_rows_without_dtheta_fallback_to_F01": 1
+ },
+ "candidates": {
+  "dtheta": {
+   "feature": "dtheta",
+   "n_fit": 292,
+   "s_stretch": 0.288636,
+   "p_x": -0.091329,
+   "p_feat": -0.137265,
+   "C": 0.695693,
+   "A": 0.316417,
+   "B": 0.475564,
+   "R2_perp": 0.820996,
+   "insample_headline": {
+    "right": 184,
+    "n": 212,
+    "acc": 0.8679,
+    "n_pairs": 84,
+    "struct_rows": {
+     "right": 12,
+     "n": 28
+    },
+    "other_rows": {
+     "right": 172,
+     "n": 184
+    },
+    "per_model": {
+     "mace": {
+      "right": 53,
+      "n": 68
+     },
+     "mattersim": {
+      "right": 67,
+      "n": 71
+     },
+     "orb": {
+      "right": 64,
+      "n": 73
+     }
+    },
+    "unique_pair_majority": {
+     "n_pairs": 84,
+     "right": 73,
+     "tie": 1,
+     "wrong": 10
+    }
+   }
+  },
+  "dOO": {
+   "feature": "dOO",
+   "n_fit": 292,
+   "s_stretch": 0.288636,
+   "p_x": -0.072725,
+   "p_feat": 0.013411,
+   "C": -0.062113,
+   "A": 0.25196,
+   "B": -0.046463,
+   "R2_perp": 0.844679,
+   "insample_headline": {
+    "right": 178,
+    "n": 212,
+    "acc": 0.8396,
+    "n_pairs": 84,
+    "struct_rows": {
+     "right": 10,
+     "n": 28
+    },
+    "other_rows": {
+     "right": 168,
+     "n": 184
+    },
+    "per_model": {
+     "mace": {
+      "right": 51,
+      "n": 68
+     },
+     "mattersim": {
+      "right": 64,
+      "n": 71
+     },
+     "orb": {
+      "right": 63,
+      "n": 73
+     }
+    },
+    "unique_pair_majority": {
+     "n_pairs": 84,
+     "right": 71,
+     "tie": 1,
+     "wrong": 12
+    }
+   }
+  },
+  "dHO": {
+   "feature": "dHO",
+   "n_fit": 292,
+   "s_stretch": 0.288636,
+   "p_x": -0.055668,
+   "p_feat": 0.01123,
+   "C": -0.048202,
+   "A": 0.192864,
+   "B": -0.038906,
+   "R2_perp": 0.875775,
+   "insample_headline": {
+    "right": 181,
+    "n": 212,
+    "acc": 0.8538,
+    "n_pairs": 84,
+    "struct_rows": {
+     "right": 12,
+     "n": 28
+    },
+    "other_rows": {
+     "right": 169,
+     "n": 184
+    },
+    "per_model": {
+     "mace": {
+      "right": 54,
+      "n": 68
+     },
+     "mattersim": {
+      "right": 63,
+      "n": 71
+     },
+     "orb": {
+      "right": 64,
+      "n": 73
+     }
+    },
+    "unique_pair_majority": {
+     "n_pairs": 84,
+     "right": 72,
+     "tie": 1,
+     "wrong": 11
+    }
+   }
+  },
+  "dnacc": {
+   "feature": "dnacc",
+   "n_fit": 293,
+   "s_stretch": 0.28895,
+   "p_x": -0.125027,
+   "p_feat": 3.803672,
+   "C": -23.203989,
+   "A": 0.432694,
+   "B": -13.163765,
+   "R2_perp": 0.766618,
+   "insample_headline": {
+    "right": 183,
+    "n": 212,
+    "acc": 0.8632,
+    "n_pairs": 84,
+    "struct_rows": {
+     "right": 8,
+     "n": 28
+    },
+    "other_rows": {
+     "right": 175,
+     "n": 184
+    },
+    "per_model": {
+     "mace": {
+      "right": 51,
+      "n": 68
+     },
+     "mattersim": {
+      "right": 68,
+      "n": 71
+     },
+     "orb": {
+      "right": 64,
+      "n": 73
+     }
+    },
+    "unique_pair_majority": {
+     "n_pairs": 84,
+     "right": 73,
+     "tie": 0,
+     "wrong": 11
+    }
+   }
+  },
+  "dbif": {
+   "feature": "dbif",
+   "n_fit": 293,
+   "s_stretch": 0.28895,
+   "p_x": -0.11158,
+   "p_feat": 6.29761,
+   "C": -35.505393,
+   "A": 0.386155,
+   "B": -21.7948,
+   "R2_perp": 0.81196,
+   "insample_headline": {
+    "right": 179,
+    "n": 212,
+    "acc": 0.8443,
+    "n_pairs": 84,
+    "struct_rows": {
+     "right": 7,
+     "n": 28
+    },
+    "other_rows": {
+     "right": 172,
+     "n": 184
+    },
+    "per_model": {
+     "mace": {
+      "right": 51,
+      "n": 68
+     },
+     "mattersim": {
+      "right": 67,
+      "n": 71
+     },
+     "orb": {
+      "right": 61,
+      "n": 73
+     }
+    },
+    "unique_pair_majority": {
+     "n_pairs": 84,
+     "right": 70,
+     "tie": 1,
+     "wrong": 13
+    }
+   }
+  }
+ },
+ "lofo": {
+  "refined": {
+   "right": 182,
+   "n": 212,
+   "acc": 0.8585,
+   "n_pairs": 84,
+   "struct_rows": {
+    "right": 11,
+    "n": 28
+   },
+   "other_rows": {
+    "right": 171,
+    "n": 184
+   },
+   "per_model": {
+    "mace": {
+     "right": 52,
+     "n": 68
+    },
+    "mattersim": {
+     "right": 67,
+     "n": 71
+    },
+    "orb": {
+     "right": 63,
+     "n": 73
+    }
+   },
+   "unique_pair_majority": {
+    "n_pairs": 84,
+    "right": 73,
+    "tie": 1,
+    "wrong": 10
+   }
+  },
+  "F01": {
+   "right": 185,
+   "n": 212,
+   "acc": 0.8726,
+   "n_pairs": 84,
+   "struct_rows": {
+    "right": 8,
+    "n": 28
+   },
+   "other_rows": {
+    "right": 177,
+    "n": 184
+   },
+   "per_model": {
+    "mace": {
+     "right": 52,
+     "n": 68
+    },
+    "mattersim": {
+     "right": 69,
+     "n": 71
+    },
+    "orb": {
+     "right": 64,
+     "n": 73
+    }
+   },
+   "unique_pair_majority": {
+    "n_pairs": 84,
+    "right": 74,
+    "tie": 0,
+    "wrong": 10
+   }
+  },
+  "train_fold_baseline_right": 131,
+  "C_range": [
+   0.6471,
+   0.7545
+  ],
+  "AlOH3_fold": {
+   "formula": "Al(HO)3",
+   "C": 0.6485,
+   "right": 11,
+   "n": 28,
+   "F01_right": 8
+  },
+  "folds": [
+   {
+    "formula": "Al(HO)3",
+    "C": 0.6485,
+    "right": 11,
+    "n": 28,
+    "F01_right": 8
+   },
+   {
+    "formula": "AlHO2",
+    "C": 0.6569,
+    "right": 38,
+    "n": 39,
+    "F01_right": 38
+   },
+   {
+    "formula": "Ba(H2O3)2",
+    "C": 0.6963,
+    "right": 2,
+    "n": 2,
+    "F01_right": 2
+   },
+   {
+    "formula": "Be(HO)2",
+    "C": 0.6988,
+    "right": 2,
+    "n": 2,
+    "F01_right": 2
+   },
+   {
+    "formula": "Co(HO)2",
+    "C": 0.6986,
+    "right": 3,
+    "n": 4,
+    "F01_right": 4
+   },
+   {
+    "formula": "CoHO2",
+    "C": 0.6961,
+    "right": 8,
+    "n": 8,
+    "F01_right": 8
+   },
+   {
+    "formula": "CrHO2",
+    "C": 0.6471,
+    "right": 15,
+    "n": 15,
+    "F01_right": 15
+   },
+   {
+    "formula": "Cs3H(SeO4)2",
+    "C": 0.695,
+    "right": 2,
+    "n": 2,
+    "F01_right": 2
+   },
+   {
+    "formula": "CsHSO4",
+    "C": 0.697,
+    "right": 0,
+    "n": 1,
+    "F01_right": 1
+   },
+   {
+    "formula": "DyHO2",
+    "C": 0.6958,
+    "right": 2,
+    "n": 3,
+    "F01_right": 2
+   },
+   {
+    "formula": "FeHO2",
+    "C": 0.7545,
+    "right": 29,
+    "n": 31,
+    "F01_right": 30
+   },
+   {
+    "formula": "GaHO2",
+    "C": 0.6609,
+    "right": 9,
+    "n": 9,
+    "F01_right": 9
+   },
+   {
+    "formula": "H2O",
+    "C": 0.6983,
+    "right": 4,
+    "n": 4,
+    "F01_right": 4
+   },
+   {
+    "formula": "HoHO2",
+    "C": 0.6971,
+    "right": 4,
+    "n": 5,
+    "F01_right": 4
+   },
+   {
+    "formula": "LuHO2",
+    "C": 0.7028,
+    "right": 5,
+    "n": 5,
+    "F01_right": 5
+   },
+   {
+    "formula": "MnHO2",
+    "C": 0.696,
+    "right": 16,
+    "n": 16,
+    "F01_right": 16
+   },
+   {
+    "formula": "Mo(HO2)2",
+    "C": 0.6992,
+    "right": 6,
+    "n": 6,
+    "F01_right": 6
+   },
+   {
+    "formula": "MoH4O5",
+    "C": 0.6958,
+    "right": 1,
+    "n": 1,
+    "F01_right": 1
+   },
+   {
+    "formula": "Na2P3HO9",
+    "C": 0.6937,
+    "right": 2,
+    "n": 2,
+    "F01_right": 2
+   },
+   {
+    "formula": "ScHO2",
+    "C": 0.7118,
+    "right": 0,
+    "n": 1,
+    "F01_right": 1
+   },
+   {
+    "formula": "Si2H2O5",
+    "C": 0.6958,
+    "right": 3,
+    "n": 3,
+    "F01_right": 3
+   },
+   {
+    "formula": "Sr(H2O3)2",
+    "C": 0.6959,
+    "right": 1,
+    "n": 1,
+    "F01_right": 1
+   },
+   {
+    "formula": "TeAsHO5",
+    "C": 0.696,
+    "right": 3,
+    "n": 3,
+    "F01_right": 3
+   },
+   {
+    "formula": "TmHO2",
+    "C": 0.6952,
+    "right": 2,
+    "n": 3,
+    "F01_right": 2
+   },
+   {
+    "formula": "U(HO2)2",
+    "C": 0.6902,
+    "right": 2,
+    "n": 3,
+    "F01_right": 2
+   },
+   {
+    "formula": "U3(HO5)2",
+    "C": 0.7022,
+    "right": 4,
+    "n": 4,
+    "F01_right": 4
+   },
+   {
+    "formula": "YHO2",
+    "C": 0.6957,
+    "right": 2,
+    "n": 5,
+    "F01_right": 4
+   },
+   {
+    "formula": "Zn(HO)2",
+    "C": 0.6889,
+    "right": 6,
+    "n": 6,
+    "F01_right": 6
+   }
+  ]
+ },
+ "compensation_tracking": {
+  "n": 211,
+  "spearman_all": 0.655,
+  "spearman_without_struct": 0.537,
+  "struct_rows": {
+   "predicted": {
+    "median": 0.838,
+    "min": 0.705,
+    "max": 1.232
+   },
+   "computed": {
+    "median": 1.09,
+    "min": 0.951,
+    "max": 1.323
+   }
+  },
+  "other_rows": {
+   "predicted": {
+    "median": 0.484,
+    "min": -0.807,
+    "max": 1.29
+   },
+   "computed": {
+    "median": 0.501,
+    "min": -0.905,
+    "max": 2.455
+   },
+   "n_predicted_gt1": 5,
+   "n_computed_gt1": 7,
+   "n_both_gt1": 0
+  }
+ },
+ "sevenn_heldout": {
+  "population": "SevenNet rows of the headline definition: O-H pairs, rmax >= 0.99 A, |dX-H| >= 5 mA, no target cut",
+  "F01": {
+   "right": 10,
+   "n": 10,
+   "acc": 1.0,
+   "n_pairs": 10,
+   "struct_rows": {
+    "right": 0,
+    "n": 0
+   },
+   "other_rows": {
+    "right": 10,
+    "n": 10
+   },
+   "per_model": {
+    "sevenn": {
+     "right": 10,
+     "n": 10
+    }
+   },
+   "unique_pair_majority": {
+    "n_pairs": 10,
+    "right": 10,
+    "tie": 0,
+    "wrong": 0
+   }
+  },
+  "refined": {
+   "right": 10,
+   "n": 10,
+   "acc": 1.0,
+   "n_pairs": 10,
+   "struct_rows": {
+    "right": 0,
+    "n": 0
+   },
+   "other_rows": {
+    "right": 10,
+    "n": 10
+   },
+   "per_model": {
+    "sevenn": {
+     "right": 10,
+     "n": 10
+    }
+   },
+   "unique_pair_majority": {
+    "n_pairs": 10,
+    "right": 10,
+    "tie": 0,
+    "wrong": 0
+   }
+  },
+  "gain_points": 0.0,
+  "clause1_gain_ge_5_points": false,
+  "clause2_struct_rows_right_at_least_half": false,
+  "clause2_note": "0 SevenNet rows contain mp-985293",
+  "verdict": "failure",
+  "secondary_all_OH_rows_no_dXH_cut": {
+   "F01": {
+    "right": 12,
+    "n": 14,
+    "acc": 0.8571,
+    "n_pairs": 14,
+    "struct_rows": {
+     "right": 0,
+     "n": 0
+    },
+    "other_rows": {
+     "right": 12,
+     "n": 14
+    },
+    "per_model": {
+     "sevenn": {
+      "right": 12,
+      "n": 14
+     }
+    },
+    "unique_pair_majority": {
+     "n_pairs": 14,
+     "right": 12,
+     "tie": 0,
+     "wrong": 2
+    }
+   },
+   "refined": {
+    "right": 12,
+    "n": 14,
+    "acc": 0.8571,
+    "n_pairs": 14,
+    "struct_rows": {
+     "right": 0,
+     "n": 0
+    },
+    "other_rows": {
+     "right": 12,
+     "n": 14
+    },
+    "per_model": {
+     "sevenn": {
+      "right": 12,
+      "n": 14
+     }
+    },
+    "unique_pair_majority": {
+     "n_pairs": 14,
+     "right": 12,
+     "tie": 0,
+     "wrong": 2
+    }
+   }
+  },
+  "n_rows_without_dtheta": 0
+ },
+ "predeclared_in": "docs/predictions/P06_refined_rule.md",
+ "note": "post-freeze addendum; does not change the frozen F01 headline (decision 07)"
+}
