@@ -143,8 +143,8 @@ def slide_07c():
     fig, ax = canvas()
     title(ax, "One literature value, traced")
     rows = [
-        ("Bond query", "brucite Mg(OH)2 Mg(OD)2 isotope effect lattice parameters "
-                       "neutron diffraction", INK),
+        ("Bond search", "validation sweep, brucite queries: Mg(OH)2 Mg(OD)2 "
+                       "lattice parameters, isotope effect", INK),
         ("Source", "Chakoumakos et al. 2013, doi 10.2138/am.2013.4202", INK),
         ("Value", "Mg(OH)2 volume 0.31% larger than Mg(OD)2, room temperature "
                   "(295 K), neutron diffraction", INK),
