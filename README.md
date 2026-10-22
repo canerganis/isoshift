@@ -30,7 +30,7 @@ How to read it: points in the upper right and lower left follow the rule; a posi
 One-page summary: [docs/story/writeup.md](docs/story/writeup.md) (long version: [writeup_long.md](docs/story/writeup_long.md)). Evidence index: [docs/INDEX.md](docs/INDEX.md).
 
 
-**The app (marimo, cached results only).**
+**The app (marimo, cached results only).** The F01 tab has a slider for the O-H boundary that recounts the rule while the frozen number stays in the banner; Check a pair shows each model's isotope free energy, the rule's call and the stretch, bend and libration split; How we know traces the brucite value from the Valency Bond queries to the decision that used it. How Valency Bond and marimo were used: [writeup](docs/story/writeup.md#how-we-used-valency-bond-and-marimo).
 
 ![F01 banner: 185 of 212, baseline 131](docs/screenshots/01_f01_banner.png)
 ![Check a pair: diaspore vs delta-AlOOH, with the in F01 headline column](docs/screenshots/02_check_a_pair.png)
