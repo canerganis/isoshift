@@ -6,7 +6,7 @@ One file per line, in this order. Half a second of silence at the start and the 
 |---|---|---|
 | 1 | 02 | Force constants do not depend on mass, so one phonon calculation gives both hydrogen and deuterium free energies, and the static gap cancels. |
 | 2 | 02 | Three universal potentials do the work; SevenNet only votes on signs. |
-| 3 | 03 | The isotope free-energy difference follows the change in mean O-H length, zero point one one to zero point one three meV per hydrogen per thousandth of an angstrom. |
+| 3 | 03 | The isotope free-energy difference follows the change in mean O-H length, zero point one one to zero point one three milli-electron-volts per hydrogen per thousandth of an angstrom. |
 | 4 | 03 | The O-H stretch drives it, and bending and libration cancel about half. |
 | 5 | 04 | Where hydrogen bonds are moderate or strong, deuteration favours the polymorph with the shorter O-H bonds in one hundred and eighty-five of two hundred and twelve model evaluations. |
 | 6 | 04 | Counted per pair, seventy-four are right and ten are wrong, and all ten wrong pairs contain the same aluminium hydroxide structure, where bending and libration outweigh the stretch. |
