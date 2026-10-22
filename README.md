@@ -1,6 +1,15 @@
 # IsoShift
 
-IsoShift computes harmonic H and D phonon free energies of crystal polymorphs with three universal ML potentials and finds that deuteration favours the polymorph with the shorter O-H bonds in 185 of 212 evaluations with moderate-to-strong hydrogen bonds (constant-sign baseline 131), fails with weak ones (2 of 20) and has one Al(OH)3 counterexample by pair majority; no measurement has tested this rule directly. Two would: D/H partitioning between coexisting polymorphs (exact for one H site type such as AlOOH; [M02](docs/math/M02-bigeleisen-bridge.md) gives the correction otherwise), and matched reversed-bracket AlOOH/AlOOD runs on the diaspore to δ-AlOOH transition, where the models predict a pressure about 1 GPa higher for AlOOD (exploratory sign prediction).
+The short-bond rule: in crystals with moderate-to-strong hydrogen bonds, deuteration favours the polymorph with the shorter O-H bonds. IsoShift computes harmonic H and D phonon free energies of 220 polymorph pairs with three universal ML potentials (MACE, ORB, MatterSim); the rule holds in 185 of 212 model evaluations against 131 for a constant-sign baseline, fails with weak hydrogen bonds (2 of 20) and has one Al(OH)3 counterexample by pair majority. No measurement has tested it directly yet. Two would: D/H partitioning between coexisting polymorphs (exact for one H site type such as AlOOH; [M02](docs/math/M02-bigeleisen-bridge.md) gives the correction otherwise), and matched reversed-bracket AlOOH/AlOOD runs on the diaspore to δ-AlOOH transition, where the models predict a pressure about 1 GPa higher for AlOOD (exploratory sign prediction).
+
+What we found at this hackathon:
+
+1. The short-bond rule above, with its counts against a constant-sign baseline.
+2. A quantitative correlation behind it, which we did not find in earlier work: the isotope free-energy difference between two polymorphs changes by 0.11 to 0.13 meV per H for each mÅ change in mean O-H length; the O-H stretch drives it and bending and libration cancel about half.
+3. Where the rule stops: weak hydrogen bonds, and one Al(OH)3 structure where bend and libration outweigh the stretch.
+4. A testable prediction: deuteration raises the diaspore to δ-AlOOH transition by +1.13 to +1.33 GPa at 300 K.
+
+Not every blind test passed: F07 failed, F02 was mixed and F11 did not reach its bar. All are reported below.
 
 > **Check it in 60 seconds.**
 > Headline numbers, CPU only: `python -m venv .venv`, activate it, `pip install -r requirements-judge.txt` (five packages, no torch, about two minutes), then `python -m src.isoshift_event.rule_cv`. The `oh_unfiltered_strong` line prints right 185, n 212, baseline 131 and pair majorities 74 right, 0 ties, 10 wrong. Setup: [How to run](#how-to-run).
