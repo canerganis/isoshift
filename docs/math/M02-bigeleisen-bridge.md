@@ -44,7 +44,7 @@ Let delta_g_j,tr be the trace substitution free energy in phase j, and define R_
 
 n_H k_B T ln alpha_(a-b),tr = ddG_iso - R
 
-Equivalently, ddG_iso = n_H k_B T ln alpha_tr + R. The trace fractionation factor identifies with the full-substitution one only when R = 0. For n_s inequivalent H sites, the trace ratio uses arithmetic site means and the full ratio uses geometric means, so R is of order (1/2)[Var_a(ln beta_i) - Var_b(ln beta_i)] to leading order. This second-order estimate was given by one derivation and was not independently verified.
+Equivalently, ddG_iso = n_H k_B T ln alpha_tr + R. The trace fractionation factor identifies with the full-substitution one only when R = 0. For n_s inequivalent H sites, the trace ratio uses arithmetic site means and the full ratio uses geometric means, so R is of order (1/2)[Var_a(ln beta_i) - Var_b(ln beta_i)] to leading order (erratum pending mathcheck: R ≈ (n_H k_B T/2)[Var_b(l) - Var_a(l)] plus a nonadditivity term; the earlier sign was reversed). This second-order estimate was given by one derivation and was not independently verified.
 
 ### Boundary shifts (first order)
 
@@ -61,7 +61,7 @@ In permil units (L = 1000 ln alpha, dS in k_B per f.u., dV in Å^3 per f.u.):
 
 If R is nonzero, add R to the energy numerator before dividing by -c dV or dS.
 
-Equivalently, dP_iso = -(1000 ln alpha) dV / (160.21766 n_H k_B T) with the sign convention above, using 1 eV/Å^3 = 160.21766 GPa.
+Equivalently, dP_iso [GPa] = -160.21766 × n_H k_B T [eV] × (L/1000) / dV [Å³/f.u.], the same as the permil form above.
 
 Second-order option (one derivation only): dP_iso = -ddG_iso / [c (dV + ddV_iso + (1/2)(d dV/dP) dP_iso)], with ddV_iso = (V_D^b - V_H^b) - (V_D^a - V_H^a). This is a fixed-point iteration, not exercised by the test case.
 
@@ -206,3 +206,7 @@ Note: the dT branch needs dS_eV_K_fu in eV/(K f.u.). For dS = -0.5 k_B, pass -0.
 8. Extra claim: one derivation includes a kinetic-energy-theorem form of ddG_iso. This was not independently checked and does not affect the numbers.
 9. Sanity remark: one derivation estimates a ZPE-dominated origin of the 359 permil value, with a softened O-H stretch. This is a plausibility remark, not a computed result.
 10. Environment note: one derivation reported Python unavailable and checked in JavaScript. The other ran the function in a project venv. The output above matches the second run.
+
+## Erratum (22 Oct, decision 08 action 2)
+
+Formula only, no number changes. Line 64 had dV in the numerator and n_H k_B T in the denominator, wrong in units and value; it now restates line 59 (check: T = 1000 K, L = 40, n_H = 1, dV = -1.24 Å³ gives +0.445 GPa). Line 47: with l_i = ln beta_i per H, the full ratio uses mean(l) and the trace ratio uses ln mean(e^l) ≈ mean(l) + Var(l)/2, so R = ddG_iso - n_H k_B T ln alpha_tr ≈ (n_H k_B T/2)[Var_b(l) - Var_a(l)] plus a site-nonadditivity term; the earlier text had the opposite sign and no n_H k_B T.
