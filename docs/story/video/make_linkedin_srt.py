@@ -1,10 +1,10 @@
-"""Build captions_linkedin.srt: captions.srt shifted by the 4 s face intro, plus one intro cue."""
+"""Build captions_linkedin.srt: captions.srt shifted by the 6 s face intro, plus one intro cue."""
 import re
 from pathlib import Path
 
 HERE = Path(__file__).parent
-OFFSET_MS = 4000
-INTRO = "Hi, I'm Can. This is IsoShift."
+OFFSET_MS = 6000
+INTRO = "Hi, I'm Can, a metallurgical and\nmaterials engineer. This is IsoShift."
 
 TS = re.compile(r"(\d\d):(\d\d):(\d\d),(\d\d\d)")
 
