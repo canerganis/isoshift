@@ -50,7 +50,7 @@ H to D: 185 of 212 model evaluations
 
 ## (b) Write-up
 
-Paste `docs/story/writeup.md` (700 words; it fits). Its first paragraph becomes the gallery card and stands alone: the result, its regime, the counterexample, and the two experiments that would test it. Where the file has `![Headline figure](../../figures/fig_headline.png)`, paste `figures/fig_headline.png` inline as an image. Other links in the file are absolute GitHub URLs, so they work once the repo is public. `docs/story/moment_short.md` is the fallback only if a limit appears.
+Paste `docs/story/writeup.md` (757 words by wc -w; the form shows no word limit, only "up to a page, with figures"; decision 14 cap 760). Its first paragraph becomes the gallery card and stands alone: the result, its regime, the counterexample, and the two experiments that would test it. Where the file has `![Headline figure](../../figures/fig_headline.png)`, paste `figures/fig_headline.png` inline as an image. Other links in the file are absolute GitHub URLs, so they work once the repo is public. `docs/story/moment_short.md` is the fallback only if a limit appears.
 
 ## (c) Valency Bond usage
 

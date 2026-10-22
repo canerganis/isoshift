@@ -31,7 +31,7 @@ One-page summary: [docs/story/writeup.md](docs/story/writeup.md) (long version: 
 
 Two groups of people deuterate crystals and would like to know what it does to phase stability.
 
-1. Neutron-scattering crystallographers deuterate samples to reduce incoherent background. They need a warning when deuteration may move a sample toward a different polymorph than the hydrogenous one.
+1. Neutron-scattering crystallographers deuterate samples to reduce incoherent background. A deuterated sample is often read as a stand-in for the hydrogenous one, yet in δ-AlOOH deuteration moves the measured proton-disorder transition from 9.0 to 13.4 GPa (Sano-Furukawa et al. 2018), a different transition from the diaspore boundary IsoShift models.
 2. Researchers who use D2O or D2 in synthesis to target metastable phases need to know which polymorph pairs are sensitive to the isotope at all.
 
 Possible users: high-pressure neutron groups that use δ-AlOOD and ε-FeOOD as stand-ins for hydrous mantle phases (the models give the AlOOD boundary about 1 GPa higher, exploratory sign), and isotope geochemists comparing D/H partitioning between coexisting minerals (M02, with R stated). No group has used these results yet.
