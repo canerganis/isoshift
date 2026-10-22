@@ -1,4 +1,4 @@
-LinkedIn post (Can approves before it is posted; video: isoshift_final_v6_subs.mp4, captions burned in)
+LinkedIn post (Can approves before it is posted; video: isoshift_final_v9_subs.mp4, captions burned in)
 
 ---
 
@@ -14,7 +14,7 @@ For the diaspore to δ-AlOOH transition the models predict a transition pressure
 
 Literature searches ran on Valency Bond (182 logged queries), predictions were committed to git before the data, and the failed blind tests are reported in the repository.
 
-Video: https://youtu.be/3gE5nxhLo80
+Video: https://youtu.be/T007LHdLUjk
 Code, data, marimo app and decision records: https://github.com/canerganis/isoshift
 
 #materialsscience #machinelearning #isotopes #crystallography #OSIHackathon

@@ -2,7 +2,7 @@
 
 **The short-bond rule.** In crystals with moderate-to-strong hydrogen bonds, deuteration favours the polymorph with the shorter O-H bonds. We obtained this rule from harmonic H and D free energies of 220 polymorph pairs computed with three universal ML potentials (MACE, ORB, MatterSim). It holds in 185 of 212 model evaluations, against 131 for a constant-sign baseline. It fails for weak hydrogen bonds (2 of 20 evaluations), and the 10 pairs that the model majority calls wrong all contain one Al(OH)₃ structure, mp-985293. For the diaspore to δ-AlOOH transition the models predict a transition pressure about 1 GPa higher for AlOOD (exploratory sign prediction). The rule has not been tested experimentally; D/H partitioning between coexisting polymorphs ([M02](https://github.com/canerganis/isoshift/blob/main/docs/math/M02-bigeleisen-bridge.md)) or matched reversed-bracket AlOOH/AlOOD runs would test it.
 
-Video (3:30): https://youtu.be/3gE5nxhLo80
+Video (3:18): https://youtu.be/T007LHdLUjk
 
 **Contributions.**
 
