@@ -47,6 +47,7 @@ Related search: `data/isoshift/polymorph_fractionation.csv` (6890fc7, 23:00) rec
 | 05 | [05-final-claims.md](decisions/05-final-claims.md) | Final claims: no blocking flaw; F01 is a regime-limited computational rule; F04 sign-level; card exploratory. Binding wording. |
 | 06 | [06-strategy-to-submission.md](decisions/06-strategy-to-submission.md) | No new science; consistency fixes, one freeze rerun, one headline figure, one-page summary. |
 | 07 | [07-freeze-wording.md](decisions/07-freeze-wording.md) | Frozen headline after the compute freeze: 185 of 212, baseline 131, pairs 74 right and 10 wrong, all 10 with mp-985293; binding wording and grep gate. |
+| 10 | [10-cpu-discovery-study.md](decisions/10-cpu-discovery-study.md) | No new CPU study: an isotope-switchable polymorph list would be decided by model energy noise about 10 times the isotope term; F11 stays the one prediction-first test. |
 | 11 | [11-positive-framing.md](decisions/11-positive-framing.md) | Result-first openings for README and the one-page summary, with the two experiments that would test the rule; no "discovery" or "first"; video unchanged. |
 
 ## Post-freeze addendum (22 Oct), frozen F01 headline unchanged

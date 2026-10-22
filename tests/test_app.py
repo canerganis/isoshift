@@ -115,7 +115,7 @@ def test_how_we_know_brucite_trace():
     m, d = _repo_data()
     tr = m.brucite_trace(d)
     assert tr["n_log"] == len((APP.parents[1] / "logs" / "bond_queries.jsonl").read_text(encoding="utf-8").splitlines())
-    assert tr["n_sweep"] + tr["n_agent"] == tr["n_log"]
+    assert tr["n_sweep"] + tr["n_agent"] + tr["n_other"] == tr["n_log"]
     assert len(tr["agent_rows"]) + len(tr["sweep_rows"]) >= 5 and len(tr["sweep_rows"]) >= 1
     assert tr["lit"].iloc[0]["doi"] == "10.2138/am.2013.4202" and "0.31% larger volume" in tr["lit"].iloc[0]["quote"]
     assert len(tr["vie"]) == 16 and (tr["vie"].VIE_pct > 0).all()

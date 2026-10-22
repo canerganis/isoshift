@@ -367,6 +367,7 @@ with app.setup:
                 if ln.startswith("**Tier B under P12 passes with margin") or ln.startswith("Sign 4/4 under every treatment")]
         return {"n_log": len(data["bond"]), "n_sweep": sum(1 for _, r in data["bond"] if "sweep" in r),
                 "n_agent": sum(1 for _, r in data["bond"] if "agent" in r),
+                "n_other": sum(1 for _, r in data["bond"] if "agent" not in r and "sweep" not in r),
                 "agent_rows": _bond_table([h for h in hits if "sweep" not in h[1]]),
                 "sweep_rows": _bond_table([h for h in hits if "sweep" in h[1]]),
                 "lit": lit, "vie": v, "gate": gate}
@@ -734,7 +735,7 @@ def _(data, mo):
         ("5", BRUCITE_STEPS[4], _gate),
     ]
     _counts = mo.md(
-        f"**Counts.** Bond queries in the log: **{_tr['n_log']}** ({_tr['n_sweep']} sweep, {_tr['n_agent']} agent). "
+        f"**Counts.** Bond queries in the log: **{_tr['n_log']}** ({_tr['n_sweep']} sweep, {_tr['n_agent']} agent, {_tr['n_other']} prior-art check). "
         f"Agent audit (`docs/story/agent_extraction_audit.md`): of {AUDIT['sweep_items']} sweep items, "
         f"**{AUDIT['ok_single_pass']} returned \"ok\" on a single pass**, but only **{AUDIT['survived']} survived** as "
         f"quantitative validation targets (brucite and LiH) after the second reader and the board.")
