@@ -1,0 +1,1 @@
+pilot order 42 (HIO3, 160-atom supercells): started 12:25:09, all 6 structure-model jobs done 12:29:47; job wall s mace 48/8, orb 41/49, mattersim 36/53; projection for orders 1-45 at <= 4.5 min per pair: about 3.4 h, inside the 12:30-16:22 window, no cut needed

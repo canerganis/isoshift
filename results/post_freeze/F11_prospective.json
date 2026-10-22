@@ -1,0 +1,1741 @@
+{
+ "status": "post-freeze addendum, prospective",
+ "prediction_file": "docs/predictions/P10_prospective.md, results/post_freeze/P10_predictions.csv",
+ "baseline": {
+  "n_headline": 212,
+  "n_pos_300": 131,
+  "sign_300K": 1,
+  "n_oh_600": 232,
+  "n_pos_600": 123,
+  "sign_600K": 1
+ },
+ "n_primary_committed": 111,
+ "n_primary_total": 96,
+ "n_primary_scored_clean": 21,
+ "primary_outcome_counts": {
+  "scored": 21,
+  "not_clean": 13,
+  "failed_or_unstable": 62
+ },
+ "primary": {
+  "rule": "frozen F01 at 300 K: sign(ddF_iso(b-a)/H) = sign(d mean model O-H(b-a)); rmax >= 0.99 A, |d| >= 5 mA",
+  "n": 96,
+  "right": 14,
+  "acc": 0.1458,
+  "baseline_right": 4,
+  "baseline_acc": 0.0417,
+  "points_above_baseline": 10.4,
+  "n_pairs": 34,
+  "n_formulas": 16,
+  "unique_pair_majority": {
+   "right": 4,
+   "tie": 1,
+   "wrong": 29
+  },
+  "pair_majority_right_frac": 0.1176,
+  "n_failures_counted_not_right": 75,
+  "per_model": {
+   "mace": {
+    "right": 5,
+    "n": 33
+   },
+   "orb": {
+    "right": 4,
+    "n": 31
+   },
+   "mattersim": {
+    "right": 5,
+    "n": 32
+   }
+  },
+  "bars": {
+   "min_size_30_evals_12_pairs_6_formulas": true,
+   "pooled_acc_ge_0.75": false,
+   "ge_15_points_above_baseline": false,
+   "pair_majority_right_ge_0.80": false
+  },
+  "verdict": "FAIL"
+ },
+ "secondary": {
+  "rule": "600 K, no threshold, all O-H pairs with |d| >= 5 mA",
+  "n": 96,
+  "right": 14,
+  "acc": 0.1458,
+  "baseline_right": 2,
+  "baseline_acc": 0.0208,
+  "points_above_baseline": 12.5,
+  "n_pairs": 34,
+  "n_formulas": 16,
+  "unique_pair_majority": {
+   "right": 5,
+   "tie": 0,
+   "wrong": 29
+  },
+  "pair_majority_right_frac": 0.1471,
+  "n_failures_counted_not_right": 82,
+  "per_model": {
+   "mace": {
+    "right": 3,
+    "n": 33
+   },
+   "orb": {
+    "right": 6,
+    "n": 31
+   },
+   "mattersim": {
+    "right": 5,
+    "n": 32
+   }
+  },
+  "bar_acc_ge_0.90": false
+ },
+ "primary_per_protocol_clean_only": {
+  "n": 21,
+  "right": 14,
+  "acc": 0.6667,
+  "baseline_right": 4,
+  "baseline_acc": 0.1905,
+  "points_above_baseline": 47.6,
+  "n_pairs": 8,
+  "n_formulas": 6,
+  "unique_pair_majority": {
+   "right": 4,
+   "tie": 1,
+   "wrong": 3
+  },
+  "pair_majority_right_frac": 0.5,
+  "n_failures_counted_not_right": 0,
+  "per_model": {
+   "mace": {
+    "right": 5,
+    "n": 7
+   },
+   "orb": {
+    "right": 4,
+    "n": 6
+   },
+   "mattersim": {
+    "right": 5,
+    "n": 8
+   }
+  }
+ },
+ "primary_sensitivity_1p00": {
+  "n": 87,
+  "right": 13,
+  "acc": 0.1494,
+  "baseline_right": 2,
+  "baseline_acc": 0.023,
+  "points_above_baseline": 12.6,
+  "n_pairs": 31,
+  "n_formulas": 15,
+  "unique_pair_majority": {
+   "right": 4,
+   "tie": 1,
+   "wrong": 26
+  },
+  "pair_majority_right_frac": 0.129,
+  "n_failures_counted_not_right": 72,
+  "per_model": {
+   "mace": {
+    "right": 5,
+    "n": 30
+   },
+   "orb": {
+    "right": 4,
+    "n": 28
+   },
+   "mattersim": {
+    "right": 4,
+    "n": 29
+   }
+  }
+ },
+ "primary_structure_transfer_known_formula": {
+  "n": 23,
+  "right": 1,
+  "acc": 0.0435,
+  "baseline_right": 2,
+  "baseline_acc": 0.087,
+  "points_above_baseline": -4.3,
+  "n_pairs": 8,
+  "n_formulas": 2,
+  "unique_pair_majority": {
+   "right": 0,
+   "tie": 0,
+   "wrong": 8
+  },
+  "pair_majority_right_frac": 0.0,
+  "n_failures_counted_not_right": 17,
+  "per_model": {
+   "mace": {
+    "right": 0,
+    "n": 8
+   },
+   "orb": {
+    "right": 0,
+    "n": 7
+   },
+   "mattersim": {
+    "right": 1,
+    "n": 8
+   }
+  }
+ },
+ "primary_new_formula": {
+  "n": 73,
+  "right": 13,
+  "acc": 0.1781,
+  "baseline_right": 2,
+  "baseline_acc": 0.0274,
+  "points_above_baseline": 15.1,
+  "n_pairs": 26,
+  "n_formulas": 14,
+  "unique_pair_majority": {
+   "right": 4,
+   "tie": 1,
+   "wrong": 21
+  },
+  "pair_majority_right_frac": 0.1538,
+  "n_failures_counted_not_right": 58,
+  "per_model": {
+   "mace": {
+    "right": 5,
+    "n": 25
+   },
+   "orb": {
+    "right": 4,
+    "n": 24
+   },
+   "mattersim": {
+    "right": 4,
+    "n": 24
+   }
+  }
+ },
+ "secondary_per_protocol_clean_only": {
+  "n": 14,
+  "right": 14,
+  "acc": 1.0,
+  "baseline_right": 2,
+  "baseline_acc": 0.1429,
+  "points_above_baseline": 85.7,
+  "n_pairs": 7,
+  "n_formulas": 5,
+  "unique_pair_majority": {
+   "right": 7,
+   "tie": 0,
+   "wrong": 0
+  },
+  "pair_majority_right_frac": 1.0,
+  "n_failures_counted_not_right": 0,
+  "per_model": {
+   "mace": {
+    "right": 3,
+    "n": 3
+   },
+   "orb": {
+    "right": 6,
+    "n": 6
+   },
+   "mattersim": {
+    "right": 5,
+    "n": 5
+   }
+  }
+ },
+ "weak_side_300K_descriptive": {
+  "n": 0,
+  "right": 0,
+  "acc": null,
+  "baseline_right": 0,
+  "baseline_acc": null,
+  "points_above_baseline": null,
+  "n_pairs": 0,
+  "n_formulas": 0,
+  "unique_pair_majority": {
+   "right": 0,
+   "tie": 0,
+   "wrong": 0
+  },
+  "pair_majority_right_frac": null,
+  "n_failures_counted_not_right": 0,
+  "per_model": {}
+ },
+ "failures": [
+  {
+   "order": "1",
+   "pair_id": "mp-24022__mp-1205457",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0653;unstable:imag_fraction_0.0709"
+  },
+  {
+   "order": "1",
+   "pair_id": "mp-24022__mp-1205457",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0653;unstable:imag_fraction_0.0709"
+  },
+  {
+   "order": "1",
+   "pair_id": "mp-24022__mp-1205457",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0689;unstable:imag_fraction_0.0899"
+  },
+  {
+   "order": "1",
+   "pair_id": "mp-24022__mp-1205457",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0689;unstable:imag_fraction_0.0899"
+  },
+  {
+   "order": "1",
+   "pair_id": "mp-24022__mp-1205457",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0614;unstable:imag_fraction_0.0833"
+  },
+  {
+   "order": "1",
+   "pair_id": "mp-24022__mp-1205457",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0614;unstable:imag_fraction_0.0833"
+  },
+  {
+   "order": "2",
+   "pair_id": "mp-706579__mp-1180593",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0502;unstable:imag_fraction_0.0533"
+  },
+  {
+   "order": "2",
+   "pair_id": "mp-706579__mp-1180593",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0502;unstable:imag_fraction_0.0533"
+  },
+  {
+   "order": "2",
+   "pair_id": "mp-706579__mp-1180593",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0589;unstable:imag_fraction_0.0656"
+  },
+  {
+   "order": "2",
+   "pair_id": "mp-706579__mp-1180593",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0589;unstable:imag_fraction_0.0656"
+  },
+  {
+   "order": "2",
+   "pair_id": "mp-706579__mp-1180593",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0562;unstable:imag_fraction_0.0616"
+  },
+  {
+   "order": "2",
+   "pair_id": "mp-706579__mp-1180593",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0562;unstable:imag_fraction_0.0616"
+  },
+  {
+   "order": "3",
+   "pair_id": "mp-24263__mp-757909",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0728;unstable:imag_fraction_0.0489"
+  },
+  {
+   "order": "3",
+   "pair_id": "mp-24263__mp-757909",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0728;unstable:imag_fraction_0.0489"
+  },
+  {
+   "order": "3",
+   "pair_id": "mp-24263__mp-757909",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.066;unstable:imag_fraction_0.0453"
+  },
+  {
+   "order": "3",
+   "pair_id": "mp-24263__mp-757909",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.066;unstable:imag_fraction_0.0453"
+  },
+  {
+   "order": "3",
+   "pair_id": "mp-24263__mp-757909",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0666;unstable:imag_fraction_0.0514"
+  },
+  {
+   "order": "3",
+   "pair_id": "mp-24263__mp-757909",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0666;unstable:imag_fraction_0.0514"
+  },
+  {
+   "order": "4",
+   "pair_id": "mp-695799__mp-757909",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0489"
+  },
+  {
+   "order": "4",
+   "pair_id": "mp-695799__mp-757909",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0489"
+  },
+  {
+   "order": "4",
+   "pair_id": "mp-695799__mp-757909",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0453"
+  },
+  {
+   "order": "4",
+   "pair_id": "mp-695799__mp-757909",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0453"
+  },
+  {
+   "order": "4",
+   "pair_id": "mp-695799__mp-757909",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0514"
+  },
+  {
+   "order": "4",
+   "pair_id": "mp-695799__mp-757909",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0514"
+  },
+  {
+   "order": "5",
+   "pair_id": "mp-699437__mp-757909",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0489;unstable:imag_fraction_0.0339"
+  },
+  {
+   "order": "5",
+   "pair_id": "mp-699437__mp-757909",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0489;unstable:imag_fraction_0.0339"
+  },
+  {
+   "order": "5",
+   "pair_id": "mp-699437__mp-757909",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0453;unstable:imag_fraction_0.0366"
+  },
+  {
+   "order": "5",
+   "pair_id": "mp-699437__mp-757909",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0453;unstable:imag_fraction_0.0366"
+  },
+  {
+   "order": "5",
+   "pair_id": "mp-699437__mp-757909",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0514;unstable:imag_fraction_0.0302"
+  },
+  {
+   "order": "5",
+   "pair_id": "mp-699437__mp-757909",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0514;unstable:imag_fraction_0.0302"
+  },
+  {
+   "order": "6",
+   "pair_id": "mp-1196989__mp-1200196",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "6",
+   "pair_id": "mp-1196989__mp-1200196",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "6",
+   "pair_id": "mp-1196989__mp-1200196",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "6",
+   "pair_id": "mp-1196989__mp-1200196",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "6",
+   "pair_id": "mp-1196989__mp-1200196",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0224"
+  },
+  {
+   "order": "6",
+   "pair_id": "mp-1196989__mp-1200196",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0224"
+  },
+  {
+   "order": "8",
+   "pair_id": "mp-721062__mp-1204591",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0461"
+  },
+  {
+   "order": "8",
+   "pair_id": "mp-721062__mp-1204591",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0461"
+  },
+  {
+   "order": "9",
+   "pair_id": "mp-24043__mp-2739191",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0575"
+  },
+  {
+   "order": "9",
+   "pair_id": "mp-24043__mp-2739191",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0575"
+  },
+  {
+   "order": "9",
+   "pair_id": "mp-24043__mp-2739191",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0612"
+  },
+  {
+   "order": "9",
+   "pair_id": "mp-24043__mp-2739191",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0612"
+  },
+  {
+   "order": "9",
+   "pair_id": "mp-24043__mp-2739191",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0568"
+  },
+  {
+   "order": "9",
+   "pair_id": "mp-24043__mp-2739191",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0568"
+  },
+  {
+   "order": "10",
+   "pair_id": "mp-24043__mp-697111",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "10",
+   "pair_id": "mp-24043__mp-697111",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "10",
+   "pair_id": "mp-24043__mp-697111",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "10",
+   "pair_id": "mp-24043__mp-697111",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "10",
+   "pair_id": "mp-24043__mp-697111",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "10",
+   "pair_id": "mp-24043__mp-697111",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "11",
+   "pair_id": "mp-696403__mp-1198592",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "11",
+   "pair_id": "mp-696403__mp-1198592",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "11",
+   "pair_id": "mp-696403__mp-1198592",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "11",
+   "pair_id": "mp-696403__mp-1198592",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "11",
+   "pair_id": "mp-696403__mp-1198592",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "12",
+   "pair_id": "mp-696735__mp-2739191",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0445;unstable:imag_fraction_0.0575"
+  },
+  {
+   "order": "12",
+   "pair_id": "mp-696735__mp-2739191",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0445;unstable:imag_fraction_0.0575"
+  },
+  {
+   "order": "12",
+   "pair_id": "mp-696735__mp-2739191",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0448;unstable:imag_fraction_0.0612"
+  },
+  {
+   "order": "12",
+   "pair_id": "mp-696735__mp-2739191",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0448;unstable:imag_fraction_0.0612"
+  },
+  {
+   "order": "12",
+   "pair_id": "mp-696735__mp-2739191",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.045;unstable:imag_fraction_0.0568"
+  },
+  {
+   "order": "12",
+   "pair_id": "mp-696735__mp-2739191",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.045;unstable:imag_fraction_0.0568"
+  },
+  {
+   "order": "13",
+   "pair_id": "mp-696735__mp-697111",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0445"
+  },
+  {
+   "order": "13",
+   "pair_id": "mp-696735__mp-697111",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0445"
+  },
+  {
+   "order": "13",
+   "pair_id": "mp-696735__mp-697111",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.045"
+  },
+  {
+   "order": "13",
+   "pair_id": "mp-696735__mp-697111",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.045"
+  },
+  {
+   "order": "14",
+   "pair_id": "mp-761681__mp-1182406",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0287"
+  },
+  {
+   "order": "14",
+   "pair_id": "mp-761681__mp-1182406",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0287"
+  },
+  {
+   "order": "14",
+   "pair_id": "mp-761681__mp-1182406",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0303;unstable:imag_fraction_0.0203"
+  },
+  {
+   "order": "14",
+   "pair_id": "mp-761681__mp-1182406",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0303;unstable:imag_fraction_0.0203"
+  },
+  {
+   "order": "14",
+   "pair_id": "mp-761681__mp-1182406",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0312"
+  },
+  {
+   "order": "14",
+   "pair_id": "mp-761681__mp-1182406",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0312"
+  },
+  {
+   "order": "15",
+   "pair_id": "mp-24390__mp-1194747",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0458"
+  },
+  {
+   "order": "15",
+   "pair_id": "mp-24390__mp-1194747",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0458"
+  },
+  {
+   "order": "15",
+   "pair_id": "mp-24390__mp-1194747",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.045"
+  },
+  {
+   "order": "15",
+   "pair_id": "mp-24390__mp-1194747",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.045"
+  },
+  {
+   "order": "15",
+   "pair_id": "mp-24390__mp-1194747",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0462"
+  },
+  {
+   "order": "15",
+   "pair_id": "mp-24390__mp-1194747",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0462"
+  },
+  {
+   "order": "16",
+   "pair_id": "mp-27540__mp-985293",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "18",
+   "pair_id": "mp-560572__mp-985293",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "19",
+   "pair_id": "mp-1198234__mp-1201415",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "19",
+   "pair_id": "mp-1198234__mp-1201415",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "19",
+   "pair_id": "mp-1198234__mp-1201415",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "19",
+   "pair_id": "mp-1198234__mp-1201415",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "19",
+   "pair_id": "mp-1198234__mp-1201415",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "19",
+   "pair_id": "mp-1198234__mp-1201415",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "20",
+   "pair_id": "mp-23959__mp-1181168",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0262"
+  },
+  {
+   "order": "20",
+   "pair_id": "mp-23959__mp-1181168",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0262"
+  },
+  {
+   "order": "20",
+   "pair_id": "mp-23959__mp-1181168",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0273"
+  },
+  {
+   "order": "20",
+   "pair_id": "mp-23959__mp-1181168",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0273"
+  },
+  {
+   "order": "20",
+   "pair_id": "mp-23959__mp-1181168",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0265"
+  },
+  {
+   "order": "20",
+   "pair_id": "mp-23959__mp-1181168",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0265"
+  },
+  {
+   "order": "21",
+   "pair_id": "mp-23959__mp-757909",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0489"
+  },
+  {
+   "order": "21",
+   "pair_id": "mp-23959__mp-757909",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0489"
+  },
+  {
+   "order": "22",
+   "pair_id": "mp-24109__mp-504944",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "22",
+   "pair_id": "mp-24109__mp-504944",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "23",
+   "pair_id": "mp-24109__mp-697367",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "23",
+   "pair_id": "mp-24109__mp-697367",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "24",
+   "pair_id": "mp-24262__mp-1181168",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0262;unstable:imag_fraction_0.0436"
+  },
+  {
+   "order": "24",
+   "pair_id": "mp-24262__mp-1181168",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0262;unstable:imag_fraction_0.0436"
+  },
+  {
+   "order": "24",
+   "pair_id": "mp-24262__mp-1181168",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0273;unstable:imag_fraction_0.0515"
+  },
+  {
+   "order": "24",
+   "pair_id": "mp-24262__mp-1181168",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0273;unstable:imag_fraction_0.0515"
+  },
+  {
+   "order": "24",
+   "pair_id": "mp-24262__mp-1181168",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0265;unstable:imag_fraction_0.0424"
+  },
+  {
+   "order": "24",
+   "pair_id": "mp-24262__mp-1181168",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0265;unstable:imag_fraction_0.0424"
+  },
+  {
+   "order": "25",
+   "pair_id": "mp-24262__mp-757909",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0489;unstable:imag_fraction_0.0436"
+  },
+  {
+   "order": "25",
+   "pair_id": "mp-24262__mp-757909",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0489;unstable:imag_fraction_0.0436"
+  },
+  {
+   "order": "25",
+   "pair_id": "mp-24262__mp-757909",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0453;unstable:imag_fraction_0.0515"
+  },
+  {
+   "order": "25",
+   "pair_id": "mp-24262__mp-757909",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0453;unstable:imag_fraction_0.0515"
+  },
+  {
+   "order": "25",
+   "pair_id": "mp-24262__mp-757909",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0514;unstable:imag_fraction_0.0424"
+  },
+  {
+   "order": "25",
+   "pair_id": "mp-24262__mp-757909",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0514;unstable:imag_fraction_0.0424"
+  },
+  {
+   "order": "26",
+   "pair_id": "mp-24263__mp-1181168",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0262;unstable:imag_fraction_0.0728"
+  },
+  {
+   "order": "26",
+   "pair_id": "mp-24263__mp-1181168",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0262;unstable:imag_fraction_0.0728"
+  },
+  {
+   "order": "26",
+   "pair_id": "mp-24263__mp-1181168",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0273;unstable:imag_fraction_0.066"
+  },
+  {
+   "order": "26",
+   "pair_id": "mp-24263__mp-1181168",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0273;unstable:imag_fraction_0.066"
+  },
+  {
+   "order": "26",
+   "pair_id": "mp-24263__mp-1181168",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0265;unstable:imag_fraction_0.0666"
+  },
+  {
+   "order": "26",
+   "pair_id": "mp-24263__mp-1181168",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0265;unstable:imag_fraction_0.0666"
+  },
+  {
+   "order": "27",
+   "pair_id": "mp-690711__mp-1196113",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0356;unstable:imag_fraction_0.0575"
+  },
+  {
+   "order": "27",
+   "pair_id": "mp-690711__mp-1196113",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0356;unstable:imag_fraction_0.0575"
+  },
+  {
+   "order": "27",
+   "pair_id": "mp-690711__mp-1196113",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0336;unstable:imag_fraction_0.0566"
+  },
+  {
+   "order": "27",
+   "pair_id": "mp-690711__mp-1196113",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0336;unstable:imag_fraction_0.0566"
+  },
+  {
+   "order": "27",
+   "pair_id": "mp-690711__mp-1196113",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0339;unstable:imag_fraction_0.0448"
+  },
+  {
+   "order": "27",
+   "pair_id": "mp-690711__mp-1196113",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0339;unstable:imag_fraction_0.0448"
+  },
+  {
+   "order": "28",
+   "pair_id": "mp-690711__mp-697267",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.029;unstable:imag_fraction_0.0575"
+  },
+  {
+   "order": "28",
+   "pair_id": "mp-690711__mp-697267",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.029;unstable:imag_fraction_0.0575"
+  },
+  {
+   "order": "28",
+   "pair_id": "mp-690711__mp-697267",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.029;unstable:imag_fraction_0.0566"
+  },
+  {
+   "order": "28",
+   "pair_id": "mp-690711__mp-697267",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.029;unstable:imag_fraction_0.0566"
+  },
+  {
+   "order": "28",
+   "pair_id": "mp-690711__mp-697267",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0304;unstable:imag_fraction_0.0448"
+  },
+  {
+   "order": "28",
+   "pair_id": "mp-690711__mp-697267",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0304;unstable:imag_fraction_0.0448"
+  },
+  {
+   "order": "29",
+   "pair_id": "mp-695799__mp-1181168",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0262"
+  },
+  {
+   "order": "29",
+   "pair_id": "mp-695799__mp-1181168",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0262"
+  },
+  {
+   "order": "29",
+   "pair_id": "mp-695799__mp-1181168",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0273"
+  },
+  {
+   "order": "29",
+   "pair_id": "mp-695799__mp-1181168",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0273"
+  },
+  {
+   "order": "29",
+   "pair_id": "mp-695799__mp-1181168",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0265"
+  },
+  {
+   "order": "29",
+   "pair_id": "mp-695799__mp-1181168",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0265"
+  },
+  {
+   "order": "30",
+   "pair_id": "mp-699437__mp-1181168",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0262;unstable:imag_fraction_0.0339"
+  },
+  {
+   "order": "30",
+   "pair_id": "mp-699437__mp-1181168",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0262;unstable:imag_fraction_0.0339"
+  },
+  {
+   "order": "30",
+   "pair_id": "mp-699437__mp-1181168",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0273;unstable:imag_fraction_0.0366"
+  },
+  {
+   "order": "30",
+   "pair_id": "mp-699437__mp-1181168",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0273;unstable:imag_fraction_0.0366"
+  },
+  {
+   "order": "30",
+   "pair_id": "mp-699437__mp-1181168",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0265;unstable:imag_fraction_0.0302"
+  },
+  {
+   "order": "30",
+   "pair_id": "mp-699437__mp-1181168",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0265;unstable:imag_fraction_0.0302"
+  },
+  {
+   "order": "31",
+   "pair_id": "mp-757909__mp-1181168",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0262;unstable:imag_fraction_0.0489"
+  },
+  {
+   "order": "31",
+   "pair_id": "mp-757909__mp-1181168",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0262;unstable:imag_fraction_0.0489"
+  },
+  {
+   "order": "31",
+   "pair_id": "mp-757909__mp-1181168",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0273;unstable:imag_fraction_0.0453"
+  },
+  {
+   "order": "31",
+   "pair_id": "mp-757909__mp-1181168",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0273;unstable:imag_fraction_0.0453"
+  },
+  {
+   "order": "31",
+   "pair_id": "mp-757909__mp-1181168",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0265;unstable:imag_fraction_0.0514"
+  },
+  {
+   "order": "31",
+   "pair_id": "mp-757909__mp-1181168",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0265;unstable:imag_fraction_0.0514"
+  },
+  {
+   "order": "32",
+   "pair_id": "mp-24043__mp-697085",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "32",
+   "pair_id": "mp-24043__mp-697085",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "32",
+   "pair_id": "mp-24043__mp-697085",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "32",
+   "pair_id": "mp-24043__mp-697085",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "32",
+   "pair_id": "mp-24043__mp-697085",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "32",
+   "pair_id": "mp-24043__mp-697085",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "not_clean",
+   "reason": "quadrature_vs_direct_gt_0.01_meV_atom"
+  },
+  {
+   "order": "37",
+   "pair_id": "mp-696735__mp-697085",
+   "model": "mace",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0445"
+  },
+  {
+   "order": "37",
+   "pair_id": "mp-696735__mp-697085",
+   "model": "mace",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0445"
+  },
+  {
+   "order": "37",
+   "pair_id": "mp-696735__mp-697085",
+   "model": "orb",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0448"
+  },
+  {
+   "order": "37",
+   "pair_id": "mp-696735__mp-697085",
+   "model": "orb",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.0448"
+  },
+  {
+   "order": "37",
+   "pair_id": "mp-696735__mp-697085",
+   "model": "mattersim",
+   "T_K": 300,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.045"
+  },
+  {
+   "order": "37",
+   "pair_id": "mp-696735__mp-697085",
+   "model": "mattersim",
+   "T_K": 600,
+   "outcome": "failed_or_unstable",
+   "reason": "unstable:imag_fraction_0.045"
+  }
+ ],
+ "not_computed_in_committed_order": [
+  {
+   "order": 33,
+   "pair_id": "mp-24043__mp-703459",
+   "model": "mace",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "soft_mode_bracketed"
+  },
+  {
+   "order": 33,
+   "pair_id": "mp-24043__mp-703459",
+   "model": "mattersim",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "soft_mode_bracketed"
+  },
+  {
+   "order": 33,
+   "pair_id": "mp-24043__mp-703459",
+   "model": "orb",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "soft_mode_bracketed"
+  },
+  {
+   "order": 34,
+   "pair_id": "mp-510654__mp-1200251",
+   "model": "mace",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 35,
+   "pair_id": "mp-554651__mp-1237009",
+   "model": "mace",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 36,
+   "pair_id": "mp-557615__mp-1194761",
+   "model": "mattersim",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 38,
+   "pair_id": "mp-696735__mp-703459",
+   "model": "mace",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "unstable:imag_fraction_0.0445"
+  },
+  {
+   "order": 38,
+   "pair_id": "mp-696735__mp-703459",
+   "model": "mattersim",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "unstable:imag_fraction_0.045"
+  },
+  {
+   "order": 39,
+   "pair_id": "mp-697085__mp-703459",
+   "model": "mace",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "soft_mode_bracketed"
+  },
+  {
+   "order": 39,
+   "pair_id": "mp-697085__mp-703459",
+   "model": "mattersim",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "soft_mode_bracketed"
+  },
+  {
+   "order": 39,
+   "pair_id": "mp-697085__mp-703459",
+   "model": "orb",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "soft_mode_bracketed"
+  },
+  {
+   "order": 40,
+   "pair_id": "mp-703459__mp-2739191",
+   "model": "mace",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "unstable:imag_fraction_0.0575"
+  },
+  {
+   "order": 40,
+   "pair_id": "mp-703459__mp-2739191",
+   "model": "mattersim",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "unstable:imag_fraction_0.0568"
+  },
+  {
+   "order": 40,
+   "pair_id": "mp-703459__mp-2739191",
+   "model": "orb",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "unstable:imag_fraction_0.0612"
+  },
+  {
+   "order": 41,
+   "pair_id": "mp-766178__mp-1198515",
+   "model": "mattersim",
+   "eligible_primary": true,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 43,
+   "pair_id": "mp-24004__mp-722516",
+   "model": "mace",
+   "eligible_primary": false,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 43,
+   "pair_id": "mp-24004__mp-722516",
+   "model": "mattersim",
+   "eligible_primary": false,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 43,
+   "pair_id": "mp-24004__mp-722516",
+   "model": "orb",
+   "eligible_primary": false,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 44,
+   "pair_id": "mp-23879__mp-643392",
+   "model": "mace",
+   "eligible_primary": false,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 44,
+   "pair_id": "mp-23879__mp-643392",
+   "model": "mattersim",
+   "eligible_primary": false,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 44,
+   "pair_id": "mp-23879__mp-643392",
+   "model": "orb",
+   "eligible_primary": false,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 45,
+   "pair_id": "mp-24595__mp-698170",
+   "model": "mace",
+   "eligible_primary": false,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 45,
+   "pair_id": "mp-24595__mp-698170",
+   "model": "mattersim",
+   "eligible_primary": false,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 45,
+   "pair_id": "mp-24595__mp-698170",
+   "model": "orb",
+   "eligible_primary": false,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 46,
+   "pair_id": "mp-24595__mp-721300",
+   "model": "mace",
+   "eligible_primary": false,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 46,
+   "pair_id": "mp-24595__mp-721300",
+   "model": "mattersim",
+   "eligible_primary": false,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  },
+  {
+   "order": 46,
+   "pair_id": "mp-24595__mp-721300",
+   "model": "orb",
+   "eligible_primary": false,
+   "status_a": "not_computed",
+   "status_b": "not_computed"
+  }
+ ]
+}
