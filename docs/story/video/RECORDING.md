@@ -35,7 +35,7 @@ Do not open "Benchmark & atlas" and do not open the "Post hoc sensitivity" expan
 
 ## Numbers to say as written
 
-185 of 212, baseline 131, 74 pairs right and 10 wrong, 2 of 20 on the weak side, 220 pairs screened, 0.11 to 0.13 meV per hydrogen per thousandth of an angstrom, +1.13 and +1.33 GPa at 300 K. The script says the 300 K boundary is "9 to 14 gigapascal"; `CARD-AlOOH.md` gives the H roots 8.76 (MACE) and 13.00 (ORB) GPa. If you want to match the card exactly, say "9 to 13", and change the matching caption line.
+185 of 212, baseline 131, 74 pairs right and 10 wrong, 2 of 20 on the weak side, 220 pairs screened, 0.11 to 0.13 meV per hydrogen per thousandth of an angstrom, +1.13 and +1.33 GPa at 300 K. The script says the 300 K boundary is "about 9 to 13 gigapascal"; `CARD-AlOOH.md` gives the H roots 8.76 (MACE) and 13.00 (ORB) GPa. If you want to match the card exactly, say "9 to 13", and change the matching caption line.
 
 ## Captions
 
