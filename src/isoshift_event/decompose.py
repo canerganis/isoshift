@@ -9,8 +9,9 @@ direct F_D - F_H.
 Covalent X-H (nearest non-H neighbour closer than 1.3 A: O, N, B, C ...) gets a stretch/perpendicular
 split; hydridic H (metal neighbours) gets only the total, flagged.
 
-    python -m src.isoshift_event.decompose [--workers 8]
-writes results/decompose_structures.csv and results/decompose_pairs.csv (per pair and model, 300 K).
+    python -m src.isoshift_event.decompose [--workers 8] [--T 300] [--out-dir results]
+writes decompose_structures.csv and decompose_pairs.csv (per pair and model) into --out-dir at temperature --T.
+Defaults (300 K, results/) reproduce the frozen files. At T = 0 the mode weight is the T -> 0 limit E/4.
 """
 from __future__ import annotations
 
@@ -32,7 +33,8 @@ COVALENT_CUT = 1.3  # A
 
 
 def _one(args):
-    model, sid, cache_dir = args
+    model, sid, cache_dir, *rest = args
+    t = float(rest[0]) if rest else T
     os.environ["CUDA_VISIBLE_DEVICES"] = ""
     import phonopy
 
@@ -72,7 +74,10 @@ def _one(args):
         wq = np.array(p.mesh.weights, float)
         wq /= wq.sum()
         E = np.abs(f) * THZ_EV
-        K = np.where(E > 1e-6, 0.25 * E / np.tanh(np.maximum(E, 1e-12) / (2 * KB * T)), 0.0)
+        if t > 0:
+            K = np.where(E > 1e-6, 0.25 * E / np.tanh(np.maximum(E, 1e-12) / (2 * KB * t)), 0.0)
+        else:
+            K = np.where(E > 1e-6, 0.25 * E, 0.0)
         e3 = ev.reshape(ev.shape[0], len(sym), 3, ev.shape[2])
         wH = (np.abs(e3[:, H]) ** 2).sum(axis=(1, 2))
         proj = np.einsum("qiab,ia->qib", e3[:, H], bonds[H])
@@ -84,7 +89,7 @@ def _one(args):
     dF_quad = -(I_str + I_perp) * 1000 / n  # meV/atom
     mf = {iso: P.mesh_frequencies(ph, P.make_masses(_atoms(uc), sub, default="light"), mesh, is_gamma_center=False)
           for iso, sub in (("H", {}), ("D", {"H": "D"}))}
-    dF_direct = float(mf["D"].helmholtz_free_energy([T])[0] - mf["H"].helmholtz_free_energy([T])[0]) * 1000 / n
+    dF_direct = float(mf["D"].helmholtz_free_energy([t])[0] - mf["H"].helmholtz_free_energy([t])[0]) * 1000 / n
     return {"model": model, "struct_id": sid, "n_atoms": n, "n_H": int(len(H)), "covalent_XH": covalent,
             "XH_max_A": round(max(dists), 4) if dists else "", "XH_mean_A": round(float(np.mean(dists)), 5) if dists else "", "dF_str_meV_atom": -I_str * 1000 / n,
             "dF_perp_meV_atom": -I_perp * 1000 / n, "dF_quad_meV_atom": dF_quad, "dF_direct_meV_atom": dF_direct}
@@ -100,7 +105,11 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--models", default="mace,orb")
+    ap.add_argument("--T", type=float, default=T, help="temperature in K (default 300)")
+    ap.add_argument("--out-dir", type=Path, default=ROOT / "results", help="output directory (default results/)")
     args = ap.parse_args(argv)
+    out_dir = args.out_dir if args.out_dir.is_absolute() else ROOT / args.out_dir
+    out_dir.mkdir(parents=True, exist_ok=True)
     from . import refine
 
     idx = refine._cache_index()
@@ -117,10 +126,10 @@ def main(argv=None):
         safe = "".join(c if c.isalnum() or c in "-_." else "_" for c in calc)
         key = (safe, round(r["fc_meta"]["energy_eV"], 6), round(r["fc_meta"]["volume_A3"], 4))
         if key in idx:
-            jobs.append((model, sid, str(idx[key])))
+            jobs.append((model, sid, str(idx[key]), args.T))
     with ProcessPoolExecutor(args.workers) as ex:
         res = {(r["model"], r["struct_id"]): r for r in ex.map(_one, jobs, chunksize=2) if r}
-    with open(ROOT / "results" / "decompose_structures.csv", "w", newline="") as fh:
+    with open(out_dir / "decompose_structures.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, list(next(iter(res.values()))))
         w.writeheader()
         w.writerows(res.values())
@@ -140,12 +149,12 @@ def main(argv=None):
                     "H_per_atom": a["n_H"] / a["n_atoms"],
                     "clean": abs(a["dF_quad_meV_atom"] - a["dF_direct_meV_atom"]) < 0.01
                              and abs(b["dF_quad_meV_atom"] - b["dF_direct_meV_atom"]) < 0.01})
-    with open(ROOT / "results" / "decompose_pairs.csv", "w", newline="") as fh:
+    with open(out_dir / "decompose_pairs.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, list(out[0]))
         w.writeheader()
         w.writerows(out)
     err = max(abs(r["dF_quad_meV_atom"] - r["dF_direct_meV_atom"]) for r in res.values())
-    print(f"{len(res)} structures, {len(out)} pair rows; max |quadrature - direct| = {err:.2e} meV/atom")
+    print(f"T = {args.T:g} K, {len(res)} structures, {len(out)} pair rows; max |quadrature - direct| = {err:.2e} meV/atom")
 
 
 if __name__ == "__main__":
