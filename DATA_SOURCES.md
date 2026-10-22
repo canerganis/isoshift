@@ -2,6 +2,8 @@
 
 Raw downloads are not committed (`data/isoshift/*` is git-ignored except small curated files). Licences below are as stated by the sources or the installed packages. Check the source before redistributing.
 
+Derived Materials Project and JARVIS-DFT subsets under `data/isoshift` are committed: `mp_h.csv`, `structures.csv`, `pairs.csv`, `jarvis_h_pairs.csv`, `structs/*.cif` and `validation_structures/*.cif`. Materials Project data are CC BY 4.0; please cite A. Jain et al., APL Materials 1, 011002 (2013), doi 10.1063/1.4812323. The JARVIS data licence caveat below applies to the redistributed JARVIS CIFs.
+
 ## Structure and energy data
 
 | source | use | licence | notes |

@@ -19,7 +19,7 @@ Can gives the start signal; nothing starts on its own. On "başla":
 | Submission | Moment, team **IsoShift** (solo): https://scientificintelligence.org/campaigns/osi-hackathon-2026 → your team page → Submit. Needs: public social post link (video ≤4 min inside), write-up (+figure), public GitHub repo with README, rules confirmation. |
 | Judging | Impact, Innovativeness, Novelty, Relevance (1 to 5 each; rubric on the campaign page). Awards Nov 19. |
 | Pre-existing work | Allowed if explicitly stated; judged on what was built during the event (organizer, Slack #2026-event). |
-| Slack | Open Scientific Intelligence workspace: #general (announcements), #help, #2026-event, #valency, #resources, #idea-time, #2025-paper. Contact: blaiszik@uchicago.edu |
+| Slack | Open Scientific Intelligence workspace: #general (announcements), #help, #2026-event, #valency, #resources, #idea-time, #2025-paper. Organiser contact in the hackathon Discord. |
 | Valency Bond | MCP `valency` (https://mcp.valency.io/). Codex: logged in, tested. agy: added, needs `/mcp` → Authenticate. Claude: claude.ai connector (verify with `list_sources`). Sources: arXiv, PubMed, bio/med/Psy/Soc/EarthArXiv, Valency Hub; use OpenAlex for journals. |
 | Materials Project | `MP_API_KEY` in `.env`, tested OK (LiH mp-23703). |
 | GitHub | `gh` logged in as `canerganis`. Create the public repo only with Can's go-ahead. |
