@@ -20,39 +20,25 @@ In harmonic calculations with three ML potentials, deuteration favours the polym
 
 Video URL (paste into the Moment form): https://youtu.be/X8ckZ7dV40Y. Uploaded with the title and description of `docs/story/video/RECORDING.md` and `captions.srt` as English subtitles.
 
-Title:
+Title (as published):
 
 ```
-IsoShift: deuteration and polymorph stability, 185 of 212 model evaluations
+The short-bond rule: deuteration favours the polymorph with shorter O-H bonds
 ```
 
-Description (chapters from the time column of `docs/story/video_script.md`):
+Description (as published, 3:47 video):
 
 ```
-In harmonic calculations with three ML potentials (MACE, ORB, MatterSim), deuteration favours the polymorph with the shorter O-H bonds in 185 of 212 evaluations with moderate-to-strong hydrogen bonds (constant-sign baseline 131). It fails with weak ones (2 of 20), and all 10 pairs the model majority calls wrong involve one Al(OH)3 structure. No measurement has tested the rule directly. AI agents ran the work, with Valency Bond for the literature and marimo for the app.
+The short-bond rule: in crystals with moderate-to-strong hydrogen bonds, deuteration favours the polymorph with the shorter O-H bonds. Found at OSI Hackathon 2026 in a screen of 220 polymorph pairs with three universal ML potentials (MACE, ORB, MatterSim): it holds in 185 of 212 model evaluations, against 131 for a constant-sign baseline, and it fails for weak hydrogen bonds. It predicts that deuteration raises the diaspore to δ-AlOOH transition by about 1 GPa (exploratory sign prediction). Not yet tested experimentally; D/H partitioning between coexisting polymorphs would test it.
 
-Code, data and decisions: https://github.com/canerganis/isoshift
+Code, data and decision records: https://github.com/canerganis/isoshift
 
-0:00 The rule
-0:21 Method
-0:48 Evidence
-1:37 Stretch check
-1:55 AlOOH prediction
-2:23 How to test it
-2:39 AI process
-3:08 marimo app
-3:21 Limits
-```
-
-Thumbnail text:
-
-```
-H to D: 185 of 212 model evaluations
+AI disclosure: the calculations, literature search and drafts were produced by AI agents working under my direction; every query and decision is logged in the repository. Music and visuals were generated in code.
 ```
 
 ## (b) Write-up
 
-Paste `docs/story/writeup.md` (811 words by wc -w; the form shows no word limit, only "up to a page, with figures"; decision 14 cap 760). Its first paragraph becomes the gallery card and stands alone: the result, its regime, the counterexample, and the two experiments that would test it. Where the file has `![Headline figure](../../figures/fig_headline.png)`, paste `figures/fig_headline.png` inline as an image. Other links in the file are absolute GitHub URLs, so they work once the repo is public. `docs/story/moment_short.md` is the fallback only if a limit appears.
+Paste `docs/story/writeup.md` (word count by wc -w; the form shows no word limit, only "up to a page, with figures"; decision 14 cap 760). Its first paragraph becomes the gallery card and stands alone: the result, its regime, the counterexample, and the two experiments that would test it. Where the file has `![Headline figure](../../figures/fig_headline.png)`, paste `figures/fig_headline.png` inline as an image. Other links in the file are absolute GitHub URLs, so they work once the repo is public. `docs/story/moment_short.md` is the fallback only if a limit appears.
 
 ## (c) Valency Bond usage
 
