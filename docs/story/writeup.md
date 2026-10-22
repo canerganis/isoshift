@@ -45,7 +45,7 @@ No polymorph isotope free energy has been measured. D/H fractionation between tw
 
 ## Limits
 
-The 0.99 Å boundary was chosen after inspecting the data; re-choosing it inside training folds still gives 183 of 210 held-out evaluations right against 131. The free energies are harmonic or quasi-harmonic, and the three potentials share PBE-level training data, so the rule is a computational result that awaits measurement. A follow-up test on newly computed pairs (F11) was limited by phonon quality and did not reach its predeclared bar; it is reported in the repository.
+The 0.99 Å boundary was chosen after inspecting the data; re-choosing it inside training folds still gives 183 of 210 held-out evaluations right against 131. The free energies are harmonic or quasi-harmonic, and the three potentials share PBE-level training data, so the rule is a computational result that awaits measurement. Not every blind test passed: the ice-boundary test (F07) failed, the mineral fractionation test (F02) was mixed, and a follow-up test on newly computed pairs (F11) was limited by phonon quality and did not reach its bar. All are reported in the repository.
 
 ## Prior work
 
