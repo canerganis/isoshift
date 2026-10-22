@@ -368,27 +368,42 @@ def _(mo):
 def _(data, mo):
     f01 = f01_frame(data)
     thr = mo.ui.slider(0.97, 1.03, step=0.005, value=0.99, label="Strong-regime threshold, max X-H (A)", show_value=True)
-    f01_models = mo.ui.multiselect(options=MODELS, value=MODELS, label="Models")
-    _pops = {"O-H pairs, no cut on ddF (headline)": "oh",
-             "All covalent X-H, signal cut |ddF| > 0.1 meV/H": "cov"}
-    pop = mo.ui.dropdown(options=_pops, value="O-H pairs, no cut on ddF (headline)", label="Population")
+    f01_models = mo.ui.multiselect(options=MODELS[:3], value=MODELS[:3], label="Models")
     _fl = sorted(f01.formula.unique()) if len(f01) else []
     hl = mo.ui.dropdown(options=["(none)"] + _fl, value="(none)", label="Highlight formula")
-    return f01, f01_models, hl, pop, thr
+    return f01, f01_models, hl, thr
 
 
 @app.cell
-def _(f01, f01_models, hl, mo, pop, thr):
+def _(data, mo):
+    _h = data["f01_cv"].get("oh_unfiltered_strong") if isinstance(data["f01_cv"], dict) else None
+    if not _h:
+        f01_banner = mo.md("_Frozen F01 counts (`results/F01_cv.json`) not found here._")
+    else:
+        _pm = _h["unique_pair_majority"]
+        f01_banner = mo.callout(mo.md(
+            f"**{_h['right']}/{_h['n']} O-H evaluations agree with the rule "
+            f"({100 * _h['right'] / _h['n']:.1f}%; baseline {_h['baseline_right']}/{_h['n']}).** "
+            f"Pair majorities: {_pm['right']} right, {_pm['tie']} ties, {_pm['wrong']} wrong; "
+            f"all {_pm['wrong']} involve mp-985293."), kind="info")
+    f01_posthoc = mo.accordion({
+        "Post hoc sensitivity (not the result)": mo.md(
+            "Post hoc, chosen after seeing the frozen data, and only to locate the failure: leaving out the 10 pairs "
+            "that contain mp-985293 gives 177 of 184 (74 pairs right, none wrong); raising the boundary to 1.00 Å gives "
+            "175 of 182 (73 pairs, none wrong). These are nearly the same intervention, because 28 of the 30 evaluations "
+            "between 0.99 and 1.00 Å come from mp-985293 (the other 2, both right, from mp-697136__JVASP-54742). "
+            "Neither replaces the frozen result or the nested 183 of 210.")})
+    return f01_banner, f01_posthoc
+
+
+@app.cell
+def _(f01, f01_banner, f01_models, f01_posthoc, hl, mo, thr):
     if not len(f01):
-        f01_tab = mo.md("_No decomposition data found._")
+        f01_tab = mo.vstack([f01_banner, mo.md("_No decomposition data found._"), f01_posthoc])
     else:
         _d = f01[f01.model.isin(f01_models.value)].copy()
         _d["strong"] = _d.XH_max >= thr.value
-        _oh = pop.value == "oh" and bool(f01["OH"].notna().all())
-        if pop.value == "oh" and not _oh:
-            _pop_note = " _(O-H flags unavailable here, showing all covalent with signal cut)_"
-        else:
-            _pop_note = ""
+        _oh = bool(f01["OH"].notna().all())
         _kw = dict(oh_only=True) if _oh else dict(y_min=0.1)
         _k, _n, _b = sign_rule(_d, thr.value, **_kw)
         _kw_, _nw, _bw = sign_rule(_d, thr.value, weak=True, **_kw)
@@ -416,16 +431,17 @@ def _(f01, f01_models, hl, mo, pop, thr):
         _a2.set_title("stretch vs bend/libration (precomputed)")
         _fig.tight_layout()
         f01_tab = mo.vstack([
-            mo.vstack([thr, f01_models, pop, hl]),
-            mo.md(f"**Sign rule right: {_k} of {_n}** (strong regime, {_label}) "
-                  f"| leave-one-formula-out constant-sign baseline: {_b} of {_n} "
-                  f"| weak side: {_kw_} of {_nw} _(precomputed)_{_pop_note}"),
+            f01_banner,
+            mo.vstack([thr, f01_models, hl]),
+            mo.md(f"Interactive recount at the slider settings: sign rule right {_k} of {_n} "
+                  f"({_label}) | leave-one-formula-out constant-sign baseline: {_b} of {_n} "
+                  f"| weak side: {_kw_} of {_nw} _(precomputed)_"),
             _fig,
-            mo.md("Default: 123 of 130 O-H model evaluations (baseline 82 of 130) at the 0.99 Å model-derived threshold with all three models; "
-                  "the all-covalent signal-cut population is a labelled alternative. "
-                  "Deuteration favours the polymorph with the shorter O-H bonds once H bonds are moderate to strong. "
-                  "The stretch term is about half cancelled by bend/libration "
-                  "(see `docs/findings/F01-xh-length-rule.md`)."),
+            mo.md("The frozen result is the banner above: the 0.99 Å model-derived boundary, chosen after inspecting "
+                  "the data, with the three quantitative models. Deuteration favours the polymorph with the shorter "
+                  "O-H bonds once H bonds are moderate to strong; the stretch term is about half cancelled by "
+                  "bend/libration (see `docs/findings/F01-xh-length-rule.md`)."),
+            f01_posthoc,
         ])
     return (f01_tab,)
 

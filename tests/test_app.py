@@ -60,3 +60,15 @@ def test_data_root_prefers_demo(tmp_path):
     m = _load()
     (tmp_path / "demo_data").mkdir()
     assert m.data_root(tmp_path, Path("/nonexistent")) == tmp_path / "demo_data"
+
+
+def test_f01_banner_frozen_and_posthoc_collapsed():
+    src = APP.read_text(encoding="utf-8")
+    assert "oh_unfiltered_strong" in src and "unique_pair_majority" in src
+    assert "123 of 130" not in src and "mo.ui.dropdown(options=_pops" not in src  # no population toggle
+    assert "Post hoc sensitivity (not the result)" in src
+    head = src.split("Post hoc sensitivity (not the result)")[0]
+    assert "177" not in head  # post hoc figure only inside the expander
+    cv = json.loads((APP.parents[1] / "results" / "F01_cv.json").read_text(encoding="utf-8"))["oh_unfiltered_strong"]
+    pm = cv["unique_pair_majority"]
+    assert (cv["right"], cv["n"], pm["right"], pm["tie"], pm["wrong"]) == (185, 212, 74, 0, 10)
