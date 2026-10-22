@@ -1,0 +1,1 @@
+{"converged": false, "steps": 500, "energy": -229.24810791015625, "volume": 342.6861713577473, "fmax_final": 0.004442095756530762, "status": "ok", "wall_s": 62.20349955558777, "calc": {"name": "mace", "model": "medium-mpa-0", "package": "mace-torch", "version": "0.3.16", "device": "cuda"}, "n_atoms": 34}

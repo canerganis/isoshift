@@ -1,0 +1,1 @@
+{"converged": false, "steps": 500, "energy": -169.5087432861328, "volume": 256.4061122242712, "fmax_final": 0.0037124771624803543, "status": "ok", "wall_s": 97.68182063102722, "calc": {"name": "orb", "model": "orb_v3_conservative_inf_mpa", "package": "orb-models", "version": "0.5.5", "device": "cuda"}, "n_atoms": 28}

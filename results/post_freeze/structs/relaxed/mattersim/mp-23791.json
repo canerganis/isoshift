@@ -1,0 +1,1 @@
+{"converged": false, "steps": 500, "energy": -170.23748779296875, "volume": 273.183928893841, "fmax_final": 0.003058135509490967, "status": "ok", "wall_s": 86.74761962890625, "calc": {"name": "mattersim", "model": "MatterSim-v1.0.0-5M.pth", "package": "mattersim", "version": "1.2.5", "device": "cuda"}, "n_atoms": 28}
