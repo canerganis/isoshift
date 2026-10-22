@@ -440,6 +440,7 @@ def _dec_one(args):
     r = decompose._one(job)
     if r:
         r["T_K"] = t
+        r["cache_dir"] = job[2]
     return r
 
 
@@ -460,9 +461,16 @@ def decompose_all(workers=6):
                 jobs.append((m, f.stem, str(idx[key])))
             else:
                 missing.append(f"{m}/{f.stem}")
-    res = []
+    # incremental: a structure-model-temperature row already decomposed from the same force-constant cache is kept
+    res, done = [], set()
+    if (OUT / "P10_decompose_structures.csv").exists():
+        for r in _read_csv(OUT / "P10_decompose_structures.csv"):
+            if r.get("cache_dir") and any(j[0] == r["model"] and j[1] == r["struct_id"] and j[2] == r["cache_dir"] for j in jobs):
+                res.append(r)
+                done.add((r["model"], r["struct_id"], float(r["T_K"])))
+    todo = [(t, j) for t in (300.0, 600.0) for j in jobs if (j[0], j[1], t) not in done]
     with ProcessPoolExecutor(workers) as ex:
-        for r in ex.map(_dec_one, [(t, j) for t in (300.0, 600.0) for j in jobs], chunksize=1):
+        for r in ex.map(_dec_one, todo, chunksize=1):
             if r:
                 res.append(r)
     _write_csv(OUT / "P10_decompose_structures.csv", res)
