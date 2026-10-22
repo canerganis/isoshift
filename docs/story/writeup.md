@@ -4,6 +4,13 @@ The short-bond rule: in crystals with moderate-to-strong hydrogen bonds, deutera
 
 https://youtu.be/T007LHdLUjk
 
+## What we found at this hackathon
+
+1. The short-bond rule. In crystals with moderate-to-strong hydrogen bonds, deuteration favours the polymorph with the shorter O-H bonds: 185 of 212 model evaluations, against 131 for a constant-sign baseline.
+2. A quantitative correlation behind it. The isotope free-energy difference between two polymorphs changes by 0.11 to 0.13 meV per H for each mÅ change in mean O-H length; the O-H stretch drives it and bending and libration cancel about half.
+3. Where the rule stops. It fails for weak hydrogen bonds (2 of 20), and in one Al(OH)3 structure bend and libration outweigh the stretch.
+4. A testable prediction. Deuteration raises the diaspore to δ-AlOOH transition by +1.13 to +1.33 GPa at 300 K (exploratory sign prediction).
+
 ## Why it matters
 
 Neutron crystallographers deuterate samples to reduce incoherent background and often treat the deuterated phase as a stand-in for the hydrogenous one, yet in δ-AlOOH deuteration moves a measured proton-disorder transition from 9.0 to 13.4 GPa (Sano-Furukawa et al. 2018). Isotope effects on stability can be large, and the short-bond rule says in which polymorph pairs to expect them and in which direction.
