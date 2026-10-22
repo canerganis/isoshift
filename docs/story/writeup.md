@@ -13,7 +13,7 @@ https://youtu.be/X8ckZ7dV40Y
 
 ## Why it matters
 
-Neutron crystallographers deuterate samples to reduce incoherent background and often treat the deuterated phase as a stand-in for the hydrogenous one, yet in δ-AlOOH deuteration moves a measured proton-disorder transition from 9.0 to 13.4 GPa (Sano-Furukawa et al. 2018). Isotope effects on stability can be large, and the short-bond rule says in which polymorph pairs to expect them and in which direction.
+Neutron crystallographers deuterate samples to reduce incoherent background and often treat the deuterated phase as a stand-in for the hydrogenous one, yet in δ-AlOOH deuteration moves a measured proton-disorder transition from 9.0 to 13.4 GPa [1]. Isotope effects on stability can be large, and the short-bond rule says in which polymorph pairs to expect them and in which direction.
 
 The result can be checked now. It gives a number for one transition (+1.13 to +1.33 GPa for AlOOD at 300 K) and names the measurement that would test the rule directly, D/H partitioning between coexisting polymorphs.
 
@@ -35,7 +35,7 @@ Across 220 hydrogen-compound polymorph pairs screened with three universal ML po
 
 *O-H pairs with |Δ mean O-H| ≥ 5 mÅ. Regime by the larger mean model O-H of the pair; the 0.99 Å boundary was chosen after inspecting the data (nested re-choice picks 1.00 Å in 30 of 31 folds). Open markers: evaluations involving Al(OH)3 mp-985293, kept in the counts. Evaluations share structures and models.*
 
-Below the boundary the rule fails (2 of 20 evaluations). In the pairs with mp-985293, bend and libration cancel 95 to 132% of the stretch term instead of about half, which marks where bond length alone stops predicting the sign. The model O-H stretch frequencies follow the measured Libowitzky correlation for O...O distances of 2.50 to 2.80 Å (slope ratios 0.91 to 0.92), which checks the stretch term but not the free energies.
+Below the boundary the rule fails (2 of 20 evaluations). In the pairs with mp-985293, bend and libration cancel 95 to 132% of the stretch term instead of about half, which marks where bond length alone stops predicting the sign. The model O-H stretch frequencies follow the measured Libowitzky correlation [6] for O...O distances of 2.50 to 2.80 Å (slope ratios 0.91 to 0.92), which checks the stretch term but not the free energies.
 
 ## Prediction for diaspore and δ-AlOOH
 
@@ -51,11 +51,11 @@ The 0.99 Å boundary was chosen after inspecting the data; re-choosing it inside
 
 ## Prior work
 
-McKenzie et al. described the competition between stretch and bend zero-point terms in hydrogen bonds, and Du et al. (arXiv:2610.11325) treat single systems with path integrals. Large-scale harmonic isotope thermodynamics exists for metal hydrides (Bourgeois et al. 2018), without polymorph pairs. What is new here is the link from that competition to the relative stability of polymorph pairs: a quantitative slope against bond length, a sign rule, and the conditions under which it fails. A logged literature search found no earlier survey of H/D free-energy differences across polymorph pairs of the same compound.
+McKenzie et al. [2], [3] described the competition between stretch and bend zero-point terms in hydrogen bonds, and Du et al. [4] treat single systems with path integrals. Large-scale harmonic isotope thermodynamics exists for metal hydrides [5], without polymorph pairs. What is new here is the link from that competition to the relative stability of polymorph pairs: a quantitative slope against bond length, a sign rule, and the conditions under which it fails. A logged literature search found no earlier survey of H/D free-energy differences across polymorph pairs of the same compound.
 
 ## How we used Valency Bond and marimo
 
-Valency Bond was our literature search. Agents queried Bond to find the experimental data each blind test needed: H/D cell volumes for the volume test, mineral-water D/H fractionation for the fractionation test and the H2O and D2O ice boundaries for the ice test. Another 20 Bond queries were the prior-art search, which found no earlier survey of H/D free energies across polymorph pairs and surfaced the closest recent work (Du et al. 2026). Every query is logged with its purpose and what was kept (182 rows in `logs/bond_queries.jsonl`). Bond was good at finding sources; the numbers were then checked by a second reader, who rejected any value without a quote, and by the board, which caught a reference value off by a factor of 2. Some cited values were reached through the papers Bond pointed to rather than a logged Bond result, and the [extraction audit](https://github.com/canerganis/isoshift/blob/main/docs/story/agent_extraction_audit.md) lists which.
+Valency Bond was our literature search. Agents queried Bond to find the experimental data each blind test needed: H/D cell volumes for the volume test, mineral-water D/H fractionation for the fractionation test and the H2O and D2O ice boundaries for the ice test. Another 20 Bond queries were the prior-art search, which found no earlier survey of H/D free energies across polymorph pairs and surfaced the closest recent work (Du et al. [4]). Every query is logged with its purpose and what was kept (182 rows in `logs/bond_queries.jsonl`). Bond was good at finding sources; the numbers were then checked by a second reader, who rejected any value without a quote, and by the board, which caught a reference value off by a factor of 2. Some cited values were reached through the papers Bond pointed to rather than a logged Bond result, and the [extraction audit](https://github.com/canerganis/isoshift/blob/main/docs/story/agent_extraction_audit.md) lists which.
 
 marimo is how the results are shown and checked. The app opens on the frozen 185 of 212 result and has five tabs. In "F01 isotope rule" a slider moves the O-H boundary and the counts update, so a reader can see how much the result depends on the 0.99 Å choice; the frozen number stays in the banner. "Check a pair" lets you pick any screened pair and see each model's isotope free energy, the rule's call and the stretch, bend and libration split, with diaspore against δ-AlOOH as the default. "How we know" follows one measured value, brucite, from the Bond queries to the decision that used it. "Benchmark & stretch check" shows the model checks against DFT phonons and measured spectra, and "Legacy explorer" ranks candidate pairs and has a pair viewer with a static energy offset slider, which moves the H and D curves together and leaves the isotope difference unchanged. Everything is precomputed, so `marimo run app/isoshift_app.py` works on a laptop without a GPU.
 
@@ -71,9 +71,14 @@ Evidence index: [docs/INDEX.md](https://github.com/canerganis/isoshift/blob/main
 
 ## References
 
-1. Sano-Furukawa, A., Hattori, T., Komatsu, K. et al. Direct observation of symmetrization of hydrogen bond in δ-AlOOH under mantle conditions using neutron diffraction. Sci. Rep. 8, 15520 (2018). https://doi.org/10.1038/s41598-018-33598-2
-2. McKenzie, R. H., Bekker, C., Athokpam, B. et al. Effect of quantum nuclear motion on hydrogen bonding. J. Chem. Phys. 140, 174508 (2014). https://doi.org/10.1063/1.4873352
-3. McKenzie, R. H., Athokpam, B., Ramesh, S. G. Isotopic fractionation in proteins as a measure of hydrogen bond length. J. Chem. Phys. 143, 044309 (2015). https://doi.org/10.1063/1.4927391
-4. Du et al. Isotope Effects at Classical Cost through Mass-Differentiable Machine Learning. arXiv:2610.11325 (2026). https://arxiv.org/abs/2610.11325
-5. Bourgeois, N., Crivello, J.-C., Cenedese, P. et al. Vibration analysis of hydrogen, deuterium and tritium in metals: consequences on the isotope effect. J. Phys.: Condens. Matter 30, 335402 (2018). https://doi.org/10.1088/1361-648X/aad259
-6. Libowitzky, E. Correlation of O-H stretching frequencies and O-H...O hydrogen bond lengths in minerals. Monatsh. Chem. 130, 1047 (1999). https://doi.org/10.1007/BF03354882
+[1] A. Sano-Furukawa et al., "Direct observation of symmetrization of hydrogen bond in δ-AlOOH under mantle conditions using neutron diffraction," *Sci. Rep.*, vol. 8, no. 1, Art. no. 15520, 2018, doi: [10.1038/s41598-018-33598-2](https://doi.org/10.1038/s41598-018-33598-2).
+
+[2] R. H. McKenzie, C. Bekker, B. Athokpam, and S. G. Ramesh, "Effect of quantum nuclear motion on hydrogen bonding," *J. Chem. Phys.*, vol. 140, no. 17, Art. no. 174508, 2014, doi: [10.1063/1.4873352](https://doi.org/10.1063/1.4873352).
+
+[3] R. H. McKenzie, B. Athokpam, and S. G. Ramesh, "Isotopic fractionation in proteins as a measure of hydrogen bond length," *J. Chem. Phys.*, vol. 143, no. 4, Art. no. 044309, 2015, doi: [10.1063/1.4927391](https://doi.org/10.1063/1.4927391).
+
+[4] M.-Z. Du et al., "Isotope effects at classical cost through mass-differentiable machine learning," 2026, [arXiv:2610.11325](https://arxiv.org/abs/2610.11325).
+
+[5] N. Bourgeois, J.-C. Crivello, P. Cenedese, V. Paul-Boncour, and J.-M. Joubert, "Vibration analysis of hydrogen, deuterium and tritium in metals: Consequences on the isotope effect," *J. Phys.: Condens. Matter*, vol. 30, no. 33, Art. no. 335402, 2018, doi: [10.1088/1361-648X/aad259](https://doi.org/10.1088/1361-648X/aad259).
+
+[6] E. Libowitzky, "Correlation of O-H stretching frequencies and O-H...O hydrogen bond lengths in minerals," *Monatsh. Chem.*, vol. 130, no. 8, pp. 1047-1059, 1999, doi: [10.1007/BF03354882](https://doi.org/10.1007/BF03354882).
