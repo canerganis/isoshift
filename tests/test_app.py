@@ -82,7 +82,7 @@ def _repo_data():
 def test_check_a_pair_default_is_diaspore_delta():
     m, d = _repo_data()
     opts = m.pair_options(d)
-    assert m.DEFAULT_PAIR in opts.values() and any("AlHO2" in k for k in opts)
+    assert m.DEFAULT_PAIR in opts.values() and any("AlHO₂" in k for k in opts)
     rep = m.pair_report(d, m.DEFAULT_PAIR)
     t = rep["models"].set_index("model")
     assert list(t.index) == m.MODELS and rep["formula"] == "AlHO2"
@@ -92,9 +92,9 @@ def test_check_a_pair_default_is_diaspore_delta():
     assert (t.loc[q, "agree"] == "yes").all() and (t.loc[q, "in F01 headline"] == "yes").all()
     assert t.loc["sevenn", "in F01 headline"] == "no: secondary model, sign only"
     assert t.loc["sevenn", "agree"] == "outside headline"
-    assert abs(t.loc["mace", "ddF_iso 300 K (meV/atom)"] - 0.768484) < 1e-5
-    assert abs(t.loc["mace", "ddF_iso 300 K (meV/H)"] - 3.073935) < 1e-5
-    assert abs(t.loc["mace", "d(X-H) b minus a (mA)"] - 32.36) < 0.1
+    assert abs(t.loc["mace", "ΔΔF iso, 300 K (meV/atom)"] - 0.768484) < 1e-5
+    assert abs(t.loc["mace", "ΔΔF iso, 300 K (meV/H)"] - 3.073935) < 1e-5
+    assert abs(t.loc["mace", "Δd(X-H), b − a (mÅ)"] - 32.36) < 0.1
     assert abs(t.loc["mace", "stretch (meV/atom)"] - 2.1048) < 1e-3 and t.loc["mace", "bend/libration (meV/atom)"] < 0
     assert rep["a"]["struct_id"] == "mp-625152" and rep["b"]["struct_id"] == "mp-23807"
     assert rep["a"]["experimental"] == "True" and rep["b"]["experimental"] == "True"

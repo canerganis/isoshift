@@ -6,6 +6,7 @@ app = marimo.App(width="medium", app_title="IsoShift")
 with app.setup:
     import json
     import os
+    import re
     from pathlib import Path
 
     import matplotlib
@@ -183,6 +184,16 @@ with app.setup:
                 out.append((float(temps[i]), "+-" if g[i - 1] > 0 else "-+"))
         return out
 
+    _SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
+    DDF = r"$\Delta\Delta F_{\mathrm{iso}}$"  # KaTeX in mo.md
+
+    BENCH_TITLES = {"dzpe_MAE_meV": r"$\Delta$ZPE MAE (meV)", "dF300_MAE_meV": r"$\Delta F$(300 K) MAE (meV)",
+                    "stretch_MAE_cm1": r"stretch MAE (cm$^{-1}$)"}
+
+    def chem(formula):
+        """Display form of a chemical formula: digits after an element or bracket become subscripts (AlHO2 -> AlHO₂)."""
+        return re.sub(r"(?<=[A-Za-z)\]])\d+", lambda m: m.group(0).translate(_SUB), str(formula))
+
     def pair_label(meta_pairs, meta_structs, pair_id):
         formula, sa, sb = "", "", ""
         if len(meta_pairs):
@@ -199,7 +210,7 @@ with app.setup:
             return "?"
 
         if formula:
-            return f"{formula}  ({spg(sa)} / {spg(sb)})  {pair_id}"
+            return f"{chem(formula)}  ({spg(sa)} / {spg(sb)})  {pair_id}"
         return pair_id
 
     def split_flags(value):
@@ -353,10 +364,10 @@ with app.setup:
             out.append({
                 "model": m, "in F01 headline": inh, "agree": agree, "rule call": rule_txt,
                 "model sign": "" if pd.isna(ddf) else _sgn_txt(msign), "regime": regime,
-                "ddF_iso 300 K (meV/atom)": ddf,
-                "ddF_iso 300 K (meV/H)": float(r["ddF_iso_300K_meV_H"]) if pd.notna(r["ddF_iso_300K_meV_H"]) else np.nan,
-                "d(X-H) b minus a (mA)": dxh * 1000 if pd.notna(dxh) else np.nan,
-                "mean X-H a (A)": xa, "mean X-H b (A)": xb,
+                "ΔΔF iso, 300 K (meV/atom)": ddf,
+                "ΔΔF iso, 300 K (meV/H)": float(r["ddF_iso_300K_meV_H"]) if pd.notna(r["ddF_iso_300K_meV_H"]) else np.nan,
+                "Δd(X-H), b − a (mÅ)": dxh * 1000 if pd.notna(dxh) else np.nan,
+                "mean X-H, a (Å)": xa, "mean X-H, b (Å)": xb,
                 "stretch (meV/atom)": ddf_str, "bend/libration (meV/atom)": ddf_perp,
                 "flags": "; ".join(split_flags(r.get("flags"))) or "none",
             })
@@ -373,7 +384,7 @@ with app.setup:
     BRUCITE_STEPS = [
         "Bond query on deuteration and hydroxide volume returns Horita 2010 and Chakoumakos 2013.",
         "Stage 1 sweep worker reports \"about 0.3%, sign D smaller\" without a quote.",
-        "Stage 2 agent finds the abstract sentence (0.31% larger volume for Mg(OH)2 at room temperature) "
+        "Stage 2 agent finds the abstract sentence (0.31% larger volume for Mg(OH)₂ at room temperature) "
         "and records DOI and quote.",
         "QHA with four models and four imaginary-mode treatments gives the computed volume isotope effect.",
         "Board ruling (01-gate): brucite sign right in 4/4 models under every treatment, tier B passes.",
@@ -421,10 +432,11 @@ def _():
 
 @app.cell
 def _(mo):
-    mo.md("""
+    mo.md(r"""
     # IsoShift
     For hydrogen compounds with two polymorphs, IsoShift computes harmonic free energies with H and with D from the same
-    ML-potential force constants, and reports how deuteration shifts the relative stability, ddF_iso(T) in meV/atom.
+    ML-potential force constants, and reports how deuteration shifts the relative stability,
+    $\Delta\Delta F_{\mathrm{iso}}(T)$ in meV/atom.
     Three models (MACE, ORB, MatterSim) give every number; SevenNet votes on signs only. The F01 headline is per H.
     """)
     return
@@ -470,7 +482,7 @@ def _(data, mo):
                 _ax.scatter(_ee.index, _ee.values, marker="*", s=160, c="k", zorder=5, label="measured")
             _ax.set_title(_c)
             _ax.set_xlabel("T (K)")
-            _ax.set_ylabel("V_H/V_D - 1 (%)")
+            _ax.set_ylabel(r"$V_\mathrm{H}/V_\mathrm{D} - 1$ (%)")
             _ax.grid(alpha=0.3)
         _axes[0][0].legend(fontsize=8)
         _fig.tight_layout()
@@ -486,7 +498,7 @@ def _(data, mo):
     _labels = {pair_label(data["meta_pairs"], data["meta_structs"], i): i for i in _ids}
     pair_dd = mo.ui.dropdown(options=_labels, value=next(iter(_labels), None), label="Pair")
     model_ms = mo.ui.multiselect(options=MODELS, value=MODELS, label="Models")
-    offset = mo.ui.slider(-30, 30, step=0.5, value=0, label="Static dE offset (meV/atom)", show_value=True)
+    offset = mo.ui.slider(-30, 30, step=0.5, value=0, label=r"Static $\Delta E$ offset (meV/atom)", show_value=True)
     pair_controls = mo.vstack([pair_dd, model_ms, offset])
     return model_ms, offset, pair_controls, pair_dd
 
@@ -521,8 +533,8 @@ def _(data, mo, model_ms, offset, pair_dd):
             _dds.append(_dd)
             _a2.plot(TEMPS, _dd, color=_col, label=_r["model"])
             _f = lambda cs: ", ".join(f"{t:.0f} K" for t, _ in cs) or "none"
-            _txt.append(f"**{_r['model']}**: T_c^H = {_f(_ch)}; T_c^D = {_f(_cd)}; "
-                        f"ddF_iso(300 K) = {np.interp(300, TEMPS, _dd):+.3f} meV/atom; "
+            _txt.append(f"**{_r['model']}**: $T_c^\\mathrm{{H}}$ = {_f(_ch)}; $T_c^\\mathrm{{D}}$ = {_f(_cd)}; "
+                        f"{DDF}(300 K) = {np.interp(300, TEMPS, _dd):+.3f} meV/atom; "
                         f"flags: {'; '.join(_fl) or 'none'}")
         if _dds:
             _arr = np.array(_dds)
@@ -530,10 +542,10 @@ def _(data, mo, model_ms, offset, pair_dd):
         _a1.axhline(0, color="k", lw=0.6)
         _a2.axhline(0, color="k", lw=0.6)
         _a1.axvline(600, color="r", lw=0.6, ls=":")
-        _a1.set_ylabel("dG = dE + F(b) - F(a)  (meV/atom)")
-        _a2.set_ylabel("ddF_iso  (meV/atom)")
+        _a1.set_ylabel(r"$\Delta G = \Delta E + F(b) - F(a)$  (meV/atom)")
+        _a2.set_ylabel(r"$\Delta\Delta F_\mathrm{iso}$  (meV/atom)")
         _a2.set_xlabel("T (K)")
-        _a1.set_title(f"{pid}  (dE offset {offset.value:+.1f} meV/atom; solid H, dashed D; dots = T_c)")
+        _a1.set_title(f"{pid}  ($\\Delta E$ offset {offset.value:+.1f} meV/atom; solid H, dashed D; dots = $T_c$)")
         _a1.legend(fontsize=7, ncol=2)
         _a2.legend(fontsize=7, ncol=3)
         for _a in (_a1, _a2):
@@ -547,6 +559,7 @@ def _(data, mo, model_ms, offset, pair_dd):
 @app.cell
 def _(data, mo):
     _t = candidate_table(data["pairs"], data["meta_pairs"], data["meta_structs"])
+    _t["formula"] = _t["formula"].map(chem)
     cand_table = mo.ui.table(_t, selection=None, page_size=15)
     return (cand_table,)
 
@@ -557,7 +570,7 @@ def _(cand_table, data_root_md, mo, pair_controls, pair_out, val_out):
         mo.md("All numbers in these tabs are **precomputed** from cached results."), data_root_md,
         mo.md("## Validation: volume isotope effect"), val_out,
         mo.md("## Pair explorer"), pair_controls, pair_out,
-        mo.md("## Candidates: ranked by median |ddF_iso(300 K)|"), cand_table,
+        mo.md(f"## Candidates: ranked by median |{DDF}(300 K)|"), cand_table,
     ])
     return (legacy_tab,)
 
@@ -568,7 +581,8 @@ def _(data, mo):
     thr = mo.ui.slider(0.97, 1.03, step=0.005, value=0.99, label="Exploratory boundary, larger mean O-H of the pair (Å)", show_value=True)
     f01_models = mo.ui.multiselect(options=MODELS[:3], value=MODELS[:3], label="Models")
     _fl = sorted(f01.formula.unique()) if len(f01) else []
-    hl = mo.ui.dropdown(options=["(none)"] + _fl, value="(none)", label="Highlight formula")
+    hl = mo.ui.dropdown(options={"(none)": "(none)", **{chem(f): f for f in _fl}}, value="(none)",
+                        label="Highlight formula")
     return f01, f01_models, hl, thr
 
 
@@ -605,23 +619,24 @@ def _(f01, f01_banner, f01_models, f01_posthoc, hl, mo, thr):
         _kw = dict(oh_only=True) if _oh else dict(y_min=0.1)
         _k, _n, _b = sign_rule(_d, thr.value, **_kw)
         _kw_, _nw, _bw = sign_rule(_d, thr.value, weak=True, **_kw)
-        _label = ("O-H pairs, |Δ mean O-H| >= 5 mÅ, no cut on ddF" if _oh
-                  else "all covalent X-H, |dX-H| >= 5 mÅ, |ddF| > 0.1 meV/H (signal cut)")
+        _label = ("O-H pairs, |Δ mean O-H| ≥ 5 mÅ, no cut on ΔΔF" if _oh
+                  else "all covalent X-H, |Δd(X-H)| ≥ 5 mÅ, |ΔΔF| > 0.1 meV/H (signal cut)")
         _fig, (_a1, _a2) = plt.subplots(1, 2, figsize=(11, 4.2))
         for _flag, _col, _lab in ((False, "tab:blue", "weak"), (True, "tab:red", "strong")):
             _g = _d[_d.strong == _flag]
             _a1.scatter(_g.x_mA, _g.y_total, s=14, c=_col, alpha=0.6, label=f"{_lab} regime (n={len(_g)})")
-        _a2.scatter(_d.x_mA, _d.y_str, s=12, c="tab:orange", alpha=0.6, label="stretch ddF_str/H")
-        _a2.scatter(_d.x_mA, _d.y_perp, s=12, c="tab:green", alpha=0.6, label="bend/libration ddF_perp/H")
+        _a2.scatter(_d.x_mA, _d.y_str, s=12, c="tab:orange", alpha=0.6, label=r"stretch $\Delta\Delta F_\mathrm{str}$/H")
+        _a2.scatter(_d.x_mA, _d.y_perp, s=12, c="tab:green", alpha=0.6,
+                    label=r"bend/libration $\Delta\Delta F_\perp$/H")
         if hl.value != "(none)":
             _h = _d[_d.formula == hl.value]
-            _a1.scatter(_h.x_mA, _h.y_total, s=90, facecolors="none", edgecolors="k", lw=1.5, label=hl.value)
-            _a2.scatter(_h.x_mA, _h.y_str, s=90, facecolors="none", edgecolors="k", lw=1.5, label=hl.value)
+            _a1.scatter(_h.x_mA, _h.y_total, s=90, facecolors="none", edgecolors="k", lw=1.5, label=chem(hl.value))
+            _a2.scatter(_h.x_mA, _h.y_str, s=90, facecolors="none", edgecolors="k", lw=1.5, label=chem(hl.value))
             _a2.scatter(_h.x_mA, _h.y_perp, s=90, facecolors="none", edgecolors="k", lw=1.5)
-        for _a, _yl in ((_a1, "ddF_total / H  (meV per H)"), (_a2, "contribution per H (meV)")):
+        for _a, _yl in ((_a1, r"$\Delta\Delta F_\mathrm{total}$ per H (meV)"), (_a2, "contribution per H (meV)")):
             _a.axhline(0, color="k", lw=0.6)
             _a.axvline(0, color="k", lw=0.6)
-            _a.set_xlabel("d(X-H) mean, b minus a (mÅ)")
+            _a.set_xlabel(r"$\Delta d$(X-H) mean, b − a (mÅ)")
             _a.set_ylabel(_yl)
             _a.grid(alpha=0.3)
             _a.legend(fontsize=8)
@@ -657,7 +672,7 @@ def _(data, mo):
             _ax.bar(range(len(_b)), _b[_c])
             _ax.set_xticks(range(len(_b)))
             _ax.set_xticklabels(_lab, rotation=60, ha="right", fontsize=7)
-            _ax.set_title(_c + " (precomputed)")
+            _ax.set_title(BENCH_TITLES.get(_c, _c) + " (precomputed)")
             _ax.grid(alpha=0.3, axis="y")
         _fig.tight_layout()
         _bench = mo.vstack([mo.md("### Benchmark summary (precomputed)"), mo.ui.table(_b, selection=None), _fig])
@@ -665,7 +680,7 @@ def _(data, mo):
     _rows = []
     for _m, _v in (_st.get("windowed", {}).get("main_2.50-2.80", {}) or {}).items():
         if isinstance(_v, dict):
-            _rows.append({"model": _m, "n_donors": _v.get("n_donors"), "f_OLS (2.50-2.80 A)": _v.get("f_OLS"),
+            _rows.append({"model": _m, "n_donors": _v.get("n_donors"), "f_OLS (2.50 to 2.80 Å)": _v.get("f_OLS"),
                           "f_TheilSen": _v.get("f_TheilSen"), "f_OLS_boot95": str(_v.get("f_OLS_boot95"))})
     if not _rows:
         for _m, _v in _st.items():
@@ -709,23 +724,24 @@ def _(check_dd, data, mo):
         _n_yes = int((_agree.agree == "yes").sum())
         _summary = (f"Rule vs models: {_n_yes} of {len(_agree)} rows inside the F01 headline agree with the sign of the "
                     f"O-H change (rule: deuteration favours the polymorph with the shorter O-H bonds; it is claimed "
-                    f"only for O-H pairs in the strong regime, either member with mean O-H >= {STRONG_XH_A:.2f} A, "
-                    f"|d(O-H)| >= 5 mÅ, clean rows, three models). Rows marked \"outside headline\" (weak regime, "
+                    f"only for O-H pairs in the strong regime, either member with mean O-H ≥ {STRONG_XH_A:.2f} Å, "
+                    f"|Δd(O-H)| ≥ 5 mÅ, clean rows, three models). Rows marked \"outside headline\" (weak regime, "
                     f"not O-H, below 5 mÅ, flagged, or SevenNet, which is a secondary sign-only vote) are neither "
                     f"support nor counterexamples. Blank cells are missing values.")
         _items = [
-            mo.md(f"**{_rep['formula'] or _rep['pair_id']}**, pair `{_rep['pair_id']}` _(precomputed)_. "
-                  f"Sign convention: ddF_iso = [F_D(b) - F_H(b)] - [F_D(a) - F_H(a)], so a positive value means "
-                  f"deuteration disfavours b; d(X-H) is b minus a, so the rule calls + when b has the longer bond."),
+            mo.md(f"**{chem(_rep['formula']) or _rep['pair_id']}**, pair `{_rep['pair_id']}` _(precomputed)_. "
+                  r"Sign convention: $\Delta\Delta F_{\mathrm{iso}} = [F_\mathrm{D}(b) - F_\mathrm{H}(b)]"
+                  r" - [F_\mathrm{D}(a) - F_\mathrm{H}(a)]$, so a positive value means deuteration disfavours b; "
+                  r"$\Delta d$(X-H) is b minus a, so the rule calls + when b has the longer bond."),
             mo.ui.table(_t, selection=None, page_size=10),
-            mo.md(_summary + " The stretch and bend/libration columns are the split of ddF_total (meV/atom, "
+            mo.md(_summary + r" The stretch and bend/libration columns are the split of $\Delta\Delta F_\mathrm{total}$ (meV/atom, "
                   "`results/decompose_pairs.csv`)."),
             mo.md("### Experimental provenance (`data/isoshift/experimental.csv`)\n\n"
                   f"- a: {_prov(_rep['a'])}\n- b: {_prov(_rep['b'])}"),
         ]
         if _rep["pair_id"] == DEFAULT_PAIR:
             _items.append(mo.callout(mo.md(
-                f"Default pair: diaspore (mp-625152) vs delta-AlOOH (mp-23807). Candidate card with the pressure "
+                f"Default pair: diaspore (mp-625152) vs δ-AlOOH (mp-23807). Candidate card with the pressure "
                 f"shift of the boundary: [docs/findings/CARD-AlOOH.md]({CARD_URL}). Exploratory, outside the "
                 f"harmonic domain."), kind="info"))
         _body = mo.vstack(_items)
@@ -762,11 +778,11 @@ def _(data, mo):
                   else "_Decision lines not found (`docs/decisions/01-gate.md`)._")
     _steps = [
         ("1", BRUCITE_STEPS[0], mo.vstack([
-            mo.md(f"Matching rows of `logs/bond_queries.jsonl` (text contains brucite or Mg(OH)2), "
+            mo.md(f"Matching rows of `logs/bond_queries.jsonl` (text contains brucite or Mg(OH)₂), "
                   f"{len(_tr['agent_rows'])} agent queries; the log line number is the query id."),
             _tbl(_tr["agent_rows"], "_No matching agent rows._")])),
         ("2", BRUCITE_STEPS[1], mo.vstack([
-            mo.md(f"{len(_tr['sweep_rows'])} sweep queries (stage 1 workers) mention brucite or Mg(OH)2. "
+            mo.md(f"{len(_tr['sweep_rows'])} sweep queries (stage 1 workers) mention brucite or Mg(OH)₂. "
                   "This stage gave the sign but no quote and no paired lattice table."),
             _tbl(_tr["sweep_rows"], "_No matching sweep rows._")])),
         ("3", BRUCITE_STEPS[2], _lit_md),
@@ -779,7 +795,7 @@ def _(data, mo):
         f"**{AUDIT['ok_single_pass']} returned \"ok\" on a single pass**, but only **{AUDIT['survived']} survived** as "
         f"quantitative validation targets (brucite and LiH) after the second reader and the board.")
     how_tab = mo.vstack([
-        mo.md("One claim traced from the first literature query to the gate decision (brucite, V_H/V_D - 1 = +0.31%). "
+        mo.md(r"One claim traced from the first literature query to the gate decision (brucite, $V_\mathrm{H}/V_\mathrm{D} - 1$ = +0.31%). "
               "All evidence below is read from files in the repo _(precomputed)_."),
         _counts,
         *[mo.vstack([mo.md(f"### Step {n}. {t}"), e]) for n, t, e in _steps],
