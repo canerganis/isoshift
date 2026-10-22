@@ -10,6 +10,64 @@ Can records the pieces below; Claude assembles the video with ffmpeg (slides hel
 
 Put everything in one folder and send Claude the path.
 
+## Pronunciation
+
+Turkish-letter reading, stressed syllable in capitals. American English; "aluminium" and "favours" are British spellings in the script, read as written below.
+
+| Word | Read as | Segment |
+|---|---|---|
+| deuterium | dyu-Tİİ-ri-ım | 01 |
+| deuteration | dyu-tı-REY-şın | 04, 07 |
+| hydrogen-bonded | HAY-drı-cın BAN-dıd | 01 |
+| polymorph, polymorphs | PA-li-morf, PA-li-morfs | 01, 02, 03 |
+| potential, potentials | pı-TEN-şıl, pı-TEN-şılz | 01, 02, 13 |
+| machine-learned | mı-ŞİİN lörnd | 01 |
+| phonon | FOU-nan | 02 |
+| SevenNet | SE-vın-net | 02 |
+| isotope | AY-sı-toup | 02, 03, 08 |
+| angstrom | ENG-strım | 03, 06 |
+| thousandth | TAU-zıntθ (th dili dişe değerek) | 03 |
+| libration | lay-BREY-şın | 03, 04 |
+| evaluations | i-vel-yu-EY-şınz | 04 |
+| aluminium | el-yu-Mİ-ni-ım | 04 |
+| hydroxide | hay-DRAK-sayd | 04 |
+| favours | FEY-vırz | 04 |
+| bias | BAY-ıs | 06 |
+| frequencies | FRİİ-kwın-siz | 06 |
+| spectra | SPEK-trı | 06 |
+| diaspore | DAY-ı-spor | 07 |
+| delta-AlOOH | DEL-tı ey-el-ou-ou-EYÇ | 07 |
+| deep-Earth | diip-ÖRθ | 07 |
+| gigapascal | Gİ-gı-pas-kal | 07 |
+| kelvin | KEL-vin | 07 |
+| harmonic | har-MA-nik | 07, 13 |
+| D/H fractionation | dii-EYÇ frek-şı-NEY-şın | 08 |
+| partitioning | par-Tİ-şı-nıng | 08 |
+| coexisting | kou-ig-Zİ-sting | 08 |
+| Valency | VEY-lın-si | 10 |
+| councils | KAUN-sılz | 11 |
+| dissent | di-SENT | 11 |
+| marimo | mı-Rİİ-mou | 12 |
+| tunnelling | TA-nı-ling | 13 |
+| validations | ve-li-DEY-şınz | 13 |
+| O-H | ou-EYÇ | 01, 03, 04, 06 |
+| meV | em-ii-Vİİ | 03 |
+
+Numbers:
+
+| Written | Read as |
+|---|---|
+| 185 of 212 | a hundred and eighty-five of two hundred and twelve |
+| 131 | a hundred and thirty-one |
+| 220 | two hundred and twenty |
+| 0.11 to 0.13 | zero point one one to zero point one three |
+| 74, 10 | seventy-four, ten |
+| 2 of 20 | two of twenty |
+| 2.5 and 2.8 | two point five and two point eight |
+| 300 kelvin | three hundred kelvin |
+| 9 to 13 | nine to thirteen |
+| 1.13 and 1.33 | one point one three and one point three three |
+
 ## Segments
 
 | # | On screen | Read |
