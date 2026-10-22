@@ -267,6 +267,40 @@ with app.setup:
                 out["evidence"] = str(r.iloc[0]["evidence"])
         return out
 
+    QUANT_MODELS = ("mace", "orb", "mattersim")  # F01 headline models; SevenNet is a secondary, sign-only vote
+
+    def _oh_structs(data):
+        sc = data.get("stretch_check")
+        return set(sc["struct_id"].astype(str)) if sc is not None and len(sc) and "struct_id" in sc else set()
+
+    def headline_status(data, pid, model, oh=None):
+        """'yes' when (pid, model) is one of the F01 headline evaluations counted by rule_cv (oh_unfiltered_strong:
+        three quantitative models, clean covalent row, O-H pair, larger mean X-H >= 0.99 A, |d(X-H)| >= 5 mA),
+        otherwise 'no: <reason>'."""
+        if model not in QUANT_MODELS:
+            return "no: secondary model, sign only"
+        dp, ds = data["dec_pairs"], data["dec_structs"]
+        d = dp[(dp.pair_id == pid) & (dp.model == model)] if len(dp) else dp
+        if not len(d):
+            return "no: not decomposed"
+        d = d.iloc[0]
+        if str(d["covalent_XH"]).lower() != "true":
+            return "no: not covalent X-H"
+        if str(d["clean"]).lower() != "true":
+            return "no: flagged (not clean)"
+        a, b = pid.split("__")[:2]
+        oh = _oh_structs(data) if oh is None else oh
+        if a not in oh and b not in oh:
+            return "no: not O-H"
+        q = ds[(ds.model == model) & ds.struct_id.isin([a, b])] if len(ds) else ds
+        rmax = pd.to_numeric(q["XH_mean_A"], errors="coerce").max() if len(q) else np.nan
+        if pd.isna(rmax) or rmax < STRONG_XH_A:
+            return "no: weak regime"
+        x = pd.to_numeric(pd.Series([d.get("dXH_mean_A")]), errors="coerce").iloc[0]
+        if pd.isna(x) or abs(x) * 1000 < 5.0:
+            return "no: below 5 mÅ"
+        return "yes"
+
     def pair_report(data, pid):
         """Everything the 'Check a pair' tab shows for one pair (all precomputed; None if the pair is not in the refined CSV)."""
         rf = data["refined"]
@@ -274,6 +308,7 @@ with app.setup:
         if not len(rows):
             return None
         dp, ds = data["dec_pairs"], data["dec_structs"]
+        oh = _oh_structs(data)
         out = []
         for m in MODELS:
             r = rows[rows.model == m]
@@ -305,10 +340,14 @@ with app.setup:
             else:
                 regime = "strong" if max(cov) >= STRONG_XH_A else "weak"
             rule = _sgn(dxh) if (pd.notna(dxh) and abs(dxh) >= MIN_DXH_A) else 0
+            rule_txt = "" if pd.isna(dxh) else (_sgn_txt(rule) if rule else "none (< 5 mÅ)")
             ddf = float(r["ddF_iso_300K_meV_atom"]) if pd.notna(r["ddF_iso_300K_meV_atom"]) else np.nan
             msign = _sgn(ddf)
-            if not rule or not msign:
-                agree = "n/a"
+            inh = headline_status(data, pid, m, oh)
+            if inh != "yes":
+                agree = "outside headline"
+            elif not rule or not msign:
+                agree = ""
             else:
                 agree = "yes" if rule == msign else "no"
             out.append({
@@ -316,7 +355,8 @@ with app.setup:
                 "ddF_iso 300 K (meV/H)": float(r["ddF_iso_300K_meV_H"]) if pd.notna(r["ddF_iso_300K_meV_H"]) else np.nan,
                 "mean X-H a (A)": xa, "mean X-H b (A)": xb,
                 "d(X-H) b minus a (mA)": dxh * 1000 if pd.notna(dxh) else np.nan,
-                "regime": regime, "rule call": _sgn_txt(rule), "model sign": _sgn_txt(msign), "agree": agree,
+                "regime": regime, "in F01 headline": inh, "rule call": rule_txt,
+                "model sign": "" if pd.isna(ddf) else _sgn_txt(msign), "agree": agree,
                 "stretch (meV/atom)": ddf_str, "bend/libration (meV/atom)": ddf_perp,
                 "flags": "; ".join(split_flags(r.get("flags"))) or "none",
             })
@@ -392,7 +432,7 @@ def _(mo):
 
 @app.cell
 def _(bench_tab, check_tab, f01_tab, how_tab, legacy_tab, mo):
-    mo.ui.tabs({"F01 isotope rule": f01_tab, "Benchmark & atlas": bench_tab,
+    mo.ui.tabs({"F01 isotope rule": f01_tab, "Benchmark & stretch check": bench_tab,
                 "Check a pair": check_tab, "How we know": how_tab, "Legacy explorer": legacy_tab})
     return
 
@@ -659,15 +699,20 @@ def _(check_dd, data, mo):
         _body = mo.md("_No pair data found (`results/screen_pairs_refined.csv`)._")
     else:
         _t = _rep["models"].copy()
-        _num = [c for c in _t.columns if c not in ("model", "regime", "rule call", "model sign", "agree", "flags")]
-        _t[_num] = _t[_num].astype(float).round(3)
+        _num = [c for c in _t.columns if c not in ("model", "regime", "in F01 headline", "rule call", "model sign",
+                                                   "agree", "flags")]
+        for _c in _num:  # missing values are shown blank, never as 0
+            _t[_c] = [("" if pd.isna(_x) else round(float(_x), 3)) for _x in _t[_c]]
         _prov = lambda s: (f"`{s['struct_id']}` (space group {s['spg']}, {s['source']}): experimental = "
                            f"**{s['experimental']}**, evidence: {s['evidence'] or 'not listed'}")
-        _agree = _t[_t.agree != "n/a"]
+        _agree = _t[_t.agree.isin(["yes", "no"])]
         _n_yes = int((_agree.agree == "yes").sum())
-        _summary = (f"Rule vs models: {_n_yes} of {len(_agree)} models with a defined sign agree with the sign of the "
+        _summary = (f"Rule vs models: {_n_yes} of {len(_agree)} rows inside the F01 headline agree with the sign of the "
                     f"O-H change (rule: deuteration favours the polymorph with the shorter O-H bonds; it is claimed "
-                    f"only in the strong regime, either member with mean O-H >= {STRONG_XH_A:.2f} A).")
+                    f"only for O-H pairs in the strong regime, either member with mean O-H >= {STRONG_XH_A:.2f} A, "
+                    f"|d(O-H)| >= 5 mÅ, clean rows, three models). Rows marked \"outside headline\" (weak regime, "
+                    f"not O-H, below 5 mÅ, flagged, or SevenNet, which is a secondary sign-only vote) are neither "
+                    f"support nor counterexamples. Blank cells are missing values.")
         _items = [
             mo.md(f"**{_rep['formula'] or _rep['pair_id']}**, pair `{_rep['pair_id']}` _(precomputed)_. "
                   f"Sign convention: ddF_iso = [F_D(b) - F_H(b)] - [F_D(a) - F_H(a)], so a positive value means "

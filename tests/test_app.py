@@ -87,7 +87,11 @@ def test_check_a_pair_default_is_diaspore_delta():
     t = rep["models"].set_index("model")
     assert list(t.index) == m.MODELS and rep["formula"] == "AlHO2"
     assert (t["regime"] == "strong").all()  # both members have mean O-H above 0.99 A
-    assert (t["rule call"] == "+").all() and (t["model sign"] == "+").all() and (t["agree"] == "yes").all()
+    assert (t["rule call"] == "+").all() and (t["model sign"] == "+").all()
+    q = list(m.QUANT_MODELS)
+    assert (t.loc[q, "agree"] == "yes").all() and (t.loc[q, "in F01 headline"] == "yes").all()
+    assert t.loc["sevenn", "in F01 headline"] == "no: secondary model, sign only"
+    assert t.loc["sevenn", "agree"] == "outside headline"
     assert abs(t.loc["mace", "ddF_iso 300 K (meV/atom)"] - 0.768484) < 1e-5
     assert abs(t.loc["mace", "ddF_iso 300 K (meV/H)"] - 3.073935) < 1e-5
     assert abs(t.loc["mace", "d(X-H) b minus a (mA)"] - 32.36) < 0.1
@@ -105,10 +109,48 @@ def test_check_a_pair_synthetic_regime_and_missing(tmp_path):
                  ).to_csv(tmp_path / "results" / "screen_pairs_refined.csv", index=False)
     pd.DataFrame([dict(model="mace", struct_id=s, XH_mean_A=x, covalent_XH=True) for s, x in (("A", 0.97), ("B", 0.985))]
                  ).to_csv(tmp_path / "results" / "decompose_structures.csv", index=False)
+    pd.DataFrame([dict(pair_id="A__B", model="mace", covalent_XH=True, ddF_str=1.0, ddF_perp=-2.0, ddF_total=-1.0,
+                       dXH_mean_A=0.015, H_per_atom=0.5, clean=True)]
+                 ).to_csv(tmp_path / "results" / "decompose_pairs.csv", index=False)
+    pd.DataFrame([dict(source="mace", struct_id="A", d_OH_A=0.97)]).to_csv(tmp_path / "results" / "stretch_check.csv", index=False)
     d = m.load_data(tmp_path)
     r = m.pair_report(d, "A__B")["models"].iloc[0]
-    assert r["regime"] == "weak" and r["rule call"] == "+" and r["model sign"] == "-" and r["agree"] == "no"
+    # a weak-regime O-H pair: the rule and model signs are shown, but the row is outside the F01 headline
+    assert r["regime"] == "weak" and r["rule call"] == "+" and r["model sign"] == "-"
+    assert r["in F01 headline"] == "no: weak regime" and r["agree"] == "outside headline"
     assert m.pair_report(d, "nope") is None
+
+
+def test_check_a_pair_missing_values_blank(tmp_path):
+    m = _load()
+    _build(tmp_path)
+    pd.DataFrame([dict(pair_id="A__B", model="mace", struct_a="A", struct_b="B", flags="",
+                       ddF_iso_300K_meV_atom=np.nan, ddF_iso_300K_meV_H=np.nan)]
+                 ).to_csv(tmp_path / "results" / "screen_pairs_refined.csv", index=False)
+    r = m.pair_report(m.load_data(tmp_path), "A__B")["models"].iloc[0]
+    assert r["rule call"] == "" and r["model sign"] == "" and r["agree"] == "outside headline"
+    assert r["in F01 headline"] == "no: not decomposed"
+
+
+def test_check_a_pair_headline_column_matches_rule_cv():
+    """'in F01 headline' says yes on exactly the 212 (pair, model) rows rule_cv counts, and agree on those rows
+    reproduces rule_cv's 185 right."""
+    from src.isoshift_event import rule_cv
+    m, d = _repo_data()
+    c = rule_cv.load()
+    h = c[(c.x.abs() >= rule_cv.MIN_DXH) & c.OH & (c.rmax >= rule_cv.MAIN_THR)]
+    want = dict(zip(zip(h.pair_id, h.model), h.right))
+    got = {}
+    for pid in d["refined"].pair_id.unique():
+        t = m.pair_report(d, pid)["models"]
+        for _, r in t.iterrows():
+            if r["in F01 headline"] == "yes":
+                got[(pid, r["model"])] = r["agree"]
+            else:
+                assert r["agree"] == "outside headline"
+    assert len(want) == 212 and set(got) == set(want)
+    assert all(got[k] == ("yes" if want[k] else "no") for k in want)
+    assert sum(v == "yes" for v in got.values()) == 185
 
 
 def test_how_we_know_brucite_trace():

@@ -31,7 +31,7 @@ Target length 3:40. Hard limit 4:00 (YouTube upload, judging cut-off). Narration
 3. Click "How we know" (7 s). Scroll slowly through the brucite Bond provenance trace, from the first query to the gate decision.
 4. Cut to scene 9.
 
-Do not open "Benchmark & atlas" and do not open the "Post hoc sensitivity" expander on camera.
+Do not open "Benchmark & stretch check" and do not open the "Post hoc sensitivity" expander on camera.
 
 ## Numbers to say as written
 
