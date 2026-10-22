@@ -2,6 +2,12 @@
 
 IsoShift computes harmonic H and D phonon free energies of crystal polymorphs with three universal ML potentials and finds that deuteration favours the polymorph with the shorter O-H bonds in 185 of 212 evaluations with moderate-to-strong hydrogen bonds (constant-sign baseline 131), fails with weak ones (2 of 20) and has one Al(OH)3 counterexample by pair majority; no measurement has tested this rule directly. Two would: D/H partitioning between coexisting polymorphs ([M02](docs/math/M02-bigeleisen-bridge.md)), and matched reversed-bracket AlOOH/AlOOD runs on the diaspore to δ-AlOOH transition, where the models predict a pressure about 1 GPa higher for AlOOD (exploratory sign prediction).
 
+> **Check it in 60 seconds.**
+> Headline numbers, CPU only, a few seconds: `.venv/Scripts/python.exe -m src.isoshift_event.rule_cv` (Windows) or `.venv/bin/python -m src.isoshift_event.rule_cv` (Linux, macOS). The `oh_unfiltered_strong` line prints right 185, n 212, baseline 131 and pair majorities 74 right, 0 ties, 10 wrong. Setup: [How to run](#how-to-run).
+> App, no GPU: `marimo run app/isoshift_app.py` (inside the venv); the frozen banner and the tabs are at the top.
+> Evidence index: [docs/INDEX.md](docs/INDEX.md). Judge FAQ: [docs/FAQ.md](docs/FAQ.md).
+> Video: link added at upload.
+
 **Main finding (F01).** Across 220 hydrogen-compound polymorph pairs screened with three universal ML potentials, the harmonic H/D free-energy difference at 300 K changes by 0.11 to 0.13 meV per H for each mÅ difference in mean X-H length, a stretch term about half cancelled by bend and libration. When at least one polymorph has a mean model O-H length of 0.99 Å or more (a model-derived boundary for moderate to strong hydrogen bonds, chosen after inspecting the data), deuteration favours the polymorph with the shorter O-H bonds in 185 of 212 O-H model evaluations with |Δ mean O-H| ≥ 5 mÅ (84 pairs, 28 formulas), against 131 of 212 for a constant-sign baseline fitted on leave-one-formula-out training folds. By model majority 74 pairs are right and 10 are wrong, and all 10 wrong pairs contain one Al(OH)3 structure, mp-985293.
 
 ![Headline figure](figures/fig_headline.png)
@@ -124,7 +130,7 @@ Everything in this section was computed after the compute freeze, each with its 
 * **Goethite to ε-FeOOH (card, exploratory prediction).** Deuteration raises the transition pressure by +0.2 to +0.5 GPa in the models; q-mesh sensitivity is as large as the signal, so only the sign is claimed. Test: matched reversed-bracket runs on FeOOH and FeOOD.
 * **Angle-refined rule (F08, failed prediction).** Adding the O-H...O angle did not fix the mp-985293 pairs: it failed its predeclared SevenNet test and does not beat F01 on the three models. Test: a held-out set that contains high-compensation pairs.
 * **Isotope atlas (F10, exploratory map, untested).** A structure-only map of 1796 Materials Project O-H polymorph pairs gives the predicted deuteration preference from database geometry in 53 s on one CPU core. Its blind literature test found no scorable measurement (0 of 26 rows; most are order-disorder or tunnelling transitions, which the rule excludes). Test: any measured D/H fractionation or isotope-shifted boundary between two ordered polymorphs in the map.
-* **Prospective held-out test (P10, F11).** Predictions for experimental pairs never computed before (111 primary rows, 42 pairs, 20 formulas) were committed after relax-only geometry and before any phonon job (eb61ccf). Prospective test running; result in [docs/INDEX.md](docs/INDEX.md).
+* **Prospective held-out test (P10, F11).** Predictions for experimental pairs never computed before (111 primary rows, 42 pairs, 20 formulas) were committed after relax-only geometry and before any phonon job (eb61ccf). F11 prospective test: FAIL against its predeclared bar; see [docs/findings/F11-prospective-test.md](docs/findings/F11-prospective-test.md).
 
 ## Prior work
 

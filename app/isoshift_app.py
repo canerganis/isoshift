@@ -391,6 +391,13 @@ def _(mo):
 
 
 @app.cell
+def _(bench_tab, check_tab, f01_tab, how_tab, legacy_tab, mo):
+    mo.ui.tabs({"F01 isotope rule": f01_tab, "Benchmark & atlas": bench_tab,
+                "Check a pair": check_tab, "How we know": how_tab, "Legacy explorer": legacy_tab})
+    return
+
+
+@app.cell
 def _():
     data = load_data(data_root())
     return (data,)
@@ -398,14 +405,8 @@ def _():
 
 @app.cell
 def _(data, mo):
-    mo.md(f"Data root: `{data['root']}`  |  pair rows: {len(data['pairs'])}  |  structure rows: {len(data['structs'])}")
-    return
-
-
-@app.cell
-def _(mo):
-    mo.md("## Validation: volume isotope effect")
-    return
+    data_root_md = mo.md(f"Data root: `{data['root']}`  |  pair rows: {len(data['pairs'])}  |  structure rows: {len(data['structs'])}")
+    return (data_root_md,)
 
 
 @app.cell
@@ -434,14 +435,8 @@ def _(data, mo):
         _axes[0][0].legend(fontsize=8)
         _fig.tight_layout()
         _out = _fig
-    _out
-    return
-
-
-@app.cell
-def _(mo):
-    mo.md("## Pair explorer")
-    return
+    val_out = _out
+    return (val_out,)
 
 
 @app.cell
@@ -452,8 +447,8 @@ def _(data, mo):
     pair_dd = mo.ui.dropdown(options=_labels, value=next(iter(_labels), None), label="Pair")
     model_ms = mo.ui.multiselect(options=MODELS, value=MODELS, label="Models")
     offset = mo.ui.slider(-30, 30, step=0.5, value=0, label="Static dE offset (meV/atom)", show_value=True)
-    mo.vstack([pair_dd, model_ms, offset])
-    return model_ms, offset, pair_dd
+    pair_controls = mo.vstack([pair_dd, model_ms, offset])
+    return model_ms, offset, pair_controls, pair_dd
 
 
 @app.cell
@@ -505,27 +500,26 @@ def _(data, mo, model_ms, offset, pair_dd):
             _a.grid(alpha=0.3)
         _fig.tight_layout()
         _out = mo.vstack([_fig, mo.md("\n\n".join(_txt))])
-    _out
-    return
-
-
-@app.cell
-def _(mo):
-    mo.md("## Candidates: ranked by median |ddF_iso(300 K)|")
-    return
+    pair_out = _out
+    return (pair_out,)
 
 
 @app.cell
 def _(data, mo):
     _t = candidate_table(data["pairs"], data["meta_pairs"], data["meta_structs"])
-    mo.ui.table(_t, selection=None, page_size=15)
-    return
+    cand_table = mo.ui.table(_t, selection=None, page_size=15)
+    return (cand_table,)
 
 
 @app.cell
-def _(mo):
-    mo.md("## Extra views (all numbers here are **precomputed** from cached results)")
-    return
+def _(cand_table, data_root_md, mo, pair_controls, pair_out, val_out):
+    legacy_tab = mo.vstack([
+        mo.md("All numbers in these tabs are **precomputed** from cached results."), data_root_md,
+        mo.md("## Validation: volume isotope effect"), val_out,
+        mo.md("## Pair explorer"), pair_controls, pair_out,
+        mo.md("## Candidates: ranked by median |ddF_iso(300 K)|"), cand_table,
+    ])
+    return (legacy_tab,)
 
 
 @app.cell
@@ -748,13 +742,6 @@ def _(data, mo):
               "second reader and the board made the table usable."),
     ])
     return (how_tab,)
-
-
-@app.cell
-def _(bench_tab, check_tab, f01_tab, how_tab, mo):
-    mo.ui.tabs({"F01 isotope rule": f01_tab, "Benchmark & atlas": bench_tab,
-                "Check a pair": check_tab, "How we know": how_tab})
-    return
 
 
 if __name__ == "__main__":
