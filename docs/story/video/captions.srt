@@ -127,7 +127,7 @@ is at high temperature.
 
 27
 00:02:05,185 --> 00:02:10,984
-Our 300 kelvin models put it at 9 to 14
+Our 300 kelvin models put it at about 9 to 13
 gigapascal, and both say deuteration
 
 28
