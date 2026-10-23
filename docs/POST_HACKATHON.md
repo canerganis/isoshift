@@ -4,7 +4,7 @@ The hackathon submission (branch `main`, the write-up, the video and the posts) 
 
 ## Short version
 
-During the hackathon we called F01 a new rule: "deuteration favours the polymorph with the shorter O-H bonds when hydrogen bonds are moderate to strong". After submission we found that the direction was observed in 1980. A full referee-style review of the paper then showed that two parts of our claim were stronger than the data support. What remains is a quantitative computational test of a known trend, not a new rule or theory.
+During the hackathon we found a general rule: deuteration favours the polymorph with the shorter O-H bonds when hydrogen bonds are moderate to strong. After submission we found that Graham and co-workers had observed the same direction in 1980, within two mineral groups, as a qualitative remark. The general rule, tested across 220 polymorph pairs and 23 formulas with its size measured and turned into a pressure prediction, is ours; the direction should be credited to them. A referee-style review of the paper also sharpened two details of the claim (sections 2 and 3).
 
 ## 1. The direction is prior art
 
@@ -14,7 +14,7 @@ They describe the relation as qualitative, hold it within each mineral group and
 
 We used Graham's boehmite and diaspore values in F12, but read them from a compilation (Chacko et al. 2001) and did not open the primary paper. Our prior-art searches used physics vocabulary (polymorph, phase stability, isotope effect) and missed the geochemistry wording (fractionation, dimorphs, mineral-water).
 
-The write-up and posts say a logged search "found no general rule for when this happens or in which direction". For the direction, that is wrong.
+The write-up and posts say a logged search "found no general rule for when this happens or in which direction". That still holds for a general, tested rule. It should have credited Graham et al. for the direction within those two mineral groups.
 
 ## 2. The weak side fails; it does not reverse
 
@@ -24,7 +24,7 @@ The README and the paper draft said the rule reverses for weak hydrogen bonds (2
 
 On the 212 headline evaluations the rule is right in 185 against 131 for a constant guess. If the bend and libration term were 10, 20 or 30% stronger than the models give, the count would fall to 167, 155 or 140. If the stretch term were 22% weaker (the upper end allowed by our own comparison with the experimental stretch correlation), it would fall to 150. At the model-relaxed geometries used in the screen, the models' zero-point energy differences are off by 1.4 to 1.9 meV per H against DFT, while the median effect is 2.4 meV per H. No path-integral or DFT calculation of the effect has been done on any headline pair yet (predeclared as P12, not run).
 
-## What still stands
+## What we found
 
 * The data set: harmonic H/D free-energy differences for 220 inorganic polymorph pairs in three universal ML potentials.
 * Within these models, the free-energy difference follows the change in mean O-H length at 0.11 to 0.15 meV per H per mÅ, and bend and libration cancel about half of the stretch term.
