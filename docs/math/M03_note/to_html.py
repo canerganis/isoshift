@@ -11,6 +11,8 @@ for a, b in [(r"\begin{abstract}", "<h3>Abstract</h3><p>"), (r"\end{abstract}", 
 body = re.sub(r"\\section\*?\{([^}]*)\}", r"</p><h3>\1</h3><p>", body)
 body = re.sub(r"\\href\{([^}]*)\}\{([^}]*)\}", r'<a href="\1">\2</a>', body)
 body = re.sub(r"\\url\{([^}]*)\}", r'<a href="\1">\1</a>', body)
+body = re.sub(r"\\emph\{([^}]*)\}", r"<i>\1</i>", body)
+body = body.replace("``", "&ldquo;").replace("''", "&rdquo;")
 body = re.sub(r"\\texttt\{([^}]*)\}", lambda m: "<code>" + m.group(1).replace("\\_", "_") + "</code>", body)
 body = body.replace("\n\n", "</p><p>")
 head = """<!doctype html><html><head><meta charset="utf-8"><title>M03 short-bond slope</title>

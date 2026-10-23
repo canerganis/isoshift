@@ -29,7 +29,7 @@ For polymorphs $a$ and $b$ of the same compound,
 per H atom. In the harmonic approximation force constants do not depend on mass, so the static energy difference between the polymorphs cancels. The screen finds $\Delta\Delta F_{\mathrm{iso}}$ approximately linear in $\Delta d = d_b - d_a$, the difference in mean O-H length.
 
 \section{One harmonic mode}
-For a mode of frequency $\omega_{\mathrm H}$, $F(\omega,T) = k_BT \ln[2\sinh(\hbar\omega/2k_BT)]$, including the zero-point energy. The isotope ratio is $\rho = \omega_{\mathrm H}/\omega_{\mathrm D} = \sqrt{\mu_{\mathrm D}/\mu_{\mathrm H}}$ with $\mu = m_{\mathrm O} m_X/(m_{\mathrm O} + m_X)$. With $^{16}$O, H and D masses, $\mu_{\mathrm H} = 0.948087$ u, $\mu_{\mathrm D} = 1.788824$ u, $\rho = 1.373607$ and $1/\rho = 0.728010$; using $1/\sqrt2$ instead overstates every shift by 7.7\%. Then
+This is the standard harmonic treatment of isotope effects [1, 2]. For a mode of frequency $\omega_{\mathrm H}$, $F(\omega,T) = k_BT \ln[2\sinh(\hbar\omega/2k_BT)]$, including the zero-point energy. The isotope ratio is $\rho = \omega_{\mathrm H}/\omega_{\mathrm D} = \sqrt{\mu_{\mathrm D}/\mu_{\mathrm H}}$ with $\mu = m_{\mathrm O} m_X/(m_{\mathrm O} + m_X)$. With $^{16}$O, H and D masses, $\mu_{\mathrm H} = 0.948087$ u, $\mu_{\mathrm D} = 1.788824$ u, $\rho = 1.373607$ and $1/\rho = 0.728010$; using $1/\sqrt2$ instead overstates every shift by 7.7\%. Then
 \begin{equation}
 F_{\mathrm D} - F_{\mathrm H} = k_BT \ln\frac{\sinh(x/2\rho)}{\sinh(x/2)}, \qquad x = \frac{\hbar\omega_{\mathrm H}}{k_BT}.
 \end{equation}
@@ -44,10 +44,10 @@ in meV per H per m\AA, independent of $\nu$ between 3000 and 3600 cm$^{-1}$ to b
 
 Sign: a longer O-H bond (stronger hydrogen bond) softens the stretch, so $F_{\mathrm D} - F_{\mathrm H}$ is less negative and $\Delta\Delta F_{\mathrm{iso}} > 0$ for $d_b > d_a$. From the stretch alone, deuteration favours the polymorph with the shorter O-H bond, the direction of the short-bond rule.
 
-Empirical input. From the screen's phonons (\texttt{results/stretch\_check.csv}, rows with stretch weight above 0.5, mean O-H 0.96 to 1.05 \AA), the stretch frequencies fall by $s = 19.0$ (MACE), 19.3 (ORB) and 19.5 (MatterSim) cm$^{-1}$ per m\AA, $r = -0.99$ to $-1.00$. With these, $S_{\mathrm{str}} = 0.32$ to $0.33$ meV per H per m\AA, against a mode-resolved stretch slope of 0.25 to 0.31 in the screen: 4 to 34\% high. Two likely reasons, not tested here: the screen's regressor is the mean O-H length of all H in the cell while $s$ is fitted per donor, and the stretch is not a pure mode. Because $s$ comes from the same phonons, the agreement is partly circular. An experimental $\mathrm d\nu/\mathrm d r_{\mathrm{OH}}$ was not checked against a primary source and is not used.
+Empirical input. From the screen's phonons (\texttt{results/stretch\_check.csv}, rows with stretch weight above 0.5, mean O-H 0.96 to 1.05 \AA), the stretch frequencies fall by $s = 19.0$ (MACE), 19.3 (ORB) and 19.5 (MatterSim) cm$^{-1}$ per m\AA, $r = -0.99$ to $-1.00$. With these, $S_{\mathrm{str}} = 0.32$ to $0.33$ meV per H per m\AA, against a mode-resolved stretch slope of 0.25 to 0.31 in the screen: 4 to 34\% high. Two likely reasons, not tested here: the screen's regressor is the mean O-H length of all H in the cell while $s$ is fitted per donor, and the stretch is not a pure mode. Because $s$ comes from the same phonons, the agreement is partly circular. Measured stretch frequencies in minerals fall with decreasing O$\cdots$O distance, i.e. with increasing O-H length [6], and the screen's frequencies follow that correlation for O$\cdots$O between 2.50 and 2.80 \AA; an experimental $\mathrm d\nu/\mathrm d r_{\mathrm{OH}}$ was not checked against a primary source and is not used.
 
 \section{Bends and librations}
-Each H has two bending modes, and in hydroxides and hydrates librations play the same role. They harden as the hydrogen bond strengthens; with $s_b = +\mathrm d\nu_b/\mathrm d r_{\mathrm{OH}} > 0$ and $n_b = 2$,
+Each H has two bending modes, and in hydroxides and hydrates librations play the same role. They harden as the hydrogen bond strengthens, the competition between stretch and bend zero-point terms described for hydrogen bonds by McKenzie et al. [3, 4] and, as competing quantum effects, by Li, Walker and Michaelides [5]; with $s_b = +\mathrm d\nu_b/\mathrm d r_{\mathrm{OH}} > 0$ and $n_b = 2$,
 \begin{equation}
 S_{\mathrm{bend}} = -n_b\,s_b\,\frac{hc}{2}\left[\coth\frac{x_b}{2} - \frac{1}{\rho_b}\coth\frac{x_b}{2\rho_b}\right], \qquad f = -\frac{S_{\mathrm{bend}}}{S_{\mathrm{str}}}.
 \end{equation}
@@ -57,7 +57,7 @@ At 0 K with $\rho_b \approx \rho$, $f = n_b s_b/s$, so the observed $f \approx 0
 Relative to 0 K, the weight of a mode in the slope is 1.000 (300 K) and 0.988 (600 K) for the stretch, 0.983 and 0.813 for a 1600 cm$^{-1}$ bend, 0.941 and 0.687 for a 1200 cm$^{-1}$ bend and 0.858 and 0.556 for a 900 cm$^{-1}$ libration. With $s = 18$, $s_b = 4.5$ and $\nu_b = 1400$ cm$^{-1}$, $f$ falls from 0.50 (0 K) to 0.48 (300 K) and 0.38 (600 K) and the net slope rises from 0.15 to 0.16 and 0.19 meV per H per m\AA. At high temperature the sign is set by one monotone quantity, the H force-constant trace; at 0 K bend and libration cancel half of the stretch and small errors can flip signs. This agrees in direction with the screen, where the sign rule is right in 153, 185 and 210 of 212 evaluations at 0, 300 and 600 K. The size of the 0 to 300 K change needs librations and lattice modes below about 900 cm$^{-1}$ and rows near zero; that part is a plausibility argument, not a derivation of the counts.
 
 \section{What this changes}
-The direction of the short-bond rule and the size of its stretch slope follow from harmonic physics plus one empirical relation, $\mathrm d\nu/\mathrm d r_{\mathrm{OH}}$; the high-temperature direction is the force-constant argument of Bigeleisen, Mayer and Urey. The screen adds the outcome of the stretch against bend and libration competition at room temperature across real polymorph pairs, its net slope, where it fails (weak hydrogen bonds, and one Al(OH)$_3$ structure where bend and libration cancel 95 to 132\% of the stretch) and a prediction for the diaspore to $\delta$-AlOOH transition. The rule is therefore best described as a physically expected effect, quantified and bounded for polymorph stability.
+The direction of the short-bond rule and the size of its stretch slope follow from harmonic physics plus one empirical relation, $\mathrm d\nu/\mathrm d r_{\mathrm{OH}}$; the high-temperature direction is the force-constant argument of Urey and of Bigeleisen and Mayer [1, 2]. McKenzie et al. [4] used the same stretch and bend frequencies, expressed against hydrogen-bond length, to relate isotope fractionation to hydrogen-bond length in proteins; this note applies that physics to the free-energy slope of polymorph pairs. The screen adds the outcome of the stretch against bend and libration competition at room temperature across real polymorph pairs, its net slope, where it fails (weak hydrogen bonds, and one Al(OH)$_3$ structure where bend and libration cancel 95 to 132\% of the stretch) and a prediction for the diaspore to $\delta$-AlOOH transition. The rule is therefore best described as a physically expected effect, quantified and bounded for polymorph stability.
 
 \section{Assumptions}
 Harmonic modes; an isolated O-H stretch with the reduced mass of O and H (the crystal environment changes $\rho$ by less than 0.1\%, while anharmonicity lowers the measured O-H/O-D ratio to about 1.33 to 1.36 and is outside this note); linear dependence of frequencies on O-H length over the range used; bends treated as two modes of one frequency.
@@ -67,5 +67,18 @@ The derivation was produced twice, independently, by GPT-6 Astra (via Codex) and
 
 \section*{Related record}
 IsoShift v1.0.0 (OSI Hackathon 2026 entry): code, data and the screen behind the numbers quoted here, \href{https://doi.org/10.5281/zenodo.23578412}{doi:10.5281/zenodo.23578412}; repository \url{https://github.com/canerganis/isoshift}.
+
+\section*{References}
+[1] H. C. Urey, ``The thermodynamic properties of isotopic substances,'' \emph{J. Chem. Soc.}, p. 562, 1947, doi: \href{https://doi.org/10.1039/jr9470000562}{10.1039/jr9470000562}.
+
+[2] J. Bigeleisen and M. G. Mayer, ``Calculation of equilibrium constants for isotopic exchange reactions,'' \emph{J. Chem. Phys.}, vol. 15, pp. 261-267, 1947, doi: \href{https://doi.org/10.1063/1.1746492}{10.1063/1.1746492}.
+
+[3] R. H. McKenzie, C. Bekker, B. Athokpam, and S. G. Ramesh, ``Effect of quantum nuclear motion on hydrogen bonding,'' \emph{J. Chem. Phys.}, vol. 140, Art. no. 174508, 2014, doi: \href{https://doi.org/10.1063/1.4873352}{10.1063/1.4873352}.
+
+[4] R. H. McKenzie, B. Athokpam, and S. G. Ramesh, ``Isotopic fractionation in proteins as a measure of hydrogen bond length,'' \emph{J. Chem. Phys.}, vol. 143, Art. no. 044309, 2015, doi: \href{https://doi.org/10.1063/1.4927391}{10.1063/1.4927391}.
+
+[5] X.-Z. Li, B. Walker, and A. Michaelides, ``Quantum nature of the hydrogen bond,'' \emph{Proc. Natl. Acad. Sci. USA}, vol. 108, pp. 6369-6373, 2011, doi: \href{https://doi.org/10.1073/pnas.1016653108}{10.1073/pnas.1016653108}.
+
+[6] E. Libowitzky, ``Correlation of O-H stretching frequencies and O-H$\cdots$O hydrogen bond lengths in minerals,'' \emph{Monatsh. Chem.}, vol. 130, pp. 1047-1059, 1999, doi: \href{https://doi.org/10.1007/BF03354882}{10.1007/BF03354882}.
 
 \end{document}
