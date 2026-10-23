@@ -22,7 +22,7 @@ latexmk -pdf main.tex
 
 MiKTeX with on-the-fly install set to "ask" hangs in a non-interactive shell when a package is missing (latexmk itself hangs without the `latexmk` package). For this build the following MiKTeX packages were installed with `miktex packages install <name>`: revtex, textcase, natbib, booktabs, kvsetkeys, kvdefinekeys, pdfescape, ltxcmds, infwarerr, hycolor, refcount, gettitlestring, kvoptions, stringenc, intcalc, bitset, bigintcalc, rerunfilecheck, uniquecounter, latexmk. A useful check for missing files: `pdflatex --disable-installer -interaction=nonstopmode main.tex`.
 
-Build status on 23 Oct 2026 (after referee round 1): clean, 15 pages, no undefined references, no overfull boxes, one harmless nameref warning.
+Build status on 23 Oct 2026 (after referee round 1 and the Badger 1934 citation): 15 pages, no undefined references, no overfull boxes, one harmless nameref warning and one "A float is stuck" warning (already present before the Badger edit; check that every figure and table appears where expected, or try the `floatfix` class option).
 
 ## TODO before submission
 
