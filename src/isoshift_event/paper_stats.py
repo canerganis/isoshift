@@ -395,9 +395,59 @@ def main():
     out["analytic"] = {"S_str": [_r(x, 3) for x in S], "ratio_min": _r(min(S) / max(fitted)), "ratio_max": _r(max(S) / min(fitted)),
                        "one_over_sqrt2_overstatement_0K": _r((1 - 2 ** -0.5) / (1 - 1 / rho))}
 
+    out["round2"] = round2(c, H, W)
+
     (ROOT / "results" / "paper_stats.json").write_text(json.dumps(out, indent=1))
     figure(out, H)
     print(json.dumps({k: out[k] for k in ("headline_check", "unit")}, indent=1)[:3000])
+
+
+def round2(c: pd.DataFrame, H: pd.DataFrame, W: pd.DataFrame) -> dict:
+    """Numbers added in referee round 2 (decision 16). Post-freeze and descriptive; no frozen number changes."""
+    r: dict = {"note": "Decision 16 additions; post-freeze, descriptive sensitivities, not error estimates."}
+    miss = W[~W.right]
+    lo = W[W.rmax < 0.98]
+    r["weak_side_pattern"] = {"n": int(len(W)), "right": int(W.right.sum()), "y_pos": int((W.y > 0).sum()),
+                              "x_neg": int((W.x < 0).sum()), "misses": int(len(miss)),
+                              "misses_rmax_0.98_0.99": int(((miss.rmax >= 0.98) & (miss.rmax < 0.99)).sum()),
+                              "below_0.98": [int(lo.right.sum()), int(len(lo))]}
+
+    def count(yk):
+        return int((np.sign(yk) == np.sign(H.x)).sum())
+
+    r["perp_scaling_k"] = {str(k): count((H.ddF_str + k * H.ddF_perp) / H.H_per_atom)
+                           for k in (0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.5)}
+    r["stretch_division_f"] = {str(f): count((H.ddF_str / f + H.ddF_perp) / H.H_per_atom)
+                               for f in (1.1, 1.22, 1.3, 1.5, 1.8, 2.0)}
+    per = {}
+    for m, q in c.groupby("model"):
+        ks = _ols(q.x, q.ddF_str / q.H_per_atom)
+        kp = _ols(q.x, q.ddF_perp / q.H_per_atom)
+        k, b = np.polyfit(q.x, q.y, 1)
+        per[m] = {"C_slope": _r(-kp / ks), "one_over_C": _r(-ks / kp, 2), "intercept_meV_per_H": _r(b),
+                  "through_origin_slope": _r((q.x * q.y).sum() / (q.x ** 2).sum())}
+    r["all_rows_slope_ratio_intercepts"] = per
+    # 300 K at the refinement mesh (about 60/a, even, 4 to 16): screen_pairs_refined.csv
+    ref =pd.read_csv(ROOT / "results" / "screen_pairs_refined.csv").set_index(["pair_id", "model"])
+    y60 = np.array([ref.loc[(p, m), "ddF_iso_300K_refined_meV_atom"] for p, m in zip(H.pair_id, H.model)]) / H.H_per_atom.values
+    r["mesh_60a_300K"] = {"right": count(y60), "n": int(len(H)),
+                          "sign_flips_vs_headline": int((np.sign(y60) != np.sign(H.y.values)).sum()),
+                          "max_abs_change_meV_per_H": _r(np.nanmax(np.abs(y60 - H.y.values)))}
+    yd = H.ddF_direct / H.H_per_atom
+    r["direct_route_300K"] = {"right": count(yd), "n": int(len(H))}
+    others = H[~H.pair_id.str.contains("mp-985293")]
+    r["median_C_other_headline_rows"] = {"n": int(len(others)),
+                                         "median": _r((-others.ddF_perp / others.ddF_str).median())}
+    nmod = H.groupby("pair_id").model.transform("size")
+    r["single_model_headline_rows"] = int((nmod < 2).sum())
+    bm = pd.read_csv(ROOT / "results" / "benchmark" / "summary.csv")
+    r["benchmark"] = {f"{row.model}/{row.setting}": {"dzpe_MAE": _r(row.dzpe_MAE_meV, 2), "dF300_MAE": _r(row.dF300_MAE_meV, 2),
+                                                     "stretch_MAE": _r(row.stretch_MAE_cm1, 1),
+                                                     "stretch_bias": _r(row.stretch_bias_cm1, 1),
+                                                     "n": int(row.n), "n_imag_dft": int(row.n_imag_dft)}
+                      for row in bm.itertuples()}
+    r["soft_mode_flag_headline_rows"] = int(H.pflags.str.contains("soft_mode_bracketed").sum())
+    return r
 
 
 def figure(out, H):
