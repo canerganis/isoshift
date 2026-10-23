@@ -1,0 +1,1117 @@
+{
+ "note": "Revision statistics (referee round 1). Descriptive unless labelled; frozen numbers unchanged.",
+ "seed": 0,
+ "n_boot": 2000,
+ "headline_check": {
+  "right": 185,
+  "n": 212,
+  "baseline_right": 131,
+  "pairs": {
+   "n": 84,
+   "right": 74,
+   "tie": 0,
+   "wrong": 10
+  },
+  "formulas": {
+   "n": 28,
+   "right": 27,
+   "tie": 0,
+   "wrong": 1,
+   "wrong_formulas": [
+    "Al(HO)3"
+   ]
+  }
+ },
+ "unit": {
+  "unique_structures": 89,
+  "n_pairs": 84,
+  "n_formulas": 28,
+  "rows_per_formula_top5": {
+   "AlHO2": 39,
+   "FeHO2": 31,
+   "Al(HO)3": 28,
+   "MnHO2": 16,
+   "CrHO2": 15
+  },
+  "top5_rows": 129,
+  "formula_equal_weight_acc": 0.922,
+  "formula_equal_weight_baseline_acc": 0.489,
+  "pair_equal_weight_acc": 0.885,
+  "acc_pooled": 0.873,
+  "acc_pooled_formula_boot_ci95": [
+   0.684,
+   0.978
+  ],
+  "acc_formula_equal_weight_boot_ci95": [
+   0.854,
+   0.976
+  ],
+  "acc_minus_fixed_baseline_boot_ci95": [
+   0.04,
+   0.443
+  ],
+  "note": "Formula-clustered bootstrap: formulas resampled with replacement; the baseline correctness per row is held at its leave-one-formula-out value, not refitted inside each resample."
+ },
+ "slopes_all_rows": {
+  "mace": {
+   "n": 188,
+   "ols": 0.112,
+   "ols_formula_boot_ci95": [
+    0.068,
+    0.154
+   ],
+   "theil_sen": 0.061,
+   "n_formulas": 55,
+   "ols_OH_pairs_only": 0.124,
+   "n_OH_rows": 173,
+   "n_nonOH_rows": 15,
+   "loo_formula_min": [
+    "CrHO2",
+    0.096
+   ],
+   "loo_formula_max": [
+    "NaHF2",
+    0.124
+   ],
+   "rows_of_largest_formula": [
+    "Al(HO)3",
+    43
+   ],
+   "max_abs_x_mA": 103.0
+  },
+  "orb": {
+   "n": 163,
+   "ols": 0.117,
+   "ols_formula_boot_ci95": [
+    0.083,
+    0.165
+   ],
+   "theil_sen": 0.111,
+   "n_formulas": 45,
+   "ols_OH_pairs_only": 0.135,
+   "n_OH_rows": 156,
+   "n_nonOH_rows": 7,
+   "loo_formula_min": [
+    "CrHO2",
+    0.111
+   ],
+   "loo_formula_max": [
+    "NaHF2",
+    0.135
+   ],
+   "rows_of_largest_formula": [
+    "Al(HO)3",
+    37
+   ],
+   "max_abs_x_mA": 84.7
+  },
+  "mattersim": {
+   "n": 170,
+   "ols": 0.128,
+   "ols_formula_boot_ci95": [
+    0.09,
+    0.169
+   ],
+   "theil_sen": 0.109,
+   "n_formulas": 51,
+   "ols_OH_pairs_only": 0.145,
+   "n_OH_rows": 151,
+   "n_nonOH_rows": 19,
+   "loo_formula_min": [
+    "FeHO2",
+    0.121
+   ],
+   "loo_formula_max": [
+    "NaHF2",
+    0.145
+   ],
+   "rows_of_largest_formula": [
+    "Al(HO)3",
+    37
+   ],
+   "max_abs_x_mA": 101.1
+  }
+ },
+ "structure_level_fixed_effects": {
+  "definition": "per-structure F_D - F_H per H (direct, 300 K) on mean X-H (mA), within-formula (demeaned) OLS, structures in the 521 clean covalent rows",
+  "mace": {
+   "n_structures": 167,
+   "n_formulas": 55,
+   "slope": 0.12,
+   "formula_boot_ci95": [
+    0.072,
+    0.16
+   ]
+  },
+  "orb": {
+   "n_structures": 140,
+   "n_formulas": 45,
+   "slope": 0.116,
+   "formula_boot_ci95": [
+    0.087,
+    0.153
+   ]
+  },
+  "mattersim": {
+   "n_structures": 157,
+   "n_formulas": 51,
+   "slope": 0.126,
+   "formula_boot_ci95": [
+    0.091,
+    0.163
+   ]
+  }
+ },
+ "null_pair_orientation": {
+  "definition": "predicted sign of each pair (shared by its models) flipped at random; orientation invariant",
+  "draws": 200000,
+  "mean": 106.0,
+  "sd": 10.7,
+  "q99_9": 139,
+  "max": 154,
+  "observed": 185,
+  "p_upper": 4.9999750001249995e-06,
+  "hist": {
+   "61": 1,
+   "62": 1,
+   "63": 2,
+   "65": 4,
+   "66": 5,
+   "67": 13,
+   "68": 10,
+   "69": 20,
+   "70": 18,
+   "71": 27,
+   "72": 47,
+   "73": 62,
+   "74": 75,
+   "75": 113,
+   "76": 155,
+   "77": 180,
+   "78": 220,
+   "79": 283,
+   "80": 398,
+   "81": 442,
+   "82": 591,
+   "83": 824,
+   "84": 864,
+   "85": 1084,
+   "86": 1286,
+   "87": 1549,
+   "88": 1767,
+   "89": 2112,
+   "90": 2460,
+   "91": 2779,
+   "92": 3158,
+   "93": 3646,
+   "94": 3978,
+   "95": 4376,
+   "96": 4851,
+   "97": 5127,
+   "98": 5654,
+   "99": 6098,
+   "100": 6321,
+   "101": 6671,
+   "102": 6849,
+   "103": 7270,
+   "104": 7183,
+   "105": 7529,
+   "106": 7534,
+   "107": 7399,
+   "108": 7349,
+   "109": 7095,
+   "110": 6965,
+   "111": 6687,
+   "112": 6395,
+   "113": 5933,
+   "114": 5705,
+   "115": 5283,
+   "116": 4865,
+   "117": 4367,
+   "118": 4016,
+   "119": 3539,
+   "120": 3191,
+   "121": 2792,
+   "122": 2449,
+   "123": 2171,
+   "124": 1796,
+   "125": 1508,
+   "126": 1246,
+   "127": 1123,
+   "128": 942,
+   "129": 752,
+   "130": 590,
+   "131": 506,
+   "132": 394,
+   "133": 299,
+   "134": 244,
+   "135": 211,
+   "136": 138,
+   "137": 106,
+   "138": 88,
+   "139": 68,
+   "140": 49,
+   "141": 34,
+   "142": 23,
+   "143": 19,
+   "144": 9,
+   "145": 4,
+   "146": 5,
+   "147": 2,
+   "148": 3,
+   "149": 1,
+   "151": 1,
+   "154": 1
+  }
+ },
+ "competitors_headline_rows": {
+  "constant_plus_db_energy": {
+   "meaning": "deuteration destabilises the polymorph with the higher database energy (b)",
+   "fixed": [
+    131,
+    212
+   ],
+   "lofo": [
+    131,
+    212
+   ]
+  },
+  "mlip_static_energy": {
+   "meaning": "deuteration destabilises the polymorph with the higher MLIP static energy",
+   "fixed": [
+    137,
+    212
+   ],
+   "lofo": [
+    137,
+    212
+   ]
+  },
+  "denser_destabilised": {
+   "meaning": "deuteration destabilises the denser polymorph (MLIP volumes)",
+   "fixed": [
+    104,
+    212
+   ],
+   "lofo": [
+    72,
+    212
+   ]
+  },
+  "OO_longer_favoured": {
+   "meaning": "deuteration favours the polymorph with the longer mean donor O...O (same rows)",
+   "fixed": [
+    183,
+    211
+   ],
+   "lofo": [
+    183,
+    211
+   ],
+   "n_rows_with_OO": 211,
+   "r_x_vs_dOO": -0.799
+  },
+  "OH_shorter_favoured": {
+   "meaning": "the short-bond rule",
+   "fixed": [
+    185,
+    212
+   ],
+   "lofo": [
+    185,
+    212
+   ]
+  },
+  "same_rows_OH_vs_OO": {
+   "OH_right": 184,
+   "OO_right": 183,
+   "n": 211,
+   "pair_majority_OO": {
+    "n": 84,
+    "right": 73,
+    "tie": 1,
+    "wrong": 10
+   }
+  }
+ },
+ "accuracy_vs_abs_ddF_meV_per_H": {
+  "bins": {
+   "0-0.5": {
+    "right": 23,
+    "n": 33
+   },
+   "0.5-1": {
+    "right": 11,
+    "n": 20
+   },
+   "1-2": {
+    "right": 36,
+    "n": 42
+   },
+   "2-5": {
+    "right": 52,
+    "n": 54
+   },
+   "5-inf": {
+    "right": 63,
+    "n": 63
+   }
+  },
+  "ge1": [
+   151,
+   159
+  ],
+  "lt1": [
+   34,
+   53
+  ]
+ },
+ "model_spread": {
+  "pairs_with_2plus_models": 74,
+  "pairs_models_disagree_in_sign": 19,
+  "median_spread_meV_per_H": 1.361,
+  "median_abs_ddF_meV_per_H": 2.367,
+  "accuracy_vs_abs_ddF_over_spread": {
+   "0-0.5": {
+    "right": 25,
+    "n": 39
+   },
+   "0.5-1": {
+    "right": 28,
+    "n": 39
+   },
+   "1-2": {
+    "right": 42,
+    "n": 43
+   },
+   "2-inf": {
+    "right": 81,
+    "n": 81
+   }
+  }
+ },
+ "flags_headline_rows": {
+  "classical_limit_violation": {
+   "flagged": [
+    17,
+    42
+   ],
+   "unflagged": [
+    168,
+    170
+   ],
+   "unflagged_0K": [
+    153,
+    170
+   ]
+  },
+  "relax_not_converged": {
+   "flagged": [
+    99,
+    119
+   ],
+   "unflagged": [
+    86,
+    93
+   ]
+  },
+  "soft_mode_bracketed": {
+   "flagged": [
+    136,
+    161
+   ],
+   "unflagged": [
+    49,
+    51
+   ]
+  },
+  "theoretical": {
+   "flagged": [
+    90,
+    106
+   ],
+   "unflagged": [
+    95,
+    106
+   ]
+  }
+ },
+ "accuracy_coverage_rmax": {
+  "population": "O-H rows, |x| >= 5 mA, three models (232 rows)",
+  "curve": [
+   {
+    "t": 0.95,
+    "strong_right": 187,
+    "strong_n": 232,
+    "weak_right": 0,
+    "weak_n": 0
+   },
+   {
+    "t": 0.9525,
+    "strong_right": 187,
+    "strong_n": 232,
+    "weak_right": 0,
+    "weak_n": 0
+   },
+   {
+    "t": 0.955,
+    "strong_right": 187,
+    "strong_n": 232,
+    "weak_right": 0,
+    "weak_n": 0
+   },
+   {
+    "t": 0.9575,
+    "strong_right": 187,
+    "strong_n": 232,
+    "weak_right": 0,
+    "weak_n": 0
+   },
+   {
+    "t": 0.96,
+    "strong_right": 187,
+    "strong_n": 232,
+    "weak_right": 0,
+    "weak_n": 0
+   },
+   {
+    "t": 0.9625,
+    "strong_right": 187,
+    "strong_n": 232,
+    "weak_right": 0,
+    "weak_n": 0
+   },
+   {
+    "t": 0.965,
+    "strong_right": 187,
+    "strong_n": 232,
+    "weak_right": 0,
+    "weak_n": 0
+   },
+   {
+    "t": 0.9675,
+    "strong_right": 187,
+    "strong_n": 232,
+    "weak_right": 0,
+    "weak_n": 0
+   },
+   {
+    "t": 0.97,
+    "strong_right": 187,
+    "strong_n": 232,
+    "weak_right": 0,
+    "weak_n": 0
+   },
+   {
+    "t": 0.9725,
+    "strong_right": 187,
+    "strong_n": 232,
+    "weak_right": 0,
+    "weak_n": 0
+   },
+   {
+    "t": 0.975,
+    "strong_right": 187,
+    "strong_n": 232,
+    "weak_right": 0,
+    "weak_n": 0
+   },
+   {
+    "t": 0.9775,
+    "strong_right": 187,
+    "strong_n": 232,
+    "weak_right": 0,
+    "weak_n": 0
+   },
+   {
+    "t": 0.98,
+    "strong_right": 185,
+    "strong_n": 229,
+    "weak_right": 2,
+    "weak_n": 3
+   },
+   {
+    "t": 0.9825,
+    "strong_right": 185,
+    "strong_n": 229,
+    "weak_right": 2,
+    "weak_n": 3
+   },
+   {
+    "t": 0.985,
+    "strong_right": 185,
+    "strong_n": 220,
+    "weak_right": 2,
+    "weak_n": 12
+   },
+   {
+    "t": 0.9875,
+    "strong_right": 185,
+    "strong_n": 213,
+    "weak_right": 2,
+    "weak_n": 19
+   },
+   {
+    "t": 0.99,
+    "strong_right": 185,
+    "strong_n": 212,
+    "weak_right": 2,
+    "weak_n": 20
+   },
+   {
+    "t": 0.9925,
+    "strong_right": 183,
+    "strong_n": 210,
+    "weak_right": 4,
+    "weak_n": 22
+   },
+   {
+    "t": 0.995,
+    "strong_right": 183,
+    "strong_n": 210,
+    "weak_right": 4,
+    "weak_n": 22
+   },
+   {
+    "t": 0.9975,
+    "strong_right": 183,
+    "strong_n": 191,
+    "weak_right": 4,
+    "weak_n": 41
+   },
+   {
+    "t": 1.0,
+    "strong_right": 175,
+    "strong_n": 182,
+    "weak_right": 12,
+    "weak_n": 50
+   },
+   {
+    "t": 1.0025,
+    "strong_right": 170,
+    "strong_n": 177,
+    "weak_right": 17,
+    "weak_n": 55
+   },
+   {
+    "t": 1.005,
+    "strong_right": 158,
+    "strong_n": 165,
+    "weak_right": 29,
+    "weak_n": 67
+   },
+   {
+    "t": 1.0075,
+    "strong_right": 152,
+    "strong_n": 158,
+    "weak_right": 35,
+    "weak_n": 74
+   },
+   {
+    "t": 1.01,
+    "strong_right": 148,
+    "strong_n": 152,
+    "weak_right": 39,
+    "weak_n": 80
+   },
+   {
+    "t": 1.0125,
+    "strong_right": 140,
+    "strong_n": 142,
+    "weak_right": 47,
+    "weak_n": 90
+   },
+   {
+    "t": 1.015,
+    "strong_right": 135,
+    "strong_n": 137,
+    "weak_right": 52,
+    "weak_n": 95
+   },
+   {
+    "t": 1.0175,
+    "strong_right": 123,
+    "strong_n": 125,
+    "weak_right": 64,
+    "weak_n": 107
+   },
+   {
+    "t": 1.02,
+    "strong_right": 114,
+    "strong_n": 114,
+    "weak_right": 73,
+    "weak_n": 118
+   },
+   {
+    "t": 1.0225,
+    "strong_right": 112,
+    "strong_n": 112,
+    "weak_right": 75,
+    "weak_n": 120
+   },
+   {
+    "t": 1.025,
+    "strong_right": 111,
+    "strong_n": 111,
+    "weak_right": 76,
+    "weak_n": 121
+   },
+   {
+    "t": 1.0275,
+    "strong_right": 109,
+    "strong_n": 109,
+    "weak_right": 78,
+    "weak_n": 123
+   },
+   {
+    "t": 1.03,
+    "strong_right": 105,
+    "strong_n": 105,
+    "weak_right": 82,
+    "weak_n": 127
+   },
+   {
+    "t": 1.0325,
+    "strong_right": 100,
+    "strong_n": 100,
+    "weak_right": 87,
+    "weak_n": 132
+   },
+   {
+    "t": 1.035,
+    "strong_right": 97,
+    "strong_n": 97,
+    "weak_right": 90,
+    "weak_n": 135
+   },
+   {
+    "t": 1.0375,
+    "strong_right": 95,
+    "strong_n": 95,
+    "weak_right": 92,
+    "weak_n": 137
+   },
+   {
+    "t": 1.04,
+    "strong_right": 84,
+    "strong_n": 84,
+    "weak_right": 103,
+    "weak_n": 148
+   }
+  ]
+ },
+ "physically_cleaner_subset": {
+  "converged": {
+   "right": 86,
+   "n": 93,
+   "pairs": {
+    "n": 52,
+    "right": 45,
+    "tie": 7,
+    "wrong": 0
+   },
+   "formulas": 12,
+   "lofo_baseline_right": 66,
+   "mp985293_rows": 2
+  },
+  "no_imag_H_mesh": {
+   "right": 49,
+   "n": 51,
+   "pairs": {
+    "n": 34,
+    "right": 32,
+    "tie": 1,
+    "wrong": 1
+   },
+   "formulas": 14,
+   "lofo_baseline_right": 35,
+   "mp985293_rows": 1
+  },
+  "converged_and_no_imag": {
+   "right": 35,
+   "n": 36,
+   "pairs": {
+    "n": 28,
+    "right": 27,
+    "tie": 0,
+    "wrong": 1
+   },
+   "formulas": 9,
+   "lofo_baseline_right": 28,
+   "mp985293_rows": 0
+  },
+  "converged_and_imag_frac_le_1e-3": {
+   "right": 67,
+   "n": 73,
+   "pairs": {
+    "n": 45,
+    "right": 39,
+    "tie": 5,
+    "wrong": 1
+   },
+   "formulas": 11,
+   "lofo_baseline_right": 53,
+   "mp985293_rows": 0
+  },
+  "slopes_all_rows_converged_and_no_imag": {
+   "mace": {
+    "n": 30,
+    "ols": 0.206
+   },
+   "mattersim": {
+    "n": 24,
+    "ols": 0.146
+   }
+  },
+  "source": "results/screen_structures.csv: relax_converged, imag_fraction_H (share of H-mass mesh modes that are imaginary) from the screen run of each structure and model; the refined free energies reuse these force constants. No re-relaxation was done."
+ },
+ "weak_side": {
+  "right": 2,
+  "n": 20,
+  "reversed": 18,
+  "pairs": {
+   "n": 13,
+   "right": 1,
+   "tie": 0,
+   "wrong": 12
+  },
+  "formulas": {
+   "n": 7,
+   "right": 1,
+   "tie": 0,
+   "wrong": 6,
+   "wrong_formulas": [
+    "Al(HO)3",
+    "Be(HO)2",
+    "Cd(HO)2",
+    "NaHO",
+    "RbHO",
+    "Zn(HO)2"
+   ]
+  },
+  "slope_all_weak_OH_rows": {
+   "mace": {
+    "n": 76,
+    "ols": -0.27
+   },
+   "mattersim": {
+    "n": 52,
+    "ols": -0.058
+   },
+   "orb": {
+    "n": 59,
+    "ols": -0.014
+   }
+  },
+  "per_model": {
+   "mace": [
+    0,
+    11
+   ],
+   "mattersim": [
+    1,
+    6
+   ],
+   "orb": [
+    1,
+    3
+   ]
+  }
+ },
+ "multiverse": [
+  {
+   "regime": "rmax >= 0.99",
+   "min_x": 3.0,
+   "right": 203,
+   "n": 232,
+   "baseline": 141,
+   "pairs": {
+    "n": 95,
+    "right": 83,
+    "tie": 0,
+    "wrong": 12
+   }
+  },
+  {
+   "regime": "rmax >= 0.99",
+   "min_x": 5.0,
+   "right": 185,
+   "n": 212,
+   "baseline": 131,
+   "pairs": {
+    "n": 84,
+    "right": 74,
+    "tie": 0,
+    "wrong": 10
+   }
+  },
+  {
+   "regime": "rmax >= 0.99",
+   "min_x": 10.0,
+   "right": 165,
+   "n": 188,
+   "baseline": 120,
+   "pairs": {
+    "n": 77,
+    "right": 67,
+    "tie": 0,
+    "wrong": 10
+   }
+  },
+  {
+   "regime": "rmin >= 0.99",
+   "min_x": 3.0,
+   "right": 155,
+   "n": 163,
+   "baseline": 110,
+   "pairs": {
+    "n": 66,
+    "right": 64,
+    "tie": 0,
+    "wrong": 2
+   }
+  },
+  {
+   "regime": "rmin >= 0.99",
+   "min_x": 5.0,
+   "right": 138,
+   "n": 144,
+   "baseline": 100,
+   "pairs": {
+    "n": 56,
+    "right": 56,
+    "tie": 0,
+    "wrong": 0
+   }
+  },
+  {
+   "regime": "rmin >= 0.99",
+   "min_x": 10.0,
+   "right": 118,
+   "n": 120,
+   "baseline": 89,
+   "pairs": {
+    "n": 49,
+    "right": 49,
+    "tie": 0,
+    "wrong": 0
+   }
+  },
+  {
+   "regime": "rmean >= 0.99",
+   "min_x": 3.0,
+   "right": 195,
+   "n": 208,
+   "baseline": 124,
+   "pairs": {
+    "n": 90,
+    "right": 83,
+    "tie": 5,
+    "wrong": 2
+   }
+  },
+  {
+   "regime": "rmean >= 0.99",
+   "min_x": 5.0,
+   "right": 177,
+   "n": 188,
+   "baseline": 114,
+   "pairs": {
+    "n": 79,
+    "right": 74,
+    "tie": 5,
+    "wrong": 0
+   }
+  },
+  {
+   "regime": "rmean >= 0.99",
+   "min_x": 10.0,
+   "right": 157,
+   "n": 164,
+   "baseline": 103,
+   "pairs": {
+    "n": 72,
+    "right": 67,
+    "tie": 5,
+    "wrong": 0
+   }
+  },
+  {
+   "regime": "shorter mean O...O <= 2.93",
+   "min_x": 3.0,
+   "right": 221,
+   "n": 266,
+   "baseline": 161,
+   "pairs": {
+    "n": 115,
+    "right": 96,
+    "tie": 0,
+    "wrong": 19
+   }
+  },
+  {
+   "regime": "shorter mean O...O <= 2.93",
+   "min_x": 5.0,
+   "right": 185,
+   "n": 222,
+   "baseline": 141,
+   "pairs": {
+    "n": 89,
+    "right": 74,
+    "tie": 0,
+    "wrong": 15
+   }
+  },
+  {
+   "regime": "shorter mean O...O <= 2.93",
+   "min_x": 10.0,
+   "right": 165,
+   "n": 194,
+   "baseline": 126,
+   "pairs": {
+    "n": 80,
+    "right": 67,
+    "tie": 0,
+    "wrong": 13
+   }
+  },
+  {
+   "regime": "rmax >= 0.99",
+   "min_x": 5.0,
+   "T_K": 0,
+   "right": 153,
+   "n": 212,
+   "baseline": 145,
+   "source": "screen_pairs_refined.csv refined columns"
+  },
+  {
+   "regime": "rmax >= 0.99",
+   "min_x": 5.0,
+   "T_K": 600,
+   "right": 210,
+   "n": 212,
+   "baseline": 114,
+   "source": "screen_pairs_refined.csv refined columns"
+  },
+  {
+   "regime": "rmax >= 0.99",
+   "min_x": 5.0,
+   "T_K": 2000,
+   "right": 211,
+   "n": 212,
+   "baseline": 113,
+   "source": "screen_pairs_refined.csv refined columns"
+  }
+ ],
+ "alooh": {
+  "isotope_term_meV_atom_at_10_15_20_GPa_300K": {
+   "mace": [
+    2.3,
+    2.417,
+    2.217
+   ],
+   "orb": [
+    1.863,
+    2.302,
+    2.501
+   ]
+  },
+  "isotope_term_meV_atom_0GPa_harmonic_300K": {
+   "mace": 0.768,
+   "orb": 0.834,
+   "mattersim": 0.519
+  },
+  "conditional_fractionation": {
+   "definition": "1000 ln alpha(diaspore - delta) = 1000 ddG/(n_H kT) with R = 0 (M02), ddG = QHA isotope term at the model H transition pressure; conditional conversion, not a fractionation prediction",
+   "mace": {
+    "300": {
+     "Pt_H_GPa": 8.756,
+     "isotope_term_meV_atom_at_Pt": 2.346,
+     "1000lnalpha_permil_if_R0": 363.0
+    },
+    "1000": {
+     "Pt_H_GPa": 9.481,
+     "isotope_term_meV_atom_at_Pt": 1.928,
+     "1000lnalpha_permil_if_R0": 89.5
+    }
+   },
+   "mattersim": {
+    "300": {
+     "Pt_H_GPa": 15.135,
+     "isotope_term_meV_atom_at_Pt": 1.71,
+     "1000lnalpha_permil_if_R0": 264.6
+    },
+    "1000": {
+     "Pt_H_GPa": 16.105,
+     "isotope_term_meV_atom_at_Pt": 1.416,
+     "1000lnalpha_permil_if_R0": 65.7
+    }
+   },
+   "orb": {
+    "300": {
+     "Pt_H_GPa": 12.992,
+     "isotope_term_meV_atom_at_Pt": 2.098,
+     "1000lnalpha_permil_if_R0": 324.6
+    },
+    "1000": {
+     "Pt_H_GPa": 14.303,
+     "isotope_term_meV_atom_at_Pt": 1.789,
+     "1000lnalpha_permil_if_R0": 83.0
+    }
+   }
+  }
+ },
+ "volume_isotope_three_models_pct": {
+  "LiH": [
+   1.03,
+   1.27
+  ],
+  "brucite": [
+   0.19,
+   0.33
+  ]
+ },
+ "volume_isotope_four_models_pct": {
+  "LiH": [
+   1.02,
+   1.27
+  ],
+  "brucite": [
+   0.19,
+   0.44
+  ]
+ },
+ "pairs_with_screen_result": {
+  "three_models": 569,
+  "four_models": 572
+ },
+ "mp985293": {
+  "compensation_by_model": {
+   "mace": [
+    1.193,
+    1.3235
+   ],
+   "mattersim": [
+    0.9507,
+    1.0247
+   ],
+   "orb": [
+    1.0224,
+    1.1391
+   ]
+  },
+  "partner_V_A3_atom_min_max": [
+   7.535,
+   7.882
+  ]
+ },
+ "analytic": {
+  "S_str": [
+   0.32,
+   0.329
+  ],
+  "ratio_min": 1.04,
+  "ratio_max": 1.342,
+  "one_over_sqrt2_overstatement_0K": 1.077
+ }
+}

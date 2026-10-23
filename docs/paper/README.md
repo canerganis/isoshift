@@ -1,12 +1,14 @@
 # Paper draft: A short-bond rule for the isotope effect on polymorph stability in hydrogen-bonded crystals
 
-Full draft, 23 Oct 2026, for ChemRxiv and arXiv (cond-mat.mtrl-sci). Author: Muhammet Can Erganiş (METU, ORCID 0009-0001-1397-6366). Branch `post-hackathon`.
+Revised draft (referee round 1), 23 Oct 2026, for ChemRxiv and arXiv (cond-mat.mtrl-sci). Author: Muhammet Can Erganiş (METU, ORCID 0009-0001-1397-6366). Branch `post-hackathon`.
 
 Files:
 
 * `main.tex`: the manuscript (revtex4-2, `aps,prmaterials,reprint`, two columns).
 * `refs.bib`: references; every DOI was checked against Crossref, arXiv ids against arxiv.org, the Zenodo DOI against DataCite (23 Oct 2026).
-* `figures/`: copies of `figures/fig_headline.png`, `fig4_xh_rule.png`, `fig5_stretch_check.png`, `fig2_pipeline_counts.png` from the repo root.
+* `figures/`: copies of `figures/fig_headline.png`, `fig4_xh_rule.png`, `fig5_stretch_check.png` from the repo root, and `fig6_accuracy.png` (new in revision, written by `src/isoshift_event/paper_stats.py`). `fig2_pipeline_counts.png` is no longer used in the paper.
+* `reviews/`: referee reports (round 1) and `round1_response.md`, the point-by-point response.
+* Revision statistics: `src/isoshift_event/paper_stats.py` writes `results/paper_stats.json` (run from the repo root: `.venv/Scripts/python.exe -I -c "import sys; sys.path.insert(0, '.'); import runpy; runpy.run_module('src.isoshift_event.paper_stats', run_name='__main__')"`, about 15 s).
 * `main.pdf`: the built draft.
 
 `astra_draft.md` in this folder is an independent draft by GPT-6 Astra. Round 1 of the merge (23 Oct) kept `main.tex` as the base and merged parts of it (see "Merge from astra_draft.md" below). Only numbers and references traced to repo files or verified on Crossref were taken over.
@@ -20,13 +22,13 @@ latexmk -pdf main.tex
 
 MiKTeX with on-the-fly install set to "ask" hangs in a non-interactive shell when a package is missing (latexmk itself hangs without the `latexmk` package). For this build the following MiKTeX packages were installed with `miktex packages install <name>`: revtex, textcase, natbib, booktabs, kvsetkeys, kvdefinekeys, pdfescape, ltxcmds, infwarerr, hycolor, refcount, gettitlestring, kvoptions, stringenc, intcalc, bitset, bigintcalc, rerunfilecheck, uniquecounter, latexmk. A useful check for missing files: `pdflatex --disable-installer -interaction=nonstopmode main.tex`.
 
-Build status on 23 Oct 2026 (after merge round 1): clean, 13 pages, no undefined references, no overfull boxes, one harmless nameref warning.
+Build status on 23 Oct 2026 (after referee round 1): clean, 15 pages, no undefined references, no overfull boxes, one harmless nameref warning.
 
 ## TODO before submission
 
 1. Author review of every section, the AI-use statement and the acknowledgements wording. The AI-use statement says the manuscript was drafted by Claude Opus 5.5 with parts merged from an independent GPT-6 Astra draft.
 2. Corresponding-author email is not in the manuscript (add `\email{}` if wanted). ORCID is given through `\homepage`.
-4. `figures/fig2_pipeline_counts.png` shows 38 candidates in the bracketed tier, while `docs/freeze/FREEZE_REPORT.md` lists 2 / 40 eligible candidates. The caption says those two bars are not used. Regenerate the figure or drop the two bars.
+4. Figures 1, 2 and 4 keep their submitted versions; referee round 1 asked for capitalised model names, panel letters, a neutral Fig. 1 title, window n in the Fig. 3 legend and binned means in Fig. 2 (middle). Captions were corrected instead; regenerate with the repository figure scripts. `fig2_pipeline_counts.png` (38 vs 40 candidates mismatch) was dropped from the paper.
 5. Ford et al.: the paper and bib use 2011 (Crossref: Chem. Eur. J. 17 (52), 14942, 2011); `docs/story/prior_art_recheck_2026-10-22.md` still says 2012 and should be corrected there. The paper describes the work only by its title ("changes the phase transition"); the recheck's phrase about vibrational free energy was not verified from the paper.
 6. Merz and Kupka 2015 and Ikeda et al. 2025 are cited at abstract or snippet level (prior-art recheck); full texts were not read.
 7. MLIP citations: MACE is cited with the MACE-MP foundation-model paper (arXiv:2401.00096), not a specific paper for the `medium-mpa-0` checkpoint; SevenNet `7net-mf-ompa` is cited with Park et al. 2024 (SevenNet) and Kim et al. 2024 (multi-fidelity training). Confirm the preferred citations with each project's documentation. MACE, ORB, MatterSim and the multi-fidelity SevenNet paper are cited as arXiv preprints; check for journal versions.
@@ -36,6 +38,8 @@ Build status on 23 Oct 2026 (after merge round 1): clean, 13 pages, no undefined
 11. Valency Bond and marimo have no citable reference in the repo; they are acknowledged only.
 12. Prior-art counts: 20 prior-art queries before submission are in `logs/bond_queries.jsonl` (README "How AI was used"); both later rounds ran after submission (about 55 on 22 Oct and about 150 on 23 Oct, `docs/story/prior_art_recheck_2026-10-22.md`). The suggested wording "about 55 before and about 150 after submission" is not supported, so the paper gives 20 before and the two later rounds separately, without a total.
 13. Goethite band values (Liu et al. 2013) and the F05 fractionation equations (Xu and Zheng 1999, Yapp 1987, Hariya and Tsutsumi 1981) are cited as attributed in the repo data files; none of these primary papers was read in full.
+15. Items needing new computation are listed at the end of `reviews/round1_response.md` (PIMD or SSCHA control, DFT double differences, re-relaxation, mesh convergence, AlOOH pressure detail, dilute-D supercells, 250 and 350 K).
+16. Title: both referees suggest narrowing it ("trend", "inorganic"); kept as the working title pending the author's decision.
 14. Consider moving Table II next to Sec. IV (float placement put it on page 9) and enlarging Fig. 1 to full width if the journal style allows.
 
 Nothing in the paper relies on an unverified DOI.
@@ -46,6 +50,28 @@ Abbreviations: D07 = `docs/decisions/07-freeze-wording.md`, D08 = `docs/decision
 
 | Number in the paper | Where | Source |
 |---|---|---|
+| Formula-clustered bootstrap slope intervals 0.068 to 0.154, 0.083 to 0.165, 0.090 to 0.169; Theil-Sen 0.061, 0.111, 0.109; LOO-formula ranges; O-H-only slopes 0.124, 0.135, 0.145; 41 non-O-H rows; Al(OH)3 43 of 188 MACE rows | Abstract, III A, Table I | `results/paper_stats.json` `slopes_all_rows` |
+| Structure-level fixed-effects slopes 0.120, 0.116, 0.126 with intervals; 167 structures, 55 formulas | III A, Table I | `paper_stats.json` `structure_level_fixed_effects` |
+| 27 of 28 formulas (Al(OH)3 wrong); 89 structures; top five formulas 129 rows (39, 31, 28, 16, 15); formula-equal-weight 0.92 (0.85 to 0.98) vs 0.49; pooled 0.87 (0.68 to 0.98) | Abstract, III B, Table I | `paper_stats.json` `headline_check`, `unit` |
+| Null mean 106, sd 10.7, max 154 of 2e5 draws, p < 1e-5 | III B | `paper_stats.json` `null_pair_orientation` |
+| Density 104 (LOFO 72), MLIP static energy 137, O...O 183/211 vs O-H 184, r -0.80, O...O pairs 73/1/10 | III B | `paper_stats.json` `competitors_headline_rows` |
+| 151/159 vs 34/53; 19 of 74 pairs disagree; median spread 1.36 vs median abs ddF 2.37; 81/81, 42/43, 53/78 by spread | Abstract, III B, Fig. 5 | `paper_stats.json` `accuracy_vs_abs_ddF_meV_per_H`, `model_spread` |
+| Flags: classical limit 17/42 vs 168/170, 0 K unflagged 153/170; relax-not-converged 119 rows; soft-mode 161 rows | III B, III D, III G | `paper_stats.json` `flags_headline_rows` |
+| Coverage curve: 185/229 at 0.98, 114/114 at 1.02 | III B, Fig. 5 | `paper_stats.json` `accuracy_coverage_rmax` |
+| Multiverse: rmin 138/144 (100; 56/0/0), rmean 177/188 (114; 74/5/0), O...O 185/222 (141), 3 mÅ 203/232 (141), 10 mÅ 165/188 (120) | III B | `paper_stats.json` `multiverse` |
+| Cleaner subset: converged 86/93 (pairs 45/7/0, baseline 66); converged and no imaginary 35/36 (27/0/1, 9 formulas, baseline 28); slopes 0.206 (MACE, 30), 0.146 (MatterSim, 24) | III D | `paper_stats.json` `physically_cleaner_subset` |
+| Weak side 18 of 20 reversed; pairs 1/0/12; formulas 1 right, 6 wrong; slopes -0.27, -0.058, -0.014; prospective 2/9 | Abstract, III E | `paper_stats.json` `weak_side`; F11 section 5 |
+| AlOOH QHA isotope term 2.30/2.42/2.22 and 1.86/2.30/2.50 meV/atom; MatterSim Pt 15.14 GPa; conditional 265 to 363 and 66 to 90 per mil | III I, Discussion | `paper_stats.json` `alooh`; `results/card_alooh_pressure.json`; `results/card_alooh_temperature.json` |
+| Three-model volume isotope effects brucite +0.19 to +0.33% (290 K), LiH +1.03 to +1.27% (300 K) | II C | `paper_stats.json` `volume_isotope_three_models_pct` |
+| 569 (three models) and 572 (with SevenNet) pairs with a screen result | II D | `paper_stats.json` `pairs_with_screen_result` |
+| mp-985293 MatterSim compensation 0.95 to 1.02; partner volumes 7.53 to 7.88 | III B | `paper_stats.json` `mp985293` |
+| One-mode estimate 4 to 34% high; 1/sqrt2 overstates by 8% (zero point), about 6% (high-T slope) | III H, Conclusion | `paper_stats.json` `analytic`; Astra report item 32 for the 6% |
+| 1.5e-4 relative accuracy of the 300 K bracket | III H | Astra report minor item (1.47e-4 relative at 3000 cm⁻¹) |
+| SevenNet LiH TO(H) 20.41 vs 17.7 THz (15.3%), MACE 19.97 THz (12.8%) | II C | `results/validation/tier_a.csv` |
+| Mesh rule about 60/a points, even, 4 to 16 | II C | `src/isoshift_event/refine.py` lines 29, 55 |
+| F11 clean rows pair majority 5/1/4 | Table II, IV, Conclusion | `results/post_freeze/F11_prospective.json` `primary_per_protocol_clean_only` |
+| F12 at 380 °C: +42.5/+30.3/+41.3 per mil; 2 and 4 kbar | IV | F12 |
+| Database-geometry sign agreement 69% vs 86% (pre-freeze) | Discussion | F01 superseded section "Structure-only use with database geometries" |
 | 220 pairs, 63 formulas, 521 clean covalent rows (MACE 188, ORB 163, MatterSim 170) | Abstract, Methods D, Table I | F01 Details; FR table ("Clean covalent rows per model", "unique_pairs") |
 | 0.112 / 0.117 / 0.128 all-row slopes; 0.11 to 0.13; r 0.76 / 0.83 / 0.84 | Abstract, III A, Table I | D07 headline and "Slopes" row; F01 Details; FR |
 | All-row compensation 54 / 55 / 49 %, "49 to 55%" | III A, Table I | FR ("Screen-wide compensation"); F01 Details |
