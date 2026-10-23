@@ -241,7 +241,8 @@ def _two_atom_hessian(nu_stretch, nu_perp, nu_trans):
     for a in range(3):
         t[a::3, a] = np.sqrt(m)
     t /= np.linalg.norm(t, axis=0)
-    phi += (2 * np.pi * 1e-3 * nu_trans) ** 2 * (sm[:, None] * (t @ t.T) * sm[None, :])
+    # Negative nu_trans gives imaginary translations (phonopy sign convention).
+    phi += np.sign(nu_trans) * (2 * np.pi * 1e-3 * nu_trans) ** 2 * (sm[:, None] * (t @ t.T) * sm[None, :])
     return phi, m
 
 
@@ -274,9 +275,9 @@ def test_unverified_translations_and_imaginary_modes_invalidate():
     phi, m = _two_atom_hessian(100.0, 30.0, 0.3)  # translations at 0.3 THz: sum rule broken beyond tolerance
     r = M.hessian_samecell(phi, m, np.array([False, True]), T)
     assert not r["translations_verified"] and not r["valid"]
-    phi, m = _two_atom_hessian(100.0, -5.0, 0.0)  # imaginary perpendicular modes, never folded to +5 THz
+    phi, m = _two_atom_hessian(100.0, -5.0, 0.0)  # A9: folded primary; dropped diagnostic retained
     r = M.hessian_samecell(phi, m, np.array([False, True]), T)
-    assert r["translations_verified"] and not r["valid"] and r["has_imaginary"]
+    assert r["translations_verified"] and r["valid"] and r["has_imaginary"]
     assert r["n_nonpositive_nontranslation_H"] == 2 and r["min_freq_THz_nontranslation_H"] < -4.9
 
 
@@ -345,7 +346,9 @@ def test_cli_schema_and_resume(tmp_path):
               "model", "git", "initial_max_abs_F_eV_A", "gpu_peak_GB", "splitting", "dF_PIMD_meV_H",
               "dF_PIMD_err_meV_H", "dF_harm_samecell_meV_H", "delta_anh_meV_H", "harmonic_samecell",
               "harmonic_valid", "fc_interpolation_verified", "hessian_check", "error_converged", "unverified",
-              "harmonic_bead_error_meV_H", "delta_anh_beadcorr_meV_H", "finite_size", "zero_modes"):
+              "harmonic_bead_error_meV_H", "delta_anh_beadcorr_meV_H", "finite_size", "zero_modes",
+              "delta_anh_inf_meV_H", "init", "init_hessian_source", "pre_equil", "stationarity_ok",
+              "monitors", "invalid_reference", "seconds_per_ring_step", "s_imag_meV_H"):
         assert k in d2, k
     for p in d2["points"]:
         for k in ("g", "mass_H_u", "weight", "K_H_meV", "K_H_err_meV", "error_converged", "K_H_err_block_meV",
@@ -358,7 +361,11 @@ def test_cli_schema_and_resume(tmp_path):
     assert "finite_size_anharmonic" in d2["unverified"]
     assert d2["harmonic_samecell"]["qpoints_exact"] and d2["hessian_check"] is None and d2["fc_interpolation_verified"]
     assert d2["supercell"] == [2, 2, 2] and d2["n_H"] == 8 and d2["dF_PIMD_meV_H"] < 0
-    assert d2["delta_anh_meV_H"] == pytest.approx(d2["dF_PIMD_meV_H"] - d2["dF_harm_samecell_meV_H"])
+    assert d2["delta_anh_meV_H"] == pytest.approx(d2["dF_PIMD_meV_H"] - d2["dF_harm_samecell_P_meV_H"])
+    assert d2["model"]["sampling_stability"]["stable"]
+    assert not d2["model"]["sampling_stability"]["reference_folding_applied_to_forces"]
+    assert d2["thermodynamic_ensemble"] == "NVT"
+    assert d2["free_energy_potential"] == "Helmholtz F at fixed cell"
     with pytest.raises(ValueError, match="different arguments"):
         M.main([a if a != "300" else "301" for a in args])
 
@@ -408,10 +415,11 @@ def test_stat_error_flags_short_correlated_series():
 
 # ---- systematic checks between runs (P vs 2P, dt vs dt/2)
 
-def _run_doc(P=32, dt=0.25, df=-60.0, err=0.05, hb=0.4, conv=True):
+def _run_doc(P=32, dt=0.25, df=-60.0, err=0.05, hb=0.4, conv=True, seed=None):
+    seed = 12 + P + int(round(dt * 1000)) if seed is None else seed  # independent runs by default
     return {"struct_id": "toy-1", "status": "complete", "P": P, "dF_PIMD_meV_H": df, "dF_PIMD_err_meV_H": err,
-            "error_converged": conv, "harmonic_bead_error_meV_H": hb,
-            "run_args": {"beads": P, "steps": 1000, "dt": dt, "T": 300.0, "seed": 12}}
+            "delta_anh_meV_H": df, "error_converged": conv, "harmonic_bead_error_meV_H": hb,
+            "run_args": {"beads": P, "steps": 1000, "dt": dt, "T": 300.0, "seed": seed}}
 
 
 def test_compare_runs_uses_the_error_of_the_difference():
@@ -453,3 +461,466 @@ def test_step_resonance_instability_detected():
     assert M.check_step_stable(64, 300.0, 0.25, 110.0)["stable"]
     with pytest.raises(ValueError, match="unstable ring-polymer step"):
         M.check_step_stable(256, 300.0, 0.25, 108.0)
+
+
+def test_assembled_hessian_respects_ase_order_and_bloch_phase():
+    ph = _toy_phonopy()
+    uc = ph.unitcell
+    atoms = Atoms(uc.symbols, positions=uc.positions, cell=uc.cell, pbc=True) * (2, 2, 2)
+    assert list(atoms.symbols) != list(ph.supercell.symbols)
+    phi = M.cached_hessian(ph, [2, 2, 2], atoms)
+    # Compare the actual matrix, not just its spectrum (wrong phases can be isospectral).
+    perm = [np.argmin(np.linalg.norm(ph.supercell.positions - x, axis=1)) for x in atoms.positions]
+    fc = ph.force_constants[np.ix_(perm, perm)]
+    assert np.allclose(phi, fc.transpose(0, 2, 1, 3).reshape(phi.shape), atol=1e-9)
+    for sc in ([2, 2, 2], [3, 1, 2]):
+        a = Atoms(uc.symbols, positions=uc.positions, cell=uc.cell, pbc=True) * tuple(sc)
+        ref = M.harmonic_samecell(ph, sc, T, P=16)
+        direct = M.hessian_samecell(M.cached_hessian(ph, sc, a), Ph.make_masses(a, {}, default="light"),
+                                   a.numbers == 1, T, P=16)
+        assert direct["valid"]
+        for key in ("dF_eV", "dF_P_eV"):
+            assert direct[key] == pytest.approx(ref[key], rel=1e-5)
+
+
+def test_one_imaginary_folded_and_dropped_hand_value():
+    m = np.array([M_O, M.M_H])
+    nu = np.array([-5., 40., 100.])
+    mu = np.prod(m) / m.sum()
+    k = np.diag(np.sign(nu) * (2 * np.pi * nu * 1e-3) ** 2 * mu * M.AMU_EV)
+    phi = np.block([[k, -k], [-k, k]])
+    r = M.hessian_samecell(phi, m, np.array([False, True]), T, P=16)
+    ratio = np.sqrt(mu / (M_O * M.M_D / (M_O + M.M_D)))
+    correction = float(M._osc_free_energy(5 * ratio, T, 16) - M._osc_free_energy(5, T, 16))
+    assert r["valid"] and r["folded"] and r["n_imag"] == 1
+    assert r["dF_P_eV"] == r["dF_folded_P_eV"]
+    assert r["dF_P_eV"] - r["dF_dropped_P_eV"] == pytest.approx(correction, abs=1e-12)
+    assert r["s_imag_meV_H"] == pytest.approx(abs(correction) * 1e3)
+    assert len(r["imaginary_modes_H"]) == 1
+    assert r["imaginary_modes_H"][0]["beta_hbar_abs_omega"] == pytest.approx(
+        M.HBAR_EV_FS * 2 * np.pi * 5e-3 / (M.KB_EV * T))
+
+
+@pytest.mark.parametrize("P", [1, 5, 16])
+def test_harmonic_initialization_covariance_and_excluded_modes(P):
+    phi, masses = _two_atom_hessian(100, -5, 0)
+    x0 = np.array([[0., 0, 0], [.97, 0, 0]])
+    force = M.HarmonicForces(phi.reshape(2, 3, 2, 3).transpose(0, 2, 1, 3), x0)
+    rp = M.RingPolymer(x0, masses, P, T, .25, 100, force, np.random.default_rng(24))
+    assert rp.splitting == "baoab"
+    ev, vec = np.linalg.eigh(phi / np.sqrt(np.outer(np.repeat(masses, 3), np.repeat(masses, 3))) / M.AMU_EV)
+    draws = []
+    for _ in range(1800):
+        rp.initialize_harmonic(phi)
+        normal = rp.C.T @ ((rp.q - x0).reshape(P, -1) * np.sqrt(np.repeat(masses, 3) * M.AMU_EV)) @ vec
+        assert np.max(np.abs(normal[:, :-1])) < 1e-10
+        draws.append(normal[:, -1])
+    expected = P * M.KB_EV * T / (ev[-1] + rp.wk ** 2)
+    assert np.allclose(np.var(draws, axis=0), expected, rtol=.12)
+    assert rp.q.dtype == rp.p.dtype == np.float64
+
+
+def test_stationarity_and_single_extension():
+    rng = np.random.default_rng(42)
+    assert M.stationarity(rng.normal(size=4000))["ok"]
+    assert not M.stationarity(np.r_[np.zeros(100), np.ones(100)])["ok"]
+    phi, masses = _two_atom_hessian(100, 40, 0)
+    x0 = np.zeros((2, 3))
+    rp = M.RingPolymer(x0, masses, 1, T, .25, 100,
+                       M.HarmonicForces(phi.reshape(2, 3, 2, 3).transpose(0, 2, 1, 3), x0), rng)
+    # A deterministic drifting measurement exercises the real driver and its one-extension limit.
+    count = iter(range(10000))
+    rp.kinetic_cv = lambda mask: float(next(count) >= 50)
+    p = M.run_points(rp, np.array([False, True]), [1.], 100, 0, masses, extension_steps=100)[0]
+    assert p["extension_steps"] == 100 and p["steps_used"] == 200
+    assert len(p["stationarity_tests"]) == 2 and not p["stationarity_tests"][0]["ok"]
+
+
+def test_structural_monitors_translation_invariance_and_missing_acceptor():
+    atoms = Atoms("OHO", positions=[[0, 0, 0], [1, 0, 0], [2.6, 0, 0]], cell=np.eye(3) * 8, pbc=True)
+    q = np.repeat(atoms.positions[None], 4, axis=0)
+    modes = np.array([[[-1., 0, 0], [0, 0, 0], [1., 0, 0]]]) / np.sqrt(2)
+    results = []
+    for shift in (0., np.array([10.3, -4.1, 2.])):
+        mon = M.StructuralMonitor(atoms.positions, atoms.cell.array, atoms.numbers, modes)
+        mon.update(q + shift)
+        results.append(mon.summary())
+    for r in results:
+        assert r["heavy_rmsd_mean_A"] < 1e-12 and r["coordination_unchanged"]
+        assert r["imaginary_projection_mean_A"] == pytest.approx([0], abs=1e-12)
+        assert np.sum(r["transfer_histogram"]["counts"]) == 4
+    mon = M.StructuralMonitor(atoms.positions[:2], atoms.cell.array, atoms.numbers[:2])
+    mon.update(q[:, :2])
+    assert mon.summary()["transfer_histogram"]["undefined_per_H"] == [4]
+    mon = M.StructuralMonitor(atoms.positions, atoms.cell.array, atoms.numbers, modes)
+    changed = q.copy()
+    changed[:, 1, 0] = 2.
+    mon.update(changed)
+    assert not mon.summary()["coordination_unchanged"]
+
+
+def test_compare_delta_anh_and_a4_order():
+    small = dict(_run_doc(16, err=.02), delta_anh_meV_H=.1)
+    large = dict(_run_doc(32, df=-64, err=.02), delta_anh_meV_H=.5)
+    for a, b in ((small, large), (large, small)):
+        r = M.compare_runs(a, b)
+        assert r["diff_meV_H"] == pytest.approx(.4)
+        assert r["pilot_reject_P"]
+
+
+def _cli(tmp_path, steps=120, beads=4):
+    raw, root = _fake_tree(tmp_path)
+    return ["--struct", "toy-1", "--beads", str(beads), "--steps", str(steps), "--backend", "harmonic",
+            "--out", str(tmp_path / "toy.json"), "--raw-root", str(raw), "--cache-root", str(root),
+            "--state-root", str(tmp_path / "state")]
+
+
+def test_cli_harmonic_initialization_same_p_within_two_sigma(tmp_path):
+    d = M.main(_cli(tmp_path, steps=12000, beads=16))
+    assert abs(d["delta_anh_meV_H"]) < 2 * d["delta_anh_err_meV_H"]
+    assert d["init"] == "harmonic" and d["pre_equil"]["steps"] == 1000
+
+
+def test_cli_dump_precision_resume_and_options(tmp_path):
+    args = _cli(tmp_path) + ["--dump-every", "30", "--stationarity-extension", "60"]
+    first = M.main(args + ["--stop-after", "2"])
+    d = M.main(args)
+    assert d["points"][:2] == first["points"] and d["pre_equil"] == first["pre_equil"]
+    assert d["model"]["dtype"] == "float64"
+    assert not d["model"]["tf32_matmul"] and not d["model"]["tf32_cudnn"]
+    assert not d["model"]["autocast_cpu"] and not d["model"]["autocast_cuda"]
+    assert len(json.dumps(d)) < 100000
+    for p in d["points"]:
+        with np.load(p["snapshots"]["path"], allow_pickle=False) as f:
+            assert f["q"].dtype == np.float64 and f["q"].shape[1:] == (4, 16, 3)
+            assert len(f["q"]) == p["snapshots"]["count"] == p["steps_used"] // 30
+            assert np.array_equal(f["kept_steps"], np.arange(30, p["steps_used"] + 1, 30))
+            for key in ("g", "masses_u", "mask_h", "cell_A", "atomic_numbers", "T_K", "schema"):
+                assert key in f
+        assert p["seconds_per_ring_step"] > 0 and "monitors" in p
+    assert d["seconds_per_ring_step"] > 0 and "stationarity_ok" in d
+    for extra in (["--pre-equil", "0"], ["--init", "positions"], ["--allow-invalid-reference"],
+                  ["--dump-every", "10"], ["--stationarity-extension", "30"]):
+        with pytest.raises(ValueError, match="different arguments"):
+            M.main(args + extra)
+
+
+def test_residual_force_gate_before_hessian_or_sampling(tmp_path, monkeypatch):
+    args = _cli(tmp_path) + ["--pre-equil", "0", "--stationarity-extension", "0"]
+    original = M.HarmonicForces.__call__
+    calls = []
+    def biased(self, q):
+        calls.append(np.array(q))
+        f, e = original(self, q)
+        return f + .002, e
+    monkeypatch.setattr(M.HarmonicForces, "__call__", biased)
+    with pytest.raises(ValueError, match="residual force"):
+        M.main(args)
+    assert len(calls) == 1 and calls[0].shape[0] == 1
+    d = M.main(args + ["--allow-invalid-reference"])
+    assert d["invalid_reference"] and d["delta_anh_meV_H"] is None
+    assert d["initial_max_abs_F_eV_A"] == pytest.approx(np.sqrt(3) * .002)
+
+
+@pytest.mark.parametrize("interrupt_step", [37, 173])
+def test_interrupt_resume_preserves_pre_equil_and_active_point(tmp_path, monkeypatch, interrupt_step):
+    # One interruption during pre-equilibration, one after kept samples and a snapshot exist.
+    ref_args = _cli(tmp_path / "ref", steps=100) + ["--pre-equil", "100", "--dump-every", "10",
+                                                   "--stationarity-extension", "0"]
+    ref = M.main(ref_args)
+    args = _cli(tmp_path / "restart", steps=100) + ["--pre-equil", "100", "--dump-every", "10",
+                                                  "--stationarity-extension", "0"]
+    step = M.RingPolymer.step
+    calls = 0
+    def interrupted(rp):
+        nonlocal calls
+        calls += 1
+        if calls == interrupt_step:
+            raise KeyboardInterrupt("test interruption before step")
+        step(rp)
+    monkeypatch.setattr(M.RingPolymer, "step", interrupted)
+    with pytest.raises(KeyboardInterrupt):
+        M.main(args)
+    monkeypatch.setattr(M.RingPolymer, "step", step)
+    resumed = M.main(args)
+    assert resumed["pre_equil"]["steps"] == 100
+    assert resumed["dF_PIMD_meV_H"] == ref["dF_PIMD_meV_H"]
+    for a, b in zip(ref["points"], resumed["points"]):
+        assert a["K_H_meV"] == b["K_H_meV"]
+        assert a["monitors"] == b["monitors"]
+        assert a["stationarity_tests"] == b["stationarity_tests"]
+        with np.load(a["snapshots"]["path"]) as fa, np.load(b["snapshots"]["path"]) as fb:
+            assert np.array_equal(fa["q"], fb["q"])
+            assert np.array_equal(fa["kept_steps"], fb["kept_steps"])
+
+
+def test_precision_guard_inside_cpu_autocast():
+    torch = pytest.importorskip("torch")
+    force = M.HarmonicForces(np.eye(3).reshape(1, 1, 3, 3), np.zeros((1, 3)))
+    old_matmul, old_cudnn = torch.backends.cuda.matmul.allow_tf32, torch.backends.cudnn.allow_tf32
+    try:
+        torch.backends.cuda.matmul.allow_tf32 = True
+        torch.backends.cudnn.allow_tf32 = True
+        with torch.autocast("cpu", enabled=True):
+            f, _ = force(np.ones((1, 1, 3), dtype=np.float32))
+            assert f.dtype == np.float64 and np.array_equal(f, -np.ones_like(f))
+            info = force.info()
+            assert not any(info[k] for k in ("tf32_matmul", "tf32_cudnn", "autocast_cpu", "autocast_cuda"))
+            assert torch.is_autocast_enabled("cpu")  # caller's context is restored
+    finally:
+        torch.backends.cuda.matmul.allow_tf32 = old_matmul
+        torch.backends.cudnn.allow_tf32 = old_cudnn
+
+
+def test_zero_nontranslation_invalid_and_dropped_value_preserved():
+    phi, m = _two_atom_hessian(100, 0, 0)
+    assert not M.hessian_samecell(phi, m, np.array([False, True]), T, P=16)["valid"]
+    phi, m = _two_atom_hessian(100, -5, 0)
+    r = M.hessian_samecell(phi, m, np.array([False, True]), T, P=16)
+    mu_h = M_O * M.M_H / (M_O + M.M_H)
+    mu_d = M_O * M.M_D / (M_O + M.M_D)
+    expected = (M._osc_free_energy(100 * np.sqrt(mu_h / mu_d), T, 16) - M._osc_free_energy(100, T, 16)
+                + M.com_free_energy(M_O + M.M_D, T) - M.com_free_energy(M_O + M.M_H, T))
+    assert r["dF_dropped_P_eV"] == pytest.approx(expected, abs=1e-12)
+
+
+def test_interrupted_extension_is_resumed_once(tmp_path, monkeypatch):
+    import copy
+
+    phi, masses = _two_atom_hessian(100, 40, 0)
+    x0 = np.zeros((2, 3))
+    forces = M.HarmonicForces(phi.reshape(2, 3, 2, 3).transpose(0, 2, 1, 3), x0)
+    rp = M.RingPolymer(x0, masses, 4, T, .25, 100, forces, np.random.default_rng(91))
+    monkeypatch.setattr(M, "stationarity", lambda samples: {"ok": False, "n_samples": len(samples)})
+    checkpoint = {}
+    def save(progress):
+        checkpoint["active"] = copy.deepcopy(progress)
+        checkpoint["q"], checkpoint["p"] = rp.q.copy(), rp.p.copy()
+        checkpoint["rng"] = copy.deepcopy(rp.rng.bit_generator.state)
+    step, count = rp.step, 0
+    def interrupt():
+        nonlocal count
+        count += 1
+        if count == 141:  # 40 of the 100 extension steps have finished
+            raise KeyboardInterrupt()
+        step()
+    rp.step = interrupt
+    kwargs = dict(extension_steps=100, dump_every=10, dump_root=tmp_path, cell=np.eye(3) * 8,
+                  atomic_numbers=np.array([8, 1]), on_progress=save)
+    with pytest.raises(KeyboardInterrupt):
+        M.run_points(rp, np.array([False, True]), [1.], 100, .2, masses, **kwargs)
+    assert checkpoint["active"]["step"] == 140
+    rp.q, rp.p = checkpoint["q"], checkpoint["p"]
+    rp.rng.bit_generator.state = checkpoint["rng"]
+    rp.f, rp.v = forces(rp.q)
+    rp.step = step
+    result = M.run_points(rp, np.array([False, True]), [1.], 100, .2, masses,
+                          active=checkpoint["active"], **kwargs)[0]
+    assert result["steps"] == 200 and result["extension_steps"] == 100
+    assert result["steps_used"] == 180 and not result["stationarity_ok"]
+    assert [t["n_samples"] for t in result["stationarity_tests"]] == [80, 180]
+    with np.load(result["snapshots"]["path"]) as f:
+        assert len(f["q"]) == 18
+        assert np.array_equal(f["kept_steps"], np.arange(10, 181, 10))
+
+
+@pytest.mark.parametrize("nu_optical", [-5., -.02 / (Ph.H_EV_THZ * 1000)])
+def test_harmonic_sampling_rejects_negative_optical_mode(nu_optical):
+    # A folded reference is usable bookkeeping, never a stable sampling potential.
+    phi, masses = _two_atom_hessian(100., nu_optical, 0.)
+    x0 = np.zeros((2, 3))
+    force = M.HarmonicForces(phi.reshape(2, 3, 2, 3).transpose(0, 2, 1, 3), x0)
+    ref = M.hessian_samecell(phi, masses, np.array([False, True]), T, P=4)
+    assert ref["valid"] and ref["folded"]
+    rp = M.RingPolymer(x0, masses, 4, T, .25, 100., force, np.random.default_rng(31))
+    rp.initialize_harmonic(phi)
+    before = rp.q.copy(), rp.p.copy()
+    with pytest.raises(ValueError, match="unstable harmonic potential"):
+        rp.step()
+    assert np.array_equal(rp.q, before[0]) and np.array_equal(rp.p, before[1])
+
+
+def test_negative_optical_mode_below_shifted_translations_is_not_removed():
+    # Reviewer's energies: translations +0.1 meV, optical modes -0.02 meV.
+    conv = Ph.H_EV_THZ * 1000
+    phi, masses = _two_atom_hessian(100., -.02 / conv, .1 / conv)
+    sm = np.sqrt(np.repeat(masses, 3) * M.AMU_EV)
+    ev, vec = np.linalg.eigh(phi / np.outer(sm, sm))
+    nu = np.sign(ev) * np.sqrt(np.abs(ev)) / (2 * np.pi * 1e-3)
+    _, trans, info = M.classify_modes(nu[None], vec, masses)
+    assert info["translations_verified"]
+    assert nu[trans[0]] * conv == pytest.approx([.1] * 3, abs=1e-8)
+    assert info["n_imag"] == 2
+    x0 = np.zeros((2, 3))
+    force = M.HarmonicForces(phi.reshape(2, 3, 2, 3).transpose(0, 2, 1, 3), x0)
+    rp = M.RingPolymer(x0, masses, 1, T, .25, 100., force, np.random.default_rng(32))
+    with pytest.raises(ValueError, match="unstable harmonic potential"):
+        rp.step()
+
+
+def test_harmonic_sampling_rejects_negative_verified_translation():
+    # Reviewer case: translations imaginary at -0.05 THz pass the reference ASR check (|nu| < GAMMA_TOL_THZ)
+    # but are an inverted, unbounded direction of the sampled potential.
+    nu_t = -.05
+    assert abs(nu_t) < Ph.GAMMA_TOL_THZ
+    phi, masses = _two_atom_hessian(100., 30., nu_t)
+    sm = np.sqrt(np.repeat(masses, 3) * M.AMU_EV)
+    ev, vec = np.linalg.eigh(phi / np.outer(sm, sm))
+    nu = np.sign(ev) * np.sqrt(np.abs(ev)) / (2 * np.pi * 1e-3)
+    _, trans, info = M.classify_modes(nu[None], vec, masses)
+    assert info["translations_verified"] and info["n_imag"] == 0
+    assert nu[trans[0]] == pytest.approx([nu_t] * 3, abs=1e-8)
+    x0 = np.zeros((2, 3))
+    force = M.HarmonicForces(phi.reshape(2, 3, 2, 3).transpose(0, 2, 1, 3), x0)
+    with pytest.raises(ValueError, match="unstable harmonic potential: 0 negative non-translation and 3 negative"):
+        force.validate_stability(masses)
+    # Exact or positive-shifted translations stay accepted.
+    for ok in (0., .05):
+        phi, masses = _two_atom_hessian(100., 30., ok)
+        force = M.HarmonicForces(phi.reshape(2, 3, 2, 3).transpose(0, 2, 1, 3), x0)
+        s = force.validate_stability(masses)
+        assert s["stable"] and not s["translations_exempted"] and s["n_negative_translation"] == 0
+
+
+def test_osc_free_energy_finite_at_low_temperature():
+    # Reviewer case: 100 THz at 1 K, E/kT ~ 4800, where 2 sinh(E/2kT) overflows to inf.
+    E = M.HBAR_EV_FS * 2 * np.pi * 100. * 1e-3
+    f = M._osc_free_energy(100., 1.)
+    assert np.isfinite(f) and f == pytest.approx(E / 2, rel=1e-12)
+    d = M._osc_free_energy(100. * M.G_D, 1.) - f
+    assert np.isfinite(d) and d == pytest.approx(E / 2 * (M.G_D - 1), rel=1e-12)
+    # Same values as the direct form where the latter is finite, including soft modes.
+    nu = np.array([1e-4, .02, 1., 30., 100.])
+    for T_ in (1., 300., 2000.):
+        kT = M.KB_EV * T_
+        x = M.HBAR_EV_FS * 2 * np.pi * nu * 1e-3 / (2 * kT)
+        with np.errstate(over="ignore"):
+            direct = kT * np.log(2 * np.sinh(x))
+        ok = np.isfinite(direct)
+        assert np.allclose(M._osc_free_energy(nu, T_)[ok], direct[ok], rtol=1e-12, atol=1e-15)
+
+
+@pytest.mark.parametrize("init", ["harmonic", "positions"])
+def test_cli_rejects_unstable_harmonic_before_sampling(tmp_path, monkeypatch, init):
+    args = _cli(tmp_path, steps=4) + ["--init", init, "--allow-invalid-reference"]
+    # Modify only the synthetic cache. The override must not bypass PES stability.
+    root = tmp_path / "cache"
+    cdir = next(root.iterdir())
+    ph, meta = cache.load_fc(cdir.name, root=root)
+    ph.force_constants = -ph.force_constants
+    cache.save_fc(ph, cdir.name, meta, root=root)
+    def unexpected_step(rp):
+        pytest.fail("unstable potential reached ring-polymer propagation")
+    monkeypatch.setattr(M.RingPolymer, "step", unexpected_step)
+    with pytest.raises(ValueError, match="unstable harmonic potential"):
+        M.main(args)
+    assert not (tmp_path / "toy.json").exists()
+    assert not (tmp_path / "state").exists()
+
+
+def _monitor_atoms():
+    return Atoms("OHO", positions=[[0, 0, 0], [1, 0, 0], [2.6, 0, 0]], cell=np.eye(3) * 8, pbc=True)
+
+
+def _monitor_for(atoms, state=None):
+    return M.StructuralMonitor(atoms.positions, atoms.cell.array, atoms.numbers, state=state)
+
+
+def test_heavy_drift_uses_time_mean_and_resumable_displacements():
+    atoms = _monitor_atoms()
+    displacement = np.array([[0, .24, 0], [0, 0, 0], [0, -.24, 0]])
+    mon = _monitor_for(atoms)
+    mon.update((atoms.positions + displacement)[None] + [10., -4., 2.])
+    # The checkpoint must retain vector sums, not just instantaneous RMSD scalars.
+    mon = _monitor_for(atoms, json.loads(json.dumps(mon.data)))
+    mon.update((atoms.positions - displacement)[None] + [-2., 7., 1.])
+    result = mon.summary()
+    assert result["heavy_rmsd_ok"]
+    assert result["heavy_rmsd_time_mean_A"] == pytest.approx(0., abs=1e-14)
+    assert result["heavy_rmsd_mean_A"] == pytest.approx(.24)
+    assert result["heavy_rmsd_max_A"] == pytest.approx(.24)
+    drift = _monitor_for(atoms)
+    for _ in range(2):
+        drift.update((atoms.positions + displacement)[None])
+    assert not drift.summary()["heavy_rmsd_ok"]
+    assert drift.summary()["heavy_rmsd_time_mean_A"] == pytest.approx(.24)
+
+
+def test_coordination_transient_flip_is_diagnostic_but_persistent_transfer_fails():
+    atoms = _monitor_atoms()
+    mon = _monitor_for(atoms)
+    for dx in (.5, -.5):
+        q = atoms.positions.copy()
+        q[1, 0] += dx
+        mon.update(q[None] + dx * 20)  # also exercise alignment across cell boundaries
+    result = mon.summary()
+    assert result["coordination_unchanged"] and result["retention_ok"]
+    assert result["coordination_changes_per_H"] == [1]
+    assert result["mean_centroid_donor_O_indices"] == [0]
+    shifted = _monitor_for(atoms)
+    q = atoms.positions.copy()
+    q[1, 0] += .5
+    for _ in range(2):
+        shifted.update(q[None])
+    result = shifted.summary()
+    assert not result["coordination_unchanged"] and not result["retention_ok"]
+    assert result["mean_centroid_donor_O_indices"] == [2]
+
+
+def test_pooled_monitors_use_sample_weighted_vectors_and_keep_point_failures():
+    atoms = _monitor_atoms()
+    factory = lambda state: _monitor_for(atoms, state)
+    points = []
+    for amplitude, count in ((.24, 1), (-.08, 3)):
+        mon = factory(None)
+        q = atoms.positions.copy()
+        q[0, 1] += amplitude
+        q[2, 1] -= amplitude
+        for _ in range(count):
+            mon.update(q[None])
+        points.append({"monitors": mon.summary()})
+    pooled = M.merge_monitors(points, factory)
+    assert pooled["samples"] == 4
+    assert pooled["heavy_rmsd_time_mean_A"] == pytest.approx(0., abs=1e-14)
+    assert pooled["heavy_rmsd_mean_A"] == pytest.approx(.12)
+    assert pooled["heavy_rmsd_pooled_ok"]
+    assert not pooled["heavy_rmsd_ok"]  # the first point drifted; pooling cannot hide it
+    points = []
+    for dx in (.5, -.5):
+        mon = factory(None)
+        q = atoms.positions.copy()
+        q[1, 0] += dx
+        mon.update(q[None])
+        points.append({"monitors": mon.summary()})
+    pooled = M.merge_monitors(points, factory)
+    assert pooled["coordination_pooled_unchanged"]
+    assert not pooled["coordination_unchanged"] and not pooled["retention_ok"]
+
+
+def test_monitor_rejects_legacy_state_without_vector_accumulator():
+    atoms = _monitor_atoms()
+    mon = _monitor_for(atoms)
+    mon.update(atoms.positions[None])
+    old = json.loads(json.dumps(mon.data))
+    old.pop("centroid_displacement_sum_A", None)
+    with pytest.raises(ValueError, match="centroid.*restart"):
+        _monitor_for(atoms, old)
+
+
+def test_cli_refuses_legacy_monitor_checkpoint(tmp_path):
+    args = _cli(tmp_path, steps=4) + ["--pre-equil", "0", "--stationarity-extension", "0"]
+    M.main(args + ["--stop-after", "0"])
+    state = tmp_path / "state" / "toy.npz"
+    with np.load(state, allow_pickle=False) as f:
+        saved = {k: f[k].copy() for k in f.files}
+    doc = json.loads(str(saved["doc"]))
+    doc["run_args"].pop("monitor_schema", None)
+    saved["doc"] = json.dumps(doc)
+    np.savez(state, **saved)
+    with pytest.raises(ValueError, match="different arguments"):
+        M.main(args)
+
+
+def test_compare_runs_needs_independent_seeds():
+    with pytest.raises(ValueError, match="independent seeds"):
+        M.compare_runs(_run_doc(16, seed=5), _run_doc(32, seed=5))

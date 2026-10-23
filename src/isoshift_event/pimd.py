@@ -1,18 +1,26 @@
 """P12 path-integral check: full H to D substitution free energy from PIMD (docs/predictions/P12_pimd.md).
 
 Per structure: ring-polymer MD (normal-mode propagation, PILE-L thermostat) on the fixed relaxed cell of
-the screen with MACE medium-mpa-0 in float64, and mass thermodynamic integration over the H mass,
+the screen with MACE medium-mpa-0 (float32 by default, decision 17), and mass thermodynamic integration over the H mass,
     F(m_D) - F(m_H) = int_1^{g_D} 2 <K_H(g)>/g dg,  g = sqrt(m_H/m),  Gauss-Legendre in g,
 with K_H the centroid-virial kinetic energy of the H atoms. The same-cell harmonic reference uses the cached
 MACE force constants on the q-points commensurate with the PIMD supercell, and
-    delta_anh = [F_D - F_H]_PIMD - [F_D - F_H]_harm,same cell        (meV per H).
+    delta_anh = [F_D - F_H]_PIMD,P - [F_D - F_H]_harm,same cell,P    (meV per H).
 Pair assembly (ddF_corr) is not done here.
+
+These are fixed-volume Helmholtz differences, not Gibbs differences. At fixed pressure define
+ln beta_p^G = -[(G_D^p - G_H^p) - Delta_classical] / (n_H kT), with
+G_X(T,p) = min_V [E_BO(V) + F_vib,X(V,T) + p V] separately for each isotope X.
+The common classical term cancels between phases: n_H kT ln(beta_a^G/beta_b^G) = ddG.
+Replacing G with F in beta defines a separate fixed-volume identity for ddF.
+This NVT driver performs no isotope-dependent volume minimisation or pressure-boundary conversion.
 
 Zero modes: the PIMD centroid includes the free translation of the whole supercell, which contributes the
 mass-dependent term F_COM = -(3/2) kT ln M_tot (the free-particle path integral equals its classical value).
 The harmonic reference removes exactly the three Gamma translations, identified by their projection on the
 mass-weighted translation vectors and verified below GAMMA_TOL_THZ (classify_modes), keeps every other positive
-mode, and adds this F_COM term back explicitly, so both sides count the same 3N degrees of freedom.
+mode, folds non-translation imaginary modes to |nu| (A9), and adds this F_COM term back explicitly.
+The dropped reference and infinite-P subtraction remain diagnostics; non-translation zeros invalidate.
 
 Checks that this module cannot settle inside one run are reported, not assumed (JSON "unverified"): the time
 step and the bead number (compare_runs between two runs, bead_transfer_ok for structures other than the
@@ -30,7 +38,9 @@ from __future__ import annotations
 import argparse
 import json
 import subprocess
+import sys
 import time
+from contextlib import contextmanager
 from pathlib import Path
 
 import numpy as np
@@ -54,6 +64,24 @@ MIN_LENGTH, MAX_ATOMS = 8.0, 128  # P12 supercell rule
 
 # ---------------------------------------------------------------- force backends
 
+@contextmanager
+def force_precision():
+    """Disable reduced precision even inside caller autocast; read back within the force context."""
+    try:
+        import torch
+    except ImportError:
+        yield {"torch_available": False, "tf32_matmul": None, "tf32_cudnn": None,
+               "autocast_cpu": None, "autocast_cuda": None}
+        return
+    torch.backends.cuda.matmul.allow_tf32 = False
+    torch.backends.cudnn.allow_tf32 = False
+    with torch.autocast("cpu", enabled=False), torch.autocast("cuda", enabled=False):
+        yield {"torch_available": True, "tf32_matmul": bool(torch.backends.cuda.matmul.allow_tf32),
+               "tf32_cudnn": bool(torch.backends.cudnn.allow_tf32),
+               "autocast_cpu": bool(torch.is_autocast_enabled("cpu")),
+               "autocast_cuda": bool(torch.is_autocast_enabled("cuda"))}
+
+
 class HarmonicForces:
     """V = 1/2 u.Phi.u, u = q - x0, on unwrapped coordinates. fc: (N, N, 3, 3) eV/A^2."""
 
@@ -64,46 +92,102 @@ class HarmonicForces:
         n = fc.shape[0]
         self.phi = fc.transpose(0, 2, 1, 3).reshape(3 * n, 3 * n)
         self.x0 = np.asarray(x0, dtype=float)
+        self.sampling_stability = None
+        with force_precision() as precision:
+            self.precision = precision
+
+    def validate_stability(self, masses_u):
+        """Reject an inverted harmonic PES before propagation, independently of the A9 reference fold.
+
+        No mode is exempt: a negative eigenvalue on a verified translation (broken acoustic sum rule within
+        GAMMA_TOL_THZ) is still an inverted, unbounded direction of the sampled potential, so the reference
+        tolerance on translations does not apply here. The eigenvalue tolerance covers float64 eigensolver
+        roundoff (N_dof * eps * spectral scale), not soft physical imaginary modes or small ASR violations.
+        The sign of the quadratic form is invariant under the positive TI mass changes.
+        """
+        if self.sampling_stability is not None:
+            return self.sampling_stability
+        sm = np.sqrt(np.repeat(masses_u, 3) * AMU_EV)
+        dm = (self.phi + self.phi.T) / (2 * np.outer(sm, sm))
+        ev, vec = np.linalg.eigh(dm)
+        nu = np.sign(ev) * np.sqrt(np.abs(ev)) / (2 * np.pi * 1e-3)
+        _, trans, info = classify_modes(nu[None], vec, masses_u)
+        roundoff = len(ev) * np.finfo(np.float64).eps * np.max(np.abs(ev))
+        negative = ev < -roundoff
+        neg_trans = negative & trans[0]
+        neg_other = negative & ~trans[0]
+        if negative.any():
+            raise ValueError(f"unstable harmonic potential: {int(neg_other.sum())} negative non-translation and "
+                             f"{int(neg_trans.sum())} negative translation eigenvalues (minimum frequency "
+                             f"{nu[negative].min():.6g} THz); folding the reference to |nu| does not stabilise the "
+                             "sampled potential, and a negative translation is an inverted direction even within "
+                             "the acoustic sum rule tolerance")
+        self.sampling_stability = {"stable": True, "n_negative_nontranslation": 0, "n_negative_translation": 0,
+                                   "eigenvalue_roundoff_tol_fs2": float(roundoff),
+                                   "translations_exempted": False,
+                                   "translations_verified": bool(info["translations_verified"]),
+                                   "reference_folding_applied_to_forces": False}
+        return self.sampling_stability
 
     def __call__(self, q):
+        torch = sys.modules.get("torch")
+        if torch is not None:
+            # NumPy has no autocast path, but an enclosing torch context must also be disabled here.
+            if (torch.is_autocast_enabled("cpu") or torch.is_autocast_enabled("cuda")
+                    or torch.backends.cuda.matmul.allow_tf32 or torch.backends.cudnn.allow_tf32):
+                with force_precision() as precision:
+                    self.precision = precision
+                    return self._evaluate(q)
+        return self._evaluate(q)
+
+    def _evaluate(self, q):
+        q = np.asarray(q, dtype=np.float64)
         u = (q - self.x0).reshape(len(q), -1)
         g = u @ self.phi.T
         return -g.reshape(q.shape), 0.5 * np.einsum("pi,pi->p", u, g)
 
     def info(self):
-        return {"backend": "harmonic"}
+        return {"backend": "harmonic", "dtype": "float64", "precision_scope": "numpy float64; torch state at setup",
+                "sampling_stability": self.sampling_stability, **self.precision}
 
 
 class MaceForces:
-    """MACE medium-mpa-0, float64, conservative forces. All beads go through one batched forward pass, or
-    through explicit chunks of bead_chunk beads (recorded in the output; never chosen silently)."""
+    """MACE medium-mpa-0, conservative forces, model dtype float32 (decision 17 A1: the cached force constants and
+    the screen relaxations are float32) or float64. Positions, momenta and estimators stay float64 in the ring
+    polymer; forces are returned as float64. All beads go through one batched forward pass, or through explicit
+    chunks of bead_chunk beads (recorded in the output; never chosen silently)."""
 
     name = "mace"
 
-    def __init__(self, atoms, device="cuda", bead_chunk=None, model="medium-mpa-0"):
+    def __init__(self, atoms, device="cuda", bead_chunk=None, model="medium-mpa-0", dtype="float32"):
         import torch
         from mace import data as mace_data
         from mace.calculators import mace_mp
 
         if device.startswith("cuda") and not torch.cuda.is_available():
             raise RuntimeError("CUDA not available; P12 production runs on the GPU")
-        self.calc = mace_mp(model=model, device=device, default_dtype="float64", dispersion=False)
+        if dtype not in ("float32", "float64"):
+            raise ValueError(dtype)
+        self.dtype = dtype
+        self.calc = mace_mp(model=model, device=device, default_dtype=dtype, dispersion=False)
         self.model = self.calc.models[0]
         dt = next(self.model.parameters()).dtype
-        if dt != torch.float64:
-            raise RuntimeError(f"MACE model dtype is {dt}, P12 needs float64")
+        if dt != getattr(torch, dtype):
+            raise RuntimeError(f"MACE model dtype is {dt}, requested {dtype}")
         self.keyspec = mace_data.KeySpecification(info_keys=self.calc.info_keys, arrays_keys=self.calc.arrays_keys)
         self.atoms = atoms.copy()
         self.device = device
         self.bead_chunk = bead_chunk
         self.model_name = model
+        with force_precision() as precision:
+            self.precision = precision
 
     def _batch(self, qs):
         from mace import data as mace_data
         from mace.tools import torch_geometric, torch_tools
 
         graphs = []
-        with torch_tools.default_dtype("float64"):
+        with torch_tools.default_dtype(self.dtype):
             for q in qs:
                 a = self.atoms.copy()
                 a.positions = q
@@ -118,18 +202,20 @@ class MaceForces:
 
         P, n = q.shape[:2]
         chunk = self.bead_chunk or P
-        f, e = np.empty_like(q), np.empty(P)
+        f, e = np.empty(q.shape, dtype=np.float64), np.empty(P, dtype=np.float64)
         for s in range(0, P, chunk):
             t = min(P, s + chunk)
             try:
-                out = self.model(self._batch(q[s:t]).to_dict(), compute_stress=False, training=False)
+                with force_precision() as precision:
+                    self.precision = precision
+                    out = self.model(self._batch(q[s:t]).to_dict(), compute_stress=False, training=False)
             except (torch.OutOfMemoryError, RuntimeError) as err:  # TorchScript raises a plain RuntimeError
                 if "out of memory" not in str(err):
                     raise
-                raise RuntimeError(f"GPU out of memory for a batch of {t - s} beads x {n} atoms in float64; "
+                raise RuntimeError(f"GPU out of memory for a batch of {t - s} beads x {n} atoms in {self.dtype}; "
                                    f"rerun with an explicit smaller --bead-chunk") from err
-            f[s:t] = out["forces"].detach().cpu().numpy().reshape(t - s, n, 3)
-            e[s:t] = out["energy"].detach().cpu().numpy()
+            f[s:t] = out["forces"].detach().cpu().double().numpy().reshape(t - s, n, 3)
+            e[s:t] = out["energy"].detach().cpu().double().numpy()
         return f, e
 
     def info(self):
@@ -137,8 +223,9 @@ class MaceForces:
 
         import torch
 
-        return {"backend": "mace", "model": self.model_name, "dtype": "float64", "device": self.device,
-                "mace_torch": md.version("mace-torch"), "torch": torch.__version__, "bead_chunk": self.bead_chunk}
+        return {"backend": "mace", "model": self.model_name, "dtype": self.dtype, "device": self.device,
+                "mace_torch": md.version("mace-torch"), "torch": torch.__version__, "bead_chunk": self.bead_chunk,
+                "precision_scope": "inside force call", **self.precision}
 
 
 # ---------------------------------------------------------------- ring polymer
@@ -172,7 +259,7 @@ class RingPolymer:
     scheme of Liu, Li and Liu, J. Chem. Phys. 145, 024103 (2016)): B(dt/2) A(dt/2) O(dt) A(dt/2) B(dt/2), same
     thermostat, much smaller time-step error in configurational averages such as the centroid-virial K."""
 
-    def __init__(self, x0, masses_u, P, T, dt, tau0, forces, rng, splitting="obabo"):
+    def __init__(self, x0, masses_u, P, T, dt, tau0, forces, rng, splitting="baoab"):
         if splitting not in ("obabo", "baoab"):
             raise ValueError(splitting)
         self.splitting = splitting
@@ -180,8 +267,26 @@ class RingPolymer:
         self.forces, self.rng = forces, rng
         self.C = nm_matrix(self.P)
         self.wk = nm_freqs(self.P, self.T)
-        self.q = np.repeat(np.asarray(x0, dtype=float)[None], self.P, axis=0)
+        self.x0 = np.asarray(x0, dtype=np.float64).copy()
+        self.q = np.repeat(self.x0[None], self.P, axis=0)
         self.set_masses(masses_u)
+        self.f, self.v = self.forces(self.q)
+
+    def initialize_harmonic(self, phi):
+        """Exact P-bead draw at light masses, including the classical centroid.
+
+        Physical mode l, ring mode k: variance P kT / (omega_l^2 + omega_k^2).
+        All k amplitudes of translations and nonpositive physical modes are zero.
+        """
+        sm = np.sqrt(np.repeat(self.m, 3))
+        ev, vec = np.linalg.eigh(np.asarray(phi, dtype=np.float64) / np.outer(sm, sm))
+        nu = np.sign(ev) * np.sqrt(np.abs(ev)) / (2 * np.pi * 1e-3)
+        keep, _, _ = classify_modes(nu[None], vec, self.m / AMU_EV)
+        good = keep[0]
+        amp = np.zeros((self.P, len(ev)), dtype=np.float64)
+        amp[:, good] = (self.rng.standard_normal((self.P, int(good.sum())))
+                       * np.sqrt(self.P * KB_EV * self.T / (ev[good] + self.wk[:, None] ** 2)))
+        self.q = self.x0 + (self.C @ (amp @ vec.T / sm)).reshape(self.q.shape)
         self.f, self.v = self.forces(self.q)
 
     def set_masses(self, masses_u, resample=True):
@@ -224,6 +329,8 @@ class RingPolymer:
         self.q, self.p = self._to_beads(qn), self._to_beads(pn)
 
     def step(self):
+        if isinstance(self.forces, HarmonicForces):
+            self.forces.validate_stability(self.m / AMU_EV)
         if self.splitting == "obabo":
             self._thermo()
             self.p += 0.5 * self.dt * self.f
@@ -371,6 +478,157 @@ def ti_nodes(n=4, g_lo=G_D):
     return g[o], w[o]
 
 
+def stationarity(samples):
+    """A6(ii): independent half-mean difference error sqrt(SE(first)^2 + SE(second)^2)."""
+    x = np.asarray(samples, dtype=np.float64)
+    a, b = x[:len(x) // 2], x[len(x) // 2:]
+    if min(len(a), len(b)) < 2:
+        return {"ok": False, "difference_meV_H": None, "sigma_half_meV_H": None,
+                "definition": "sqrt(stat_error(first).err^2 + stat_error(second).err^2); threshold 3 sigma"}
+    sa, sb = stat_error(a), stat_error(b)
+    sigma = float(np.hypot(sa["err"], sb["err"]))
+    diff = float(a.mean() - b.mean())
+    return {"ok": bool(np.isfinite(sigma) and abs(diff) <= 3 * sigma),
+            "difference_meV_H": diff * 1e3, "sigma_half_meV_H": sigma * 1e3,
+            "halves_error_converged": bool(sa["converged"] and sb["converged"]),
+            "definition": "sqrt(stat_error(first).err^2 + stat_error(second).err^2); threshold 3 sigma"}
+
+
+class StructuralMonitor:
+    """Compact sufficient statistics, sampled on kept steps only.
+
+    Unwrapped displacement is aligned by subtracting the all-atom arithmetic translation (no rotation).
+    Imaginary modes use Euclidean unit Cartesian vectors in that same gauge, so projections are in A.
+    Fixed donor/acceptor O identities come from x0; an acceptor must have donor-O distance <= 3.5 A.
+    Distances use the minimum image, with ASE's general algorithm for skew cells.
+    A14 drift and coordination use the time-averaged aligned centroid. Instantaneous RMSD and donor
+    flips are diagnostics: thermal motion and transient proton delocalisation alone do not fail a gate.
+    """
+
+    def __init__(self, x0, cell, numbers, imaginary_modes=None, state=None):
+        self.x0, self.cell = np.asarray(x0, float), np.asarray(cell, float)
+        self.invcell = np.linalg.inv(self.cell)
+        self.orthogonal = np.allclose(self.cell @ self.cell.T, np.diag(np.diag(self.cell @ self.cell.T)))
+        self.h = np.flatnonzero(np.asarray(numbers) == 1)
+        self.o = np.flatnonzero(np.asarray(numbers) == 8)
+        self.heavy = np.asarray(numbers) != 1
+        self.modes = (np.empty((0, len(x0), 3)) if imaginary_modes is None else np.asarray(imaginary_modes))
+        self.bins = np.linspace(-4., 4., 33)
+        self.donors, self.acceptors = [], []
+        for h in self.h:
+            if not len(self.o):
+                self.donors.append(-1)
+                self.acceptors.append(-1)
+                continue
+            order = np.argsort(self.dist(self.x0[self.o] - self.x0[h]))
+            donor = self.o[order[0]]
+            others = [o for o in self.o[order[1:]] if self.dist(self.x0[o] - self.x0[donor]) <= 3.5]
+            self.donors.append(int(donor))
+            self.acceptors.append(int(others[0]) if others else -1)
+        if state is not None and "centroid_displacement_sum_A" not in state:
+            raise ValueError("missing centroid displacement accumulator; restart with a new output/state path")
+        self.data = state if state is not None else {"samples": 0, "rmsd_sum": 0., "rmsd_max": 0.,
+                              "centroid_displacement_sum_A": np.zeros_like(self.x0).tolist(),
+                              "coord_changes": [0] * len(self.h), "projection_sum": [0.] * len(self.modes),
+                              "projection_abs_sum": [0.] * len(self.modes),
+                              "hist": np.zeros((len(self.h), 32), dtype=int).tolist(),
+                              "undefined": [0] * len(self.h), "outside": [0] * len(self.h)}
+
+    def dist(self, vectors):
+        v = np.asarray(vectors)
+        if self.orthogonal:
+            f = v @ self.invcell
+            return np.linalg.norm((f - np.rint(f)) @ self.cell, axis=-1)
+        from ase.geometry import find_mic
+        return find_mic(v.reshape(-1, 3), self.cell, pbc=True)[1].reshape(v.shape[:-1])
+
+    def update(self, q):
+        centroid = q.mean(axis=0)
+        u = centroid - self.x0
+        u -= u.mean(axis=0)
+        rmsd = float(np.sqrt(np.mean(np.sum(u[self.heavy] ** 2, axis=1)))) if self.heavy.any() else 0.
+        d = self.data
+        d["samples"] += 1
+        d["rmsd_sum"] += rmsd
+        d["rmsd_max"] = max(d["rmsd_max"], rmsd)
+        d["centroid_displacement_sum_A"] = (np.asarray(d["centroid_displacement_sum_A"]) + u).tolist()
+        projection = np.einsum("ina,na->i", self.modes, u)
+        d["projection_sum"] = (np.asarray(d["projection_sum"]) + projection).tolist()
+        d["projection_abs_sum"] = (np.asarray(d["projection_abs_sum"]) + np.abs(projection)).tolist()
+        if len(self.o):
+            nearest = self.o[np.argmin(self.dist(centroid[self.h, None] - centroid[self.o]), axis=1)]
+            d["coord_changes"] = (np.asarray(d["coord_changes"]) + (nearest != self.donors)).tolist()
+        for j, (h, donor, acceptor) in enumerate(zip(self.h, self.donors, self.acceptors)):
+            if acceptor < 0:
+                d["undefined"][j] += len(q)
+                continue
+            delta = self.dist(q[:, h] - q[:, donor]) - self.dist(q[:, h] - q[:, acceptor])
+            hist = np.histogram(delta, self.bins)[0]
+            d["hist"][j] = (np.asarray(d["hist"][j]) + hist).tolist()
+            d["outside"][j] += int(len(q) - hist.sum())
+
+    def summary(self):
+        d, n = self.data, self.data["samples"]
+        proj = (np.asarray(d["projection_sum"]) / max(n, 1)).tolist()
+        mean_u = np.asarray(d["centroid_displacement_sum_A"]) / max(n, 1)
+        rmsd = float(np.sqrt(np.mean(np.sum(mean_u[self.heavy] ** 2, axis=1)))) if self.heavy.any() else 0.
+        mean_centroid = self.x0 + mean_u
+        nearest = (self.o[np.argmin(self.dist(mean_centroid[self.h, None] - mean_centroid[self.o]), axis=1)].tolist()
+                   if len(self.o) else [-1] * len(self.h))
+        coord_ok = bool(n and nearest == self.donors)
+        return {"samples": n, "alignment": "subtract all-atom mean unwrapped displacement; no rotation",
+                "centroid_displacement_sum_A": d["centroid_displacement_sum_A"],
+                "heavy_rmsd_mean_A": d["rmsd_sum"] / max(n, 1), "heavy_rmsd_max_A": d["rmsd_max"],
+                "heavy_rmsd_time_mean_A": rmsd, "heavy_rmsd_ok": bool(n and rmsd < .15),
+                "heavy_rmsd_gate_definition": "RMSD of time-averaged aligned centroid from x0 < 0.15 A; "
+                                              "instantaneous mean/max are diagnostics (A14 drift interpretation)",
+                "coordination_defined": bool(len(self.o)), "coordination_unchanged": coord_ok,
+                "donor_O_indices": self.donors, "coordination_changes_per_H": d["coord_changes"],
+                "mean_centroid_donor_O_indices": nearest,
+                "coordination_gate_definition": "nearest O of time-averaged aligned centroid, minimum image, "
+                                                "compared with x0; per-sample flips are diagnostics",
+                "imaginary_projection_mean_A": proj,
+                "imaginary_projection_mean_abs_A": (np.asarray(d["projection_abs_sum"]) / max(n, 1)).tolist(),
+                "projection_convention": "dot of aligned centroid-x0 with unit Cartesian real light-mass mode",
+                "imaginary_retention_ok": bool(np.all(np.abs(proj) < .1)),
+                "retention_ok": bool(n and coord_ok and np.all(np.abs(proj) < .1)),
+                "transfer_histogram": {"bins_A": self.bins.tolist(), "counts": d["hist"],
+                                       "H_indices": self.h.tolist(), "acceptor_O_indices": self.acceptors,
+                                       "acceptor_max_OO_A": 3.5, "assignment": "fixed x0 nearest donor and next O within cutoff",
+                                       "undefined_per_H": d["undefined"], "outside_bins_per_H": d["outside"]}}
+
+
+def merge_monitors(points, monitor_factory):
+    """Pool aligned vectors by kept sample count, and require both pooled and per-point gates.
+
+    Opposite drifts at different GL points must not hide a point's sampling failure.
+    Geometry comes from the factory, avoiding its duplication in each point's JSON.
+    """
+    rows = [p["monitors"] for p in points if p.get("monitors")]
+    if not rows:
+        return None
+    mon = monitor_factory(None)
+    d = mon.data
+    d["samples"] = sum(r["samples"] for r in rows)
+    for dest, source in (("rmsd_sum", "heavy_rmsd_mean_A"), ("projection_sum", "imaginary_projection_mean_A"),
+                         ("projection_abs_sum", "imaginary_projection_mean_abs_A")):
+        d[dest] = sum(np.asarray(r[source]) * r["samples"] for r in rows).tolist()
+    d["rmsd_max"] = max(r["heavy_rmsd_max_A"] for r in rows)
+    for dest, source in (("centroid_displacement_sum_A", "centroid_displacement_sum_A"),
+                         ("coord_changes", "coordination_changes_per_H")):
+        d[dest] = np.sum([r[source] for r in rows], axis=0).tolist()
+    for dest, source in (("hist", "counts"), ("undefined", "undefined_per_H"), ("outside", "outside_bins_per_H")):
+        d[dest] = np.sum([r["transfer_histogram"][source] for r in rows], axis=0).tolist()
+    out = mon.summary()
+    out["heavy_rmsd_pooled_ok"] = out["heavy_rmsd_ok"]
+    out["coordination_pooled_unchanged"] = out["coordination_unchanged"]
+    out["imaginary_retention_pooled_ok"] = out["imaginary_retention_ok"]
+    for key in ("heavy_rmsd_ok", "coordination_unchanged", "imaginary_retention_ok", "retention_ok"):
+        out[key] = out[key] and all(r[key] for r in rows)
+    out["gate_scope"] = "every completed GL point and pooled kept samples must pass"
+    return out
+
+
 def ti_integrate(g, w, k, k_err=None):
     """F(m_D) - F(m_H) = -sum w 2 K(g)/g (integral from 1 down to g_D), with propagated error."""
     g, w, k = map(np.asarray, (g, w, k))
@@ -387,7 +645,9 @@ def _osc_free_energy(nu_thz, T, P=None):
     kT = KB_EV * T
     w = 2 * np.pi * np.asarray(nu_thz, dtype=float) * 1e-3  # rad/fs
     if P is None:
-        return kT * np.log(2 * np.sinh(HBAR_EV_FS * w / (2 * kT)))
+        # kT ln(2 sinh(E/2kT)) = E/2 + kT ln(1 - exp(-E/kT)); the direct sinh overflows for E/kT > ~1420.
+        E = HBAR_EV_FS * w
+        return E / 2 + kT * np.log(-np.expm1(-E / kT))
     wk = nm_freqs(P, T)
     return kT * np.sum(np.log(HBAR_EV_FS * np.sqrt(w[..., None] ** 2 + wk ** 2) / (P * kT)), axis=-1)
 
@@ -419,7 +679,7 @@ def classify_modes(nu, evec_gamma, masses_u, i_gamma=0, tol=Ph.GAMMA_TOL_THZ, mi
     three modes with the largest projection on that subspace are the translations; they are verified only if
     each projection exceeds min_overlap and each |nu| is below tol (acoustic sum rule satisfied to tol). A soft
     optical mode below a shifted translation is therefore kept, not dropped. Every other mode with nu > 0
-    enters the free energy however small; a non-translation mode with nu <= 0 is counted, never made positive.
+    enters the dropped free energy however small. Imaginary modes are classified separately for A9 folding.
     Returns (keep mask (nq, nb), translation mask, info)."""
     nu = np.atleast_2d(np.asarray(nu, dtype=float))
     nb = nu.shape[1]
@@ -439,7 +699,8 @@ def classify_modes(nu, evec_gamma, masses_u, i_gamma=0, tol=Ph.GAMMA_TOL_THZ, mi
             "translation_overlap_4th": float(np.sort(ov)[-4]) if nb > 3 else 0.0,
             "translation_max_abs_THz": float(np.abs(nu[i_gamma, idx]).max()),
             "n_nonpositive_nontranslation": int(nonpos.sum()),
-            "n_imag": int((rest & (nu < Ph.IMAG_TOL_THZ)).sum()),
+            "n_imag": int((rest & (nu < 0)).sum()),
+            "n_zero_nontranslation": int((rest & (nu == 0)).sum()),
             "n_soft_kept": int((keep & (nu < tol)).sum()),
             "min_freq_THz_nontranslation": float(nu[rest].min()) if rest.any() else None}
     info["translations_verified"] = bool(info["translation_overlap_min"] > min_overlap
@@ -452,24 +713,48 @@ def _isotope_free_energy(nu, keep, total_mass_u, T, P=None):
     return float(_osc_free_energy(nu[keep], T, P).sum()) + com_free_energy(total_mass_u, T)
 
 
-def _assemble(per_iso, T, P):
+def _assemble(per_iso, T, P, n_h=1):
     """per_iso: {iso: (nu, keep, info, total_mass_u)} -> dF dict with validity flags."""
     out = {}
-    F, Fp = {}, {}
+    F, Fp, folded, folded_p = {}, {}, {}, {}
     for iso, (nu, keep, info, mtot) in per_iso.items():
         out.update({f"{k}_{iso}": v for k, v in info.items()})
         F[iso] = _isotope_free_energy(nu, keep, mtot, T)
+        imag_nu = np.array([m["frequency_THz"] for m in info["imaginary_modes"]])
+        folded[iso] = F[iso] + float(_osc_free_energy(np.abs(imag_nu), T).sum())
         if P is not None:
             Fp[iso] = _isotope_free_energy(nu, keep, mtot, T, P)
-    out["dF_eV"] = float(F["D"] - F["H"])
+            folded_p[iso] = Fp[iso] + float(_osc_free_energy(np.abs(imag_nu), T, P).sum())
+    out["dF_dropped_eV"] = float(F["D"] - F["H"])
+    out["dF_folded_eV"] = float(folded["D"] - folded["H"])
+    out["dF_eV"] = out["dF_folded_eV"]
     out["dF_com_eV"] = float(com_free_energy(per_iso["D"][3], T) - com_free_energy(per_iso["H"][3], T))
     if P is not None:
-        out["dF_P_eV"] = float(Fp["D"] - Fp["H"])
+        out["dF_dropped_P_eV"] = float(Fp["D"] - Fp["H"])
+        out["dF_folded_P_eV"] = float(folded_p["D"] - folded_p["H"])
+        out["dF_P_eV"] = out["dF_folded_P_eV"]
     out["has_imaginary"] = bool(out["n_imag_H"] > 0 or out["n_imag_D"] > 0)
     out["translations_verified"] = bool(out["translations_verified_H"] and out["translations_verified_D"])
-    out["valid"] = bool(out["translations_verified"] and out["n_nonpositive_nontranslation_H"] == 0
-                        and out["n_nonpositive_nontranslation_D"] == 0)
+    out["valid"] = bool(out["translations_verified"] and out["n_zero_nontranslation_H"] == 0
+                        and out["n_zero_nontranslation_D"] == 0)
+    out["folded"] = out["has_imaginary"]
+    out["n_imag"] = max(out["n_imag_H"], out["n_imag_D"])
+    out["s_imag_inf_meV_H"] = abs(out["dF_folded_eV"] - out["dF_dropped_eV"]) * 1e3 / n_h
+    out["s_imag_meV_H"] = (abs(out["dF_folded_P_eV"] - out["dF_dropped_P_eV"]) * 1e3 / n_h
+                            if P is not None else out["s_imag_inf_meV_H"])
     return out
+
+
+def _imaginary_modes(nu, trans, vecs, T, qpts=None):
+    """Columns of mass-weighted eigenvectors; complex Bloch modes retain both components."""
+    modes = []
+    for q, b in np.argwhere((nu < 0) & ~trans):
+        v = vecs[q, :, b]
+        modes.append({"frequency_THz": float(nu[q, b]),
+                      "beta_hbar_abs_omega": float(HBAR_EV_FS * 2 * np.pi * abs(nu[q, b]) * 1e-3 / (KB_EV * T)),
+                      "q": [0., 0., 0.] if qpts is None else qpts[q].tolist(),
+                      "eigenvector_real": v.real.tolist(), "eigenvector_imag": v.imag.tolist()})
+    return modes
 
 
 def _fc_asr_max(fc):
@@ -483,7 +768,7 @@ def harmonic_samecell(ph, sc, T, P=None):
     Zero modes: exactly the three translations at Gamma, identified and verified by classify_modes, are removed
     and replaced by the free translation -(3/2) kT ln M_tot of the whole supercell (M_tot = sum of the masses of
     the PIMD cell), which the PIMD centroid contains. Imaginary or zero non-translation modes make the result
-    invalid (valid = False) and are excluded from the sum, never folded to positive values.
+    invalid only for zero modes. A9 folds non-translation imaginary modes to |nu| and also stores the dropped sum.
 
     qpoints_exact says whether all commensurate q of sc are commensurate with the force-constant supercell; if
     not, the dynamical matrices there are Fourier interpolated and need hessian_samecell to be checked.
@@ -501,13 +786,15 @@ def harmonic_samecell(ph, sc, T, P=None):
         p = Ph.phonopy_with_masses(ph, masses)
         p.run_qpoints(qpts, with_eigenvectors=True)
         nu = np.array(p.qpoints.frequencies)  # (nq, 3n) THz
-        ev = np.array(p.qpoints.eigenvectors)[i_gamma]
-        keep, _, info = classify_modes(nu, ev, masses, i_gamma=i_gamma)
+        vecs = np.array(p.qpoints.eigenvectors)
+        keep, trans, info = classify_modes(nu, vecs[i_gamma], masses, i_gamma=i_gamma)
+        info["imaginary_modes"] = _imaginary_modes(nu, trans, vecs, T, qpts)
         per_iso[iso] = (nu, keep, info, float(masses.sum()) * len(qpts))
     out = {"n_qpoints": len(qpts), "source": "cached force constants, commensurate q of the PIMD supercell",
            "qpoints_exact": qpoints_commensurate_with(qpts, ph.supercell_matrix),
            "fc_asr_max_eV_A2": _fc_asr_max(ph.force_constants), "nu_max_thz": float(per_iso["H"][0].max())}
-    out.update(_assemble(per_iso, T, P))
+    n_h = int(np.sum(atoms.numbers == 1)) * len(qpts)
+    out.update(_assemble(per_iso, T, P, n_h))
     return out
 
 
@@ -523,11 +810,62 @@ def hessian_samecell(phi, masses_light_u, mask_h, T, P=None):
         isq = 1 / np.sqrt(np.repeat(m, 3) * AMU_EV)
         ev, vec = np.linalg.eigh(isq[:, None] * phi * isq[None, :])
         nu = (np.sign(ev) * np.sqrt(np.abs(ev)) / (2 * np.pi * 1e-3))[None]  # signed THz, imaginary < 0
-        keep, _, info = classify_modes(nu, vec, m)
+        keep, trans, info = classify_modes(nu, vec, m)
+        info["imaginary_modes"] = _imaginary_modes(nu, trans, vec[None], T)
         per_iso[iso] = (nu, keep, info, float(m.sum()))
     out = {"n_qpoints": 1, "source": "finite-difference Hessian of the PIMD supercell"}
-    out.update(_assemble(per_iso, T, P))
+    out.update(_assemble(per_iso, T, P, int(np.sum(mask_h))))
     return out
+
+
+def cached_hessian(ph, sc, atoms):
+    """Inverse Bloch transform on the commensurate grid, in the supplied atoms' order.
+
+    Phonopy includes the basis displacement in exp(+2 pi i q.(r_j-r_i)). Undo that phase,
+    including the basis, rather than Fourier transforming cell indices alone. Dynamical matrices
+    here are in eV/A^2/u; unweighting masses returns force constants without a frequency conversion.
+    """
+    from ase import Atoms
+
+    uc = ph.unitcell
+    base = Atoms(uc.symbols, positions=uc.positions, cell=uc.cell, pbc=True)
+    p = Ph.phonopy_with_masses(ph, Ph.make_masses(base, {}, default="light"))
+    frac = atoms.positions @ np.linalg.inv(uc.cell)
+    basis = np.asarray(p.primitive.scaled_positions)
+    mapping = []
+    for s, r in zip(atoms.get_chemical_symbols(), frac):
+        delta = r - basis
+        hits = [j for j in range(len(basis)) if p.primitive.symbols[j] == s
+                and np.max(np.abs(delta[j] - np.round(delta[j]))) < 1e-7]
+        if len(hits) != 1:
+            raise ValueError("cannot uniquely map PIMD atoms to the phonopy basis")
+        mapping.append(hits[0])
+    dofs = (3 * np.asarray(mapping)[:, None] + np.arange(3)).ravel()
+    qpts = commensurate_qpoints(sc)
+    mat = np.zeros((3 * len(atoms), 3 * len(atoms)), dtype=complex)
+    for q in qpts:
+        p.dynamical_matrix.run(q)
+        dm = p.dynamical_matrix.dynamical_matrix[np.ix_(dofs, dofs)]
+        phase = np.repeat(np.exp(2j * np.pi * (frac @ q)), 3)
+        mat += phase[:, None] * dm * phase.conj()[None, :] / len(qpts)
+    sm = np.sqrt(np.repeat(Ph.make_masses(atoms, {}, default="light"), 3))
+    mat *= np.outer(sm, sm)
+    if np.max(np.abs(mat.imag)) > 1e-7:
+        raise ValueError("commensurate Bloch transform did not produce a real Hessian")
+    return (mat.real + mat.real.T) / 2
+
+
+def imaginary_cartesian_modes(phi, masses):
+    """Real light-mass supercell modes for retention, Euclidean-normalised after translation removal."""
+    sm = np.sqrt(np.repeat(masses, 3) * AMU_EV)
+    ev, vec = np.linalg.eigh(phi / np.outer(sm, sm))
+    nu = np.sign(ev) * np.sqrt(np.abs(ev)) / (2 * np.pi * 1e-3)
+    _, trans, _ = classify_modes(nu[None], vec, masses)
+    v = (vec[:, (nu < 0) & ~trans[0]].T / sm).reshape(-1, len(masses), 3)
+    v -= v.mean(axis=1, keepdims=True)
+    if len(v):
+        v /= np.linalg.norm(v.reshape(len(v), -1), axis=1)[:, None, None]
+    return v
 
 
 def fd_hessian(forces, x0, delta=0.01, chunk=None):
@@ -584,8 +922,13 @@ def _git_hash():
 
 
 def run_points(rp, mask_h, g_nodes, steps, equil_frac, base_masses, on_point=None, done=None, log_every=0,
-               weights=None):
-    """Run the TI mass points in order. done: list of already completed point dicts (resume)."""
+               weights=None, extension_steps=3000, monitor_factory=None, dump_every=0, dump_root=None,
+               dump_stem="pimd", cell=None, atomic_numbers=None, active=None, on_progress=None):
+    """TI points with one A6 extension and checkpointable, uncounted active-point samples.
+
+    A checkpoint includes q, p and RNG for an active point; at a point boundary momenta are resampled.
+    Snapshots are replaced atomically at completion, never appended to an interrupted file.
+    """
     results = list(done or [])
     n_h = int(mask_h.sum())
     for i, g in enumerate(g_nodes):
@@ -593,30 +936,111 @@ def run_points(rp, mask_h, g_nodes, steps, equil_frac, base_masses, on_point=Non
             continue
         m = base_masses.copy()
         m[mask_h] = M_H / g ** 2
-        rp.set_masses(m)
         n_eq = int(round(equil_frac * steps))
-        t0 = time.time()
-        ks = np.empty(steps - n_eq)
-        for s in range(steps):
-            rp.step()
-            if s >= n_eq:
-                ks[s - n_eq] = rp.kinetic_cv(mask_h) / n_h
-            if log_every and (s + 1) % log_every == 0:
-                print(f"  g={g:.5f} step {s + 1}/{steps} {(s + 1) / (time.time() - t0):.2f} steps/s", flush=True)
-        wall = time.time() - t0
+        if active is not None:
+            if active["point_index"] != i:
+                raise ValueError("active checkpoint point does not follow completed points")
+            rp.set_masses(m, resample=False)
+            progress = active
+            active = None
+        else:
+            rp.set_masses(m)
+            progress = {"point_index": i, "step": 0, "target": steps, "extension_steps": 0,
+                        "tests": [], "ks": [], "snapshot_q": [], "snapshot_steps": [],
+                        "monitor_state": None, "wall_s": 0.}
+        mon = monitor_factory(progress["monitor_state"]) if monitor_factory else None
+        t0 = time.perf_counter()
+        prior_wall = progress["wall_s"]
+
+        def checkpoint():
+            progress["wall_s"] = prior_wall + time.perf_counter() - t0
+            progress["monitor_state"] = mon.data if mon else None
+            if on_progress:
+                on_progress(progress)
+
+        try:
+            while True:
+                while progress["step"] < progress["target"]:
+                    _checkpointable_step(rp)
+                    progress["step"] += 1
+                    s = progress["step"]
+                    if s > n_eq:
+                        progress["ks"].append(rp.kinetic_cv(mask_h) / n_h)
+                        if mon:
+                            mon.update(rp.q)
+                        kept = len(progress["ks"])
+                        if dump_every and kept % dump_every == 0:
+                            progress["snapshot_q"].append(rp.q.copy())
+                            progress["snapshot_steps"].append(kept)
+                    if on_progress and s % 100 == 0:
+                        checkpoint()
+                    if log_every and s % log_every == 0:
+                        print(f"  g={g:.5f} step {s}/{progress['target']}", flush=True)
+                # Persist the decision as well as the data so an extension cannot fire twice on resume.
+                required_tests = 2 if progress["extension_steps"] else 1
+                if len(progress["tests"]) < required_tests:
+                    progress["tests"].append(stationarity(progress["ks"]))
+                if (not progress["tests"][-1]["ok"] and not progress["extension_steps"] and extension_steps):
+                    progress["extension_steps"] = extension_steps
+                    progress["target"] += extension_steps
+                    checkpoint()
+                    continue
+                break
+        except BaseException:
+            checkpoint()
+            raise
+        wall = prior_wall + time.perf_counter() - t0
+        ks = np.asarray(progress["ks"], dtype=np.float64)
         se = stat_error(ks)
+        snapshots = {"path": None, "count": 0}
+        if dump_every:
+            path = Path(dump_root) / f"{dump_stem}_g{i}.npz"
+            _atomic_npz(path, schema="isoshift-pimd-snapshots-v1", q=np.asarray(progress["snapshot_q"], dtype=np.float64)
+                        .reshape(-1, *rp.q.shape), g=float(g), masses_u=m, mask_h=mask_h, cell_A=cell,
+                        atomic_numbers=atomic_numbers, T_K=rp.T,
+                        P=rp.P, kB_eV_K=KB_EV, model_info=json.dumps(rp.forces.info()),
+                        x0_A=rp.x0, harmonic_phi_eV_A2=getattr(rp.forces, "phi", np.empty((0, 0))),
+                        kept_steps=np.asarray(progress["snapshot_steps"], dtype=np.int64),
+                        step_indices=np.asarray(progress["snapshot_steps"], dtype=np.int64) + n_eq,
+                        coordinates="unwrapped Angstrom; all P beads", force_convention="physical forces eV/Angstrom",
+                        kinetic_estimator="K_H=1.5*n_H*kB*T-sum((q-mean_beads(q))*F_H)/(2*P)")
+            snapshots = {"path": str(path.resolve()), "count": len(progress["snapshot_steps"])}
         results.append({"g": float(g), "mass_H_u": float(M_H / g ** 2),
                         "weight": None if weights is None else float(weights[i]), "K_H_meV": float(ks.mean() * 1e3),
                         "K_H_err_meV": se["err"] * 1e3, "error_converged": se["converged"],
                         "K_H_err_block_meV": se["err_block"] * 1e3, "K_H_err_acf_meV": se["err_acf"] * 1e3,
                         "plateau_block_size": se["plateau_block_size"], "plateau_n_blocks": se["plateau_n_blocks"],
                         "tau_int_steps": se["tau_int_steps"], "n_eff": se["n_eff"],
-                        "steps": steps, "steps_equil": n_eq, "steps_used": len(ks),
+                        "steps": progress["step"], "steps_planned": steps, "steps_equil": n_eq, "steps_used": len(ks),
+                        "extension_steps": progress["extension_steps"], "stationarity_tests": progress["tests"],
+                        "stationarity_ok": progress["tests"][-1]["ok"],
+                        "monitors": mon.summary() if mon else None, "snapshots": snapshots,
                         "block_curve_meV": [[b, nb, e * 1e3] for b, nb, e in se["curve"]],
-                        "wall_s": wall, "steps_per_s": steps / wall})
+                        "wall_s": wall, "steps_per_s": progress["step"] / wall,
+                        "seconds_per_ring_step": wall / progress["step"]})
         if on_point:
             on_point(results)
     return results
+
+
+def _atomic_npz(path, **arrays):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp")
+    with tmp.open("wb") as f:
+        np.savez(f, **arrays)
+    tmp.replace(path)
+
+
+def _checkpointable_step(rp):
+    """Do not persist a half BAOAB step if a force call or keyboard interrupt fails mid-step."""
+    previous = rp.q.copy(), rp.p.copy(), rp.f, rp.v, rp.rng.bit_generator.state
+    try:
+        rp.step()
+    except BaseException:
+        rp.q, rp.p, rp.f, rp.v, rng_state = previous
+        rp.rng.bit_generator.state = rng_state
+        raise
 
 
 def _summarize(points, w):
@@ -634,7 +1058,8 @@ HESSIAN_TOL_MEV = 0.1  # interpolated vs PIMD-cell Hessian, meV per H (a third o
 def compare_runs(a, b, tol=COMPARE_TOL_MEV, z=2.0):
     """Systematic check between two completed run JSONs of one structure that differ in P or dt only.
 
-    diff = dF_PIMD(b) - dF_PIMD(a) per H, err = combined statistical error (independent runs). converged needs
+    diff = Delta_anh(larger P) - Delta_anh(smaller P), or Delta_anh(dt/2) - Delta_anh(dt).
+    err = combined statistical error (independent runs). The diagnostic equivalence flag converged needs
     the upper bound |diff| + z err below tol, so an observed difference below tol with a large error does not
     pass. Both runs must have converged statistical errors. For a bead comparison the harmonic bead error
     |dF_harm,P - dF_harm| of each run is reported: transfer_reference_meV_H is that of the larger P, and a
@@ -649,10 +1074,18 @@ def compare_runs(a, b, tol=COMPARE_TOL_MEV, z=2.0):
     varied = sorted(k for k in set(ra) | set(rb) if ra.get(k) != rb.get(k) and k not in ("seed", "steps"))
     if varied not in (["beads"], ["dt"]):
         raise ValueError(f"runs differ in {varied}; compare P or dt only")
+    if ra.get("seed") == rb.get("seed"):
+        # the combined error below assumes independent runs; a shared seed shares thermostat noise (review, 24 Oct)
+        raise ValueError(f"runs share seed {ra.get('seed')}; the P or dt comparison needs independent seeds")
     lo, hi = sorted((ra[varied[0]], rb[varied[0]]))
     if not np.isclose(hi, 2 * lo, rtol=1e-9):
         raise ValueError(f"{varied[0]}: {lo} vs {hi}; the convergence check needs exactly a factor 2 (P vs 2P, dt vs dt/2)")
-    diff = b["dF_PIMD_meV_H"] - a["dF_PIMD_meV_H"]
+    if any(d.get("delta_anh_meV_H") is None for d in (a, b)):
+        raise ValueError("compare_runs needs verified, valid same-P Delta_anh values")
+    small, big = sorted((a, b), key=lambda d: d["run_args"][varied[0]])
+    diff = big["delta_anh_meV_H"] - small["delta_anh_meV_H"]
+    if varied == ["dt"]:
+        diff = -diff
     err = float(np.hypot(a["dF_PIMD_err_meV_H"], b["dF_PIMD_err_meV_H"]))
     upper = abs(diff) + z * err
     errs_ok = bool(a.get("error_converged") and b.get("error_converged"))
@@ -660,6 +1093,9 @@ def compare_runs(a, b, tol=COMPARE_TOL_MEV, z=2.0):
            "diff_meV_H": diff, "diff_err_meV_H": err, "z": z, "upper_bound_meV_H": upper, "tol_meV_H": tol,
            "errors_converged": errs_ok, "converged": bool(errs_ok and upper < tol)}
     if varied == ["beads"]:
+        out["pilot_reject_P"] = bool(abs(diff) > 0.3 and abs(diff) > 1.96 * err)
+        out["pilot_rule"] = "A4: reject only if abs(d)>0.3 meV/H and abs(d)>1.96*sigma_d; converged is diagnostic"
+        out["d_meV_H"], out["sigma_d_meV_H"] = diff, err
         out["harmonic_bead_error_meV_H"] = {str(ra["beads"]): a["harmonic_bead_error_meV_H"],
                                             str(rb["beads"]): b["harmonic_bead_error_meV_H"]}
         big = a if ra["beads"] > rb["beads"] else b
@@ -707,6 +1143,12 @@ def main(argv=None):
     ap.add_argument("--backend", choices=("mace", "harmonic"), default="mace")
     ap.add_argument("--bead-chunk", type=int, default=None, help="beads per MACE forward pass (default all P)")
     ap.add_argument("--device", default="cuda")
+    ap.add_argument("--dtype", choices=("float32", "float64"), default="float32", help="MACE model dtype")
+    ap.add_argument("--init", choices=("harmonic", "positions"), default="harmonic")
+    ap.add_argument("--pre-equil", type=int, default=1000, help="discarded steps at light H, before GL points")
+    ap.add_argument("--stationarity-extension", type=int, default=3000, help="one extension on a failed halves test")
+    ap.add_argument("--dump-every", type=int, default=0, help="snapshot interval in kept steps; 0 disables")
+    ap.add_argument("--allow-invalid-reference", action="store_true", help="diagnostic run despite residual force gate")
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--raw-root", type=Path, default=RAW)
     ap.add_argument("--cache-root", type=Path, default=CACHE)
@@ -719,6 +1161,11 @@ def main(argv=None):
     ap.add_argument("--stop-after", type=int, default=None, help=argparse.SUPPRESS)  # tests: simulate interruption
     a = ap.parse_args(argv)
 
+    if (a.beads < 1 or a.steps < 2 or not 0 <= a.equil < 1 or a.dt <= 0 or a.T <= 0 or a.tau0 <= 0
+            or min(a.pre_equil, a.stationarity_extension, a.dump_every) < 0
+            or a.masses_points < 1 or (a.bead_chunk is not None and a.bead_chunk < 1)):
+        raise ValueError("invalid PIMD step counts, temperature, timestep or sampling options")
+
     from ase import Atoms
 
     from isoshift import cache
@@ -728,12 +1175,35 @@ def main(argv=None):
     uc = ph.unitcell
     cell_atoms = Atoms(uc.symbols, cell=uc.cell, scaled_positions=uc.scaled_positions, pbc=True)
     sc = [int(x) for x in np.diag(Ph.supercell_for_min_length(cell_atoms, MIN_LENGTH, MAX_ATOMS))]
+    out_path = a.out if a.out.is_absolute() else ROOT / a.out
+    state = Path(a.state_root).resolve() / f"{out_path.stem}.npz"
+    run_args = {k: getattr(a, k) for k in ("beads", "steps", "dt", "T", "tau0", "masses_points", "equil", "seed",
+                                         "backend", "bead_chunk", "splitting", "dtype", "device", "init", "pre_equil",
+                                         "stationarity_extension", "dump_every", "allow_invalid_reference", "hessian_check")}
+    run_args["state_root"] = str(state.parent)
+    # Old checkpoints lack the aligned vector sums; their gates cannot be recomputed faithfully.
+    run_args["monitor_schema"] = "time-averaged-centroid-v2"
+    prev = json.loads(out_path.read_text()) if out_path.exists() else {}
+    saved = None
+    if state.exists():
+        with np.load(state, allow_pickle=False) as f:
+            saved = {k: f[k].copy() for k in f.files}
+        # The atomic NPZ is authoritative if interruption happened before its JSON mirror was written.
+        checkpoint_doc = json.loads(str(saved["doc"]))
+        if checkpoint_doc.get("output_path") != str(out_path.resolve()):
+            raise ValueError("restart state belongs to another output path")
+        prev = checkpoint_doc
+    elif prev:
+        raise ValueError(f"missing restart state {state}; refusing to mix runs")
+    if prev and (prev.get("run_args") != run_args or prev.get("cache_key") != cdir.name
+                 or prev.get("struct_id") != a.struct):
+        raise ValueError(f"{out_path} exists with different arguments or cache; refusing to mix runs")
+    done = prev.get("points", [])
 
     if a.backend == "harmonic":
         if sc != [int(x) for x in np.diag(ph.supercell_matrix)]:
             raise ValueError(f"harmonic backend needs the PIMD supercell {sc} to equal the force-constant supercell")
         from phonopy.harmonic.force_constants import compact_fc_to_full_fc
-
         fc = ph.force_constants
         if fc.shape[0] != fc.shape[1]:
             fc = compact_fc_to_full_fc(ph.primitive, fc)
@@ -742,123 +1212,187 @@ def main(argv=None):
         forces = HarmonicForces(fc, atoms.positions)
     else:
         atoms = cell_atoms * tuple(sc)
-        forces = MaceForces(atoms, device=a.device, bead_chunk=a.bead_chunk)
+        forces = MaceForces(atoms, device=a.device, bead_chunk=a.bead_chunk, dtype=a.dtype)
 
-    mask_h = np.array([s == "H" for s in atoms.get_chemical_symbols()])
+    mask_h = atoms.numbers == 1
     n_h = int(mask_h.sum())
-    if n_h == 0:
+    if not n_h:
         raise ValueError(f"{a.struct}: no H atoms")
     base = Ph.make_masses(atoms, {}, default="light")
+    # Gate at x0 itself, before diagonalisation, FD Hessians, harmonic draws or ring propagation.
+    f0, _ = forces(atoms.positions[None])
+    f0_max = float(np.linalg.norm(f0[0], axis=1).max())
+    invalid_reference = not np.isfinite(f0_max) or f0_max > 1e-3
+    if invalid_reference and not a.allow_invalid_reference:
+        raise ValueError(f"residual force at x0 {f0_max:.6g} eV/A exceeds 1e-3; invalid reference. "
+                         "--allow-invalid-reference permits a diagnostic run with null primary Delta_anh")
+    if a.backend == "harmonic":
+        forces.validate_stability(base)
     g_nodes, w = ti_nodes(a.masses_points)
-
-    harm = harmonic_samecell(ph, sc, a.T, P=a.beads)
+    harm = prev.get("harmonic_samecell") or harmonic_samecell(ph, sc, a.T, P=a.beads)
     harm_meV = harm["dF_eV"] * 1e3 / n_h
     harm_P_meV = harm["dF_P_eV"] * 1e3 / n_h
-    # stop before any force call on an unstable P, T, dt (highest frequency is at the H mass, g = 1)
-    stability = check_step_stable(a.beads, a.T, a.dt, harm["nu_max_thz"], a.tau0, a.splitting)
-
-    out_path = a.out if a.out.is_absolute() else ROOT / a.out
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    run_args = {k: getattr(a, k) for k in ("beads", "steps", "dt", "T", "tau0", "masses_points", "equil", "seed",
-                                           "backend", "bead_chunk", "splitting")}
-    done, prev = [], {}
-    if out_path.exists():
-        prev = json.loads(out_path.read_text())
-        if prev.get("run_args") != run_args:
-            raise ValueError(f"{out_path} exists with different arguments {prev.get('run_args')}; refusing to mix runs")
-        done = prev.get("points", [])
-    state = Path(a.state_root) / f"{out_path.stem}.npz"
-
-    # Interpolation check of the same-cell reference: the PIMD cell's own Hessian with the run's backend.
-    hess = prev.get("hessian_check") if done else None
+    stability = prev.get("step_stability") or check_step_stable(
+        a.beads, a.T, a.dt, harm["nu_max_thz"], a.tau0, a.splitting)
+    hess = prev.get("hessian_check")
     want_hess = a.hessian_check == "on" or (a.hessian_check == "auto" and not harm["qpoints_exact"])
-    if want_hess and hess is None:
-        t0 = time.time()
-        direct = hessian_samecell(fd_hessian(forces, atoms.positions, delta=0.01, chunk=a.bead_chunk or a.beads),
-                                  base, mask_h, a.T)
-        d_meV = direct["dF_eV"] * 1e3 / n_h
+    if saved is not None:
+        phi = saved["phi"]
+        init_source = prev["init_hessian_source"]
+    elif want_hess:
+        t0 = time.perf_counter()
+        phi = fd_hessian(forces, atoms.positions, delta=.01, chunk=a.bead_chunk or a.beads)
+        direct = hessian_samecell(phi, base, mask_h, a.T, P=a.beads)
+        d_meV, dp_meV = direct["dF_eV"] * 1e3 / n_h, direct["dF_P_eV"] * 1e3 / n_h
         hess = {"dF_direct_meV_H": d_meV, "dF_interp_meV_H": harm_meV, "diff_meV_H": d_meV - harm_meV,
-                "tol_meV_H": HESSIAN_TOL_MEV, "passed": bool(direct["valid"] and abs(d_meV - harm_meV) < HESSIAN_TOL_MEV),
+                "dF_direct_P_meV_H": dp_meV, "diff_P_meV_H": dp_meV - harm_P_meV,
+                "tol_meV_H": HESSIAN_TOL_MEV,
+                "passed": bool(direct["valid"] and max(abs(d_meV - harm_meV), abs(dp_meV - harm_P_meV)) < HESSIAN_TOL_MEV),
                 "direct_valid": direct["valid"], "direct_translations_verified": direct["translations_verified"],
-                "direct_n_nonpositive": direct["n_nonpositive_nontranslation_H"], "delta_A": 0.01,
-                "wall_s": time.time() - t0}
-    # a check that ran decides, also when the q-points are exact (a failed direct Hessian is a real disagreement)
+                "direct_n_nonpositive": direct["n_nonpositive_nontranslation_H"], "delta_A": .01,
+                "wall_s": time.perf_counter() - t0}
+        init_source = "finite-difference Hessian of PIMD cell with run force dtype"
+    elif a.backend == "harmonic":
+        phi = forces.phi.copy()
+        init_source = "harmonic backend force constants in phonopy supercell order"
+    else:
+        phi = cached_hessian(ph, sc, atoms)
+        init_source = "cached commensurate dynamical matrices, inverse Bloch transform in ASE order"
     fc_ok = bool(hess["passed"]) if hess is not None else bool(harm["qpoints_exact"])
-
+    imaginary_modes = imaginary_cartesian_modes(phi, base)
+    monitor_factory = lambda data: StructuralMonitor(atoms.positions, atoms.cell.array, atoms.numbers,
+                                                       imaginary_modes, state=data)
     rng = np.random.default_rng(a.seed)
-    gpu_peak = None
-    try:
+    git_provenance = _git_hash()
+    gpu_peak = prev.get("gpu_peak_GB")
+    use_cuda = a.backend == "mace" and a.device.startswith("cuda")
+    if use_cuda:
         import torch
-
-        if a.backend == "mace":
-            torch.cuda.reset_peak_memory_stats()
-    except ImportError:
-        torch = None
+        gpu_device = torch.device(a.device)
+        if gpu_device.index is None:
+            gpu_device = torch.device("cuda", torch.cuda.current_device())
+        torch.cuda.reset_peak_memory_stats(gpu_device)
     rp = RingPolymer(atoms.positions, base, a.beads, a.T, a.dt, a.tau0, forces, rng, splitting=a.splitting)
-    f0_max = float(np.abs(rp.f[0]).max())
-    if done:
-        st = np.load(state, allow_pickle=False)
-        if int(st["n_points"]) != len(done):
-            raise ValueError(f"restart state {state} has {int(st['n_points'])} points, JSON has {len(done)}")
-        rp.q = st["q"]
+    active = None
+    phase = "pre_equil"
+    pre = prev.get("pre_equil", {"g": 1., "steps": 0, "target_steps": a.pre_equil, "wall_s": 0.,
+                                "seconds_per_ring_step": None, "discarded": True})
+    if saved is not None:
+        rp.q, rp.p = saved["q"], saved["p"]
         rp.f, rp.v = rp.forces(rp.q)
-        rng.bit_generator.state = json.loads(str(st["rng"]))
+        rng.bit_generator.state = json.loads(str(saved["rng"]))
+        phase = str(saved["phase"])
+        if str(saved["active"]) != "null":
+            active = json.loads(str(saved["active"]))
+            active["ks"] = saved["ks"].tolist()
+            active["snapshot_q"] = list(saved["snapshot_q"])
+    elif a.init == "harmonic":
+        rp.initialize_harmonic(phi)
 
-    def record(points, status):
+    def document(points):
         nonlocal gpu_peak
-        if torch is not None and a.backend == "mace":
-            gpu_peak = max(gpu_peak or 0.0, torch.cuda.max_memory_allocated() / 1e9)
-        doc = {"struct_id": a.struct, "status": status, "run_args": run_args, "cache_key": cdir.name,
+        if use_cuda:
+            gpu_peak = max(gpu_peak or 0., torch.cuda.max_memory_allocated(gpu_device) / 1e9)
+        wall = pre["wall_s"] + sum(p["wall_s"] for p in points)
+        nsteps = pre["steps"] + sum(p["steps"] for p in points)
+        doc = {"struct_id": a.struct, "status": "complete" if len(points) == a.masses_points else "partial",
+               "output_path": str(out_path.resolve()), "run_args": run_args, "cache_key": cdir.name,
                "fc_supercell": [int(x) for x in np.diag(ph.supercell_matrix)], "supercell": sc,
                "natoms": len(atoms), "n_H": n_h, "P": a.beads, "dt_fs": a.dt, "T_K": a.T, "tau0_fs": a.tau0,
-               "splitting": a.splitting, "seed": a.seed, "model": forces.info(), "git": _git_hash(), "initial_max_abs_F_eV_A": f0_max,
-               "gpu_peak_GB": gpu_peak, "points": points,
-               "harmonic_samecell": {k: v for k, v in harm.items()},
-               "dF_harm_samecell_meV_H": harm_meV, "dF_harm_samecell_P_meV_H": harm_P_meV,
+               "splitting": a.splitting, "seed": a.seed, "model": forces.info(), "git": git_provenance,
+               "initial_max_abs_F_eV_A": f0_max, "residual_force_definition": "max atom Euclidean force norm at x0",
+               "invalid_reference": invalid_reference, "gpu_peak_GB": gpu_peak, "points": points,
+               "init": a.init, "init_hessian_source": init_source, "pre_equil": pre,
+               "imaginary_modes_cartesian": imaginary_modes.tolist(), "monitors": merge_monitors(points, monitor_factory),
+               "thermodynamic_ensemble": "NVT", "free_energy_potential": "Helmholtz F at fixed cell",
+               "stationarity_ok": bool(points) and all(p["stationarity_ok"] for p in points),
+               "wall_s": wall, "seconds_per_ring_step": wall / nsteps if nsteps else None,
+               "harmonic_samecell": harm, "dF_harm_samecell_meV_H": harm_meV,
+               "dF_harm_samecell_P_meV_H": harm_P_meV,
                "harmonic_bead_error_meV_H": harm_P_meV - harm_meV,
-               "harmonic_valid": harm["valid"], "step_stability": stability, "hessian_check": hess, "fc_interpolation_verified": fc_ok,
-               "zero_modes": "the three Gamma translations, identified by projection on the mass-weighted "
-                             "translations and verified below GAMMA_TOL_THZ, are removed from the harmonic "
-                             "reference and -(3/2) kT ln M_tot of the PIMD supercell is added (free translation, "
-                             "present in the PIMD centroid); all other positive modes are kept",
-               "finite_size": "delta_anh is the anharmonic correction in this supercell; the same-cell "
-                              "subtraction removes only the harmonic finite-size term, the cell-size dependence "
-                              "of delta_anh itself is not bounded by this run"}
-        unverified = ["time_step (needs compare_runs at dt/2)", "beads (needs compare_runs P vs 2P, "
-                      "bead_transfer_ok)", "finite_size_anharmonic"]
+               "s_imag_meV_H": harm["s_imag_meV_H"], "harmonic_valid": harm["valid"],
+               "step_stability": stability, "hessian_check": hess, "fc_interpolation_verified": fc_ok,
+               "zero_modes": "three Gamma translations verified by mass-weighted projection are replaced by "
+                             "-(3/2)kT ln M_tot; non-translation imaginary modes folded to |nu| (A9); zeros invalidate",
+               "finite_size": "same-cell subtraction cancels only harmonic finite-size error; anharmonic size dependence unbounded"}
+        unverified = ["time_step (C1 harmonic control required)", "beads (A4 pilot and A4b residual required)",
+                      "finite_size_anharmonic"]
         if not fc_ok:
-            unverified.append("fc_interpolation (PIMD q-points interpolated, Hessian check missing or failed)")
+            unverified.append("fc_interpolation (Hessian check missing or failed)")
         if not harm["valid"]:
-            unverified.append("harmonic_reference (translations unverified or imaginary/zero modes)")
-        err_conv = bool(points) and all(p["error_converged"] for p in points)
-        if not err_conv:
+            unverified.append("harmonic_reference (translations unverified or non-translation zero modes)")
+        if invalid_reference:
+            unverified.append("residual_force (invalid reference override)")
+        if not doc["stationarity_ok"]:
+            unverified.append("stationarity (halves test failed or no completed points)")
+        if doc["monitors"] and not doc["monitors"]["retention_ok"]:
+            unverified.append("structural_retention (imaginary projection or O-H assignment)")
+        if doc["monitors"] and not doc["monitors"]["heavy_rmsd_ok"]:
+            unverified.append("heavy_atom_drift (time-averaged aligned centroid RMSD >= 0.15 A)")
+        doc["error_converged"] = bool(points) and all(p["error_converged"] for p in points)
+        if not doc["error_converged"]:
             unverified.append("statistical_error (no block plateau or too few independent samples)")
-        doc["error_converged"] = err_conv
         doc["unverified"] = unverified
         if len(points) == a.masses_points:
             df, err = _summarize(points, w)
-            ok = bool(harm["valid"] and fc_ok)
+            ok = harm["valid"] and fc_ok and not invalid_reference
             doc.update({"dF_PIMD_meV_H": df, "dF_PIMD_err_meV_H": err,
-                        "delta_anh_meV_H": df - harm_meV if ok else None, "delta_anh_err_meV_H": err,
-                        "delta_anh_unchecked_meV_H": df - harm_meV,
+                        "delta_anh_meV_H": df - harm_P_meV if ok else None, "delta_anh_err_meV_H": err,
+                        "delta_anh_unchecked_meV_H": df - harm_P_meV,
+                        "delta_anh_inf_meV_H": df - harm_meV,
                         "delta_anh_beadcorr_meV_H": df - harm_P_meV})
+        return doc
+
+    def save(points, progress=None, checkpoint_phase="points"):
+        doc = document(points)
+        meta_progress = None if progress is None else {k: v for k, v in progress.items() if k not in ("ks", "snapshot_q")}
+        _atomic_npz(state, q=rp.q, p=rp.p, phi=phi, rng=json.dumps(rng.bit_generator.state),
+                    phase=checkpoint_phase, doc=json.dumps(doc), active=json.dumps(meta_progress),
+                    ks=np.asarray(progress["ks"] if progress else [], dtype=np.float64),
+                    snapshot_q=np.asarray(progress["snapshot_q"] if progress else [], dtype=np.float64)
+                    .reshape(-1, *rp.q.shape))
+        out_path.parent.mkdir(parents=True, exist_ok=True)
         tmp = out_path.with_suffix(".tmp")
-        tmp.write_text(json.dumps(doc, indent=1))
+        tmp.write_text(json.dumps(doc, separators=(",", ":")))
         tmp.replace(out_path)
 
+    if phase == "pre_equil":
+        # Persist the draw before the first MD step, then partial pre-equilibration and its momenta/RNG.
+        save(done, checkpoint_phase="pre_equil")
+        started, prior_wall = time.perf_counter(), pre["wall_s"]
+        try:
+            while pre["steps"] < a.pre_equil:
+                _checkpointable_step(rp)
+                pre["steps"] += 1
+                if pre["steps"] % 100 == 0:
+                    pre["wall_s"] = prior_wall + time.perf_counter() - started
+                    pre["seconds_per_ring_step"] = pre["wall_s"] / pre["steps"]
+                    save(done, checkpoint_phase="pre_equil")
+        except BaseException:
+            pre["wall_s"] = prior_wall + time.perf_counter() - started
+            pre["seconds_per_ring_step"] = pre["wall_s"] / pre["steps"] if pre["steps"] else None
+            save(done, checkpoint_phase="pre_equil")
+            raise
+        pre["wall_s"] = prior_wall + time.perf_counter() - started
+        pre["seconds_per_ring_step"] = pre["wall_s"] / pre["steps"] if pre["steps"] else None
+        save(done)
+
+    completed = list(done)
     def on_point(points):
-        state.parent.mkdir(parents=True, exist_ok=True)
-        np.savez(state, q=rp.q, n_points=len(points), rng=json.dumps(rp.rng.bit_generator.state))
-        record(points, "complete" if len(points) == a.masses_points else "partial")
+        completed[:] = points
+        save(points)
         print(f"{a.struct} point {len(points)}/{a.masses_points}: g={points[-1]['g']:.5f} "
               f"<K_H>={points[-1]['K_H_meV']:.2f}+-{points[-1]['K_H_err_meV']:.2f} meV/H, "
               f"{points[-1]['steps_per_s']:.3f} steps/s", flush=True)
 
-    todo = g_nodes if a.stop_after is None else g_nodes[: len(done) + a.stop_after]
+    todo = g_nodes if a.stop_after is None else g_nodes[:len(done) + a.stop_after]
     pts = run_points(rp, mask_h, todo, a.steps, a.equil, base, on_point=on_point, done=done, log_every=a.log_every,
-                     weights=w)
+                     weights=w, extension_steps=a.stationarity_extension, monitor_factory=monitor_factory,
+                     dump_every=a.dump_every, dump_root=state.parent, dump_stem=out_path.stem,
+                     cell=atoms.cell.array, atomic_numbers=atoms.numbers, active=active,
+                     on_progress=lambda progress: save(completed, progress))
     if len(pts) == len(done):
-        record(pts, "complete" if len(pts) == a.masses_points else "partial")
+        save(pts, active)
     return json.loads(out_path.read_text())
 
 
