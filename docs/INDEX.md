@@ -72,6 +72,7 @@ Everything below was planned by decision 08 after the compute freeze. Each study
 | M00 | [M00-plumbing-diatomic-zpe.md](math/M00-plumbing-diatomic-zpe.md) | Plumbing test of the mathcheck workflow on a diatomic ZPE isotope ratio. |
 | M01 | [M01-isotope-formulas.md](math/M01-isotope-formulas.md) | All harmonic and QHA H/D formulas the code uses, including the mode-resolved mass integral behind the stretch/bend split. |
 | M02 | [M02-bigeleisen-bridge.md](math/M02-bigeleisen-bridge.md), [M02-line47.md](math/M02-line47.md) | Links the polymorph-boundary isotope shift to inter-polymorph D/H fractionation (ddG_iso = n_H k_B T ln alpha + R, with R = 0 for one H site type such as AlOOH), which names the direct experiment for F01. Line 47 variance correction verified by mathcheck on 22 Oct (1366e27). |
+| M03 | [M03-short-bond-slope.md](math/M03-short-bond-slope.md), [M03_check.py](math/M03_check.py) | Post-submission analytic estimate of the F01 slope: stretch slope = (hc/2)(1 - 1/rho) s = 0.0169 s meV per H per mÅ, with s = 19 to 19.5 cm^-1 per mÅ from the screen's phonons giving 0.32 to 0.33 against 0.25 to 0.31 fitted; bend/libration compensation of 0.5 needs s_b of about s/4 per bend; explains the direction and the temperature trend. Two independent derivations agreed (mathcheck, 23 Oct). |
 
 ## Provenance and process
 
