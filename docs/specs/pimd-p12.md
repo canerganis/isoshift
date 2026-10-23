@@ -50,3 +50,8 @@ CPU only. No MACE load, no GPU, no network, seeded and deterministic, a few minu
 ## Acceptance
 `.venv/Scripts/python.exe -m pytest -q tests/test_pimd.py`
 Judged on: the tests pass and the 0.2 meV analytic checks are real, not loosened. The review then checks the code against P12 section 2 point by point (potential, float64, single batched call, PILE-L parameters, estimator, quadrature, same-cell reference, supercell rule, cache matching) and the JSON fields above. Report the steps/s and peak memory of one short MACE run on mp-23807 if the GPU is free. Do not commit any `results/pimd/` output.
+
+## Superseded by P12 section 2a (decisions 17 and 18, 24 Oct 2026)
+* "PIMD must run MACE in float64" is replaced by A1: float32 MACE, float64 integration and statistics.
+* "never take absolute values" of imaginary modes is replaced by A9 for mp-626497 and mp-23940 (folded primary, dropped stored, s_imag allowance, retention gate).
+* Delta_anh is referenced to the same-P harmonic value (A2). Quadrature, sampling, scoring and run order follow section 2a.
