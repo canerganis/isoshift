@@ -1,0 +1,247 @@
+{
+ "A1_float32_gate": {
+  "gate": "A1 float32 vs float64 centroid-virial K_H",
+  "struct_id": "mp-23807",
+  "cache_key": "50ef6d74adfc178f2f19__mace-medium-mpa-0__sc3x2x2__d0.01__sym",
+  "P": 16,
+  "n_configs": 20,
+  "n_H": 24,
+  "K_H_float64_meV_H": [
+   129.6865038716903,
+   163.08210024736317,
+   147.21357988948188,
+   152.24680446416718,
+   127.89863755599613,
+   141.8936796838414,
+   132.9007151290791,
+   155.4641812143232,
+   147.6018961104829,
+   146.61609479052012,
+   140.14045438202112,
+   169.09755630843722,
+   135.65686300339908,
+   142.51116889477524,
+   137.43235413291538,
+   127.17272070010226,
+   136.58795104038015,
+   153.18531537749735,
+   145.6443436029865,
+   132.86067261864025
+  ],
+  "diff_meV_H": [
+   1.2655649214821096e-05,
+   -4.6238500942763494e-05,
+   3.748297135075518e-05,
+   8.795032329089736e-06,
+   4.859986674432548e-06,
+   -3.7513502093133866e-05,
+   1.2855549613277617e-05,
+   3.184827392033185e-05,
+   -2.3024190966225433e-05,
+   6.678637777213225e-05,
+   -1.2637703321161098e-05,
+   7.719119460602997e-05,
+   -2.061788171658918e-05,
+   1.987398320579814e-06,
+   -1.0867052253615839e-06,
+   -1.3671926524239097e-05,
+   -3.3011091431944806e-05,
+   -2.316221241471794e-06,
+   1.0566069789774701e-05,
+   -7.571148358920254e-06
+  ],
+  "max_abs_diff_meV_H": 7.719119460602997e-05,
+  "mean_diff_meV_H": 3.366981588470708e-06,
+  "tol_meV_H": 0.05,
+  "passed": true,
+  "wall_s": {
+   "float32": 28.2783260345459,
+   "float64": 148.89379906654358
+  }
+ },
+ "smoke_row0a": {
+  "mp-625152": {
+   "supercell": [
+    3,
+    2,
+    1
+   ],
+   "natoms": 96,
+   "chunk4": {
+    "s_per_ring_step": 1.2313486337661743,
+    "peak_GB": 3.373892608,
+    "max_abs_F_x0": 3.7726014852523804e-05
+   },
+   "chunk8": {
+    "s_per_ring_step": 1.2139450550079345,
+    "peak_GB": 6.679256576,
+    "max_abs_F_x0": 3.6630779504776e-05
+   },
+   "chunk16": {
+    "error": "GPU out of memory for a batch of 16 beads x 96 atoms in float32; rerun with an explicit smaller --bead-chunk"
+   }
+  },
+  "mp-23807": {
+   "supercell": [
+    3,
+    2,
+    2
+   ],
+   "natoms": 96,
+   "chunk4": {
+    "s_per_ring_step": 1.2607332706451415,
+    "peak_GB": 3.445488128,
+    "max_abs_F_x0": 0.00010688602924346924
+   },
+   "chunk8": {
+    "error": "GPU out of memory for a batch of 8 beads x 96 atoms in float32; rerun with an explicit smaller --bead-chunk"
+   },
+   "chunk16": {
+    "error": "GPU out of memory for a batch of 16 beads x 96 atoms in float32; rerun with an explicit smaller --bead-chunk"
+   }
+  },
+  "mp-625054": {
+   "supercell": [
+    3,
+    2,
+    2
+   ],
+   "natoms": 96,
+   "chunk4": {
+    "s_per_ring_step": 1.1291423082351684,
+    "peak_GB": 3.144266752,
+    "max_abs_F_x0": 7.092952728271484e-05
+   },
+   "chunk8": {
+    "s_per_ring_step": 1.1182411432266235,
+    "peak_GB": 6.214790144,
+    "max_abs_F_x0": 6.949901580810547e-05
+   },
+   "chunk16": {
+    "error": "GPU out of memory for a batch of 16 beads x 96 atoms in float32; rerun with an explicit smaller --bead-chunk"
+   }
+  },
+  "JVASP-54682": {
+   "supercell": [
+    3,
+    2,
+    1
+   ],
+   "natoms": 96,
+   "chunk4": {
+    "s_per_ring_step": 1.0933095693588257,
+    "peak_GB": 2.915154432,
+    "max_abs_F_x0": 2.5928020477294922e-05
+   },
+   "chunk8": {
+    "s_per_ring_step": 1.0813413858413696,
+    "peak_GB": 5.766549504,
+    "max_abs_F_x0": 2.4110078811645508e-05
+   },
+   "chunk16": {
+    "error": "GPU out of memory for a batch of 16 beads x 96 atoms in float32; rerun with an explicit smaller --bead-chunk"
+   }
+  },
+  "JVASP-92228": {
+   "supercell": [
+    3,
+    2,
+    2
+   ],
+   "natoms": 96,
+   "chunk4": {
+    "s_per_ring_step": 1.1533345222473144,
+    "peak_GB": 3.053068288,
+    "max_abs_F_x0": 5.726516246795654e-05
+   },
+   "chunk8": {
+    "s_per_ring_step": 1.1288554906845092,
+    "peak_GB": 6.04403456,
+    "max_abs_F_x0": 5.437992513179779e-05
+   },
+   "chunk16": {
+    "error": "GPU out of memory for a batch of 16 beads x 96 atoms in float32; rerun with an explicit smaller --bead-chunk"
+   }
+  },
+  "mp-626497": {
+   "supercell": [
+    2,
+    2,
+    2
+   ],
+   "natoms": 112,
+   "chunk4": {
+    "s_per_ring_step": 1.4407317399978639,
+    "peak_GB": 3.835300352,
+    "max_abs_F_x0": 4.976987838745117e-05
+   },
+   "chunk8": {
+    "error": "GPU out of memory for a batch of 8 beads x 112 atoms in float32; rerun with an explicit smaller --bead-chunk"
+   },
+   "chunk16": {
+    "error": "GPU out of memory for a batch of 16 beads x 112 atoms in float32; rerun with an explicit smaller --bead-chunk"
+   }
+  },
+  "mp-985293": {
+   "supercell": [
+    2,
+    2,
+    1
+   ],
+   "natoms": 112,
+   "chunk4": {
+    "s_per_ring_step": 1.573177695274353,
+    "peak_GB": 4.245910528,
+    "max_abs_F_x0": 9.624660015106201e-05
+   },
+   "chunk8": {
+    "error": "GPU out of memory for a batch of 8 beads x 112 atoms in float32; rerun with an explicit smaller --bead-chunk"
+   },
+   "chunk16": {
+    "error": "GPU out of memory for a batch of 16 beads x 112 atoms in float32; rerun with an explicit smaller --bead-chunk"
+   }
+  },
+  "mp-23940": {
+   "supercell": [
+    3,
+    3,
+    2
+   ],
+   "natoms": 108,
+   "chunk4": {
+    "s_per_ring_step": 0.9695816516876221,
+    "peak_GB": 2.519890944,
+    "max_abs_F_x0": 0.030969887971878052
+   },
+   "chunk8": {
+    "s_per_ring_step": 0.9479317426681518,
+    "peak_GB": 4.968223232,
+    "max_abs_F_x0": 0.03096941113471985
+   },
+   "chunk16": {
+    "error": "GPU out of memory for a batch of 16 beads x 108 atoms in float32; rerun with an explicit smaller --bead-chunk"
+   }
+  },
+  "mp-626000": {
+   "supercell": [
+    3,
+    3,
+    2
+   ],
+   "natoms": 108,
+   "chunk4": {
+    "s_per_ring_step": 1.112983798980713,
+    "peak_GB": 2.847014912,
+    "max_abs_F_x0": 0.00023598759435117245
+   },
+   "chunk8": {
+    "s_per_ring_step": 1.0941206216812134,
+    "peak_GB": 5.63430656,
+    "max_abs_F_x0": 0.0002357193734496832
+   },
+   "chunk16": {
+    "error": "GPU out of memory for a batch of 16 beads x 108 atoms in float32; rerun with an explicit smaller --bead-chunk"
+   }
+  }
+ }
+}

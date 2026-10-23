@@ -1,0 +1,122 @@
+{
+ "code": "src/isoshift_event/pimd.py at 1122c05 (scripts in results/pimd/controls/)",
+ "C1": {
+  "mp-23807": {
+   "control": "C1 harmonic-backend PIMD vs analytic dF_P",
+   "struct_id": "mp-23807",
+   "cache_key": "50ef6d74adfc178f2f19__mace-medium-mpa-0__sc3x2x2__d0.01__sym",
+   "P": 16,
+   "dt_fs": 0.25,
+   "splitting": "baoab",
+   "steps_per_point": 150000,
+   "seed": 11,
+   "dF_PIMD_meV_H": -83.47545637551539,
+   "err_meV_H": 0.02681886294270283,
+   "dF_P_analytic_meV_H": -83.4395290394927,
+   "diff_meV_H": -0.035927336022695044,
+   "error_converged": true,
+   "wall_s": 238.1196711063385,
+   "pass": true
+  },
+  "mp-625152": {
+   "control": "C1 harmonic-backend PIMD vs analytic dF_P",
+   "struct_id": "mp-625152",
+   "cache_key": "eac485ca55dec15ba54c__mace-medium-mpa-0__sc3x2x1__d0.01__sym",
+   "P": 16,
+   "dt_fs": 0.25,
+   "splitting": "baoab",
+   "steps_per_point": 150000,
+   "seed": 12,
+   "dF_PIMD_meV_H": -85.50901264809758,
+   "err_meV_H": 0.025921934869506877,
+   "dF_P_analytic_meV_H": -85.50511780620288,
+   "diff_meV_H": -0.0038948418947057917,
+   "error_converged": true,
+   "wall_s": 238.03334760665894,
+   "pass": true
+  }
+ },
+ "C4": {
+  "control": "C4 4 vs 8 GL points, exact finite-P (P = 16) same-cell harmonic K",
+  "T": 300.0,
+  "P": 16,
+  "per_structure": {
+   "mp-23807": {
+    "exact_meV_H": -83.4395290394927,
+    "GL4_meV_H": -83.43952893814878,
+    "GL8_meV_H": -83.43952906951961,
+    "GL4_minus_GL8": 1.313708253292134e-07,
+    "GL4_minus_exact": 1.0134391459359904e-07,
+    "pass": true
+   },
+   "mp-625054": {
+    "exact_meV_H": -86.86208251872289,
+    "GL4_meV_H": -86.86208242701282,
+    "GL8_meV_H": -86.86208255283316,
+    "GL4_minus_GL8": 1.258203354836951e-07,
+    "GL4_minus_exact": 9.171006354335987e-08,
+    "pass": true
+   },
+   "JVASP-54682": {
+    "exact_meV_H": -75.04146132817762,
+    "GL4_meV_H": -75.04146124421167,
+    "GL8_meV_H": -75.04146137442126,
+    "GL4_minus_GL8": 1.3020958533616067e-07,
+    "GL4_minus_exact": 8.396594353143882e-08,
+    "pass": true
+   },
+   "JVASP-92228": {
+    "exact_meV_H": -80.16004255433548,
+    "GL4_meV_H": -80.16004246552832,
+    "GL8_meV_H": -80.16004259636081,
+    "GL4_minus_GL8": 1.3083248973089212e-07,
+    "GL4_minus_exact": 8.880715540726669e-08,
+    "pass": true
+   },
+   "mp-625152": {
+    "exact_meV_H": -85.50511780620288,
+    "GL4_meV_H": -85.50511771181004,
+    "GL8_meV_H": -85.50511784011293,
+    "GL4_minus_GL8": 1.283028865373126e-07,
+    "GL4_minus_exact": 9.439283132905985e-08,
+    "pass": true
+   },
+   "mp-626497": {
+    "exact_meV_H": -86.12230293372828,
+    "GL4_meV_H": -86.12230286088084,
+    "GL8_meV_H": -86.1223029774855,
+    "GL4_minus_GL8": 1.1660466725516017e-07,
+    "GL4_minus_exact": 7.284744185653835e-08,
+    "pass": true
+   },
+   "mp-985293": {
+    "exact_meV_H": -88.53684383609631,
+    "GL4_meV_H": -88.53684374850542,
+    "GL8_meV_H": -88.5368438707781,
+    "GL4_minus_GL8": 1.222726808691732e-07,
+    "GL4_minus_exact": 8.75908909847567e-08,
+    "pass": true
+   },
+   "mp-23940": {
+    "exact_meV_H": -78.16430709609295,
+    "GL4_meV_H": -78.16430703823103,
+    "GL8_meV_H": -78.16430715498974,
+    "GL4_minus_GL8": 1.1675871292027296e-07,
+    "GL4_minus_exact": 5.786192502910126e-08,
+    "pass": true
+   },
+   "mp-626000": {
+    "exact_meV_H": -84.75814912597116,
+    "GL4_meV_H": -84.75814904921428,
+    "GL8_meV_H": -84.75814917090797,
+    "GL4_minus_GL8": 1.2169368801551173e-07,
+    "GL4_minus_exact": 7.675687641039985e-08,
+    "pass": true
+   }
+  },
+  "pass": true
+ },
+ "s_dt_meV_H": 0.06,
+ "s_quad_meV_H": 0.01,
+ "pass": true
+}
