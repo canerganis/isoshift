@@ -9,7 +9,7 @@ Files:
 * `figures/`: copies of `figures/fig_headline.png`, `fig4_xh_rule.png`, `fig5_stretch_check.png`, `fig2_pipeline_counts.png` from the repo root.
 * `main.pdf`: the built draft.
 
-`astra_draft.md` in this folder is an independent draft by another agent. It was not read or used for `main.tex`.
+`astra_draft.md` in this folder is an independent draft by GPT-6 Astra. Round 1 of the merge (23 Oct) kept `main.tex` as the base and merged parts of it (see "Merge from astra_draft.md" below). Only numbers and references traced to repo files or verified on Crossref were taken over.
 
 ## Build
 
@@ -20,23 +20,23 @@ latexmk -pdf main.tex
 
 MiKTeX with on-the-fly install set to "ask" hangs in a non-interactive shell when a package is missing (latexmk itself hangs without the `latexmk` package). For this build the following MiKTeX packages were installed with `miktex packages install <name>`: revtex, textcase, natbib, booktabs, kvsetkeys, kvdefinekeys, pdfescape, ltxcmds, infwarerr, hycolor, refcount, gettitlestring, kvoptions, stringenc, intcalc, bitset, bigintcalc, rerunfilecheck, uniquecounter, latexmk. A useful check for missing files: `pdflatex --disable-installer -interaction=nonstopmode main.tex`.
 
-Build status on 23 Oct 2026: clean, 12 pages, no undefined references, one harmless nameref warning.
+Build status on 23 Oct 2026 (after merge round 1): clean, 13 pages, no undefined references, no overfull boxes, one harmless nameref warning.
 
 ## TODO before submission
 
-1. Author review of every section, the AI-use statement and the acknowledgements wording. The AI-use statement says the manuscript was drafted by Claude Opus 5.5.
+1. Author review of every section, the AI-use statement and the acknowledgements wording. The AI-use statement says the manuscript was drafted by Claude Opus 5.5 with parts merged from an independent GPT-6 Astra draft.
 2. Corresponding-author email is not in the manuscript (add `\email{}` if wanted). ORCID is given through `\homepage`.
-3. The all-row stretch and bend/libration slopes per model in Table I (+0.25/-0.13, +0.26/-0.14, +0.25/-0.12) are read from the legend of `figures/fig4_xh_rule.png`, which `src/isoshift_event/fig_rule.py` computes; `results/F01_cv.json` has no all-row decomposition block. README quotes the range as +0.24 to +0.26 and -0.12 to -0.14. Recompute from `results/decompose_pairs.csv` and print exact values.
 4. `figures/fig2_pipeline_counts.png` shows 38 candidates in the bracketed tier, while `docs/freeze/FREEZE_REPORT.md` lists 2 / 40 eligible candidates. The caption says those two bars are not used. Regenerate the figure or drop the two bars.
-5. Ford et al. is dated 2012 in `docs/story/prior_art_recheck_2026-10-22.md`; Crossref gives Chem. Eur. J. 17 (52), 2011. The bib uses 2011. The paper describes it only by its title ("changes the phase transition"); the recheck's phrase about vibrational free energy was not verified from the paper.
+5. Ford et al.: the paper and bib use 2011 (Crossref: Chem. Eur. J. 17 (52), 14942, 2011); `docs/story/prior_art_recheck_2026-10-22.md` still says 2012 and should be corrected there. The paper describes the work only by its title ("changes the phase transition"); the recheck's phrase about vibrational free energy was not verified from the paper.
 6. Merz and Kupka 2015 and Ikeda et al. 2025 are cited at abstract or snippet level (prior-art recheck); full texts were not read.
 7. MLIP citations: MACE is cited with the MACE-MP foundation-model paper (arXiv:2401.00096), not a specific paper for the `medium-mpa-0` checkpoint; SevenNet `7net-mf-ompa` is cited with Park et al. 2024 (SevenNet) and Kim et al. 2024 (multi-fidelity training). Confirm the preferred citations with each project's documentation. MACE, ORB, MatterSim and the multi-fidelity SevenNet paper are cited as arXiv preprints; check for journal versions.
 8. Pamuk et al. 2012 is cited for the measured negative volume isotope effect of ice (from `docs/research/validation_set.md`); confirm it is the right source for the ice XI comparison in `results/validation/volume_isotope.csv`.
 9. Graham, Sheppard and Heaton 1980 numbers come from the Chacko, Cole and Horita 2001 compilation (F12); the primary paper was not read.
 10. F05 measured fractionation values are from secondary sources (see F05 caveats); not checked against primary papers.
 11. Valency Bond and marimo have no citable reference in the repo; they are acknowledged only.
-12. The query count "about 200" for the post-submission prior-art search is the sum of about 55 (round 1) and about 150 (round 2) in `docs/story/prior_art_recheck_2026-10-22.md`.
-13. Consider moving Table II next to Sec. IV (float placement put it on page 9) and enlarging Fig. 1 to full width if the journal style allows.
+12. Prior-art counts: 20 prior-art queries before submission are in `logs/bond_queries.jsonl` (README "How AI was used"); both later rounds ran after submission (about 55 on 22 Oct and about 150 on 23 Oct, `docs/story/prior_art_recheck_2026-10-22.md`). The suggested wording "about 55 before and about 150 after submission" is not supported, so the paper gives 20 before and the two later rounds separately, without a total.
+13. Goethite band values (Liu et al. 2013) and the F05 fractionation equations (Xu and Zheng 1999, Yapp 1987, Hariya and Tsutsumi 1981) are cited as attributed in the repo data files; none of these primary papers was read in full.
+14. Consider moving Table II next to Sec. IV (float placement put it on page 9) and enlarging Fig. 1 to full width if the journal style allows.
 
 Nothing in the paper relies on an unverified DOI.
 
@@ -49,7 +49,16 @@ Abbreviations: D07 = `docs/decisions/07-freeze-wording.md`, D08 = `docs/decision
 | 220 pairs, 63 formulas, 521 clean covalent rows (MACE 188, ORB 163, MatterSim 170) | Abstract, Methods D, Table I | F01 Details; FR table ("Clean covalent rows per model", "unique_pairs") |
 | 0.112 / 0.117 / 0.128 all-row slopes; 0.11 to 0.13; r 0.76 / 0.83 / 0.84 | Abstract, III A, Table I | D07 headline and "Slopes" row; F01 Details; FR |
 | All-row compensation 54 / 55 / 49 %, "49 to 55%" | III A, Table I | FR ("Screen-wide compensation"); F01 Details |
-| All-row stretch +0.25/+0.26/+0.25, bend/libration -0.13/-0.14/-0.12 | III A, Table I | `figures/fig4_xh_rule.png` panel b legend (see TODO 3) |
+| All-row stretch +0.245/+0.259/+0.252, bend/libration -0.133/-0.142/-0.124 (n 188/163/170) | III A, Table I | `results/decompose_pairs.csv`, rows clean==True and covalent_XH==True, OLS of ddF/H_per_atom (ddF_total, ddF_str, ddF_perp) on 1000·dXH_mean_A; recomputed by the conductor and re-checked here (same values, total 0.112/0.117/0.128) |
+| Median |dO-H| between MP O-H polymorphs 4.1 mÅ (database geometries) | III A | F10 Counts paragraph |
+| m_H 1.00782503 u, m_D 2.01410178 u | Methods A | `src/isoshift_event/decompose.py` line 31 |
+| 500 relaxation steps | Methods C | `src/isoshift_event/screen.py` lines 110, 661 |
+| 600 K quadrature check 190/212, 24 of 28 mp-985293 rows; sign agreement 212/212 at every T | III E | F09 Results |
+| ħω/kT about 2.5 at 2000 K, stretch near 5000 K | III E | F09 H4 |
+| F04 comparator: 2600 to 3100 band midpoint; Mashino two maxima 2800 to 2900 and 3300 to 3400 cm⁻¹ | IV | F04 (Interval on the stretch); F04-source-audit (b) |
+| F05: 2 scored pairs; ratios 1.6 and 0.7 for manganite pairs | IV | F05 Result and Scores (iii) |
+| F06: 20 rows, 9 referenced, 11 not | IV | F06 Numbers |
+| F11 precommitted baseline 5/24 on clean rows | IV | F11 section 1 |
 | 1.1 to 1.3 meV per H for 10 mÅ | III A | derived: 10 × 0.112 to 0.128 |
 | Strong-regime slopes 0.132/0.136/0.147, stretch 0.277/0.308/0.293, perp -0.145/-0.171/-0.146, compensation 0.52/0.56/0.50 (0.524/0.557/0.498), n 97/97/99 | III A, Table I, Fig. 1 caption | JSON `oh_strong_slopes`; D07 |
 | 185/212, 84 pairs, 28 formulas, baseline 131/212 | Abstract, III B, Table I, Conclusion | JSON `oh_unfiltered_strong`; D07 headline |
@@ -101,7 +110,8 @@ Abbreviations: D07 = `docs/decisions/07-freeze-wording.md`, D08 = `docs/decision
 | Benchmark: 40 entries (36 SevenNet); ZPE MAE 0.7/1.1/1.3/1.5; F300 0.5 to 1.1; stretch 28 to 45 cm⁻¹ | Methods C, Table I | README Benchmark; `results/benchmark/summary.csv` |
 | Brucite +0.19 to +0.44% vs +0.31%; LiH +1.02 to +1.27% vs +0.81/+1.04%; ice 4 to 11× | Methods C | README Results table |
 | 182 Bond queries | Methods H | writeup.md; README "How AI was used" |
-| 20 prior-art queries pre-submission; about 55 + 150 later | Intro | README "How AI was used"; prior_art_recheck |
+| One inequivalent H site in diaspore and δ-AlOOH model phases | Discussion | README "How to test it" ("as in diaspore and δ-AlOOH"); M02 limiting case 5; D08 (one H site in the diaspore and boehmite models, spglib) |
+| 20 prior-art queries before submission; about 55 and about 150 in two rounds after | Intro | README "How AI was used"; prior_art_recheck (rounds 1 and 2) |
 | 115 metal hydrides | Intro | prior_art_recheck; README Prior work |
 | F02: AlH3 1.3 to 1.5× | IV, Table II | F02 |
 | F04: -260 (-511 to -11) vs -273; +290 vs +195; ratio 1.1 vs 0.7 | IV | F04 conclusion |
@@ -115,3 +125,29 @@ Abbreviations: D07 = `docs/decisions/07-freeze-wording.md`, D08 = `docs/decision
 | M02 bridge, R = 0 for one H site, R ≈ (n_H k_B T/2)[Var_b - Var_a] | Discussion | M02 ("Trace-D versus full substitution", erratum) |
 | +1.2 GPa ↔ +359 ‰ at 300 K | Discussion | M02 test case 1 |
 | Zenodo DOI 10.5281/zenodo.23578412, v1.0.0 | Data availability | README; DataCite record |
+
+## Merge from astra_draft.md (round 1, 23 Oct)
+
+Merged into `main.tex`, rewritten in the paper's voice:
+
+* Methods A: what the static-gap cancellation does not remove (force constants, geometry, anharmonicity); the explicit dynamical matrix and the H and D masses used; the quasi-harmonic minimization G_X(T,P) used for pressure shifts, kept separate from the harmonic screen.
+* Methods B: the decomposition written as a sum, the perpendicular term described as an operational component, and C ill conditioned near a zero stretch term.
+* Methods C: 500-step relaxation limit, non-convergence flagged not excluded.
+* Methods G: the temperature rescoring stated as retrospective, because the 0, 600 and 2000 K free energies predate the hypotheses; prospective test fixed before phonons.
+* Results A: slopes are associations across pairs, not derivatives of one structure; covalent O-H length and O...O distance not to be conflated.
+* Results E: 600 K quadrature check (190/212, 24/28) and sign agreement of the two routes; 2000 K described as a sign test, not a classical limit.
+* Tests: F04 comparator caveats (band midpoint, unconfirmed goethite bands, Mashino's reading); F05 sources, 2 scored pairs, order assembled across windows, 5 to 10 times only for brucite minus goethite; F11 framed as attrition plus insufficient skill on the surviving rows, with the precommitted baseline (5/24) separated from the after-the-fact constant (19/24); F06 20 rows with 11 unreferenced.
+* Discussion: the exception and the fixed-geometry temperature change as evidence that bond length cannot stand for the whole free energy; model spread is not a confidence interval; clean is narrower than physical stability; the full M02 treatment of R (trace vs full substitution, conditions for R = 0, the non-additivity term, single H site in AlOOH) and both-direction brackets.
+* Data availability: which analyses predate the Zenodo DOI and that M03 does not.
+* AI-use statement: merge of two drafts; agent agreement is not validation.
+
+Not taken over: Astra's abstract (it omits the analytic estimate and the test route), her structure for the tests section (main.tex already orders the same tests and keeps Table II), and nothing from her reference list that was not verified (all five new entries, Liu 2013, Mashino 2026, Xu and Zheng 1999, Yapp 1987, Hariya and Tsutsumi 1981, were checked on Crossref on 23 Oct).
+
+### Resolution of Astra's [CHECK] marks
+
+1. Goethite band assignments (F04). The repo cannot settle it: `docs/findings/F04-source-audit.md` read Thompson 2020 and Mashino 2026 in full but not Liu 2013 (paywalled). The paper now states the comparator is a band midpoint, the goethite values are unconfirmed and Mashino's alternative reading would reverse the stretch sign; the comparison is used only at sign level. Open (TODO 13).
+2. F05 primary fractionation equations. F05 Caveats confirm that no row was checked against its primary paper. The paper says so and cites the primary papers only as attributed. Open (TODO 10, 13).
+3. AlOOH substitution non-additivity. M02 gives R = 0 exactly for one H site type with no H-H coupling (limiting case 5) and lists the conditions (assumption 4); the repo README states one H site type for diaspore and δ-AlOOH, and D08 (spglib) finds one H site in the diaspore and boehmite models, so the variance term vanishes. Nothing in the repo bounds the non-additivity term N. The paper now states that a trace measurement constrains the prediction only once N is bounded. Open as a physics task, resolved as wording.
+4. Zenodo contents. DataCite gives issue date 22 Oct 2026 for v1.0.0; F09 (dfacd79, b9832a1, 23b1693), F12 (42a8282) and F11 (2cd8b46, 4ea0552, 393c055) were committed on 22 Oct before the DOI commit 811277a (23 Oct 00:17); M03 (803d1a1, 23 Oct 14:26) is after it. The exact archived commit was not downloaded and checked. The paper says M03 is not in v1.0.0.
+5. Author verification of manuscript, references and AI wording. Stays with the author (TODO 1).
+6. Abbreviated reference metadata. Resolved: `refs.bib` carries full Crossref author lists and titles (long author lists for the MLIP and JARVIS papers are cut with "others").
