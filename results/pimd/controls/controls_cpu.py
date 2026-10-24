@@ -1,6 +1,7 @@
 """Decision 18 CPU controls. C4: 4 vs 8 GL points with exact finite-P harmonic K on the same-cell spectra of all 9.
 C1: harmonic-backend PIMD on the real FCs of mp-23807 and mp-625152, P = 16, 0.25 fs, BAOAB, vs analytic dF_P.
-Usage: controls_cpu.py c4 out.json | c1 out.json <struct> <steps_per_point> <seed>"""
+Usage: controls_cpu.py c4 out.json [P] | c1 out.json <struct> <steps_per_point> <seed> [P] [fc]
+fc: run C1 in the force-constant supercell (decision 19: FeOOH PIMD cells are not the FC cells)."""
 import json
 import sys
 import time
@@ -10,11 +11,11 @@ import numpy as np
 
 REPO = Path(r"C:\Users\can02\Projects\osi-hackathon-2026")
 sys.path.insert(0, str(REPO))
-sys.path.insert(0, str(Path(__file__).parent / "snap"))
+
 from ase import Atoms
 from phonopy.harmonic.force_constants import compact_fc_to_full_fc
 
-import pimd_head as M
+from src.isoshift_event import pimd as M
 from isoshift import cache
 from isoshift import phonons as Ph
 
@@ -43,7 +44,7 @@ def f_harm(ph, cell, qpts, i_gamma, m_h, P):
     return M._isotope_free_energy(nu, keep, float(masses.sum()) * len(qpts), T, P)
 
 
-def c4():
+def c4(P=P):
     out = {}
     for sid in STRUCTS:
         cdir, ph, cell, sc = load(sid)
@@ -69,8 +70,10 @@ def c4():
             "per_structure": out, "pass": all(r["pass"] for r in out.values())}
 
 
-def c1(sid, steps, seed):
+def c1(sid, steps, seed, P=P, use_fc_cell=False):
     cdir, ph, cell, sc = load(sid)
+    if use_fc_cell:
+        sc = [int(x) for x in np.diag(ph.supercell_matrix)]
     if sc != [int(x) for x in np.diag(ph.supercell_matrix)]:
         raise ValueError("C1 needs PIMD sc == FC sc")
     fc = ph.force_constants
@@ -92,6 +95,7 @@ def c1(sid, steps, seed):
     df, err = M.ti_integrate(g, w, [p["K_H_meV"] for p in pts], [p["K_H_err_meV"] for p in pts])
     ref = harm["dF_P_eV"] * 1e3 / n_h
     return {"control": "C1 harmonic-backend PIMD vs analytic dF_P", "struct_id": sid, "cache_key": cdir.name, "P": P,
+            "supercell": sc, "fc_cell": use_fc_cell,
             "dt_fs": 0.25, "splitting": "baoab", "steps_per_point": steps, "seed": seed, "dF_PIMD_meV_H": df,
             "err_meV_H": err, "dF_P_analytic_meV_H": ref, "diff_meV_H": df - ref,
             "error_converged": all(p.get("error_converged", False) for p in pts), "wall_s": time.time() - t0,
@@ -100,6 +104,10 @@ def c1(sid, steps, seed):
 
 if __name__ == "__main__":
     mode, outp = sys.argv[1], sys.argv[2]
-    res = c4() if mode == "c4" else c1(sys.argv[3], int(sys.argv[4]), int(sys.argv[5]))
+    if mode == "c4":
+        res = c4(int(sys.argv[3]) if len(sys.argv) > 3 else P)
+    else:
+        res = c1(sys.argv[3], int(sys.argv[4]), int(sys.argv[5]), int(sys.argv[6]) if len(sys.argv) > 6 else P,
+                 len(sys.argv) > 7 and sys.argv[7] == "fc")
     print(json.dumps({k: v for k, v in res.items() if k != "per_structure"}, indent=1))
     json.dump(res, open(outp, "w"), indent=1)
