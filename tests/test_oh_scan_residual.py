@@ -1,5 +1,6 @@
 """A4b checks: deterministic CPU calculations, no model downloads or GPU."""
 import functools
+import copy
 import json
 from types import SimpleNamespace
 
@@ -166,6 +167,68 @@ def test_inward_endpoint_with_accessible_region_stays_invalid():
     assert result["fit_diagnostics"]["truncations"][0]["extrapolated_min_energy_above_well_eV"] < 0.3
 
 
+def test_low_second_well_behind_high_barrier_is_not_dropped():
+    """Review case (24 Oct): the window stops at the first barrier above FIT_WINDOW_EV, here [-0.10, 0.23] A,
+    while a degenerate well at 0.6 A lies inside the scan. Dropping it changes the H/D free energy by about
+    0.84 meV; a barrier height does not remove a well from an equilibrium partition function."""
+    x = M.SCAN_DISPLACEMENTS
+    energies = 180 * x**2 * (x - 0.6)**2 * (1 + 2 * x**2)
+    with pytest.raises(M.FitError, match="beyond the fit window is thermally accessible"):
+        M.fit_potential(x, energies)
+    result = M.analyze_scan(x, energies)
+    assert result["status"] == "invalid"
+    assert "accessible_well_outside_window" in result["fit_diagnostics"]["flags"]
+    right = [r for r in result["fit_diagnostics"]["excluded_regions"] if r["side"] == "right"][0]
+    assert right["min_energy_above_well_eV"] < 0.05 and right["min_at_A"] == pytest.approx(0.59, abs=0.02)
+    agg = M.aggregate_sites([{"multiplicity": 1, "scans": [result]}], 1)
+    assert agg["a4b_residual_meV_H"] is None and agg["a4b_bound_meV_H"]["32"] is None
+
+
+def _morse_with_inner_well(depth):
+    """Morse plus a narrow Gaussian well at +0.65 A, inside the scan, behind a barrier near 2 eV."""
+    potential, _ = morse()
+    return M.SCAN_DISPLACEMENTS, (lambda y: potential(y) - depth * np.exp(-((y - 0.65) / 0.08)**2))
+
+
+def test_second_well_leak_is_checked_against_the_converged_free_energy():
+    # About 0.33 eV above the occupied well: passes the 0.3 eV energy screen, but
+    # the H zero-point energy puts its classical weight above the leak limit.
+    x, total = _morse_with_inner_well(2.34)
+    result = M.analyze_scan(x, total(x))
+    assert result["status"] == "invalid" and "leak estimate" in result["error"]
+    right = [r for r in result["fit_diagnostics"]["excluded_regions"] if r["side"] == "right"][0]
+    assert 0.3 < right["min_energy_above_well_eV"] < 0.4
+    assert right["leak_estimate_meV"] > M.TRUNCATION_MAX_LEAK_MEV
+    # A higher inner well (about 0.48 eV) carries negligible weight: usable, leak recorded.
+    x, total = _morse_with_inner_well(2.2)
+    result = M.analyze_scan(x, total(x))
+    assert result["status"] == "complete"
+    leaks = [r["leak_estimate_meV"] for r in result["fit_diagnostics"]["excluded_regions"]]
+    assert len(leaks) == 2 and max(leaks) < M.TRUNCATION_MAX_LEAK_MEV
+
+
+def test_soft_harmonic_extension_adds_no_anharmonicity():
+    """Review case (24 Oct): V = 0.1 x^2 eV fills the whole scan, so the density reaches the window edges.
+    An unconditional t^4 term in the extension gave Delta_anh(inf) of about -0.155 meV; it must be 0."""
+    x = M.SCAN_DISPLACEMENTS
+    fit = M.fit_potential(x, 0.1 * x**2)
+    assert fit.diagnostics["fit_range_A"] == pytest.approx([-0.4, 0.8])
+    assert fit.diagnostics["extension_quartic_eV_A4"] == [0.0, 0.0]
+    far = np.array([-2.0, -1.0, 1.5, 3.0])
+    assert fit(far) == pytest.approx(0.1 * far**2, rel=1e-8)
+    scan = M.analyze_scan(x, 0.1 * x**2)
+    assert scan["status"] == "complete"
+    for variant in scan["mass_variants"].values():
+        assert max(map(abs, variant["delta_anh_meV"].values())) < 1e-5
+        for f in variant["fit_residuals"].values():
+            assert max(map(abs, f["r_meV"].values())) < 1e-5 and abs(f["t_meV"]) < 1e-5
+    # A negative edge curvature still gets the confining quartic.
+    concave = M.fit_potential(x, x**2 - 0.5 * x**4)  # V'' = -1.84 eV/A^2, V' = +0.58 eV/A at +0.8 A
+    assert concave.extensions[1][2] < 0 and concave.extensions[1][3] > 0
+    right = np.linspace(concave.bounds[1], concave.bounds[1] + 3, 400)
+    assert np.all(np.diff(concave(right)) > 0)
+
+
 def test_underresolved_grid_is_rejected():
     potential, curvature = morse()
     with pytest.raises(ValueError, match="did not converge"):
@@ -328,6 +391,8 @@ def test_full_cli_pipeline_and_safe_reuse(tmp_path, monkeypatch):
         assert structure["min_image_distance_A"] >= 8
         assert structure["n_H"] == sum(h["multiplicity"] for h in structure["distinct_H"])
         assert abs(structure["a4b_residual_meV_H"]) < 1e-5
+        assert set(structure["a4b_bound_meV_H"]) == {"16", "24", "32"}
+        assert max(structure["a4b_bound_meV_H"].values()) < 1e-5
         for site in structure["distinct_H"]:
             assert {s["type"] for s in site["scans"]} == (
                 {"stretch", "transfer"} if site["OO_A"] is not None and site["OO_A"] < 2.7
@@ -472,3 +537,160 @@ def test_unstable_fit_is_not_usable():
     assert result["status"] != "complete"
     agg = M.aggregate_sites([{"multiplicity": 1, "scans": [result]}], 1)
     assert agg["status"] == "invalid" and agg["a4b_residual_meV_H"] is None
+
+
+def test_morse_p32_continuum_and_asymptotic_regime():
+    potential, curvature = morse()
+    beads = (16, 24, 32, 48, 64, 128)
+    coarse = M.analyze_potential(potential, curvature, beads=beads)
+    fine = M.analyze_potential(potential, curvature, beads=beads, grid_step=0.006)
+    for name, expected in {"reduced": (-0.053, 0.014, 0.020, 0.003),
+                           "bare": (-0.041, 0.017, 0.019, 0.0025)}.items():
+        delta = coarse["mass_variants"][name]["delta_anh_meV"]
+        r = {p: delta[str(p)] - delta["128"] for p in beads}
+        assert [r[16], r[24], r[32], delta["128"] - delta["inf"]] == pytest.approx(expected, abs=0.003)
+        # The supplied bare-mass values imply about 0.46 (the 0.4 inequality is only
+        # consistent with its reduced-mass numbers); both variants shrink.
+        limit = 0.4 if name == "reduced" else 0.5
+        assert max(abs(r[24]), abs(r[32])) < limit * abs(r[16])
+        # The spec's 1/P^2 check is on the P128-subtracted r: r(48) = 0.0122,
+        # r(64) = 0.0069, ratio close to (48/64)^2. It holds only above P = 32.
+        assert r[48] == pytest.approx(0.0122, abs=0.003) and r[64] == pytest.approx(0.0069, abs=0.003)
+        assert r[64] / r[48] == pytest.approx((48 / 64)**2, abs=0.03)
+        assert delta == pytest.approx(fine["mass_variants"][name]["delta_anh_meV"], abs=1e-5)
+
+
+def test_harmonic_all_beads_and_fits_cancel():
+    x = M.SCAN_DISPLACEMENTS
+    result = M.analyze_potential(lambda z: 20 * z**2, 40, beads=(16, 24, 32, 128))
+    for variant in result["mass_variants"].values():
+        assert all(abs(v) < 1e-6 for v in variant["delta_anh_meV"].values())
+    scan = M.analyze_scan(x, 20 * x**2)
+    assert scan["status"] == "complete"
+    for variant in scan["mass_variants"].values():
+        for fit in variant["fit_residuals"].values():
+            assert set(fit["r_meV"]) == {"16", "24", "32"}
+            assert max(map(abs, fit["r_meV"].values())) < 1e-5
+            assert abs(fit["t_meV"]) < 1e-5
+        assert variant["plateau_sensitivity"]["b_poly_meV"] == pytest.approx(dict.fromkeys(("16", "24", "32"), 0.01), abs=1e-5)
+    summary = M.aggregate_sites([{"multiplicity": 1, "scans": [scan]}], 1)
+    assert max(summary["a4b_bound_meV_H"].values()) < 1e-5
+
+
+def _rule3_variant(residuals, tails, plateau=(0.1, 0.105, 0.095)):
+    keys = ("16", "24", "32")
+    fits = {name: {"r_meV": dict.fromkeys(keys, r), "t_meV": t}
+            for name, r, t in zip(("degree_10", "degree_8", "spline"), residuals, tails)}
+    return {"residual_meV": residuals[0], "fit_residuals": fits,
+            "plateau_sensitivity": {"status": "complete", "r_meV": {
+                name: dict.fromkeys(keys, r) for name, r in zip(("degree_10", "degree_11", "degree_12"), plateau)}}}
+
+
+def test_rule3_tail_inside_max_multiplicity_and_plateau_floor():
+    def scan(kind, reduced, bare):
+        return {"type": kind, "status": "complete", "mass_variants": {"reduced": reduced, "bare": bare}}
+    low = _rule3_variant((0, 0, 0), (0, 0, 0), (0, 0, 0))
+    sites = [{"multiplicity": 2, "scans": [
+        scan("stretch", _rule3_variant((-0.2, 0.1, 0), (0, 0.02, -0.01)), low),
+        scan("transfer", low, _rule3_variant((0.3, 0.3, 0.3), (0.4, 0, 0)))]},
+        {"multiplicity": 1, "scans": [scan("stretch", low,
+            _rule3_variant((0.6, 0.5, 0.55), (-0.1, 0, 0), (0.2, 0.25, 0.18)))]}]
+    result = M.aggregate_sites(sites, 3)
+    for p in ("16", "24", "32"):
+        assert result["a4b_bound_meV_H"][p] == pytest.approx((2 * 0.7 + 0.8) / 3)
+        assert result["a4b_bound_without_tail_meV_H"][p] == pytest.approx((2 * 0.5 + 0.7) / 3)
+        assert result["a4b_plateau_sensitivity_meV_H"][p] == pytest.approx((2 * 0.11 + 0.25) / 3)
+        winner = sites[0]["a4b_maxima"][p]["with_tail"]
+        assert winner["scan_type"] == "transfer" and winner["mass_model"] == "bare"
+        assert winner["tail_fit"] == "degree_10"
+    sites[0]["scans"][0]["status"] = "invalid"
+    result = M.aggregate_sites(sites, 3)
+    assert result["status"] == "invalid"
+    assert all(v is None for v in result["a4b_bound_meV_H"].values())
+
+
+def test_failed_plateau_does_not_invalidate_primary(monkeypatch):
+    fit = M.fit_potential
+    def fail_high_degree(*args, degree=10, **kwargs):
+        if degree == 11:
+            raise ValueError("spurious high-degree well")
+        return fit(*args, degree=degree, **kwargs)
+    monkeypatch.setattr(M, "fit_potential", fail_high_degree)
+    scan = M.analyze_scan(M.SCAN_DISPLACEMENTS, 20 * M.SCAN_DISPLACEMENTS**2)
+    assert scan["status"] == "complete"
+    for variant in scan["mass_variants"].values():
+        plateau = variant["plateau_sensitivity"]
+        assert plateau["status"] == "invalid"
+        assert "spurious high-degree well" in plateau["errors"]["degree_11"]
+        assert plateau["r_meV"]["degree_11"] is None
+        assert plateau["r_meV"]["degree_12"] is not None
+    result = M.aggregate_sites([{"multiplicity": 1, "scans": [scan]}], 1)
+    assert result["status"] == "complete"
+    assert max(result["a4b_bound_meV_H"].values()) < 1e-5
+    assert all(v is None for v in result["a4b_plateau_sensitivity_meV_H"].values())
+    assert result["a4b_plateau_sensitivity_status"] == "invalid"
+
+
+def _assert_preserved(old, new):
+    if isinstance(old, dict):
+        for key, value in old.items():
+            assert key in new
+            _assert_preserved(value, new[key])
+    elif isinstance(old, list):
+        assert len(old) == len(new)
+        for a, b in zip(old, new):
+            _assert_preserved(a, b)
+    else:
+        assert old == new
+
+
+def test_reanalyze_preserves_legacy_and_rejects_stale(tmp_path, monkeypatch):
+    atoms = Atoms("OH", positions=[[2, 2, 2], [3, 2, 2]], cell=[12, 12, 12], pbc=True)
+    info = {"name": "fake", "model": "analytic", "version": "1", "device": "cpu"}
+    _, matrix, _ = M.make_scan_cell(atoms)
+    bond = M.assign_bond(atoms, 1)
+    raw = (20 * M.SCAN_DISPLACEMENTS**2).tolist()
+    # A saved legacy record, including arbitrary fields, with no calculator used.
+    legacy_scan = {"type": "stretch", "direction": bond["stretch_direction"], "status": "complete",
+                   "displacements_A": M.SCAN_DISPLACEMENTS.tolist(), "raw_energies_eV": raw,
+                   "raw_reused": False, "user_scan_note": "keep",
+                   "mass_variants": {v: {"residual_meV": 0.0} for v in ("reduced", "bare")}}
+    entry = {"status": "complete", "scan_fingerprint": M._fingerprint(atoms, matrix, info),
+             "supercell": matrix.tolist(), "n_H": 1, "points_evaluated": 42,
+             "equilibrium_energy_eV": -800.0, "a4b_residual_meV_H": 0.0,
+             "distinct_H": [{"unit_cell_index": 1, "multiplicity": 1, "scans": [legacy_scan]}]}
+    old = {"structures": {s: copy.deepcopy(entry) for s in M.STRUCT_IDS[:2]}, "calculator_info": info,
+           "points_evaluated": 84, "calculator_time_h_all_runs": 0.0123,
+           "wall_time_s": 123.4, "calculator_wall_time_s": 44.28, "P": [16, 128, "inf"],
+           "run_history": [{"points_evaluated": 84, "calculator_wall_time_s": 44.28}],
+           "second_P32_check": "historically-selected", "custom_note": "keep this", "status": "complete"}
+    old["structures"][M.STRUCT_IDS[1]]["scan_fingerprint"] = "mismatch"
+    out = tmp_path / "legacy.json"
+    out.write_text(json.dumps(old), encoding="utf-8")
+    monkeypatch.setattr(M, "load_structure", lambda s: (atoms.copy(), "synthetic"))
+    def forbidden(*args, **kwargs):
+        pytest.fail("reanalysis touched a calculator")
+    monkeypatch.setattr(M, "get_calculator", forbidden)
+    monkeypatch.setattr(M, "calculator_info", forbidden)
+    monkeypatch.setattr(Calculator, "calculate", forbidden)
+    monkeypatch.setattr(M.ScanBudget, "energy", forbidden)
+    assert M.main(["--out", str(out), "--reanalyze"]) == 1
+    actual = json.loads(out.read_text())
+    _assert_preserved(old["structures"][M.STRUCT_IDS[0]], actual["structures"][M.STRUCT_IDS[0]])
+    for key in ("points_evaluated", "calculator_time_h_all_runs", "second_P32_check", "custom_note",
+                "calculator_info", "wall_time_s", "calculator_wall_time_s", "P"):
+        assert actual[key] == old[key]
+    assert actual["run_history"][:-1] == old["run_history"]
+    assert actual["run_history"][-1]["points_evaluated"] == 0
+    assert actual["run_history"][-1]["calculator_wall_time_s"] == 0
+    stale = actual["structures"][M.STRUCT_IDS[1]]
+    assert stale["status"] == "stale" and stale["a4b_residual_meV_H"] is None
+    assert stale["distinct_H"][0]["scans"][0]["status"] == "stale"
+    assert all(v is None for v in stale["a4b_bound_meV_H"].values())
+    assert stale["distinct_H"][0]["scans"][0]["raw_energies_eV"] == raw
+    first = actual["structures"][M.STRUCT_IDS[0]]
+    assert max(first["a4b_bound_meV_H"].values()) < 1e-5
+    assert M.main(["--out", str(out), "--reanalyze"]) == 1
+    second = json.loads(out.read_text())
+    assert first == second["structures"][M.STRUCT_IDS[0]]
+    assert len(second["run_history"]) == 3
