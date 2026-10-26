@@ -23,7 +23,7 @@ head = """<!doctype html><html><head><meta charset="utf-8"><title>M03 short-bond
 h1{font-size:17pt;text-align:center;margin-bottom:.3em}.au{text-align:center;font-size:10pt}
 h3{font-size:12pt;margin-top:1.2em}code{font-size:9.5pt}a{color:#1a4d8f}</style></head><body>
 <h1>An analytic estimate of the short-bond slope for the H/D isotope effect on polymorph stability</h1>
-<div class="au">Muhammet Can Ergani&#351;<br>Department of Metallurgical and Materials Engineering, Middle East Technical University, Ankara, T&uuml;rkiye<br>
+<div class="au">Muhammet Can Ergani&#351;<br>Independent researcher, Ankara, T&uuml;rkiye<br>
 ORCID <a href="https://orcid.org/0009-0001-1397-6366">0009-0001-1397-6366</a><br>23 October 2026</div>
 """
 tail = """</p><script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});</script></body></html>"""
