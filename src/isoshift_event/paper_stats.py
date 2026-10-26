@@ -461,18 +461,18 @@ def figure(out, H):
     sacc = [q["strong_right"] / q["strong_n"] if q["strong_n"] else np.nan for q in cv]
     wacc = [q["weak_right"] / q["weak_n"] if q["weak_n"] else np.nan for q in cv]
     a = ax[0]
-    a.plot(t, sacc, color=c1, lw=1.8, label="rule right, rows with $r_{max}\\geq t$")
-    a.plot(t, wacc, color=c2, lw=1.8, ls="--", label="rule right, rows with $r_{max}< t$")
+    a.plot(t, sacc, color=c1, lw=1.8, label="rule right, rows with $r_{\\max}\\geq t$")
+    a.plot(t, wacc, color=c2, lw=1.8, ls="--", label="rule right, rows with $r_{\\max}< t$")
     a2 = a.twinx()
     a2.plot(t, [q["strong_n"] for q in cv], color=c1, lw=0.8, alpha=0.5)
-    a2.set_ylabel("rows with $r_{max}\\geq t$ (thin line)", color=ink, fontsize=8)
+    a2.set_ylabel("rows with $r_{\\max}\\geq t$ (thin line)", color=ink, fontsize=8)
     a.axvline(0.99, color=ink, lw=0.6, ls=":")
-    a.text(0.991, 0.05, "0.99 Å (post hoc)", fontsize=7, color=ink)
-    a.set_xlabel("boundary t on larger mean O-H of the pair (Å)")
+    a.text(0.991, 0.05, "0.99 Å (chosen after inspecting the data)", fontsize=7, color=ink)
+    a.set_xlabel("boundary $t$ on $r_{\\max}$, the larger mean O-H of the pair (Å)")
     a.set_ylabel("fraction right")
     a.set_ylim(0, 1.02)
     a.legend(fontsize=7, loc="center left", frameon=False)
-    a.set_title("(a) accuracy and coverage across the boundary", fontsize=9, loc="left")
+    a.set_title("(a)", fontsize=10, fontweight="bold", loc="left")
     b = ax[1]
     bins = out["accuracy_vs_abs_ddF_meV_per_H"]["bins"]
     labels = ["<0.5", "0.5-1", "1-2", "2-5", ">5"]
@@ -486,9 +486,9 @@ def figure(out, H):
     b.text(0.5, base + 0.015, "constant-sign baseline (131/212)", fontsize=7, color=ink, ha="center", va="bottom",
            bbox=dict(facecolor="white", edgecolor="none", pad=0.5))
     b.set_xticks(range(5), labels)
-    b.set_xlabel("|ΔΔF$_{iso}$| per H at 300 K (meV)")
+    b.set_xlabel("$|\\Delta\\Delta F_{\\mathrm{iso}}|$ at 300 K (meV per H)")
     b.set_ylim(0, 1.1)
-    b.set_title("(b) headline rows by size of the effect", fontsize=9, loc="left")
+    b.set_title("(b)", fontsize=10, fontweight="bold", loc="left")
     for a_ in (ax[0], ax[1], a2):
         a_.tick_params(labelsize=7)
         for sname in ("top",):
