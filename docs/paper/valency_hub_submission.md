@@ -18,5 +18,9 @@ Fields for the Valency Hub Submit form (https://hub.valency.io/). Publishing was
 ## License
 CC BY 4.0
 
+## Published
+v1 published 31 Oct 2026: https://hub.valency.io/works/W_kqr3a38p
+AI contributors: Claude Opus, Claude Code, Claude Sonnet, GPT, Gemini (multiple versions) on all CRediT roles except Concept. Topic: Crystal Structures and Properties.
+
 ## After publishing
 Reply to Tom with the Hub link so the paper can be added to the OSI collection.
