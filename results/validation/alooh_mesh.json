@@ -1,0 +1,480 @@
+{
+ "note": "C-terra-v2 action 4; 300 K; dG = G(delta) - G(diaspore) in meV/atom; P_t from a linear fit through 10, 15, 20 GPa; dP_iso = P_t(D) - P_t(H)",
+ "T_K": 300.0,
+ "models": {
+  "mace": {
+   "gamma/40": {
+    "mesh_low": [
+     14,
+     9,
+     4
+    ],
+    "mesh_high": [
+     14,
+     9,
+     8
+    ],
+    "dG_H_meV_atom": [
+     -1.9222,
+     -11.494,
+     -19.5044
+    ],
+    "Pt_H_GPa": 8.7587,
+    "dG_D_meV_atom": [
+     0.3888,
+     -9.1535,
+     -17.2818
+    ],
+    "Pt_D_GPa": 10.0867,
+    "dP_iso_GPa": 1.328,
+    "all_volumes_in_range": true
+   },
+   "gamma/60": {
+    "mesh_low": [
+     21,
+     13,
+     6
+    ],
+    "mesh_high": [
+     21,
+     14,
+     13
+    ],
+    "dG_H_meV_atom": [
+     -1.9175,
+     -11.4851,
+     -19.49
+    ],
+    "Pt_H_GPa": 8.7606,
+    "dG_D_meV_atom": [
+     0.3935,
+     -9.1446,
+     -17.2674
+    ],
+    "Pt_D_GPa": 10.0892,
+    "dP_iso_GPa": 1.3286,
+    "all_volumes_in_range": true
+   },
+   "gamma/80": {
+    "mesh_low": [
+     24,
+     18,
+     8
+    ],
+    "mesh_high": [
+     24,
+     19,
+     17
+    ],
+    "dG_H_meV_atom": [
+     -1.9215,
+     -11.4922,
+     -19.4998
+    ],
+    "Pt_H_GPa": 8.7587,
+    "dG_D_meV_atom": [
+     0.3896,
+     -9.1518,
+     -17.2774
+    ],
+    "Pt_D_GPa": 10.087,
+    "dP_iso_GPa": 1.3283,
+    "all_volumes_in_range": true
+   },
+   "shifted/40": {
+    "mesh_low": [
+     14,
+     10,
+     4
+    ],
+    "mesh_high": [
+     14,
+     10,
+     8
+    ],
+    "dG_H_meV_atom": [
+     -1.8894,
+     -11.4682,
+     -19.4808
+    ],
+    "Pt_H_GPa": 8.7776,
+    "dG_D_meV_atom": [
+     0.4225,
+     -9.1273,
+     -17.2582
+    ],
+    "Pt_D_GPa": 10.1052,
+    "dP_iso_GPa": 1.3276,
+    "all_volumes_in_range": true
+   },
+   "shifted/60": {
+    "mesh_low": [
+     22,
+     14,
+     6
+    ],
+    "mesh_high": [
+     22,
+     14,
+     14
+    ],
+    "dG_H_meV_atom": [
+     -1.912,
+     -11.4839,
+     -19.4943
+    ],
+    "Pt_H_GPa": 8.7645,
+    "dG_D_meV_atom": [
+     0.399,
+     -9.1434,
+     -17.2715
+    ],
+    "Pt_D_GPa": 10.0924,
+    "dP_iso_GPa": 1.3279,
+    "all_volumes_in_range": true
+   },
+   "shifted/80": {
+    "mesh_low": [
+     24,
+     18,
+     8
+    ],
+    "mesh_high": [
+     24,
+     20,
+     18
+    ],
+    "dG_H_meV_atom": [
+     -1.9224,
+     -11.4967,
+     -19.5077
+    ],
+    "Pt_H_GPa": 8.7586,
+    "dG_D_meV_atom": [
+     0.3888,
+     -9.1563,
+     -17.2852
+    ],
+    "Pt_D_GPa": 10.0864,
+    "dP_iso_GPa": 1.3278,
+    "all_volumes_in_range": true
+   }
+  },
+  "mattersim": {
+   "gamma/40": {
+    "mesh_low": [
+     14,
+     9,
+     4
+    ],
+    "mesh_high": [
+     14,
+     9,
+     8
+    ],
+    "dG_H_meV_atom": [
+     9.211,
+     -0.0583,
+     -8.4368
+    ],
+    "Pt_H_GPa": 15.1352,
+    "dG_D_meV_atom": [
+     10.5057,
+     1.644,
+     -6.4339
+    ],
+    "Pt_D_GPa": 16.1247,
+    "dP_iso_GPa": 0.9895,
+    "all_volumes_in_range": true
+   },
+   "gamma/60": {
+    "mesh_low": [
+     21,
+     14,
+     6
+    ],
+    "mesh_high": [
+     21,
+     14,
+     13
+    ],
+    "dG_H_meV_atom": [
+     9.2004,
+     -0.0653,
+     -8.4335
+    ],
+    "Pt_H_GPa": 15.1326,
+    "dG_D_meV_atom": [
+     10.4949,
+     1.6364,
+     -6.4315
+    ],
+    "Pt_D_GPa": 16.1225,
+    "dP_iso_GPa": 0.9899,
+    "all_volumes_in_range": true
+   },
+   "gamma/80": {
+    "mesh_low": [
+     24,
+     18,
+     8
+    ],
+    "mesh_high": [
+     24,
+     19,
+     17
+    ],
+    "dG_H_meV_atom": [
+     9.2072,
+     -0.0666,
+     -8.4442
+    ],
+    "Pt_H_GPa": 15.1315,
+    "dG_D_meV_atom": [
+     10.5025,
+     1.636,
+     -6.4415
+    ],
+    "Pt_D_GPa": 16.1207,
+    "dP_iso_GPa": 0.9892,
+    "all_volumes_in_range": true
+   },
+   "shifted/40": {
+    "mesh_low": [
+     14,
+     10,
+     4
+    ],
+    "mesh_high": [
+     14,
+     10,
+     8
+    ],
+    "dG_H_meV_atom": [
+     9.2148,
+     -0.0426,
+     -8.4031
+    ],
+    "Pt_H_GPa": 15.1455,
+    "dG_D_meV_atom": [
+     10.5079,
+     1.6583,
+     -6.4016
+    ],
+    "Pt_D_GPa": 16.1364,
+    "dP_iso_GPa": 0.9909,
+    "all_volumes_in_range": true
+   },
+   "shifted/60": {
+    "mesh_low": [
+     22,
+     14,
+     6
+    ],
+    "mesh_high": [
+     22,
+     14,
+     14
+    ],
+    "dG_H_meV_atom": [
+     9.2124,
+     -0.0585,
+     -8.4339
+    ],
+    "Pt_H_GPa": 15.136,
+    "dG_D_meV_atom": [
+     10.5071,
+     1.6436,
+     -6.4314
+    ],
+    "Pt_D_GPa": 16.1255,
+    "dP_iso_GPa": 0.9895,
+    "all_volumes_in_range": true
+   },
+   "shifted/80": {
+    "mesh_low": [
+     24,
+     18,
+     8
+    ],
+    "mesh_high": [
+     24,
+     20,
+     18
+    ],
+    "dG_H_meV_atom": [
+     9.2142,
+     -0.0568,
+     -8.4328
+    ],
+    "Pt_H_GPa": 15.1369,
+    "dG_D_meV_atom": [
+     10.509,
+     1.6454,
+     -6.4301
+    ],
+    "Pt_D_GPa": 16.1264,
+    "dP_iso_GPa": 0.9895,
+    "all_volumes_in_range": true
+   }
+  },
+  "orb": {
+   "gamma/40": {
+    "mesh_low": [
+     14,
+     9,
+     4
+    ],
+    "mesh_high": [
+     14,
+     9,
+     8
+    ],
+    "dG_H_meV_atom": [
+     5.8649,
+     -4.1573,
+     -13.3099
+    ],
+    "Pt_H_GPa": 12.983,
+    "dG_D_meV_atom": [
+     7.7497,
+     -1.9166,
+     -10.7945
+    ],
+    "Pt_D_GPa": 14.1082,
+    "dP_iso_GPa": 1.1252,
+    "all_volumes_in_range": true
+   },
+   "gamma/60": {
+    "mesh_low": [
+     21,
+     14,
+     6
+    ],
+    "mesh_high": [
+     21,
+     14,
+     13
+    ],
+    "dG_H_meV_atom": [
+     5.8798,
+     -4.1391,
+     -13.3118
+    ],
+    "Pt_H_GPa": 12.9902,
+    "dG_D_meV_atom": [
+     7.7636,
+     -1.8992,
+     -10.7961
+    ],
+    "Pt_D_GPa": 14.1143,
+    "dP_iso_GPa": 1.1241,
+    "all_volumes_in_range": true
+   },
+   "gamma/80": {
+    "mesh_low": [
+     24,
+     18,
+     8
+    ],
+    "mesh_high": [
+     24,
+     19,
+     17
+    ],
+    "dG_H_meV_atom": [
+     5.8844,
+     -4.153,
+     -13.3015
+    ],
+    "Pt_H_GPa": 12.9898,
+    "dG_D_meV_atom": [
+     7.7683,
+     -1.9123,
+     -10.7857
+    ],
+    "Pt_D_GPa": 14.1144,
+    "dP_iso_GPa": 1.1246,
+    "all_volumes_in_range": true
+   },
+   "shifted/40": {
+    "mesh_low": [
+     14,
+     10,
+     4
+    ],
+    "mesh_high": [
+     14,
+     10,
+     8
+    ],
+    "dG_H_meV_atom": [
+     5.9111,
+     -4.1459,
+     -13.2552
+    ],
+    "Pt_H_GPa": 13.0017,
+    "dG_D_meV_atom": [
+     7.7932,
+     -1.9064,
+     -10.7395
+    ],
+    "Pt_D_GPa": 14.1272,
+    "dP_iso_GPa": 1.1255,
+    "all_volumes_in_range": true
+   },
+   "shifted/60": {
+    "mesh_low": [
+     22,
+     14,
+     6
+    ],
+    "mesh_high": [
+     22,
+     14,
+     14
+    ],
+    "dG_H_meV_atom": [
+     5.8842,
+     -4.1416,
+     -13.3062
+    ],
+    "Pt_H_GPa": 12.9914,
+    "dG_D_meV_atom": [
+     7.7677,
+     -1.9011,
+     -10.7901
+    ],
+    "Pt_D_GPa": 14.1156,
+    "dP_iso_GPa": 1.1242,
+    "all_volumes_in_range": true
+   },
+   "shifted/80": {
+    "mesh_low": [
+     24,
+     18,
+     8
+    ],
+    "mesh_high": [
+     24,
+     20,
+     18
+    ],
+    "dG_H_meV_atom": [
+     5.8851,
+     -4.1377,
+     -13.323
+    ],
+    "Pt_H_GPa": 12.9912,
+    "dG_D_meV_atom": [
+     7.7692,
+     -1.8975,
+     -10.8071
+    ],
+    "Pt_D_GPa": 14.1144,
+    "dP_iso_GPa": 1.1232,
+    "all_volumes_in_range": true
+   }
+  }
+ }
+}
